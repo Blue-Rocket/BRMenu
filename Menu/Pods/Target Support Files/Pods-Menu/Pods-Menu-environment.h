@@ -36,9 +36,39 @@
 #define COCOAPODS_VERSION_MINOR_CocoaLumberjack_Extensions 9
 #define COCOAPODS_VERSION_PATCH_CocoaLumberjack_Extensions 2
 
+// ISO8601DateFormatterValueTransformer
+#define COCOAPODS_POD_AVAILABLE_ISO8601DateFormatterValueTransformer
+#define COCOAPODS_VERSION_MAJOR_ISO8601DateFormatterValueTransformer 0
+#define COCOAPODS_VERSION_MINOR_ISO8601DateFormatterValueTransformer 6
+#define COCOAPODS_VERSION_PATCH_ISO8601DateFormatterValueTransformer 0
+
 // Masonry
 #define COCOAPODS_POD_AVAILABLE_Masonry
 #define COCOAPODS_VERSION_MAJOR_Masonry 0
 #define COCOAPODS_VERSION_MINOR_Masonry 6
 #define COCOAPODS_VERSION_PATCH_Masonry 2
+
+// RKValueTransformers
+#define COCOAPODS_POD_AVAILABLE_RKValueTransformers
+#define COCOAPODS_VERSION_MAJOR_RKValueTransformers 1
+#define COCOAPODS_VERSION_MINOR_RKValueTransformers 1
+#define COCOAPODS_VERSION_PATCH_RKValueTransformers 2
+
+// RestKit/ObjectMapping
+#define COCOAPODS_POD_AVAILABLE_RestKit_ObjectMapping
+#define COCOAPODS_VERSION_MAJOR_RestKit_ObjectMapping 0
+#define COCOAPODS_VERSION_MINOR_RestKit_ObjectMapping 24
+#define COCOAPODS_VERSION_PATCH_RestKit_ObjectMapping 1
+
+// RestKit/Support
+#define COCOAPODS_POD_AVAILABLE_RestKit_Support
+#define COCOAPODS_VERSION_MAJOR_RestKit_Support 0
+#define COCOAPODS_VERSION_MINOR_RestKit_Support 24
+#define COCOAPODS_VERSION_PATCH_RestKit_Support 1
+
+// TransitionKit
+#define COCOAPODS_POD_AVAILABLE_TransitionKit
+#define COCOAPODS_VERSION_MAJOR_TransitionKit 2
+#define COCOAPODS_VERSION_MINOR_TransitionKit 1
+#define COCOAPODS_VERSION_PATCH_TransitionKit 1
 

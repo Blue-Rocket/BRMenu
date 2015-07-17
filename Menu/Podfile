@@ -5,6 +5,7 @@ def common_pods
 	pod 'BRCocoaLumberjack',		'~> 1.9'
 	pod 'BREnvironment',			'~> 1.1'
 	pod 'Masonry',					'~> 0.6'
+	pod 'RestKit/ObjectMapping',	'~> 0.24'
 end
 
 target :Menu do
