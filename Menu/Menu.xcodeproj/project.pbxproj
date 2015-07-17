@@ -10,6 +10,20 @@
 		1AA84A57FEF8213DD45938C1 /* libPods-MenuTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD3AA4438BF1393D88B7061A /* libPods-MenuTests.a */; };
 		958E4DFF15F11D518805F20C /* libPods-Menu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B78C1725A0BA1A773547C8B /* libPods-Menu.a */; };
 		C98883601B58820D0049491C /* libMenu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C98883541B58820D0049491C /* libMenu.a */; };
+		C988838B1B58832C0049491C /* BRMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = C98883711B58832C0049491C /* BRMenu.m */; };
+		C988838C1B58832C0049491C /* BRMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C98883731B58832C0049491C /* BRMenuItem.m */; };
+		C988838D1B58832C0049491C /* BRMenuItemComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = C98883751B58832C0049491C /* BRMenuItemComponent.m */; };
+		C988838E1B58832C0049491C /* BRMenuItemComponentGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C98883771B58832C0049491C /* BRMenuItemComponentGroup.m */; };
+		C988838F1B58832C0049491C /* BRMenuItemGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C98883791B58832C0049491C /* BRMenuItemGroup.m */; };
+		C98883901B58832C0049491C /* BRMenuItemTag.m in Sources */ = {isa = PBXBuildFile; fileRef = C988837C1B58832C0049491C /* BRMenuItemTag.m */; };
+		C98883911B58832C0049491C /* BRMenuOrder+Encoding.m in Sources */ = {isa = PBXBuildFile; fileRef = C98883801B58832C0049491C /* BRMenuOrder+Encoding.m */; };
+		C98883921B58832C0049491C /* BRMenuOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = C98883821B58832C0049491C /* BRMenuOrder.m */; };
+		C98883931B58832C0049491C /* BRMenuOrderItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C98883841B58832C0049491C /* BRMenuOrderItem.m */; };
+		C98883941B58832C0049491C /* BRMenuOrderItemAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = C98883861B58832C0049491C /* BRMenuOrderItemAttributes.m */; };
+		C98883951B58832C0049491C /* BRMenuOrderItemAttributesProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = C98883881B58832C0049491C /* BRMenuOrderItemAttributesProxy.m */; };
+		C98883961B58832C0049491C /* BRMenuOrderItemComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = C988838A1B58832C0049491C /* BRMenuOrderItemComponent.m */; };
+		C988839B1B5883A60049491C /* BRMenuOrderItemAttributesProxyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C98883991B5883A60049491C /* BRMenuOrderItemAttributesProxyTests.m */; };
+		C988839C1B5883A60049491C /* BRMenuOrderItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C988839A1B5883A60049491C /* BRMenuOrderItemTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +56,34 @@
 		C98883541B58820D0049491C /* libMenu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMenu.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C988835F1B58820D0049491C /* MenuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MenuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C98883651B58820D0049491C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C98883701B58832C0049491C /* BRMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenu.h; sourceTree = "<group>"; };
+		C98883711B58832C0049491C /* BRMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenu.m; sourceTree = "<group>"; };
+		C98883721B58832C0049491C /* BRMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuItem.h; sourceTree = "<group>"; };
+		C98883731B58832C0049491C /* BRMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuItem.m; sourceTree = "<group>"; };
+		C98883741B58832C0049491C /* BRMenuItemComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuItemComponent.h; sourceTree = "<group>"; };
+		C98883751B58832C0049491C /* BRMenuItemComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuItemComponent.m; sourceTree = "<group>"; };
+		C98883761B58832C0049491C /* BRMenuItemComponentGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuItemComponentGroup.h; sourceTree = "<group>"; };
+		C98883771B58832C0049491C /* BRMenuItemComponentGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuItemComponentGroup.m; sourceTree = "<group>"; };
+		C98883781B58832C0049491C /* BRMenuItemGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuItemGroup.h; sourceTree = "<group>"; };
+		C98883791B58832C0049491C /* BRMenuItemGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuItemGroup.m; sourceTree = "<group>"; };
+		C988837A1B58832C0049491C /* BRMenuItemObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuItemObject.h; sourceTree = "<group>"; };
+		C988837B1B58832C0049491C /* BRMenuItemTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuItemTag.h; sourceTree = "<group>"; };
+		C988837C1B58832C0049491C /* BRMenuItemTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuItemTag.m; sourceTree = "<group>"; };
+		C988837D1B58832C0049491C /* BRMenuProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuProvider.h; sourceTree = "<group>"; };
+		C988837F1B58832C0049491C /* BRMenuOrder+Encoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BRMenuOrder+Encoding.h"; sourceTree = "<group>"; };
+		C98883801B58832C0049491C /* BRMenuOrder+Encoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BRMenuOrder+Encoding.m"; sourceTree = "<group>"; };
+		C98883811B58832C0049491C /* BRMenuOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuOrder.h; sourceTree = "<group>"; };
+		C98883821B58832C0049491C /* BRMenuOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrder.m; sourceTree = "<group>"; };
+		C98883831B58832C0049491C /* BRMenuOrderItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuOrderItem.h; sourceTree = "<group>"; };
+		C98883841B58832C0049491C /* BRMenuOrderItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderItem.m; sourceTree = "<group>"; };
+		C98883851B58832C0049491C /* BRMenuOrderItemAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuOrderItemAttributes.h; sourceTree = "<group>"; };
+		C98883861B58832C0049491C /* BRMenuOrderItemAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderItemAttributes.m; sourceTree = "<group>"; };
+		C98883871B58832C0049491C /* BRMenuOrderItemAttributesProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuOrderItemAttributesProxy.h; sourceTree = "<group>"; };
+		C98883881B58832C0049491C /* BRMenuOrderItemAttributesProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderItemAttributesProxy.m; sourceTree = "<group>"; };
+		C98883891B58832C0049491C /* BRMenuOrderItemComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuOrderItemComponent.h; sourceTree = "<group>"; };
+		C988838A1B58832C0049491C /* BRMenuOrderItemComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderItemComponent.m; sourceTree = "<group>"; };
+		C98883991B5883A60049491C /* BRMenuOrderItemAttributesProxyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderItemAttributesProxyTests.m; sourceTree = "<group>"; };
+		C988839A1B5883A60049491C /* BRMenuOrderItemTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderItemTests.m; sourceTree = "<group>"; };
 		C998FE231E4544850D1A0FA7 /* Pods-MenuTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MenuTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MenuTests/Pods-MenuTests.release.xcconfig"; sourceTree = "<group>"; };
 		DD3AA4438BF1393D88B7061A /* libPods-MenuTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MenuTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -110,6 +152,7 @@
 		C98883561B58820D0049491C /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				C988836E1B58832C0049491C /* Core */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -117,6 +160,7 @@
 		C98883631B58820D0049491C /* MenuTests */ = {
 			isa = PBXGroup;
 			children = (
+				C98883971B5883A60049491C /* Core */,
 				C98883641B58820D0049491C /* Supporting Files */,
 			);
 			path = MenuTests;
@@ -128,6 +172,72 @@
 				C98883651B58820D0049491C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C988836E1B58832C0049491C /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				C988836F1B58832C0049491C /* Menu */,
+				C988837E1B58832C0049491C /* Order */,
+			);
+			path = Core;
+			sourceTree = SOURCE_ROOT;
+		};
+		C988836F1B58832C0049491C /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				C98883701B58832C0049491C /* BRMenu.h */,
+				C98883711B58832C0049491C /* BRMenu.m */,
+				C98883721B58832C0049491C /* BRMenuItem.h */,
+				C98883731B58832C0049491C /* BRMenuItem.m */,
+				C98883741B58832C0049491C /* BRMenuItemComponent.h */,
+				C98883751B58832C0049491C /* BRMenuItemComponent.m */,
+				C98883761B58832C0049491C /* BRMenuItemComponentGroup.h */,
+				C98883771B58832C0049491C /* BRMenuItemComponentGroup.m */,
+				C98883781B58832C0049491C /* BRMenuItemGroup.h */,
+				C98883791B58832C0049491C /* BRMenuItemGroup.m */,
+				C988837A1B58832C0049491C /* BRMenuItemObject.h */,
+				C988837B1B58832C0049491C /* BRMenuItemTag.h */,
+				C988837C1B58832C0049491C /* BRMenuItemTag.m */,
+				C988837D1B58832C0049491C /* BRMenuProvider.h */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		C988837E1B58832C0049491C /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				C988837F1B58832C0049491C /* BRMenuOrder+Encoding.h */,
+				C98883801B58832C0049491C /* BRMenuOrder+Encoding.m */,
+				C98883811B58832C0049491C /* BRMenuOrder.h */,
+				C98883821B58832C0049491C /* BRMenuOrder.m */,
+				C98883831B58832C0049491C /* BRMenuOrderItem.h */,
+				C98883841B58832C0049491C /* BRMenuOrderItem.m */,
+				C98883851B58832C0049491C /* BRMenuOrderItemAttributes.h */,
+				C98883861B58832C0049491C /* BRMenuOrderItemAttributes.m */,
+				C98883871B58832C0049491C /* BRMenuOrderItemAttributesProxy.h */,
+				C98883881B58832C0049491C /* BRMenuOrderItemAttributesProxy.m */,
+				C98883891B58832C0049491C /* BRMenuOrderItemComponent.h */,
+				C988838A1B58832C0049491C /* BRMenuOrderItemComponent.m */,
+			);
+			path = Order;
+			sourceTree = "<group>";
+		};
+		C98883971B5883A60049491C /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				C98883981B5883A60049491C /* Order */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		C98883981B5883A60049491C /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				C98883991B5883A60049491C /* BRMenuOrderItemAttributesProxyTests.m */,
+				C988839A1B5883A60049491C /* BRMenuOrderItemTests.m */,
+			);
+			path = Order;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,6 +395,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C98883961B58832C0049491C /* BRMenuOrderItemComponent.m in Sources */,
+				C988838D1B58832C0049491C /* BRMenuItemComponent.m in Sources */,
+				C988838F1B58832C0049491C /* BRMenuItemGroup.m in Sources */,
+				C988838E1B58832C0049491C /* BRMenuItemComponentGroup.m in Sources */,
+				C98883931B58832C0049491C /* BRMenuOrderItem.m in Sources */,
+				C98883911B58832C0049491C /* BRMenuOrder+Encoding.m in Sources */,
+				C98883941B58832C0049491C /* BRMenuOrderItemAttributes.m in Sources */,
+				C988838B1B58832C0049491C /* BRMenu.m in Sources */,
+				C98883921B58832C0049491C /* BRMenuOrder.m in Sources */,
+				C98883901B58832C0049491C /* BRMenuItemTag.m in Sources */,
+				C98883951B58832C0049491C /* BRMenuOrderItemAttributesProxy.m in Sources */,
+				C988838C1B58832C0049491C /* BRMenuItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +414,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C988839C1B5883A60049491C /* BRMenuOrderItemTests.m in Sources */,
+				C988839B1B5883A60049491C /* BRMenuOrderItemAttributesProxyTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
