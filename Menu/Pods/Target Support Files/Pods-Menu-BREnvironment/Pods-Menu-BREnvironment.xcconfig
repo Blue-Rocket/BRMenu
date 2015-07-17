@@ -1,0 +1,1 @@
+PODS_MENU_BRENVIRONMENT_OTHER_LDFLAGS = -framework "Foundation"

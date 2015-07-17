@@ -1,0 +1,29 @@
+PODS:
+  - BRCocoaLumberjack (1.9.0):
+    - CocoaLumberjack (~> 1.9)
+  - BREnvironment (1.1.0)
+  - CocoaLumberjack (1.9.2):
+    - CocoaLumberjack/Extensions (= 1.9.2)
+  - CocoaLumberjack/Core (1.9.2)
+  - CocoaLumberjack/Extensions (1.9.2):
+    - CocoaLumberjack/Core
+  - Masonry (0.6.2)
+  - OCHamcrest (4.1.1)
+  - OCMock (3.1.2)
+
+DEPENDENCIES:
+  - BRCocoaLumberjack (~> 1.9)
+  - BREnvironment (~> 1.1)
+  - Masonry (~> 0.6)
+  - OCHamcrest (~> 4.1)
+  - OCMock (~> 3.1)
+
+SPEC CHECKSUMS:
+  BRCocoaLumberjack: 3ec999abcfa4fecec9816c9c63b11c93a16e4550
+  BREnvironment: 10859bde59bcbf7bcf65b23dcb97701ded62717b
+  CocoaLumberjack: 628fca2e88ef06f7cf6817309aa405f325d9a6fa
+  Masonry: 362e8a1cc0beada4a4c4832d5e863da2a51533be
+  OCHamcrest: 6f03ffa81d12feab872638490a44ab0a6d3aca10
+  OCMock: a10ea9f0a6e921651f96f78b6faee95ebc813b92
+
+COCOAPODS: 0.37.2
