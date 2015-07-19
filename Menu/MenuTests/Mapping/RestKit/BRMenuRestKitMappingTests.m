@@ -30,6 +30,7 @@
 @implementation BRMenuRestKitMappingTests
 
 - (void)setUp {
+	[super setUp];
 	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
 	[BRMenuRestKitTestingSupport setFixtureBundle:bundle];
 }
