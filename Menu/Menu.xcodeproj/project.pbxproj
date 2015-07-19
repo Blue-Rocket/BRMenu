@@ -22,6 +22,11 @@
 		C9067A5F1B5C312F005FF260 /* menu-lunchstop.json in Resources */ = {isa = PBXBuildFile; fileRef = C9067A541B5C312F005FF260 /* menu-lunchstop.json */; };
 		C9067A601B5C312F005FF260 /* menu-pizza.json in Resources */ = {isa = PBXBuildFile; fileRef = C9067A551B5C312F005FF260 /* menu-pizza.json */; };
 		C9067A611B5C312F005FF260 /* menu-shakeshack.json in Resources */ = {isa = PBXBuildFile; fileRef = C9067A561B5C312F005FF260 /* menu-shakeshack.json */; };
+		C9067A641B5C49FC005FF260 /* BRMenuRestKitMappingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9067A631B5C49FC005FF260 /* BRMenuRestKitMappingTests.m */; };
+		C9067A671B5C4B6C005FF260 /* BRMenuRestKitTestingSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = C9067A661B5C4B6C005FF260 /* BRMenuRestKitTestingSupport.m */; };
+		C9067A6A1B5C5491005FF260 /* BRMenuRestKitTestingMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = C9067A691B5C5491005FF260 /* BRMenuRestKitTestingMapper.m */; };
+		C9067A6D1B5C59F2005FF260 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9067A6C1B5C59F2005FF260 /* MobileCoreServices.framework */; };
+		C9067A6E1B5C5A09005FF260 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9067A6C1B5C59F2005FF260 /* MobileCoreServices.framework */; };
 		C98883601B58820D0049491C /* libMenu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C98883541B58820D0049491C /* libMenu.a */; };
 		C988838B1B58832C0049491C /* BRMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = C98883711B58832C0049491C /* BRMenu.m */; };
 		C988838C1B58832C0049491C /* BRMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C98883731B58832C0049491C /* BRMenuItem.m */; };
@@ -82,6 +87,12 @@
 		C9067A541B5C312F005FF260 /* menu-lunchstop.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "menu-lunchstop.json"; sourceTree = "<group>"; };
 		C9067A551B5C312F005FF260 /* menu-pizza.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "menu-pizza.json"; sourceTree = "<group>"; };
 		C9067A561B5C312F005FF260 /* menu-shakeshack.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "menu-shakeshack.json"; sourceTree = "<group>"; };
+		C9067A631B5C49FC005FF260 /* BRMenuRestKitMappingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuRestKitMappingTests.m; sourceTree = "<group>"; };
+		C9067A651B5C4B6C005FF260 /* BRMenuRestKitTestingSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuRestKitTestingSupport.h; sourceTree = "<group>"; };
+		C9067A661B5C4B6C005FF260 /* BRMenuRestKitTestingSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuRestKitTestingSupport.m; sourceTree = "<group>"; };
+		C9067A681B5C5491005FF260 /* BRMenuRestKitTestingMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuRestKitTestingMapper.h; sourceTree = "<group>"; };
+		C9067A691B5C5491005FF260 /* BRMenuRestKitTestingMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuRestKitTestingMapper.m; sourceTree = "<group>"; };
+		C9067A6C1B5C59F2005FF260 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		C98883541B58820D0049491C /* libMenu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMenu.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C988835F1B58820D0049491C /* MenuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MenuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C98883651B58820D0049491C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -126,6 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9067A6D1B5C59F2005FF260 /* MobileCoreServices.framework in Frameworks */,
 				958E4DFF15F11D518805F20C /* libPods-Menu.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -134,6 +146,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9067A6E1B5C5A09005FF260 /* MobileCoreServices.framework in Frameworks */,
 				C98883601B58820D0049491C /* libMenu.a in Frameworks */,
 				1AA84A57FEF8213DD45938C1 /* libPods-MenuTests.a in Frameworks */,
 			);
@@ -156,6 +169,7 @@
 		B8C012F0B29F65DA42C97EF9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C9067A6C1B5C59F2005FF260 /* MobileCoreServices.framework */,
 				7B78C1725A0BA1A773547C8B /* libPods-Menu.a */,
 				DD3AA4438BF1393D88B7061A /* libPods-MenuTests.a */,
 			);
@@ -183,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				C9067A461B5C29BA005FF260 /* Core */,
+				C9067A621B5C49FC005FF260 /* RestKit */,
 			);
 			path = Mapping;
 			sourceTree = "<group>";
@@ -227,6 +242,26 @@
 				C9067A561B5C312F005FF260 /* menu-shakeshack.json */,
 			);
 			path = Menus;
+			sourceTree = "<group>";
+		};
+		C9067A621B5C49FC005FF260 /* RestKit */ = {
+			isa = PBXGroup;
+			children = (
+				C9067A6B1B5C5836005FF260 /* Support */,
+				C9067A631B5C49FC005FF260 /* BRMenuRestKitMappingTests.m */,
+			);
+			path = RestKit;
+			sourceTree = "<group>";
+		};
+		C9067A6B1B5C5836005FF260 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				C9067A681B5C5491005FF260 /* BRMenuRestKitTestingMapper.h */,
+				C9067A691B5C5491005FF260 /* BRMenuRestKitTestingMapper.m */,
+				C9067A651B5C4B6C005FF260 /* BRMenuRestKitTestingSupport.h */,
+				C9067A661B5C4B6C005FF260 /* BRMenuRestKitTestingSupport.m */,
+			);
+			name = Support;
 			sourceTree = "<group>";
 		};
 		C988834B1B58820D0049491C = {
@@ -559,7 +594,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9067A671B5C4B6C005FF260 /* BRMenuRestKitTestingSupport.m in Sources */,
+				C9067A641B5C49FC005FF260 /* BRMenuRestKitMappingTests.m in Sources */,
 				C988839C1B5883A60049491C /* BRMenuOrderItemTests.m in Sources */,
+				C9067A6A1B5C5491005FF260 /* BRMenuRestKitTestingMapper.m in Sources */,
 				C988839B1B5883A60049491C /* BRMenuOrderItemAttributesProxyTests.m in Sources */,
 				C9067A481B5C29BA005FF260 /* BRMenuMappingPostProcessorTests.m in Sources */,
 			);
