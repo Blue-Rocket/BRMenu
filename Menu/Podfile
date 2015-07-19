@@ -15,8 +15,6 @@ end
 
 
 target :MenuTests do
-#    pod 'RestKit/Search'
-#    pod 'RestKit/Testing'
 	pod 'OCHamcrest',			'~> 4.1', :inhibit_warnings => true
 	pod 'OCMock',				'~> 3.1'
 #	pod 'CocoaHTTPServer',		'~> 2.3', :inhibit_warnings => true
