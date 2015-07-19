@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1AA84A57FEF8213DD45938C1 /* libPods-MenuTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD3AA4438BF1393D88B7061A /* libPods-MenuTests.a */; };
 		958E4DFF15F11D518805F20C /* libPods-Menu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B78C1725A0BA1A773547C8B /* libPods-Menu.a */; };
+		C9067A441B5C2835005FF260 /* BRMenuMappingPostProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = C9067A431B5C2835005FF260 /* BRMenuMappingPostProcessor.m */; };
+		C9067A481B5C29BA005FF260 /* BRMenuMappingPostProcessorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9067A471B5C29BA005FF260 /* BRMenuMappingPostProcessorTests.m */; };
 		C98883601B58820D0049491C /* libMenu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C98883541B58820D0049491C /* libMenu.a */; };
 		C988838B1B58832C0049491C /* BRMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = C98883711B58832C0049491C /* BRMenu.m */; };
 		C988838C1B58832C0049491C /* BRMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C98883731B58832C0049491C /* BRMenuItem.m */; };
@@ -55,6 +57,9 @@
 		7EEDB70F5466A7BAC95BC19E /* Pods-MenuTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MenuTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MenuTests/Pods-MenuTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8C24D9343616C83D928D40D2 /* Pods-Menu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Menu.release.xcconfig"; path = "Pods/Target Support Files/Pods-Menu/Pods-Menu.release.xcconfig"; sourceTree = "<group>"; };
 		BBC3F2F86A0E48FB00973123 /* Pods-Menu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Menu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Menu/Pods-Menu.debug.xcconfig"; sourceTree = "<group>"; };
+		C9067A421B5C2835005FF260 /* BRMenuMappingPostProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuMappingPostProcessor.h; sourceTree = "<group>"; };
+		C9067A431B5C2835005FF260 /* BRMenuMappingPostProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuMappingPostProcessor.m; sourceTree = "<group>"; };
+		C9067A471B5C29BA005FF260 /* BRMenuMappingPostProcessorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuMappingPostProcessorTests.m; sourceTree = "<group>"; };
 		C98883541B58820D0049491C /* libMenu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMenu.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C988835F1B58820D0049491C /* MenuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MenuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C98883651B58820D0049491C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -135,6 +140,39 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C9067A401B5C2835005FF260 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				C9067A411B5C2835005FF260 /* Menu */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		C9067A411B5C2835005FF260 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				C9067A421B5C2835005FF260 /* BRMenuMappingPostProcessor.h */,
+				C9067A431B5C2835005FF260 /* BRMenuMappingPostProcessor.m */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		C9067A451B5C29BA005FF260 /* Mapping */ = {
+			isa = PBXGroup;
+			children = (
+				C9067A461B5C29BA005FF260 /* Core */,
+			);
+			path = Mapping;
+			sourceTree = "<group>";
+		};
+		C9067A461B5C29BA005FF260 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				C9067A471B5C29BA005FF260 /* BRMenuMappingPostProcessorTests.m */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 		C988834B1B58820D0049491C = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				C98883971B5883A60049491C /* Core */,
+				C9067A451B5C29BA005FF260 /* Mapping */,
 				C98883641B58820D0049491C /* Supporting Files */,
 			);
 			path = MenuTests;
@@ -250,6 +289,7 @@
 		C988839D1B5885610049491C /* Mapping */ = {
 			isa = PBXGroup;
 			children = (
+				C9067A401B5C2835005FF260 /* Core */,
 				C988839E1B5885610049491C /* RestKit */,
 			);
 			path = Mapping;
@@ -434,6 +474,7 @@
 				C988838F1B58832C0049491C /* BRMenuItemGroup.m in Sources */,
 				C988838E1B58832C0049491C /* BRMenuItemComponentGroup.m in Sources */,
 				C98883931B58832C0049491C /* BRMenuOrderItem.m in Sources */,
+				C9067A441B5C2835005FF260 /* BRMenuMappingPostProcessor.m in Sources */,
 				C98883911B58832C0049491C /* BRMenuOrder+Encoding.m in Sources */,
 				C98883941B58832C0049491C /* BRMenuOrderItemAttributes.m in Sources */,
 				C988838B1B58832C0049491C /* BRMenu.m in Sources */,
@@ -452,6 +493,7 @@
 			files = (
 				C988839C1B5883A60049491C /* BRMenuOrderItemTests.m in Sources */,
 				C988839B1B5883A60049491C /* BRMenuOrderItemAttributesProxyTests.m in Sources */,
+				C9067A481B5C29BA005FF260 /* BRMenuMappingPostProcessorTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

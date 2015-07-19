@@ -19,12 +19,4 @@
  */
 @interface BRMenuMappingRestKitPostProcessor : NSObject <RKMapperOperationDelegate>
 
-/**
- Post process a @c BRMenu by assigning menu IDs to all @c BRMenuItem, @c BRMenuItemComponent, etc.
- objects and wire up child to parent relationships.
- 
- @param menu The menu to process and update.
- */
-+ (void)postProcessMenuMapping:(BRMenu *)menu;
-
 @end
