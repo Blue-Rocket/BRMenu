@@ -27,6 +27,7 @@
 		C9067A6A1B5C5491005FF260 /* BRMenuRestKitTestingMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = C9067A691B5C5491005FF260 /* BRMenuRestKitTestingMapper.m */; };
 		C9067A6D1B5C59F2005FF260 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9067A6C1B5C59F2005FF260 /* MobileCoreServices.framework */; };
 		C9067A6E1B5C5A09005FF260 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9067A6C1B5C59F2005FF260 /* MobileCoreServices.framework */; };
+		C9067A701B5C69CD005FF260 /* BRMenuItemGroupRestKitMappingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9067A6F1B5C69CD005FF260 /* BRMenuItemGroupRestKitMappingTests.m */; };
 		C98883601B58820D0049491C /* libMenu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C98883541B58820D0049491C /* libMenu.a */; };
 		C988838B1B58832C0049491C /* BRMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = C98883711B58832C0049491C /* BRMenu.m */; };
 		C988838C1B58832C0049491C /* BRMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C98883731B58832C0049491C /* BRMenuItem.m */; };
@@ -93,6 +94,7 @@
 		C9067A681B5C5491005FF260 /* BRMenuRestKitTestingMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuRestKitTestingMapper.h; sourceTree = "<group>"; };
 		C9067A691B5C5491005FF260 /* BRMenuRestKitTestingMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuRestKitTestingMapper.m; sourceTree = "<group>"; };
 		C9067A6C1B5C59F2005FF260 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		C9067A6F1B5C69CD005FF260 /* BRMenuItemGroupRestKitMappingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuItemGroupRestKitMappingTests.m; sourceTree = "<group>"; };
 		C98883541B58820D0049491C /* libMenu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMenu.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C988835F1B58820D0049491C /* MenuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MenuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C98883651B58820D0049491C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 			children = (
 				C9067A6B1B5C5836005FF260 /* Support */,
 				C9067A631B5C49FC005FF260 /* BRMenuRestKitMappingTests.m */,
+				C9067A6F1B5C69CD005FF260 /* BRMenuItemGroupRestKitMappingTests.m */,
 			);
 			path = RestKit;
 			sourceTree = "<group>";
@@ -600,6 +603,7 @@
 				C9067A6A1B5C5491005FF260 /* BRMenuRestKitTestingMapper.m in Sources */,
 				C988839B1B5883A60049491C /* BRMenuOrderItemAttributesProxyTests.m in Sources */,
 				C9067A481B5C29BA005FF260 /* BRMenuMappingPostProcessorTests.m in Sources */,
+				C9067A701B5C69CD005FF260 /* BRMenuItemGroupRestKitMappingTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
