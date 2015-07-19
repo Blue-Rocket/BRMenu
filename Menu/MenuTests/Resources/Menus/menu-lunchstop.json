@@ -1,0 +1,581 @@
+{"menu": {
+    "version": 1,
+    "items": [
+        {
+            "title": "burger",
+            "description": "Choose your bread and any combination of toppings\u2026",
+            "key": "burger",
+            "price": "8.82",
+            "askTakeaway": true,
+            "needsReview": true,
+            "componentGroups": [
+                {
+                    "title": "Bread",
+                    "requiredCount": 1,
+                    "key": "bread",
+                    "components": [
+                        {
+                            "title": "Pita",
+                            "askQuantity": false,
+                            "askPlacement": false,
+                            "description": "Classic pita bread"
+                        },
+                        {
+                            "title": "Soft Roll",
+                            "askQuantity": false,
+                            "askPlacement": false,
+                            "description": "Soft and spongy"
+                        },
+                        {
+                            "title": "Whole Wheat",
+                            "askQuantity": false,
+                            "askPlacement": false,
+                            "description": "Healthy and full of fiber"
+                        }
+                    ]
+                },
+                {
+                    "title": "Sauce/Spread",
+                    "requiredCount": 0,
+                    "multiSelect": true,
+                    "components": [
+                        {
+                            "title": "Ketchup",
+                            "askPlacement": false,
+                            "description": "Heirloom tomatoes blended with extra virgin olive oil, sugar, and sea salt"
+                        },
+                        {
+                            "title": "Mustard",
+                            "askPlacement": false,
+                            "description": "Nothing but stone ground mustard seeds"
+                        },
+                        {
+                            "title": "Mayo",
+                            "askPlacement": false,
+                            "description": "Organic egg yolks blended with extra virgin olive oil and sea salt"
+                        },
+                        {
+                            "title": "Basil Pesto",
+                            "askPlacement": false,
+                            "description": "Blend of fresh sweet basil, sharp Parmesan, toasted pecans, and extra virgin olive oil"
+                        },
+                        {
+                            "title": "Hummus",
+                            "askPlacement": false,
+                            "description": "Buttery and earthy flavored roasted chickpea puree"
+                        },
+                        {
+                            "title": "Garlic Puree",
+                            "askPlacement": false,
+                            "description": "Fresh roasted clove garlic and extra virgin olive oil blended until smooth and silky"
+                        },
+                        {
+                            "title": "Mushroom Truffle",
+                            "askPlacement": false,
+                            "description": "Roasted wild mushrooms medley, truffle infused, shallots, blended into a creamy puree"
+                        }
+                    ]
+                },
+                {
+                    "title": "Cheese",
+                    "requiredCount": 0,
+                    "multiSelect": true,
+                    "components": [
+                        {
+                            "title": "Cheddar",
+                            "askPlacement": false,
+                            "description": "Handmade, whole milk, tart and tangy"
+                        },
+                        {
+                            "title": "Provolone Blend",
+                            "askPlacement": false,
+                            "description": "Part signature skim mozzarella and provolone blend, tangy, buttery and rich"
+                        },
+                        {
+                            "title": "Jack",
+                            "askPlacement": false,
+                            "description": "Made from organic cow\u2019s milk"
+                        },
+                        {
+                            "title": "Asiago",
+                            "askPlacement": false,
+                            "description": "Italian cow\u2019s milk cheese, nutty, piquant and rich with notes of hazelnut"
+                        },
+                        {
+                            "title": "Goat Cheese",
+                            "askPlacement": false,
+                            "description": "Creamy and tangy cheese, this classic cheese is salty, savory, tart and creamy"
+                        },
+                        {
+                            "title": "Daiya Mozzarella",
+                            "askPlacement": false,
+                            "description": "Allergen free, Lactose Free and Vegan, and satiating"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "pizza",
+            "description": "your choice of dough and any combination of toppings",
+            "key": "pizza",
+            "price": "9.86",
+            "askTakeaway": true,
+            "needsReview": true,
+            "componentGroups": [
+                {
+                    "title": "Base",
+                    "componentGroups": [
+                        {
+                            "title": "Dough",
+                            "requiredCount": 1,
+                            "components": [
+                                {
+                                    "title": "Traditional",
+                                    "askQuantity": false,
+                                    "askPlacement": false,
+                                    "description": "Traditional tomato sauce"
+                                },
+                                {
+                                    "title": "Whole Wheat",
+                                    "askQuantity": false,
+                                    "askPlacement": false,
+                                    "description": "Healthy and full of fiber"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "Sauce",
+                            "requiredCount": 1,
+                            "multiSelect": true,
+                            "components": [
+                                {
+                                    "title": "No sauce",
+                                    "askQuantity": false,
+                                    "showWithFoodInformation": false,
+                                    "absenceOfComponent": true
+                                },
+                                {
+                                    "title": "Tomato sauce",
+                                    "description": "Classic dough"
+                                },
+                                {
+                                    "title": "Pesto sauce",
+                                    "description": "Basil and garlic, oh my!"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "Cheese",
+                            "requiredCount": 1,
+                            "multiSelect": true,
+                            "components": [
+                                {
+                                    "title": "No cheese",
+                                    "askQuantity": false,
+                                    "showWithFoodInformation": false,
+                                    "absenceOfComponent": true
+                                },
+                                {
+                                    "title": "Mozerella",
+                                    "description": "Classic pizza cheese"
+                                },
+                                {
+                                    "title": "Stinky blue",
+                                    "description": "Sure to keep friends from kissing you"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Cooked toppings",
+                    "componentGroups": [
+                        {
+                            "title": "Proteins",
+                            "multiSelect": true,
+                            "components": [
+                                {
+                                    "title": "Pepperoni",
+                                    "description": "A classic pizza favorite of cured pork, beef and dry spices encased and dried to create a smoky char and herbaceous flavor characteristics"
+                                },
+                                {
+                                    "title": "Hot Sausage",
+                                    "description": "A blend of pork butt and belly, seasoned with our signature spice blend and slow cooked"
+                                },
+                                {
+                                    "title": "Smoked Bacon",
+                                    "description": "Cured and hickory smoked pork belly, crispy, smoky and fragrant when cooked"
+                                },
+                                {
+                                    "title": "Veal & Pork Meatballs",
+                                    "description": "Heritage pork expertly seasoned with fresh herbs and spice and slow roasted"
+                                },
+                                {
+                                    "title": "Shrimp",
+                                    "description": "Baby shrimp lightly roasted with EVO, cayenne pepper and sea salt"
+                                },
+                                {
+                                    "title": "Soppressata",
+                                    "description": "A Calabria tradition made from the leg of the pig (as is Prosciutto) seasoned with a unique blend of herbs and spices, it\u2019s salty, fragrant and boldly flavored"
+                                },
+                                {
+                                    "title": "Chicken",
+                                    "description": "Naturally raised farm fresh chicken, braised until tender and lightly seasoned for optimal flavor"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "Vegetables",
+                            "multiSelect": true,
+                            "components": [
+                                {
+                                    "title": "Mushrooms",
+                                    "description": "Locally grown Pennsylvania mushrooms are earthy and delicate on the palette"
+                                },
+                                {
+                                    "title": "Roasted Tomatoes",
+                                    "description": "Marinated slow roasted Roma tomatoes scented with extra virgin olive oil and sea salt"
+                                },
+                                {
+                                    "title": "Roasted Peppers",
+                                    "description": "Farm fresh red bell peppers roasted until fragrant and slightly smoky"
+                                },
+                                {
+                                    "title": "Caramelized Onions",
+                                    "description": "Oven roasted Spanish onions, extra virgin olive oil, salt and pepper"
+                                },
+                                {
+                                    "title": "Spinach",
+                                    "description": "Fresh and tender baby spinach, high in iron and vitamin A and K"
+                                },
+                                {
+                                    "title": "Broccoli Florets",
+                                    "description": "One of the \u201csuper foods\u201d lightly steamed farm fresh cruciferous vegetable, perfect for our innovative pies"
+                                },
+                                {
+                                    "title": "Grilled Artichoke",
+                                    "description": "Herby and tart"
+                                },
+                                {
+                                    "title": "Fresh Jalapeños",
+                                    "description": "Slightly fruity, grassy and crisp with a spicy kick"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Finishes/Oils",
+                    "multiSelect": true,
+                    "components": [
+                        {
+                            "title": "Basil",
+                            "description": "Extremely aromatic and floral with a sweet finish and a lemon-balm finish"
+                        },
+                        {
+                            "title": "Roasted Tomatoes",
+                            "description": "Marinated slow roasted Roma tomatoes scented with extra virgin olive oil and sea salt"
+                        },
+                        {
+                            "title": "Arugula",
+                            "description": "Peppery, pungent and slightly bitter with a piquant finish"
+                        },
+                        {
+                            "title": "Spinach",
+                            "description": "Fresh and tender baby spinach, high in iron and vitamin A and K"
+                        },
+                        {
+                            "title": "Pickled Red Onions",
+                            "description": "Brined Bermuda purple onion, slightly sweet and tart"
+                        },
+                        {
+                            "title": "Kalamata Olives",
+                            "description": "The quintessential Greek olive, briny, savory and creamy"
+                        },
+                        {
+                            "title": "Prosciutto",
+                            "description": "Air-dried, sweet, Italian cured ham"
+                        },
+                        {
+                            "title": "Crumbled Feta Cheese",
+                            "description": "The quintessential traditional Greek cheese, brined, salty, savory, tart and creamy"
+                        },
+                        {
+                            "title": "Crumbled Goat Cheese",
+                            "description": "Creamy and tangy cheese, this classic cheese is salty, savory, tart and creamy"
+                        },
+                        {"title": "Parmesan Reggiano"},
+                        {
+                            "title": "Salsa Verde",
+                            "description": "Roasted tomatillo tomatoes, cilantro, spring onions and garlic, tangy and light"
+                        },
+                        {
+                            "title": "Fig Marsala",
+                            "description": " A compote of Mission figs in fortified Italian Marsala wine with cinnamon, demerara sugar, and Marsala wine"
+                        },
+                        {
+                            "title": "Strawberry Balsamic",
+                            "description": "Blended fresh summer berries and barrel aged Italian rich red wine vinegar"
+                        },
+                        {
+                            "title": "Garlic Oil",
+                            "description": "Slow roasted sweet garlic cloves with extra virgin olive oil and cracked pepper"
+                        },
+                        {
+                            "title": "Oregano Oil",
+                            "description": "Pungent, earthy and intense with hints of clove and balsam"
+                        },
+                        {
+                            "title": "Red Pepper Chili Oil",
+                            "description": "Smoky and spicy oil with hints of sweet paprika"
+                        },
+                        {
+                            "title": "Piquin Pepper Hot Sauce",
+                            "description": "Citrusy and nutty with a hint of smokiness. Also known as \u201cbird pepper\u201d"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "groups": [
+        {
+            "title": "sandwiches",
+            "description": "Breads, fillings, toppings\u2026",
+            "key": "sandwiches",
+            "price": "8.86",
+            "showItemDelimiters": true,
+            "items": [
+                {
+                    "title": "Falafel",
+                    "askTakeaway": true,
+                    "description": "Falafel, Hummus, Tahini, Lettuce, Tomato, and Cucumber in a pita",
+                    "componentGroups": [{
+                        "extends": "bread",
+                        "requiredCount": 1
+                    }]
+                },
+                {
+                    "title": "Spicy Meatball",
+                    "askTakeaway": true,
+                    "description": "Veal & Pork Meatballs, Mushrooms, Spicy Sauce, Provolone on a soft roll",
+                    "componentGroups": [{
+                        "extends": "bread",
+                        "requiredCount": 1
+                    }]
+                },
+                {
+                    "title": "Chicken Shwarma",
+                    "askTakeaway": true,
+                    "description": "Shwarma Chicken, Garlic Sauce, Cucumber, Lettuce, Tomato wrapped in flaky lavash bread",
+                    "tags": 1,
+                    "componentGroups": [{
+                        "extends": "bread",
+                        "requiredCount": 1
+                    }]
+                },
+                {
+                    "title": "Backyard Garden",
+                    "askTakeaway": true,
+                    "description": "Housemade Mozzarella, Ricotta, Asiago, Mushrooms, Roasted Peppers, Roasted Tomatoes, Arugula, Lemon Vinaigrette on wheat bread",
+                    "tags": 1,
+                    "componentGroups": [{
+                        "extends": "bread",
+                        "requiredCount": 1
+                    }]
+                },
+                {
+                    "title": "Bubba",
+                    "askTakeaway": true,
+                    "description": "Basil Pesto, Classic Tomato, Housemade Mozzarella, Ricotta, Shrimp on soft roll",
+                    "componentGroups": [{
+                        "extends": "bread",
+                        "requiredCount": 1
+                    }]
+                },
+                {
+                    "title": "Dead Show",
+                    "askTakeaway": true,
+                    "description": "Classic Tomato, Daiya Mozzarella, Roasted Peppers, Spinach, Fresh Jalapeños, Roasted Tomatoes",
+                    "tags": 3,
+                    "componentGroups": [{
+                        "extends": "bread",
+                        "requiredCount": 1
+                    }]
+                }
+            ]
+        },
+        {
+            "title": "salads",
+            "description": "fresh & hand tossed\u2026",
+            "key": "salad",
+            "askQuantity": true,
+            "showItemDelimiters": true,
+            "items": [
+                {
+                    "title": "Caprese",
+                    "description": "Arugula, Roasted Tomatoes, Basil, Housemade Mozzarella, Your Choice of Vinaigrette",
+                    "tags": 1,
+                    "price": "7.27",
+                    "componentGroups": [{
+                        "title": "Dressing",
+                        "requiredCount": 1,
+                        "key": "dressing",
+                        "components": [
+                            {
+                                "title": "No Dressing",
+                                "askQuantity": false,
+                                "askPlacement": false,
+                                "showWithFoodInformation": false,
+                                "absenceOfComponent": true
+                            },
+                            {
+                                "title": "Balsamic Vinaigrette",
+                                "askQuantity": false,
+                                "askPlacement": false
+                            },
+                            {
+                                "title": "Lemon Vinaigrette",
+                                "askQuantity": false,
+                                "askPlacement": false
+                            },
+                            {
+                                "title": "Tomato Vinaigrette",
+                                "askQuantity": false,
+                                "askPlacement": false
+                            }
+                        ]
+                    }]
+                },
+                {
+                    "title": "Mixed Green",
+                    "description": "Arugula, Spinach, Pickled Beets, Crumbled Goat Cheese, Pecans, Your Choice of Vinaigrette",
+                    "tags": 1,
+                    "price": "6.82",
+                    "componentGroups": [{
+                        "extends": "dressing",
+                        "requiredCount": 1
+                    }]
+                },
+                {
+                    "title": "Side Salad",
+                    "description": "Arugula, Spinach, Asiago, Pecans, Your Choice of Vinaigrette",
+                    "tags": 3,
+                    "price": "3.18",
+                    "componentGroups": [{
+                        "extends": "dressing",
+                        "requiredCount": 1
+                    }]
+                }
+            ]
+        },
+        {
+            "title": "desserts",
+            "description": "homemade\u2026",
+            "key": "dessert",
+            "showItemDelimiters": true,
+            "items": [
+                {
+                    "title": "Vanilla Waffle Cookie",
+                    "price": ".99"
+                },
+                {
+                    "title": "Chocolate Waffle Cookie",
+                    "price": ".99"
+                },
+                {
+                    "title": "Sunday! Sunday! Sunday!",
+                    "description": "Vanilla Bean Ice Cream, Nutella, Strawberry, Powdered Sugar, Pecans",
+                    "price": "3.99",
+                    "askTakeaway": true
+                }
+            ]
+        },
+        {
+            "title": "drink",
+            "description": "artisan, organic & local\u2026",
+            "key": "drink",
+            "showItemDelimiters": false,
+            "itemGroups": [
+                {
+                    "title": "Fizzy Water",
+                    "price": "1.82",
+                    "items": [
+                        {"title": "Lime"},
+                        {"title": "Lemon"},
+                        {"title": "Plain"}
+                    ]
+                },
+                {
+                    "title": "Sweet Iced Tea",
+                    "price": "2.73",
+                    "items": [
+                        {"title": "Mint and Honey Green Tea"},
+                        {"title": "Raspberry Tea"},
+                        {"title": "Original Sweet Tea"}
+                    ]
+                },
+                {
+                    "title": "Artisinal Soda",
+                    "price": "1.82",
+                    "items": [
+                        {"title": "Cola Nut"},
+                        {"title": "Ginger Ale"},
+                        {"title": "Cherry"},
+                        {"title": "Orange"},
+                        {"title": "Cream"},
+                        {"title": "Root Beer"}
+                    ]
+                },
+                {
+                    "title": "Wine",
+                    "price": "5.45",
+                    "items": [
+                        {"title": "Vinny Boombatz Barbera"},
+                        {"title": "Hahn Solo Pinot"},
+                        {"title": "Angelini Zoom Zoom Pinot Grigio"}
+                    ]
+                },
+                {
+                    "title": "Craft Beer",
+                    "price": "4.77",
+                    "items": [
+                        {"title": "Lagunitas IPA"},
+                        {"title": "21st Amendment Back in Black"},
+                        {"title": "Pliny the Elder"},
+                        {"title": "Three Floyds American Pie"},
+                        {"title": "Trumer Pilsener"}
+                    ]
+                },
+                {
+                    "title": "Other",
+                    "items": [
+                        {
+                            "title": "Organic Milk",
+                            "price": "2.50"
+                        },
+                        {
+                            "title": "Bottle Water",
+                            "price": "1.82"
+                        },
+                        {
+                            "title": "Fountain Soda",
+                            "price": "1.82"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "tags": [
+        {
+            "title": "Vegetarian",
+            "key": "vegetarian"
+        },
+        {
+            "title": "Vegan",
+            "key": "vegan"
+        }
+    ]
+}}

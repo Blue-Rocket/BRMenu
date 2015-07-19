@@ -11,6 +11,17 @@
 		958E4DFF15F11D518805F20C /* libPods-Menu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B78C1725A0BA1A773547C8B /* libPods-Menu.a */; };
 		C9067A441B5C2835005FF260 /* BRMenuMappingPostProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = C9067A431B5C2835005FF260 /* BRMenuMappingPostProcessor.m */; };
 		C9067A481B5C29BA005FF260 /* BRMenuMappingPostProcessorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9067A471B5C29BA005FF260 /* BRMenuMappingPostProcessorTests.m */; };
+		C9067A571B5C312F005FF260 /* menu.json in Resources */ = {isa = PBXBuildFile; fileRef = C9067A4B1B5C312F005FF260 /* menu.json */; };
+		C9067A581B5C312F005FF260 /* menuitem.json in Resources */ = {isa = PBXBuildFile; fileRef = C9067A4C1B5C312F005FF260 /* menuitem.json */; };
+		C9067A591B5C312F005FF260 /* menuitemcomponent.json in Resources */ = {isa = PBXBuildFile; fileRef = C9067A4D1B5C312F005FF260 /* menuitemcomponent.json */; };
+		C9067A5A1B5C312F005FF260 /* menuitemcomponentgroup-nested.json in Resources */ = {isa = PBXBuildFile; fileRef = C9067A4E1B5C312F005FF260 /* menuitemcomponentgroup-nested.json */; };
+		C9067A5B1B5C312F005FF260 /* menuitemcomponentgroup.json in Resources */ = {isa = PBXBuildFile; fileRef = C9067A4F1B5C312F005FF260 /* menuitemcomponentgroup.json */; };
+		C9067A5C1B5C312F005FF260 /* menuitemgroup.json in Resources */ = {isa = PBXBuildFile; fileRef = C9067A501B5C312F005FF260 /* menuitemgroup.json */; };
+		C9067A5D1B5C312F005FF260 /* menuitemtag.json in Resources */ = {isa = PBXBuildFile; fileRef = C9067A511B5C312F005FF260 /* menuitemtag.json */; };
+		C9067A5E1B5C312F005FF260 /* menu-donuts.json in Resources */ = {isa = PBXBuildFile; fileRef = C9067A531B5C312F005FF260 /* menu-donuts.json */; };
+		C9067A5F1B5C312F005FF260 /* menu-lunchstop.json in Resources */ = {isa = PBXBuildFile; fileRef = C9067A541B5C312F005FF260 /* menu-lunchstop.json */; };
+		C9067A601B5C312F005FF260 /* menu-pizza.json in Resources */ = {isa = PBXBuildFile; fileRef = C9067A551B5C312F005FF260 /* menu-pizza.json */; };
+		C9067A611B5C312F005FF260 /* menu-shakeshack.json in Resources */ = {isa = PBXBuildFile; fileRef = C9067A561B5C312F005FF260 /* menu-shakeshack.json */; };
 		C98883601B58820D0049491C /* libMenu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C98883541B58820D0049491C /* libMenu.a */; };
 		C988838B1B58832C0049491C /* BRMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = C98883711B58832C0049491C /* BRMenu.m */; };
 		C988838C1B58832C0049491C /* BRMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C98883731B58832C0049491C /* BRMenuItem.m */; };
@@ -60,6 +71,17 @@
 		C9067A421B5C2835005FF260 /* BRMenuMappingPostProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuMappingPostProcessor.h; sourceTree = "<group>"; };
 		C9067A431B5C2835005FF260 /* BRMenuMappingPostProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuMappingPostProcessor.m; sourceTree = "<group>"; };
 		C9067A471B5C29BA005FF260 /* BRMenuMappingPostProcessorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuMappingPostProcessorTests.m; sourceTree = "<group>"; };
+		C9067A4B1B5C312F005FF260 /* menu.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = menu.json; sourceTree = "<group>"; };
+		C9067A4C1B5C312F005FF260 /* menuitem.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = menuitem.json; sourceTree = "<group>"; };
+		C9067A4D1B5C312F005FF260 /* menuitemcomponent.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = menuitemcomponent.json; sourceTree = "<group>"; };
+		C9067A4E1B5C312F005FF260 /* menuitemcomponentgroup-nested.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "menuitemcomponentgroup-nested.json"; sourceTree = "<group>"; };
+		C9067A4F1B5C312F005FF260 /* menuitemcomponentgroup.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = menuitemcomponentgroup.json; sourceTree = "<group>"; };
+		C9067A501B5C312F005FF260 /* menuitemgroup.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = menuitemgroup.json; sourceTree = "<group>"; };
+		C9067A511B5C312F005FF260 /* menuitemtag.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = menuitemtag.json; sourceTree = "<group>"; };
+		C9067A531B5C312F005FF260 /* menu-donuts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "menu-donuts.json"; sourceTree = "<group>"; };
+		C9067A541B5C312F005FF260 /* menu-lunchstop.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "menu-lunchstop.json"; sourceTree = "<group>"; };
+		C9067A551B5C312F005FF260 /* menu-pizza.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "menu-pizza.json"; sourceTree = "<group>"; };
+		C9067A561B5C312F005FF260 /* menu-shakeshack.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "menu-shakeshack.json"; sourceTree = "<group>"; };
 		C98883541B58820D0049491C /* libMenu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMenu.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C988835F1B58820D0049491C /* MenuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MenuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C98883651B58820D0049491C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -173,6 +195,40 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		C9067A491B5C312F005FF260 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C9067A4A1B5C312F005FF260 /* Fragments */,
+				C9067A521B5C312F005FF260 /* Menus */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C9067A4A1B5C312F005FF260 /* Fragments */ = {
+			isa = PBXGroup;
+			children = (
+				C9067A4B1B5C312F005FF260 /* menu.json */,
+				C9067A4C1B5C312F005FF260 /* menuitem.json */,
+				C9067A4D1B5C312F005FF260 /* menuitemcomponent.json */,
+				C9067A4E1B5C312F005FF260 /* menuitemcomponentgroup-nested.json */,
+				C9067A4F1B5C312F005FF260 /* menuitemcomponentgroup.json */,
+				C9067A501B5C312F005FF260 /* menuitemgroup.json */,
+				C9067A511B5C312F005FF260 /* menuitemtag.json */,
+			);
+			path = Fragments;
+			sourceTree = "<group>";
+		};
+		C9067A521B5C312F005FF260 /* Menus */ = {
+			isa = PBXGroup;
+			children = (
+				C9067A531B5C312F005FF260 /* menu-donuts.json */,
+				C9067A541B5C312F005FF260 /* menu-lunchstop.json */,
+				C9067A551B5C312F005FF260 /* menu-pizza.json */,
+				C9067A561B5C312F005FF260 /* menu-shakeshack.json */,
+			);
+			path = Menus;
+			sourceTree = "<group>";
+		};
 		C988834B1B58820D0049491C = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +263,7 @@
 			children = (
 				C98883971B5883A60049491C /* Core */,
 				C9067A451B5C29BA005FF260 /* Mapping */,
+				C9067A491B5C312F005FF260 /* Resources */,
 				C98883641B58820D0049491C /* Supporting Files */,
 			);
 			path = MenuTests;
@@ -396,6 +453,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9067A5D1B5C312F005FF260 /* menuitemtag.json in Resources */,
+				C9067A601B5C312F005FF260 /* menu-pizza.json in Resources */,
+				C9067A571B5C312F005FF260 /* menu.json in Resources */,
+				C9067A611B5C312F005FF260 /* menu-shakeshack.json in Resources */,
+				C9067A581B5C312F005FF260 /* menuitem.json in Resources */,
+				C9067A5A1B5C312F005FF260 /* menuitemcomponentgroup-nested.json in Resources */,
+				C9067A5C1B5C312F005FF260 /* menuitemgroup.json in Resources */,
+				C9067A5F1B5C312F005FF260 /* menu-lunchstop.json in Resources */,
+				C9067A5B1B5C312F005FF260 /* menuitemcomponentgroup.json in Resources */,
+				C9067A591B5C312F005FF260 /* menuitemcomponent.json in Resources */,
+				C9067A5E1B5C312F005FF260 /* menu-donuts.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

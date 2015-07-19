@@ -1,0 +1,322 @@
+{
+    "version": 1,
+    "items": [
+        {
+            "title": "Pizza",
+            "description": "choose one of each\u2026",
+            "key": "pizza",
+            "price": "6.82",
+            "askTakeaway": true,
+            "componentGroups": [
+                {
+                    "title": "Dough",
+                    "key": "dough",
+                    "desc": "Fresh prepared dough",
+                    "components": [
+                        {
+                            "title": "Traditional",
+                            "askQuantity": false,
+                            "askPlacement": false
+                        },
+                        {
+                            "title": "Whole Wheat",
+                            "askQuantity": false,
+                            "askPlacement": false
+                        },
+                        {
+                            "title": "Multigrain",
+                            "askQuantity": false,
+                            "askPlacement": false
+                        }
+                    ]
+                },
+                {
+                    "title": "Sauce or Spread",
+                    "key": "sauce",
+                    "desc": "Freshly prepared sauces",
+                    "components": [
+                        {"title": "Classic Tomato"},
+                        {"title": "Spicy Tomato"},
+                        {"title": "Basil Pesto"},
+                        {"title": "Red Chickpea"},
+                        {"title": "Garlic Puree"},
+                        {"title": "Mushrom Truffle"}
+                    ]
+                },
+                {
+                    "title": "Cheese",
+                    "key": "cheese",
+                    "desc": "Collection of the finest cheeses",
+                    "components": [
+                        {"title": "Housemade Mozzarella"},
+                        {"title": "Provolone Blend"},
+                        {"title": "Ricotta"},
+                        {"title": "Asiago"},
+                        {"title": "Goat Cheese"},
+                        {"title": "Daiya Mozzarella"}
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Pizza+",
+            "description": "your choice of\u2026",
+            "key": "pizza+",
+            "price": "8.64",
+            "askTakeaway": true,
+            "extends": "pizza",
+            "componentGroups": [
+                {
+                    "title": "Cooked toppings",
+                    "componentGroups": [
+                        {
+                            "title": "Proteins",
+                            "components": [
+                                {"title": "Pepperoni"},
+                                {"title": "Hot Sausage"},
+                                {"title": "Smoked Bacon"},
+                                {"title": "Veal & Pork Meatballs"},
+                                {"title": "Shrimp"},
+                                {"title": "Soppressata"},
+                                {"title": "Farm Eggs"},
+                                {"title": "Chicken"}
+                            ]
+                        },
+                        {
+                            "title": "Vegetables",
+                            "components": [
+                                {"title": "Mushrooms"},
+                                {"title": "Tomatoes"},
+                                {"title": "Roaster Peppers"},
+                                {"title": "Carmelized Onions"},
+                                {"title": "Spinach"},
+                                {"title": "Broccolini"},
+                                {"title": "Artichoke"},
+                                {"title": "Eggplant"},
+                                {"title": "Jalapeños"}
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Finished & Oils",
+                    "components": [
+                        {"title": "Basil"},
+                        {"title": "Cherry Tomatoes"},
+                        {"title": "Arugula"},
+                        {"title": "Spinach"},
+                        {"title": "Pickled Red Onions"},
+                        {"title": "Kalamata Olives"},
+                        {"title": "Prosciutto"},
+                        {"title": "Crumbled Feta Cheese"},
+                        {"title": "Crumbled Goat Cheese"},
+                        {"title": "Parmesan Reggiano"},
+                        {"title": "Salsa Verde"},
+                        {"title": "Fig Marsala"},
+                        {"title": "Strawberry Balsamic"},
+                        {"title": "Garlic Oil"},
+                        {"title": "Oregano Oil"},
+                        {"title": "Red Pepper Chili Oil"}
+                    ]
+                }
+            ]
+        }
+    ],
+    "groups": [
+        {
+            "title": "Suggestions",
+            "key": "suggestions",
+            "description": "your choice of dough\u2026",
+            "price": "8.64",
+            "items": [
+                {
+                    "title": "Maverick",
+                    "key": "maverick",
+                    "askTakeaway": true,
+                    "description": "Classic Tomato, Housemade Mozzarella, Pepperoni, Hot Sausage, Smoked Bacon, Soppressata, Parmesan Reggiano, Oregano Oil",
+                    "componentGroups": [{"extends": "dough"}]
+                },
+                {
+                    "title": "Kiss & Fire",
+                    "askTakeaway": true,
+                    "description": "Spicy Tomato, Provolone Blend, Ricotta, Meatballs, Mushrooms, Strawberry Balsamic"
+                },
+                {
+                    "title": "Gnarlic",
+                    "askTakeaway": true,
+                    "description": "Garlic Puree, Housemade Mozzarella, Ricotta, Asiago, Garlic Oil",
+                    "tags": 1
+                },
+                {
+                    "title": "Backyard Garden",
+                    "askTakeaway": true,
+                    "description": "Housemade Mozzarella, Ricotta, Asiago, Mushrooms, Roasted Peppers, Cherry Tomatoes, Arugula, Lemon Vinaigrette",
+                    "tags": 1
+                },
+                {
+                    "title": "Jenny",
+                    "askTakeaway": true,
+                    "description": "Basil Pesto, Classic Tomato, Housemade Mozzarella, Ricotta, Shrimp"
+                },
+                {
+                    "title": "Moonstruck",
+                    "askTakeaway": true,
+                    "description": "Mushroom Truffle, Goat Cheese, Roasted Mushrooms, Fig Marsala, Red Pepper Chili Oil, Crushed Black Pepper",
+                    "tags": 1
+                },
+                {
+                    "title": "Farmer's Daughter",
+                    "askTakeaway": true,
+                    "description": "Spicy Tomato, Housemade Mozzarella, Hot Sausage, Farm Eggs, Spinach, Parmesan Reggiano, Red Pepper Chili Oil"
+                },
+                {
+                    "title": "Grecian Market",
+                    "askTakeaway": true,
+                    "description": "Red Chickpea, Mushrooms, Broccolini, Artichoke, Kalamata Olives, Pickled Red Onion, Feta Cheese",
+                    "tags": 1
+                },
+                {
+                    "title": "Redvine",
+                    "askTakeaway": true,
+                    "description": "Classic Tomato, Daiya Mozzarella, Roasted Peppers, Spinach, Eggplant, Cherry Tomatoes",
+                    "tags": 3
+                }
+            ]
+        },
+        {
+            "title": "salad",
+            "description": "fresh & hand tossed\u2026",
+            "key": "salad",
+            "askQuantity": true,
+            "items": [
+                {
+                    "title": "Caprese",
+                    "description": "Arugula, Cherry Tomatoes, Basil, Housemade Mozzarella, Your Choice of Vinaigrette",
+                    "tags": 1,
+                    "price": "7.27",
+                    "componentGroups": [{
+                        "title": "Dressing",
+                        "requiredCount": 1,
+                        "key": "dressing",
+                        "components": [
+                            {
+                                "title": "Balsamic Vinaigrette",
+                                "askQuantity": false,
+                                "askPlacement": false
+                            },
+                            {
+                                "title": "Lemon Vinaigrette",
+                                "askQuantity": false,
+                                "askPlacement": false
+                            },
+                            {
+                                "title": "Tomato Vinaigrette",
+                                "askQuantity": false,
+                                "askPlacement": false
+                            }
+                        ]
+                    }]
+                },
+                {
+                    "title": "Mixed Green",
+                    "description": "Arugula, Spinach, Pickled Beets, Crumbled Goat Cheese, Pecans, Your Choice of Vinaigrette",
+                    "tags": 1,
+                    "price": "6.82",
+                    "componentGroups": [{
+                        "extends": "dressing",
+                        "requiredCount": 1
+                    }]
+                },
+                {
+                    "title": "Fresca",
+                    "description": "Arugula, Green Apples, Ricotta, Salsa Verde, Your Choice of Vinaigrette",
+                    "tags": 1,
+                    "price": "7.27",
+                    "componentGroups": [{
+                        "extends": "dressing",
+                        "requiredCount": 1
+                    }]
+                },
+                {
+                    "title": "Side Salad",
+                    "description": "Arugula, Spinach, Asiago, Pecans, Your Choice of Vinaigrette",
+                    "tags": 3,
+                    "price": "3.18",
+                    "componentGroups": [{
+                        "extends": "dressing",
+                        "requiredCount": 1
+                    }]
+                }
+            ]
+        },
+        {
+            "title": "Dessert",
+            "description": "homemade\u2026",
+            "items": [
+                {
+                    "title": "Pizzelle Waffle Cookies",
+                    "description": "Vanilla, Chocolate, Anise",
+                    "price": "1.37"
+                },
+                {
+                    "title": "Dessert Pizza",
+                    "key": "dessert-pizza",
+                    "description": "Nutella, Sweet Ricotta, Strawberry, Powdered Sugar, Pecans",
+                    "price": "5.91",
+                    "askTakeaway": true
+                }
+            ]
+        },
+        {
+            "title": "Drink",
+            "key": "drink",
+            "description": "artisan, organic & local\u2026",
+            "items": [
+                {
+                    "title": "Fountain Soda",
+                    "price": "1.82"
+                },
+                {
+                    "title": "Bottle Water",
+                    "price": "1.82"
+                },
+                {
+                    "title": "Bottled Beverages",
+                    "price": "2.73"
+                },
+                {
+                    "title": "Craft Beer",
+                    "price": "4.77"
+                },
+                {
+                    "title": "Red Wine",
+                    "price": "5.45"
+                },
+                {
+                    "title": "White Wine",
+                    "price": "5.45"
+                },
+                {
+                    "title": "Organic Milk",
+                    "price": "2.50"
+                }
+            ],
+            "itemGroups": [{
+                "title": "San Pellegrino Sparkling Fruit Beverages",
+                "key": "san-pellegrino",
+                "price": "1.82",
+                "items": [
+                    {
+                        "title": "Limonata",
+                        "key": "limonata"
+                    },
+                    {"title": "Pompelmo"}
+                ]
+            }]
+        }
+    ],
+    "tags": [
+        {"title": "Vegetarian"},
+        {"title": "Vegan"}
+    ]
+}

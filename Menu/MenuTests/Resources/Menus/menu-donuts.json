@@ -1,0 +1,279 @@
+{"menu": {
+    "version": 1,
+    "groups": [
+        {
+            "title": "Coffee",
+            "description": "Ensuring you get a fresh cup of coffee, every time.",
+            "key": "coffee",
+            "askTakeaway": true,
+            "showItemDelimiters": true,
+            "items": [
+                {
+                    "title": "Small",
+                    "price": "0.99",
+                    "componentGroups": [{
+                        "title": "How do you take it?",
+                        "key": "take-it",
+                        "multiSelect": true,
+                        "components": [
+                            {
+                                "title": "Sugar",
+                                "askPlacement": false
+                            },
+                            {
+                                "title": "Sweetener",
+                                "askPlacement": false
+                            },
+                            {
+                                "title": "Cream",
+                                "askPlacement": false
+                            },
+                            {
+                                "title": "Milk",
+                                "askPlacement": false
+                            }
+                        ]
+                    }]
+                },
+                {
+                    "title": "Medium",
+                    "price": "1.49",
+                    "componentGroups": [{
+                        "extends": "take-it",
+                        "multiSelect": true
+                    }]
+                },
+                {
+                    "title": "Large",
+                    "price": "1.99",
+                    "componentGroups": [{
+                        "extends": "take-it",
+                        "multiSelect": true
+                    }]
+                },
+                {
+                    "title": "Extra large",
+                    "price": "2.49",
+                    "componentGroups": [{
+                        "extends": "take-it",
+                        "multiSelect": true
+                    }]
+                }
+            ]
+        },
+        {
+            "title": "Tea",
+            "description": "From classics like English breakfast, Earl Grey, to naturally decaffeinated herbal teas.",
+            "key": "tea",
+            "askTakeaway": true,
+            "showItemDelimiters": true,
+            "items": []
+        },
+        {
+            "title": "Hot Beverages",
+            "description": "Relax with a simple Latte or treat yourself to one of our more indulgent varieties.",
+            "key": "hot-drink",
+            "showItemDelimiters": true,
+            "itemGroups": [
+                {"title": "Latte"},
+                {"title": "Creamy Caramel Latte"},
+                {"title": "Vanilla Bean Latte"},
+                {
+                    "title": "Hazelnut Latte",
+                    "askTakeaway": true,
+                    "items": [
+                        {
+                            "title": "Small",
+                            "price": "0.99",
+                            "componentGroups": [{
+                                "extends": "take-it",
+                                "multiSelect": true
+                            }]
+                        },
+                        {
+                            "title": "Medium",
+                            "price": "1.49",
+                            "componentGroups": [{
+                                "extends": "take-it",
+                                "multiSelect": true
+                            }]
+                        },
+                        {
+                            "title": "Large",
+                            "price": "1.99",
+                            "componentGroups": [{
+                                "extends": "take-it",
+                                "multiSelect": true
+                            }]
+                        },
+                        {
+                            "title": "Extra large",
+                            "price": "2.49",
+                            "componentGroups": [{
+                                "extends": "take-it",
+                                "multiSelect": true
+                            }]
+                        }
+                    ]
+                },
+                {"title": "Mocha Latte"}
+            ]
+        },
+        {
+            "title": "Cold Beverages",
+            "description": "From the Famous Iced Capp, to real fruit smoothies.",
+            "key": "cold-drink",
+            "askQuantity": true,
+            "showItemDelimiters": true,
+            "items": []
+        },
+        {
+            "title": "Donuts",
+            "description": "Still the perfect complement to our coffee.",
+            "key": "donut",
+            "showItemDelimiters": true,
+            "items": []
+        },
+        {
+            "title": "Timbits®",
+            "description": "Bite-sized treats in Snack Pack sizes.",
+            "key": "timbit",
+            "showItemDelimiters": true,
+            "items": [
+                {
+                    "title": "10 pack",
+                    "key": "10-pack",
+                    "price": "4.99",
+                    "componentGroups": [{
+                        "title": "Timbit flavor",
+                        "key": "timbit-flavor",
+                        "multiSelect": false,
+                        "minRequired": 1,
+                        "components": [
+                            {
+                                "title": "Apple Fritter",
+                                "askPlacement": false,
+                                "askQuantity": false
+                            },
+                            {
+                                "title": "Dutchie",
+                                "askPlacement": false,
+                                "askQuantity": false
+                            },
+                            {
+                                "title": "Honey Dip",
+                                "askPlacement": false,
+                                "askQuantity": false
+                            },
+                            {
+                                "title": "Old Fashion Plain",
+                                "askPlacement": false,
+                                "askQuantity": false
+                            },
+                            {
+                                "title": "Old Fashion Glazed",
+                                "askPlacement": false,
+                                "askQuantity": false
+                            },
+                            {
+                                "title": "Chocolate Glazed",
+                                "askPlacement": false,
+                                "askQuantity": false
+                            },
+                            {
+                                "title": "Sour Cream Glazed",
+                                "askPlacement": false,
+                                "askQuantity": false
+                            },
+                            {
+                                "title": "Blueberry",
+                                "askPlacement": false,
+                                "askQuantity": false
+                            },
+                            {
+                                "title": "Strawberry",
+                                "askPlacement": false,
+                                "askQuantity": false
+                            },
+                            {
+                                "title": "Raspberry",
+                                "askPlacement": false,
+                                "askQuantity": false
+                            },
+                            {
+                                "title": "Lemon",
+                                "askPlacement": false,
+                                "askQuantity": false
+                            }
+                        ]
+                    }]
+                },
+                {
+                    "title": "20 pack",
+                    "key": "20-pack",
+                    "price": "8.99",
+                    "componentGroups": [{
+                        "extends": "timbit-flavor",
+                        "multiSelect": false,
+                        "minRequired": 1
+                    }]
+                },
+                {
+                    "title": "40 pack",
+                    "key": "40-pack",
+                    "price": "16.99",
+                    "componentGroups": [{
+                        "extends": "timbit-flavor",
+                        "multiSelect": false,
+                        "minRequired": 1
+                    }]
+                }
+            ]
+        },
+        {
+            "title": "Muffins",
+            "description": "Healthier choices available in regular and low-fat varieties.",
+            "key": "muffin",
+            "showItemDelimiters": false,
+            "itemGroups": []
+        },
+        {
+            "title": "Cookies",
+            "description": "An essential part of anyone's sweet craving.",
+            "key": "cookie",
+            "showItemDelimiters": false,
+            "itemGroups": []
+        },
+        {
+            "title": "Pastries",
+            "description": "More options at snack time.",
+            "key": "pastry",
+            "showItemDelimiters": false,
+            "itemGroups": []
+        },
+        {
+            "title": "Bagels",
+            "description": "Everyone loves a freshly baked bagel.",
+            "key": "bagel",
+            "showItemDelimiters": false,
+            "itemGroups": []
+        },
+        {
+            "title": "Hot Bowls",
+            "description": "Homestyle soups and chili.",
+            "key": "soup",
+            "showItemDelimiters": false,
+            "itemGroups": []
+        }
+    ],
+    "tags": [
+        {
+            "title": "Vegetarian",
+            "key": "vegetarian"
+        },
+        {
+            "title": "Vegan",
+            "key": "vegan"
+        }
+    ]
+}}

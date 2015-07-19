@@ -1,0 +1,8 @@
+{
+	"title": "Housemade Mozzarella",
+	"askQuantity": true,
+	"askPlacement": true,
+    "description": "Fresh homemade pizza base from the finest ingredients",
+    "showWithFoodInformation": true,
+	"absenceOfComponent": true
+}
