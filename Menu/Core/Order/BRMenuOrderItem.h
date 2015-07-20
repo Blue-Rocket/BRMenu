@@ -11,7 +11,7 @@
 //  dough, sauce, and cheese selections.
 //
 //  Created by Matt on 4/2/13.
-//  Copyright (c) 2013 Pervasent Consulting, Inc. All rights reserved.
+//  Copyright (c) 2013 Blue Rocket. Distributable under the terms of the Apache License, Version 2.0.
 //
 
 #import <Foundation/Foundation.h>

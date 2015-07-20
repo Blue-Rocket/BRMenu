@@ -6,7 +6,7 @@
 /// This allows code to work with BRMenuItem and BRMenuItemGroup instances in a common way.
 //
 //  Created by Matt on 4/11/13.
-//  Copyright (c) 2013 Pervasent Consulting, Inc. All rights reserved.
+//  Copyright (c) 2013 Blue Rocket. Distributable under the terms of the Apache License, Version 2.0.
 //
 
 #import <Foundation/Foundation.h>
