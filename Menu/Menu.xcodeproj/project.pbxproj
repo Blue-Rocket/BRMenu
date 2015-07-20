@@ -361,9 +361,9 @@
 		C98883561B58820D0049491C /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				C9067A711B5C8018005FF260 /* Networking */,
 				C988836E1B58832C0049491C /* Core */,
 				C988839D1B5885610049491C /* Mapping */,
+				C9067A711B5C8018005FF260 /* Networking */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
