@@ -1,8 +1,0 @@
-#ifdef __OBJC__
-#import <UIKit/UIKit.h>
-#endif
-
-#import "Pods-Menu-environment.h"
-#ifdef __OBJC__
-    #import <BRCocoaLumberjack/BRCocoaLumberjack.h>
-#endif
