@@ -8,8 +8,6 @@
 
 #import <RestKit/ObjectMapping.h>
 
-@class BRMenu;
-
 @interface BRMenuMappingRestKit : NSObject
 
 + (RKObjectMapping *)menuMapping;
@@ -18,5 +16,7 @@
 + (RKObjectMapping *)menuItemComponentGroupMapping;
 + (RKObjectMapping *)menuItemGroupMapping;
 + (RKObjectMapping *)menuItemTagMapping;
+
++ (RKObjectMapping *)menuMetadataMapping;
 
 @end

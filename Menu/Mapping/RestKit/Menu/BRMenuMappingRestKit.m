@@ -14,6 +14,7 @@
 #import "BRMenuItemComponentGroup.h"
 #import "BRMenuItemGroup.h"
 #import "BRMenuItemTag.h"
+#import "BRMenuMetadata.h"
 
 @implementation BRMenuMappingRestKit
 
@@ -94,6 +95,14 @@
 	[mapping addRelationshipMappingWithSourceKeyPath:@"items" mapping:[self menuItemMapping]];
 	[mapping addRelationshipMappingWithSourceKeyPath:@"groups" mapping:[self menuItemGroupMapping]];
 	[mapping addRelationshipMappingWithSourceKeyPath:@"tags" mapping:[self menuItemTagMapping]];
+	return mapping;
+}
+
++ (RKObjectMapping *)menuMetadataMapping {
+	RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[BRMenuMetadata class]];
+	[mapping addAttributeMappingsFromDictionary:@{
+												  @"latestMenuVersion" : @"latestMenuVersion"
+												  }];
 	return mapping;
 }
 
