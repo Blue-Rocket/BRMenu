@@ -1,24 +1,18 @@
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '7.1'
 
-def common_pods
+target :Menu do
 	pod 'AFNetworking',				'~> 2.5'
 	pod 'BRCocoaLumberjack',		'~> 1.9'
 	pod 'BREnvironment',			'~> 1.1'
 	pod 'Masonry',					'~> 0.6'
 	pod 'RestKit/ObjectMapping',	'~> 0.24'
-end
-
-target :Menu do
-#	link_with 'MenuTests'
-	common_pods
-end
-
-
-target :MenuTests do
-	common_pods
-	pod 'OCHamcrest',			'~> 4.1', :inhibit_warnings => true
-	pod 'OCMock',				'~> 3.1'
-	pod 'CocoaHTTPServer',		'~> 2.3', :inhibit_warnings => true
-    pod 'RoutingHTTPServer', 	'~> 1.0', :inhibit_warnings => true
+	
+	target :MenuTests do
+		pod 'OCHamcrest',			'~> 4.1', :inhibit_warnings => true
+		pod 'OCMock',				'~> 3.1'
+		pod 'CocoaHTTPServer',		'~> 2.3', :inhibit_warnings => true
+		pod 'RoutingHTTPServer', 	'~> 1.0', :inhibit_warnings => true
+	end
+	
 end
