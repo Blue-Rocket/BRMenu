@@ -9,7 +9,7 @@
 #import "BRMenuOrder.h"
 #import "BRMenuProvider.h"
 
-extern const UInt8 APOrderEncodingFormat_v1;
+extern const UInt8 BRMenuOrderEncodingFormat_v1;
 
 @interface BRMenuOrder (Encoding)
 

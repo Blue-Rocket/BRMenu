@@ -16,7 +16,7 @@
 #import "BRMenuOrderItemComponent.h"
 
 
-const UInt8 APOrderEncodingFormat_v1 = 0x1;
+const UInt8 BRMenuOrderEncodingFormat_v1 = 0x1;
 
 static const int kBufSize = 1024;
 
@@ -27,7 +27,7 @@ static const int kBufSize = 1024;
 	NSMutableData *data = [[NSMutableData alloc] initWithCapacity:1024];
 	
 	// first byte is the data format... only type 1 supported now
-	buf[0] = APOrderEncodingFormat_v1;
+	buf[0] = BRMenuOrderEncodingFormat_v1;
 	
 	// add menu version, 16 bits as hi, lo bytes
 	buf[1] = (UInt8)((self.menu.version >> 8) & 0xF);
@@ -96,7 +96,7 @@ static const int kBufSize = 1024;
 	@try {
 		[data getBytes:buf length:dataLength];
 		// encoding format is byte 1, must be v1
-		if ( buf[0] != APOrderEncodingFormat_v1 ) {
+		if ( buf[0] != BRMenuOrderEncodingFormat_v1 ) {
 			NSLog(@"Encoding format %u not supported", buf[0]);
 			return nil;
 		}
@@ -149,8 +149,8 @@ static const int kBufSize = 1024;
 					for ( k = 0, len = i + (compCount * 2); i < len && i < dataLength; i += 2, k++ ) {
 						BRMenuItemComponent *comp = [menu menuItemComponentForId:buf[i]];
 						if ( comp != nil ) {
-							APOrderItemComponentPlacement placement = ((buf[i+1] >> 2) & 0x3);
-							APOrderItemComponentQuantity quantity = (buf[i+1] & 0x3);
+							BRMenuOrderItemComponentPlacement placement = ((buf[i+1] >> 2) & 0x3);
+							BRMenuOrderItemComponentQuantity quantity = (buf[i+1] & 0x3);
 							BRMenuOrderItemComponent *orderComp = [[BRMenuOrderItemComponent alloc] initWithComponent:comp
 																								placement:placement
 																								 quantity:quantity];

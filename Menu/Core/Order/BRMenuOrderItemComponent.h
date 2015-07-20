@@ -9,24 +9,24 @@
 #import <Foundation/Foundation.h>
 
 typedef enum {
-	APOrderItemComponentPlacementWhole	= 0,
-	APOrderItemComponentPlacementLeft	= 1,
-	APOrderItemComponentPlacementRight	= 2,
-} APOrderItemComponentPlacement;
+	BRMenuOrderItemComponentPlacementWhole	= 0,
+	BRMenuOrderItemComponentPlacementLeft	= 1,
+	BRMenuOrderItemComponentPlacementRight	= 2,
+} BRMenuOrderItemComponentPlacement;
 
 typedef enum {
-	APOrderItemComponentQuantityNormal	= 0,
-	APOrderItemComponentQuantityLight	= 1,
-	APOrderItemComponentQuantityHeavy	= 2,
-} APOrderItemComponentQuantity;
+	BRMenuOrderItemComponentQuantityNormal	= 0,
+	BRMenuOrderItemComponentQuantityLight	= 1,
+	BRMenuOrderItemComponentQuantityHeavy	= 2,
+} BRMenuOrderItemComponentQuantity;
 
 @class BRMenuItemComponent;
 
 @interface BRMenuOrderItemComponent : NSObject
 
 @property (nonatomic, strong) BRMenuItemComponent *component;
-@property (nonatomic) APOrderItemComponentPlacement placement;
-@property (nonatomic) APOrderItemComponentQuantity quantity;
+@property (nonatomic) BRMenuOrderItemComponentPlacement placement;
+@property (nonatomic) BRMenuOrderItemComponentQuantity quantity;
 @property (nonatomic, readonly, getter = isLeftPlacement) BOOL leftPlacement;
 @property (nonatomic, readonly, getter = isRightPlacement) BOOL rightPlacement;
 
@@ -34,7 +34,7 @@ typedef enum {
 - (id)initWithComponent:(BRMenuItemComponent *)menuComponent;
 
 - (id)initWithComponent:(BRMenuItemComponent *)menuComponent
-			  placement:(APOrderItemComponentPlacement)placement
-			   quantity:(APOrderItemComponentQuantity)quantity;
+			  placement:(BRMenuOrderItemComponentPlacement)placement
+			   quantity:(BRMenuOrderItemComponentQuantity)quantity;
 
 @end

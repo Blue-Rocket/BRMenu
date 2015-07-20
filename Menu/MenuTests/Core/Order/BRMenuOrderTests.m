@@ -63,14 +63,14 @@
 	item1.item = item;
 	item1.takeAway = YES;
 	[item1 addComponent:[[BRMenuOrderItemComponent alloc] initWithComponent:[(BRMenuItemComponentGroup *)item.componentGroups[0] components][0]
-															placement:APOrderItemComponentPlacementLeft
-															 quantity:APOrderItemComponentQuantityNormal]];
+															placement:BRMenuOrderItemComponentPlacementLeft
+															 quantity:BRMenuOrderItemComponentQuantityNormal]];
 	[item1 addComponent:[[BRMenuOrderItemComponent alloc] initWithComponent:[(BRMenuItemComponentGroup *)item.componentGroups[1] components][0]
-															placement:APOrderItemComponentPlacementWhole
-															 quantity:APOrderItemComponentQuantityNormal]];
+															placement:BRMenuOrderItemComponentPlacementWhole
+															 quantity:BRMenuOrderItemComponentQuantityNormal]];
 	[item1 addComponent:[[BRMenuOrderItemComponent alloc] initWithComponent:[(BRMenuItemComponentGroup *)item.componentGroups[2] components][0]
-															placement:APOrderItemComponentPlacementRight
-															 quantity:APOrderItemComponentQuantityHeavy]];
+															placement:BRMenuOrderItemComponentPlacementRight
+															 quantity:BRMenuOrderItemComponentQuantityHeavy]];
 	[order addOrderItem:item1];
 	
 	const NSUInteger kExpectedEncodedSize = 19;
@@ -80,7 +80,7 @@
 	assertThatUnsignedInteger([data length], equalTo(@(kExpectedEncodedSize)));
 	UInt8 bytes[kExpectedEncodedSize];
 	[data getBytes:&bytes length:kExpectedEncodedSize];
-	assertThatUnsignedInt(bytes[0], describedAs(@"encoding format %0", equalTo(@(APOrderEncodingFormat_v1)), @(APOrderEncodingFormat_v1), nil));
+	assertThatUnsignedInt(bytes[0], describedAs(@"encoding format %0", equalTo(@(BRMenuOrderEncodingFormat_v1)), @(BRMenuOrderEncodingFormat_v1), nil));
 	assertThatUnsignedInt(bytes[1], describedAs(@"version hi byte %0", equalTo(@0), @0, nil));
 	assertThatUnsignedInt(bytes[2], describedAs(@"version lo byte %0", equalTo(@1), @1, nil));
 	assertThat([NSString stringWithCString:(const char *)&bytes[3] encoding:NSASCIIStringEncoding], equalTo(@"Test"));
@@ -124,16 +124,16 @@
 		BRMenuOrderItemComponent *comp = item.components[i];
 		BRMenuItemComponent *menuComp = [(BRMenuItemComponentGroup *)pizza.componentGroups[i] components][0];
 		assertThat(comp.component, sameInstance(menuComp));
-		APOrderItemComponentPlacement placement = APOrderItemComponentPlacementWhole;
-		APOrderItemComponentQuantity quantity = APOrderItemComponentQuantityNormal;
+		BRMenuOrderItemComponentPlacement placement = BRMenuOrderItemComponentPlacementWhole;
+		BRMenuOrderItemComponentQuantity quantity = BRMenuOrderItemComponentQuantityNormal;
 		switch ( i ) {
 			case 0:
-				placement = APOrderItemComponentPlacementLeft;
+				placement = BRMenuOrderItemComponentPlacementLeft;
 				break;
 				
 			case 2:
-				placement = APOrderItemComponentPlacementRight;
-				quantity = APOrderItemComponentQuantityHeavy;
+				placement = BRMenuOrderItemComponentPlacementRight;
+				quantity = BRMenuOrderItemComponentQuantityHeavy;
 				break;
 				
 			default:

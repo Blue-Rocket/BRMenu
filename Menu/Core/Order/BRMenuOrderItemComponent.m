@@ -14,19 +14,19 @@
 
 - (id)init {
 	return [self initWithComponent:nil
-						 placement:APOrderItemComponentPlacementWhole
-						  quantity:APOrderItemComponentQuantityNormal];
+						 placement:BRMenuOrderItemComponentPlacementWhole
+						  quantity:BRMenuOrderItemComponentQuantityNormal];
 }
 
 - (id)initWithComponent:(BRMenuItemComponent *)menuComponent {
 	return [self initWithComponent:menuComponent
-						 placement:APOrderItemComponentPlacementWhole
-						  quantity:APOrderItemComponentQuantityNormal];
+						 placement:BRMenuOrderItemComponentPlacementWhole
+						  quantity:BRMenuOrderItemComponentQuantityNormal];
 }
 
 - (id)initWithComponent:(BRMenuItemComponent *)menuComponent
-			  placement:(APOrderItemComponentPlacement)placement
-			   quantity:(APOrderItemComponentQuantity)quantity {
+			  placement:(BRMenuOrderItemComponentPlacement)placement
+			   quantity:(BRMenuOrderItemComponentQuantity)quantity {
 	if ( (self = [super init]) ) {
 		self.component = menuComponent;
 		self.placement = placement;
@@ -44,11 +44,11 @@
 }
 
 - (BOOL)isLeftPlacement {
-	return (self.placement == APOrderItemComponentPlacementLeft || self.placement == APOrderItemComponentPlacementWhole);
+	return (self.placement == BRMenuOrderItemComponentPlacementLeft || self.placement == BRMenuOrderItemComponentPlacementWhole);
 }
 
 - (BOOL)isRightPlacement {
-	return (self.placement == APOrderItemComponentPlacementRight || self.placement == APOrderItemComponentPlacementWhole);
+	return (self.placement == BRMenuOrderItemComponentPlacementRight || self.placement == BRMenuOrderItemComponentPlacementWhole);
 }
 
 @end

@@ -130,8 +130,8 @@
 	BRMenuOrderItemComponent *component = [self componentForMenuItemComponent:menuItemComponent];
 	if ( component == nil ) {
 		component = [[BRMenuOrderItemComponent alloc] initWithComponent:menuItemComponent
-														placement:APOrderItemComponentPlacementWhole
-														 quantity:APOrderItemComponentQuantityNormal];
+														placement:BRMenuOrderItemComponentPlacementWhole
+														 quantity:BRMenuOrderItemComponentQuantityNormal];
 		[self addComponent:component];
 	}
 	return component;
