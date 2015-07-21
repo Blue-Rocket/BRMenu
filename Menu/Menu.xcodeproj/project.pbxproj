@@ -166,6 +166,7 @@
 		C9B812C01B5DD5DB0014CBCB /* BRMenuPlusMinusButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuPlusMinusButton.m; sourceTree = "<group>"; };
 		C9B812C21B5DD6D70014CBCB /* BRMenuUIStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuUIStyle.h; sourceTree = "<group>"; };
 		C9B812C31B5DD6D70014CBCB /* BRMenuUIStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuUIStyle.m; sourceTree = "<group>"; };
+		C9B812C51B5DDD7C0014CBCB /* UI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UI.h; path = Code/UI.h; sourceTree = SOURCE_ROOT; };
 		F959BE2D01376003BF6AF46A /* Pods-Menu-MenuTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Menu-MenuTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Menu-MenuTests/Pods-Menu-MenuTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -339,6 +340,7 @@
 				C9B812771B5D7B040014CBCB /* AFNetworking.h */,
 				C9B8126D1B5D75910014CBCB /* Core.h */,
 				C9B812781B5D7B040014CBCB /* RestKit.h */,
+				C9B812C51B5DDD7C0014CBCB /* UI.h */,
 				C9B812791B5D7B040014CBCB /* AFNetworking */,
 				C988836E1B58832C0049491C /* Core */,
 				C9B8127C1B5D7B040014CBCB /* RestKit */,

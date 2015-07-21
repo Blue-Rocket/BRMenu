@@ -41,4 +41,10 @@ Pod::Spec.new do |s|
     sp.dependency 'AFNetworking', '~> 2.5'
   end
   
+  s.subspec 'UI' do |sp|
+    sp.source_files = 'Menu/Code/UI.h', 'Menu/Code/UI'
+  	sp.header_dir = 'UI'
+    sp.dependency 'BRMenu/Core'
+  end
+  
 end
