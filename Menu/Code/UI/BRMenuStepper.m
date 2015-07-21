@@ -83,6 +83,7 @@ static const CGFloat kBadgeWidth = 28.0;
 	badgeLabel.font = [badgeLabel.font fontWithSize:badgeLabel.font.pointSize + 2.0];
 	badgeLabel.textColor = [self.uiStyle controlBorderColor];
 	[self setNeedsLayout];
+	[self setNeedsDisplay];
 }
 
 - (BRMenuUIStyle *)uiStyle {
