@@ -13,7 +13,7 @@
 IB_DESIGNABLE
 @interface BRMenuPlusMinusButton : UIControl
 
-@property (nonatomic, strong) BRMenuUIStyle *uiStyle;
+@property (nonatomic, strong) IBOutlet BRMenuUIStyle *uiStyle;
 @property (nonatomic, getter = isPlus) IBInspectable BOOL plus;
 
 @end
