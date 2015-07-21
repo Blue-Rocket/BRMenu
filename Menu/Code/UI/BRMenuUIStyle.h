@@ -11,7 +11,7 @@
 /**
  Encapsulation of style attributes used for drawing BRMenu UI components.
  */
-@interface BRMenuUIStyle : NSObject
+@interface BRMenuUIStyle : NSObject <NSCopying, NSMutableCopying>
 
 /**
  Get a global shared style instance.
@@ -42,7 +42,14 @@
 
 - (UIColor *)headingColor;
 
-- (UIFont *)uiFont;
-- (UIFont *)uiBoldFont;
+@property (nonatomic, readonly) UIFont *uiFont;
+@property (nonatomic, readonly) UIFont *uiBoldFont;
+
+@end
+
+@interface BRMenuMutableUIStyle : BRMenuUIStyle
+
+@property (nonatomic, strong, readwrite) UIFont *uiFont;
+@property (nonatomic, strong, readwrite) UIFont *uiBoldFont;
 
 @end

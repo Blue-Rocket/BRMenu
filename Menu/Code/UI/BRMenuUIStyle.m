@@ -10,11 +10,22 @@
 
 static BRMenuUIStyle *DefaultStyle;
 
-@implementation BRMenuUIStyle
+@interface BRMenuUIStyle ()
+@property (nonatomic, strong, readwrite) UIFont *uiFont;
+@property (nonatomic, strong, readwrite) UIFont *uiBoldFont;
+@end
+
+@implementation BRMenuUIStyle {
+	UIFont *uiFont;
+	UIFont *uiBoldFont;
+}
+
+@synthesize uiFont;
+@synthesize uiBoldFont;
 
 + (instancetype)defaultStyle {
 	if ( !DefaultStyle ) {
-		DefaultStyle = [BRMenuUIStyle new]; // TODO: load from environment
+		DefaultStyle = [[BRMenuUIStyle alloc] initWithUIStyle:nil];
 	}
 	return DefaultStyle;
 }
@@ -24,6 +35,39 @@ static BRMenuUIStyle *DefaultStyle;
 						   green:(((integer >> 8) & 0xFF) / 255.0f)
 							blue:((integer & 0xFF) / 255.0f)
 						   alpha:1.0];
+}
+
+#pragma mark - Memory management
+
+- (id)init {
+	return [BRMenuUIStyle defaultStyle];
+}
+
+- (id)initWithUIStyle:(BRMenuUIStyle *)other {
+	if ( (self = [super init]) ) {
+		if ( other == nil ) {
+			// apply defaults
+			// TODO: load from environment resource
+			uiFont = [UIFont fontWithName:@"AvenirNext-Medium" size:12];
+			uiBoldFont = [UIFont fontWithName:@"AvenirNext-DemiBold" size:12];
+		} else {
+			uiFont = other.uiFont;
+			uiBoldFont = other.uiBoldFont;
+		}
+	}
+	return self;
+}
+
+#pragma mark - NSCopying
+
+- (id)copyWithZone:(NSZone *)zone {
+	return [[BRMenuUIStyle alloc] initWithUIStyle:self];
+}
+
+#pragma mark - NSMutableCopying
+
+- (id)mutableCopyWithZone:(NSZone *)zone {
+	return [[[BRMenuMutableUIStyle class] allocWithZone:zone] initWithUIStyle:self];
 }
 
 #pragma mark - Helpers
@@ -95,19 +139,20 @@ static BRMenuUIStyle *DefaultStyle;
 #pragma mark - Fonts
 
 - (UIFont *)uiFont {
-	static UIFont *result;
-	if ( result == nil ) {
-		result = [UIFont fontWithName:@"AvenirNext-Medium" size:12];
-	}
-	return result;
+	return (uiFont ? uiFont : [BRMenuUIStyle defaultStyle].uiFont);
 }
 
 - (UIFont *)uiBoldFont {
-	static UIFont *result;
-	if ( result == nil ) {
-		result = [UIFont fontWithName:@"AvenirNext-DemiBold" size:12];
-	}
-	return result;
+	return (uiBoldFont ? uiBoldFont : [BRMenuUIStyle defaultStyle].uiBoldFont);
 }
+
+@end
+
+#pragma BRMenuMutableUIStyle support
+
+@implementation BRMenuMutableUIStyle
+
+@dynamic uiFont;
+@dynamic uiBoldFont;
 
 @end
