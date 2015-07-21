@@ -32,8 +32,6 @@ static const CGFloat kBadgeWidth = 28.0;
 	__weak BRMenuStepperPlusButton *plusButton;
 }
 
-@synthesize uiStyle;
-
 - (id)initWithFrame:(CGRect)frame {
     if ( (self = [super initWithFrame:frame]) ) {
 		[self initializeStepper];
@@ -50,11 +48,10 @@ static const CGFloat kBadgeWidth = 28.0;
 
 - (void)initializeStepper {
 	UILabel *l = [[UILabel alloc] initWithFrame:CGRectZero];
-	l.font = [self.uiStyle uiBoldFont];
-	l.font = [l.font fontWithSize:l.font.pointSize + 2.0];
-	l.textColor = [self.uiStyle controlBorderColor];
 	l.backgroundColor = [UIColor clearColor];
 	l.textAlignment = NSTextAlignmentCenter;
+	l.adjustsFontSizeToFitWidth = YES;
+	l.lineBreakMode = NSLineBreakByClipping;
 	[self addSubview:l];
 	badgeLabel = l;
 	
@@ -72,17 +69,31 @@ static const CGFloat kBadgeWidth = 28.0;
 	[self addSubview:plus];
 	plusButton = plus;
 	
+	[self updateStyle];
+	
 	self.opaque = NO;
 	self.value = 0;
 	self.minimumValue = 0;
 	self.maximumValue = 32;
 	self.stepValue = 1;
-	
+}
+
+- (void)updateStyle {
+	badgeLabel.font = [self.uiStyle uiBoldFont] ;
+	badgeLabel.font = [badgeLabel.font fontWithSize:badgeLabel.font.pointSize + 2.0];
+	badgeLabel.textColor = [self.uiStyle controlBorderColor];
 	[self setNeedsLayout];
 }
 
 - (BRMenuUIStyle *)uiStyle {
 	return (uiStyle ? uiStyle : [BRMenuUIStyle defaultStyle]);
+}
+
+- (void)setUiStyle:(BRMenuUIStyle *)style {
+	if ( style != uiStyle ) {
+		uiStyle = style;
+		[self updateStyle];
+	}
 }
 
 - (CGSize)sizeThatFits:(CGSize)size {
@@ -101,10 +112,11 @@ static const CGFloat kBadgeWidth = 28.0;
 	minusButton.frame = minusFrame;
 	plusButton.frame = plusFrame;
 
-	CGRect badgeFrame = CGRectMake(CGRectGetMidX(bounds) - (kBadgeWidth / 2.0),
-								   CGRectGetMidY(bounds) - (badgeLabel.font.lineHeight / 2.0) + ABS(badgeLabel.font.descender) - 1.0,
-								   kBadgeWidth,
-								   badgeLabel.font.lineHeight);
+	// vertically center the capHeight of the number text: this only works for fonts where numbers DO NOT have descenders (i.e. "old style")
+	CGRect badgeFrame = CGRectIntegral(CGRectMake(CGRectGetMidX(bounds) - (kBadgeWidth / 2.0),
+												  CGRectGetMidY(bounds) - (badgeLabel.font.ascender - badgeLabel.font.capHeight) - (badgeLabel.font.capHeight / 2.0),
+												  kBadgeWidth,
+												  badgeLabel.font.lineHeight));
 	badgeLabel.frame = badgeFrame;
 }
 
