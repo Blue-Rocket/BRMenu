@@ -11,18 +11,18 @@
 static BRMenuUIStyle *DefaultStyle;
 
 @interface BRMenuUIStyle ()
-@property (nonatomic, readwrite) UIColor *controlTextColor;
-@property (nonatomic, readwrite) UIColor *controlBorderColor;
-@property (nonatomic, readwrite) UIColor *controlBorderGlossColor;
-@property (nonatomic, readwrite) UIColor *controlHighlightedColor;
-@property (nonatomic, readwrite) UIColor *controlHighlightedShadowColor;
-@property (nonatomic, readwrite) UIColor *controlSelectedColor;
-@property (nonatomic, readwrite) UIColor *controlUnselectedColor;
+@property (nonatomic, readwrite) IBInspectable UIColor *controlTextColor;
+@property (nonatomic, readwrite) IBInspectable UIColor *controlBorderColor;
+@property (nonatomic, readwrite) IBInspectable UIColor *controlBorderGlossColor;
+@property (nonatomic, readwrite) IBInspectable UIColor *controlHighlightedColor;
+@property (nonatomic, readwrite) IBInspectable UIColor *controlHighlightedShadowColor;
+@property (nonatomic, readwrite) IBInspectable UIColor *controlSelectedColor;
+@property (nonatomic, readwrite) IBInspectable UIColor *controlUnselectedColor;
 
-@property (nonatomic, readwrite) UIColor *headingColor;
+@property (nonatomic, readwrite) IBInspectable UIColor *headingColor;
 
-@property (nonatomic, strong, readwrite) UIFont *uiFont;
-@property (nonatomic, strong, readwrite) UIFont *uiBoldFont;
+@property (nonatomic, strong, readwrite) IBInspectable UIFont *uiFont;
+@property (nonatomic, strong, readwrite) IBInspectable UIFont *uiBoldFont;
 @end
 
 @implementation BRMenuUIStyle {
@@ -70,7 +70,7 @@ static BRMenuUIStyle *DefaultStyle;
 #pragma mark - Memory management
 
 - (id)init {
-	return [BRMenuUIStyle defaultStyle];
+	return [self initWithUIStyle:nil];
 }
 
 - (id)initWithUIStyle:(BRMenuUIStyle *)other {
@@ -88,13 +88,19 @@ static BRMenuUIStyle *DefaultStyle;
 			controlSelectedColor = headingColor;
 			controlUnselectedColor = [UIColor darkGrayColor];
 			
-			controlSelectedColor = headingColor;
-			controlUnselectedColor = [UIColor darkGrayColor];
-			
 			uiFont = [UIFont fontWithName:@"AvenirNext-Medium" size:12];
 			uiBoldFont = [UIFont fontWithName:@"AvenirNext-DemiBold" size:12];
 		} else {
 			headingColor = other.headingColor;
+			
+			controlTextColor = other.controlTextColor;
+			controlBorderColor = other.controlBorderColor;
+			controlBorderGlossColor = other.controlBorderGlossColor;
+			controlHighlightedColor = other.controlHighlightedColor;
+			controlHighlightedShadowColor = other.controlHighlightedShadowColor;
+			controlSelectedColor = other.controlSelectedColor;
+			controlUnselectedColor = other.controlUnselectedColor;
+
 			uiFont = other.uiFont;
 			uiBoldFont = other.uiBoldFont;
 		}
@@ -105,13 +111,57 @@ static BRMenuUIStyle *DefaultStyle;
 #pragma mark - NSCopying
 
 - (id)copyWithZone:(NSZone *)zone {
-	return [[BRMenuUIStyle alloc] initWithUIStyle:self];
+	return [[BRMenuUIStyle allocWithZone:zone] initWithUIStyle:self];
 }
 
 #pragma mark - NSMutableCopying
 
 - (id)mutableCopyWithZone:(NSZone *)zone {
 	return [[[BRMenuMutableUIStyle class] allocWithZone:zone] initWithUIStyle:self];
+}
+
+#pragma mark - NSSecureCoding
+
++ (BOOL)supportsSecureCoding {
+	return YES;
+}
+
+- (id)initWithCoder:(NSCoder *)decoder {
+	self = [self init];
+	if ( !self ) {
+		return nil;
+	}
+	headingColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(headingColor))];
+
+	controlTextColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(controlTextColor))];
+	controlBorderColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(controlBorderColor))];
+	controlBorderGlossColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(controlBorderGlossColor))];
+	controlHighlightedColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(controlHighlightedColor))];
+	controlHighlightedShadowColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(controlHighlightedShadowColor))];
+	controlSelectedColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(controlSelectedColor))];
+	controlUnselectedColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(controlUnselectedColor))];
+
+	uiFont = [UIFont fontWithName:[decoder decodeObjectOfClass:[NSString class] forKey:@"uiFontName"] size:[decoder decodeFloatForKey:@"uiFontSize"]];
+	uiBoldFont = [UIFont fontWithName:[decoder decodeObjectOfClass:[NSString class] forKey:@"uiBoldFontName"] size:[decoder decodeFloatForKey:@"uiBoldFontSize"]];
+	
+	return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)coder {
+	[coder encodeObject:headingColor forKey:NSStringFromSelector(@selector(headingColor))];
+	
+	[coder encodeObject:controlTextColor forKey:NSStringFromSelector(@selector(controlTextColor))];
+	[coder encodeObject:controlBorderColor forKey:NSStringFromSelector(@selector(controlBorderColor))];
+	[coder encodeObject:controlBorderGlossColor forKey:NSStringFromSelector(@selector(controlBorderGlossColor))];
+	[coder encodeObject:controlHighlightedColor forKey:NSStringFromSelector(@selector(controlHighlightedColor))];
+	[coder encodeObject:controlHighlightedShadowColor forKey:NSStringFromSelector(@selector(controlHighlightedShadowColor))];
+	[coder encodeObject:controlSelectedColor forKey:NSStringFromSelector(@selector(controlSelectedColor))];
+	[coder encodeObject:controlUnselectedColor forKey:NSStringFromSelector(@selector(controlUnselectedColor))];
+	
+	[coder encodeObject:uiFont.fontName forKey:@"uiFontName"];
+	[coder encodeFloat:uiFont.pointSize forKey:@"uiFontSize"];
+	[coder encodeObject:uiBoldFont.fontName forKey:@"uiBoldFontName"];
+	[coder encodeFloat:uiBoldFont.pointSize forKey:@"uiBoldFontSize"];
 }
 
 #pragma mark - Helpers

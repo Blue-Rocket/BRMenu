@@ -11,7 +11,8 @@
 /**
  Encapsulation of style attributes used for drawing BRMenu UI components.
  */
-@interface BRMenuUIStyle : NSObject <NSCopying, NSMutableCopying>
+IB_DESIGNABLE
+@interface BRMenuUIStyle : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 
 ///-------------------------------
 /// @name Utilities
