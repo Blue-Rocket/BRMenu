@@ -52,6 +52,9 @@
 		C9B812B81B5D7BA70014CBCB /* BRMenuOrderItemAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B812A71B5D7BA70014CBCB /* BRMenuOrderItemAttributes.m */; };
 		C9B812B91B5D7BA70014CBCB /* BRMenuOrderItemAttributesProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B812A91B5D7BA70014CBCB /* BRMenuOrderItemAttributesProxy.m */; };
 		C9B812BA1B5D7BA70014CBCB /* BRMenuOrderItemComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B812AB1B5D7BA70014CBCB /* BRMenuOrderItemComponent.m */; };
+		C9B812BE1B5DD5800014CBCB /* BRMenuStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B812BD1B5DD5800014CBCB /* BRMenuStepper.m */; };
+		C9B812C11B5DD5DB0014CBCB /* BRMenuPlusMinusButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B812C01B5DD5DB0014CBCB /* BRMenuPlusMinusButton.m */; };
+		C9B812C41B5DD6D70014CBCB /* BRMenuUIStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B812C31B5DD6D70014CBCB /* BRMenuUIStyle.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +160,12 @@
 		C9B812AA1B5D7BA70014CBCB /* BRMenuOrderItemComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuOrderItemComponent.h; sourceTree = "<group>"; };
 		C9B812AB1B5D7BA70014CBCB /* BRMenuOrderItemComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderItemComponent.m; sourceTree = "<group>"; };
 		C9B812AC1B5D7BA70014CBCB /* BRMenuProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuProvider.h; sourceTree = "<group>"; };
+		C9B812BC1B5DD5800014CBCB /* BRMenuStepper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuStepper.h; sourceTree = "<group>"; };
+		C9B812BD1B5DD5800014CBCB /* BRMenuStepper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuStepper.m; sourceTree = "<group>"; };
+		C9B812BF1B5DD5DB0014CBCB /* BRMenuPlusMinusButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuPlusMinusButton.h; sourceTree = "<group>"; };
+		C9B812C01B5DD5DB0014CBCB /* BRMenuPlusMinusButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuPlusMinusButton.m; sourceTree = "<group>"; };
+		C9B812C21B5DD6D70014CBCB /* BRMenuUIStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuUIStyle.h; sourceTree = "<group>"; };
+		C9B812C31B5DD6D70014CBCB /* BRMenuUIStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuUIStyle.m; sourceTree = "<group>"; };
 		F959BE2D01376003BF6AF46A /* Pods-Menu-MenuTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Menu-MenuTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Menu-MenuTests/Pods-Menu-MenuTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -333,6 +342,7 @@
 				C9B812791B5D7B040014CBCB /* AFNetworking */,
 				C988836E1B58832C0049491C /* Core */,
 				C9B8127C1B5D7B040014CBCB /* RestKit */,
+				C9B812BB1B5DD5800014CBCB /* UI */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -437,6 +447,20 @@
 			);
 			name = RestKit;
 			path = Code/RestKit;
+			sourceTree = SOURCE_ROOT;
+		};
+		C9B812BB1B5DD5800014CBCB /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				C9B812BF1B5DD5DB0014CBCB /* BRMenuPlusMinusButton.h */,
+				C9B812C01B5DD5DB0014CBCB /* BRMenuPlusMinusButton.m */,
+				C9B812BC1B5DD5800014CBCB /* BRMenuStepper.h */,
+				C9B812BD1B5DD5800014CBCB /* BRMenuStepper.m */,
+				C9B812C21B5DD6D70014CBCB /* BRMenuUIStyle.h */,
+				C9B812C31B5DD6D70014CBCB /* BRMenuUIStyle.m */,
+			);
+			name = UI;
+			path = Code/UI;
 			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
@@ -612,7 +636,9 @@
 				C9B812AE1B5D7BA70014CBCB /* BRMenuItem.m in Sources */,
 				C9B812B71B5D7BA70014CBCB /* BRMenuOrderItem.m in Sources */,
 				C9B812841B5D7B040014CBCB /* BRMenuAFHTTPResponseSerializer.m in Sources */,
+				C9B812C41B5DD6D70014CBCB /* BRMenuUIStyle.m in Sources */,
 				C9B812BA1B5D7BA70014CBCB /* BRMenuOrderItemComponent.m in Sources */,
+				C9B812C11B5DD5DB0014CBCB /* BRMenuPlusMinusButton.m in Sources */,
 				C9B812B11B5D7BA70014CBCB /* BRMenuItemGroup.m in Sources */,
 				C9B812B91B5D7BA70014CBCB /* BRMenuOrderItemAttributesProxy.m in Sources */,
 				C9B812AD1B5D7BA70014CBCB /* BRMenu.m in Sources */,
@@ -620,6 +646,7 @@
 				C9B812B01B5D7BA70014CBCB /* BRMenuItemComponentGroup.m in Sources */,
 				C9B8128D1B5D7B5C0014CBCB /* BRMenuMappingRestKitPostProcessor.m in Sources */,
 				C9B812B41B5D7BA70014CBCB /* BRMenuMetadata.m in Sources */,
+				C9B812BE1B5DD5800014CBCB /* BRMenuStepper.m in Sources */,
 				C9B812B61B5D7BA70014CBCB /* BRMenuOrder+Encoding.m in Sources */,
 				C9B812B21B5D7BA70014CBCB /* BRMenuItemTag.m in Sources */,
 				C9B8128C1B5D7B5C0014CBCB /* BRMenuMappingRestKit.m in Sources */,
