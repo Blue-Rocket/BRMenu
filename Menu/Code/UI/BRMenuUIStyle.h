@@ -13,12 +13,9 @@
  */
 @interface BRMenuUIStyle : NSObject <NSCopying, NSMutableCopying>
 
-/**
- Get a global shared style instance.
- 
- @return A shared global default style instance.
- */
-+ (instancetype)defaultStyle;
+///-------------------------------
+/// @name Utilities
+///-------------------------------
 
 /**
  Create a @c UIColor instance from  a 32-bit RGB hex value.
@@ -27,20 +24,43 @@
  */
 + (UIColor *)colorWithRGBHexInteger:(UInt32)integer;
 
+///-------------------------------
+/// @name Default support
+///-------------------------------
+
+/**
+ Get a global shared style instance.
+ 
+ @return A shared global default style instance.
+ */
++ (instancetype)defaultStyle;
+
 /**
  Test if this style represents the default style.
  */
 @property (nonatomic, readonly, getter=isDefaultStyle) BOOL defaultStyle;
 
-- (UIColor *)controlTextColor;
-- (UIColor *)controlBorderColor;
-- (UIColor *)controlBorderGlossColor;
-- (UIColor *)controlHighlightedColor;
-- (UIColor *)controlHighlightedShadowColor;
-- (UIColor *)controlSelectedColor;
-- (UIColor *)controlUnselectedColor;
+///-------------------------------
+/// @name Structural color styles
+///-------------------------------
 
-- (UIColor *)headingColor;
+@property (nonatomic, readonly) UIColor *headingColor;
+
+///-------------------------------
+/// @name Control color styles
+///-------------------------------
+
+@property (nonatomic, readonly) UIColor *controlTextColor;
+@property (nonatomic, readonly) UIColor *controlBorderColor;
+@property (nonatomic, readonly) UIColor *controlBorderGlossColor;
+@property (nonatomic, readonly) UIColor *controlHighlightedColor;
+@property (nonatomic, readonly) UIColor *controlHighlightedShadowColor;
+@property (nonatomic, readonly) UIColor *controlSelectedColor;
+@property (nonatomic, readonly) UIColor *controlUnselectedColor;
+
+///-------------------------------
+/// @name Font styles
+///-------------------------------
 
 @property (nonatomic, readonly) UIFont *uiFont;
 @property (nonatomic, readonly) UIFont *uiBoldFont;
@@ -49,7 +69,29 @@
 
 @interface BRMenuMutableUIStyle : BRMenuUIStyle
 
-@property (nonatomic, strong, readwrite) UIFont *uiFont;
-@property (nonatomic, strong, readwrite) UIFont *uiBoldFont;
+///-------------------------------
+/// @name Structural color styles
+///-------------------------------
+
+@property (nonatomic, readwrite) UIColor *headingColor;
+
+///-------------------------------
+/// @name Control color styles
+///-------------------------------
+
+@property (nonatomic, readwrite) UIColor *controlTextColor;
+@property (nonatomic, readwrite) UIColor *controlBorderColor;
+@property (nonatomic, readwrite) UIColor *controlBorderGlossColor;
+@property (nonatomic, readwrite) UIColor *controlHighlightedColor;
+@property (nonatomic, readwrite) UIColor *controlHighlightedShadowColor;
+@property (nonatomic, readwrite) UIColor *controlSelectedColor;
+@property (nonatomic, readwrite) UIColor *controlUnselectedColor;
+
+///-------------------------------
+/// @name Font styles
+///-------------------------------
+
+@property (nonatomic, readwrite) UIFont *uiFont;
+@property (nonatomic, readwrite) UIFont *uiBoldFont;
 
 @end
