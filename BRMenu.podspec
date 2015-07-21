@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.license      = { :type => 'Apache License, Version 2.0', :file => 'LICENSE.txt' }
   s.author       = { 'Matt Magoffin' => 'matt@bluerocket.us' }
 
-  s.platform     = :ios, '7.1'
+  s.platform     = :ios, '8.4'
 
   s.source       = { :git => 'https://github.com/Blue-Rocket/BRMenu.git', 
   					 :tag => s.version.to_s }
