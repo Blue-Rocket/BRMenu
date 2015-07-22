@@ -121,7 +121,7 @@ static const CGFloat kTextMargins = 5.0f;
 - (void)drawLabel:(NSString *)buttonLabelContent inFrame:(CGRect)frame withFont:(UIFont *)buttonLabelFont color:(UIColor *)labelColor {
 	//// Button Label Drawing
 	CGRect buttonLabelRect = CGRectIntegral(CGRectMake(CGRectGetMinX(frame) + 10,
-													   CGRectGetMidY(frame) - (buttonLabelFont.lineHeight / 2.0) + ABS(buttonLabelFont.descender),
+													   CGRectGetMidY(frame) - (buttonLabelFont.ascender - buttonLabelFont.capHeight) - (buttonLabelFont.capHeight / 2.0),
 													   CGRectGetWidth(frame) - 12,
 													   buttonLabelFont.lineHeight));
 	[labelColor setFill];
