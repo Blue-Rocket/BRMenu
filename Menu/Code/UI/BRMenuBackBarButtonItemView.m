@@ -35,12 +35,12 @@ static const CGFloat kTextMargins = 5.0f;
 	return self;
 }
 
-- (void)sizeToText {
+- (CGSize)intrinsicContentSize {
 	CGSize textSize = [title sizeWithFont:[self.uiStyle uiFont]
 						constrainedToSize:CGSizeMake(CGFLOAT_MAX, kNormalHeight)
 							lineBreakMode:NSLineBreakByWordWrapping];
 	CGFloat width = ceilf(textSize.width) + 2 * kTextMargins + kArrowMargin;
-	self.bounds = CGRectMake(0, 0, width, kNormalHeight);
+	return CGSizeMake(width, kNormalHeight);
 }
 
 - (BRMenuUIStyle *)uiStyle {
@@ -50,14 +50,15 @@ static const CGFloat kTextMargins = 5.0f;
 - (void)setUiStyle:(BRMenuUIStyle *)style {
 	if ( style != uiStyle ) {
 		uiStyle = style;
-		[self sizeToText];
+		[self invalidateIntrinsicContentSize];
 		[self setNeedsDisplay];
 	}
 }
 - (void)setTitle:(NSString *)text {
 	if ( title != text ) {
 		title = text;
-		[self sizeToText];
+		[self invalidateIntrinsicContentSize];
+		[self setNeedsDisplay];
 	}
 }
 
