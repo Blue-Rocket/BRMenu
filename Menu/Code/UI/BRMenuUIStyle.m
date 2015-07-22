@@ -87,6 +87,38 @@ static BRMenuUIStyle *DefaultStyle;
 						   alpha:1.0];
 }
 
++ (UIColor *)colorWithRGBAHexInteger:(UInt32)integer {
+	return [UIColor colorWithRed:(((integer >> 24) & 0xFF) / 255.0f)
+						   green:(((integer >> 16) & 0xFF) / 255.0f)
+							blue:(((integer >> 8) & 0xFF) / 255.0f)
+						   alpha:((integer & 0xFF) / 255.0f)];
+}
+
++ (UInt32)rgbHexIntegerForColor:(UIColor *)color {
+	CGFloat r, g, b, a;
+	if ( [color getRed:&r green:&g blue:&b alpha:&a] ) {
+		return (
+				(((UInt32)roundf(r * 255.0f)) << 16)
+				| (((UInt32)roundf(g * 255.0f)) << 8)
+				| ((UInt32)roundf(b * 255.0f))
+				);
+	}
+	return 0;
+}
+
++ (UInt32)rgbaHexIntegerForColor:(UIColor *)color {
+	CGFloat r, g, b, a;
+	if ( [color getRed:&r green:&g blue:&b alpha:&a] ) {
+		return (
+				(((UInt32)roundf(r * 255.0f)) << 24)
+				| (((UInt32)roundf(g * 255.0f)) << 16)
+				| (((UInt32)roundf(b * 255.0f)) << 8)
+				| ((UInt32)roundf(a * 255.0f))
+				);
+	}
+	return 0;
+}
+
 #pragma mark - Memory management
 
 - (id)init {

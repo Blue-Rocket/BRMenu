@@ -19,11 +19,36 @@ IB_DESIGNABLE
 ///-------------------------------
 
 /**
- Create a @c UIColor instance from  a 32-bit RGB hex value.
+ Create a @c UIColor instance from a 32-bit RGB hex value.
  
  @param integer The color as a 32-bit RGB hex value. Only the last 24 bits are used.
+ @return The color object.
  */
 + (UIColor *)colorWithRGBHexInteger:(UInt32)integer;
+
+/**
+ Create a @c UIColor instance from a 32-bit RGBA hex value.
+ 
+ @param integer The color as a 32-bit RGBA hex value.
+ @return The color object.
+ */
++ (UIColor *)colorWithRGBAHexInteger:(UInt32)integer;
+
+/**
+ Create a 32-bit RGB hex value from a @c UIColor instance.
+ 
+ @param color The color to convert.
+ @return integer The color as a 32-bit RGB hex value. Only the last 24 bits are used.
+ */
++ (UInt32)rgbHexIntegerForColor:(UIColor *)color;
+
+/**
+ Create a 32-bit RGBA hex value from a @c UIColor instance.
+ 
+ @param color The color to convert.
+ @return integer The color as a 32-bit RGBA hex value.
+ */
++ (UInt32)rgbaHexIntegerForColor:(UIColor *)color;
 
 ///-------------------------------
 /// @name Default support
