@@ -23,6 +23,7 @@ PODS:
   - BRCocoaLumberjack (1.9.0):
     - CocoaLumberjack (~> 1.9)
   - BREnvironment (1.1.0)
+  - BRPDFImage (1.0.0)
   - CocoaAsyncSocket (7.4.1)
   - CocoaHTTPServer (2.3):
     - CocoaAsyncSocket
@@ -52,6 +53,7 @@ DEPENDENCIES:
   - AFNetworking (~> 2.5)
   - BRCocoaLumberjack (~> 1.9)
   - BREnvironment (~> 1.1)
+  - BRPDFImage (~> 1.0)
   - CocoaHTTPServer (~> 2.3)
   - Masonry (~> 0.6)
   - OCHamcrest (~> 4.1)
@@ -63,6 +65,7 @@ SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
   BRCocoaLumberjack: 3ec999abcfa4fecec9816c9c63b11c93a16e4550
   BREnvironment: 10859bde59bcbf7bcf65b23dcb97701ded62717b
+  BRPDFImage: 6a68f820e4e06ef8627f305cda147d4a31feff51
   CocoaAsyncSocket: 7cbf214b27f8e7f7574db6a3fd96352ffaed433d
   CocoaHTTPServer: 5624681fc3473d43b18202f635f9b3abb013b530
   CocoaLumberjack: 628fca2e88ef06f7cf6817309aa405f325d9a6fa

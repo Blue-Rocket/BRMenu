@@ -45,6 +45,7 @@ Pod::Spec.new do |s|
     sp.source_files = 'Menu/Code/UI.h', 'Menu/Code/UI'
   	sp.header_dir = 'UI'
     sp.dependency 'BRMenu/Core'
+    sp.dependency 'BRPDFImage', '~> 1.0'
   end
   
 end

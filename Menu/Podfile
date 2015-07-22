@@ -5,6 +5,7 @@ target :Menu do
 	pod 'AFNetworking',				'~> 2.5'
 	pod 'BRCocoaLumberjack',		'~> 1.9'
 	pod 'BREnvironment',			'~> 1.1'
+	pod 'BRPDFImage',				'~> 1.0'
 	pod 'Masonry',					'~> 0.6'
 	pod 'RestKit/ObjectMapping',	'~> 0.24'
 	
