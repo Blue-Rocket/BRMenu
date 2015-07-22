@@ -58,6 +58,7 @@
 		C9B812BE1B5DD5800014CBCB /* BRMenuStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B812BD1B5DD5800014CBCB /* BRMenuStepper.m */; };
 		C9B812C11B5DD5DB0014CBCB /* BRMenuPlusMinusButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B812C01B5DD5DB0014CBCB /* BRMenuPlusMinusButton.m */; };
 		C9B812C41B5DD6D70014CBCB /* BRMenuUIStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B812C31B5DD6D70014CBCB /* BRMenuUIStyle.m */; };
+		C9C909251B60248600DDF191 /* BRMenuLeftRightPlacementButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C909241B60248600DDF191 /* BRMenuLeftRightPlacementButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -176,6 +177,8 @@
 		C9B812C21B5DD6D70014CBCB /* BRMenuUIStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuUIStyle.h; sourceTree = "<group>"; };
 		C9B812C31B5DD6D70014CBCB /* BRMenuUIStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuUIStyle.m; sourceTree = "<group>"; };
 		C9B812C51B5DDD7C0014CBCB /* UI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UI.h; path = Code/UI.h; sourceTree = SOURCE_ROOT; };
+		C9C909231B60248600DDF191 /* BRMenuLeftRightPlacementButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuLeftRightPlacementButton.h; sourceTree = "<group>"; };
+		C9C909241B60248600DDF191 /* BRMenuLeftRightPlacementButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuLeftRightPlacementButton.m; sourceTree = "<group>"; };
 		F959BE2D01376003BF6AF46A /* Pods-Menu-MenuTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Menu-MenuTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Menu-MenuTests/Pods-Menu-MenuTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -469,6 +472,8 @@
 				C92AEEF71B5F10630005AC79 /* BRMenuBackBarButtonItemView.m */,
 				C92AEEFC1B5F56D50005AC79 /* BRMenuFlipToggleButton.h */,
 				C92AEEFD1B5F56D50005AC79 /* BRMenuFlipToggleButton.m */,
+				C9C909231B60248600DDF191 /* BRMenuLeftRightPlacementButton.h */,
+				C9C909241B60248600DDF191 /* BRMenuLeftRightPlacementButton.m */,
 				C9B812BF1B5DD5DB0014CBCB /* BRMenuPlusMinusButton.h */,
 				C9B812C01B5DD5DB0014CBCB /* BRMenuPlusMinusButton.m */,
 				C9B812BC1B5DD5800014CBCB /* BRMenuStepper.h */,
@@ -652,6 +657,7 @@
 				C9B812AF1B5D7BA70014CBCB /* BRMenuItemComponent.m in Sources */,
 				C9B812AE1B5D7BA70014CBCB /* BRMenuItem.m in Sources */,
 				C9B812B71B5D7BA70014CBCB /* BRMenuOrderItem.m in Sources */,
+				C9C909251B60248600DDF191 /* BRMenuLeftRightPlacementButton.m in Sources */,
 				C9B812841B5D7B040014CBCB /* BRMenuAFHTTPResponseSerializer.m in Sources */,
 				C9B812C41B5DD6D70014CBCB /* BRMenuUIStyle.m in Sources */,
 				C9B812BA1B5D7BA70014CBCB /* BRMenuOrderItemComponent.m in Sources */,
