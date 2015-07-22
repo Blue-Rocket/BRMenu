@@ -129,12 +129,6 @@ static NSMutableDictionary *IconCache;
 	[self addTarget:self action:@selector(animateToNextMode:) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)invalidateIntrinsicContentSize {
-	[super invalidateIntrinsicContentSize];
-	[self setupImageView:frontView withResource:frontImageName];
-	[self setupImageView:backView withResource:backImageName];
-}
-
 - (void)setupImageView:(UIImageView *)imageView withResource:(NSString *)imageName {
 	UIImage *image = [self imageForResource:imageName];
 	imageView.image = image;
@@ -146,8 +140,11 @@ static NSMutableDictionary *IconCache;
 
 - (void)setUiStyle:(BRMenuUIStyle *)style {
 	if ( style != uiStyle ) {
+		BOOL tintChanged = ([style.headingColor isEqual:uiStyle.headingColor] == NO);
 		uiStyle = style;
-		// TODO[self updateStyle];
+		if ( tintChanged ) {
+			[self setNeedsDisplay];
+		}
 	}
 }
 
@@ -162,15 +159,20 @@ static NSMutableDictionary *IconCache;
 - (void)setFrontImageName:(NSString *)imageName {
 	if ( frontImageName != imageName ) {
 		frontImageName = imageName;
-		[self setupImageView:frontView withResource:frontImageName];
+		[self setNeedsDisplay];
 	}
 }
 
 - (void)setBackImageName:(NSString *)imageName {
 	if ( backImageName != imageName ) {
 		backImageName = imageName;
-		[self setupImageView:backView withResource:backImageName];
+		[self setNeedsDisplay];
 	}
+}
+
+- (void)invalidateIntrinsicContentSize {
+	[super invalidateIntrinsicContentSize];
+	[self setNeedsDisplay];
 }
 
 - (CGSize)intrinsicContentSize {
@@ -222,6 +224,12 @@ static NSMutableDictionary *IconCache;
 
 - (IBAction)animateToNextMode:(id)sender {
 	[self setFlipped:!flipped animated:YES];
+}
+
+- (void)drawRect:(CGRect)rect {
+	// using this method to batch changes in icon style into a single call
+	[self setupImageView:frontView withResource:frontImageName];
+	[self setupImageView:backView withResource:backImageName];
 }
 
 
