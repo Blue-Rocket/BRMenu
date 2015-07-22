@@ -109,6 +109,11 @@ NSString * const kSpecialGroupKey = @"_special";
 	NSMutableDictionary *mapping = [NSMutableDictionary dictionaryWithCapacity:capacity];
 	NSMutableArray *sortKeys = [NSMutableArray arrayWithCapacity:capacity];
 	[sortKeys addObject:kSpecialGroupKey];
+	for ( BRMenuItem *item in self.menu.items ) {
+		if ( item.key != nil ) {
+			[sortKeys addObject:item.key];
+		}
+	}
 	for ( BRMenuItemGroup *group in self.menu.groups ) {
 		[sortKeys addObject:(group.key == nil ? @"" : group.key)];
 	}
