@@ -11,6 +11,10 @@
 static BRMenuUIStyle *DefaultStyle;
 
 @interface BRMenuUIStyle ()
+@property (nonatomic, readwrite) IBInspectable UIColor *headingColor;
+
+@property (nonatomic, readwrite) IBInspectable UIColor *inverseHeadingColor;
+
 @property (nonatomic, readwrite) IBInspectable UIColor *controlTextColor;
 @property (nonatomic, readwrite) IBInspectable UIColor *controlBorderColor;
 @property (nonatomic, readwrite) IBInspectable UIColor *controlBorderGlossColor;
@@ -19,13 +23,23 @@ static BRMenuUIStyle *DefaultStyle;
 @property (nonatomic, readwrite) IBInspectable UIColor *controlSelectedColor;
 @property (nonatomic, readwrite) IBInspectable UIColor *controlUnselectedColor;
 
-@property (nonatomic, readwrite) IBInspectable UIColor *headingColor;
+@property (nonatomic, readwrite) IBInspectable UIColor *inverseControlTextColor;
+@property (nonatomic, readwrite) IBInspectable UIColor *inverseControlBorderColor;
+@property (nonatomic, readwrite) IBInspectable UIColor *inverseControlBorderGlossColor;
+@property (nonatomic, readwrite) IBInspectable UIColor *inverseControlHighlightedColor;
+@property (nonatomic, readwrite) IBInspectable UIColor *inverseControlHighlightedShadowColor;
+@property (nonatomic, readwrite) IBInspectable UIColor *inverseControlSelectedColor;
+@property (nonatomic, readwrite) IBInspectable UIColor *inverseControlUnselectedColor;
 
 @property (nonatomic, strong, readwrite) IBInspectable UIFont *uiFont;
 @property (nonatomic, strong, readwrite) IBInspectable UIFont *uiBoldFont;
 @end
 
 @implementation BRMenuUIStyle {
+	UIColor *headingColor;
+	
+	UIColor *inverseHeadingColor;
+	
 	UIColor *controlTextColor;
 	UIColor *controlBorderColor;
 	UIColor *controlBorderGlossColor;
@@ -33,22 +47,28 @@ static BRMenuUIStyle *DefaultStyle;
 	UIColor *controlHighlightedShadowColor;
 	UIColor *controlSelectedColor;
 	UIColor *controlUnselectedColor;
-	
-	UIColor *headingColor;
-	
+
+	UIColor *inverseControlTextColor;
+	UIColor *inverseControlBorderColor;
+	UIColor *inverseControlBorderGlossColor;
+	UIColor *inverseControlHighlightedColor;
+	UIColor *inverseControlHighlightedShadowColor;
+	UIColor *inverseControlSelectedColor;
+	UIColor *inverseControlUnselectedColor;
+
 	UIFont *uiFont;
 	UIFont *uiBoldFont;
 }
 
-@synthesize controlTextColor;
-@synthesize controlBorderColor;
-@synthesize controlBorderGlossColor;
-@synthesize controlHighlightedColor;
-@synthesize controlHighlightedShadowColor;
-@synthesize controlSelectedColor;
-@synthesize controlUnselectedColor;
+@synthesize controlTextColor, inverseControlTextColor;
+@synthesize controlBorderColor, inverseControlBorderColor;
+@synthesize controlBorderGlossColor, inverseControlBorderGlossColor;
+@synthesize controlHighlightedColor, inverseControlHighlightedColor;
+@synthesize controlHighlightedShadowColor, inverseControlHighlightedShadowColor;
+@synthesize controlSelectedColor, inverseControlSelectedColor;
+@synthesize controlUnselectedColor, inverseControlUnselectedColor;
 
-@synthesize headingColor;
+@synthesize headingColor, inverseHeadingColor;
 
 @synthesize uiFont;
 @synthesize uiBoldFont;
@@ -80,6 +100,8 @@ static BRMenuUIStyle *DefaultStyle;
 			// TODO: load from environment resource
 			headingColor = [BRMenuUIStyle colorWithRGBHexInteger:0xcb333b];
 			
+			inverseHeadingColor = [UIColor whiteColor];
+			
 			controlTextColor = [BRMenuUIStyle colorWithRGBHexInteger:0x555555];
 			controlBorderColor = [BRMenuUIStyle colorWithRGBHexInteger:0xCACACA];
 			controlBorderGlossColor = [[UIColor whiteColor] colorWithAlphaComponent:0.66];
@@ -88,10 +110,20 @@ static BRMenuUIStyle *DefaultStyle;
 			controlSelectedColor = headingColor;
 			controlUnselectedColor = [UIColor darkGrayColor];
 			
+			inverseControlTextColor = [UIColor whiteColor];
+			inverseControlBorderColor = [BRMenuUIStyle colorWithRGBHexInteger:0x9c1f26];
+			inverseControlBorderGlossColor = [[UIColor whiteColor] colorWithAlphaComponent:0.4];
+			inverseControlHighlightedColor = [[UIColor blackColor] colorWithAlphaComponent:0.1];
+			inverseControlHighlightedShadowColor = controlHighlightedShadowColor;
+			inverseControlSelectedColor = controlSelectedColor;
+			inverseControlUnselectedColor = [BRMenuUIStyle colorWithRGBHexInteger:0x800000];
+			
 			uiFont = [UIFont fontWithName:@"AvenirNext-Medium" size:12];
 			uiBoldFont = [UIFont fontWithName:@"AvenirNext-DemiBold" size:12];
 		} else {
 			headingColor = other.headingColor;
+			
+			inverseHeadingColor = other.inverseHeadingColor;
 			
 			controlTextColor = other.controlTextColor;
 			controlBorderColor = other.controlBorderColor;
@@ -101,6 +133,14 @@ static BRMenuUIStyle *DefaultStyle;
 			controlSelectedColor = other.controlSelectedColor;
 			controlUnselectedColor = other.controlUnselectedColor;
 
+			inverseControlTextColor = other.inverseControlTextColor;
+			inverseControlBorderColor = other.inverseControlBorderColor;
+			inverseControlBorderGlossColor = other.inverseControlBorderGlossColor;
+			inverseControlHighlightedColor = other.inverseControlHighlightedColor;
+			inverseControlHighlightedShadowColor = other.inverseControlHighlightedShadowColor;
+			inverseControlSelectedColor = other.inverseControlSelectedColor;
+			inverseControlUnselectedColor = other.inverseControlUnselectedColor;
+			
 			uiFont = other.uiFont;
 			uiBoldFont = other.uiBoldFont;
 		}
@@ -133,6 +173,8 @@ static BRMenuUIStyle *DefaultStyle;
 	}
 	headingColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(headingColor))];
 
+	inverseHeadingColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(inverseHeadingColor))];
+
 	controlTextColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(controlTextColor))];
 	controlBorderColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(controlBorderColor))];
 	controlBorderGlossColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(controlBorderGlossColor))];
@@ -141,6 +183,14 @@ static BRMenuUIStyle *DefaultStyle;
 	controlSelectedColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(controlSelectedColor))];
 	controlUnselectedColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(controlUnselectedColor))];
 
+	inverseControlTextColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(inverseControlTextColor))];
+	inverseControlBorderColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(inverseControlBorderColor))];
+	inverseControlBorderGlossColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(inverseControlBorderGlossColor))];
+	inverseControlHighlightedColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(inverseControlHighlightedColor))];
+	inverseControlHighlightedShadowColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(inverseControlHighlightedShadowColor))];
+	inverseControlSelectedColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(inverseControlSelectedColor))];
+	inverseControlUnselectedColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(inverseControlUnselectedColor))];
+	
 	uiFont = [UIFont fontWithName:[decoder decodeObjectOfClass:[NSString class] forKey:@"uiFontName"] size:[decoder decodeFloatForKey:@"uiFontSize"]];
 	uiBoldFont = [UIFont fontWithName:[decoder decodeObjectOfClass:[NSString class] forKey:@"uiBoldFontName"] size:[decoder decodeFloatForKey:@"uiBoldFontSize"]];
 	
@@ -149,6 +199,7 @@ static BRMenuUIStyle *DefaultStyle;
 
 - (void)encodeWithCoder:(NSCoder *)coder {
 	[coder encodeObject:headingColor forKey:NSStringFromSelector(@selector(headingColor))];
+	[coder encodeObject:inverseHeadingColor forKey:NSStringFromSelector(@selector(inverseHeadingColor))];
 	
 	[coder encodeObject:controlTextColor forKey:NSStringFromSelector(@selector(controlTextColor))];
 	[coder encodeObject:controlBorderColor forKey:NSStringFromSelector(@selector(controlBorderColor))];
@@ -157,6 +208,14 @@ static BRMenuUIStyle *DefaultStyle;
 	[coder encodeObject:controlHighlightedShadowColor forKey:NSStringFromSelector(@selector(controlHighlightedShadowColor))];
 	[coder encodeObject:controlSelectedColor forKey:NSStringFromSelector(@selector(controlSelectedColor))];
 	[coder encodeObject:controlUnselectedColor forKey:NSStringFromSelector(@selector(controlUnselectedColor))];
+	
+	[coder encodeObject:inverseControlTextColor forKey:NSStringFromSelector(@selector(inverseControlTextColor))];
+	[coder encodeObject:inverseControlBorderColor forKey:NSStringFromSelector(@selector(inverseControlBorderColor))];
+	[coder encodeObject:inverseControlBorderGlossColor forKey:NSStringFromSelector(@selector(inverseControlBorderGlossColor))];
+	[coder encodeObject:inverseControlHighlightedColor forKey:NSStringFromSelector(@selector(inverseControlHighlightedColor))];
+	[coder encodeObject:inverseControlHighlightedShadowColor forKey:NSStringFromSelector(@selector(inverseControlHighlightedShadowColor))];
+	[coder encodeObject:inverseControlSelectedColor forKey:NSStringFromSelector(@selector(inverseControlSelectedColor))];
+	[coder encodeObject:inverseControlUnselectedColor forKey:NSStringFromSelector(@selector(inverseControlUnselectedColor))];
 	
 	[coder encodeObject:uiFont.fontName forKey:@"uiFontName"];
 	[coder encodeFloat:uiFont.pointSize forKey:@"uiFontSize"];
@@ -174,6 +233,10 @@ static BRMenuUIStyle *DefaultStyle;
 
 - (UIColor *)headingColor {
 	return (headingColor ? headingColor : [BRMenuUIStyle defaultStyle].headingColor);
+}
+
+- (UIColor *)inverseHeadingColor {
+	return (inverseHeadingColor ? inverseHeadingColor : [BRMenuUIStyle defaultStyle].inverseHeadingColor);
 }
 
 #pragma mark - Controls
@@ -206,6 +269,34 @@ static BRMenuUIStyle *DefaultStyle;
 	return (controlUnselectedColor ? controlUnselectedColor : [BRMenuUIStyle defaultStyle].controlUnselectedColor);
 }
 
+- (UIColor *)inverseControlTextColor {
+	return (inverseControlTextColor ? inverseControlTextColor : [BRMenuUIStyle defaultStyle].inverseControlTextColor);
+}
+
+- (UIColor *)inverseControlBorderColor {
+	return (inverseControlBorderColor ? inverseControlBorderColor : [BRMenuUIStyle defaultStyle].inverseControlBorderColor);
+}
+
+- (UIColor *)inverseControlBorderGlossColor {
+	return (inverseControlBorderGlossColor ? inverseControlBorderGlossColor : [BRMenuUIStyle defaultStyle].inverseControlBorderGlossColor);
+}
+
+- (UIColor *)inverseControlHighlightedColor {
+	return (inverseControlHighlightedColor ? inverseControlHighlightedColor : [BRMenuUIStyle defaultStyle].inverseControlHighlightedColor);
+}
+
+- (UIColor *)inverseControlHighlightedShadowColor {
+	return (inverseControlHighlightedShadowColor ? inverseControlHighlightedShadowColor : [BRMenuUIStyle defaultStyle].inverseControlHighlightedShadowColor);
+}
+
+- (UIColor *)inverseControlSelectedColor {
+	return (inverseControlSelectedColor ? inverseControlSelectedColor : [BRMenuUIStyle defaultStyle].inverseControlSelectedColor);
+}
+
+- (UIColor *)inverseControlUnselectedColor {
+	return (inverseControlUnselectedColor ? inverseControlUnselectedColor : [BRMenuUIStyle defaultStyle].inverseControlUnselectedColor);
+}
+
 #pragma mark - Fonts
 
 - (UIFont *)uiFont {
@@ -222,15 +313,15 @@ static BRMenuUIStyle *DefaultStyle;
 
 @implementation BRMenuMutableUIStyle
 
-@dynamic controlTextColor;
-@dynamic controlBorderColor;
-@dynamic controlBorderGlossColor;
-@dynamic controlHighlightedColor;
-@dynamic controlHighlightedShadowColor;
-@dynamic controlSelectedColor;
-@dynamic controlUnselectedColor;
+@dynamic headingColor, inverseHeadingColor;
 
-@dynamic headingColor;
+@dynamic controlTextColor, inverseControlTextColor;
+@dynamic controlBorderColor, inverseControlBorderColor;
+@dynamic controlBorderGlossColor, inverseControlBorderGlossColor;
+@dynamic controlHighlightedColor, inverseControlHighlightedColor;
+@dynamic controlHighlightedShadowColor, inverseControlHighlightedShadowColor;
+@dynamic controlSelectedColor, inverseControlSelectedColor;
+@dynamic controlUnselectedColor, inverseControlUnselectedColor;
 
 @dynamic uiFont;
 @dynamic uiBoldFont;
