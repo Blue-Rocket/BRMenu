@@ -33,6 +33,7 @@
 		C9067A8E1B5CC0A1005FF260 /* menumetadata.json in Resources */ = {isa = PBXBuildFile; fileRef = C9067A8D1B5CC0A1005FF260 /* menumetadata.json */; };
 		C92AEEF91B5F10630005AC79 /* BRMenuBarButtonItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = C92AEEF51B5F10630005AC79 /* BRMenuBarButtonItemView.m */; };
 		C92AEEFA1B5F10630005AC79 /* BRMenuBackBarButtonItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = C92AEEF71B5F10630005AC79 /* BRMenuBackBarButtonItemView.m */; };
+		C92AEEFE1B5F56D50005AC79 /* BRMenuFlipToggleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C92AEEFD1B5F56D50005AC79 /* BRMenuFlipToggleButton.m */; };
 		C98883601B58820D0049491C /* libMenu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C98883541B58820D0049491C /* libMenu.a */; };
 		C988839B1B5883A60049491C /* BRMenuOrderItemAttributesProxyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C98883991B5883A60049491C /* BRMenuOrderItemAttributesProxyTests.m */; };
 		C988839C1B5883A60049491C /* BRMenuOrderItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C988839A1B5883A60049491C /* BRMenuOrderItemTests.m */; };
@@ -118,6 +119,8 @@
 		C92AEEF61B5F10630005AC79 /* BRMenuBackBarButtonItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuBackBarButtonItemView.h; sourceTree = "<group>"; };
 		C92AEEF71B5F10630005AC79 /* BRMenuBackBarButtonItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuBackBarButtonItemView.m; sourceTree = "<group>"; };
 		C92AEEF81B5F10630005AC79 /* BRMenuBarButtonItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuBarButtonItemView.h; sourceTree = "<group>"; };
+		C92AEEFC1B5F56D50005AC79 /* BRMenuFlipToggleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuFlipToggleButton.h; sourceTree = "<group>"; };
+		C92AEEFD1B5F56D50005AC79 /* BRMenuFlipToggleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuFlipToggleButton.m; sourceTree = "<group>"; };
 		C98883541B58820D0049491C /* libMenu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMenu.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C988835F1B58820D0049491C /* MenuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MenuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C98883651B58820D0049491C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -464,6 +467,8 @@
 				C92AEEF51B5F10630005AC79 /* BRMenuBarButtonItemView.m */,
 				C92AEEF61B5F10630005AC79 /* BRMenuBackBarButtonItemView.h */,
 				C92AEEF71B5F10630005AC79 /* BRMenuBackBarButtonItemView.m */,
+				C92AEEFC1B5F56D50005AC79 /* BRMenuFlipToggleButton.h */,
+				C92AEEFD1B5F56D50005AC79 /* BRMenuFlipToggleButton.m */,
 				C9B812BF1B5DD5DB0014CBCB /* BRMenuPlusMinusButton.h */,
 				C9B812C01B5DD5DB0014CBCB /* BRMenuPlusMinusButton.m */,
 				C9B812BC1B5DD5800014CBCB /* BRMenuStepper.h */,
@@ -655,6 +660,7 @@
 				C9B812B91B5D7BA70014CBCB /* BRMenuOrderItemAttributesProxy.m in Sources */,
 				C9B812AD1B5D7BA70014CBCB /* BRMenu.m in Sources */,
 				C9B812B31B5D7BA70014CBCB /* BRMenuMappingPostProcessor.m in Sources */,
+				C92AEEFE1B5F56D50005AC79 /* BRMenuFlipToggleButton.m in Sources */,
 				C9B812B01B5D7BA70014CBCB /* BRMenuItemComponentGroup.m in Sources */,
 				C9B8128D1B5D7B5C0014CBCB /* BRMenuMappingRestKitPostProcessor.m in Sources */,
 				C9B812B41B5D7BA70014CBCB /* BRMenuMetadata.m in Sources */,

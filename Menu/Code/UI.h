@@ -8,6 +8,7 @@
 
 #import <BRMenu/UI/BRMenuBackBarButtonItemView.h>
 #import <BRMenu/UI/BRMenuBarButtonItemView.h>
+#import <BRMenu/UI/BRMenuFlipToggleButton.h>
 #import <BRMenu/UI/BRMenuPlusMinusButton.h>
 #import <BRMenu/UI/BRMenuStepper.h>
 #import <BRMenu/UI/BRMenuUIStyle.h>

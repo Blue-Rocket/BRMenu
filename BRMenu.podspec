@@ -46,6 +46,7 @@ Pod::Spec.new do |s|
   	sp.header_dir = 'UI'
     sp.dependency 'BRMenu/Core'
     sp.dependency 'BRPDFImage', '~> 1.0'
+    sp.resource_bundle = { 'BRMenuUI' => 'Menu/Resources/UI/**' }
   end
   
 end
