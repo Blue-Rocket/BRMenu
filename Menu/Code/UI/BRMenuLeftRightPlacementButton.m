@@ -19,11 +19,13 @@
 	UIColor *fillColor;
 	CGFloat diameter;
 	CGFloat cornerRadius;
+	CGFloat aspectRatio;
 }
 
 @synthesize uiStyle;
 @synthesize placement, diameter, cornerRadius;
 @synthesize fillColor;
+@synthesize aspectRatio;
 
 - (id)initWithFrame:(CGRect)frame {
     if ( (self = [super initWithFrame:frame]) ) {
@@ -43,6 +45,7 @@
 	placement = BRMenuOrderItemComponentPlacementWhole;
 	diameter = 18.0f;
 	cornerRadius = 8.0f;
+	aspectRatio = 20.0f / 9.0f; // rounded rect default for historical reasons
 	self.animationDuration = 0.2f;
 
 	shape = [self placementLayer];
@@ -94,6 +97,14 @@
 - (void)setCornerRadius:(CGFloat)r {
 	if ( ABS(r - cornerRadius) > 0.1 ) {
 		cornerRadius = r;
+		[self setNeedsLayout];
+	}
+}
+
+- (void)setAspectRatio:(CGFloat)r {
+	if ( ABS(r - aspectRatio) > 0.1 ) {
+		aspectRatio = r;
+		[self invalidateIntrinsicContentSize];
 		[self setNeedsLayout];
 	}
 }
@@ -186,7 +197,7 @@
 }
 
 - (CGRect)iconFrameInRect:(CGRect)b {
-	return CGRectIntegral(CGRectMake(CGRectGetMidX(b) - diameter * (20.0 / 18.0), CGRectGetMidY(b) - diameter * 0.5, diameter * (20.0 / 9.0), diameter));
+	return CGRectIntegral(CGRectMake(CGRectGetMidX(b) - diameter * aspectRatio * 0.5, CGRectGetMidY(b) - diameter * 0.5, diameter * aspectRatio, diameter));
 }
 
 - (void)layoutSubviews {

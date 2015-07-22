@@ -21,6 +21,7 @@ IB_DESIGNABLE
 @property (nonatomic, strong) IBInspectable UIColor *fillColor;
 @property (nonatomic) IBInspectable CGFloat diameter;
 @property (nonatomic) IBInspectable CGFloat cornerRadius;
+@property (nonatomic) IBInspectable CGFloat aspectRatio;
 @property (nonatomic) IBInspectable NSTimeInterval animationDuration;
 
 - (void)animateToNextPlacementMode;
