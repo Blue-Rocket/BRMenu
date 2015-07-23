@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 
 /**
+ A notification sent when the default BRMenuUIStyle instance changes. The sender will be the 
+ new BRMenuUIStyle instance.
+ */
+extern NSString * const BRMenuNotificationUIStyleDidChange;
+
+/**
  Encapsulation of style attributes used for drawing BRMenu UI components.
  */
 IB_DESIGNABLE

@@ -8,6 +8,8 @@
 
 #import "BRMenuUIStyle.h"
 
+NSString * const BRMenuNotificationUIStyleDidChange = @"BRMenuUIStyleDidChange";
+
 static BRMenuUIStyle *DefaultStyle;
 
 @interface BRMenuUIStyle ()
@@ -102,9 +104,18 @@ static BRMenuUIStyle *DefaultStyle;
 }
 
 + (void)setDefaultStyle:(BRMenuUIStyle *)style {
-	if ( style ) {
-		DefaultStyle = [style copy];
+	if ( !style ) {
+		return;
 	}
+	if ( ![NSThread isMainThread] ) {
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[BRMenuUIStyle setDefaultStyle:style];
+		});
+		return;
+	}
+	BRMenuUIStyle *newStyle = [style copy];
+	DefaultStyle = newStyle;
+	[[NSNotificationCenter defaultCenter] postNotificationName:BRMenuNotificationUIStyleDidChange object:newStyle];
 }
 
 + (UIColor *)colorWithRGBHexInteger:(UInt32)integer {
