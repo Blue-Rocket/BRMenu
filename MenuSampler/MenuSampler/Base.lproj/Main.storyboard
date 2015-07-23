@@ -75,17 +75,9 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FqM-n3-OQ0" userLabel="Control Background">
                                 <rect key="frame" x="470" y="0.0" width="130" height="600"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ife-U0-zPj" userLabel="Back Inverse Background">
-                                        <rect key="frame" x="0.0" y="272" width="130" height="44"/>
-                                        <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </view>
-                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="DLX-wV-DLg"/>
-                                    <constraint firstAttribute="trailing" secondItem="ife-U0-zPj" secondAttribute="trailing" id="HL8-i0-bB5"/>
-                                    <constraint firstItem="ife-U0-zPj" firstAttribute="leading" secondItem="FqM-n3-OQ0" secondAttribute="leading" id="y4P-hS-xwe"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gbi-AS-Ew0" customClass="BRMenuStepper">
@@ -123,7 +115,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SIP-ue-8j4" customClass="BRMenuPlusMinusButton">
-                                <rect key="frame" x="540" y="176" width="44" height="44"/>
+                                <rect key="frame" x="539" y="176" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="9wg-79-ztR"/>
                                     <constraint firstAttribute="height" constant="44" id="CQ8-qW-gw8"/>
@@ -133,7 +125,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="azV-vo-qo5" customClass="BRMenuPlusMinusButton">
-                                <rect key="frame" x="488" y="176" width="44" height="44"/>
+                                <rect key="frame" x="487" y="176" width="44" height="44"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="plus" value="NO"/>
                                 </userDefinedRuntimeAttributes>
@@ -145,7 +137,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hYH-UH-4Zy" userLabel="Back" customClass="BRMenuBackBarButtonItemView">
-                                <rect key="frame" x="554" y="230" width="30" height="34"/>
+                                <rect key="frame" x="519" y="230" width="30" height="34"/>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -154,45 +146,81 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BackBarButton (inverse)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HsO-pj-MY8">
-                                <rect key="frame" x="294" y="285" width="166" height="18"/>
+                                <rect key="frame" x="294" y="291" width="166" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bSl-yj-8ak">
+                                <rect key="frame" x="470" y="278" width="130" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="QNM-3a-FwH"/>
+                                    <barButtonItem style="plain" id="Ug6-Af-Fl0">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sTD-u6-EYi" userLabel="Back Inverse" customClass="BRMenuBackBarButtonItemView">
+                                            <rect key="frame" x="16" y="5" width="80" height="34"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="title" value="Retreat"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="inverse" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </button>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="eQV-qC-tDt"/>
+                                </items>
+                            </toolbar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BarButton (inverse)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yVN-Fp-Zpe">
+                                <rect key="frame" x="329" y="389" width="131" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BarButton" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jVm-LL-5CO">
-                                <rect key="frame" x="390" y="332" width="70" height="18"/>
+                                <rect key="frame" x="390" y="340" width="70" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sTD-u6-EYi" userLabel="Back Inverse" customClass="BRMenuBackBarButtonItemView">
-                                <rect key="frame" x="554" y="277" width="30" height="34"/>
-                                <state key="normal">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Retreat!"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="inverse" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9BB-CG-kV8" userLabel="Bar" customClass="BRMenuBarButtonItemView">
-                                <rect key="frame" x="554" y="324" width="30" height="34"/>
+                                <rect key="frame" x="520" y="332" width="30" height="34"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Don't Laugh"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Laugh"/>
                                 </userDefinedRuntimeAttributes>
                             </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEJ-KV-aQa">
+                                <rect key="frame" x="470" y="376" width="130" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="hzh-dK-gj6"/>
+                                    <barButtonItem style="plain" id="BKa-Vv-ZSU">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="A6N-1g-rp9" userLabel="Back Inverse" customClass="BRMenuBarButtonItemView">
+                                            <rect key="frame" x="16" y="5" width="80" height="34"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="title" value="Don't Laugh"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="inverse" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </button>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="EX2-6A-PdM"/>
+                                </items>
+                            </toolbar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BarButton with badge" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mKm-KP-nk4">
-                                <rect key="frame" x="310" y="374" width="150" height="18"/>
+                                <rect key="frame" x="310" y="438" width="150" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uzB-bL-Brp" userLabel="Bar with Badge" customClass="BRMenuBarButtonItemView">
-                                <rect key="frame" x="554" y="366" width="30" height="34"/>
+                                <rect key="frame" x="520" y="430" width="30" height="34"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -207,18 +235,23 @@
                         <constraints>
                             <constraint firstItem="bEI-tD-NeA" firstAttribute="centerY" secondItem="hYH-UH-4Zy" secondAttribute="centerY" constant="-0.5" id="0Ev-KC-qmj"/>
                             <constraint firstItem="bOc-1Y-QnW" firstAttribute="height" secondItem="gbi-AS-Ew0" secondAttribute="height" id="18U-Ad-Xrr"/>
+                            <constraint firstItem="hEJ-KV-aQa" firstAttribute="leading" secondItem="FqM-n3-OQ0" secondAttribute="leading" id="1Rb-BJ-Fgx"/>
                             <constraint firstItem="bOc-1Y-QnW" firstAttribute="top" secondItem="gbi-AS-Ew0" secondAttribute="bottom" constant="8" symbolic="YES" id="2z8-2e-oE4"/>
-                            <constraint firstItem="HsO-pj-MY8" firstAttribute="centerY" secondItem="sTD-u6-EYi" secondAttribute="centerY" id="At4-Sl-tNO"/>
+                            <constraint firstItem="uzB-bL-Brp" firstAttribute="top" secondItem="hEJ-KV-aQa" secondAttribute="bottom" constant="10" id="3fT-Pj-yCc"/>
+                            <constraint firstItem="uzB-bL-Brp" firstAttribute="centerX" secondItem="FqM-n3-OQ0" secondAttribute="centerX" id="9s9-TZ-gho"/>
+                            <constraint firstItem="FqM-n3-OQ0" firstAttribute="trailing" secondItem="bSl-yj-8ak" secondAttribute="trailing" id="B4F-9U-SB8"/>
                             <constraint firstItem="bOc-1Y-QnW" firstAttribute="trailing" secondItem="gbi-AS-Ew0" secondAttribute="trailing" id="C8U-Xv-8B2"/>
                             <constraint firstItem="ifn-B5-rGB" firstAttribute="trailing" secondItem="fzC-xO-vgW" secondAttribute="trailing" id="E9f-LE-yec"/>
-                            <constraint firstItem="SIP-ue-8j4" firstAttribute="trailing" secondItem="bOc-1Y-QnW" secondAttribute="trailing" id="F1r-Sc-qnY"/>
+                            <constraint firstItem="SIP-ue-8j4" firstAttribute="centerX" secondItem="bOc-1Y-QnW" secondAttribute="centerX" constant="27" id="F1r-Sc-qnY"/>
+                            <constraint firstItem="9BB-CG-kV8" firstAttribute="centerX" secondItem="bSl-yj-8ak" secondAttribute="centerX" id="FKO-iS-uFo"/>
                             <constraint firstItem="fzC-xO-vgW" firstAttribute="trailing" secondItem="TAT-8c-7dG" secondAttribute="trailing" id="Fi1-XH-jda"/>
                             <constraint firstItem="azV-vo-qo5" firstAttribute="width" secondItem="SIP-ue-8j4" secondAttribute="width" id="Fp1-1g-qlo"/>
                             <constraint firstItem="gbi-AS-Ew0" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="FqJ-dl-COv"/>
+                            <constraint firstItem="yVN-Fp-Zpe" firstAttribute="centerY" secondItem="hEJ-KV-aQa" secondAttribute="centerY" id="GfY-Ic-8yF"/>
                             <constraint firstItem="azV-vo-qo5" firstAttribute="height" secondItem="SIP-ue-8j4" secondAttribute="height" id="GlA-sf-hEo"/>
                             <constraint firstItem="azV-vo-qo5" firstAttribute="trailing" secondItem="SIP-ue-8j4" secondAttribute="trailing" id="Hda-L7-tfE"/>
+                            <constraint firstItem="hEJ-KV-aQa" firstAttribute="trailing" secondItem="FqM-n3-OQ0" secondAttribute="trailing" id="Hh3-4o-K36"/>
                             <constraint firstItem="azV-vo-qo5" firstAttribute="trailing" secondItem="hYH-UH-4Zy" secondAttribute="trailing" id="Hho-o7-xU9"/>
-                            <constraint firstItem="ife-U0-zPj" firstAttribute="bottom" secondItem="sTD-u6-EYi" secondAttribute="bottom" constant="5" id="ICX-Se-fsZ"/>
                             <constraint firstItem="jVm-LL-5CO" firstAttribute="trailing" secondItem="HsO-pj-MY8" secondAttribute="trailing" id="Nck-3R-1KQ"/>
                             <constraint firstItem="FqM-n3-OQ0" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="NsL-Hx-cLD"/>
                             <constraint firstItem="hYH-UH-4Zy" firstAttribute="top" secondItem="azV-vo-qo5" secondAttribute="bottom" constant="8" symbolic="YES" id="Oyo-ft-HDd"/>
@@ -226,27 +259,31 @@
                             <constraint firstItem="hYH-UH-4Zy" firstAttribute="top" secondItem="SIP-ue-8j4" secondAttribute="bottom" constant="10" id="S2c-NY-e7q"/>
                             <constraint firstItem="mKm-KP-nk4" firstAttribute="centerY" secondItem="uzB-bL-Brp" secondAttribute="centerY" id="SvS-gc-jdT"/>
                             <constraint firstItem="ifn-B5-rGB" firstAttribute="trailing" secondItem="bEI-tD-NeA" secondAttribute="trailing" id="VaY-cP-EAI"/>
-                            <constraint firstItem="sTD-u6-EYi" firstAttribute="trailing" secondItem="hYH-UH-4Zy" secondAttribute="trailing" id="W81-Mj-fqp"/>
                             <constraint firstItem="gbi-AS-Ew0" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="WMt-6w-uQa"/>
-                            <constraint firstItem="9BB-CG-kV8" firstAttribute="trailing" secondItem="sTD-u6-EYi" secondAttribute="trailing" id="Xjf-yB-6LK"/>
+                            <constraint firstItem="hEJ-KV-aQa" firstAttribute="centerX" secondItem="FqM-n3-OQ0" secondAttribute="centerX" id="YrU-Yv-PRS"/>
                             <constraint firstItem="bOc-1Y-QnW" firstAttribute="width" secondItem="gbi-AS-Ew0" secondAttribute="width" id="b1d-Zd-qLt"/>
-                            <constraint firstItem="sTD-u6-EYi" firstAttribute="top" secondItem="hYH-UH-4Zy" secondAttribute="bottom" constant="13" id="bTK-Dm-bqa"/>
                             <constraint firstItem="fzC-xO-vgW" firstAttribute="centerY" secondItem="bOc-1Y-QnW" secondAttribute="centerY" constant="-0.5" id="bwr-Bc-3q1"/>
+                            <constraint firstItem="hEJ-KV-aQa" firstAttribute="centerX" secondItem="FqM-n3-OQ0" secondAttribute="centerX" constant="65" id="cfx-gf-0Ld"/>
                             <constraint firstItem="TAT-8c-7dG" firstAttribute="centerY" secondItem="gbi-AS-Ew0" secondAttribute="centerY" constant="-0.5" id="dee-Mx-fya"/>
                             <constraint firstItem="SIP-ue-8j4" firstAttribute="leading" secondItem="azV-vo-qo5" secondAttribute="trailing" constant="8" symbolic="YES" id="dnP-wI-s0M"/>
-                            <constraint firstItem="SIP-ue-8j4" firstAttribute="trailing" secondItem="hYH-UH-4Zy" secondAttribute="trailing" id="eMF-Fl-Ytz"/>
+                            <constraint firstItem="bSl-yj-8ak" firstAttribute="top" secondItem="hYH-UH-4Zy" secondAttribute="bottom" constant="14" id="fVD-aj-BM8"/>
                             <constraint firstItem="SIP-ue-8j4" firstAttribute="centerY" secondItem="azV-vo-qo5" secondAttribute="centerY" id="hSx-mc-rRd"/>
-                            <constraint firstItem="uzB-bL-Brp" firstAttribute="top" secondItem="9BB-CG-kV8" secondAttribute="bottom" constant="8" symbolic="YES" id="ie4-qx-YGx"/>
-                            <constraint firstItem="9BB-CG-kV8" firstAttribute="trailing" secondItem="uzB-bL-Brp" secondAttribute="trailing" id="ir9-j5-7Yg"/>
+                            <constraint firstItem="uzB-bL-Brp" firstAttribute="top" secondItem="9BB-CG-kV8" secondAttribute="bottom" constant="55" id="ie4-qx-YGx"/>
+                            <constraint firstItem="9BB-CG-kV8" firstAttribute="centerX" secondItem="uzB-bL-Brp" secondAttribute="centerX" id="ir9-j5-7Yg"/>
                             <constraint firstAttribute="trailing" secondItem="FqM-n3-OQ0" secondAttribute="trailing" id="jdE-g6-Qse"/>
+                            <constraint firstItem="bOc-1Y-QnW" firstAttribute="centerX" secondItem="hYH-UH-4Zy" secondAttribute="centerX" id="lST-w2-uH5"/>
+                            <constraint firstItem="9BB-CG-kV8" firstAttribute="top" secondItem="bSl-yj-8ak" secondAttribute="bottom" constant="10" id="mi7-A0-pC2"/>
                             <constraint firstItem="SIP-ue-8j4" firstAttribute="top" secondItem="bOc-1Y-QnW" secondAttribute="bottom" constant="8" symbolic="YES" id="n5n-uF-esw"/>
+                            <constraint firstItem="HsO-pj-MY8" firstAttribute="centerY" secondItem="bSl-yj-8ak" secondAttribute="centerY" id="nfK-8o-Skd"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="FqM-n3-OQ0" secondAttribute="bottom" id="or8-rV-tWF"/>
                             <constraint firstItem="FqM-n3-OQ0" firstAttribute="leading" secondItem="TAT-8c-7dG" secondAttribute="trailing" constant="10" id="p29-rX-Rft"/>
-                            <constraint firstItem="ife-U0-zPj" firstAttribute="top" secondItem="sTD-u6-EYi" secondAttribute="top" constant="-5" id="qyp-A7-Tcy"/>
+                            <constraint firstItem="hEJ-KV-aQa" firstAttribute="top" secondItem="9BB-CG-kV8" secondAttribute="bottom" constant="10" id="qxc-8f-dnc"/>
                             <constraint firstItem="jVm-LL-5CO" firstAttribute="trailing" secondItem="mKm-KP-nk4" secondAttribute="trailing" id="sdJ-eu-4o2"/>
+                            <constraint firstItem="FqM-n3-OQ0" firstAttribute="leading" secondItem="bSl-yj-8ak" secondAttribute="leading" id="tGj-QP-Ixb"/>
                             <constraint firstItem="azV-vo-qo5" firstAttribute="top" secondItem="SIP-ue-8j4" secondAttribute="bottom" constant="8" symbolic="YES" id="tZ2-F9-Tf6"/>
-                            <constraint firstItem="9BB-CG-kV8" firstAttribute="top" secondItem="sTD-u6-EYi" secondAttribute="bottom" constant="13" id="uo1-G8-U24"/>
+                            <constraint firstItem="FqM-n3-OQ0" firstAttribute="leading" secondItem="yVN-Fp-Zpe" secondAttribute="trailing" constant="10" id="vXu-x0-Rry"/>
                             <constraint firstItem="ifn-B5-rGB" firstAttribute="centerY" secondItem="SIP-ue-8j4" secondAttribute="centerY" constant="-0.5" id="w2r-DX-php"/>
+                            <constraint firstItem="hEJ-KV-aQa" firstAttribute="centerX" secondItem="FqM-n3-OQ0" secondAttribute="centerX" id="yr3-yL-czy"/>
                             <constraint firstItem="HsO-pj-MY8" firstAttribute="trailing" secondItem="bEI-tD-NeA" secondAttribute="trailing" id="ysT-v6-ehB"/>
                         </constraints>
                         <variation key="default">
@@ -254,7 +291,12 @@
                                 <exclude reference="Hda-L7-tfE"/>
                                 <exclude reference="Hho-o7-xU9"/>
                                 <exclude reference="tZ2-F9-Tf6"/>
+                                <exclude reference="ie4-qx-YGx"/>
                                 <exclude reference="Oyo-ft-HDd"/>
+                                <exclude reference="YrU-Yv-PRS"/>
+                                <exclude reference="cfx-gf-0Ld"/>
+                                <exclude reference="yr3-yL-czy"/>
+                                <exclude reference="ir9-j5-7Yg"/>
                             </mask>
                         </variation>
                     </view>

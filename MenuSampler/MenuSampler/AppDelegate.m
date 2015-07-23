@@ -26,6 +26,10 @@
 								  NSForegroundColorAttributeName: [UIColor whiteColor],
 								  NSFontAttributeName: [BRMenuUIStyle defaultStyle].titleFont,
 								  }];
+	
+	UIToolbar *toolbar = [UIToolbar appearance];
+	toolbar.tintColor = [BRMenuUIStyle defaultStyle].inverseAppPrimaryColor;
+	toolbar.barTintColor = [BRMenuUIStyle defaultStyle].appPrimaryColor;
 }
 
 - (void)refreshAppearance {
