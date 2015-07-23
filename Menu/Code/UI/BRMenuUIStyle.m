@@ -441,8 +441,8 @@ static BRMenuUIStyle *DefaultStyle;
 @dynamic controlSelectedColor, inverseControlSelectedColor;
 @dynamic controlDisabledColor, inverseControlDisabledColor;
 
-@dynamic uiFont;
-@dynamic uiBoldFont;
+@dynamic uiFont, uiBoldFont;
+@dynamic bodyFont, titleFont;
 
 - (id)copyWithZone:(NSZone *)zone {
 	return [[BRMenuUIStyle allocWithZone:zone] initWithUIStyle:self];
