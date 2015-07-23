@@ -191,7 +191,7 @@ static const CGFloat kMinWidth = 48.0f;
 	UIColor* strokeColor = (inverse ? [self.uiStyle inverseControlBorderColor] : [self.uiStyle controlBorderColor]);
 	UIColor* labelColor = (inverse ? [self.uiStyle inverseControlTextColor] : [self.uiStyle controlTextColor]);
 	UIColor* separatorColor = (inverse? strokeColor  : [strokeColor colorWithAlphaComponent:0.5]);
-	UIColor* andPizzaRed = (inverse ? [self.uiStyle inverseHeadingColor] :  [self.uiStyle headingColor]);
+	UIColor* badgeColor = (inverse ? [self.uiStyle inverseAppPrimaryColor] :  [self.uiStyle appPrimaryColor]);
 	UIColor* insetShadowColor = (inverse ? [self.uiStyle inverseControlHighlightedShadowColor] : [self.uiStyle controlHighlightedShadowColor]);
 	UIColor* highlightedFill = (inverse ? [self.uiStyle inverseControlHighlightedColor] : [self.uiStyle controlHighlightedColor]);
 	
@@ -255,7 +255,7 @@ static const CGFloat kMinWidth = 48.0f;
 	[self drawLabel:buttonLabelContent inFrame:buttonLabelRect withFont:buttonLabelFont color:labelColor];
 	
 	//// Badge Label Drawing
-	[self drawLabel:badgeLabelContent inFrame:badgeFrame withFont:badgeLabelFont color:andPizzaRed];
+	[self drawLabel:badgeLabelContent inFrame:badgeFrame withFont:badgeLabelFont color:badgeColor];
 	
 	//// Separator
 	[self drawSeparatorWithBadgeFrame:badgeFrame color:separatorColor];
@@ -325,7 +325,7 @@ static const CGFloat kMinWidth = 48.0f;
 	UIColor* strokeColor = (inverse ? [self.uiStyle inverseControlBorderColor] : [self.uiStyle controlBorderColor]);
 	UIColor* labelColor = (inverse ? [self.uiStyle inverseControlTextColor] : [self.uiStyle controlTextColor]);
 	UIColor* separatorColor = [strokeColor colorWithAlphaComponent: 0.8];
-	UIColor* andPizzaRed = (inverse ? [self.uiStyle inverseHeadingColor] :  [self.uiStyle headingColor]);
+	UIColor* badgeColor = (inverse ? [self.uiStyle inverseAppPrimaryColor] :  [self.uiStyle appPrimaryColor]);
 	
 	//// Shadow Declarations
 	UIColor* shadow = (inverse ? [self.uiStyle inverseControlBorderGlossColor] : [self.uiStyle controlBorderGlossColor]);
@@ -362,7 +362,7 @@ static const CGFloat kMinWidth = 48.0f;
 	[self drawLabel:buttonLabelContent inFrame:buttonLabelRect withFont:buttonLabelFont color:labelColor];
 	
 	//// Badge Label Drawing
-	[self drawLabel:badgeLabelContent inFrame:badgeFrame withFont:badgeLabelFont color:andPizzaRed];
+	[self drawLabel:badgeLabelContent inFrame:badgeFrame withFont:badgeLabelFont color:badgeColor];
 	
 	//// Separator
 	[self drawSeparatorWithBadgeFrame:badgeFrame color:separatorColor];

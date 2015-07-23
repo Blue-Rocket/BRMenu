@@ -11,9 +11,9 @@
 static BRMenuUIStyle *DefaultStyle;
 
 @interface BRMenuUIStyle ()
-@property (nonatomic, readwrite) IBInspectable UIColor *headingColor;
+@property (nonatomic, readwrite) IBInspectable UIColor *appPrimaryColor;
 
-@property (nonatomic, readwrite) IBInspectable UIColor *inverseHeadingColor;
+@property (nonatomic, readwrite) IBInspectable UIColor *inverseAppPrimaryColor;
 
 @property (nonatomic, readwrite) IBInspectable UIColor *controlTextColor;
 @property (nonatomic, readwrite) IBInspectable UIColor *controlBorderColor;
@@ -36,9 +36,9 @@ static BRMenuUIStyle *DefaultStyle;
 @end
 
 @implementation BRMenuUIStyle {
-	UIColor *headingColor;
+	UIColor *appPrimaryColor;
 	
-	UIColor *inverseHeadingColor;
+	UIColor *inverseAppPrimaryColor;
 	
 	UIColor *controlTextColor;
 	UIColor *controlBorderColor;
@@ -68,7 +68,7 @@ static BRMenuUIStyle *DefaultStyle;
 @synthesize controlSelectedColor, inverseControlSelectedColor;
 @synthesize controlUnselectedColor, inverseControlUnselectedColor;
 
-@synthesize headingColor, inverseHeadingColor;
+@synthesize appPrimaryColor, inverseAppPrimaryColor;
 
 @synthesize uiFont;
 @synthesize uiBoldFont;
@@ -136,16 +136,16 @@ static BRMenuUIStyle *DefaultStyle;
 		if ( other == nil ) {
 			// apply defaults
 			// TODO: load from environment resource
-			headingColor = [BRMenuUIStyle colorWithRGBHexInteger:0xcb333b];
+			appPrimaryColor = [BRMenuUIStyle colorWithRGBHexInteger:0xcb333b];
 			
-			inverseHeadingColor = [UIColor whiteColor];
+			inverseAppPrimaryColor = [UIColor whiteColor];
 			
 			controlTextColor = [BRMenuUIStyle colorWithRGBHexInteger:0x555555];
 			controlBorderColor = [BRMenuUIStyle colorWithRGBHexInteger:0xCACACA];
 			controlBorderGlossColor = [[UIColor whiteColor] colorWithAlphaComponent:0.66];
 			controlHighlightedColor = [UIColor colorWithRed: 0.833 green: 0.833 blue: 0.833 alpha: 0.5];
 			controlHighlightedShadowColor = [controlTextColor colorWithAlphaComponent: 0.5];
-			controlSelectedColor = headingColor;
+			controlSelectedColor = appPrimaryColor;
 			controlUnselectedColor = [UIColor darkGrayColor];
 			
 			inverseControlTextColor = [UIColor whiteColor];
@@ -159,9 +159,9 @@ static BRMenuUIStyle *DefaultStyle;
 			uiFont = [UIFont fontWithName:@"AvenirNext-Medium" size:12];
 			uiBoldFont = [UIFont fontWithName:@"AvenirNext-DemiBold" size:12];
 		} else {
-			headingColor = other.headingColor;
+			appPrimaryColor = other.appPrimaryColor;
 			
-			inverseHeadingColor = other.inverseHeadingColor;
+			inverseAppPrimaryColor = other.inverseAppPrimaryColor;
 			
 			controlTextColor = other.controlTextColor;
 			controlBorderColor = other.controlBorderColor;
@@ -209,9 +209,9 @@ static BRMenuUIStyle *DefaultStyle;
 	if ( !self ) {
 		return nil;
 	}
-	headingColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(headingColor))];
+	appPrimaryColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(appPrimaryColor))];
 
-	inverseHeadingColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(inverseHeadingColor))];
+	inverseAppPrimaryColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(inverseAppPrimaryColor))];
 
 	controlTextColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(controlTextColor))];
 	controlBorderColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(controlBorderColor))];
@@ -236,8 +236,8 @@ static BRMenuUIStyle *DefaultStyle;
 }
 
 - (void)encodeWithCoder:(NSCoder *)coder {
-	[coder encodeObject:headingColor forKey:NSStringFromSelector(@selector(headingColor))];
-	[coder encodeObject:inverseHeadingColor forKey:NSStringFromSelector(@selector(inverseHeadingColor))];
+	[coder encodeObject:appPrimaryColor forKey:NSStringFromSelector(@selector(appPrimaryColor))];
+	[coder encodeObject:inverseAppPrimaryColor forKey:NSStringFromSelector(@selector(inverseAppPrimaryColor))];
 	
 	[coder encodeObject:controlTextColor forKey:NSStringFromSelector(@selector(controlTextColor))];
 	[coder encodeObject:controlBorderColor forKey:NSStringFromSelector(@selector(controlBorderColor))];
@@ -269,12 +269,12 @@ static BRMenuUIStyle *DefaultStyle;
 
 #pragma mark - Structural
 
-- (UIColor *)headingColor {
-	return (headingColor ? headingColor : [BRMenuUIStyle defaultStyle].headingColor);
+- (UIColor *)appPrimaryColor {
+	return (appPrimaryColor ? appPrimaryColor : [BRMenuUIStyle defaultStyle].appPrimaryColor);
 }
 
-- (UIColor *)inverseHeadingColor {
-	return (inverseHeadingColor ? inverseHeadingColor : [BRMenuUIStyle defaultStyle].inverseHeadingColor);
+- (UIColor *)inverseAppPrimaryColor {
+	return (inverseAppPrimaryColor ? inverseAppPrimaryColor : [BRMenuUIStyle defaultStyle].inverseAppPrimaryColor);
 }
 
 #pragma mark - Controls
@@ -351,7 +351,7 @@ static BRMenuUIStyle *DefaultStyle;
 
 @implementation BRMenuMutableUIStyle
 
-@dynamic headingColor, inverseHeadingColor;
+@dynamic appPrimaryColor, inverseAppPrimaryColor;
 
 @dynamic controlTextColor, inverseControlTextColor;
 @dynamic controlBorderColor, inverseControlBorderColor;

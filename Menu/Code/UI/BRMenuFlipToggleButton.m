@@ -67,7 +67,7 @@ static NSMutableDictionary *IconCache;
 - (NSString *)cacheKeyForIconNamed:(NSString *)iconName {
 	if ( [[iconName lowercaseString] hasSuffix:@".pdf"] ) {
 		// key components are: image name, render size, and tint color
-		return [NSString stringWithFormat:@"%@-%@-%x", iconName, NSStringFromCGSize(iconSize), (unsigned int)[BRMenuUIStyle rgbaHexIntegerForColor:[self.uiStyle headingColor]]];
+		return [NSString stringWithFormat:@"%@-%@-%x", iconName, NSStringFromCGSize(iconSize), (unsigned int)[BRMenuUIStyle rgbaHexIntegerForColor:[self.uiStyle appPrimaryColor]]];
 	}
 	return [NSString stringWithFormat:@"%@-%@", iconName, NSStringFromCGSize(iconSize)];
 }
@@ -106,7 +106,7 @@ static NSMutableDictionary *IconCache;
 											  pageNumber:1
 											  renderSize:iconSize
 										 backgroundColor:nil
-											   tintColor:self.uiStyle.headingColor
+											   tintColor:self.uiStyle.appPrimaryColor
 										   tintBlendMode:kCGBlendModeSourceIn];
 		} else {
 			image = [[UIImage alloc] initWithContentsOfFile:[url path]];
@@ -140,7 +140,7 @@ static NSMutableDictionary *IconCache;
 
 - (void)setUiStyle:(BRMenuUIStyle *)style {
 	if ( style != uiStyle ) {
-		BOOL tintChanged = ([style.headingColor isEqual:uiStyle.headingColor] == NO);
+		BOOL tintChanged = ([style.appPrimaryColor isEqual:uiStyle.appPrimaryColor] == NO);
 		uiStyle = style;
 		if ( tintChanged ) {
 			[self setNeedsDisplay];

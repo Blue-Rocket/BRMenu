@@ -77,9 +77,9 @@ IB_DESIGNABLE
 /// @name Structural color styles
 ///-------------------------------
 
-@property (nonatomic, readonly) UIColor *headingColor;
+@property (nonatomic, readonly) UIColor *appPrimaryColor;
 
-@property (nonatomic, readonly) UIColor *inverseHeadingColor;
+@property (nonatomic, readonly) UIColor *inverseAppPrimaryColor;
 
 ///-------------------------------
 /// @name Control color styles
@@ -116,9 +116,9 @@ IB_DESIGNABLE
 /// @name Structural color styles
 ///-------------------------------
 
-@property (nonatomic, readwrite) UIColor *headingColor;
+@property (nonatomic, readwrite) UIColor *appPrimaryColor;
 
-@property (nonatomic, readwrite) UIColor *inverseHeadingColor;
+@property (nonatomic, readwrite) UIColor *inverseAppPrimaryColor;
 
 ///-------------------------------
 /// @name Control color styles

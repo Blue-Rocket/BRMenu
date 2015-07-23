@@ -117,7 +117,7 @@
 }
 
 - (UIColor *)fillColor {
-	return (fillColor ? fillColor : self.uiStyle.headingColor);
+	return (fillColor ? fillColor : self.uiStyle.appPrimaryColor);
 }
 
 - (void)setPlacement:(BRMenuOrderItemComponentPlacement)value {

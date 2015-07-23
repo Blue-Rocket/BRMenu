@@ -81,7 +81,7 @@ static const CGFloat kBadgeWidth = 28.0;
 - (void)updateStyle {
 	badgeLabel.font = [self.uiStyle uiBoldFont] ;
 	badgeLabel.font = [badgeLabel.font fontWithSize:badgeLabel.font.pointSize + 2.0];
-	badgeLabel.textColor = [self.uiStyle controlBorderColor];
+	badgeLabel.textColor = (self.value > 0 ? [self.uiStyle appPrimaryColor] : [self.uiStyle controlBorderColor]);
 	[self setNeedsLayout];
 	[self setNeedsDisplay];
 }
@@ -126,7 +126,7 @@ static const CGFloat kBadgeWidth = 28.0;
 	_value = newValue;
 	badgeLabel.text = [NSString stringWithFormat:@"%ld", (long)_value];
 	if ( old != newValue ) {
-		badgeLabel.textColor = (newValue > 0 ? [self.uiStyle headingColor] : [self.uiStyle controlBorderColor]);
+		badgeLabel.textColor = (newValue > 0 ? [self.uiStyle appPrimaryColor] : [self.uiStyle controlBorderColor]);
 		[self sendActionsForControlEvents:UIControlEventValueChanged];
 		
 		// enable the opposite button if we moved off the edge cases
