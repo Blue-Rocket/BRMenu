@@ -75,9 +75,15 @@ static BRMenuUIStyle *DefaultStyle;
 
 + (instancetype)defaultStyle {
 	if ( !DefaultStyle ) {
-		DefaultStyle = [[BRMenuUIStyle alloc] initWithUIStyle:nil];
+		[self setDefaultStyle:[[BRMenuUIStyle alloc] initWithUIStyle:nil]];
 	}
 	return DefaultStyle;
+}
+
++ (void)setDefaultStyle:(BRMenuUIStyle *)style {
+	if ( style ) {
+		DefaultStyle = [style copy];
+	}
 }
 
 + (UIColor *)colorWithRGBHexInteger:(UInt32)integer {
@@ -183,7 +189,7 @@ static BRMenuUIStyle *DefaultStyle;
 #pragma mark - NSCopying
 
 - (id)copyWithZone:(NSZone *)zone {
-	return [[BRMenuUIStyle allocWithZone:zone] initWithUIStyle:self];
+	return self;
 }
 
 #pragma mark - NSMutableCopying
@@ -357,5 +363,9 @@ static BRMenuUIStyle *DefaultStyle;
 
 @dynamic uiFont;
 @dynamic uiBoldFont;
+
+- (id)copyWithZone:(NSZone *)zone {
+	return [[BRMenuUIStyle allocWithZone:zone] initWithUIStyle:self];
+}
 
 @end

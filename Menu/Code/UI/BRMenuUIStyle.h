@@ -62,6 +62,13 @@ IB_DESIGNABLE
 + (instancetype)defaultStyle;
 
 /**
+ Set the global shared style instance.
+ 
+ @param style The new style to set.
+ */
++ (void)setDefaultStyle:(BRMenuUIStyle *)style;
+
+/**
  Test if this style represents the default style.
  */
 @property (nonatomic, readonly, getter=isDefaultStyle) BOOL defaultStyle;
