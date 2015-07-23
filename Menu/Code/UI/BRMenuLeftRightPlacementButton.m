@@ -68,7 +68,7 @@
 	l.backgroundColor = [UIColor clearColor].CGColor;
 	l.bounds = CGRectMake(0, 0, self.diameter, self.diameter);
 	l.borderWidth = 0.0f;
-	l.borderColor = self.uiStyle.controlBorderColor.CGColor;
+	l.borderColor = self.uiStyle.controlDisabledColor.CGColor;
 	return l;
 }
 
@@ -78,7 +78,8 @@
 
 - (void)setUiStyle:(BRMenuUIStyle *)style {
 	if ( style != uiStyle ) {
-		BOOL changed = ([style.controlBorderColor isEqual:uiStyle.controlBorderColor] == NO);
+		BOOL changed = !([style.controlDisabledColor isEqual:uiStyle.controlDisabledColor]
+						 && [style.appPrimaryColor isEqual:uiStyle.appPrimaryColor]);
 		uiStyle = style;
 		if ( changed ) {
 			[self setNeedsLayout];
@@ -204,7 +205,7 @@
 	[super layoutSubviews];
 	const CGRect b = self.bounds;
 	const CGRect frame = [self iconFrameInRect:b];
-	CGColorRef color = (self.selected ? self.fillColor.CGColor : self.uiStyle.controlBorderColor.CGColor);
+	CGColorRef color = (self.selected ? self.fillColor.CGColor : self.uiStyle.controlDisabledColor.CGColor);
 	
 	[CATransaction begin];
 	[CATransaction setDisableActions:YES];
