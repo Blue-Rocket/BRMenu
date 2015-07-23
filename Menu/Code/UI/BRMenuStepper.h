@@ -8,11 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class BRMenuUIStyle;
+#import "BRMenuUIStyle.h"
 
-@interface BRMenuStepper : UIControl
+@interface BRMenuStepper : UIControl <BRMenuUIStylish>
 
-@property (nonatomic, strong) BRMenuUIStyle *uiStyle;
 @property (nonatomic) NSInteger value;
 @property (nonatomic) NSInteger minimumValue;
 @property (nonatomic) NSInteger maximumValue;

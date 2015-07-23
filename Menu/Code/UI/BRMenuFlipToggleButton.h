@@ -8,15 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@class BRMenuUIStyle;
+#import "BRMenuUIStyle.h"
 
 /**
  A button type control that flips between two images when tapped.
  */
 IB_DESIGNABLE
-@interface BRMenuFlipToggleButton : UIControl
-
-@property (nonatomic, strong) IBOutlet BRMenuUIStyle *uiStyle;
+@interface BRMenuFlipToggleButton : UIControl <BRMenuUIStylish>
 
 /** The name of the image resource to use for the front image. PDF images may be specified. */
 @property (nonatomic, copy) IBInspectable NSString *frontImageName;

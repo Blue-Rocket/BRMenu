@@ -188,3 +188,13 @@ IB_DESIGNABLE
 @property (nonatomic, readwrite) UIFont *titleFont;
 
 @end
+
+/**
+ A protocol for objects that support styling via BRMenuUIStylish to conform to.
+ */
+@protocol BRMenuUIStylish <NSObject>
+
+/** A BRMenuUIStyle object to use. If not configured, the global default style should be returned. */
+@property (nonatomic, strong) IBOutlet BRMenuUIStyle *uiStyle;
+
+@end

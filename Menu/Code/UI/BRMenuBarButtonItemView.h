@@ -8,12 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class BRMenuUIStyle;
+#import "BRMenuUIStyle.h"
 
 IB_DESIGNABLE
-@interface BRMenuBarButtonItemView : UIButton
-
-@property (nonatomic, strong) IBOutlet BRMenuUIStyle *uiStyle;
+@interface BRMenuBarButtonItemView : UIButton <BRMenuUIStylish>
 
 @property (nonatomic, copy) IBInspectable NSString *title;
 @property (nonatomic, copy) IBInspectable NSString *badgeText;

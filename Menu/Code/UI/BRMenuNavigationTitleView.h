@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class BRMenuUIStyle;
+#import "BRMenuUIStyle.h"
 
 /**
  A custom navigation bar title view that attempts to keep the title centered 
@@ -16,10 +16,7 @@
  right bar buttons items so that more of the title text appears.
  */
 IB_DESIGNABLE
-@interface BRMenuNavigationTitleView : UIView
-
-/** The custom style to apply for font and color. */
-@property (nonatomic, strong) IBOutlet BRMenuUIStyle *uiStyle;
+@interface BRMenuNavigationTitleView : UIView <BRMenuUIStylish>
 
 /** The title to display. */
 @property (nonatomic) IBInspectable NSString *title;
