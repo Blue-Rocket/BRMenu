@@ -157,7 +157,7 @@ static BRMenuUIStyle *DefaultStyle;
 		if ( other == nil ) {
 			// apply defaults
 			// TODO: load from environment resource
-			appPrimaryColor = [BRMenuUIStyle colorWithRGBHexInteger:0xcb333b];
+			appPrimaryColor = [BRMenuUIStyle colorWithRGBHexInteger:0x1247b8];
 			
 			inverseAppPrimaryColor = [UIColor whiteColor];
 			
@@ -176,7 +176,7 @@ static BRMenuUIStyle *DefaultStyle;
 			controlDisabledColor = controlBorderColor;
 			
 			inverseControlTextColor = [UIColor whiteColor];
-			inverseControlBorderColor = [BRMenuUIStyle colorWithRGBHexInteger:0x9c1f26];
+			inverseControlBorderColor = [BRMenuUIStyle colorWithRGBHexInteger:0x150064];
 			inverseControlBorderGlossColor = [[UIColor whiteColor] colorWithAlphaComponent:0.4];
 			inverseControlHighlightedColor = [[UIColor blackColor] colorWithAlphaComponent:0.1];
 			inverseControlHighlightedShadowColor = controlHighlightedShadowColor;
