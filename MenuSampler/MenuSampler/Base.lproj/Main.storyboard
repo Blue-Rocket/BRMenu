@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Global Style Controller-->
+        <!--Global Style Editor-->
         <scene sceneID="dM5-Wa-6lu">
             <objects>
                 <tableViewController id="RVU-ed-HTm" customClass="GlobalStyleController" sceneMemberID="viewController">
@@ -55,6 +55,7 @@
                             <outlet property="delegate" destination="RVU-ed-HTm" id="pug-yj-Usa"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Global Style Editor" id="u2f-Ay-0A1"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OBb-Gw-NlB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -551,7 +552,7 @@
         <!--Root Chooser-->
         <scene sceneID="prU-kr-5CE">
             <objects>
-                <tableViewController id="YbO-Bo-4wU" userLabel="Root Chooser" sceneMemberID="viewController">
+                <tableViewController id="YbO-Bo-4wU" userLabel="Root Chooser" customClass="RootChooserTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="kNN-o2-o8K">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -652,9 +653,15 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Edit Style"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="inverse" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="editGlobalStyle:" destination="YbO-Bo-4wU" eventType="touchUpInside" id="ABw-TH-W9d"/>
+                                </connections>
                             </view>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="RVU-ed-HTm" kind="show" identifier="EditGlobalStyle" id="pzv-h6-hyJ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fSn-rO-vew" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

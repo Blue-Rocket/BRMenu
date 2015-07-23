@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B85F6C35BE74BF9D0020A25 /* libPods-MenuSampler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CBDF4C2B6BD161A02D291AF /* libPods-MenuSampler.a */; };
+		C9819DBD1B619217008A1393 /* RootChooserTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9819DBC1B619217008A1393 /* RootChooserTableViewController.m */; };
 		C9C909451B60ACA800DDF191 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C909441B60ACA800DDF191 /* main.m */; };
 		C9C909481B60ACA800DDF191 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C909471B60ACA800DDF191 /* AppDelegate.m */; };
 		C9C9094E1B60ACA800DDF191 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9C9094C1B60ACA800DDF191 /* Main.storyboard */; };
@@ -39,6 +40,8 @@
 		162407008B8FC7A2CE15B5A8 /* Pods-MenuSampler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MenuSampler.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MenuSampler/Pods-MenuSampler.debug.xcconfig"; sourceTree = "<group>"; };
 		6CBDF4C2B6BD161A02D291AF /* libPods-MenuSampler.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MenuSampler.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9659BD2B592645E2DC860F3F /* Pods-MenuSampler-MenuSamplerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MenuSampler-MenuSamplerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MenuSampler-MenuSamplerTests/Pods-MenuSampler-MenuSamplerTests.release.xcconfig"; sourceTree = "<group>"; };
+		C9819DBB1B619217008A1393 /* RootChooserTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootChooserTableViewController.h; sourceTree = "<group>"; };
+		C9819DBC1B619217008A1393 /* RootChooserTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootChooserTableViewController.m; sourceTree = "<group>"; };
 		C9C9093F1B60ACA800DDF191 /* MenuSampler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MenuSampler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9C909431B60ACA800DDF191 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9C909441B60ACA800DDF191 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -130,6 +133,8 @@
 			children = (
 				C9C909461B60ACA800DDF191 /* AppDelegate.h */,
 				C9C909471B60ACA800DDF191 /* AppDelegate.m */,
+				C9819DBB1B619217008A1393 /* RootChooserTableViewController.h */,
+				C9819DBC1B619217008A1393 /* RootChooserTableViewController.m */,
 				C9C9094C1B60ACA800DDF191 /* Main.storyboard */,
 				C9C9097A1B60AEF000DDF191 /* Style Editor */,
 				C9C9097B1B60AF1C00DDF191 /* UI Components */,
@@ -364,6 +369,7 @@
 				C9C909771B60AEED00DDF191 /* ColorSwatchView.m in Sources */,
 				C9C909481B60ACA800DDF191 /* AppDelegate.m in Sources */,
 				C9C909751B60AEED00DDF191 /* ColorPickerViewController.m in Sources */,
+				C9819DBD1B619217008A1393 /* RootChooserTableViewController.m in Sources */,
 				C9C909451B60ACA800DDF191 /* main.m in Sources */,
 				C9C909781B60AEED00DDF191 /* GlobalStyleController.m in Sources */,
 				C9C909791B60AEED00DDF191 /* StyleColorTableViewCell.m in Sources */,

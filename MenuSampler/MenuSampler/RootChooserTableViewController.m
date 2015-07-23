@@ -1,0 +1,21 @@
+//
+//  RootChooserTableViewController.m
+//  MenuSampler
+//
+//  Created by Matt on 24/07/15.
+//  Copyright (c) 2015 Blue Rocket. Distributable under the terms of the Apache License, Version 2.0.
+//
+
+#import "RootChooserTableViewController.h"
+
+@interface RootChooserTableViewController ()
+
+@end
+
+@implementation RootChooserTableViewController
+
+- (IBAction)editGlobalStyle:(id)sender {
+	[self performSegueWithIdentifier:@"EditGlobalStyle" sender:sender];
+}
+
+@end

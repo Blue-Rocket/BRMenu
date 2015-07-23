@@ -14,7 +14,9 @@
 
 @end
 
-@implementation AppDelegate
+@implementation AppDelegate {
+	id styleChangeObserver;
+}
 
 - (void)setupAppearance {
 	UINavigationBar *bar = [UINavigationBar appearance];
@@ -26,8 +28,23 @@
 								  }];
 }
 
+- (void)refreshAppearance {
+	// reapply appearance styles
+	for ( UIWindow *window in [UIApplication sharedApplication].windows ) {
+		for ( UIView *view in window.subviews ) {
+			[view removeFromSuperview];
+			[window addSubview:view];
+		}
+	}
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	[self setupAppearance];
+	styleChangeObserver = [[NSNotificationCenter defaultCenter] addObserverForName:BRMenuNotificationUIStyleDidChange object:nil queue:nil usingBlock:^(NSNotification *note) {
+		[AppDelegate cancelPreviousPerformRequestsWithTarget:self selector:@selector(refreshAppearance) object:nil];
+		[self setupAppearance];
+		[self performSelector:@selector(refreshAppearance) withObject:nil afterDelay:1];
+	}];
 	return YES;
 }
 
