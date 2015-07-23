@@ -8,15 +8,21 @@
 
 #import "AppDelegate.h"
 
+#import <BRMenu/UI/BRMenuUIStyle.h>
+
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
 
+- (void)setupAppearance {
+	UINavigationBar *bar = [UINavigationBar appearance];
+	bar.barTintColor = [BRMenuUIStyle defaultStyle].appPrimaryColor;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-	// Override point for customization after application launch.
+	[self setupAppearance];
 	return YES;
 }
 
