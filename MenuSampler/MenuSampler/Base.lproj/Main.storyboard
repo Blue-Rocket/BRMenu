@@ -354,20 +354,59 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quantity (light/heavy)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WdH-TD-wLG">
+                                <rect key="frame" x="345" y="271" width="145" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="44" placeholderIntrinsicHeight="44" translatesAutoresizingMaskIntoConstraints="NO" id="Uny-eS-iyl" customClass="BRMenuLightHeavyQuantityButton">
+                                <rect key="frame" x="528" y="258" width="44" height="44"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quantity (l/h customized)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hS-W7-wtm">
+                                <rect key="frame" x="319" y="323" width="171" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="44" placeholderIntrinsicHeight="44" translatesAutoresizingMaskIntoConstraints="NO" id="MVK-b9-STE" customClass="BRMenuLightHeavyQuantityButton">
+                                <rect key="frame" x="528" y="310" width="44" height="44"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
+                                        <color key="value" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="diameter">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="aspectRatio">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="I71-Pm-vyb" firstAttribute="centerX" secondItem="RCq-cU-2Uc" secondAttribute="centerX" id="40p-oJ-GXh"/>
                             <constraint firstItem="14g-En-7xJ" firstAttribute="trailing" secondItem="frq-Zy-599" secondAttribute="trailing" id="4VR-es-r6C"/>
                             <constraint firstItem="oKk-Cn-LTG" firstAttribute="centerY" secondItem="I71-Pm-vyb" secondAttribute="centerY" id="7WZ-zn-D9f"/>
+                            <constraint firstItem="MVK-b9-STE" firstAttribute="top" secondItem="Uny-eS-iyl" secondAttribute="bottom" constant="8" id="8nr-gw-dph"/>
+                            <constraint firstItem="7hS-W7-wtm" firstAttribute="centerY" secondItem="MVK-b9-STE" secondAttribute="centerY" id="BIt-Rh-ysJ"/>
                             <constraint firstItem="eqp-mT-Rf4" firstAttribute="centerX" secondItem="CqD-UB-HhE" secondAttribute="centerX" id="DFO-Ua-Cmu"/>
+                            <constraint firstItem="Uny-eS-iyl" firstAttribute="top" secondItem="bUI-4K-3Sl" secondAttribute="bottom" constant="8" id="Fsa-mi-1lf"/>
+                            <constraint firstItem="MVK-b9-STE" firstAttribute="centerX" secondItem="Uny-eS-iyl" secondAttribute="centerX" id="Jj4-8N-NeU"/>
+                            <constraint firstItem="14g-En-7xJ" firstAttribute="trailing" secondItem="WdH-TD-wLG" secondAttribute="trailing" id="JvP-1d-Q1R"/>
                             <constraint firstItem="bUI-4K-3Sl" firstAttribute="centerX" secondItem="RCq-cU-2Uc" secondAttribute="centerX" id="Kfy-1b-qiw"/>
                             <constraint firstItem="oKk-Cn-LTG" firstAttribute="trailing" secondItem="llr-YS-0Gv" secondAttribute="trailing" id="OhA-bm-aQ9"/>
                             <constraint firstItem="bUI-4K-3Sl" firstAttribute="top" secondItem="RCq-cU-2Uc" secondAttribute="bottom" constant="8" id="T1d-h8-40X"/>
+                            <constraint firstItem="MVK-b9-STE" firstAttribute="trailing" secondItem="Uny-eS-iyl" secondAttribute="trailing" constant="10" id="T8L-wz-St0"/>
                             <constraint firstItem="CqD-UB-HhE" firstAttribute="leading" secondItem="llr-YS-0Gv" secondAttribute="trailing" constant="10" id="Uig-3z-FUQ"/>
                             <constraint firstItem="I71-Pm-vyb" firstAttribute="trailing" secondItem="eqp-mT-Rf4" secondAttribute="trailing" id="VCm-lP-wvs"/>
                             <constraint firstAttribute="trailing" secondItem="CqD-UB-HhE" secondAttribute="trailing" id="ZsP-zW-B1c"/>
                             <constraint firstItem="frq-Zy-599" firstAttribute="centerY" secondItem="RCq-cU-2Uc" secondAttribute="centerY" id="a3Y-TX-d2X"/>
+                            <constraint firstItem="Uny-eS-iyl" firstAttribute="centerX" secondItem="bUI-4K-3Sl" secondAttribute="centerX" id="cH1-Gq-kO9"/>
                             <constraint firstItem="RCq-cU-2Uc" firstAttribute="top" secondItem="I71-Pm-vyb" secondAttribute="bottom" constant="15" id="dYt-cR-whf"/>
                             <constraint firstItem="llr-YS-0Gv" firstAttribute="centerY" secondItem="eqp-mT-Rf4" secondAttribute="centerY" id="hnh-ag-M5j"/>
                             <constraint firstItem="eqp-mT-Rf4" firstAttribute="top" secondItem="zBv-Yg-t0W" secondAttribute="bottom" constant="8" symbolic="YES" id="j0f-Wg-at2"/>
@@ -375,8 +414,15 @@
                             <constraint firstItem="frq-Zy-599" firstAttribute="trailing" secondItem="oKk-Cn-LTG" secondAttribute="trailing" id="kD0-6l-VXO"/>
                             <constraint firstItem="14g-En-7xJ" firstAttribute="centerY" secondItem="bUI-4K-3Sl" secondAttribute="centerY" id="kcG-2E-W7w"/>
                             <constraint firstItem="I71-Pm-vyb" firstAttribute="top" secondItem="eqp-mT-Rf4" secondAttribute="bottom" constant="15" id="pXX-DP-avz"/>
+                            <constraint firstItem="7hS-W7-wtm" firstAttribute="trailing" secondItem="WdH-TD-wLG" secondAttribute="trailing" id="s6g-zL-iej"/>
                             <constraint firstItem="CqD-UB-HhE" firstAttribute="top" secondItem="tzp-fQ-PuQ" secondAttribute="top" id="sfM-Z1-xcV"/>
+                            <constraint firstItem="WdH-TD-wLG" firstAttribute="centerY" secondItem="Uny-eS-iyl" secondAttribute="centerY" id="ynF-qT-RR4"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="T8L-wz-St0"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Icon Buttons" id="9N2-xG-vdJ"/>
                 </viewController>
@@ -404,7 +450,7 @@
                             <color key="value" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="1" colorSpace="calibratedRGB"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="color" keyPath="appPrimaryColor">
-                            <color key="value" red="0.80000000000000004" green="0.84313725490000002" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="value" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </customObject>
