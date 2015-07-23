@@ -82,6 +82,16 @@ IB_DESIGNABLE
 @property (nonatomic, readonly) UIColor *inverseAppPrimaryColor;
 
 ///-------------------------------
+/// @name Text color styles
+///-------------------------------
+
+@property (nonatomic, readonly) UIColor *textColor;
+@property (nonatomic, readonly) UIColor *textShadowColor;
+
+@property (nonatomic, readonly) UIColor *inverseTextColor;
+@property (nonatomic, readonly) UIColor *inverseTextShadowColor;
+
+///-------------------------------
 /// @name Control color styles
 ///-------------------------------
 
@@ -119,6 +129,16 @@ IB_DESIGNABLE
 @property (nonatomic, readwrite) UIColor *appPrimaryColor;
 
 @property (nonatomic, readwrite) UIColor *inverseAppPrimaryColor;
+
+///-------------------------------
+/// @name Text color styles
+///-------------------------------
+
+@property (nonatomic, readwrite) UIColor *textColor;
+@property (nonatomic, readwrite) UIColor *textShadowColor;
+
+@property (nonatomic, readwrite) UIColor *inverseTextColor;
+@property (nonatomic, readwrite) UIColor *inverseTextShadowColor;
 
 ///-------------------------------
 /// @name Control color styles
