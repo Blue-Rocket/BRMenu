@@ -118,6 +118,13 @@ IB_DESIGNABLE
 @property (nonatomic, readonly) UIFont *uiFont;
 @property (nonatomic, readonly) UIFont *uiBoldFont;
 
+///-------------------------------
+/// @name Structural font styles
+///-------------------------------
+
+@property (nonatomic, readonly) UIFont *bodyFont;
+@property (nonatomic, readonly) UIFont *titleFont;
+
 @end
 
 @interface BRMenuMutableUIStyle : BRMenuUIStyle
@@ -161,10 +168,17 @@ IB_DESIGNABLE
 @property (nonatomic, readwrite) UIColor *inverseControlDisabledColor;
 
 ///-------------------------------
-/// @name Font styles
+/// @name Control font styles
 ///-------------------------------
 
 @property (nonatomic, readwrite) UIFont *uiFont;
 @property (nonatomic, readwrite) UIFont *uiBoldFont;
+
+///-------------------------------
+/// @name Structural font styles
+///-------------------------------
+
+@property (nonatomic, readwrite) UIFont *bodyFont;
+@property (nonatomic, readwrite) UIFont *titleFont;
 
 @end

@@ -39,6 +39,9 @@ static BRMenuUIStyle *DefaultStyle;
 
 @property (nonatomic, strong, readwrite) IBInspectable UIFont *uiFont;
 @property (nonatomic, strong, readwrite) IBInspectable UIFont *uiBoldFont;
+
+@property (nonatomic, readwrite) IBInspectable UIFont *bodyFont;
+@property (nonatomic, readwrite) IBInspectable UIFont *titleFont;
 @end
 
 @implementation BRMenuUIStyle {
@@ -70,6 +73,9 @@ static BRMenuUIStyle *DefaultStyle;
 
 	UIFont *uiFont;
 	UIFont *uiBoldFont;
+
+	UIFont *bodyFont;
+	UIFont *titleFont;
 }
 
 @synthesize appPrimaryColor, inverseAppPrimaryColor;
@@ -85,8 +91,8 @@ static BRMenuUIStyle *DefaultStyle;
 @synthesize controlSelectedColor, inverseControlSelectedColor;
 @synthesize controlDisabledColor, inverseControlDisabledColor;
 
-@synthesize uiFont;
-@synthesize uiBoldFont;
+@synthesize uiFont, uiBoldFont;
+@synthesize bodyFont, titleFont;
 
 + (instancetype)defaultStyle {
 	if ( !DefaultStyle ) {
@@ -179,6 +185,9 @@ static BRMenuUIStyle *DefaultStyle;
 			
 			uiFont = [UIFont fontWithName:@"AvenirNext-Medium" size:12];
 			uiBoldFont = [UIFont fontWithName:@"AvenirNext-DemiBold" size:12];
+			
+			bodyFont = [UIFont fontWithName:@"GeezaPro" size:17];
+			titleFont = [UIFont fontWithName:@"AvenirNext-DemiBold" size:21];
 		} else {
 			appPrimaryColor = other.appPrimaryColor;
 			
@@ -208,6 +217,9 @@ static BRMenuUIStyle *DefaultStyle;
 			
 			uiFont = other.uiFont;
 			uiBoldFont = other.uiBoldFont;
+			
+			bodyFont = other.bodyFont;
+			titleFont = other.titleFont;
 		}
 	}
 	return self;
@@ -265,6 +277,8 @@ static BRMenuUIStyle *DefaultStyle;
 	uiFont = [UIFont fontWithName:[decoder decodeObjectOfClass:[NSString class] forKey:@"uiFontName"] size:[decoder decodeFloatForKey:@"uiFontSize"]];
 	uiBoldFont = [UIFont fontWithName:[decoder decodeObjectOfClass:[NSString class] forKey:@"uiBoldFontName"] size:[decoder decodeFloatForKey:@"uiBoldFontSize"]];
 	
+	bodyFont = [UIFont fontWithName:[decoder decodeObjectOfClass:[NSString class] forKey:@"bodyFontName"] size:[decoder decodeFloatForKey:@"bodyFontSize"]];
+	titleFont = [UIFont fontWithName:[decoder decodeObjectOfClass:[NSString class] forKey:@"titleFontName"] size:[decoder decodeFloatForKey:@"titleFontSize"]];
 	return self;
 }
 
@@ -299,6 +313,11 @@ static BRMenuUIStyle *DefaultStyle;
 	[coder encodeFloat:uiFont.pointSize forKey:@"uiFontSize"];
 	[coder encodeObject:uiBoldFont.fontName forKey:@"uiBoldFontName"];
 	[coder encodeFloat:uiBoldFont.pointSize forKey:@"uiBoldFontSize"];
+
+	[coder encodeObject:bodyFont.fontName forKey:@"bodyFontName"];
+	[coder encodeFloat:bodyFont.pointSize forKey:@"bodyFontSize"];
+	[coder encodeObject:titleFont.fontName forKey:@"titleFontName"];
+	[coder encodeFloat:titleFont.pointSize forKey:@"titleFontSize"];
 }
 
 #pragma mark - Helpers
