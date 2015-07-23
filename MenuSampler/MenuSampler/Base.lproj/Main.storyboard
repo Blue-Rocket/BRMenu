@@ -548,10 +548,10 @@
             </objects>
             <point key="canvasLocation" x="1922" y="-288"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Root Chooser-->
         <scene sceneID="prU-kr-5CE">
             <objects>
-                <tableViewController id="YbO-Bo-4wU" sceneMemberID="viewController">
+                <tableViewController id="YbO-Bo-4wU" userLabel="Root Chooser" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="kNN-o2-o8K">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -644,10 +644,15 @@
                                 <userDefinedRuntimeAttribute type="string" keyPath="title" value="BRMenu Sampler"/>
                             </userDefinedRuntimeAttributes>
                         </view>
-                        <barButtonItem key="rightBarButtonItem" title="Global Style" id="P3G-hP-qGt">
-                            <connections>
-                                <segue destination="RVU-ed-HTm" kind="show" id="6rP-fD-H2w"/>
-                            </connections>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="Ftc-bo-pv6">
+                            <view key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" id="gf9-kF-IP0" customClass="BRMenuBarButtonItemView">
+                                <rect key="frame" x="451" y="5" width="80" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Edit Style"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="inverse" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>

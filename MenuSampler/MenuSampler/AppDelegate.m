@@ -18,7 +18,12 @@
 
 - (void)setupAppearance {
 	UINavigationBar *bar = [UINavigationBar appearance];
+	bar.tintColor = [BRMenuUIStyle defaultStyle].inverseAppPrimaryColor;
 	bar.barTintColor = [BRMenuUIStyle defaultStyle].appPrimaryColor;
+	[bar setTitleTextAttributes:@{
+								  NSForegroundColorAttributeName: [UIColor whiteColor],
+								  NSFontAttributeName: [BRMenuUIStyle defaultStyle].titleFont,
+								  }];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
