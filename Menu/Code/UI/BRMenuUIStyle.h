@@ -91,7 +91,7 @@ IB_DESIGNABLE
 @property (nonatomic, readonly) UIColor *controlHighlightedColor;
 @property (nonatomic, readonly) UIColor *controlHighlightedShadowColor;
 @property (nonatomic, readonly) UIColor *controlSelectedColor;
-@property (nonatomic, readonly) UIColor *controlUnselectedColor;
+@property (nonatomic, readonly) UIColor *controlDisabledColor;
 
 @property (nonatomic, readonly) UIColor *inverseControlTextColor;
 @property (nonatomic, readonly) UIColor *inverseControlBorderColor;
@@ -99,7 +99,7 @@ IB_DESIGNABLE
 @property (nonatomic, readonly) UIColor *inverseControlHighlightedColor;
 @property (nonatomic, readonly) UIColor *inverseControlHighlightedShadowColor;
 @property (nonatomic, readonly) UIColor *inverseControlSelectedColor;
-@property (nonatomic, readonly) UIColor *inverseControlUnselectedColor;
+@property (nonatomic, readonly) UIColor *inverseControlDisabledColor;
 
 ///-------------------------------
 /// @name Font styles
@@ -130,7 +130,7 @@ IB_DESIGNABLE
 @property (nonatomic, readwrite) UIColor *controlHighlightedColor;
 @property (nonatomic, readwrite) UIColor *controlHighlightedShadowColor;
 @property (nonatomic, readwrite) UIColor *controlSelectedColor;
-@property (nonatomic, readwrite) UIColor *controlUnselectedColor;
+@property (nonatomic, readwrite) UIColor *controlDisabledColor;
 
 @property (nonatomic, readwrite) UIColor *inverseControlTextColor;
 @property (nonatomic, readwrite) UIColor *inverseControlBorderColor;
@@ -138,7 +138,7 @@ IB_DESIGNABLE
 @property (nonatomic, readwrite) UIColor *inverseControlHighlightedColor;
 @property (nonatomic, readwrite) UIColor *inverseControlHighlightedShadowColor;
 @property (nonatomic, readwrite) UIColor *inverseControlSelectedColor;
-@property (nonatomic, readwrite) UIColor *inverseControlUnselectedColor;
+@property (nonatomic, readwrite) UIColor *inverseControlDisabledColor;
 
 ///-------------------------------
 /// @name Font styles

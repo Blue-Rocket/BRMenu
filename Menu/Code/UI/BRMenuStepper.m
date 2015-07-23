@@ -81,7 +81,7 @@ static const CGFloat kBadgeWidth = 28.0;
 - (void)updateStyle {
 	badgeLabel.font = [self.uiStyle uiBoldFont] ;
 	badgeLabel.font = [badgeLabel.font fontWithSize:badgeLabel.font.pointSize + 2.0];
-	badgeLabel.textColor = (self.value > 0 ? [self.uiStyle appPrimaryColor] : [self.uiStyle controlBorderColor]);
+	badgeLabel.textColor = (self.value > 0 ? [self.uiStyle appPrimaryColor] : [self.uiStyle controlDisabledColor]);
 	[self setNeedsLayout];
 	[self setNeedsDisplay];
 }
@@ -126,7 +126,7 @@ static const CGFloat kBadgeWidth = 28.0;
 	_value = newValue;
 	badgeLabel.text = [NSString stringWithFormat:@"%ld", (long)_value];
 	if ( old != newValue ) {
-		badgeLabel.textColor = (newValue > 0 ? [self.uiStyle appPrimaryColor] : [self.uiStyle controlBorderColor]);
+		badgeLabel.textColor = (newValue > 0 ? [self.uiStyle appPrimaryColor] : [self.uiStyle controlDisabledColor]);
 		[self sendActionsForControlEvents:UIControlEventValueChanged];
 		
 		// enable the opposite button if we moved off the edge cases
@@ -189,14 +189,11 @@ static const CGFloat kBadgeWidth = 28.0;
 
 @implementation BRMenuStepperMinusButton
 
-- (void)drawLabelInFrame:(CGRect)minusFrame context:(CGContextRef)context strokeColor:(UIColor *)strokeColor textColor:(UIColor *)labelColor {
+- (void)drawLabelInFrame:(CGRect)minusFrame context:(CGContextRef)context textColor:(UIColor *)labelColor {
+	[labelColor setFill];
+
 	//// Minus Drawing
 	UIBezierPath* minusPath = [UIBezierPath bezierPathWithRect: CGRectMake(CGRectGetMinX(minusFrame) + 7, CGRectGetMinY(minusFrame) + floor((CGRectGetHeight(minusFrame) - 2) * 0.48000 + 0.5), 12, 2)];
-	if ( self.stepper.value == self.stepper.minimumValue ) {
-		[strokeColor setFill];
-	} else {
-		[labelColor setFill];
-	}
 	[minusPath fill];
 }
 
@@ -210,6 +207,7 @@ static const CGFloat kBadgeWidth = 28.0;
 	
 	//// Color Declarations
 	UIColor* strokeColor = [self.stepper.uiStyle controlBorderColor];
+	UIColor* labelColor = (self.stepper.value <= self.stepper.minimumValue ? [self.stepper.uiStyle controlDisabledColor] : [self.stepper.uiStyle controlTextColor]);
 	
 	//// Shadow Declarations
 	UIColor* shadow = [self.stepper.uiStyle controlBorderGlossColor];
@@ -237,7 +235,7 @@ static const CGFloat kBadgeWidth = 28.0;
 	[minusTabPath stroke];
 	CGContextRestoreGState(context);
 	
-	[self drawLabelInFrame:minusFrame context:context strokeColor:strokeColor textColor:[self.stepper.uiStyle controlTextColor]];
+	[self drawLabelInFrame:minusFrame context:context textColor:labelColor];
 }
 
 - (void)drawHighlighted {
@@ -246,7 +244,7 @@ static const CGFloat kBadgeWidth = 28.0;
 	
 	//// Color Declarations
 	UIColor* strokeColor = [self.stepper.uiStyle controlBorderColor];
-	UIColor* labelColor = [self.stepper.uiStyle controlTextColor];
+	UIColor* labelColor = (self.stepper.value <= self.stepper.minimumValue ? [self.stepper.uiStyle controlDisabledColor] : [self.stepper.uiStyle controlTextColor]);
 	UIColor* insetShadowColor = [labelColor colorWithAlphaComponent: 0.5];
 	UIColor* highlightedFill = [self.stepper.uiStyle controlHighlightedColor];
 	
@@ -312,7 +310,7 @@ static const CGFloat kBadgeWidth = 28.0;
 	//[minusTabPath stroke];
 	
 	
-	[self drawLabelInFrame:minusFrame context:context strokeColor:strokeColor textColor:labelColor];
+	[self drawLabelInFrame:minusFrame context:context textColor:labelColor];
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -341,24 +339,16 @@ static const CGFloat kBadgeWidth = 28.0;
 
 @implementation BRMenuStepperPlusButton
 
-- (void)drawLabelInFrame:(CGRect)plusFrame context:(CGContextRef)context strokeColor:(UIColor *)strokeColor textColor:(UIColor *)labelColor {
+- (void)drawLabelInFrame:(CGRect)plusFrame context:(CGContextRef)context textColor:(UIColor *)labelColor {
+	[labelColor setFill];
+
 	//// Plus V Drawing
 	UIBezierPath* plusVPath = [UIBezierPath bezierPathWithRect: CGRectMake(CGRectGetMinX(plusFrame) + CGRectGetWidth(plusFrame) - 14, CGRectGetMinY(plusFrame) + floor((CGRectGetHeight(plusFrame) - 12) * 0.46667 + 0.5), 2, 12)];
-	if ( self.stepper.value >= self.stepper.maximumValue ) {
-		[strokeColor setFill];
-	} else {
-		[labelColor setFill];
-	}
 	[plusVPath fill];
 	
 	
 	//// Plus H Drawing
 	UIBezierPath* plusHPath = [UIBezierPath bezierPathWithRect: CGRectMake(CGRectGetMinX(plusFrame) + CGRectGetWidth(plusFrame) - 19, CGRectGetMinY(plusFrame) + floor((CGRectGetHeight(plusFrame) - 2) * 0.48000 + 0.5), 12, 2)];
-	if ( self.stepper.value >= self.stepper.maximumValue ) {
-		[strokeColor setFill];
-	} else {
-		[labelColor setFill];
-	}
 	[plusHPath fill];
 }
 
@@ -372,6 +362,7 @@ static const CGFloat kBadgeWidth = 28.0;
 	
 	//// Color Declarations
 	UIColor* strokeColor = [self.stepper.uiStyle controlBorderColor];
+	UIColor* labelColor = (self.stepper.value >= self.stepper.maximumValue ? [self.stepper.uiStyle controlDisabledColor] : [self.stepper.uiStyle controlTextColor]);
 	
 	//// Shadow Declarations
 	UIColor* shadow = [self.stepper.uiStyle controlBorderGlossColor];
@@ -399,7 +390,7 @@ static const CGFloat kBadgeWidth = 28.0;
 	[plusTabPath stroke];
 	CGContextRestoreGState(context);
 	
-	[self drawLabelInFrame:plusFrame context:context strokeColor:strokeColor textColor:[self.stepper.uiStyle controlTextColor]];
+	[self drawLabelInFrame:plusFrame context:context textColor:labelColor];
 }
 
 - (void)drawHighlighted {
@@ -408,7 +399,7 @@ static const CGFloat kBadgeWidth = 28.0;
 	
 	//// Color Declarations
 	UIColor* strokeColor = [self.stepper.uiStyle controlBorderColor];
-	UIColor* labelColor = [self.stepper.uiStyle controlTextColor];
+	UIColor* labelColor = (self.stepper.value >= self.stepper.maximumValue ? [self.stepper.uiStyle controlDisabledColor] : [self.stepper.uiStyle controlTextColor]);
 	UIColor* insetShadowColor = [labelColor colorWithAlphaComponent: 0.5];
 	UIColor* highlightedFill = [self.stepper.uiStyle controlHighlightedColor];
 	
@@ -473,7 +464,7 @@ static const CGFloat kBadgeWidth = 28.0;
 	//plusTabPath.lineWidth = 1;
 	//[plusTabPath stroke];
 	
-	[self drawLabelInFrame:plusFrame context:context strokeColor:strokeColor textColor:labelColor];
+	[self drawLabelInFrame:plusFrame context:context textColor:labelColor];
 }
 
 - (void)drawRect:(CGRect)rect {
