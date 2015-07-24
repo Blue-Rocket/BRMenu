@@ -187,8 +187,8 @@ static BRMenuUIStyle *DefaultStyle;
 			controlDisabledColor = controlBorderColor;
 			
 			inverseControlTextColor = [UIColor whiteColor];
-			inverseControlBorderColor = [BRMenuUIStyle colorWithRGBHexInteger:0x150064];
-			inverseControlBorderGlossColor = [[UIColor whiteColor] colorWithAlphaComponent:0.4];
+			inverseControlBorderColor = [BRMenuUIStyle colorWithRGBHexInteger:0x264891];
+			inverseControlBorderGlossColor = [[UIColor whiteColor] colorWithAlphaComponent:0.3];
 			inverseControlHighlightedColor = [[UIColor blackColor] colorWithAlphaComponent:0.1];
 			inverseControlHighlightedShadowColor = controlHighlightedShadowColor;
 			inverseControlSelectedColor = controlSelectedColor;
