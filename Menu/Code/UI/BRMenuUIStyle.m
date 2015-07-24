@@ -194,8 +194,8 @@ static BRMenuUIStyle *DefaultStyle;
 			inverseControlSelectedColor = controlSelectedColor;
 			inverseControlDisabledColor = controlBorderColor;
 			
-			uiFont = [UIFont fontWithName:@"AvenirNext-Medium" size:12];
-			uiBoldFont = [UIFont fontWithName:@"AvenirNext-DemiBold" size:12];
+			uiFont = [UIFont fontWithName:@"AvenirNext-Medium" size:13];
+			uiBoldFont = [UIFont fontWithName:@"AvenirNext-DemiBold" size:13];
 			
 			bodyFont = [UIFont fontWithName:@"GeezaPro" size:17];
 			titleFont = [UIFont fontWithName:@"AvenirNext-DemiBold" size:21];
