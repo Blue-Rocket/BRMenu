@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		0B85F6C35BE74BF9D0020A25 /* libPods-MenuSampler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CBDF4C2B6BD161A02D291AF /* libPods-MenuSampler.a */; };
 		C9819DBD1B619217008A1393 /* RootChooserTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9819DBC1B619217008A1393 /* RootChooserTableViewController.m */; };
+		C9819DC91B61CD64008A1393 /* menu-donuts.json in Resources */ = {isa = PBXBuildFile; fileRef = C9819DC51B61CD64008A1393 /* menu-donuts.json */; };
+		C9819DCA1B61CD64008A1393 /* menu-lunchstop.json in Resources */ = {isa = PBXBuildFile; fileRef = C9819DC61B61CD64008A1393 /* menu-lunchstop.json */; };
+		C9819DCB1B61CD64008A1393 /* menu-pizza.json in Resources */ = {isa = PBXBuildFile; fileRef = C9819DC71B61CD64008A1393 /* menu-pizza.json */; };
+		C9819DCC1B61CD64008A1393 /* menu-shakeshack.json in Resources */ = {isa = PBXBuildFile; fileRef = C9819DC81B61CD64008A1393 /* menu-shakeshack.json */; };
 		C9C909451B60ACA800DDF191 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C909441B60ACA800DDF191 /* main.m */; };
 		C9C909481B60ACA800DDF191 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C909471B60ACA800DDF191 /* AppDelegate.m */; };
 		C9C9094E1B60ACA800DDF191 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9C9094C1B60ACA800DDF191 /* Main.storyboard */; };
@@ -42,6 +46,10 @@
 		9659BD2B592645E2DC860F3F /* Pods-MenuSampler-MenuSamplerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MenuSampler-MenuSamplerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MenuSampler-MenuSamplerTests/Pods-MenuSampler-MenuSamplerTests.release.xcconfig"; sourceTree = "<group>"; };
 		C9819DBB1B619217008A1393 /* RootChooserTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootChooserTableViewController.h; sourceTree = "<group>"; };
 		C9819DBC1B619217008A1393 /* RootChooserTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootChooserTableViewController.m; sourceTree = "<group>"; };
+		C9819DC51B61CD64008A1393 /* menu-donuts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "menu-donuts.json"; sourceTree = "<group>"; };
+		C9819DC61B61CD64008A1393 /* menu-lunchstop.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "menu-lunchstop.json"; sourceTree = "<group>"; };
+		C9819DC71B61CD64008A1393 /* menu-pizza.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "menu-pizza.json"; sourceTree = "<group>"; };
+		C9819DC81B61CD64008A1393 /* menu-shakeshack.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "menu-shakeshack.json"; sourceTree = "<group>"; };
 		C9C9093F1B60ACA800DDF191 /* MenuSampler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MenuSampler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9C909431B60ACA800DDF191 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9C909441B60ACA800DDF191 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -108,6 +116,18 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		C9819DC41B61CD64008A1393 /* Menus */ = {
+			isa = PBXGroup;
+			children = (
+				C9819DC51B61CD64008A1393 /* menu-donuts.json */,
+				C9819DC61B61CD64008A1393 /* menu-lunchstop.json */,
+				C9819DC71B61CD64008A1393 /* menu-pizza.json */,
+				C9819DC81B61CD64008A1393 /* menu-shakeshack.json */,
+			);
+			name = Menus;
+			path = ../../Menu/MenuTests/Resources/Menus;
+			sourceTree = "<group>";
+		};
 		C9C909361B60ACA000DDF191 = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +158,7 @@
 				C9C9094C1B60ACA800DDF191 /* Main.storyboard */,
 				C9C9097A1B60AEF000DDF191 /* Style Editor */,
 				C9C9097B1B60AF1C00DDF191 /* UI Components */,
+				C9819DC41B61CD64008A1393 /* Menus */,
 				C9C9094F1B60ACA800DDF191 /* Images.xcassets */,
 				C9C909511B60ACA800DDF191 /* LaunchScreen.xib */,
 				C9C909421B60ACA800DDF191 /* Supporting Files */,
@@ -281,9 +302,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9819DCC1B61CD64008A1393 /* menu-shakeshack.json in Resources */,
 				C9C9094E1B60ACA800DDF191 /* Main.storyboard in Resources */,
 				C9C909531B60ACA800DDF191 /* LaunchScreen.xib in Resources */,
+				C9819DCA1B61CD64008A1393 /* menu-lunchstop.json in Resources */,
+				C9819DCB1B61CD64008A1393 /* menu-pizza.json in Resources */,
 				C9C909501B60ACA800DDF191 /* Images.xcassets in Resources */,
+				C9819DC91B61CD64008A1393 /* menu-donuts.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
