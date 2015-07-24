@@ -57,22 +57,19 @@ static NSString * const kShowMenuSegue = @"ShowMenu";
 	return nil;
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-	if ( [segue.identifier isEqualToString:kShowMenuSegue] ) {
-		BRMenuOrderingViewController *dest = segue.destinationViewController;
-		NSIndexPath *indexPath = [self.tableView indexPathForCell:sender]; // sender from tableView:didSelectRowAtIndexPath:
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	if ( indexPath.section == 1 ) {
 		BRMenu *menu = [self menuForIndexPath:indexPath];
 		if ( menu ) {
+			// TODO: move the storybaord and instantiation code into BRMenu
+			UIStoryboard *menuStoryboard = [UIStoryboard storyboardWithName:@"MenuOrdering" bundle:nil];
+			// the root is a nav controller, but we can re-use our existing controller here
+			BRMenuOrderingViewController *dest = [menuStoryboard instantiateViewControllerWithIdentifier:@"MenuOrdering"];
 			NSString *title = [self.tableView cellForRowAtIndexPath:indexPath].textLabel.text;
 			dest.navigationItem.title = title;
 			dest.menu = menu;
+			[self.navigationController pushViewController:dest animated:YES];
 		}
-	}
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	if ( indexPath.section == 1 ) {
-		[self performSegueWithIdentifier:kShowMenuSegue sender:[tableView cellForRowAtIndexPath:indexPath]];
 	}
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
