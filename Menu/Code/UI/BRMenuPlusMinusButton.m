@@ -8,7 +8,6 @@
 
 #import "BRMenuPlusMinusButton.h"
 
-#import "BRMenuUIStyle.h"
 #import "BRMenuUIStylishHost.h"
 #import "UIView+BRMenuUIStyle.h"
 
