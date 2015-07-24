@@ -9,12 +9,15 @@
 #import "BRMenuPlusMinusButton.h"
 
 #import "BRMenuUIStyle.h"
+#import "BRMenuUIStylishHost.h"
+#import "UIView+BRMenuUIStyle.h"
 
-@implementation BRMenuPlusMinusButton {
-	BRMenuUIStyle *uiStyle;
-}
+@interface BRMenuPlusMinusButton () <BRMenuUIStylishHost>
+@end
 
-@synthesize uiStyle;
+@implementation BRMenuPlusMinusButton
+
+@dynamic uiStyle;
 
 - (id)initWithFrame:(CGRect)frame {
 	if ( (self = [super initWithFrame:frame]) ) {
@@ -52,10 +55,6 @@
 	if ( old != selected ) {
 		[self setNeedsDisplay];
 	}
-}
-
-- (BRMenuUIStyle *)uiStyle {
-	return (uiStyle ? uiStyle : [BRMenuUIStyle defaultStyle]);
 }
 
 #pragma mark - Drawing

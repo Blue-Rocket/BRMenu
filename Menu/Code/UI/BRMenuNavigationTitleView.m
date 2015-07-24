@@ -9,12 +9,18 @@
 #import "BRMenuNavigationTitleView.h"
 
 #import "BRMenuUIStyle.h"
+#import "BRMenuUIStylishHost.h"
+#import "UIView+BRMenuUIStyle.h"
+
+@interface BRMenuNavigationTitleView () <BRMenuUIStylishHost>
+@end
 
 @implementation BRMenuNavigationTitleView {
-	BRMenuUIStyle *uiStyle;
 	UILabel *titleLabel;
 	NSString *title;
 }
+
+@dynamic uiStyle;
 
 - (id)initWithFrame:(CGRect)frame {
     if ( (self = [super initWithFrame:frame]) ) {
@@ -42,21 +48,11 @@
 	[self addSubview:titleLabel];
 }
 
+- (void)uStyleDidChange:(BRMenuUIStyle *)style {
+	[self setNeedsDisplay];
+}
+
 #pragma mark - Accessors
-
-- (BRMenuUIStyle *)uiStyle {
-	return (uiStyle ? uiStyle : [BRMenuUIStyle defaultStyle]);
-}
-
-- (void)setUiStyle:(BRMenuUIStyle *)style {
-	if ( style != uiStyle ) {
-		BOOL tintChanged = ([style.appPrimaryColor isEqual:uiStyle.appPrimaryColor] == NO);
-		uiStyle = style;
-		if ( tintChanged ) {
-			[self setNeedsDisplay];
-		}
-	}
-}
 
 - (void)setTitle:(NSString *)theText {
 	title = theText;

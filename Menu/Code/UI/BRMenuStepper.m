@@ -9,6 +9,11 @@
 #import "BRMenuStepper.h"
 
 #import "BRMenuUIStyle.h"
+#import "BRMenuUIStylishHost.h"
+#import "UIView+BRMenuUIStyle.h"
+
+@interface BRMenuStepper () <BRMenuUIStylishHost>
+@end
 
 static const CGFloat kHorizontalPadding = 5.0;
 static const CGFloat kVerticalPadding = 5.0;
@@ -24,13 +29,13 @@ static const CGFloat kBadgeWidth = 28.0;
 @property (weak) BRMenuStepper *stepper;
 @end
 
-
 @implementation BRMenuStepper {
-	BRMenuUIStyle *uiStyle;
 	__weak UILabel *badgeLabel;
 	__weak BRMenuStepperMinusButton *minusButton;
 	__weak BRMenuStepperPlusButton *plusButton;
 }
+
+@dynamic uiStyle;
 
 - (id)initWithFrame:(CGRect)frame {
     if ( (self = [super initWithFrame:frame]) ) {
@@ -69,7 +74,7 @@ static const CGFloat kBadgeWidth = 28.0;
 	[self addSubview:plus];
 	plusButton = plus;
 	
-	[self updateStyle];
+	[self updateStyle:self.uiStyle];
 	
 	self.opaque = NO;
 	self.value = 0;
@@ -78,23 +83,16 @@ static const CGFloat kBadgeWidth = 28.0;
 	self.stepValue = 1;
 }
 
-- (void)updateStyle {
-	badgeLabel.font = [self.uiStyle uiBoldFont] ;
+- (void)updateStyle:(BRMenuUIStyle *)style {
+	badgeLabel.font = [style uiBoldFont] ;
 	badgeLabel.font = [badgeLabel.font fontWithSize:badgeLabel.font.pointSize + 2.0];
-	badgeLabel.textColor = (self.value > 0 ? [self.uiStyle appPrimaryColor] : [self.uiStyle controlDisabledColor]);
+	badgeLabel.textColor = (self.value > 0 ? [style appPrimaryColor] : [style controlDisabledColor]);
 	[self setNeedsLayout];
 	[self setNeedsDisplay];
 }
 
-- (BRMenuUIStyle *)uiStyle {
-	return (uiStyle ? uiStyle : [BRMenuUIStyle defaultStyle]);
-}
-
-- (void)setUiStyle:(BRMenuUIStyle *)style {
-	if ( style != uiStyle ) {
-		uiStyle = style;
-		[self updateStyle];
-	}
+- (void)uiStyleDidChange:(BRMenuUIStyle *)style {
+	[self updateStyle:style];
 }
 
 - (CGSize)sizeThatFits:(CGSize)size {

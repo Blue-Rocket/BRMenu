@@ -9,6 +9,8 @@
 #import "BRMenuBarButtonItemView.h"
 
 #import "BRMenuUIStyle.h"
+#import "BRMenuUIStylishHost.h"
+#import "UIView+BRMenuUIStyle.h"
 
 static const CGFloat kNormalHeight = 32.0f;
 static const CGFloat kTextMargins = 10.0f;
@@ -16,13 +18,16 @@ static const CGFloat kBadgeTextMargins = 5.0f;
 static const CGFloat kBadgeMinWidth = 24.0f;
 static const CGFloat kMinWidth = 48.0f;
 
+@interface BRMenuBarButtonItemView () <BRMenuUIStylishHost>
+@end
+
 @implementation BRMenuBarButtonItemView {
-	BRMenuUIStyle *uiStyle;
 	NSString *title;
 	NSString *badgeText;
 	BOOL inverse;
 }
 
+@dynamic uiStyle;
 @synthesize badgeText, title, inverse;
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
@@ -70,16 +75,9 @@ static const CGFloat kMinWidth = 48.0f;
 	return CGSizeMake(width, kNormalHeight);
 }
 
-- (BRMenuUIStyle *)uiStyle {
-	return (uiStyle ? uiStyle : [BRMenuUIStyle defaultStyle]);
-}
-
-- (void)setUiStyle:(BRMenuUIStyle *)style {
-	if ( style != uiStyle ) {
-		uiStyle = style;
-		[self invalidateIntrinsicContentSize];
-		[self setNeedsDisplay];
-	}
+- (void)uiStyleDidChange:(BRMenuUIStyle *)style {
+	[self invalidateIntrinsicContentSize];
+	[self setNeedsDisplay];
 }
 
 - (void)setTitle:(NSString *)text {

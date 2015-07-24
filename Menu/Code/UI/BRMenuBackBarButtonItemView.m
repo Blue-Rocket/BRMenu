@@ -9,17 +9,22 @@
 #import "BRMenuBackBarButtonItemView.h"
 
 #import "BRMenuUIStyle.h"
+#import "BRMenuUIStylishHost.h"
+#import "UIView+BRMenuUIStyle.h"
 
 static const CGFloat kNormalHeight = 32.0f;
 static const CGFloat kArrowMargin = 10.0f;
 static const CGFloat kTextMargins = 5.0f;
 
+@interface BRMenuBackBarButtonItemView () <BRMenuUIStylishHost>
+@end
+
 @implementation BRMenuBackBarButtonItemView {
-	BRMenuUIStyle *uiStyle;
 	NSString *title;
 	BOOL inverse;
 }
 
+@dynamic uiStyle;
 @synthesize title, inverse;
 
 - (id)initWithFrame:(CGRect)frame {
@@ -43,16 +48,9 @@ static const CGFloat kTextMargins = 5.0f;
 	return CGSizeMake(width, kNormalHeight);
 }
 
-- (BRMenuUIStyle *)uiStyle {
-	return (uiStyle ? uiStyle : [BRMenuUIStyle defaultStyle]);
-}
-
-- (void)setUiStyle:(BRMenuUIStyle *)style {
-	if ( style != uiStyle ) {
-		uiStyle = style;
-		[self invalidateIntrinsicContentSize];
-		[self setNeedsDisplay];
-	}
+- (void)uiStyleDidChange:(BRMenuUIStyle *)style {
+	[self invalidateIntrinsicContentSize];
+	[self setNeedsDisplay];
 }
 - (void)setTitle:(NSString *)text {
 	if ( title != text ) {

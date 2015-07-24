@@ -10,13 +10,17 @@
 
 #import <BRPDFImage/BRPDFImage.h>
 #import "BRMenuUIStyle.h"
+#import "BRMenuUIStylishHost.h"
+#import "UIView+BRMenuUIStyle.h"
+
+@interface BRMenuFlipToggleButton () <BRMenuUIStylishHost>
+@end
 
 static const CGSize kDefaultIconSize = {46.0, 26.0};
 
 static NSMutableDictionary *IconCache;
 
 @implementation BRMenuFlipToggleButton {
-	BRMenuUIStyle *uiStyle;
 	NSString *frontImageName;
 	NSString *backImageName;
 	BOOL flipped;
@@ -25,6 +29,7 @@ static NSMutableDictionary *IconCache;
 	UIImageView *backView;
 }
 
+@dynamic uiStyle;
 @synthesize frontImageName, backImageName;
 @synthesize flipped;
 @synthesize iconSize;
@@ -134,18 +139,8 @@ static NSMutableDictionary *IconCache;
 	imageView.image = image;
 }
 
-- (BRMenuUIStyle *)uiStyle {
-	return (uiStyle ? uiStyle : [BRMenuUIStyle defaultStyle]);
-}
-
-- (void)setUiStyle:(BRMenuUIStyle *)style {
-	if ( style != uiStyle ) {
-		BOOL tintChanged = ([style.appPrimaryColor isEqual:uiStyle.appPrimaryColor] == NO);
-		uiStyle = style;
-		if ( tintChanged ) {
-			[self setNeedsDisplay];
-		}
-	}
+- (void)uiStyleDidChange:(BRMenuUIStyle *)style {
+	[self setNeedsDisplay];
 }
 
 - (void)setIconSize:(CGSize)size {

@@ -37,6 +37,7 @@
 		C957D2E01B60B30300AD224C /* BRMenuLightHeavyQuantityButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C957D2DF1B60B30300AD224C /* BRMenuLightHeavyQuantityButton.m */; };
 		C957D2E31B60B76B00AD224C /* BRMenuFilledToggleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C957D2E21B60B76B00AD224C /* BRMenuFilledToggleButton.m */; };
 		C9819DB71B616812008A1393 /* BRMenuNavigationTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9819DB61B616812008A1393 /* BRMenuNavigationTitleView.m */; };
+		C9819DC31B61A754008A1393 /* UIView+BRMenuUIStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = C9819DC21B61A754008A1393 /* UIView+BRMenuUIStyle.m */; };
 		C98883601B58820D0049491C /* libMenu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C98883541B58820D0049491C /* libMenu.a */; };
 		C988839B1B5883A60049491C /* BRMenuOrderItemAttributesProxyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C98883991B5883A60049491C /* BRMenuOrderItemAttributesProxyTests.m */; };
 		C988839C1B5883A60049491C /* BRMenuOrderItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C988839A1B5883A60049491C /* BRMenuOrderItemTests.m */; };
@@ -131,6 +132,9 @@
 		C957D2E21B60B76B00AD224C /* BRMenuFilledToggleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuFilledToggleButton.m; sourceTree = "<group>"; };
 		C9819DB51B616812008A1393 /* BRMenuNavigationTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuNavigationTitleView.h; sourceTree = "<group>"; };
 		C9819DB61B616812008A1393 /* BRMenuNavigationTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuNavigationTitleView.m; sourceTree = "<group>"; };
+		C9819DBE1B61A428008A1393 /* BRMenuUIStylishHost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuUIStylishHost.h; sourceTree = "<group>"; };
+		C9819DC11B61A754008A1393 /* UIView+BRMenuUIStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+BRMenuUIStyle.h"; sourceTree = "<group>"; };
+		C9819DC21B61A754008A1393 /* UIView+BRMenuUIStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+BRMenuUIStyle.m"; sourceTree = "<group>"; };
 		C98883541B58820D0049491C /* libMenu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMenu.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C988835F1B58820D0049491C /* MenuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MenuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C98883651B58820D0049491C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -495,6 +499,9 @@
 				C9B812BD1B5DD5800014CBCB /* BRMenuStepper.m */,
 				C9B812C21B5DD6D70014CBCB /* BRMenuUIStyle.h */,
 				C9B812C31B5DD6D70014CBCB /* BRMenuUIStyle.m */,
+				C9819DBE1B61A428008A1393 /* BRMenuUIStylishHost.h */,
+				C9819DC11B61A754008A1393 /* UIView+BRMenuUIStyle.h */,
+				C9819DC21B61A754008A1393 /* UIView+BRMenuUIStyle.m */,
 			);
 			name = UI;
 			path = Code/UI;
@@ -672,6 +679,7 @@
 				C9B812AF1B5D7BA70014CBCB /* BRMenuItemComponent.m in Sources */,
 				C9B812AE1B5D7BA70014CBCB /* BRMenuItem.m in Sources */,
 				C9B812B71B5D7BA70014CBCB /* BRMenuOrderItem.m in Sources */,
+				C9819DC31B61A754008A1393 /* UIView+BRMenuUIStyle.m in Sources */,
 				C9C909251B60248600DDF191 /* BRMenuLeftRightPlacementButton.m in Sources */,
 				C9B812841B5D7B040014CBCB /* BRMenuAFHTTPResponseSerializer.m in Sources */,
 				C9B812C41B5DD6D70014CBCB /* BRMenuUIStyle.m in Sources */,

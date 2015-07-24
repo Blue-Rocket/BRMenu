@@ -10,9 +10,13 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "BRMenuUIStyle.h"
+#import "BRMenuUIStylishHost.h"
+#import "UIView+BRMenuUIStyle.h"
+
+@interface BRMenuFilledToggleButton () <BRMenuUIStylishHost>
+@end
 
 @implementation BRMenuFilledToggleButton {
-	BRMenuUIStyle *uiStyle;
 	CALayer *shape;
 	CALayer *fill;
 	UIColor *fillColor;
@@ -21,6 +25,7 @@
 	CGFloat aspectRatio;
 }
 
+@dynamic uiStyle;
 @synthesize diameter, cornerRadius;
 @synthesize aspectRatio;
 
@@ -68,19 +73,10 @@
 	return l;
 }
 
-- (BRMenuUIStyle *)uiStyle {
-	return (uiStyle ? uiStyle : [BRMenuUIStyle defaultStyle]);
-}
-
-- (void)setUiStyle:(BRMenuUIStyle *)style {
-	if ( style != uiStyle ) {
-		BOOL changed = !([style.controlDisabledColor isEqual:uiStyle.controlDisabledColor]
-						 && [style.appPrimaryColor isEqual:uiStyle.appPrimaryColor]);
-		uiStyle = style;
-		if ( changed ) {
-			[self setNeedsLayout];
-		}
-	}
+- (void)uiStyleDidChange:(BRMenuUIStyle *)style {
+//		BOOL changed = !([style.controlDisabledColor isEqual:uiStyle.controlDisabledColor]
+//						 && [style.appPrimaryColor isEqual:uiStyle.appPrimaryColor]);
+	[self setNeedsLayout];
 }
 
 - (void)setDiameter:(CGFloat)d {
