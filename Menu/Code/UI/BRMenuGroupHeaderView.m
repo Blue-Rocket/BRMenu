@@ -88,7 +88,7 @@
 	[ruleView mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.top.equalTo(self.titleLabel.mas_bottom).with.offset(2);
 		make.left.equalTo(self.titleLabel);
-		make.right.equalTo(self.titleLabel);
+		make.right.equalTo(@(-padding.right));
 		make.height.equalTo(@1);
 		make.bottom.equalTo(@(-padding.bottom));
 	}];
