@@ -93,9 +93,13 @@ IB_DESIGNABLE
 
 @property (nonatomic, readonly) UIColor *textColor;
 @property (nonatomic, readonly) UIColor *textShadowColor;
+@property (nonatomic, readonly) UIColor *secondaryColor;
+@property (nonatomic, readonly) UIColor *captionColor;
 
 @property (nonatomic, readonly) UIColor *inverseTextColor;
 @property (nonatomic, readonly) UIColor *inverseTextShadowColor;
+@property (nonatomic, readonly) UIColor *inverseSecondaryColor;
+@property (nonatomic, readonly) UIColor *inverseCaptionColor;
 
 ///-------------------------------
 /// @name Control color styles
@@ -130,6 +134,17 @@ IB_DESIGNABLE
 
 @property (nonatomic, readonly) UIFont *bodyFont;
 @property (nonatomic, readonly) UIFont *titleFont;
+@property (nonatomic, readonly) UIFont *heroFont;
+@property (nonatomic, readonly) UIFont *headlineFont;
+@property (nonatomic, readonly) UIFont *secondaryFont;
+@property (nonatomic, readonly) UIFont *captionFont;
+
+@property (nonatomic, readonly) UIFont *listFont;
+@property (nonatomic, readonly) UIFont *listSecondaryFont;
+@property (nonatomic, readonly) UIFont *listCaptionFont;
+
+@property (nonatomic, readonly) UIFont *alertBodyFont;
+@property (nonatomic, readonly) UIFont *alertHeadlineFont;
 
 @end
 
@@ -149,9 +164,13 @@ IB_DESIGNABLE
 
 @property (nonatomic, readwrite) UIColor *textColor;
 @property (nonatomic, readwrite) UIColor *textShadowColor;
+@property (nonatomic, readwrite) UIColor *secondaryColor;
+@property (nonatomic, readwrite) UIColor *captionColor;
 
 @property (nonatomic, readwrite) UIColor *inverseTextColor;
 @property (nonatomic, readwrite) UIColor *inverseTextShadowColor;
+@property (nonatomic, readwrite) UIColor *inverseSecondaryColor;
+@property (nonatomic, readwrite) UIColor *inverseCaptionColor;
 
 ///-------------------------------
 /// @name Control color styles
@@ -174,7 +193,7 @@ IB_DESIGNABLE
 @property (nonatomic, readwrite) UIColor *inverseControlDisabledColor;
 
 ///-------------------------------
-/// @name Control font styles
+/// @name UI font styles
 ///-------------------------------
 
 @property (nonatomic, readwrite) UIFont *uiFont;
@@ -186,6 +205,17 @@ IB_DESIGNABLE
 
 @property (nonatomic, readwrite) UIFont *bodyFont;
 @property (nonatomic, readwrite) UIFont *titleFont;
+@property (nonatomic, readwrite) UIFont *heroFont;
+@property (nonatomic, readwrite) UIFont *headlineFont;
+@property (nonatomic, readwrite) UIFont *secondaryFont;
+@property (nonatomic, readwrite) UIFont *captionFont;
+
+@property (nonatomic, readwrite) UIFont *listFont;
+@property (nonatomic, readwrite) UIFont *listSecondaryFont;
+@property (nonatomic, readwrite) UIFont *listCaptionFont;
+
+@property (nonatomic, readwrite) UIFont *alertBodyFont;
+@property (nonatomic, readwrite) UIFont *alertHeadlineFont;
 
 @end
 

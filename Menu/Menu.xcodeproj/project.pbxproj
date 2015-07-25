@@ -39,6 +39,9 @@
 		C9819DB71B616812008A1393 /* BRMenuNavigationTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9819DB61B616812008A1393 /* BRMenuNavigationTitleView.m */; };
 		C9819DC31B61A754008A1393 /* UIView+BRMenuUIStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = C9819DC21B61A754008A1393 /* UIView+BRMenuUIStyle.m */; };
 		C9819DD11B61CEE8008A1393 /* BRMenuOrderingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9819DD01B61CEE8008A1393 /* BRMenuOrderingViewController.m */; };
+		C9819DD71B61EE94008A1393 /* BRMenuItemObjectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9819DD61B61EE94008A1393 /* BRMenuItemObjectCell.m */; };
+		C9819DDA1B62D38E008A1393 /* BRMenuFitToWidthLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9819DD81B62D38E008A1393 /* BRMenuFitToWidthLabel.m */; };
+		C9819DDD1B6319A8008A1393 /* NSNumberFormatter+BRMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = C9819DDC1B6319A8008A1393 /* NSNumberFormatter+BRMenu.m */; };
 		C98883601B58820D0049491C /* libMenu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C98883541B58820D0049491C /* libMenu.a */; };
 		C988839B1B5883A60049491C /* BRMenuOrderItemAttributesProxyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C98883991B5883A60049491C /* BRMenuOrderItemAttributesProxyTests.m */; };
 		C988839C1B5883A60049491C /* BRMenuOrderItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C988839A1B5883A60049491C /* BRMenuOrderItemTests.m */; };
@@ -138,6 +141,12 @@
 		C9819DC21B61A754008A1393 /* UIView+BRMenuUIStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+BRMenuUIStyle.m"; sourceTree = "<group>"; };
 		C9819DCF1B61CEE8008A1393 /* BRMenuOrderingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuOrderingViewController.h; sourceTree = "<group>"; };
 		C9819DD01B61CEE8008A1393 /* BRMenuOrderingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderingViewController.m; sourceTree = "<group>"; };
+		C9819DD51B61EE94008A1393 /* BRMenuItemObjectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuItemObjectCell.h; sourceTree = "<group>"; };
+		C9819DD61B61EE94008A1393 /* BRMenuItemObjectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuItemObjectCell.m; sourceTree = "<group>"; };
+		C9819DD81B62D38E008A1393 /* BRMenuFitToWidthLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuFitToWidthLabel.m; sourceTree = "<group>"; };
+		C9819DD91B62D38E008A1393 /* BRMenuFitToWidthLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuFitToWidthLabel.h; sourceTree = "<group>"; };
+		C9819DDB1B6319A8008A1393 /* NSNumberFormatter+BRMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumberFormatter+BRMenu.h"; sourceTree = "<group>"; };
+		C9819DDC1B6319A8008A1393 /* NSNumberFormatter+BRMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumberFormatter+BRMenu.m"; sourceTree = "<group>"; };
 		C98883541B58820D0049491C /* libMenu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMenu.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C988835F1B58820D0049491C /* MenuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MenuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C98883651B58820D0049491C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -351,6 +360,8 @@
 				C92AEEF71B5F10630005AC79 /* BRMenuBackBarButtonItemView.m */,
 				C957D2E11B60B76B00AD224C /* BRMenuFilledToggleButton.h */,
 				C957D2E21B60B76B00AD224C /* BRMenuFilledToggleButton.m */,
+				C9819DD91B62D38E008A1393 /* BRMenuFitToWidthLabel.h */,
+				C9819DD81B62D38E008A1393 /* BRMenuFitToWidthLabel.m */,
 				C92AEEFC1B5F56D50005AC79 /* BRMenuFlipToggleButton.h */,
 				C92AEEFD1B5F56D50005AC79 /* BRMenuFlipToggleButton.m */,
 				C9C909231B60248600DDF191 /* BRMenuLeftRightPlacementButton.h */,
@@ -375,6 +386,8 @@
 		C9819DCE1B61CE60008A1393 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C9819DD51B61EE94008A1393 /* BRMenuItemObjectCell.h */,
+				C9819DD61B61EE94008A1393 /* BRMenuItemObjectCell.m */,
 				C9819DCF1B61CEE8008A1393 /* BRMenuOrderingViewController.h */,
 				C9819DD01B61CEE8008A1393 /* BRMenuOrderingViewController.m */,
 			);
@@ -470,6 +483,8 @@
 				C9B812AA1B5D7BA70014CBCB /* BRMenuOrderItemComponent.h */,
 				C9B812AB1B5D7BA70014CBCB /* BRMenuOrderItemComponent.m */,
 				C9B812AC1B5D7BA70014CBCB /* BRMenuProvider.h */,
+				C9819DDB1B6319A8008A1393 /* NSNumberFormatter+BRMenu.h */,
+				C9819DDC1B6319A8008A1393 /* NSNumberFormatter+BRMenu.m */,
 			);
 			name = Core;
 			path = Code/Core;
@@ -696,6 +711,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9B812851B5D7B040014CBCB /* BRMenuRestKitDataMapper.m in Sources */,
+				C9819DDA1B62D38E008A1393 /* BRMenuFitToWidthLabel.m in Sources */,
 				C9B812B81B5D7BA70014CBCB /* BRMenuOrderItemAttributes.m in Sources */,
 				C9B812AF1B5D7BA70014CBCB /* BRMenuItemComponent.m in Sources */,
 				C9B812AE1B5D7BA70014CBCB /* BRMenuItem.m in Sources */,
@@ -705,6 +721,7 @@
 				C9819DD11B61CEE8008A1393 /* BRMenuOrderingViewController.m in Sources */,
 				C9B812841B5D7B040014CBCB /* BRMenuAFHTTPResponseSerializer.m in Sources */,
 				C9B812C41B5DD6D70014CBCB /* BRMenuUIStyle.m in Sources */,
+				C9819DDD1B6319A8008A1393 /* NSNumberFormatter+BRMenu.m in Sources */,
 				C9B812BA1B5D7BA70014CBCB /* BRMenuOrderItemComponent.m in Sources */,
 				C957D2E31B60B76B00AD224C /* BRMenuFilledToggleButton.m in Sources */,
 				C9B812C11B5DD5DB0014CBCB /* BRMenuPlusMinusButton.m in Sources */,
@@ -719,6 +736,7 @@
 				C9B812B41B5D7BA70014CBCB /* BRMenuMetadata.m in Sources */,
 				C9B812BE1B5DD5800014CBCB /* BRMenuStepper.m in Sources */,
 				C9B812B61B5D7BA70014CBCB /* BRMenuOrder+Encoding.m in Sources */,
+				C9819DD71B61EE94008A1393 /* BRMenuItemObjectCell.m in Sources */,
 				C92AEEFA1B5F10630005AC79 /* BRMenuBackBarButtonItemView.m in Sources */,
 				C9B812B21B5D7BA70014CBCB /* BRMenuItemTag.m in Sources */,
 				C957D2E01B60B30300AD224C /* BRMenuLightHeavyQuantityButton.m in Sources */,

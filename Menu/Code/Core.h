@@ -23,3 +23,4 @@
 #import <BRMenu/Core/BRMenuOrderItemAttributesProxy.h>
 #import <BRMenu/Core/BRMenuOrderItemComponent.h>
 #import <BRMenu/Core/BRMenuProvider.h>
+#import <BRMenu/Core/NSNumberFormatter+BRMenu.h>

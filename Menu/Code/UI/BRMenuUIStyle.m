@@ -19,9 +19,13 @@ static BRMenuUIStyle *DefaultStyle;
 
 @property (nonatomic, readwrite) IBInspectable UIColor *textColor;
 @property (nonatomic, readwrite) IBInspectable UIColor *textShadowColor;
+@property (nonatomic, readwrite) IBInspectable UIColor *secondaryColor;
+@property (nonatomic, readwrite) IBInspectable UIColor *captionColor;
 
 @property (nonatomic, readwrite) IBInspectable UIColor *inverseTextColor;
 @property (nonatomic, readwrite) IBInspectable UIColor *inverseTextShadowColor;
+@property (nonatomic, readwrite) IBInspectable UIColor *inverseSecondaryColor;
+@property (nonatomic, readwrite) IBInspectable UIColor *inverseCaptionColor;
 
 @property (nonatomic, readwrite) IBInspectable UIColor *controlTextColor;
 @property (nonatomic, readwrite) IBInspectable UIColor *controlBorderColor;
@@ -44,6 +48,17 @@ static BRMenuUIStyle *DefaultStyle;
 
 @property (nonatomic, readwrite) IBInspectable UIFont *bodyFont;
 @property (nonatomic, readwrite) IBInspectable UIFont *titleFont;
+@property (nonatomic, readwrite) IBInspectable UIFont *heroFont;
+@property (nonatomic, readwrite) IBInspectable UIFont *headlineFont;
+@property (nonatomic, readwrite) IBInspectable UIFont *secondaryFont;
+@property (nonatomic, readwrite) IBInspectable UIFont *captionFont;
+
+@property (nonatomic, readwrite) IBInspectable UIFont *listFont;
+@property (nonatomic, readwrite) IBInspectable UIFont *listSecondaryFont;
+@property (nonatomic, readwrite) IBInspectable UIFont *listCaptionFont;
+
+@property (nonatomic, readwrite) IBInspectable UIFont *alertBodyFont;
+@property (nonatomic, readwrite) IBInspectable UIFont *alertHeadlineFont;
 @end
 
 @implementation BRMenuUIStyle {
@@ -53,9 +68,13 @@ static BRMenuUIStyle *DefaultStyle;
 	
 	UIColor *textColor;
 	UIColor *textShadowColor;
+	UIColor *secondaryColor;
+	UIColor *captionColor;
 	
 	UIColor *inverseTextColor;
 	UIColor *inverseTextShadowColor;
+	UIColor *inverseSecondaryColor;
+	UIColor *inverseCaptionColor;
 
 	UIColor *controlTextColor;
 	UIColor *controlBorderColor;
@@ -78,11 +97,24 @@ static BRMenuUIStyle *DefaultStyle;
 
 	UIFont *bodyFont;
 	UIFont *titleFont;
+	UIFont *heroFont;
+	UIFont *headlineFont;
+	UIFont *secondaryFont;
+	UIFont *captionFont;
+	
+	UIFont *listFont;
+	UIFont *listSecondaryFont;
+	UIFont *listCaptionFont;
+	
+	UIFont *alertBodyFont;
+	UIFont *alertHeadlineFont;
 }
 
 @synthesize appPrimaryColor, inverseAppPrimaryColor;
 
 @synthesize textColor, inverseTextColor;
+@synthesize secondaryColor, inverseSecondaryColor;
+@synthesize captionColor, inverseCaptionColor;
 @synthesize textShadowColor, inverseTextShadowColor;
 
 @synthesize controlTextColor, inverseControlTextColor;
@@ -95,6 +127,9 @@ static BRMenuUIStyle *DefaultStyle;
 
 @synthesize uiFont, uiBoldFont;
 @synthesize bodyFont, titleFont;
+@synthesize heroFont, headlineFont, secondaryFont, captionFont;
+@synthesize listFont, listSecondaryFont, listCaptionFont;
+@synthesize alertBodyFont, alertHeadlineFont;
 
 + (instancetype)defaultStyle {
 	if ( !DefaultStyle ) {
@@ -174,9 +209,13 @@ static BRMenuUIStyle *DefaultStyle;
 			
 			textColor = [BRMenuUIStyle colorWithRGBHexInteger:0x1a1a1a];
 			textShadowColor = [BRMenuUIStyle colorWithRGBAHexInteger:0xCACACA7F];
+			secondaryColor = textColor;
+			captionColor = [UIColor lightGrayColor];
 			
 			inverseTextColor = [UIColor whiteColor];
 			inverseTextShadowColor = textShadowColor;
+			inverseSecondaryColor = inverseTextColor;
+			inverseCaptionColor = inverseTextColor;
 			
 			controlTextColor = [BRMenuUIStyle colorWithRGBHexInteger:0x555555];
 			controlBorderColor = [BRMenuUIStyle colorWithRGBHexInteger:0xCACACA];
@@ -197,8 +236,19 @@ static BRMenuUIStyle *DefaultStyle;
 			uiFont = [UIFont fontWithName:@"AvenirNext-Medium" size:13];
 			uiBoldFont = [UIFont fontWithName:@"AvenirNext-DemiBold" size:13];
 			
-			bodyFont = [UIFont fontWithName:@"GeezaPro" size:17];
+			bodyFont = [UIFont fontWithName:@"GeezaPro" size:14];
 			titleFont = [UIFont fontWithName:@"AvenirNext-DemiBold" size:21];
+			heroFont = [UIFont fontWithName:@"GeezaPro-Bold" size:21];
+			headlineFont = [UIFont fontWithName:@"GeezaPro" size:16];
+			secondaryFont = [UIFont fontWithName:@"GeezaPro-Light" size:16];
+			captionFont = [UIFont fontWithName:@"GeezaPro" size:14];
+			
+			listFont = [UIFont fontWithName:@"GeezaPro" size:16];
+			listSecondaryFont = [UIFont fontWithName:@"GeezaPro" size:15];
+			listCaptionFont = [UIFont fontWithName:@"GeezaPro" size:12];
+			
+			alertBodyFont = [UIFont fontWithName:@"GeezaPro" size:16];
+			alertHeadlineFont = [UIFont fontWithName:@"GeezaPro" size:24];
 		} else {
 			appPrimaryColor = other.appPrimaryColor;
 			
@@ -206,9 +256,13 @@ static BRMenuUIStyle *DefaultStyle;
 			
 			textColor = other.textColor;
 			textShadowColor = other.textShadowColor;
+			secondaryColor = other.secondaryColor;
+			captionColor = other.captionColor;
 			
 			inverseTextColor = other.inverseTextColor;
 			inverseTextShadowColor = other.inverseTextShadowColor;
+			inverseSecondaryColor = other.inverseSecondaryColor;
+			inverseCaptionColor = other.inverseCaptionColor;
 			
 			controlTextColor = other.controlTextColor;
 			controlBorderColor = other.controlBorderColor;
@@ -231,6 +285,17 @@ static BRMenuUIStyle *DefaultStyle;
 			
 			bodyFont = other.bodyFont;
 			titleFont = other.titleFont;
+			heroFont = other.heroFont;
+			headlineFont = other.headlineFont;
+			secondaryFont = other.secondaryFont;
+			captionFont = other.captionFont;
+			
+			listFont = other.listFont;
+			listSecondaryFont = other.listSecondaryFont;
+			listCaptionFont = other.listCaptionFont;
+			
+			alertBodyFont = other.alertBodyFont;
+			alertHeadlineFont = other.alertHeadlineFont;
 		}
 	}
 	return self;
@@ -265,9 +330,13 @@ static BRMenuUIStyle *DefaultStyle;
 
 	textColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(textColor))];
 	textShadowColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(textShadowColor))];
-
+	[decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(secondaryColor))];
+	[decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(captionColor))];
+	
 	inverseTextColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(inverseTextColor))];
 	inverseTextShadowColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(inverseTextShadowColor))];
+	[decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(inverseSecondaryColor))];
+	[decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(inverseCaptionColor))];
 	
 	controlTextColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(controlTextColor))];
 	controlBorderColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(controlBorderColor))];
@@ -290,6 +359,17 @@ static BRMenuUIStyle *DefaultStyle;
 	
 	bodyFont = [UIFont fontWithName:[decoder decodeObjectOfClass:[NSString class] forKey:@"bodyFontName"] size:[decoder decodeFloatForKey:@"bodyFontSize"]];
 	titleFont = [UIFont fontWithName:[decoder decodeObjectOfClass:[NSString class] forKey:@"titleFontName"] size:[decoder decodeFloatForKey:@"titleFontSize"]];
+	heroFont = [UIFont fontWithName:[decoder decodeObjectOfClass:[NSString class] forKey:@"heroFontName"] size:[decoder decodeFloatForKey:@"heroFontSize"]];;
+	headlineFont = [UIFont fontWithName:[decoder decodeObjectOfClass:[NSString class] forKey:@"headlineFontName"] size:[decoder decodeFloatForKey:@"headlineFontSize"]];;
+	secondaryFont = [UIFont fontWithName:[decoder decodeObjectOfClass:[NSString class] forKey:@"secondaryFontName"] size:[decoder decodeFloatForKey:@"secondaryFontSize"]];;
+	captionFont = [UIFont fontWithName:[decoder decodeObjectOfClass:[NSString class] forKey:@"captionFontName"] size:[decoder decodeFloatForKey:@"captionFontSize"]];;
+	
+	listFont = [UIFont fontWithName:[decoder decodeObjectOfClass:[NSString class] forKey:@"listFontName"] size:[decoder decodeFloatForKey:@"listFontSize"]];;
+	listSecondaryFont = [UIFont fontWithName:[decoder decodeObjectOfClass:[NSString class] forKey:@"listSecondaryFontName"] size:[decoder decodeFloatForKey:@"listSecondaryFontSize"]];;
+	listCaptionFont = [UIFont fontWithName:[decoder decodeObjectOfClass:[NSString class] forKey:@"listCaptionFontName"] size:[decoder decodeFloatForKey:@"listCaptionFontSize"]];;
+	
+	alertBodyFont = [UIFont fontWithName:[decoder decodeObjectOfClass:[NSString class] forKey:@"alertBodyFontName"] size:[decoder decodeFloatForKey:@"alertBodyFontSize"]];;
+	alertHeadlineFont = [UIFont fontWithName:[decoder decodeObjectOfClass:[NSString class] forKey:@"alertHeadlineFontName"] size:[decoder decodeFloatForKey:@"alertHeadlineFontSize"]];;
 	return self;
 }
 
@@ -300,9 +380,13 @@ static BRMenuUIStyle *DefaultStyle;
 	
 	[coder encodeObject:textColor forKey:NSStringFromSelector(@selector(textColor))];
 	[coder encodeObject:textShadowColor forKey:NSStringFromSelector(@selector(textShadowColor))];
+	[coder encodeObject:secondaryColor forKey:NSStringFromSelector(@selector(secondaryColor))];
+	[coder encodeObject:captionColor forKey:NSStringFromSelector(@selector(captionColor))];
 	
 	[coder encodeObject:inverseTextColor forKey:NSStringFromSelector(@selector(inverseTextColor))];
 	[coder encodeObject:inverseTextShadowColor forKey:NSStringFromSelector(@selector(inverseTextShadowColor))];
+	[coder encodeObject:inverseSecondaryColor forKey:NSStringFromSelector(@selector(inverseSecondaryColor))];
+	[coder encodeObject:inverseCaptionColor forKey:NSStringFromSelector(@selector(inverseCaptionColor))];
 	
 	[coder encodeObject:controlTextColor forKey:NSStringFromSelector(@selector(controlTextColor))];
 	[coder encodeObject:controlBorderColor forKey:NSStringFromSelector(@selector(controlBorderColor))];
@@ -329,6 +413,26 @@ static BRMenuUIStyle *DefaultStyle;
 	[coder encodeFloat:bodyFont.pointSize forKey:@"bodyFontSize"];
 	[coder encodeObject:titleFont.fontName forKey:@"titleFontName"];
 	[coder encodeFloat:titleFont.pointSize forKey:@"titleFontSize"];
+	[coder encodeObject:heroFont.fontName forKey:@"heroFontName"];
+	[coder encodeFloat:heroFont.pointSize forKey:@"heroFontSize"];
+	[coder encodeObject:headlineFont.fontName forKey:@"headlineFontName"];
+	[coder encodeFloat:headlineFont.pointSize forKey:@"headlineFontSize"];
+	[coder encodeObject:secondaryFont.fontName forKey:@"secondaryFontName"];
+	[coder encodeFloat:secondaryFont.pointSize forKey:@"secondaryFontSize"];
+	[coder encodeObject:captionFont.fontName forKey:@"captionFontName"];
+	[coder encodeFloat:captionFont.pointSize forKey:@"captionFontSize"];
+	
+	[coder encodeObject:listFont.fontName forKey:@"listFontName"];
+	[coder encodeFloat:listFont.pointSize forKey:@"listFontSize"];;
+	[coder encodeObject:listSecondaryFont.fontName forKey:@"listSecondaryFontName"];
+	[coder encodeFloat:listSecondaryFont.pointSize forKey:@"listSecondaryFontSize"];
+	[coder encodeObject:listCaptionFont.fontName forKey:@"listCaptionFontName"];
+	[coder encodeFloat:listCaptionFont.pointSize forKey:@"listCaptionFontSize"];
+	
+	[coder encodeObject:alertBodyFont.fontName forKey:@"alertBodyFontName"];
+	[coder encodeFloat:alertBodyFont.pointSize forKey:@"alertBodyFontSize"];
+	[coder encodeObject:alertHeadlineFont.fontName forKey:@"alertHeadlineFontName"];
+	[coder encodeFloat:alertHeadlineFont.pointSize forKey:@"alertHeadlineFontSize"];
 }
 
 #pragma mark - Helpers
@@ -357,12 +461,28 @@ static BRMenuUIStyle *DefaultStyle;
 	return (textShadowColor ? textShadowColor : [BRMenuUIStyle defaultStyle].textShadowColor);
 }
 
+- (UIColor *)secondaryColor {
+	return (secondaryColor ? secondaryColor : [BRMenuUIStyle defaultStyle].secondaryColor);
+}
+
+- (UIColor *)captionColor {
+	return (captionColor ? captionColor : [BRMenuUIStyle defaultStyle].captionColor);
+}
+
 - (UIColor *)inverseTextColor {
 	return (inverseTextColor ? inverseTextColor : [BRMenuUIStyle defaultStyle].inverseTextColor);
 }
 
 - (UIColor *)inverseTextShadowColor {
 	return (inverseTextShadowColor ? inverseTextShadowColor : [BRMenuUIStyle defaultStyle].inverseTextShadowColor);
+}
+
+- (UIColor *)inverseSecondaryColor {
+	return (inverseSecondaryColor ? inverseSecondaryColor : [BRMenuUIStyle defaultStyle].inverseSecondaryColor);
+}
+
+- (UIColor *)inverseCaptionColor {
+	return (inverseCaptionColor ? inverseCaptionColor : [BRMenuUIStyle defaultStyle].inverseCaptionColor);
 }
 
 #pragma mark - Controls
@@ -433,6 +553,42 @@ static BRMenuUIStyle *DefaultStyle;
 	return (uiBoldFont ? uiBoldFont : [BRMenuUIStyle defaultStyle].uiBoldFont);
 }
 
+- (UIFont *)heroFont {
+	return (heroFont ? heroFont : [BRMenuUIStyle defaultStyle].heroFont);
+}
+
+- (UIFont *)headlineFont {
+	return (headlineFont ? headlineFont : [BRMenuUIStyle defaultStyle].headlineFont);
+}
+
+- (UIFont *)secondaryFont {
+	return (secondaryFont ? secondaryFont : [BRMenuUIStyle defaultStyle].secondaryFont);
+}
+
+- (UIFont *)captionFont {
+	return (captionFont ? captionFont : [BRMenuUIStyle defaultStyle].captionFont);
+}
+
+- (UIFont *)listFont {
+	return (listFont ? listFont : [BRMenuUIStyle defaultStyle].listFont);
+}
+
+- (UIFont *)listSecondaryFont {
+	return (listSecondaryFont ? listSecondaryFont : [BRMenuUIStyle defaultStyle].listSecondaryFont);
+}
+
+- (UIFont *)listCaptionFont {
+	return (listCaptionFont ? listCaptionFont : [BRMenuUIStyle defaultStyle].listCaptionFont);
+}
+
+- (UIFont *)alertBodyFont {
+	return (alertBodyFont ? alertBodyFont : [BRMenuUIStyle defaultStyle].alertBodyFont);
+}
+
+- (UIFont *)alertHeadlineFont {
+	return (alertHeadlineFont ? alertHeadlineFont : [BRMenuUIStyle defaultStyle].alertHeadlineFont);
+}
+
 @end
 
 #pragma BRMenuMutableUIStyle support
@@ -442,6 +598,8 @@ static BRMenuUIStyle *DefaultStyle;
 @dynamic appPrimaryColor, inverseAppPrimaryColor;
 
 @dynamic textColor, inverseTextColor;
+@dynamic secondaryColor, inverseSecondaryColor;
+@dynamic captionColor, inverseCaptionColor;
 @dynamic textShadowColor, inverseTextShadowColor;
 
 @dynamic controlTextColor, inverseControlTextColor;
@@ -454,6 +612,17 @@ static BRMenuUIStyle *DefaultStyle;
 
 @dynamic uiFont, uiBoldFont;
 @dynamic bodyFont, titleFont;
+@dynamic heroFont;
+@dynamic headlineFont;
+@dynamic secondaryFont;
+@dynamic captionFont;
+
+@dynamic listFont;
+@dynamic listSecondaryFont;
+@dynamic listCaptionFont;
+
+@dynamic alertBodyFont;
+@dynamic alertHeadlineFont;
 
 - (id)copyWithZone:(NSZone *)zone {
 	return [[BRMenuUIStyle allocWithZone:zone] initWithUIStyle:self];

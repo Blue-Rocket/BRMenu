@@ -10,6 +10,7 @@
 
 #import <RestKit/ObjectMapping.h>
 #import <RestKit/ObjectMapping/RKObjectMappingOperationDataSource.h>
+#import "BRMenuMappingRestKitPostProcessor.h"
 
 @implementation BRMenuRestKitDataMapper {
 	RKObjectMapping *mapping;
