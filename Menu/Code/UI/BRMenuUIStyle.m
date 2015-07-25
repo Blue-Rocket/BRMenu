@@ -14,6 +14,8 @@ static BRMenuUIStyle *DefaultStyle;
 
 @interface BRMenuUIStyle ()
 @property (nonatomic, readwrite) IBInspectable UIColor *appPrimaryColor;
+@property (nonatomic, readwrite) IBInspectable UIColor *appBodyColor;
+@property (nonatomic, readwrite) IBInspectable UIColor *appSeparatorColor;
 
 @property (nonatomic, readwrite) IBInspectable UIColor *inverseAppPrimaryColor;
 
@@ -63,6 +65,8 @@ static BRMenuUIStyle *DefaultStyle;
 
 @implementation BRMenuUIStyle {
 	UIColor *appPrimaryColor;
+	UIColor *appBodyColor;
+	UIColor *appSeparatorColor;
 	
 	UIColor *inverseAppPrimaryColor;
 	
@@ -111,6 +115,7 @@ static BRMenuUIStyle *DefaultStyle;
 }
 
 @synthesize appPrimaryColor, inverseAppPrimaryColor;
+@synthesize appBodyColor, appSeparatorColor;
 
 @synthesize textColor, inverseTextColor;
 @synthesize secondaryColor, inverseSecondaryColor;
@@ -204,6 +209,8 @@ static BRMenuUIStyle *DefaultStyle;
 			// apply defaults
 			// TODO: load from environment resource
 			appPrimaryColor = [BRMenuUIStyle colorWithRGBHexInteger:0x1247b8];
+			appBodyColor = [BRMenuUIStyle colorWithRGBHexInteger:0xf2f2f2];
+			appSeparatorColor = [BRMenuUIStyle colorWithRGBHexInteger:0xe1e1e1];
 			
 			inverseAppPrimaryColor = [UIColor whiteColor];
 			
@@ -251,6 +258,8 @@ static BRMenuUIStyle *DefaultStyle;
 			alertHeadlineFont = [UIFont fontWithName:@"GeezaPro" size:24];
 		} else {
 			appPrimaryColor = other.appPrimaryColor;
+			appBodyColor = other.appBodyColor;
+			appSeparatorColor = other.appSeparatorColor;
 			
 			inverseAppPrimaryColor = other.inverseAppPrimaryColor;
 			
@@ -325,6 +334,8 @@ static BRMenuUIStyle *DefaultStyle;
 		return nil;
 	}
 	appPrimaryColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(appPrimaryColor))];
+	appBodyColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(appBodyColor))];
+	appSeparatorColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(appSeparatorColor))];
 
 	inverseAppPrimaryColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(inverseAppPrimaryColor))];
 
@@ -375,6 +386,8 @@ static BRMenuUIStyle *DefaultStyle;
 
 - (void)encodeWithCoder:(NSCoder *)coder {
 	[coder encodeObject:appPrimaryColor forKey:NSStringFromSelector(@selector(appPrimaryColor))];
+	[coder encodeObject:appBodyColor forKey:NSStringFromSelector(@selector(appBodyColor))];
+	[coder encodeObject:appSeparatorColor forKey:NSStringFromSelector(@selector(appSeparatorColor))];
 	
 	[coder encodeObject:inverseAppPrimaryColor forKey:NSStringFromSelector(@selector(inverseAppPrimaryColor))];
 	
@@ -445,6 +458,14 @@ static BRMenuUIStyle *DefaultStyle;
 
 - (UIColor *)appPrimaryColor {
 	return (appPrimaryColor ? appPrimaryColor : [BRMenuUIStyle defaultStyle].appPrimaryColor);
+}
+
+- (UIColor *)appBodyColor {
+	return (appBodyColor ? appBodyColor : [BRMenuUIStyle defaultStyle].appBodyColor);
+}
+
+- (UIColor *)appSeparatorColor {
+	return (appSeparatorColor ? appSeparatorColor : [BRMenuUIStyle defaultStyle].appSeparatorColor);
 }
 
 - (UIColor *)inverseAppPrimaryColor {
@@ -596,6 +617,7 @@ static BRMenuUIStyle *DefaultStyle;
 @implementation BRMenuMutableUIStyle
 
 @dynamic appPrimaryColor, inverseAppPrimaryColor;
+@dynamic appBodyColor, appSeparatorColor;
 
 @dynamic textColor, inverseTextColor;
 @dynamic secondaryColor, inverseSecondaryColor;

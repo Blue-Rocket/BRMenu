@@ -84,6 +84,8 @@ IB_DESIGNABLE
 ///-------------------------------
 
 @property (nonatomic, readonly) UIColor *appPrimaryColor;
+@property (nonatomic, readonly) UIColor *appBodyColor;
+@property (nonatomic, readonly) UIColor *appSeparatorColor;
 
 @property (nonatomic, readonly) UIColor *inverseAppPrimaryColor;
 
@@ -155,6 +157,8 @@ IB_DESIGNABLE
 ///-------------------------------
 
 @property (nonatomic, readwrite) UIColor *appPrimaryColor;
+@property (nonatomic, readwrite) UIColor *appBodyColor;
+@property (nonatomic, readwrite) UIColor *appSeparatorColor;
 
 @property (nonatomic, readwrite) UIColor *inverseAppPrimaryColor;
 

@@ -8,10 +8,12 @@
 
 #import "BRMenuOrderingComponentsViewController.h"
 
+#import "BRMenuGroupTableHeaderView.h"
 #import "BRMenuItemComponentCell.h"
 #import "BRMenuOrderingFlowController.h"
 
 NSString * const BRMenuOrderingItemComponentCellIdentifier = @"ItemComponentCell";
+NSString * const BRMenuOrderingGroupHeaderCellIdentifier = @"GroupHeaderCell";
 
 @implementation BRMenuOrderingComponentsViewController {
 	BRMenuOrderingFlowController *flowController;
@@ -23,8 +25,11 @@ NSString * const BRMenuOrderingItemComponentCellIdentifier = @"ItemComponentCell
 	[super viewDidLoad];
 	if ( !self.usePrototypeCells ) {
 		self.tableView.rowHeight = UITableViewAutomaticDimension;
+		self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension;
 		self.tableView.estimatedRowHeight = 60.0;
+		self.tableView.estimatedSectionHeaderHeight = 50.0;
 		[self.tableView registerClass:[BRMenuItemComponentCell class] forCellReuseIdentifier:BRMenuOrderingItemComponentCellIdentifier];
+		[self.tableView registerClass:[BRMenuGroupTableHeaderView class] forHeaderFooterViewReuseIdentifier:BRMenuOrderingGroupHeaderCellIdentifier];
 	}
 }
 
@@ -34,8 +39,11 @@ NSString * const BRMenuOrderingItemComponentCellIdentifier = @"ItemComponentCell
 	return [flowController numberOfSections];
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	return [flowController titleForSection:section];
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+	BRMenuGroupTableHeaderView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:BRMenuOrderingGroupHeaderCellIdentifier];
+	header.title = [flowController titleForSection:section];
+	header.price = [flowController priceForSection:section];
+	return header;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

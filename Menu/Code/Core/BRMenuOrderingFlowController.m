@@ -122,6 +122,11 @@
 	return componentGroup.title;
 }
 
+- (NSDecimalNumber *)priceForSection:(NSInteger)section {
+	return nil;
+	// TODO: implement
+}
+
 - (NSInteger)numberOfItemsInSection:(NSInteger)section {
 	if ( item == nil ) {
 		return (menu.items.count + menu.groups.count);

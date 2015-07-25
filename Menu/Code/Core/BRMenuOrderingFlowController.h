@@ -57,6 +57,14 @@
 - (NSString *)titleForSection:(NSInteger)section;
 
 /**
+ Get a price for a section.
+ 
+ @param section The section to get the price for.
+ @return The group price, or @c nil if there is no group-wide price.
+ */
+- (NSDecimalNumber *)priceForSection:(NSInteger)section;
+
+/**
  Get the count of items within a given section.
  
  @param section The section to get the count for.

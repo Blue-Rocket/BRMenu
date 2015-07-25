@@ -11,6 +11,7 @@
 @class BRMenuOrderingFlowController;
 
 extern NSString * const BRMenuOrderingItemComponentCellIdentifier;
+extern NSString * const BRMenuOrderingGroupHeaderCellIdentifier;
 
 @interface BRMenuOrderingComponentsViewController : UITableViewController
 
