@@ -52,6 +52,7 @@ static NSString * const kShowMenuSegue = @"ShowMenu";
 			log4Error(@"Error mapping JSON: %@", [error localizedDescription]);
 			return nil;
 		}
+		[BRMenuMappingPostProcessor assignMenuIDs:menu];
 		return menu;
 	}
 	return nil;
