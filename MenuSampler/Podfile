@@ -1,5 +1,6 @@
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.4'
+inhibit_all_warnings!
 
 target :MenuSampler do
 	pod 'BRMenu', :subspecs => ['Core', 'RestKit', 'AFNetworking', 'UI'], 
@@ -8,10 +9,10 @@ target :MenuSampler do
 	pod 'MAObjCRuntime', 			'~> 0.0.1'
 	
 	target :MenuSamplerTests do
-		pod 'OCHamcrest',			'~> 4.1', :inhibit_warnings => true
+		pod 'OCHamcrest',			'~> 4.1'
 		pod 'OCMock',				'~> 3.1'
-		pod 'CocoaHTTPServer',		'~> 2.3', :inhibit_warnings => true
-		pod 'RoutingHTTPServer', 	'~> 1.0', :inhibit_warnings => true
+		pod 'CocoaHTTPServer',		'~> 2.3'
+		pod 'RoutingHTTPServer', 	'~> 1.0'
 	end
 	
 end
