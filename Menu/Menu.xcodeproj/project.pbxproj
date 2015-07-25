@@ -42,6 +42,7 @@
 		C9819DD71B61EE94008A1393 /* BRMenuItemObjectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9819DD61B61EE94008A1393 /* BRMenuItemObjectCell.m */; };
 		C9819DDA1B62D38E008A1393 /* BRMenuFitToWidthLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9819DD81B62D38E008A1393 /* BRMenuFitToWidthLabel.m */; };
 		C9819DDD1B6319A8008A1393 /* NSNumberFormatter+BRMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = C9819DDC1B6319A8008A1393 /* NSNumberFormatter+BRMenu.m */; };
+		C9819DE01B6336C9008A1393 /* BRMenuOrderingFlowController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9819DDF1B6336C9008A1393 /* BRMenuOrderingFlowController.m */; };
 		C98883601B58820D0049491C /* libMenu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C98883541B58820D0049491C /* libMenu.a */; };
 		C988839B1B5883A60049491C /* BRMenuOrderItemAttributesProxyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C98883991B5883A60049491C /* BRMenuOrderItemAttributesProxyTests.m */; };
 		C988839C1B5883A60049491C /* BRMenuOrderItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C988839A1B5883A60049491C /* BRMenuOrderItemTests.m */; };
@@ -147,6 +148,8 @@
 		C9819DD91B62D38E008A1393 /* BRMenuFitToWidthLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuFitToWidthLabel.h; sourceTree = "<group>"; };
 		C9819DDB1B6319A8008A1393 /* NSNumberFormatter+BRMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumberFormatter+BRMenu.h"; sourceTree = "<group>"; };
 		C9819DDC1B6319A8008A1393 /* NSNumberFormatter+BRMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumberFormatter+BRMenu.m"; sourceTree = "<group>"; };
+		C9819DDE1B6336C9008A1393 /* BRMenuOrderingFlowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuOrderingFlowController.h; sourceTree = "<group>"; };
+		C9819DDF1B6336C9008A1393 /* BRMenuOrderingFlowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderingFlowController.m; sourceTree = "<group>"; };
 		C98883541B58820D0049491C /* libMenu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMenu.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C988835F1B58820D0049491C /* MenuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MenuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C98883651B58820D0049491C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -394,6 +397,41 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		C9819DE11B6336F0008A1393 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				C9B8128E1B5D7BA70014CBCB /* BRMenu.h */,
+				C9B8128F1B5D7BA70014CBCB /* BRMenu.m */,
+				C9B812901B5D7BA70014CBCB /* BRMenuDataMapper.h */,
+				C9B812911B5D7BA70014CBCB /* BRMenuItem.h */,
+				C9B812921B5D7BA70014CBCB /* BRMenuItem.m */,
+				C9B812931B5D7BA70014CBCB /* BRMenuItemComponent.h */,
+				C9B812941B5D7BA70014CBCB /* BRMenuItemComponent.m */,
+				C9B812951B5D7BA70014CBCB /* BRMenuItemComponentGroup.h */,
+				C9B812961B5D7BA70014CBCB /* BRMenuItemComponentGroup.m */,
+				C9B812971B5D7BA70014CBCB /* BRMenuItemGroup.h */,
+				C9B812981B5D7BA70014CBCB /* BRMenuItemGroup.m */,
+				C9B812991B5D7BA70014CBCB /* BRMenuItemObject.h */,
+				C9B8129A1B5D7BA70014CBCB /* BRMenuItemTag.h */,
+				C9B8129B1B5D7BA70014CBCB /* BRMenuItemTag.m */,
+				C9B8129E1B5D7BA70014CBCB /* BRMenuMetadata.h */,
+				C9B8129F1B5D7BA70014CBCB /* BRMenuMetadata.m */,
+				C9B812A01B5D7BA70014CBCB /* BRMenuOrder.h */,
+				C9B812A11B5D7BA70014CBCB /* BRMenuOrder.m */,
+				C9B812A21B5D7BA70014CBCB /* BRMenuOrder+Encoding.h */,
+				C9B812A31B5D7BA70014CBCB /* BRMenuOrder+Encoding.m */,
+				C9B812A41B5D7BA70014CBCB /* BRMenuOrderItem.h */,
+				C9B812A51B5D7BA70014CBCB /* BRMenuOrderItem.m */,
+				C9B812A61B5D7BA70014CBCB /* BRMenuOrderItemAttributes.h */,
+				C9B812A71B5D7BA70014CBCB /* BRMenuOrderItemAttributes.m */,
+				C9B812A81B5D7BA70014CBCB /* BRMenuOrderItemAttributesProxy.h */,
+				C9B812A91B5D7BA70014CBCB /* BRMenuOrderItemAttributesProxy.m */,
+				C9B812AA1B5D7BA70014CBCB /* BRMenuOrderItemComponent.h */,
+				C9B812AB1B5D7BA70014CBCB /* BRMenuOrderItemComponent.m */,
+			);
+			name = Domain;
+			sourceTree = "<group>";
+		};
 		C988834B1B58820D0049491C = {
 			isa = PBXGroup;
 			children = (
@@ -452,36 +490,11 @@
 		C988836E1B58832C0049491C /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				C9B8128E1B5D7BA70014CBCB /* BRMenu.h */,
-				C9B8128F1B5D7BA70014CBCB /* BRMenu.m */,
-				C9B812901B5D7BA70014CBCB /* BRMenuDataMapper.h */,
-				C9B812911B5D7BA70014CBCB /* BRMenuItem.h */,
-				C9B812921B5D7BA70014CBCB /* BRMenuItem.m */,
-				C9B812931B5D7BA70014CBCB /* BRMenuItemComponent.h */,
-				C9B812941B5D7BA70014CBCB /* BRMenuItemComponent.m */,
-				C9B812951B5D7BA70014CBCB /* BRMenuItemComponentGroup.h */,
-				C9B812961B5D7BA70014CBCB /* BRMenuItemComponentGroup.m */,
-				C9B812971B5D7BA70014CBCB /* BRMenuItemGroup.h */,
-				C9B812981B5D7BA70014CBCB /* BRMenuItemGroup.m */,
-				C9B812991B5D7BA70014CBCB /* BRMenuItemObject.h */,
-				C9B8129A1B5D7BA70014CBCB /* BRMenuItemTag.h */,
-				C9B8129B1B5D7BA70014CBCB /* BRMenuItemTag.m */,
+				C9819DE11B6336F0008A1393 /* Domain */,
 				C9B8129C1B5D7BA70014CBCB /* BRMenuMappingPostProcessor.h */,
 				C9B8129D1B5D7BA70014CBCB /* BRMenuMappingPostProcessor.m */,
-				C9B8129E1B5D7BA70014CBCB /* BRMenuMetadata.h */,
-				C9B8129F1B5D7BA70014CBCB /* BRMenuMetadata.m */,
-				C9B812A01B5D7BA70014CBCB /* BRMenuOrder.h */,
-				C9B812A11B5D7BA70014CBCB /* BRMenuOrder.m */,
-				C9B812A21B5D7BA70014CBCB /* BRMenuOrder+Encoding.h */,
-				C9B812A31B5D7BA70014CBCB /* BRMenuOrder+Encoding.m */,
-				C9B812A41B5D7BA70014CBCB /* BRMenuOrderItem.h */,
-				C9B812A51B5D7BA70014CBCB /* BRMenuOrderItem.m */,
-				C9B812A61B5D7BA70014CBCB /* BRMenuOrderItemAttributes.h */,
-				C9B812A71B5D7BA70014CBCB /* BRMenuOrderItemAttributes.m */,
-				C9B812A81B5D7BA70014CBCB /* BRMenuOrderItemAttributesProxy.h */,
-				C9B812A91B5D7BA70014CBCB /* BRMenuOrderItemAttributesProxy.m */,
-				C9B812AA1B5D7BA70014CBCB /* BRMenuOrderItemComponent.h */,
-				C9B812AB1B5D7BA70014CBCB /* BRMenuOrderItemComponent.m */,
+				C9819DDE1B6336C9008A1393 /* BRMenuOrderingFlowController.h */,
+				C9819DDF1B6336C9008A1393 /* BRMenuOrderingFlowController.m */,
 				C9B812AC1B5D7BA70014CBCB /* BRMenuProvider.h */,
 				C9819DDB1B6319A8008A1393 /* NSNumberFormatter+BRMenu.h */,
 				C9819DDC1B6319A8008A1393 /* NSNumberFormatter+BRMenu.m */,
@@ -724,6 +737,7 @@
 				C9819DDD1B6319A8008A1393 /* NSNumberFormatter+BRMenu.m in Sources */,
 				C9B812BA1B5D7BA70014CBCB /* BRMenuOrderItemComponent.m in Sources */,
 				C957D2E31B60B76B00AD224C /* BRMenuFilledToggleButton.m in Sources */,
+				C9819DE01B6336C9008A1393 /* BRMenuOrderingFlowController.m in Sources */,
 				C9B812C11B5DD5DB0014CBCB /* BRMenuPlusMinusButton.m in Sources */,
 				C9B812B11B5D7BA70014CBCB /* BRMenuItemGroup.m in Sources */,
 				C9B812B91B5D7BA70014CBCB /* BRMenuOrderItemAttributesProxy.m in Sources */,

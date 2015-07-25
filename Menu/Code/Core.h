@@ -18,6 +18,7 @@
 #import <BRMenu/Core/BRMenuMetadata.h>
 #import <BRMenu/Core/BRMenuOrder+Encoding.h>
 #import <BRMenu/Core/BRMenuOrder.h>
+#import <BRMenu/Core/BRMenuOrderingFlowController.h>
 #import <BRMenu/Core/BRMenuOrderItem.h>
 #import <BRMenu/Core/BRMenuOrderItemAttributes.h>
 #import <BRMenu/Core/BRMenuOrderItemAttributesProxy.h>

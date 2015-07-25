@@ -11,6 +11,7 @@
 #import "BRMenu.h"
 #import "BRMenuItem.h"
 #import "BRMenuItemObjectCell.h"
+#import "BRMenuOrderingFlowController.h"
 
 NSString * const BRMenuOrderingItemObjectCellIdentifier = @"ItemObjectCell";
 
@@ -18,7 +19,9 @@ NSString * const BRMenuOrderingItemObjectCellIdentifier = @"ItemObjectCell";
 
 @end
 
-@implementation BRMenuOrderingViewController
+@implementation BRMenuOrderingViewController {
+	BRMenuOrderingFlowController *flowController;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,33 +32,27 @@ NSString * const BRMenuOrderingItemObjectCellIdentifier = @"ItemObjectCell";
 	}
 }
 
-- (id<BRMenuItemObject>)menuItemObjectAtIndexPath:(NSIndexPath *)indexPath {
-	// TODO: move into flow controller
-	id<BRMenuItemObject> result = nil;
-	NSUInteger index = indexPath.row;
-	if ( index < [self.menu.items count] ) {
-		result = [self.menu.items objectAtIndex:index];
-	} else {
-		index -= [self.menu.items count];
-		result = [self.menu.groups objectAtIndex:index];
-	}
-	return result;
+- (void)setMenu:(BRMenu *)menu {
+	flowController = [[BRMenuOrderingFlowController alloc] initWithMenu:menu];
+}
+
+- (BRMenu *)menu {
+	return flowController.menu;
 }
 
 #pragma mark - Table support
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return [flowController numberOfSections];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	// TODO: move into flow controller
-	return ([self.menu.items count] + [self.menu.groups count]);
+	return [flowController numberOfItemsInSection:section];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     BRMenuItemObjectCell *cell = [tableView dequeueReusableCellWithIdentifier:BRMenuOrderingItemObjectCellIdentifier forIndexPath:indexPath];
-	cell.item = [self menuItemObjectAtIndexPath:indexPath];
+	cell.item = [flowController menuItemObjectAtIndexPath:indexPath];
     return cell;
 }
 
