@@ -12,6 +12,8 @@
 
 extern NSString * const BRMenuOrderingItemObjectCellIdentifier;
 
+extern NSString * const BRMenuOrderingConfigureComponentsSegue;
+
 @interface BRMenuOrderingViewController : UITableViewController
 
 @property (nonatomic, strong) BRMenu *menu;

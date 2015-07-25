@@ -10,9 +10,11 @@
 
 #import <Foundation/Foundation.h>
 
+#import "BRMenuItemObject.h"
+
 @class BRMenuItemComponentGroup;
 
-@interface BRMenuItemComponent : NSObject
+@interface BRMenuItemComponent : NSObject <BRMenuItemObject>
 
 @property (nonatomic) UInt8 componentId;
 @property (nonatomic, copy) NSString *title;

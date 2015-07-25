@@ -83,6 +83,10 @@
 	return result;
 }
 
+- (BOOL)hasComponents {
+	return (self.componentGroups.count > 0);
+}
+
 - (NSArray *)allComponents {
 	NSMutableArray *result = [NSMutableArray new];
 	for ( BRMenuItemComponentGroup *group in self.componentGroups ) {

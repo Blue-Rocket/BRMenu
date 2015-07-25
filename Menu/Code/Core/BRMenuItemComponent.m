@@ -27,4 +27,18 @@
 	return ((NSUInteger)31 + (NSUInteger)_componentId);
 }
 
+- (NSString *)key {
+	// not supported
+	return nil;
+}
+
+- (BOOL)hasComponents {
+	return NO;
+}
+
+- (NSDecimalNumber *)price {
+	// not supported here
+	return nil;
+}
+
 @end

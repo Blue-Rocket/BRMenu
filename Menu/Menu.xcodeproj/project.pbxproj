@@ -43,6 +43,8 @@
 		C9819DDA1B62D38E008A1393 /* BRMenuFitToWidthLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9819DD81B62D38E008A1393 /* BRMenuFitToWidthLabel.m */; };
 		C9819DDD1B6319A8008A1393 /* NSNumberFormatter+BRMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = C9819DDC1B6319A8008A1393 /* NSNumberFormatter+BRMenu.m */; };
 		C9819DE01B6336C9008A1393 /* BRMenuOrderingFlowController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9819DDF1B6336C9008A1393 /* BRMenuOrderingFlowController.m */; };
+		C9819DE41B6347F8008A1393 /* BRMenuOrderingComponentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9819DE31B6347F8008A1393 /* BRMenuOrderingComponentsViewController.m */; };
+		C9819DE71B63563B008A1393 /* BRMenuItemComponentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9819DE61B63563B008A1393 /* BRMenuItemComponentCell.m */; };
 		C98883601B58820D0049491C /* libMenu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C98883541B58820D0049491C /* libMenu.a */; };
 		C988839B1B5883A60049491C /* BRMenuOrderItemAttributesProxyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C98883991B5883A60049491C /* BRMenuOrderItemAttributesProxyTests.m */; };
 		C988839C1B5883A60049491C /* BRMenuOrderItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C988839A1B5883A60049491C /* BRMenuOrderItemTests.m */; };
@@ -150,6 +152,10 @@
 		C9819DDC1B6319A8008A1393 /* NSNumberFormatter+BRMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumberFormatter+BRMenu.m"; sourceTree = "<group>"; };
 		C9819DDE1B6336C9008A1393 /* BRMenuOrderingFlowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuOrderingFlowController.h; sourceTree = "<group>"; };
 		C9819DDF1B6336C9008A1393 /* BRMenuOrderingFlowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderingFlowController.m; sourceTree = "<group>"; };
+		C9819DE21B6347F8008A1393 /* BRMenuOrderingComponentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuOrderingComponentsViewController.h; sourceTree = "<group>"; };
+		C9819DE31B6347F8008A1393 /* BRMenuOrderingComponentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderingComponentsViewController.m; sourceTree = "<group>"; };
+		C9819DE51B63563B008A1393 /* BRMenuItemComponentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuItemComponentCell.h; sourceTree = "<group>"; };
+		C9819DE61B63563B008A1393 /* BRMenuItemComponentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuItemComponentCell.m; sourceTree = "<group>"; };
 		C98883541B58820D0049491C /* libMenu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMenu.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C988835F1B58820D0049491C /* MenuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MenuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C98883651B58820D0049491C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -389,8 +395,12 @@
 		C9819DCE1B61CE60008A1393 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C9819DE51B63563B008A1393 /* BRMenuItemComponentCell.h */,
+				C9819DE61B63563B008A1393 /* BRMenuItemComponentCell.m */,
 				C9819DD51B61EE94008A1393 /* BRMenuItemObjectCell.h */,
 				C9819DD61B61EE94008A1393 /* BRMenuItemObjectCell.m */,
+				C9819DE21B6347F8008A1393 /* BRMenuOrderingComponentsViewController.h */,
+				C9819DE31B6347F8008A1393 /* BRMenuOrderingComponentsViewController.m */,
 				C9819DCF1B61CEE8008A1393 /* BRMenuOrderingViewController.h */,
 				C9819DD01B61CEE8008A1393 /* BRMenuOrderingViewController.m */,
 			);
@@ -724,6 +734,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9B812851B5D7B040014CBCB /* BRMenuRestKitDataMapper.m in Sources */,
+				C9819DE41B6347F8008A1393 /* BRMenuOrderingComponentsViewController.m in Sources */,
 				C9819DDA1B62D38E008A1393 /* BRMenuFitToWidthLabel.m in Sources */,
 				C9B812B81B5D7BA70014CBCB /* BRMenuOrderItemAttributes.m in Sources */,
 				C9B812AF1B5D7BA70014CBCB /* BRMenuItemComponent.m in Sources */,
@@ -753,6 +764,7 @@
 				C9819DD71B61EE94008A1393 /* BRMenuItemObjectCell.m in Sources */,
 				C92AEEFA1B5F10630005AC79 /* BRMenuBackBarButtonItemView.m in Sources */,
 				C9B812B21B5D7BA70014CBCB /* BRMenuItemTag.m in Sources */,
+				C9819DE71B63563B008A1393 /* BRMenuItemComponentCell.m in Sources */,
 				C957D2E01B60B30300AD224C /* BRMenuLightHeavyQuantityButton.m in Sources */,
 				C9B8128C1B5D7B5C0014CBCB /* BRMenuMappingRestKit.m in Sources */,
 				C92AEEF91B5F10630005AC79 /* BRMenuBarButtonItemView.m in Sources */,

@@ -37,12 +37,24 @@
  */
 - (id)initWithMenu:(BRMenu *)menu item:(id<BRMenuItemObject>)item;
 
+/// ------------------------
+/// @name Collection Support
+/// ------------------------
+
 /**
  Get the number of sections to display.
  
  @return The count of available sections.
  */
 - (NSInteger)numberOfSections;
+
+/**
+ Get a title for a section.
+ 
+ @param section The section to get the title for.
+ @return The title.
+ */
+- (NSString *)titleForSection:(NSInteger)section;
 
 /**
  Get the count of items within a given section.
@@ -68,5 +80,16 @@
  */
 - (NSIndexPath *)indexPathForMenuItemObject:(id<BRMenuItemObject>)item;
 
+/// ---------------------
+/// @name Navigation Flow
+/// ---------------------
+
+/**
+ Get a new flow controller for an item selection.
+ 
+ @param indexPath The index of the item to get the path for.
+ @return The new controller instance, or @c nil if not appropriate.
+ */
+- (instancetype)flowControllerForItemAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

@@ -25,3 +25,12 @@
 @property (nonatomic, strong) IBOutlet UIView *insetSeparatorView;
 
 @end
+
+@interface BRMenuItemObjectCell (ImplementationSupport)
+
+/**
+ Configure any required subviews.
+ */
+- (void)setupSubviews;
+
+@end

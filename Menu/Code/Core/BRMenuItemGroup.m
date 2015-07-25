@@ -14,6 +14,10 @@
 
 @implementation BRMenuItemGroup
 
+- (BOOL)hasComponents {
+	return NO;
+}
+
 - (void)enumerateMenuItemsUsingBlock:(void (^)(BRMenuItem *menuItem, NSUInteger idx, BOOL *stop))block {
 	if ( block == NULL ) {
 		return;

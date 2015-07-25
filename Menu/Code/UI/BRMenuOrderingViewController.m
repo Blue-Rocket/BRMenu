@@ -9,11 +9,13 @@
 #import "BRMenuOrderingViewController.h"
 
 #import "BRMenu.h"
-#import "BRMenuItem.h"
+#import "BRMenuItemObject.h"
 #import "BRMenuItemObjectCell.h"
+#import "BRMenuOrderingComponentsViewController.h"
 #import "BRMenuOrderingFlowController.h"
 
 NSString * const BRMenuOrderingItemObjectCellIdentifier = @"ItemObjectCell";
+NSString * const BRMenuOrderingConfigureComponentsSegue = @"ConfigureComponents";
 
 @interface BRMenuOrderingViewController ()
 
@@ -40,6 +42,15 @@ NSString * const BRMenuOrderingItemObjectCellIdentifier = @"ItemObjectCell";
 	return flowController.menu;
 }
 
+#pragma mark - Navigation support
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if ( [segue.identifier isEqualToString:BRMenuOrderingConfigureComponentsSegue] ) {
+		BRMenuOrderingComponentsViewController *dest = segue.destinationViewController;
+		dest.flowController = [flowController flowControllerForItemAtIndexPath:[self.tableView indexPathForSelectedRow]];
+	}
+}
+
 #pragma mark - Table support
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -54,6 +65,13 @@ NSString * const BRMenuOrderingItemObjectCellIdentifier = @"ItemObjectCell";
     BRMenuItemObjectCell *cell = [tableView dequeueReusableCellWithIdentifier:BRMenuOrderingItemObjectCellIdentifier forIndexPath:indexPath];
 	cell.item = [flowController menuItemObjectAtIndexPath:indexPath];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	id<BRMenuItemObject> item = [flowController menuItemObjectAtIndexPath:indexPath];
+	if ( item.hasComponents ) {
+		[self performSegueWithIdentifier:BRMenuOrderingConfigureComponentsSegue sender:self];
+	}
 }
 
 @end

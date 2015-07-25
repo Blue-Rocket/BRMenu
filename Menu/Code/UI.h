@@ -11,10 +11,12 @@
 #import <BRMenu/UI/BRMenuFilledToggleButton.h>
 #import <BRMenu/UI/BRMenuFitToWidthLabel.h>
 #import <BRMenu/UI/BRMenuFlipToggleButton.h>
+#import <BRMenu/UI/BRMenuItemComponentCell.h>
 #import <BRMenu/UI/BRMenuItemObjectCell.h>
 #import <BRMenu/UI/BRMenuLeftRightPlacementButton.h>
 #import <BRMenu/UI/BRMenuLightHeavyQuantityButton.h>
 #import <BRMenu/UI/BRMenuNavigationTitleView.h>
+#import <BRMenu/UI/BRMenuOrderingComponentsViewController.h>
 #import <BRMenu/UI/BRMenuOrderingViewController.h>
 #import <BRMenu/UI/BRMenuPlusMinusButton.h>
 #import <BRMenu/UI/BRMenuStepper.h>
