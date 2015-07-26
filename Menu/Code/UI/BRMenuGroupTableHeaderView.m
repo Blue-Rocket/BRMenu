@@ -3,7 +3,7 @@
 //  FastOrder
 //
 //  Created by Matt on 4/11/13.
-//  Copyright (c) 2013 Blue Rocket, Inc. All rights reserved.
+//  Copyright (c) 2013 Blue Rocket, Inc. Distributable under the terms of the Apache License, Version 2.0.
 //
 
 #import "BRMenuGroupTableHeaderView.h"
