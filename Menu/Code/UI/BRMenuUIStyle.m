@@ -209,7 +209,7 @@ static BRMenuUIStyle *DefaultStyle;
 			// apply defaults
 			// TODO: load from environment resource
 			appPrimaryColor = [BRMenuUIStyle colorWithRGBHexInteger:0x1247b8];
-			appBodyColor = [BRMenuUIStyle colorWithRGBHexInteger:0xf2f2f2];
+			appBodyColor = [BRMenuUIStyle colorWithRGBHexInteger:0xfafafa];
 			appSeparatorColor = [BRMenuUIStyle colorWithRGBHexInteger:0xe1e1e1];
 			
 			inverseAppPrimaryColor = [UIColor whiteColor];
@@ -243,19 +243,19 @@ static BRMenuUIStyle *DefaultStyle;
 			uiFont = [UIFont fontWithName:@"AvenirNext-Medium" size:13];
 			uiBoldFont = [UIFont fontWithName:@"AvenirNext-DemiBold" size:13];
 			
-			bodyFont = [UIFont fontWithName:@"GeezaPro" size:14];
-			titleFont = [UIFont fontWithName:@"AvenirNext-DemiBold" size:21];
-			heroFont = [UIFont fontWithName:@"GeezaPro-Bold" size:21];
-			headlineFont = [UIFont fontWithName:@"GeezaPro" size:16];
-			secondaryFont = [UIFont fontWithName:@"GeezaPro-Light" size:16];
-			captionFont = [UIFont fontWithName:@"GeezaPro" size:14];
+			bodyFont = [UIFont fontWithName:@"GillSans-Light" size:14];
+			titleFont = [UIFont fontWithName:@"GillSans" size:21];
+			heroFont = [UIFont fontWithName:@"GillSans-Bold" size:21];
+			headlineFont = [UIFont fontWithName:@"GillSans-Bold" size:17];
+			secondaryFont = [UIFont fontWithName:@"GillSans-Light" size:13];
+			captionFont = [UIFont fontWithName:@"GillSans" size:14];
 			
-			listFont = [UIFont fontWithName:@"GeezaPro" size:16];
-			listSecondaryFont = [UIFont fontWithName:@"GeezaPro" size:15];
-			listCaptionFont = [UIFont fontWithName:@"GeezaPro" size:12];
+			listFont = [UIFont fontWithName:@"GillSans" size:17];
+			listSecondaryFont = [UIFont fontWithName:@"GillSans-Light" size:12];
+			listCaptionFont = [UIFont fontWithName:@"GillSans" size:12];
 			
-			alertBodyFont = [UIFont fontWithName:@"GeezaPro" size:16];
-			alertHeadlineFont = [UIFont fontWithName:@"GeezaPro" size:24];
+			alertBodyFont = [UIFont fontWithName:@"GillSans-Light" size:16];
+			alertHeadlineFont = [UIFont fontWithName:@"GillSans" size:24];
 		} else {
 			appPrimaryColor = other.appPrimaryColor;
 			appBodyColor = other.appBodyColor;

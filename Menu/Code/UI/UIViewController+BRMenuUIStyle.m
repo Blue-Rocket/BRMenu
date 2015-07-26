@@ -1,22 +1,21 @@
 //
-//  UIView+BRMenuUIStyle.m
+//  UIViewController+BRMenuUIStyle.m
 //  Menu
 //
-//  Created by Matt on 24/07/15.
-//  Copyright (c) 2015 Blue Rocket. Distributable under the terms of the Apache License, Version 2.0.
+//  Created by Matt on 27/07/15.
+//  Copyright (c) 2015 Blue Rocket. All rights reserved.
 //
 
-#import "UIView+BRMenuUIStyle.h"
-
+#import "UIViewController+BRMenuUIStyle.h"
 #import <objc/runtime.h>
 #import "BRMenuUIStylishHost.h"
 #import "BRMenuUIStyleObserver.h"
 
 static void *BRMenuUIStyleObserverKey = &BRMenuUIStyleObserverKey;
-static IMP original_willMoveToWindow;//(id, SEL, UIWindow *);
+static IMP original_viewDidLoad;//(id, SEL);
 
-void brmenustyle_willMoveToWindow(id self, SEL _cmd, UIWindow * window) {
-	((void(*)(id,SEL,UIWindow *))original_willMoveToWindow)(self, _cmd, window);
+void brmenustyle_viewDidLoad(id self, SEL _cmd) {
+	((void(*)(id,SEL))original_viewDidLoad)(self, _cmd);
 	if ( ![self conformsToProtocol:@protocol(BRMenuUIStylish)] ) {
 		return;
 	}
@@ -37,17 +36,17 @@ void brmenustyle_willMoveToWindow(id self, SEL _cmd, UIWindow * window) {
 	}
 }
 
-@implementation UIView (BRMenuUIStyle)
+@implementation UIViewController (BRMenuUIStyle)
 
 + (void)load {
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
 		Class class = [self class];
 		
-		SEL originalSelector = @selector(willMoveToWindow:);
+		SEL originalSelector = @selector(viewDidLoad);
 		
 		Method originalMethod = class_getInstanceMethod(class, originalSelector);
-		original_willMoveToWindow = method_setImplementation(originalMethod, (IMP)brmenustyle_willMoveToWindow);
+		original_viewDidLoad = method_setImplementation(originalMethod, (IMP)brmenustyle_viewDidLoad);
 	});
 }
 
