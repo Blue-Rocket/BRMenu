@@ -457,157 +457,157 @@ static BRMenuUIStyle *DefaultStyle;
 #pragma mark - Structural
 
 - (UIColor *)appPrimaryColor {
-	return (appPrimaryColor ? appPrimaryColor : [BRMenuUIStyle defaultStyle].appPrimaryColor);
+	return (appPrimaryColor || self.defaultStyle ? appPrimaryColor : [BRMenuUIStyle defaultStyle].appPrimaryColor);
 }
 
 - (UIColor *)appBodyColor {
-	return (appBodyColor ? appBodyColor : [BRMenuUIStyle defaultStyle].appBodyColor);
+	return (appBodyColor || self.defaultStyle ? appBodyColor : [BRMenuUIStyle defaultStyle].appBodyColor);
 }
 
 - (UIColor *)appSeparatorColor {
-	return (appSeparatorColor ? appSeparatorColor : [BRMenuUIStyle defaultStyle].appSeparatorColor);
+	return (appSeparatorColor || self.defaultStyle ? appSeparatorColor : [BRMenuUIStyle defaultStyle].appSeparatorColor);
 }
 
 - (UIColor *)inverseAppPrimaryColor {
-	return (inverseAppPrimaryColor ? inverseAppPrimaryColor : [BRMenuUIStyle defaultStyle].inverseAppPrimaryColor);
+	return (inverseAppPrimaryColor || self.defaultStyle ? inverseAppPrimaryColor : [BRMenuUIStyle defaultStyle].inverseAppPrimaryColor);
 }
 
 #pragma mark - Text
 
 - (UIColor *)textColor {
-	return (textColor ? textColor : [BRMenuUIStyle defaultStyle].textColor);
+	return (textColor || self.defaultStyle ? textColor : [BRMenuUIStyle defaultStyle].textColor);
 }
 
 - (UIColor *)textShadowColor {
-	return (textShadowColor ? textShadowColor : [BRMenuUIStyle defaultStyle].textShadowColor);
+	return (textShadowColor || self.defaultStyle ? textShadowColor : [BRMenuUIStyle defaultStyle].textShadowColor);
 }
 
 - (UIColor *)secondaryColor {
-	return (secondaryColor ? secondaryColor : [BRMenuUIStyle defaultStyle].secondaryColor);
+	return (secondaryColor || self.defaultStyle ? secondaryColor : [BRMenuUIStyle defaultStyle].secondaryColor);
 }
 
 - (UIColor *)captionColor {
-	return (captionColor ? captionColor : [BRMenuUIStyle defaultStyle].captionColor);
+	return (captionColor || self.defaultStyle ? captionColor : [BRMenuUIStyle defaultStyle].captionColor);
 }
 
 - (UIColor *)inverseTextColor {
-	return (inverseTextColor ? inverseTextColor : [BRMenuUIStyle defaultStyle].inverseTextColor);
+	return (inverseTextColor || self.defaultStyle ? inverseTextColor : [BRMenuUIStyle defaultStyle].inverseTextColor);
 }
 
 - (UIColor *)inverseTextShadowColor {
-	return (inverseTextShadowColor ? inverseTextShadowColor : [BRMenuUIStyle defaultStyle].inverseTextShadowColor);
+	return (inverseTextShadowColor || self.defaultStyle ? inverseTextShadowColor : [BRMenuUIStyle defaultStyle].inverseTextShadowColor);
 }
 
 - (UIColor *)inverseSecondaryColor {
-	return (inverseSecondaryColor ? inverseSecondaryColor : [BRMenuUIStyle defaultStyle].inverseSecondaryColor);
+	return (inverseSecondaryColor || self.defaultStyle ? inverseSecondaryColor : [BRMenuUIStyle defaultStyle].inverseSecondaryColor);
 }
 
 - (UIColor *)inverseCaptionColor {
-	return (inverseCaptionColor ? inverseCaptionColor : [BRMenuUIStyle defaultStyle].inverseCaptionColor);
+	return (inverseCaptionColor || self.defaultStyle ? inverseCaptionColor : [BRMenuUIStyle defaultStyle].inverseCaptionColor);
 }
 
 #pragma mark - Controls
 
 - (UIColor *)controlTextColor {
-	return (controlTextColor ? controlTextColor : [BRMenuUIStyle defaultStyle].controlTextColor);
+	return (controlTextColor || self.defaultStyle ? controlTextColor : [BRMenuUIStyle defaultStyle].controlTextColor);
 }
 
 - (UIColor *)controlBorderColor {
-	return (controlBorderColor ? controlBorderColor : [BRMenuUIStyle defaultStyle].controlBorderColor);
+	return (controlBorderColor || self.defaultStyle ? controlBorderColor : [BRMenuUIStyle defaultStyle].controlBorderColor);
 }
 
 - (UIColor *)controlBorderGlossColor {
-	return (controlBorderGlossColor ? controlBorderGlossColor : [BRMenuUIStyle defaultStyle].controlBorderGlossColor);
+	return (controlBorderGlossColor || self.defaultStyle ? controlBorderGlossColor : [BRMenuUIStyle defaultStyle].controlBorderGlossColor);
 }
 
 - (UIColor *)controlHighlightedColor {
-	return (controlHighlightedColor ? controlHighlightedColor : [BRMenuUIStyle defaultStyle].controlHighlightedColor);
+	return (controlHighlightedColor || self.defaultStyle ? controlHighlightedColor : [BRMenuUIStyle defaultStyle].controlHighlightedColor);
 }
 
 - (UIColor *)controlHighlightedShadowColor {
-	return (controlHighlightedShadowColor ? controlHighlightedShadowColor : [BRMenuUIStyle defaultStyle].controlHighlightedShadowColor);
+	return (controlHighlightedShadowColor || self.defaultStyle ? controlHighlightedShadowColor : [BRMenuUIStyle defaultStyle].controlHighlightedShadowColor);
 }
 
 - (UIColor *)controlSelectedColor {
-	return (controlSelectedColor ? controlSelectedColor : [BRMenuUIStyle defaultStyle].controlSelectedColor);
+	return (controlSelectedColor || self.defaultStyle ? controlSelectedColor : [BRMenuUIStyle defaultStyle].controlSelectedColor);
 }
 
 - (UIColor *)controlDisabledColor {
-	return (controlDisabledColor ? controlDisabledColor : [BRMenuUIStyle defaultStyle].controlDisabledColor);
+	return (controlDisabledColor || self.defaultStyle ? controlDisabledColor : [BRMenuUIStyle defaultStyle].controlDisabledColor);
 }
 
 - (UIColor *)inverseControlTextColor {
-	return (inverseControlTextColor ? inverseControlTextColor : [BRMenuUIStyle defaultStyle].inverseControlTextColor);
+	return (inverseControlTextColor || self.defaultStyle ? inverseControlTextColor : [BRMenuUIStyle defaultStyle].inverseControlTextColor);
 }
 
 - (UIColor *)inverseControlBorderColor {
-	return (inverseControlBorderColor ? inverseControlBorderColor : [BRMenuUIStyle defaultStyle].inverseControlBorderColor);
+	return (inverseControlBorderColor || self.defaultStyle ? inverseControlBorderColor : [BRMenuUIStyle defaultStyle].inverseControlBorderColor);
 }
 
 - (UIColor *)inverseControlBorderGlossColor {
-	return (inverseControlBorderGlossColor ? inverseControlBorderGlossColor : [BRMenuUIStyle defaultStyle].inverseControlBorderGlossColor);
+	return (inverseControlBorderGlossColor || self.defaultStyle ? inverseControlBorderGlossColor : [BRMenuUIStyle defaultStyle].inverseControlBorderGlossColor);
 }
 
 - (UIColor *)inverseControlHighlightedColor {
-	return (inverseControlHighlightedColor ? inverseControlHighlightedColor : [BRMenuUIStyle defaultStyle].inverseControlHighlightedColor);
+	return (inverseControlHighlightedColor || self.defaultStyle ? inverseControlHighlightedColor : [BRMenuUIStyle defaultStyle].inverseControlHighlightedColor);
 }
 
 - (UIColor *)inverseControlHighlightedShadowColor {
-	return (inverseControlHighlightedShadowColor ? inverseControlHighlightedShadowColor : [BRMenuUIStyle defaultStyle].inverseControlHighlightedShadowColor);
+	return (inverseControlHighlightedShadowColor || self.defaultStyle ? inverseControlHighlightedShadowColor : [BRMenuUIStyle defaultStyle].inverseControlHighlightedShadowColor);
 }
 
 - (UIColor *)inverseControlSelectedColor {
-	return (inverseControlSelectedColor ? inverseControlSelectedColor : [BRMenuUIStyle defaultStyle].inverseControlSelectedColor);
+	return (inverseControlSelectedColor || self.defaultStyle ? inverseControlSelectedColor : [BRMenuUIStyle defaultStyle].inverseControlSelectedColor);
 }
 
 - (UIColor *)inverseControlDisabledColor {
-	return (inverseControlDisabledColor ? inverseControlDisabledColor : [BRMenuUIStyle defaultStyle].inverseControlDisabledColor);
+	return (inverseControlDisabledColor || self.defaultStyle ? inverseControlDisabledColor : [BRMenuUIStyle defaultStyle].inverseControlDisabledColor);
 }
 
 #pragma mark - Fonts
 
 - (UIFont *)uiFont {
-	return (uiFont ? uiFont : [BRMenuUIStyle defaultStyle].uiFont);
+	return (uiFont || self.defaultStyle ? uiFont : [BRMenuUIStyle defaultStyle].uiFont);
 }
 
 - (UIFont *)uiBoldFont {
-	return (uiBoldFont ? uiBoldFont : [BRMenuUIStyle defaultStyle].uiBoldFont);
+	return (uiBoldFont || self.defaultStyle ? uiBoldFont : [BRMenuUIStyle defaultStyle].uiBoldFont);
 }
 
 - (UIFont *)heroFont {
-	return (heroFont ? heroFont : [BRMenuUIStyle defaultStyle].heroFont);
+	return (heroFont || self.defaultStyle ? heroFont : [BRMenuUIStyle defaultStyle].heroFont);
 }
 
 - (UIFont *)headlineFont {
-	return (headlineFont ? headlineFont : [BRMenuUIStyle defaultStyle].headlineFont);
+	return (headlineFont || self.defaultStyle ? headlineFont : [BRMenuUIStyle defaultStyle].headlineFont);
 }
 
 - (UIFont *)secondaryFont {
-	return (secondaryFont ? secondaryFont : [BRMenuUIStyle defaultStyle].secondaryFont);
+	return (secondaryFont || self.defaultStyle ? secondaryFont : [BRMenuUIStyle defaultStyle].secondaryFont);
 }
 
 - (UIFont *)captionFont {
-	return (captionFont ? captionFont : [BRMenuUIStyle defaultStyle].captionFont);
+	return (captionFont || self.defaultStyle ? captionFont : [BRMenuUIStyle defaultStyle].captionFont);
 }
 
 - (UIFont *)listFont {
-	return (listFont ? listFont : [BRMenuUIStyle defaultStyle].listFont);
+	return (listFont || self.defaultStyle ? listFont : [BRMenuUIStyle defaultStyle].listFont);
 }
 
 - (UIFont *)listSecondaryFont {
-	return (listSecondaryFont ? listSecondaryFont : [BRMenuUIStyle defaultStyle].listSecondaryFont);
+	return (listSecondaryFont || self.defaultStyle ? listSecondaryFont : [BRMenuUIStyle defaultStyle].listSecondaryFont);
 }
 
 - (UIFont *)listCaptionFont {
-	return (listCaptionFont ? listCaptionFont : [BRMenuUIStyle defaultStyle].listCaptionFont);
+	return (listCaptionFont || self.defaultStyle ? listCaptionFont : [BRMenuUIStyle defaultStyle].listCaptionFont);
 }
 
 - (UIFont *)alertBodyFont {
-	return (alertBodyFont ? alertBodyFont : [BRMenuUIStyle defaultStyle].alertBodyFont);
+	return (alertBodyFont || self.defaultStyle ? alertBodyFont : [BRMenuUIStyle defaultStyle].alertBodyFont);
 }
 
 - (UIFont *)alertHeadlineFont {
-	return (alertHeadlineFont ? alertHeadlineFont : [BRMenuUIStyle defaultStyle].alertHeadlineFont);
+	return (alertHeadlineFont || self.defaultStyle ? alertHeadlineFont : [BRMenuUIStyle defaultStyle].alertHeadlineFont);
 }
 
 @end
