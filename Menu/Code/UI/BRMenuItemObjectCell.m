@@ -82,11 +82,11 @@
 	UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 10);
 	[self.title mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.top.equalTo(@(padding.top));
-		make.left.equalTo(@(padding.left));
+		make.left.equalTo(self.contentView.mas_leftMargin);
 	}];
 	[self.price mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.leading.equalTo(self.title.mas_trailing).with.offset(10);
-		make.right.equalTo(@(-padding.right));
+		make.right.equalTo(self.contentView.mas_rightMargin);
 		make.baseline.equalTo(self.title);
 	}];
 	[self.desc mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -98,12 +98,13 @@
 }
 
 - (void)refreshStyle:(BRMenuUIStyle *)style {
-	self.title.font = self.uiStyle.headlineFont;
-	self.title.textColor = self.uiStyle.appPrimaryColor;
-	self.price.font = self.uiStyle.listSecondaryFont;
-	self.price.textColor = self.uiStyle.appPrimaryColor;
-	self.desc.font = self.uiStyle.listCaptionFont;
-	self.desc.textColor = self.uiStyle.secondaryColor;
+	self.title.font = style.headlineFont;
+	self.title.textColor = style.appPrimaryColor;
+	self.price.font = style.listSecondaryFont;
+	self.price.textColor = style.appPrimaryColor;
+	self.desc.font = style.listCaptionFont;
+	self.desc.textColor = style.secondaryColor;
+	self.backgroundColor = style.appBodyColor;
 	[self invalidateIntrinsicContentSize];
 }
 

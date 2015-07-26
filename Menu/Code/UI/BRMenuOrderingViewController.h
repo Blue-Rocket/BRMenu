@@ -8,13 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+#import "BRMenuUIStyle.h"
+
 @class BRMenu;
 
 extern NSString * const BRMenuOrderingItemObjectCellIdentifier;
 
 extern NSString * const BRMenuOrderingConfigureComponentsSegue;
 
-@interface BRMenuOrderingViewController : UITableViewController
+@interface BRMenuOrderingViewController : UITableViewController <BRMenuUIStylish>
 
 @property (nonatomic, strong) BRMenu *menu;
 @property (nonatomic, assign, getter=isUsePrototypeCells) IBInspectable BOOL usePrototypeCells;

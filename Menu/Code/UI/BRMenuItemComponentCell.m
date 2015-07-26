@@ -59,7 +59,7 @@
 	UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 0);
 	[self.title mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.top.equalTo(@(padding.top));
-		make.left.equalTo(@(padding.left));
+		make.leading.equalTo(self.contentView.mas_leadingMargin);
 		make.bottom.equalTo(@(-padding.bottom));
 	}];
 	[self.placementButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -71,10 +71,15 @@
 	[self.quantityButton mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.centerY.equalTo(self.contentView);
 		make.leading.equalTo(self.placementButton.mas_trailing).with.offset(2);
-		make.trailing.equalTo(@(-padding.right));
+		make.trailing.equalTo(self.contentView.mas_trailingMargin);
 		make.width.equalTo(@32);
 		make.height.equalTo(@32);
 	}];
+}
+
+- (void)refreshStyle:(BRMenuUIStyle *)style {
+	[super refreshStyle:style];
+	self.title.font = style.listFont;
 }
 
 @end

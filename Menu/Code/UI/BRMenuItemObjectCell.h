@@ -33,4 +33,11 @@
  */
 - (void)setupSubviews;
 
+/**
+ Refresh the styles used by subviews.
+ 
+ @param style The style to refresh with.
+ */
+- (void)refreshStyle:(BRMenuUIStyle *)style;
+
 @end

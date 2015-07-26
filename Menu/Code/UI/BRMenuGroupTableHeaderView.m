@@ -36,7 +36,10 @@
 	[container addSubview:headerView];
 
 	[headerView mas_makeConstraints:^(MASConstraintMaker *make) {
-		make.edges.equalTo(container);
+		make.top.equalTo(container);
+		make.leading.equalTo(container.mas_leadingMargin);
+		make.trailing.equalTo(container);
+		make.bottom.equalTo(container);
 	}];
 	
 	self.backgroundView = [[UIView alloc] initWithFrame:container.bounds];

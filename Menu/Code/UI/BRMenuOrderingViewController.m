@@ -13,17 +13,21 @@
 #import "BRMenuItemObjectCell.h"
 #import "BRMenuOrderingComponentsViewController.h"
 #import "BRMenuOrderingFlowController.h"
+#import "BRMenuUIStylishHost.h"
+#import "UIViewController+BRMenuUIStyle.h"
 
 NSString * const BRMenuOrderingItemObjectCellIdentifier = @"ItemObjectCell";
 NSString * const BRMenuOrderingConfigureComponentsSegue = @"ConfigureComponents";
 
-@interface BRMenuOrderingViewController ()
+@interface BRMenuOrderingViewController () <BRMenuUIStylishHost>
 
 @end
 
 @implementation BRMenuOrderingViewController {
 	BRMenuOrderingFlowController *flowController;
 }
+
+@dynamic uiStyle;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,6 +36,15 @@ NSString * const BRMenuOrderingConfigureComponentsSegue = @"ConfigureComponents"
 		self.tableView.estimatedRowHeight = 60.0;
 		[self.tableView registerClass:[BRMenuItemObjectCell class] forCellReuseIdentifier:BRMenuOrderingItemObjectCellIdentifier];
 	}
+	[self refreshForStyle:self.uiStyle];
+}
+
+- (void)uiStyleDidChange:(BRMenuUIStyle *)style {
+	[self refreshForStyle:style];
+}
+
+- (void)refreshForStyle:(BRMenuUIStyle *)style {
+	self.view.backgroundColor = style.appBodyColor;
 }
 
 - (void)setMenu:(BRMenu *)menu {

@@ -41,7 +41,7 @@
 
 	// rule: bottom
 	ruleView = [[UIView alloc] initWithFrame:CGRectZero];
-	ruleView.backgroundColor = self.uiStyle.appSeparatorColor;
+	ruleView.backgroundColor = self.uiStyle.appPrimaryColor;
 	[self addSubview:ruleView];
 
 	// title: left
@@ -78,7 +78,7 @@
 	UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 2, 10);
 	[self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.top.equalTo(@(padding.top));
-		make.leading.equalTo(@(padding.left));
+		make.leading.equalTo(self.mas_leftMargin);
 	}];
 	[self.priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.leading.equalTo(self.titleLabel.mas_trailing).with.offset(10);
@@ -88,7 +88,7 @@
 	[ruleView mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.top.equalTo(self.titleLabel.mas_bottom).with.offset(2);
 		make.left.equalTo(self.titleLabel);
-		make.right.equalTo(@(-padding.right));
+		make.right.equalTo(self);
 		make.height.equalTo(@1);
 		make.bottom.equalTo(@(-padding.bottom));
 	}];
