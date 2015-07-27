@@ -1,4 +1,9 @@
+/*
+ BRMenu UI default localized strings.
+ */
+
 "menu.action.add" = "Add";
+"menu.action.back" = "Back";
 "menu.action.next" = "Next";
 "menu.action.review" = "Review";
 
