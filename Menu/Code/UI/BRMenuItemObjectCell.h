@@ -40,4 +40,12 @@
  */
 - (void)refreshStyle:(BRMenuUIStyle *)style;
 
+
+/**
+ Refresh the display for a given item.
+ 
+ @param item The item to refresh the UI with.
+ */
+- (void)refreshForItem:(id<BRMenuItemObject>)item;
+
 @end

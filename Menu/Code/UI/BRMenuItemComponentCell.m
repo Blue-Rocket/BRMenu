@@ -21,12 +21,36 @@
 @implementation BRMenuItemComponentCell
 
 
+- (BRMenuItemComponent *)component {
+	return (BRMenuItemComponent *)self.item;
+}
+
 - (void)setComponent:(BRMenuItemComponent *)component {
 	self.item = component;
 }
 
-- (BRMenuItemComponent *)component {
-	return (BRMenuItemComponent *)self.item;
+- (void)refreshForItem:(id<BRMenuItemObject>)item {
+	[super refreshForItem:item];
+	if ( ![item isKindOfClass:[BRMenuItemComponent class]] ) {
+		return;
+	}
+	BRMenuItemComponent *component = (BRMenuItemComponent *)item;
+	
+	BOOL layoutChanged = NO;
+	if ( self.placementButton.hidden != !component.askPlacement ) {
+		self.placementButton.hidden = !component.askPlacement;
+		layoutChanged = YES;
+	}
+	if ( self.quantityButton.hidden != !component.askQuantity ) {
+		self.quantityButton.hidden = !component.askQuantity;
+		layoutChanged = YES;
+	}
+	
+	if ( layoutChanged ) {
+		[self invalidateIntrinsicContentSize];
+		[self setNeedsUpdateConstraints];
+	}
+	[self setNeedsLayout];
 }
 
 - (void)setupSubviews {
@@ -54,27 +78,37 @@
 	[q setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
 	self.quantityButton = q;
 	[self.contentView addSubview:q];
-	
-	
-	UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 0);
-	[self.title mas_makeConstraints:^(MASConstraintMaker *make) {
-		make.top.equalTo(@(padding.top));
-		make.leading.equalTo(self.contentView.mas_leadingMargin);
-		make.bottom.equalTo(@(-padding.bottom));
-	}];
+
 	[self.placementButton mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.centerY.equalTo(self.contentView);
-		make.leading.equalTo(self.title.mas_trailing).with.offset(10);
-		make.width.equalTo(@32);
-		make.height.equalTo(@32);
+		make.width.equalTo(@44);
+		make.top.equalTo(self.contentView);
+		make.bottom.equalTo(self.contentView);
 	}];
 	[self.quantityButton mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.centerY.equalTo(self.contentView);
 		make.leading.equalTo(self.placementButton.mas_trailing).with.offset(2);
 		make.trailing.equalTo(self.contentView.mas_trailingMargin);
-		make.width.equalTo(@32);
-		make.height.equalTo(@32);
+		make.width.equalTo(@44);
+		make.top.equalTo(self.contentView);
+		make.bottom.equalTo(self.contentView);
 	}];
+}
+
+- (void)updateConstraints {
+	UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 0);
+	BRMenuItemComponent *component = self.item;
+	[self.title mas_remakeConstraints:^(MASConstraintMaker *make) {
+		make.top.equalTo(@(padding.top));
+		make.leading.equalTo(self.contentView.mas_leadingMargin);
+		make.trailing.equalTo(component.askPlacement
+							  ? self.placementButton.mas_leading
+							  : component.askQuantity
+							  ? self.quantityButton.mas_leading
+							  : self.contentView.mas_trailing).with.offset(-10);
+		make.bottom.equalTo(@(-padding.bottom));
+	}];
+	[super updateConstraints];
 }
 
 - (void)refreshStyle:(BRMenuUIStyle *)style {

@@ -111,7 +111,7 @@
 - (void)setItem:(id<BRMenuItemObject>)theItem {
 	if ( theItem != item ) {
 		item = theItem;
-		[self refresh];
+		[self refreshForItem:theItem];
 	}
 }
 
@@ -119,13 +119,13 @@
 	[self refreshStyle:style];
 }
 
-- (void)refresh {
-	self.title.text = item.title;
-	self.desc.text = item.desc;
+- (void)refreshForItem:(id<BRMenuItemObject>)theItem {
+	self.title.text = theItem.title;
+	self.desc.text = theItem.desc;
 	
 	NSString *price = nil;
-	if ( item.price != nil ) {
-		price = [[NSNumberFormatter standardBRMenuPriceFormatter] stringFromNumber:item.price];
+	if ( theItem.price != nil ) {
+		price = [[NSNumberFormatter standardBRMenuPriceFormatter] stringFromNumber:theItem.price];
 	}
 	self.price.text = price;
 	[self setNeedsLayout];
