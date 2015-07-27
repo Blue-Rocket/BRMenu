@@ -44,7 +44,6 @@ NSString * const BRMenuOrderingGroupHeaderCellIdentifier = @"GroupHeaderCell";
 	}
 	
 	// add right nav button: Review or Add or Next
-	UIButton *rightButton;
 	if ( flowController.finalStep ) {
 		if ( flowController.item.needsReview ) {
 			self.navigationItem.rightBarButtonItem = [UIBarButtonItem standardBRMenuBarButtonItemWithTitle:[NSBundle localizedBRMenuString:@"menu.action.review"]
@@ -60,7 +59,6 @@ NSString * const BRMenuOrderingGroupHeaderCellIdentifier = @"GroupHeaderCell";
 																								target:self
 																								action:@selector(gotoNextFlowStep:)];
 	}
-	self.navigationItem.rightBarButtonItem.customView = rightButton;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
