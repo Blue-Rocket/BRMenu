@@ -10,7 +10,14 @@
 
 @class BRMenu;
 @class BRMenuItem;
+@class BRMenuOrderItem;
 @protocol BRMenuItemObject;
+
+typedef enum : NSInteger {
+	BRMenuOrderingFlowErrorUnknown,
+	BRMenuOrderingFlowErrorComponentOverlap,
+	BRMenuOrderingFlowErrorRequiredComponentMissing,
+} BRMenuOrderingFlowError;
 
 /**
  A controller object to assist with rendering a menu.
@@ -19,6 +26,7 @@
 
 @property (nonatomic, readonly) BRMenu *menu;
 @property (nonatomic, readonly) BRMenuItem *item;
+@property (nonatomic, readonly) BRMenuOrderItem *orderItem;
 @property (nonatomic, readonly) NSUInteger stepCount;
 @property (nonatomic, readonly, getter=isFinalStep) BOOL finalStep;
 
@@ -93,6 +101,21 @@
 /// ---------------------
 /// @name Navigation Flow
 /// ---------------------
+
+/**
+ Test if based on the current conditions the user should be allowed to move to the next step in the flow.
+ 
+ @param error An error pointer to obtain the reason for any failure. Pass @c nil if not needed.
+ @return Flag indicating the navigation validation result.
+ */
+- (BOOL)canGotoNextStep:(NSError * __autoreleasing *)error;
+
+/**
+ Get a new controller instance for the next step;
+ 
+ @return The new controller instance, or @c nil if not appropriate.
+ */
+- (instancetype)flowControllerForNextStep;
 
 /**
  Get a new flow controller for an item selection.

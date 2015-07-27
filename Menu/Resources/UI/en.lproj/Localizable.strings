@@ -5,6 +5,7 @@
 "menu.action.add" = "Add";
 "menu.action.back" = "Back";
 "menu.action.next" = "Next";
+"menu.action.ok" = "OK";
 "menu.action.review" = "Review";
 
 "menu.ordering.item.title" = "Add %@";

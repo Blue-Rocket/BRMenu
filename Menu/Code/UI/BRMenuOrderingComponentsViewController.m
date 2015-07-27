@@ -73,7 +73,16 @@ NSString * const BRMenuOrderingGroupHeaderCellIdentifier = @"GroupHeaderCell";
 }
 
 - (IBAction)gotoNextFlowStep:(id)sender {
-	// TODO
+	NSError *error = nil;
+	if ( [flowController canGotoNextStep:&error] == NO ) {
+		[[[UIAlertView alloc] initWithTitle:nil message:[error localizedDescription] delegate:nil cancelButtonTitle:[NSBundle localizedBRMenuString:@"menu.action.ok"] otherButtonTitles:nil] show];
+		return;
+	}
+	BRMenuOrderingComponentsViewController *dest = [self.navigationController.storyboard
+										 instantiateViewControllerWithIdentifier:@"MenuOrderingComponents"];
+	//dest.orderDelegate = self.orderDelegate;
+	dest.flowController = [flowController flowControllerForNextStep];
+	[self.navigationController pushViewController:dest animated:YES];
 }
 
 - (IBAction)reviewOrderItem:(id)sender {

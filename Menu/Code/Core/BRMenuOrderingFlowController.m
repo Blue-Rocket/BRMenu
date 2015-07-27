@@ -9,17 +9,23 @@
 #import "BRMenuOrderingFlowController.h"
 
 #import "BRMenu.h"
+#import "BRMenuConstants.h"
 #import "BRMenuItem.h"
+#import "BRMenuItemComponent.h"
 #import "BRMenuItemComponentGroup.h"
+#import "BRMenuOrderItem.h"
+#import "BRMenuOrderItemComponent.h"
+#import "NSBundle+BRMenu.h"
 
 @implementation BRMenuOrderingFlowController {
 	BRMenu *menu;
 	BRMenuItem *item;
+	BRMenuOrderItem *orderItem;
 	NSArray *steps;
 	NSUInteger flowStep;
 }
 
-@synthesize menu, item;
+@synthesize menu, item, orderItem;
 
 - (id)initWithMenu:(BRMenu *)theMenu {
 	return [self initWithMenu:theMenu item:nil];
@@ -29,6 +35,9 @@
 	if ( (self = [super init]) ) {
 		menu = theMenu;
 		item = theItem;
+		if ( theItem ) {
+			orderItem = [[BRMenuOrderItem alloc] initWithMenuItem:theItem];
+		}
 		[self setupFlow];
 	}
 	return self;
@@ -38,6 +47,7 @@
 	if ( (self = [super init]) ) {
 		menu = flow.menu;
 		item = flow.item;
+		orderItem = flow->orderItem;
 		steps = flow->steps;
 		flowStep = step;
 	}
@@ -116,6 +126,84 @@
 		return NO;
 	}
 	return !(flowStep + 1 < self.stepCount);
+}
+
+- (BOOL)canGotoNextStep:(NSError * __autoreleasing *)error {
+	for ( BRMenuItemComponentGroup *group in [self menuItemComponentGroupsForStep:flowStep] ) {
+		if ( group.requiredCount < 1 ) {
+			continue;
+		}
+		unsigned int count = 0;
+		BOOL leftFilled = NO;
+		BOOL rightFilled = NO;
+		BRMenuOrderItemComponent *absenceComponent = nil;
+		for ( BRMenuItemComponent *component in group.components ) {
+			BRMenuOrderItemComponent *orderComponent = [orderItem componentForMenuItemComponent:component];
+			if ( orderComponent != nil ) {
+				count++;
+				leftFilled = (leftFilled || orderComponent.leftPlacement);
+				rightFilled = (rightFilled || orderComponent.rightPlacement);
+				if ( component.absenceOfComponent ) {
+					absenceComponent = orderComponent;
+				}
+			}
+		}
+		if ( absenceComponent != nil ) {
+			for ( BRMenuItemComponent *component in absenceComponent.component.group.components ) {
+				BRMenuOrderItemComponent *orderComponent = [orderItem componentForMenuItemComponent:component];
+				if ( orderComponent != nil && orderComponent != absenceComponent ) {
+					NSString *msg = nil;
+					if ( absenceComponent.placement == BRMenuOrderItemComponentPlacementWhole && orderComponent.placement == BRMenuOrderItemComponentPlacementWhole ) {
+						// "no" X overlaps with some X on whole
+						msg = [NSString stringWithFormat:[NSBundle localizedBRMenuString:@"menu.validation.componentGroup.overlap.message"],
+							   absenceComponent.component.title, component.title];
+					} else if ( absenceComponent.leftPlacement && orderComponent.leftPlacement ) {
+						// "no" X overlaps with some X on left
+						msg = [NSString stringWithFormat:[NSBundle localizedBRMenuString:@"menu.validation.componentGroup.overlapSide.message"],
+							   absenceComponent.component.title, component.title, [NSBundle localizedBRMenuString:@"menu.placement.left"]];
+					} else if ( absenceComponent.rightPlacement && orderComponent.rightPlacement ) {
+						// "no" X overlaps with some X on right
+						msg = [NSString stringWithFormat:[NSBundle localizedBRMenuString:@"menu.validation.componentGroup.overlapSide.message"],
+							   absenceComponent.component.title, component.title, [NSBundle localizedBRMenuString:@"menu.placement.right"]];
+					}
+					if ( msg ) {
+						if ( error ) {
+							*error = [NSError errorWithDomain:BRMenuErrorDomain code:BRMenuOrderingFlowErrorComponentOverlap
+													userInfo:@{NSLocalizedDescriptionKey : msg}];
+						}
+						return NO;
+					}
+				}
+			}
+		}
+		if ( count < group.requiredCount ) {
+			// alert the user
+			NSString *msg;
+			if ( group.multiSelect == YES ) {
+				msg = [NSString stringWithFormat:[NSBundle localizedBRMenuString:@"menu.validation.componentGroup.requiredCount.message"],
+					   [NSString stringWithFormat:@"%u", group.requiredCount], [group.title lowercaseString],
+					   NSLocalizedString((group.requiredCount == 1 ? @"item" : @"items"), @"item")];
+			} else {
+				msg = [NSString stringWithFormat:[NSBundle localizedBRMenuString:@"menu.validation.componentGroup.required.message"],
+					   [group.title lowercaseString]];
+			}
+			if ( error ) {
+				*error = [NSError errorWithDomain:BRMenuErrorDomain code:BRMenuOrderingFlowErrorComponentOverlap
+										 userInfo:@{NSLocalizedDescriptionKey : msg}];
+			}
+			return NO;
+		} else if ( !(leftFilled && rightFilled) ) {
+			NSString *msg = [NSString stringWithFormat:[NSBundle localizedBRMenuString:@"menu.validation.componentGroup.requiredPlacement.message"],
+							 [group.title lowercaseString],
+							 (leftFilled ? [NSBundle localizedBRMenuString:@"right"] : [NSBundle localizedBRMenuString:@"left"])];
+			if ( error ) {
+				*error = [NSError errorWithDomain:BRMenuErrorDomain code:BRMenuOrderingFlowErrorComponentOverlap
+										 userInfo:@{NSLocalizedDescriptionKey : msg}];
+			}
+			return NO;
+		}
+	}
+	return YES;
 }
 
 - (NSInteger)numberOfSections {
@@ -198,5 +286,10 @@
 	}
 	return result;
 }
+
+- (instancetype)flowControllerForNextStep {
+	return [[[self class] alloc] initWithFlow:self step:(flowStep + 1)];
+}
+
 
 @end
