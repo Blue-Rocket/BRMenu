@@ -91,12 +91,19 @@ typedef enum : NSInteger {
 - (id<BRMenuItemObject>)menuItemObjectAtIndexPath:(NSIndexPath *)indexPath;
 
 /**
- Get an @c IndexPath for a given @c BRMenuItemObject instance.
+ Get an @c NSIndexPath for a given @c BRMenuItemObject instance.
  
  @param pack The item to find the index path of.
  @return The found @c IndexPath, or @c nil if not found.
  */
 - (NSIndexPath *)indexPathForMenuItemObject:(id<BRMenuItemObject>)item;
+
+/**
+ Get an arry of @c NSIndexPath objects for all components selected in the current step.
+ 
+ @return An array of index paths.
+ */
+- (NSArray *)indexPathsForSelectedComponents;
 
 /// ---------------------
 /// @name Navigation Flow

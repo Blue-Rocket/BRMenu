@@ -9,9 +9,12 @@
 #import "BRMenuOrderingComponentsViewController.h"
 
 #import "BRMenuGroupTableHeaderView.h"
+#import "BRMenuItemComponent.h"
 #import "BRMenuItemComponentCell.h"
+#import "BRMenuItemComponentGroup.h"
 #import "BRMenuItem.h"
 #import "BRMenuOrderingFlowController.h"
+#import "BRMenuOrderItem.h"
 #import "NSBundle+BRMenu.h"
 #import "UIBarButtonItem+BRMenu.h"
 
@@ -31,6 +34,7 @@ NSString * const BRMenuOrderingGroupHeaderCellIdentifier = @"GroupHeaderCell";
 		self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension;
 		self.tableView.estimatedRowHeight = 60.0;
 		self.tableView.estimatedSectionHeaderHeight = 50.0;
+		self.tableView.allowsMultipleSelection = YES;
 		[self.tableView registerClass:[BRMenuItemComponentCell class] forCellReuseIdentifier:BRMenuOrderingItemComponentCellIdentifier];
 		[self.tableView registerClass:[BRMenuGroupTableHeaderView class] forHeaderFooterViewReuseIdentifier:BRMenuOrderingGroupHeaderCellIdentifier];
 	}
@@ -62,8 +66,24 @@ NSString * const BRMenuOrderingGroupHeaderCellIdentifier = @"GroupHeaderCell";
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-	
-	// TODO: [self setupTableCellSelections];
+	[super viewWillAppear:animated];
+	[self setupTableCellSelections];
+}
+
+// configure the table view cell selection state; needed when going back/forth in navigation flow
+- (void)setupTableCellSelections {
+	NSUInteger section = 0;
+	NSUInteger row;
+	NSIndexPath *indexPath;
+	NSArray *tableSelectedIndexPaths = [self.tableView indexPathsForSelectedRows];
+	NSArray *indexPaths = [flowController indexPathsForSelectedComponents];
+	for ( NSIndexPath *indexPath in indexPaths ) {
+		if ( ![tableSelectedIndexPaths containsObject:indexPath] ) {
+			[self.tableView selectRowAtIndexPath:indexPath
+										animated:NO
+								  scrollPosition:UITableViewScrollPositionNone];
+		}
+	}
 }
 
 #pragma mark - Actions
@@ -113,7 +133,54 @@ NSString * const BRMenuOrderingGroupHeaderCellIdentifier = @"GroupHeaderCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	BRMenuItemComponentCell *cell = [tableView dequeueReusableCellWithIdentifier:BRMenuOrderingItemComponentCellIdentifier forIndexPath:indexPath];
 	cell.item = [flowController menuItemObjectAtIndexPath:indexPath];
+	
+	BRMenuOrderItemComponent *orderComponent = [flowController.orderItem componentForMenuItemComponent:cell.component];
+	[cell configureForOrderItemComponent:orderComponent];
+
 	return cell;
+}
+
+- (void)configureSelectedCellState:(BRMenuItemComponentCell *)cell {
+	BRMenuItemComponent *component = cell.component;
+	[flowController.orderItem getOrAddComponentForMenuItemComponent:component];
+}
+
+- (void)configureDeselectedCellState:(BRMenuItemComponentCell *)cell {
+	BRMenuItemComponent *component = cell.component;
+	[flowController.orderItem removeComponentForMenuItemComponent:component];
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView willDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+	BRMenuItemComponentCell *cell = (BRMenuItemComponentCell *)[tableView cellForRowAtIndexPath:indexPath];
+	[self configureDeselectedCellState:cell];
+	return indexPath;
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	BRMenuItemComponentCell *cell = (BRMenuItemComponentCell *)[tableView cellForRowAtIndexPath:indexPath];
+	BRMenuItemComponent *component = cell.component;
+	BRMenuItemComponentGroup *componentGroup = component.group;
+	const BOOL multiSelect = componentGroup.multiSelect;
+	const BOOL makeSelected = (multiSelect == NO || ![[tableView indexPathsForSelectedRows] containsObject:indexPath]);
+	
+	if ( multiSelect == NO ) {
+		// radio control behavior: if any other row in current section is selected, deselect it now
+		for ( NSIndexPath *selectedIndexPath in [tableView indexPathsForSelectedRows] ) {
+			if ( selectedIndexPath.section == indexPath.section && selectedIndexPath.row != indexPath.row ) {
+				[tableView deselectRowAtIndexPath:selectedIndexPath animated:YES];
+				[self configureDeselectedCellState:(BRMenuItemComponentCell *)[tableView cellForRowAtIndexPath:selectedIndexPath]];
+				break;
+			}
+		}
+	}
+	
+	if ( makeSelected == NO && multiSelect == YES ) {
+		[tableView deselectRowAtIndexPath:indexPath animated:YES];
+	}
+	if ( makeSelected == YES ) {
+		[self configureSelectedCellState:cell];
+	}
+	return (makeSelected ? indexPath : nil);
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

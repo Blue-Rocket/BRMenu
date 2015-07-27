@@ -11,6 +11,7 @@
 #import <Masonry/Masonry.h>
 #import "BRMenuItemComponent.h"
 #import "BRMenuFitToWidthLabel.h"
+#import "BRMenuOrderItemComponent.h"
 #import "UIView+BRMenuUIStyle.h"
 
 // TODO: actual component configuration button classes should be configurable
@@ -20,13 +21,17 @@
 
 @implementation BRMenuItemComponentCell
 
-
 - (BRMenuItemComponent *)component {
 	return (BRMenuItemComponent *)self.item;
 }
 
 - (void)setComponent:(BRMenuItemComponent *)component {
 	self.item = component;
+}
+
+- (void)configureForOrderItemComponent:(BRMenuOrderItemComponent *)orderComponent {
+	self.placementButton.placement = (orderComponent != nil ? orderComponent.placement : BRMenuOrderItemComponentPlacementWhole);
+	self.quantityButton.quantity = (orderComponent != nil ? orderComponent.quantity : BRMenuOrderItemComponentQuantityNormal);
 }
 
 - (void)refreshForItem:(id<BRMenuItemObject>)item {
@@ -54,6 +59,8 @@
 }
 
 - (void)setupSubviews {
+	self.selectionStyle = UITableViewCellSelectionStyleNone;
+	
 	// title: top left, left aligned, expands vertically and horizontally
 	UILabel *l = [[BRMenuFitToWidthLabel alloc] initWithFrame:CGRectZero];
 	l.numberOfLines = 0;
@@ -114,6 +121,17 @@
 - (void)refreshStyle:(BRMenuUIStyle *)style {
 	[super refreshStyle:style];
 	self.title.font = style.listFont;
+	self.title.textColor = (self.selected ? self.uiStyle.appPrimaryColor : self.uiStyle.textColor);
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+	[super setSelected:selected animated:animated];
+
+	self.title.textColor = (selected ? self.uiStyle.appPrimaryColor : self.uiStyle.textColor);
+	[self.placementButton setSelected:selected animated:animated];
+	[self.quantityButton setSelected:selected animated:animated];
+	
+	self.accessoryType = (selected ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone);
 }
 
 @end

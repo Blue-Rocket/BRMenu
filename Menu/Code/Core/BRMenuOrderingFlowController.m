@@ -278,6 +278,28 @@
 	return result;
 }
 
+- (NSArray *)indexPathsForSelectedComponents {
+	if ( item == nil ) {
+		return nil;
+	}
+	NSUInteger section = 0;
+	NSUInteger row;
+	NSMutableArray *indexPaths = [[NSMutableArray alloc] init];
+	NSIndexPath *indexPath;
+	for ( BRMenuItemComponentGroup *group in [self menuItemComponentGroupsForStep:flowStep] ) {
+		row = 0;
+		for ( BRMenuItemComponent *component in group.components ) {
+			if ( [orderItem componentForMenuItemComponent:component] != nil ) {
+				NSIndexPath *indexPath = [BRMenuOrderingFlowController indexPathForRow:row inSection:section];
+				[indexPaths addObject:indexPath];
+			}
+			row++;
+		}
+		section++;
+	}
+	return [indexPaths copy];
+}
+
 - (instancetype)flowControllerForItemAtIndexPath:(NSIndexPath *)indexPath {
 	id<BRMenuItemObject> item = [self menuItemObjectAtIndexPath:indexPath];
 	BRMenuOrderingFlowController *result = nil;
