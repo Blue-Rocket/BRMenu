@@ -291,12 +291,12 @@
                                 <exclude reference="Hda-L7-tfE"/>
                                 <exclude reference="Hho-o7-xU9"/>
                                 <exclude reference="tZ2-F9-Tf6"/>
-                                <exclude reference="ie4-qx-YGx"/>
                                 <exclude reference="Oyo-ft-HDd"/>
                                 <exclude reference="YrU-Yv-PRS"/>
                                 <exclude reference="cfx-gf-0Ld"/>
                                 <exclude reference="yr3-yL-czy"/>
                                 <exclude reference="ir9-j5-7Yg"/>
+                                <exclude reference="ie4-qx-YGx"/>
                             </mask>
                         </variation>
                     </view>
