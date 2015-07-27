@@ -14,6 +14,7 @@
 #import "BRMenuOrderingComponentsViewController.h"
 #import "BRMenuOrderingFlowController.h"
 #import "BRMenuUIStylishHost.h"
+#import "UIBarButtonItem+BRMenu.h"
 #import "UIViewController+BRMenuUIStyle.h"
 
 NSString * const BRMenuOrderingItemObjectCellIdentifier = @"ItemObjectCell";
@@ -36,6 +37,13 @@ NSString * const BRMenuOrderingConfigureComponentsSegue = @"ConfigureComponents"
 		self.tableView.estimatedRowHeight = 60.0;
 		[self.tableView registerClass:[BRMenuItemObjectCell class] forCellReuseIdentifier:BRMenuOrderingItemObjectCellIdentifier];
 	}
+	
+	if ( !self.navigationItem.leftBarButtonItem ) {
+		self.navigationItem.leftBarButtonItem = [UIBarButtonItem standardBRMenuBackButtonItemWithWithTitle:nil
+																									target:self
+																									action:@selector(goBack:)];
+	}
+
 	[self refreshForStyle:self.uiStyle];
 }
 
@@ -56,6 +64,10 @@ NSString * const BRMenuOrderingConfigureComponentsSegue = @"ConfigureComponents"
 }
 
 #pragma mark - Navigation support
+
+- (IBAction)goBack:(id)sender {
+	[self.navigationController popViewControllerAnimated:YES];
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ( [segue.identifier isEqualToString:BRMenuOrderingConfigureComponentsSegue] ) {

@@ -14,7 +14,7 @@
 
 @implementation BRMenuOrderingFlowController {
 	BRMenu *menu;
-	id<BRMenuItemObject> item;
+	BRMenuItem *item;
 	NSArray *steps;
 	NSUInteger flowStep;
 }
@@ -106,6 +106,17 @@
 }
 
 #pragma mark - Public API
+
+- (NSUInteger)stepCount {
+	return steps.count;
+}
+
+- (BOOL)isFinalStep {
+	if ( item == nil ) {
+		return NO;
+	}
+	return !(flowStep + 1 < self.stepCount);
+}
 
 - (NSInteger)numberOfSections {
 	if ( item == nil ) {

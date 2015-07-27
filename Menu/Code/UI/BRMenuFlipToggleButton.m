@@ -10,6 +10,7 @@
 
 #import <BRPDFImage/BRPDFImage.h>
 #import "BRMenuUIStylishHost.h"
+#import "NSBundle+BRMenu.h"
 #import "UIView+BRMenuUIStyle.h"
 
 @interface BRMenuFlipToggleButton () <BRMenuUIStylishHost>
@@ -76,35 +77,11 @@ static NSMutableDictionary *IconCache;
 	return [NSString stringWithFormat:@"%@-%@", iconName, NSStringFromCGSize(iconSize)];
 }
 
-- (NSURL *)URLForBRMenuUIResourceNamed:(NSString *)resourceName {
-	NSURL *url = nil;
-	
-	// try custom bundle first...
-	NSString *bundlePath = [[NSBundle bundleForClass:[BRMenuFlipToggleButton class]] pathForResource:@"MenuUI" ofType:@"bundle"];
-	if ( bundlePath ) {
-		NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
-		url = [bundle URLForResource:resourceName withExtension:nil];
-	}
-	if ( !url ) {
-		// try main bundle directly second...
-		url = [[NSBundle mainBundle] URLForResource:resourceName withExtension:nil];
-		if ( !url ) {
-			// fall back to BRMenuUI bundle last
-			bundlePath = [[NSBundle bundleForClass:[BRMenuFlipToggleButton class]] pathForResource:@"BRMenuUI" ofType:@"bundle"];
-			if ( bundlePath ) {
-				NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
-				url = [bundle URLForResource:resourceName withExtension:nil];
-			}
-		}
-	}
-	return url;
-}
-
 - (UIImage *)imageForResource:(NSString *)resourceName {
 	NSString *cacheKey = [self cacheKeyForIconNamed:resourceName];
 	UIImage *image = [IconCache objectForKey:cacheKey];
 	if ( image == nil ) {
-		NSURL *url = [self URLForBRMenuUIResourceNamed:resourceName];
+		NSURL *url = [NSBundle URLForBRMenuResourceNamed:resourceName];
 		if ( [[[url lastPathComponent] lowercaseString] hasSuffix:@".pdf"] ) {
 			image = [[BRPDFImage alloc] initWithURL:url
 											  pageNumber:1

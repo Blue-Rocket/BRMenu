@@ -40,7 +40,7 @@ static const CGFloat kTextMargins = 5.0f;
 }
 
 - (CGSize)intrinsicContentSize {
-	CGSize textSize = [title sizeWithFont:[self.uiStyle uiFont]
+	CGSize textSize = [title sizeWithFont:self.uiStyle.uiFont
 						constrainedToSize:CGSizeMake(CGFLOAT_MAX, kNormalHeight)
 							lineBreakMode:NSLineBreakByWordWrapping];
 	CGFloat width = ceilf(textSize.width) + 2 * kTextMargins + kArrowMargin;

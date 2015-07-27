@@ -1,0 +1,5 @@
+"menu.action.add" = "Add";
+"menu.action.next" = "Next";
+"menu.action.review" = "Review";
+
+"menu.ordering.item.title" = "Add %@";

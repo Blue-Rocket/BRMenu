@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class BRMenu;
+@class BRMenuItem;
 @protocol BRMenuItemObject;
 
 /**
@@ -17,8 +18,9 @@
 @interface BRMenuOrderingFlowController : NSObject
 
 @property (nonatomic, readonly) BRMenu *menu;
-@property (nonatomic, readonly) id<BRMenuItemObject> item;
+@property (nonatomic, readonly) BRMenuItem *item;
 @property (nonatomic, readonly) NSUInteger stepCount;
+@property (nonatomic, readonly, getter=isFinalStep) BOOL finalStep;
 
 /**
  Init for the root of a menu.
@@ -35,7 +37,7 @@
  @param item The selected menu item or group to start from.
  @return The new controller instance.
  */
-- (id)initWithMenu:(BRMenu *)menu item:(id<BRMenuItemObject>)item;
+- (id)initWithMenu:(BRMenu *)menu item:(BRMenuItem *)item;
 
 /// ------------------------
 /// @name Collection Support
