@@ -100,7 +100,7 @@
 	self.quantityButton = q;
 	[self.contentView addSubview:q];
 
-	const CGFloat kAccessoryMargin = 26;
+	const CGFloat kAccessoryMargin = 22;
 	[self.placementButton mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.centerY.equalTo(self.contentView);
 		make.width.equalTo(@44);
