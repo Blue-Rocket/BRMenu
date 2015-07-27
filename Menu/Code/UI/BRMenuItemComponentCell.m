@@ -30,8 +30,21 @@
 }
 
 - (void)configureForOrderItemComponent:(BRMenuOrderItemComponent *)orderComponent {
-	self.placementButton.placement = (orderComponent != nil ? orderComponent.placement : BRMenuOrderItemComponentPlacementWhole);
-	self.quantityButton.quantity = (orderComponent != nil ? orderComponent.quantity : BRMenuOrderItemComponentQuantityNormal);
+	NSMutableArray *buttons = [[NSMutableArray alloc] initWithCapacity:2];
+	if ( self.placementButton ) {
+		[buttons addObject:self.placementButton];
+	}
+	if ( self.quantityButton ) {
+		[buttons addObject:self.quantityButton];
+	}
+	[buttons enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+		UIButton<BRMenuModelPropertyEditor> *button = obj;
+		NSString *keyPath = [button propertyEditorKeyPathForModel:[BRMenuOrderItemComponent class]];
+		id value = (orderComponent == nil
+					? [button propertyEditorDefaultValueForModel:[BRMenuOrderItemComponent class]]
+					: [orderComponent valueForKeyPath:keyPath]);
+		[button setPropertyEditorValue:value];
+	}];
 }
 
 - (void)refreshForItem:(id<BRMenuItemObject>)item {
@@ -60,6 +73,7 @@
 
 - (void)setupSubviews {
 	self.selectionStyle = UITableViewCellSelectionStyleNone;
+	self.accessoryType = UITableViewCellAccessoryNone;
 	
 	// title: top left, left aligned, expands vertically and horizontally
 	UILabel *l = [[BRMenuFitToWidthLabel alloc] initWithFrame:CGRectZero];
@@ -86,16 +100,22 @@
 	self.quantityButton = q;
 	[self.contentView addSubview:q];
 
+	const CGFloat kAccessoryMargin = 26;
 	[self.placementButton mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.centerY.equalTo(self.contentView);
 		make.width.equalTo(@44);
 		make.top.equalTo(self.contentView);
 		make.bottom.equalTo(self.contentView);
+		if ( !self.quantityButton ) {
+			make.trailing.equalTo(self.mas_trailingMargin).with.offset(-kAccessoryMargin); // to cell, so we don't shift with checkmark
+		}
 	}];
 	[self.quantityButton mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.centerY.equalTo(self.contentView);
-		make.leading.equalTo(self.placementButton.mas_trailing).with.offset(2);
-		make.trailing.equalTo(self.contentView.mas_trailingMargin);
+		if ( self.placementButton ) {
+			make.leading.equalTo(self.placementButton.mas_trailing).with.offset(2);
+		}
+		make.trailing.equalTo(self.mas_trailingMargin).with.offset(-kAccessoryMargin); // to cell, so we don't shift with checkmark
 		make.width.equalTo(@44);
 		make.top.equalTo(self.contentView);
 		make.bottom.equalTo(self.contentView);

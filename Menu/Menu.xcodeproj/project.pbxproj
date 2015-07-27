@@ -145,6 +145,8 @@
 		C957D2DF1B60B30300AD224C /* BRMenuLightHeavyQuantityButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuLightHeavyQuantityButton.m; sourceTree = "<group>"; };
 		C957D2E11B60B76B00AD224C /* BRMenuFilledToggleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuFilledToggleButton.h; sourceTree = "<group>"; };
 		C957D2E21B60B76B00AD224C /* BRMenuFilledToggleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuFilledToggleButton.m; sourceTree = "<group>"; };
+		C97948DD1B66B42400281AFB /* BRMenuModelPropertyEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuModelPropertyEditor.h; sourceTree = "<group>"; };
+		C97948DE1B66BB9800281AFB /* BRMenuUIModelPropertyEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuUIModelPropertyEditor.h; sourceTree = "<group>"; };
 		C97C521E1B65A38C00E84105 /* UIViewController+BRMenuUIStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BRMenuUIStyle.h"; sourceTree = "<group>"; };
 		C97C521F1B65A38C00E84105 /* UIViewController+BRMenuUIStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BRMenuUIStyle.m"; sourceTree = "<group>"; };
 		C97C52211B65A41400E84105 /* BRMenuUIStyleObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuUIStyleObserver.h; sourceTree = "<group>"; };
@@ -443,6 +445,7 @@
 				C9819DC21B61A754008A1393 /* UIView+BRMenuUIStyle.m */,
 				C97C521E1B65A38C00E84105 /* UIViewController+BRMenuUIStyle.h */,
 				C97C521F1B65A38C00E84105 /* UIViewController+BRMenuUIStyle.m */,
+				C97948DE1B66BB9800281AFB /* BRMenuUIModelPropertyEditor.h */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 				C9B812A91B5D7BA70014CBCB /* BRMenuOrderItemAttributesProxy.m */,
 				C9B812AA1B5D7BA70014CBCB /* BRMenuOrderItemComponent.h */,
 				C9B812AB1B5D7BA70014CBCB /* BRMenuOrderItemComponent.m */,
+				C97948DD1B66B42400281AFB /* BRMenuModelPropertyEditor.h */,
 			);
 			name = Domain;
 			sourceTree = "<group>";

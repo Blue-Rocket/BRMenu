@@ -112,7 +112,6 @@
 	return (fillColor ? fillColor : self.uiStyle.appPrimaryColor);
 }
 
-
 - (void)setSelected:(BOOL)selected {
 	[self setSelected:selected animated:NO];
 }
@@ -134,6 +133,28 @@
 	}
 }
 
+#pragma mark - BRMenuModelPropertyEditor
+
+- (NSString *)propertyEditorKeyPathForModel:(Class)modelClass {
+	// extending classes should implement!
+	return nil;
+}
+
+- (id)propertyEditorDefaultValueForModel:(Class)modelClass {
+	return @0;
+}
+
+- (id)propertyEditorValue {
+	// extending classes should implement!
+	return nil;
+}
+
+- (void)setPropertyEditorValue:(id)value {
+	// extending classes should implement!
+}
+
+#pragma mark - Selection support
+
 - (void)didBecomeSelectedWithAnimation:(BOOL)animated {
 	// extending classes should implement
 	// [self setPlacement:BRMenuOrderItemComponentPlacementWhole animated:animated];
@@ -145,11 +166,14 @@
 	} else {
 		[self animateToNextMode];
 	}
+	[self sendActionsForControlEvents:UIControlEventValueChanged];
 }
 
 - (void)animateToNextMode {
 	// extending classes should implement
 }
+
+#pragma mark - Layout
 
 - (CGSize)intrinsicContentSize {
 	// size to the icon dimensions, plus a 2px padding

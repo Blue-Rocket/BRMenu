@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import "BRMenuUIModelPropertyEditor.h"
 #import "BRMenuUIStyle.h"
 
 IB_DESIGNABLE
-@interface BRMenuFilledToggleButton : UIControl <BRMenuUIStylish>
+@interface BRMenuFilledToggleButton : UIControl <BRMenuUIModelPropertyEditor, BRMenuUIStylish>
 
 @property (nonatomic, strong) IBInspectable UIColor *fillColor;
 @property (nonatomic) IBInspectable CGFloat diameter;

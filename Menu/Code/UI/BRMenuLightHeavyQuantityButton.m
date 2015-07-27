@@ -34,6 +34,9 @@
 - (void)initializeOrderItemComponentQuantityButtonDefaults {
 	quantity = BRMenuOrderItemComponentQuantityNormal;
 }
+
+#pragma mark - Accessors
+
 - (void)setQuantity:(BRMenuOrderItemComponentQuantity)value {
 	[self setQuantity:value animated:NO];
 }
@@ -51,6 +54,22 @@
 		[CATransaction commit];
 	}
 }
+
+#pragma mark - BRMenuModelPropertyEditor
+
+- (NSString *)propertyEditorKeyPathForModel:(Class)modelClass {
+	return @"quantity";
+}
+
+- (id)propertyEditorValue {
+	return @(quantity);
+}
+
+- (void)setPropertyEditorValue:(id)value {
+	quantity = [value intValue];
+}
+
+#pragma mark - Internal API
 
 - (void)didBecomeSelectedWithAnimation:(BOOL)animated {
 	[super didBecomeSelectedWithAnimation:animated];

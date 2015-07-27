@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+#import "BRMenuUIStyle.h"
+
 @class BRMenuOrderingFlowController;
 
 extern NSString * const BRMenuOrderingItemComponentCellIdentifier;
 extern NSString * const BRMenuOrderingGroupHeaderCellIdentifier;
 
-@interface BRMenuOrderingComponentsViewController : UITableViewController
+@interface BRMenuOrderingComponentsViewController : UITableViewController <BRMenuUIStylish>
 
 @property (nonatomic, strong) BRMenuOrderingFlowController *flowController;
 @property (nonatomic, assign, getter=isUsePrototypeCells) IBInspectable BOOL usePrototypeCells;

@@ -9,16 +9,15 @@
 #import "BRMenuItemObjectCell.h"
 
 @class BRMenuItemComponent;
-@class BRMenuLeftRightPlacementButton;
-@class BRMenuLightHeavyQuantityButton;
 @class BRMenuOrderItemComponent;
+@protocol BRMenuUIModelPropertyEditor;
 
 @interface BRMenuItemComponentCell : BRMenuItemObjectCell
 
 @property (nonatomic, strong) BRMenuItemComponent *component;
 
-@property (nonatomic, strong) IBOutlet BRMenuLeftRightPlacementButton *placementButton;
-@property (nonatomic, strong) IBOutlet BRMenuLightHeavyQuantityButton *quantityButton;
+@property (nonatomic, strong) IBOutlet UIControl<BRMenuUIModelPropertyEditor> *placementButton;
+@property (nonatomic, strong) IBOutlet UIControl<BRMenuUIModelPropertyEditor> *quantityButton;
 
 /**
  Configure the cell for a given order item component.

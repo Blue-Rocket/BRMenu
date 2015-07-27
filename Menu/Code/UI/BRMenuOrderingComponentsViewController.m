@@ -13,18 +13,28 @@
 #import "BRMenuItemComponentCell.h"
 #import "BRMenuItemComponentGroup.h"
 #import "BRMenuItem.h"
+#import "BRMenuModelPropertyEditor.h"
 #import "BRMenuOrderingFlowController.h"
 #import "BRMenuOrderItem.h"
+#import "BRMenuOrderItemComponent.h"
+#import "BRMenuUIStylishHost.h"
 #import "NSBundle+BRMenu.h"
 #import "UIBarButtonItem+BRMenu.h"
+#import "UIView+BRMenuUIStyle.h"
+#import "UIViewController+BRMenuUIStyle.h"
 
 NSString * const BRMenuOrderingItemComponentCellIdentifier = @"ItemComponentCell";
 NSString * const BRMenuOrderingGroupHeaderCellIdentifier = @"GroupHeaderCell";
+
+@interface BRMenuOrderingComponentsViewController () <BRMenuUIStylishHost>
+
+@end
 
 @implementation BRMenuOrderingComponentsViewController {
 	BRMenuOrderingFlowController *flowController;
 }
 
+@dynamic uiStyle;
 @synthesize flowController;
 
 - (void)viewDidLoad {
@@ -72,9 +82,6 @@ NSString * const BRMenuOrderingGroupHeaderCellIdentifier = @"GroupHeaderCell";
 
 // configure the table view cell selection state; needed when going back/forth in navigation flow
 - (void)setupTableCellSelections {
-	NSUInteger section = 0;
-	NSUInteger row;
-	NSIndexPath *indexPath;
 	NSArray *tableSelectedIndexPaths = [self.tableView indexPathsForSelectedRows];
 	NSArray *indexPaths = [flowController indexPathsForSelectedComponents];
 	for ( NSIndexPath *indexPath in indexPaths ) {
@@ -113,6 +120,24 @@ NSString * const BRMenuOrderingGroupHeaderCellIdentifier = @"GroupHeaderCell";
 	// TODO
 }
 
+- (IBAction)didToggleQualifierButton:(UIControl<BRMenuModelPropertyEditor> *)sender {
+	// when to toggle a button in a cell, automatically select that row if not already selected
+	BRMenuItemComponentCell *cell = [sender nearestAncestorViewOfType:[BRMenuItemComponentCell class]];
+	if ( cell != nil ) {
+		NSIndexPath *path = [self.tableView indexPathForCell:cell];
+		if ( ![[self.tableView indexPathsForSelectedRows] containsObject:path] ) {
+			NSIndexPath *pathToSelect = [self tableView:self.tableView willSelectRowAtIndexPath:path];
+			if ( pathToSelect != nil ) {
+				[self.tableView selectRowAtIndexPath:pathToSelect animated:YES scrollPosition:UITableViewScrollPositionNone];
+			}
+		}
+
+		BRMenuOrderItemComponent *orderComponent = [flowController.orderItem getOrAddComponentForMenuItemComponent:cell.component];
+		NSString *keyPath = [sender propertyEditorKeyPathForModel:[orderComponent class]];
+		[orderComponent setValue:[sender propertyEditorValue] forKeyPath:keyPath];
+	}
+}
+
 #pragma mark - Table support
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -132,6 +157,12 @@ NSString * const BRMenuOrderingGroupHeaderCellIdentifier = @"GroupHeaderCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	BRMenuItemComponentCell *cell = [tableView dequeueReusableCellWithIdentifier:BRMenuOrderingItemComponentCellIdentifier forIndexPath:indexPath];
+	if ( ![[cell.placementButton actionsForTarget:self forControlEvent:UIControlEventValueChanged] containsObject:NSStringFromSelector(@selector(didToggleQualifierButton:))] ) {
+		[cell.placementButton addTarget:self action:@selector(didToggleQualifierButton:) forControlEvents:UIControlEventValueChanged];
+	}
+	if ( ![[cell.quantityButton actionsForTarget:self forControlEvent:UIControlEventValueChanged] containsObject:NSStringFromSelector(@selector(didToggleQualifierButton:))] ) {
+		[cell.quantityButton addTarget:self action:@selector(didToggleQualifierButton:) forControlEvents:UIControlEventValueChanged];
+	}
 	cell.item = [flowController menuItemObjectAtIndexPath:indexPath];
 	
 	BRMenuOrderItemComponent *orderComponent = [flowController.orderItem componentForMenuItemComponent:cell.component];

@@ -15,4 +15,19 @@
 /** A BRMenuUIStyle object to use. If not configured, the global default style will be returned. */
 @property (nonatomic, strong) IBOutlet BRMenuUIStyle *uiStyle;
 
+/**
+ Find the nearest superview of the receiver that is a specific class.
+ 
+ @param clazz The class of the view to look for.
+ @return The found ancestor view, or @c nil if not found.
+ */
+- (id)nearestAncestorViewOfType:(Class)clazz;
+
+/**
+ Find the nearest view controller in the receiver's responder chain.
+ 
+ @return The nearest view controller in the responder chain, or @c nil if not found.
+ */
+- (UIViewController *)nearestViewControllerInResponderChain;
+
 @end

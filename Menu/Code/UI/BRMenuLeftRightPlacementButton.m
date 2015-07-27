@@ -35,6 +35,8 @@
 	placement = BRMenuOrderItemComponentPlacementWhole;
 }
 
+#pragma - Accessors
+
 - (void)setPlacement:(BRMenuOrderItemComponentPlacement)value {
 	[self setPlacement:value animated:NO];
 }
@@ -52,6 +54,22 @@
 		[CATransaction commit];
 	}
 }
+
+#pragma mark - BRMenuModelPropertyEditor
+
+- (NSString *)propertyEditorKeyPathForModel:(Class)modelClass {
+	return @"placement";
+}
+
+- (id)propertyEditorValue {
+	return @(placement);
+}
+
+- (void)setPropertyEditorValue:(id)value {
+	placement = [value intValue];
+}
+
+#pragma mark - Internal API
 
 - (void)didBecomeSelectedWithAnimation:(BOOL)animated {
 	[super didBecomeSelectedWithAnimation:animated];

@@ -75,4 +75,26 @@ void brmenustyle_willMoveToWindow(id self, SEL _cmd, UIWindow * window) {
 	}
 }
 
+- (id)nearestAncestorViewOfType:(Class)clazz {
+	UIView *v = self;
+	while ( v != nil ) {
+		if ( [v isKindOfClass:clazz] ) {
+			return v;
+		}
+		v = v.superview;
+	}
+	return nil;
+}
+
+- (UIViewController *)nearestViewControllerInResponderChain {
+	UIResponder *responder = [self nextResponder];
+	while ( responder != nil && ![responder isKindOfClass:[UIViewController class]] ) {
+		responder = [responder nextResponder];
+	}
+	if ( responder == nil ) {
+		responder = self.window.rootViewController;
+	}
+	return (UIViewController *)responder;
+}
+
 @end
