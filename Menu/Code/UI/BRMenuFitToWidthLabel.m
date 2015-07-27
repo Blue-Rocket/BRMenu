@@ -10,6 +10,20 @@
 
 @implementation BRMenuFitToWidthLabel
 
+- (id)initWithFrame:(CGRect)frame {
+	if ( (self = [super initWithFrame:frame]) ) {
+		self.numberOfLines = 0;
+		self.lineBreakMode = NSLineBreakByWordWrapping;
+		self.preferredMaxLayoutWidth = 260; // this needs to be set to SOMETHING in order for that auto-height layout to work
+		self.backgroundColor = [UIColor clearColor];
+		[self setContentCompressionResistancePriority:UILayoutPriorityDefaultLow forAxis:UILayoutConstraintAxisHorizontal];
+		[self setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+		[self setContentHuggingPriority:UILayoutPriorityDefaultLow forAxis:UILayoutConstraintAxisHorizontal];
+		[self setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+	}
+	return self;
+}
+
 - (void)setBounds:(CGRect)bounds {
 	[super setBounds:bounds];
 	if ( self.numberOfLines == 0 && bounds.size.width != self.preferredMaxLayoutWidth ) {

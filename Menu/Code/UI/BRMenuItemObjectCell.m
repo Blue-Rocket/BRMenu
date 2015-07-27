@@ -44,14 +44,7 @@
 - (void)setupSubviews {
 	// title: top left, left aligned, expands vertically and horizontally
 	UILabel *l = [[BRMenuFitToWidthLabel alloc] initWithFrame:CGRectZero];
-	l.numberOfLines = 0;
 	l.textAlignment = NSTextAlignmentLeft;
-	l.lineBreakMode = NSLineBreakByWordWrapping;
-	l.preferredMaxLayoutWidth = 260; // this needs to be set to SOMETHING in order for that auto-height layout to work
-	[l setContentCompressionResistancePriority:UILayoutPriorityDefaultLow forAxis:UILayoutConstraintAxisHorizontal];
-	[l setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
-	[l setContentHuggingPriority:UILayoutPriorityDefaultLow forAxis:UILayoutConstraintAxisHorizontal];
-	[l setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
 	self.title = l;
 	[self.contentView addSubview:l];
 	
@@ -68,14 +61,7 @@
 	
 	// description: left, left aligned, expands vertically and horizontally
 	l = [[BRMenuFitToWidthLabel alloc] initWithFrame:CGRectZero];
-	l.numberOfLines = 0;
 	l.textAlignment = NSTextAlignmentLeft;
-	l.lineBreakMode = NSLineBreakByWordWrapping;
-	l.preferredMaxLayoutWidth = 260;
-	[l setContentCompressionResistancePriority:UILayoutPriorityDefaultLow forAxis:UILayoutConstraintAxisHorizontal];
-	[l setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
-	[l setContentHuggingPriority:UILayoutPriorityDefaultLow forAxis:UILayoutConstraintAxisHorizontal];
-	[l setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
 	self.desc = l;
 	[self.contentView addSubview:l];
 	

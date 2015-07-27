@@ -26,6 +26,8 @@
 NSString * const BRMenuOrderingItemComponentCellIdentifier = @"ItemComponentCell";
 NSString * const BRMenuOrderingGroupHeaderCellIdentifier = @"GroupHeaderCell";
 
+NSString * const BRMenuOrderingReviewOrderItemSegue = @"ReviewOrderItem";
+
 @interface BRMenuOrderingComponentsViewController () <BRMenuUIStylishHost>
 
 @end
@@ -93,6 +95,15 @@ NSString * const BRMenuOrderingGroupHeaderCellIdentifier = @"GroupHeaderCell";
 	}
 }
 
+- (BOOL)canGotoNextStep {
+	NSError *error = nil;
+	BOOL result = [flowController canGotoNextStep:&error];
+	if ( !result ) {
+		[[[UIAlertView alloc] initWithTitle:nil message:[error localizedDescription] delegate:nil cancelButtonTitle:[NSBundle localizedBRMenuString:@"menu.action.ok"] otherButtonTitles:nil] show];
+	}
+	return result;
+}
+
 #pragma mark - Actions
 
 - (IBAction)goBack:(id)sender {
@@ -100,9 +111,7 @@ NSString * const BRMenuOrderingGroupHeaderCellIdentifier = @"GroupHeaderCell";
 }
 
 - (IBAction)gotoNextFlowStep:(id)sender {
-	NSError *error = nil;
-	if ( [flowController canGotoNextStep:&error] == NO ) {
-		[[[UIAlertView alloc] initWithTitle:nil message:[error localizedDescription] delegate:nil cancelButtonTitle:[NSBundle localizedBRMenuString:@"menu.action.ok"] otherButtonTitles:nil] show];
+	if ( ![self canGotoNextStep] ) {
 		return;
 	}
 	BRMenuOrderingComponentsViewController *dest = [self.storyboard instantiateViewControllerWithIdentifier:@"MenuOrderingComponents"];
@@ -112,7 +121,10 @@ NSString * const BRMenuOrderingGroupHeaderCellIdentifier = @"GroupHeaderCell";
 }
 
 - (IBAction)reviewOrderItem:(id)sender {
-	// TODO
+	if ( ![self canGotoNextStep] ) {
+		return;
+	}
+	[self performSegueWithIdentifier:BRMenuOrderingReviewOrderItemSegue sender:sender];
 }
 
 - (IBAction)addOrderItemToActiveOrder:(id)sender {

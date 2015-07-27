@@ -15,6 +15,8 @@
 extern NSString * const BRMenuOrderingItemComponentCellIdentifier;
 extern NSString * const BRMenuOrderingGroupHeaderCellIdentifier;
 
+extern NSString * const BRMenuOrderingReviewOrderItemSegue;
+
 @interface BRMenuOrderingComponentsViewController : UITableViewController <BRMenuUIStylish>
 
 @property (nonatomic, strong) BRMenuOrderingFlowController *flowController;

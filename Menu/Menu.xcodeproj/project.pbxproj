@@ -36,6 +36,9 @@
 		C92AEEFE1B5F56D50005AC79 /* BRMenuFlipToggleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C92AEEFD1B5F56D50005AC79 /* BRMenuFlipToggleButton.m */; };
 		C957D2E01B60B30300AD224C /* BRMenuLightHeavyQuantityButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C957D2DF1B60B30300AD224C /* BRMenuLightHeavyQuantityButton.m */; };
 		C957D2E31B60B76B00AD224C /* BRMenuFilledToggleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C957D2E21B60B76B00AD224C /* BRMenuFilledToggleButton.m */; };
+		C97948E11B66D79500281AFB /* BRMenuOrderingItemDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97948E01B66D79500281AFB /* BRMenuOrderingItemDetailsViewController.m */; };
+		C97948E41B66D86800281AFB /* BRMenuOrderItemDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = C97948E31B66D86800281AFB /* BRMenuOrderItemDetailsView.m */; };
+		C97948E71B66D9CF00281AFB /* BRMenuOrderItemComponentDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = C97948E61B66D9CF00281AFB /* BRMenuOrderItemComponentDetailsView.m */; };
 		C97C52201B65A38C00E84105 /* UIViewController+BRMenuUIStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = C97C521F1B65A38C00E84105 /* UIViewController+BRMenuUIStyle.m */; };
 		C97C52231B65A41400E84105 /* BRMenuUIStyleObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = C97C52221B65A41400E84105 /* BRMenuUIStyleObserver.m */; };
 		C97C52261B65BB2400E84105 /* NSBundle+BRMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = C97C52251B65BB2400E84105 /* NSBundle+BRMenu.m */; };
@@ -147,6 +150,12 @@
 		C957D2E21B60B76B00AD224C /* BRMenuFilledToggleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuFilledToggleButton.m; sourceTree = "<group>"; };
 		C97948DD1B66B42400281AFB /* BRMenuModelPropertyEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuModelPropertyEditor.h; sourceTree = "<group>"; };
 		C97948DE1B66BB9800281AFB /* BRMenuUIModelPropertyEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuUIModelPropertyEditor.h; sourceTree = "<group>"; };
+		C97948DF1B66D79500281AFB /* BRMenuOrderingItemDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuOrderingItemDetailsViewController.h; sourceTree = "<group>"; };
+		C97948E01B66D79500281AFB /* BRMenuOrderingItemDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderingItemDetailsViewController.m; sourceTree = "<group>"; };
+		C97948E21B66D86800281AFB /* BRMenuOrderItemDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuOrderItemDetailsView.h; sourceTree = "<group>"; };
+		C97948E31B66D86800281AFB /* BRMenuOrderItemDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderItemDetailsView.m; sourceTree = "<group>"; };
+		C97948E51B66D9CF00281AFB /* BRMenuOrderItemComponentDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuOrderItemComponentDetailsView.h; sourceTree = "<group>"; };
+		C97948E61B66D9CF00281AFB /* BRMenuOrderItemComponentDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderItemComponentDetailsView.m; sourceTree = "<group>"; };
 		C97C521E1B65A38C00E84105 /* UIViewController+BRMenuUIStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BRMenuUIStyle.h"; sourceTree = "<group>"; };
 		C97C521F1B65A38C00E84105 /* UIViewController+BRMenuUIStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BRMenuUIStyle.m"; sourceTree = "<group>"; };
 		C97C52211B65A41400E84105 /* BRMenuUIStyleObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuUIStyleObserver.h; sourceTree = "<group>"; };
@@ -428,6 +437,10 @@
 				C957D2DF1B60B30300AD224C /* BRMenuLightHeavyQuantityButton.m */,
 				C9819DB51B616812008A1393 /* BRMenuNavigationTitleView.h */,
 				C9819DB61B616812008A1393 /* BRMenuNavigationTitleView.m */,
+				C97948E21B66D86800281AFB /* BRMenuOrderItemDetailsView.h */,
+				C97948E31B66D86800281AFB /* BRMenuOrderItemDetailsView.m */,
+				C97948E51B66D9CF00281AFB /* BRMenuOrderItemComponentDetailsView.h */,
+				C97948E61B66D9CF00281AFB /* BRMenuOrderItemComponentDetailsView.m */,
 				C9B812BF1B5DD5DB0014CBCB /* BRMenuPlusMinusButton.h */,
 				C9B812C01B5DD5DB0014CBCB /* BRMenuPlusMinusButton.m */,
 				C9B812BC1B5DD5800014CBCB /* BRMenuStepper.h */,
@@ -459,6 +472,8 @@
 				C9819DD61B61EE94008A1393 /* BRMenuItemObjectCell.m */,
 				C9819DE21B6347F8008A1393 /* BRMenuOrderingComponentsViewController.h */,
 				C9819DE31B6347F8008A1393 /* BRMenuOrderingComponentsViewController.m */,
+				C97948DF1B66D79500281AFB /* BRMenuOrderingItemDetailsViewController.h */,
+				C97948E01B66D79500281AFB /* BRMenuOrderingItemDetailsViewController.m */,
 				C9819DCF1B61CEE8008A1393 /* BRMenuOrderingViewController.h */,
 				C9819DD01B61CEE8008A1393 /* BRMenuOrderingViewController.m */,
 			);
@@ -812,6 +827,7 @@
 				C9C909251B60248600DDF191 /* BRMenuLeftRightPlacementButton.m in Sources */,
 				C9819DD11B61CEE8008A1393 /* BRMenuOrderingViewController.m in Sources */,
 				C9B812841B5D7B040014CBCB /* BRMenuAFHTTPResponseSerializer.m in Sources */,
+				C97948E71B66D9CF00281AFB /* BRMenuOrderItemComponentDetailsView.m in Sources */,
 				C97C52261B65BB2400E84105 /* NSBundle+BRMenu.m in Sources */,
 				C97C522C1B65E66A00E84105 /* UIBarButtonItem+BRMenu.m in Sources */,
 				C9B812C41B5DD6D70014CBCB /* BRMenuUIStyle.m in Sources */,
@@ -820,7 +836,9 @@
 				C957D2E31B60B76B00AD224C /* BRMenuFilledToggleButton.m in Sources */,
 				C9819DE01B6336C9008A1393 /* BRMenuOrderingFlowController.m in Sources */,
 				C9B812C11B5DD5DB0014CBCB /* BRMenuPlusMinusButton.m in Sources */,
+				C97948E11B66D79500281AFB /* BRMenuOrderingItemDetailsViewController.m in Sources */,
 				C97C52231B65A41400E84105 /* BRMenuUIStyleObserver.m in Sources */,
+				C97948E41B66D86800281AFB /* BRMenuOrderItemDetailsView.m in Sources */,
 				C9B812B11B5D7BA70014CBCB /* BRMenuItemGroup.m in Sources */,
 				C9B812B91B5D7BA70014CBCB /* BRMenuOrderItemAttributesProxy.m in Sources */,
 				C9B812AD1B5D7BA70014CBCB /* BRMenu.m in Sources */,
