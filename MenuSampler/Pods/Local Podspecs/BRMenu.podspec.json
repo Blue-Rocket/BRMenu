@@ -32,6 +32,9 @@
         "BRCocoaLumberjack": [
           "~> 1.9"
         ]
+      },
+      "resource_bundles": {
+        "BRMenu": "Menu/Resources/Core/**"
       }
     },
     {
