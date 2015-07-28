@@ -37,6 +37,7 @@
 																								placement:BRMenuOrderItemComponentPlacementWhole
 																								 quantity:BRMenuOrderItemComponentQuantityLight];
 	
+	// set up a demo pizza order to showcase various order views
 	BRMenuItem *pizza = [menu menuItemForKey:@"pizza"];
 	BRMenuOrderItem *orderItem = [[BRMenuOrderItem alloc] initWithMenuItem:pizza];
 	[orderItem addComponent:self.orderItemComponentView.orderItemComponent];
@@ -63,6 +64,7 @@
 	self.placementViewLeft.orderItem = orderItem;
 	self.placementViewRight.placementToDisplay = BRMenuOrderItemComponentPlacementRight;
 	self.placementViewRight.orderItem = orderItem;
+	self.orderItemDetailsView.orderItem = orderItem;
 }
 
 @end
