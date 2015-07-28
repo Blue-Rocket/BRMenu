@@ -9,6 +9,7 @@
 #import "BRMenuOrderItemDetailsView.h"
 
 #import <Masonry/Masonry.h>
+#import "BRMenuFilledToggleButton.h"
 #import "BRMenuOrderItem.h"
 #import "BRMenuOrderItemComponent.h"
 #import "BRMenuOrderItemPlacementDetailsView.h"
@@ -64,14 +65,31 @@
 	[right removeFromSuperview];
 	if ( haveWholePlacement ) {
 		whole = [[BRMenuOrderItemPlacementDetailsView alloc] initWithFrame:CGRectZero];
+		whole.translatesAutoresizingMaskIntoConstraints = NO;
+		whole.placementToDisplay = BRMenuOrderItemComponentPlacementWhole;
+		whole.orderItem = item;
 		[self addSubview:whole];
 	}
 	if ( haveLeftPlacement ) {
 		left = [[BRMenuOrderItemPlacementDetailsView alloc] initWithFrame:CGRectZero];
+		left.translatesAutoresizingMaskIntoConstraints = NO;
+		[left setContentHuggingPriority:UILayoutPriorityDefaultLow forAxis:UILayoutConstraintAxisHorizontal];
+		[left setContentCompressionResistancePriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisHorizontal];
+		[left setContentCompressionResistancePriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisVertical];
+		left.placementToDisplay = BRMenuOrderItemComponentPlacementLeft;
+		left.placement.selected = NO;
+		left.orderItem = item;
 		[self addSubview:left];
 	}
 	if ( haveRightPlacement ) {
 		right = [[BRMenuOrderItemPlacementDetailsView alloc] initWithFrame:CGRectZero];
+		right.translatesAutoresizingMaskIntoConstraints = NO;
+		[right setContentHuggingPriority:UILayoutPriorityDefaultLow forAxis:UILayoutConstraintAxisHorizontal];
+		[right setContentCompressionResistancePriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisHorizontal];
+		[right setContentCompressionResistancePriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisVertical];
+		right.placementToDisplay = BRMenuOrderItemComponentPlacementRight;
+		right.placement.selected = NO;
+		right.orderItem = item;
 		[self addSubview:right];
 	}
 	[self setNeedsUpdateConstraints];
@@ -79,32 +97,48 @@
 
 - (void)updateConstraints {
 	[whole mas_remakeConstraints:^(MASConstraintMaker *make) {
-		make.leading.equalTo(self.mas_leadingMargin);
-		make.trailing.equalTo(self.mas_trailingMargin);
-		make.top.equalTo(self.mas_topMargin);
+		make.leading.equalTo(self);
+		make.trailing.equalTo(self);
+		make.top.equalTo(self.mas_top);
 		if ( !(left || right) ) {
-			make.bottom.equalTo(self.mas_bottomMargin);
+			make.bottom.equalTo(self);
 		}
 	}];
+	const CGFloat kWholePartsMargin = 20;
+	const CGFloat kPartsMargin = 10;
+	BOOL rightTaller = ([left systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height
+						< [right systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height);
 	[left mas_remakeConstraints:^(MASConstraintMaker *make) {
-		make.top.equalTo(whole ? whole.mas_bottom : self.mas_top).with.offset(10);
-		make.left.equalTo(self.mas_leftMargin);
-		if ( right ) {
-			make.right.equalTo(self.mas_centerX).with.offset(-5);
+		if ( whole ) {
+			make.top.equalTo(whole.mas_bottom).with.offset(kWholePartsMargin);
 		} else {
-			make.right.equalTo(self.mas_rightMargin);
+			make.top.equalTo(self);
 		}
-		make.bottom.equalTo(self.mas_bottomMargin);
+		make.left.equalTo(self);
+		if ( right ) {
+			make.right.equalTo(self.mas_centerX).with.offset(-kPartsMargin / 2);
+		} else {
+			make.right.equalTo(self);
+		}
+		if ( !rightTaller ) {
+			make.bottom.equalTo(self);
+		}
 	}];
 	[right mas_remakeConstraints:^(MASConstraintMaker *make) {
-		make.top.equalTo(whole ? whole.mas_bottom : self.mas_top).with.offset(10);
-		if ( left ) {
-			make.left.equalTo(self.mas_centerX).with.offset(5);
+		if ( whole ) {
+			make.top.equalTo(whole.mas_bottom).with.offset(kWholePartsMargin);
 		} else {
-			make.left.equalTo(self.mas_leftMargin);
+			make.top.equalTo(self);
 		}
-		make.right.equalTo(self.mas_rightMargin);
-		make.bottom.equalTo(self.mas_bottomMargin);
+		if ( left ) {
+			make.left.equalTo(self.mas_centerX).with.offset(kPartsMargin / 2);
+		} else {
+			make.left.equalTo(self);
+		}
+		make.right.equalTo(self);
+		if ( rightTaller ) {
+			make.bottom.equalTo(self);
+		}
 	}];
 	[super updateConstraints];
 }

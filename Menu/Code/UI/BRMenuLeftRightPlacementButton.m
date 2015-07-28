@@ -71,11 +71,6 @@
 
 #pragma mark - Internal API
 
-- (void)didBecomeSelectedWithAnimation:(BOOL)animated {
-	[super didBecomeSelectedWithAnimation:animated];
-	[self setPlacement:BRMenuOrderItemComponentPlacementWhole animated:animated];
-}
-
 - (void)animateToNextMode {
 	[super animateToNextMode];
 	BRMenuOrderItemComponentPlacement next;

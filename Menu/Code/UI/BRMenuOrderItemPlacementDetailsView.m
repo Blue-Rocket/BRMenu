@@ -67,6 +67,9 @@
 		BRMenuLeftRightPlacementButton *placement = [[BRMenuLeftRightPlacementButton alloc] initWithFrame:CGRectZero];
 		placement.enabled = NO;
 		placement.selected = YES;
+		placement.diameter = floorf(self.title.font.capHeight);
+		placement.cornerRadius = placement.diameter / 2;
+
 		// to keep this snug to the right, make the content hugging required
 		[placement setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
 		self.placement = placement;

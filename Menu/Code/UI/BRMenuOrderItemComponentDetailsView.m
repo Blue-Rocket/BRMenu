@@ -57,6 +57,8 @@
 	
 	if ( !self.quantity ) {
 		BRMenuLightHeavyQuantityButton *quantity = [[BRMenuLightHeavyQuantityButton alloc] initWithFrame:CGRectZero];
+		quantity.diameter = floorf(self.title.font.capHeight);
+		quantity.cornerRadius = quantity.diameter / 2;
 		quantity.enabled = NO;
 		quantity.selected = YES;
 		self.quantity = quantity;
@@ -68,7 +70,6 @@
 		[self.quantity mas_makeConstraints:^(MASConstraintMaker *make) {
 			make.centerY.equalTo(self);
 			make.trailing.equalTo(@(-padding.right));
-			make.width.equalTo(@44);
 			make.top.equalTo(self);
 			make.bottom.equalTo(self);
 		}];

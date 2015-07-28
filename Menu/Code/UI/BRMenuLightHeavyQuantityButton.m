@@ -71,11 +71,6 @@
 
 #pragma mark - Internal API
 
-- (void)didBecomeSelectedWithAnimation:(BOOL)animated {
-	[super didBecomeSelectedWithAnimation:animated];
-	[self setQuantity:BRMenuOrderItemComponentQuantityNormal animated:animated];
-}
-
 - (void)animateToNextMode {
 	BRMenuOrderItemComponentQuantity next;
 	switch ( quantity ) {
