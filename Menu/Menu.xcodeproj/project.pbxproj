@@ -39,6 +39,7 @@
 		C97948E11B66D79500281AFB /* BRMenuOrderingItemDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97948E01B66D79500281AFB /* BRMenuOrderingItemDetailsViewController.m */; };
 		C97948E41B66D86800281AFB /* BRMenuOrderItemDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = C97948E31B66D86800281AFB /* BRMenuOrderItemDetailsView.m */; };
 		C97948E71B66D9CF00281AFB /* BRMenuOrderItemComponentDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = C97948E61B66D9CF00281AFB /* BRMenuOrderItemComponentDetailsView.m */; };
+		C97948F01B6700FD00281AFB /* BRMenuOrderItemPlacementDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = C97948EF1B6700FD00281AFB /* BRMenuOrderItemPlacementDetailsView.m */; };
 		C97C52201B65A38C00E84105 /* UIViewController+BRMenuUIStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = C97C521F1B65A38C00E84105 /* UIViewController+BRMenuUIStyle.m */; };
 		C97C52231B65A41400E84105 /* BRMenuUIStyleObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = C97C52221B65A41400E84105 /* BRMenuUIStyleObserver.m */; };
 		C97C52261B65BB2400E84105 /* NSBundle+BRMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = C97C52251B65BB2400E84105 /* NSBundle+BRMenu.m */; };
@@ -156,6 +157,8 @@
 		C97948E31B66D86800281AFB /* BRMenuOrderItemDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderItemDetailsView.m; sourceTree = "<group>"; };
 		C97948E51B66D9CF00281AFB /* BRMenuOrderItemComponentDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuOrderItemComponentDetailsView.h; sourceTree = "<group>"; };
 		C97948E61B66D9CF00281AFB /* BRMenuOrderItemComponentDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderItemComponentDetailsView.m; sourceTree = "<group>"; };
+		C97948EE1B6700FD00281AFB /* BRMenuOrderItemPlacementDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuOrderItemPlacementDetailsView.h; sourceTree = "<group>"; };
+		C97948EF1B6700FD00281AFB /* BRMenuOrderItemPlacementDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderItemPlacementDetailsView.m; sourceTree = "<group>"; };
 		C97C521E1B65A38C00E84105 /* UIViewController+BRMenuUIStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BRMenuUIStyle.h"; sourceTree = "<group>"; };
 		C97C521F1B65A38C00E84105 /* UIViewController+BRMenuUIStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BRMenuUIStyle.m"; sourceTree = "<group>"; };
 		C97C52211B65A41400E84105 /* BRMenuUIStyleObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuUIStyleObserver.h; sourceTree = "<group>"; };
@@ -441,6 +444,8 @@
 				C97948E31B66D86800281AFB /* BRMenuOrderItemDetailsView.m */,
 				C97948E51B66D9CF00281AFB /* BRMenuOrderItemComponentDetailsView.h */,
 				C97948E61B66D9CF00281AFB /* BRMenuOrderItemComponentDetailsView.m */,
+				C97948EE1B6700FD00281AFB /* BRMenuOrderItemPlacementDetailsView.h */,
+				C97948EF1B6700FD00281AFB /* BRMenuOrderItemPlacementDetailsView.m */,
 				C9B812BF1B5DD5DB0014CBCB /* BRMenuPlusMinusButton.h */,
 				C9B812C01B5DD5DB0014CBCB /* BRMenuPlusMinusButton.m */,
 				C9B812BC1B5DD5800014CBCB /* BRMenuStepper.h */,
@@ -827,6 +832,7 @@
 				C9C909251B60248600DDF191 /* BRMenuLeftRightPlacementButton.m in Sources */,
 				C9819DD11B61CEE8008A1393 /* BRMenuOrderingViewController.m in Sources */,
 				C9B812841B5D7B040014CBCB /* BRMenuAFHTTPResponseSerializer.m in Sources */,
+				C97948F01B6700FD00281AFB /* BRMenuOrderItemPlacementDetailsView.m in Sources */,
 				C97948E71B66D9CF00281AFB /* BRMenuOrderItemComponentDetailsView.m in Sources */,
 				C97C52261B65BB2400E84105 /* NSBundle+BRMenu.m in Sources */,
 				C97C522C1B65E66A00E84105 /* UIBarButtonItem+BRMenu.m in Sources */,
