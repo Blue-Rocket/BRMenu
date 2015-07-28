@@ -12,6 +12,7 @@
 #import "UIView+BRMenuUIStyle.h"
 
 static const CGFloat kNormalHeight = 32.0f;
+static const CGFloat kCompactHeight = 26.0f;
 static const CGFloat kArrowMargin = 10.0f;
 static const CGFloat kTextMargins = 5.0f;
 
@@ -44,13 +45,31 @@ static const CGFloat kTextMargins = 5.0f;
 						constrainedToSize:CGSizeMake(CGFLOAT_MAX, kNormalHeight)
 							lineBreakMode:NSLineBreakByWordWrapping];
 	CGFloat width = ceilf(textSize.width) + 2 * kTextMargins + kArrowMargin;
-	return CGSizeMake(width, kNormalHeight);
+	return CGSizeMake(width, (self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassCompact
+							  ? kCompactHeight : kNormalHeight));
+}
+
+- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+	[super traitCollectionDidChange:previousTraitCollection];
+	if ( self.traitCollection.verticalSizeClass != previousTraitCollection.verticalSizeClass ) {
+		UIView *barView = nil;
+		// if we're in a nav bar or tool bar, size ourselves according to our vertical size class
+		if ( (barView = [self nearestAncestorViewOfType:[UINavigationBar class]]) != nil || (barView = [self nearestAncestorViewOfType:[UIToolbar class]]) != nil ) {
+			CGSize s = [self intrinsicContentSize];
+			CGRect b = self.bounds;
+			b.origin.y = 0;
+			b.size.height = s.height;
+			self.bounds = b;
+			[self setNeedsDisplay];
+		}
+	}
 }
 
 - (void)uiStyleDidChange:(BRMenuUIStyle *)style {
 	[self invalidateIntrinsicContentSize];
 	[self setNeedsDisplay];
 }
+
 - (void)setTitle:(NSString *)text {
 	if ( title != text ) {
 		title = text;

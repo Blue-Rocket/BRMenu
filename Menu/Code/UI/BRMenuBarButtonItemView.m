@@ -12,6 +12,7 @@
 #import "UIView+BRMenuUIStyle.h"
 
 static const CGFloat kNormalHeight = 32.0f;
+static const CGFloat kCompactHeight = 26.0f;
 static const CGFloat kTextMargins = 10.0f;
 static const CGFloat kBadgeTextMargins = 5.0f;
 static const CGFloat kBadgeMinWidth = 24.0f;
@@ -71,7 +72,24 @@ static const CGFloat kMinWidth = 48.0f;
 	if ( (int)width % 2 == 1 ) {
 		width += 1;
 	}
-	return CGSizeMake(width, kNormalHeight);
+	return CGSizeMake(width, (self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassCompact
+							  ? kCompactHeight : kNormalHeight));
+}
+
+- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+	[super traitCollectionDidChange:previousTraitCollection];
+	if ( self.traitCollection.verticalSizeClass != previousTraitCollection.verticalSizeClass ) {
+		UIView *barView = nil;
+		// if we're in a nav bar or tool bar, size ourselves according to our vertical size class
+		if ( (barView = [self nearestAncestorViewOfType:[UINavigationBar class]]) != nil || (barView = [self nearestAncestorViewOfType:[UIToolbar class]]) != nil ) {
+			CGSize s = [self intrinsicContentSize];
+			CGRect b = self.bounds;
+			b.origin.y = 0;
+			b.size.height = s.height;
+			self.bounds = b;
+			[self setNeedsDisplay];
+		}
+	}
 }
 
 - (void)uiStyleDidChange:(BRMenuUIStyle *)style {
@@ -261,7 +279,7 @@ static const CGFloat kMinWidth = 48.0f;
 - (void)drawSeparatorWithBadgeFrame:(CGRect)badgeFrame color:(UIColor *)separatorColor {
 	UIBezierPath* bezierPath = [UIBezierPath bezierPath];
 	[bezierPath moveToPoint: CGPointMake(CGRectGetMinX(badgeFrame) + 0.5, CGRectGetMinY(badgeFrame) + 1.5)];
-	[bezierPath addLineToPoint: CGPointMake(CGRectGetMinX(badgeFrame) + 0.5, CGRectGetMinY(badgeFrame) + 30.5)];
+	[bezierPath addLineToPoint: CGPointMake(CGRectGetMinX(badgeFrame) + 0.5, CGRectGetMaxY(badgeFrame) - 1.5)];
 	[separatorColor setStroke];
 	bezierPath.lineWidth = 1;
 	[bezierPath stroke];
