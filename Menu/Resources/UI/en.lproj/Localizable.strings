@@ -9,3 +9,5 @@
 "menu.action.review" = "Review";
 
 "menu.ordering.item.title" = "Add %@";
+"menu.ordering.item.details.left.title" = "Left side";
+"menu.ordering.item.details.right.title" = "Right side";

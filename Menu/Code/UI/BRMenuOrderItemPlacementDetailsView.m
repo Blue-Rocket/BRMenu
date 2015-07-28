@@ -67,6 +67,8 @@
 		BRMenuLeftRightPlacementButton *placement = [[BRMenuLeftRightPlacementButton alloc] initWithFrame:CGRectZero];
 		placement.enabled = NO;
 		placement.selected = YES;
+		// to keep this snug to the right, make the content hugging required
+		[placement setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
 		self.placement = placement;
 		[self addSubview:placement];
 	}
@@ -82,11 +84,8 @@
 	
 	if ( self.placement.constraints.count < 1 ) {
 		[self.placement mas_makeConstraints:^(MASConstraintMaker *make) {
-			make.centerY.equalTo(self);
 			make.trailing.equalTo(self);
-			make.width.equalTo(@44);
-			make.top.equalTo(self);
-			make.bottom.equalTo(self);
+			make.bottom.equalTo(self.titleRule.mas_top);
 		}];
 	}
 }
@@ -118,11 +117,11 @@
 - (void)updateTitleFromModel {
 	switch ( placementToDisplay ) {
 		case BRMenuOrderItemComponentPlacementLeft:
-			self.title.text = [NSBundle localizedBRMenuString:@"order.item.details.right.title"];
+			self.title.text = [NSBundle localizedBRMenuString:@"menu.ordering.item.details.left.title"];
 			break;
 			
 		case BRMenuOrderItemComponentPlacementRight:
-			self.title.text = [NSBundle localizedBRMenuString:@"order.item.details.right.title"];
+			self.title.text = [NSBundle localizedBRMenuString:@"menu.ordering.item.details.right.title"];
 			break;
 			
 		default:
@@ -156,6 +155,7 @@
 - (void)setPlacementToDisplay:(BRMenuOrderItemComponentPlacement)toDisplay {
 	if ( placementToDisplay != toDisplay ) {
 		placementToDisplay = toDisplay;
+		[self.placement setValue:@(toDisplay) forKeyPath:[self.placement propertyEditorKeyPathForModel:[BRMenuOrderItemComponent class]]];
 		[self updateTitleFromModel];
 		[self setNeedsUpdateConstraints];
 	}
