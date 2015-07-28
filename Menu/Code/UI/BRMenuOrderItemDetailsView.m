@@ -75,8 +75,6 @@
 		[self addSubview:right];
 	}
 	[self setNeedsUpdateConstraints];
-	
-	self.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.1];
 }
 
 - (void)updateConstraints {

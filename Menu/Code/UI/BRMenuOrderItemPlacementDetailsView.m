@@ -75,7 +75,7 @@
 		[self.titleRule mas_makeConstraints:^(MASConstraintMaker *make) {
 			make.left.equalTo(self);
 			make.right.equalTo(self);
-			make.height.equalTo(@1);
+			make.height.equalTo(@0.5);
 			make.top.equalTo(self.title.mas_baseline).with.offset(2);
 		}];
 	}
@@ -89,8 +89,6 @@
 			make.bottom.equalTo(self);
 		}];
 	}
-	
-	self.backgroundColor = [[UIColor greenColor] colorWithAlphaComponent:0.1];
 }
 
 - (void)updateConstraints {
@@ -145,7 +143,6 @@
 			BRMenuOrderItemComponentDetailsView *cv = [[BRMenuOrderItemComponentDetailsView alloc] initWithFrame:CGRectZero];
 			cv.translatesAutoresizingMaskIntoConstraints = NO;
 			cv.orderItemComponent = orderComponent;
-			cv.backgroundColor = [[UIColor orangeColor] colorWithAlphaComponent:0.1];
 			[views addObject:cv];
 			[self addSubview:cv];
 		}
