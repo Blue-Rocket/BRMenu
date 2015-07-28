@@ -40,10 +40,46 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Configure Components" id="S5O-Ty-WEX"/>
+                    <connections>
+                        <segue destination="sGE-iT-Qog" kind="show" identifier="ReviewOrderItem" id="IaU-rG-h95"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xs4-oA-Zp5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1903" y="182"/>
+        </scene>
+        <!--Review Order Item-->
+        <scene sceneID="evc-nc-AD1">
+            <objects>
+                <viewController id="sGE-iT-Qog" customClass="BRMenuOrderingItemDetailsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oeJ-Nz-Wdj"/>
+                        <viewControllerLayoutGuide type="bottom" id="v7C-iv-xsC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gj5-SK-AaY">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QuU-qL-KQu">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="v7C-iv-xsC" firstAttribute="top" secondItem="QuU-qL-KQu" secondAttribute="bottom" id="9Xg-mq-XI9"/>
+                            <constraint firstItem="QuU-qL-KQu" firstAttribute="top" secondItem="gj5-SK-AaY" secondAttribute="top" id="NhY-Rd-wxP"/>
+                            <constraint firstAttribute="trailing" secondItem="QuU-qL-KQu" secondAttribute="trailing" id="xTo-4o-Ng5"/>
+                            <constraint firstItem="QuU-qL-KQu" firstAttribute="leading" secondItem="gj5-SK-AaY" secondAttribute="leading" id="zXK-m5-Zui"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Review Order Item" id="lyp-QK-bzf"/>
+                    <connections>
+                        <outlet property="scrollView" destination="QuU-qL-KQu" id="ute-Rj-Dhk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FeQ-SK-1Dm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2666" y="182"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="g1r-nG-tl2">
@@ -62,6 +98,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sN1-w7-qyG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="363" y="365"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="m4o-SG-f8P">
+            <objects>
+                <viewController id="poZ-FA-H2r" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="n8E-rE-96k"/>
+                        <viewControllerLayoutGuide type="bottom" id="oxs-Ey-sIy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VZC-Bf-oF1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eb2-rb-5wy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
 </document>

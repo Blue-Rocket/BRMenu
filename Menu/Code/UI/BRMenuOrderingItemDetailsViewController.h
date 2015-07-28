@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BRMenuOrderingItemDetailsViewController : UIViewController
+#import "BRMenuUIStyle.h"
+
+@class BRMenuOrderItem;
+
+@interface BRMenuOrderingItemDetailsViewController : UIViewController <BRMenuUIStylish>
+
+@property (nonatomic, strong) BRMenuOrderItem *orderItem;
+
+/** If @c YES then add an "Add to Order" button in the navigation item right side. */
+@property (nonatomic, getter = isShowAddToOrder) BOOL showAddToOrder;
 
 @end

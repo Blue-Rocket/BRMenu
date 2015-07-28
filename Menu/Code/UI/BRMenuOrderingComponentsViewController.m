@@ -17,6 +17,7 @@
 #import "BRMenuOrderingFlowController.h"
 #import "BRMenuOrderItem.h"
 #import "BRMenuOrderItemComponent.h"
+#import "BRMenuOrderingItemDetailsViewController.h"
 #import "BRMenuUIStylishHost.h"
 #import "NSBundle+BRMenu.h"
 #import "UIBarButtonItem+BRMenu.h"
@@ -95,6 +96,8 @@ NSString * const BRMenuOrderingReviewOrderItemSegue = @"ReviewOrderItem";
 	}
 }
 
+#pragma mark - Navigation
+
 - (BOOL)canGotoNextStep {
 	NSError *error = nil;
 	BOOL result = [flowController canGotoNextStep:&error];
@@ -102,6 +105,14 @@ NSString * const BRMenuOrderingReviewOrderItemSegue = @"ReviewOrderItem";
 		[[[UIAlertView alloc] initWithTitle:nil message:[error localizedDescription] delegate:nil cancelButtonTitle:[NSBundle localizedBRMenuString:@"menu.action.ok"] otherButtonTitles:nil] show];
 	}
 	return result;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if ( [segue.identifier isEqualToString:BRMenuOrderingReviewOrderItemSegue] ) {
+		BRMenuOrderingItemDetailsViewController *dest = (BRMenuOrderingItemDetailsViewController *)segue.destinationViewController;
+		dest.showAddToOrder = YES;
+		dest.orderItem = flowController.orderItem;
+	}
 }
 
 #pragma mark - Actions
