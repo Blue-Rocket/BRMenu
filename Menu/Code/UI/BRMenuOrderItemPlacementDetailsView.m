@@ -66,7 +66,7 @@
 	if ( !self.placement ) {
 		BRMenuLeftRightPlacementButton *placement = [[BRMenuLeftRightPlacementButton alloc] initWithFrame:CGRectZero];
 		placement.enabled = NO;
-		placement.selected = YES;
+		placement.selected = NO;
 		placement.diameter = floorf(self.title.font.capHeight);
 		placement.cornerRadius = placement.diameter / 2;
 

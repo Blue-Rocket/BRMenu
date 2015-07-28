@@ -77,7 +77,6 @@
 		[left setContentCompressionResistancePriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisHorizontal];
 		[left setContentCompressionResistancePriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisVertical];
 		left.placementToDisplay = BRMenuOrderItemComponentPlacementLeft;
-		left.placement.selected = NO;
 		left.orderItem = item;
 		[self addSubview:left];
 	}
@@ -88,7 +87,6 @@
 		[right setContentCompressionResistancePriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisHorizontal];
 		[right setContentCompressionResistancePriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisVertical];
 		right.placementToDisplay = BRMenuOrderItemComponentPlacementRight;
-		right.placement.selected = NO;
 		right.orderItem = item;
 		[self addSubview:right];
 	}

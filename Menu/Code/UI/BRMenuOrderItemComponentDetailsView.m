@@ -60,7 +60,7 @@
 		quantity.diameter = floorf(self.title.font.capHeight);
 		quantity.cornerRadius = quantity.diameter / 2;
 		quantity.enabled = NO;
-		quantity.selected = YES;
+		quantity.selected = NO;
 		self.quantity = quantity;
 		[self addSubview:quantity];
 	}
