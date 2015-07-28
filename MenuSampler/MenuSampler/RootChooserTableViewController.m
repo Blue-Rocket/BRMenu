@@ -13,6 +13,7 @@
 #import <BRMenu/RestKit/RestKit.h>
 #import <BRMenu/UI/BRMenuOrderingViewController.h>
 #import <RestKit/RestKit.h>
+#import "BRMenu+MenuSampler.h"
 
 static NSString * const kShowMenuSegue = @"ShowMenu";
 
@@ -33,27 +34,7 @@ static NSString * const kShowMenuSegue = @"ShowMenu";
 - (BRMenu *)menuForIndexPath:(NSIndexPath *)indexPath {
 	NSArray *menus = [self menuNames];
 	if ( indexPath.row < menus.count ) {
-		NSString *jsonPath = [[NSBundle mainBundle] pathForResource:menus[indexPath.row] ofType:@"json"];
-		NSData *data = [NSData dataWithContentsOfFile:jsonPath];
-		NSError *error = nil;
-		id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-		if ( error ) {
-			log4Error(@"Error parsing JSON: %@", [error localizedDescription]);
-			return nil;
-		}
-		// we need the "menu" top-level dictionary object
-		object = [object valueForKeyPath:@"menu"];
-		static BRMenuRestKitDataMapper *mapper;
-		if ( !mapper ) {
-			mapper = [[BRMenuRestKitDataMapper alloc] initWithObjectMapping:[BRMenuMappingRestKit menuMapping]];
-		}
-		BRMenu *menu = [mapper performMappingWithSourceObject:object error:&error];
-		if ( error ) {
-			log4Error(@"Error mapping JSON: %@", [error localizedDescription]);
-			return nil;
-		}
-		[BRMenuMappingPostProcessor assignMenuIDs:menu];
-		return menu;
+		return [BRMenu sampleMenuForResourceName:menus[indexPath.row]];
 	}
 	return nil;
 }

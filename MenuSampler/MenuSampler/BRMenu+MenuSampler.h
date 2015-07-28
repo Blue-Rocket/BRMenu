@@ -6,8 +6,10 @@
 //  Copyright (c) 2015 Blue Rocket. All rights reserved.
 //
 
-#import "BRMenu.h"
+#import <BRMenu/Core/BRMenu.h>
 
 @interface BRMenu (MenuSampler)
+
++ (BRMenu *)sampleMenuForResourceName:(NSString *)menuResourceName;
 
 @end

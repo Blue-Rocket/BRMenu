@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0B85F6C35BE74BF9D0020A25 /* libPods-MenuSampler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CBDF4C2B6BD161A02D291AF /* libPods-MenuSampler.a */; };
+		C97948EA1B66E2AA00281AFB /* OrderingViewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97948E91B66E2AA00281AFB /* OrderingViewsViewController.m */; };
+		C97948ED1B66E41500281AFB /* BRMenu+MenuSampler.m in Sources */ = {isa = PBXBuildFile; fileRef = C97948EC1B66E41500281AFB /* BRMenu+MenuSampler.m */; };
 		C9819DBD1B619217008A1393 /* RootChooserTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9819DBC1B619217008A1393 /* RootChooserTableViewController.m */; };
 		C9819DC91B61CD64008A1393 /* menu-donuts.json in Resources */ = {isa = PBXBuildFile; fileRef = C9819DC51B61CD64008A1393 /* menu-donuts.json */; };
 		C9819DCA1B61CD64008A1393 /* menu-lunchstop.json in Resources */ = {isa = PBXBuildFile; fileRef = C9819DC61B61CD64008A1393 /* menu-lunchstop.json */; };
@@ -45,6 +47,10 @@
 		162407008B8FC7A2CE15B5A8 /* Pods-MenuSampler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MenuSampler.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MenuSampler/Pods-MenuSampler.debug.xcconfig"; sourceTree = "<group>"; };
 		6CBDF4C2B6BD161A02D291AF /* libPods-MenuSampler.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MenuSampler.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9659BD2B592645E2DC860F3F /* Pods-MenuSampler-MenuSamplerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MenuSampler-MenuSamplerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MenuSampler-MenuSamplerTests/Pods-MenuSampler-MenuSamplerTests.release.xcconfig"; sourceTree = "<group>"; };
+		C97948E81B66E2AA00281AFB /* OrderingViewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderingViewsViewController.h; sourceTree = "<group>"; };
+		C97948E91B66E2AA00281AFB /* OrderingViewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderingViewsViewController.m; sourceTree = "<group>"; };
+		C97948EB1B66E41500281AFB /* BRMenu+MenuSampler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BRMenu+MenuSampler.h"; sourceTree = "<group>"; };
+		C97948EC1B66E41500281AFB /* BRMenu+MenuSampler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BRMenu+MenuSampler.m"; sourceTree = "<group>"; };
 		C9819DBB1B619217008A1393 /* RootChooserTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootChooserTableViewController.h; sourceTree = "<group>"; };
 		C9819DBC1B619217008A1393 /* RootChooserTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootChooserTableViewController.m; sourceTree = "<group>"; };
 		C9819DC51B61CD64008A1393 /* menu-donuts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "menu-donuts.json"; sourceTree = "<group>"; };
@@ -155,6 +161,8 @@
 			children = (
 				C9C909461B60ACA800DDF191 /* AppDelegate.h */,
 				C9C909471B60ACA800DDF191 /* AppDelegate.m */,
+				C97948EB1B66E41500281AFB /* BRMenu+MenuSampler.h */,
+				C97948EC1B66E41500281AFB /* BRMenu+MenuSampler.m */,
 				C9819DBB1B619217008A1393 /* RootChooserTableViewController.h */,
 				C9819DBC1B619217008A1393 /* RootChooserTableViewController.m */,
 				C9C9094C1B60ACA800DDF191 /* Main.storyboard */,
@@ -217,6 +225,8 @@
 			children = (
 				C9C909681B60AEED00DDF191 /* ButtonsViewController.h */,
 				C9C909691B60AEED00DDF191 /* ButtonsViewController.m */,
+				C97948E81B66E2AA00281AFB /* OrderingViewsViewController.h */,
+				C97948E91B66E2AA00281AFB /* OrderingViewsViewController.m */,
 			);
 			name = "UI Components";
 			sourceTree = "<group>";
@@ -400,6 +410,8 @@
 				C9C909751B60AEED00DDF191 /* ColorPickerViewController.m in Sources */,
 				C9819DBD1B619217008A1393 /* RootChooserTableViewController.m in Sources */,
 				C9C909451B60ACA800DDF191 /* main.m in Sources */,
+				C97948EA1B66E2AA00281AFB /* OrderingViewsViewController.m in Sources */,
+				C97948ED1B66E41500281AFB /* BRMenu+MenuSampler.m in Sources */,
 				C9C909781B60AEED00DDF191 /* GlobalStyleController.m in Sources */,
 				C9C909791B60AEED00DDF191 /* StyleColorTableViewCell.m in Sources */,
 			);
