@@ -31,7 +31,6 @@ NSString * const BRMenuOrderingGroupHeaderCellIdentifier = @"GroupHeaderCell";
 NSString * const BRMenuOrderingReviewOrderItemSegue = @"ReviewOrderItem";
 
 @interface BRMenuOrderingComponentsViewController () <BRMenuUIStylishHost>
-
 @end
 
 @implementation BRMenuOrderingComponentsViewController {

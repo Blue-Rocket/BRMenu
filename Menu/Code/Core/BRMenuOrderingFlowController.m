@@ -13,6 +13,8 @@
 #import "BRMenuItem.h"
 #import "BRMenuItemComponent.h"
 #import "BRMenuItemComponentGroup.h"
+#import "BRMenuItemGroup.h"
+#import "BRMenuOrder.h"
 #import "BRMenuOrderItem.h"
 #import "BRMenuOrderItemComponent.h"
 #import "NSBundle+BRMenu.h"
@@ -21,11 +23,14 @@
 	BRMenu *menu;
 	BRMenuItem *item;
 	BRMenuOrderItem *orderItem;
+	BRMenuItemGroup *itemGroup;
+	BRMenuOrder *temporaryOrder;
 	NSArray *steps;
 	NSUInteger flowStep;
 }
 
 @synthesize menu, item, orderItem;
+@synthesize itemGroup, temporaryOrder;
 
 - (id)initWithMenu:(BRMenu *)theMenu {
 	return [self initWithMenu:theMenu item:nil];
@@ -43,15 +48,34 @@
 	return self;
 }
 
+- (id)initWithMenu:(BRMenu *)theMenu group:(BRMenuItemGroup *)theGroup {
+	if ( (self = [super init]) ) {
+		menu = theMenu;
+		itemGroup = theGroup;
+	}
+	return self;
+}
+
 - (id)initWithFlow:(BRMenuOrderingFlowController *)flow step:(NSUInteger)step {
 	if ( (self = [super init]) ) {
 		menu = flow.menu;
 		item = flow.item;
 		orderItem = flow->orderItem;
+		itemGroup = flow.itemGroup;
+		temporaryOrder = flow->temporaryOrder;
 		steps = flow->steps;
 		flowStep = step;
 	}
 	return self;
+}
+
+- (BRMenuOrder *)temporaryOrder {
+	BRMenuOrder *result = temporaryOrder;
+	if ( !result ) {
+		result = [BRMenuOrder new];
+		temporaryOrder = result;
+	}
+	return result;
 }
 
 - (void)setupFlow {
@@ -126,6 +150,20 @@
 		return NO;
 	}
 	return !(flowStep + 1 < self.stepCount);
+}
+
+- (BOOL)hasMenuItemWithoutComponents {
+	if ( item != nil ) {
+		return (item.componentGroups.count < 1);
+	}
+	__block BOOL result = NO;
+	[itemGroup enumerateMenuItemsUsingBlock:^(BRMenuItem *menuItem, NSUInteger idx, BOOL *stop) {
+		if ( menuItem.componentGroups.count < 1 ) {
+			result = YES;
+			*stop = YES;
+		}
+	}];
+	return result;
 }
 
 - (BOOL)canGotoNextStep:(NSError * __autoreleasing *)error {
@@ -207,14 +245,29 @@
 }
 
 - (NSInteger)numberOfSections {
-	if ( item == nil ) {
+	if ( itemGroup != nil ) {
+		// return 1 section for all items in the group, plus sections for every nested group
+		return (itemGroup.items.count > 0 ? 1 : 0) + (itemGroup.itemGroups.count);
+	} else if ( item == nil ) {
 		return 1;
 	}
 	return [self menuItemComponentGroupsForStep:flowStep].count;
 }
 
 - (NSString *)titleForSection:(NSInteger)section {
-	if ( item == nil ) {
+	if ( itemGroup != nil ) {
+		BRMenuItemGroup *group = nil;
+		if ( itemGroup.items.count > 0 ) {
+			// first section is items..., which has no title
+			if ( section == 0 ) {
+				return nil;
+			}
+			group = itemGroup.itemGroups[section - 1];
+		} else {
+			group = itemGroup.itemGroups[section];
+		}
+		return group.title;
+	} else if ( item == nil ) {
 		return nil;
 	}
 	BRMenuItemComponentGroup *componentGroup = [self menuItemComponentGroupsForStep:flowStep][section];
@@ -227,7 +280,20 @@
 }
 
 - (NSInteger)numberOfItemsInSection:(NSInteger)section {
-	if ( item == nil ) {
+	if ( itemGroup != nil ) {
+		// TODO: rename itemGroups to groups and create protocol for BRMenu and BRMenuItem to conform to
+		BRMenuItemGroup *group = nil;
+		if ( itemGroup.items.count > 0 ) {
+			// first section is items...
+			if ( section == 0 ) {
+				return itemGroup.items.count;
+			}
+			group = itemGroup.itemGroups[section - 1];
+		} else {
+			group = itemGroup.itemGroups[section];
+		}
+		return (group.items.count + group.itemGroups.count);
+	} else if ( item == nil ) {
 		return (menu.items.count + menu.groups.count);
 	}
 	BRMenuItemComponentGroup *componentGroup = [self menuItemComponentGroupsForStep:flowStep][section];
@@ -236,13 +302,33 @@
 
 - (id<BRMenuItemObject>)menuItemObjectAtIndexPath:(NSIndexPath *)indexPath {
 	id<BRMenuItemObject> result = nil;
-	if ( item == nil ) {
+	if ( itemGroup != nil ) {
+		// TODO: rename itemGroups to groups and create protocol for BRMenu and BRMenuItem to conform to
+		NSUInteger section = [indexPath indexAtPosition:0];
+		NSUInteger index = [indexPath indexAtPosition:1];
+		BRMenuItemGroup *group = nil;
+		if ( itemGroup.items.count > 0 ) {
+			// first section is items...
+			if ( section == 0 ) {
+				return itemGroup.items[index];
+			}
+			group = itemGroup.itemGroups[section - 1];
+		} else {
+			group = itemGroup.itemGroups[section];
+		}
+		if ( index < group.items.count ) {
+			result = [group.items objectAtIndex:index];
+		} else {
+			index -= group.items.count;
+			result = [group.itemGroups objectAtIndex:index];
+		}
+	} else if ( item == nil ) {
 		NSUInteger index = [indexPath indexAtPosition:1];
 		if ( index != NSNotFound ) {
-			if ( index < [menu.items count] ) {
+			if ( index < menu.items.count ) {
 				result = [menu.items objectAtIndex:index];
 			} else {
-				index -= [menu.items count];
+				index -= menu.items.count;
 				result = [menu.groups objectAtIndex:index];
 			}
 		}
@@ -263,7 +349,17 @@
 
 - (NSIndexPath *)indexPathForMenuItemObject:(id<BRMenuItemObject>)itemObject {
 	NSIndexPath *result = nil;
-	if ( item == nil ) {
+	// TODO: rename itemGroups to groups and create protocol for BRMenu and BRMenuItem to conform to
+	if ( itemGroup != nil ) {
+		NSUInteger idx = [itemGroup.items indexOfObjectIdenticalTo:itemObject];
+		if ( idx == NSNotFound ) {
+			idx = [itemGroup.itemGroups indexOfObjectIdenticalTo:itemObject];
+			if ( idx != NSNotFound ) {
+				idx += itemGroup.items.count;
+			}
+		}
+		result = [BRMenuOrderingFlowController indexPathForRow:idx inSection:1];
+	} else if ( item == nil ) {
 		NSUInteger idx = [menu.items indexOfObjectIdenticalTo:itemObject];
 		if ( idx == NSNotFound ) {
 			idx = [menu.groups indexOfObjectIdenticalTo:itemObject];
@@ -285,7 +381,6 @@
 	NSUInteger section = 0;
 	NSUInteger row;
 	NSMutableArray *indexPaths = [[NSMutableArray alloc] init];
-	NSIndexPath *indexPath;
 	for ( BRMenuItemComponentGroup *group in [self menuItemComponentGroupsForStep:flowStep] ) {
 		row = 0;
 		for ( BRMenuItemComponent *component in group.components ) {
@@ -301,10 +396,12 @@
 }
 
 - (instancetype)flowControllerForItemAtIndexPath:(NSIndexPath *)indexPath {
-	id<BRMenuItemObject> item = [self menuItemObjectAtIndexPath:indexPath];
+	id<BRMenuItemObject> itemObj = [self menuItemObjectAtIndexPath:indexPath];
 	BRMenuOrderingFlowController *result = nil;
-	if ( item ) {
-		result = [[[self class] alloc] initWithMenu:menu item:item];
+	if ( [itemObj isKindOfClass:[BRMenuItem class]] ) {
+		result = [[[self class] alloc] initWithMenu:menu item:itemObj];
+	} else if ( [itemObj isKindOfClass:[BRMenuItemGroup class]] ) {
+		result = [[[self class] alloc] initWithMenu:menu group:itemObj];
 	}
 	return result;
 }

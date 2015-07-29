@@ -14,9 +14,14 @@
 @class BRMenu;
 @class BRMenuOrder;
 
+/** Cell identifier for top-level menu objects (items and groups). */
 extern NSString * const BRMenuOrderingItemObjectCellIdentifier;
 
+/** Segue identifier used to configure the components of a single menu item. */
 extern NSString * const BRMenuOrderingConfigureComponentsSegue;
+
+/** Segue identifier used to show all menu items within a group. */
+extern NSString * const BRMenuOrderingShowItemGroupSegue;
 
 /**
  Display a single menu and allow adding items from the menu to an order.

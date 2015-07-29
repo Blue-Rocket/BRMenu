@@ -9,7 +9,9 @@
 "menu.action.review" = "Review";
 "menu.action.view.order" = "My Order";
 
-"menu.ordering.item.title" = "Add %@";
+"menu.ordering.group.title" = "%@";
+
+"menu.ordering.item.title" = "%@";
 "menu.ordering.item.details.title" = "Details";
 "menu.ordering.item.details.left.title" = "Left side";
 "menu.ordering.item.details.right.title" = "Right side";

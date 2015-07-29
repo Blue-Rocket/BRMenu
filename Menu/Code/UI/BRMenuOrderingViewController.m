@@ -14,12 +14,14 @@
 #import "BRMenuOrder.h"
 #import "BRMenuOrderingComponentsViewController.h"
 #import "BRMenuOrderingFlowController.h"
+#import "BRMenuOrderingGroupViewController.h"
 #import "BRMenuUIStylishHost.h"
 #import "UIBarButtonItem+BRMenu.h"
 #import "UIViewController+BRMenuUIStyle.h"
 
 NSString * const BRMenuOrderingItemObjectCellIdentifier = @"ItemObjectCell";
 NSString * const BRMenuOrderingConfigureComponentsSegue = @"ConfigureComponents";
+NSString * const BRMenuOrderingShowItemGroupSegue = @"ShowItemGroup";
 
 @interface BRMenuOrderingViewController () <BRMenuUIStylishHost>
 
@@ -85,6 +87,10 @@ NSString * const BRMenuOrderingConfigureComponentsSegue = @"ConfigureComponents"
 		BRMenuOrderingComponentsViewController *dest = segue.destinationViewController;
 		dest.flowController = [flowController flowControllerForItemAtIndexPath:[self.tableView indexPathForSelectedRow]];
 		dest.orderingDelegate = self;
+	} else if ( [segue.identifier isEqualToString:BRMenuOrderingShowItemGroupSegue] ) {
+		BRMenuOrderingGroupViewController *dest = segue.destinationViewController;
+		dest.flowController = [flowController flowControllerForItemAtIndexPath:[self.tableView indexPathForSelectedRow]];
+		dest.orderingDelegate = self;
 	}
 }
 
@@ -108,6 +114,8 @@ NSString * const BRMenuOrderingConfigureComponentsSegue = @"ConfigureComponents"
 	id<BRMenuItemObject> item = [flowController menuItemObjectAtIndexPath:indexPath];
 	if ( item.hasComponents ) {
 		[self performSegueWithIdentifier:BRMenuOrderingConfigureComponentsSegue sender:self];
+	} else {
+		[self performSegueWithIdentifier:BRMenuOrderingShowItemGroupSegue sender:self];
 	}
 }
 
