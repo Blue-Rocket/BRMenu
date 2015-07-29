@@ -6,22 +6,22 @@
 //  Copyright (c) 2015 Blue Rocket. Distributable under the terms of the Apache License, Version 2.0.
 //
 
-#import <BRMenu/Core/BRMenu.h>
-#import <BRMenu/Core/BRMenuDataMapper.h>
-#import <BRMenu/Core/BRMenuItem.h>
-#import <BRMenu/Core/BRMenuItemComponent.h>
-#import <BRMenu/Core/BRMenuItemComponentGroup.h>
-#import <BRMenu/Core/BRMenuItemGroup.h>
-#import <BRMenu/Core/BRMenuItemObject.h>
-#import <BRMenu/Core/BRMenuItemTag.h>
-#import <BRMenu/Core/BRMenuMappingPostProcessor.h>
-#import <BRMenu/Core/BRMenuMetadata.h>
-#import <BRMenu/Core/BRMenuOrder+Encoding.h>
-#import <BRMenu/Core/BRMenuOrder.h>
-#import <BRMenu/Core/BRMenuOrderingFlowController.h>
-#import <BRMenu/Core/BRMenuOrderItem.h>
-#import <BRMenu/Core/BRMenuOrderItemAttributes.h>
-#import <BRMenu/Core/BRMenuOrderItemAttributesProxy.h>
-#import <BRMenu/Core/BRMenuOrderItemComponent.h>
-#import <BRMenu/Core/BRMenuProvider.h>
-#import <BRMenu/Core/NSNumberFormatter+BRMenu.h>
+#import <BRMenuKit/Core/BRMenu.h>
+#import <BRMenuKit/Core/BRMenuDataMapper.h>
+#import <BRMenuKit/Core/BRMenuItem.h>
+#import <BRMenuKit/Core/BRMenuItemComponent.h>
+#import <BRMenuKit/Core/BRMenuItemComponentGroup.h>
+#import <BRMenuKit/Core/BRMenuItemGroup.h>
+#import <BRMenuKit/Core/BRMenuItemObject.h>
+#import <BRMenuKit/Core/BRMenuItemTag.h>
+#import <BRMenuKit/Core/BRMenuMappingPostProcessor.h>
+#import <BRMenuKit/Core/BRMenuMetadata.h>
+#import <BRMenuKit/Core/BRMenuOrder+Encoding.h>
+#import <BRMenuKit/Core/BRMenuOrder.h>
+#import <BRMenuKit/Core/BRMenuOrderingFlowController.h>
+#import <BRMenuKit/Core/BRMenuOrderItem.h>
+#import <BRMenuKit/Core/BRMenuOrderItemAttributes.h>
+#import <BRMenuKit/Core/BRMenuOrderItemAttributesProxy.h>
+#import <BRMenuKit/Core/BRMenuOrderItemComponent.h>
+#import <BRMenuKit/Core/BRMenuProvider.h>
+#import <BRMenuKit/Core/NSNumberFormatter+BRMenu.h>

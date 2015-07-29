@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Blue Rocket. All rights reserved.
 //
 
-#import <BRMenu/Core/BRMenu.h>
+#import <BRMenuKit/Core/BRMenu.h>
 
 @interface BRMenu (MenuSampler)
 

@@ -9,8 +9,8 @@
 #import "BRMenu+MenuSampler.h"
 
 #import <BRCocoaLumberjack/BRCocoaLumberjack.h>
-#import <BRMenu/Core/Core.h>
-#import <BRMenu/RestKit/RestKit.h>
+#import <BRMenuKit/Core/Core.h>
+#import <BRMenuKit/RestKit/RestKit.h>
 //#import <RestKit/RestKit.h>
 
 

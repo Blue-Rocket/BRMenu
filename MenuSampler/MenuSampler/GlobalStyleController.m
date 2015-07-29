@@ -8,7 +8,7 @@
 
 #import "GlobalStyleController.h"
 
-#import <BRMenu/UI/UI.h>
+#import <BRMenuKit/UI/UI.h>
 #import <MAObjCRuntime/MARTNSObject.h>
 #import <MAObjCRuntime/RTProperty.h>
 #import "ColorPickerViewController.h"

@@ -209,9 +209,9 @@
 		C98883991B5883A60049491C /* BRMenuOrderItemAttributesProxyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderItemAttributesProxyTests.m; sourceTree = "<group>"; };
 		C988839A1B5883A60049491C /* BRMenuOrderItemTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderItemTests.m; sourceTree = "<group>"; };
 		C998FE231E4544850D1A0FA7 /* Pods-MenuTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MenuTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MenuTests/Pods-MenuTests.release.xcconfig"; sourceTree = "<group>"; };
-		C9B8126D1B5D75910014CBCB /* Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Core.h; path = Code/Core.h; sourceTree = SOURCE_ROOT; };
-		C9B812771B5D7B040014CBCB /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFNetworking.h; path = Code/AFNetworking.h; sourceTree = SOURCE_ROOT; };
-		C9B812781B5D7B040014CBCB /* RestKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RestKit.h; path = Code/RestKit.h; sourceTree = SOURCE_ROOT; };
+		C9B8126D1B5D75910014CBCB /* Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = Core.h; path = Code/Core.h; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		C9B812771B5D7B040014CBCB /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = AFNetworking.h; path = Code/AFNetworking.h; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		C9B812781B5D7B040014CBCB /* RestKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = RestKit.h; path = Code/RestKit.h; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C9B8127A1B5D7B040014CBCB /* BRMenuAFHTTPResponseSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuAFHTTPResponseSerializer.h; sourceTree = "<group>"; };
 		C9B8127B1B5D7B040014CBCB /* BRMenuAFHTTPResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuAFHTTPResponseSerializer.m; sourceTree = "<group>"; };
 		C9B8127D1B5D7B040014CBCB /* BRMenuRestKitDataMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuRestKitDataMapper.h; sourceTree = "<group>"; };
@@ -257,7 +257,7 @@
 		C9B812C01B5DD5DB0014CBCB /* BRMenuPlusMinusButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuPlusMinusButton.m; sourceTree = "<group>"; };
 		C9B812C21B5DD6D70014CBCB /* BRMenuUIStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuUIStyle.h; sourceTree = "<group>"; };
 		C9B812C31B5DD6D70014CBCB /* BRMenuUIStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuUIStyle.m; sourceTree = "<group>"; };
-		C9B812C51B5DDD7C0014CBCB /* UI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UI.h; path = Code/UI.h; sourceTree = SOURCE_ROOT; };
+		C9B812C51B5DDD7C0014CBCB /* UI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = UI.h; path = Code/UI.h; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C9C216251B64261C00D0A34F /* BRMenuGroupTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuGroupTableHeaderView.h; sourceTree = "<group>"; };
 		C9C216261B64261C00D0A34F /* BRMenuGroupTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuGroupTableHeaderView.m; sourceTree = "<group>"; };
 		C9C216281B6429B500D0A34F /* BRMenuGroupHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuGroupHeaderView.h; sourceTree = "<group>"; };

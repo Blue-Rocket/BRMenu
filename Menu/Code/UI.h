@@ -6,20 +6,20 @@
 //  Copyright (c) 2015 Blue Rocket. Distributable under the terms of the Apache License, Version 2.0.
 //
 
-#import <BRMenu/UI/BRMenuBackBarButtonItemView.h>
-#import <BRMenu/UI/BRMenuBarButtonItemView.h>
-#import <BRMenu/UI/BRMenuFilledToggleButton.h>
-#import <BRMenu/UI/BRMenuFitToWidthLabel.h>
-#import <BRMenu/UI/BRMenuFlipToggleButton.h>
-#import <BRMenu/UI/BRMenuItemComponentCell.h>
-#import <BRMenu/UI/BRMenuItemObjectCell.h>
-#import <BRMenu/UI/BRMenuLeftRightPlacementButton.h>
-#import <BRMenu/UI/BRMenuLightHeavyQuantityButton.h>
-#import <BRMenu/UI/BRMenuNavigationTitleView.h>
-#import <BRMenu/UI/BRMenuOrderingComponentsViewController.h>
-#import <BRMenu/UI/BRMenuOrderingViewController.h>
-#import <BRMenu/UI/BRMenuPlusMinusButton.h>
-#import <BRMenu/UI/BRMenuStepper.h>
-#import <BRMenu/UI/BRMenuUIStyle.h>
-#import <BRMenu/UI/BRMenuUIStylishHost.h>
-#import <BRMenu/UI/UIView+BRMenuUIStyle.h>
+#import <BRMenuKit/UI/BRMenuBackBarButtonItemView.h>
+#import <BRMenuKit/UI/BRMenuBarButtonItemView.h>
+#import <BRMenuKit/UI/BRMenuFilledToggleButton.h>
+#import <BRMenuKit/UI/BRMenuFitToWidthLabel.h>
+#import <BRMenuKit/UI/BRMenuFlipToggleButton.h>
+#import <BRMenuKit/UI/BRMenuItemComponentCell.h>
+#import <BRMenuKit/UI/BRMenuItemObjectCell.h>
+#import <BRMenuKit/UI/BRMenuLeftRightPlacementButton.h>
+#import <BRMenuKit/UI/BRMenuLightHeavyQuantityButton.h>
+#import <BRMenuKit/UI/BRMenuNavigationTitleView.h>
+#import <BRMenuKit/UI/BRMenuOrderingComponentsViewController.h>
+#import <BRMenuKit/UI/BRMenuOrderingViewController.h>
+#import <BRMenuKit/UI/BRMenuPlusMinusButton.h>
+#import <BRMenuKit/UI/BRMenuStepper.h>
+#import <BRMenuKit/UI/BRMenuUIStyle.h>
+#import <BRMenuKit/UI/BRMenuUIStylishHost.h>
+#import <BRMenuKit/UI/UIView+BRMenuUIStyle.h>

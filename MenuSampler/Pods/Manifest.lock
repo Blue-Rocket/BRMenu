@@ -22,16 +22,16 @@ PODS:
     - AFNetworking/NSURLSession
   - BRCocoaLumberjack (1.9.0):
     - CocoaLumberjack (~> 1.9)
-  - BRMenu/AFNetworking (0.9.0):
+  - BRMenuKit/AFNetworking (0.9.0):
     - AFNetworking (~> 2.5)
-    - BRMenu/Core
-  - BRMenu/Core (0.9.0):
+    - BRMenuKit/Core
+  - BRMenuKit/Core (0.9.0):
     - BRCocoaLumberjack (~> 1.9)
-  - BRMenu/RestKit (0.9.0):
-    - BRMenu/Core
+  - BRMenuKit/RestKit (0.9.0):
+    - BRMenuKit/Core
     - RestKit/ObjectMapping (~> 0.24)
-  - BRMenu/UI (0.9.0):
-    - BRMenu/Core
+  - BRMenuKit/UI (0.9.0):
+    - BRMenuKit/Core
     - BRPDFImage (~> 1.0)
     - Masonry (~> 0.6)
   - BRPDFImage (1.0.0)
@@ -63,10 +63,10 @@ PODS:
   - TransitionKit (2.1.1)
 
 DEPENDENCIES:
-  - BRMenu/AFNetworking (from `../`)
-  - BRMenu/Core (from `../`)
-  - BRMenu/RestKit (from `../`)
-  - BRMenu/UI (from `../`)
+  - BRMenuKit/AFNetworking (from `../`)
+  - BRMenuKit/Core (from `../`)
+  - BRMenuKit/RestKit (from `../`)
+  - BRMenuKit/UI (from `../`)
   - CocoaHTTPServer (~> 2.3)
   - Color-Picker-for-iOS (~> 2.0)
   - MAObjCRuntime (~> 0.0.1)
@@ -75,13 +75,13 @@ DEPENDENCIES:
   - RoutingHTTPServer (~> 1.0)
 
 EXTERNAL SOURCES:
-  BRMenu:
+  BRMenuKit:
     :path: ../
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
   BRCocoaLumberjack: 3ec999abcfa4fecec9816c9c63b11c93a16e4550
-  BRMenu: 5457381982b2358ff24566b123f371fda5ba07bc
+  BRMenuKit: 2f04ed783c74b5442c7cef959e9b899921a31a95
   BRPDFImage: 6a68f820e4e06ef8627f305cda147d4a31feff51
   CocoaAsyncSocket: 7cbf214b27f8e7f7574db6a3fd96352ffaed433d
   CocoaHTTPServer: 5624681fc3473d43b18202f635f9b3abb013b530

@@ -444,7 +444,7 @@ third-party archives.
    limitations under the License.
 </string>
 			<key>Title</key>
-			<string>BRMenu</string>
+			<string>BRMenuKit</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>
