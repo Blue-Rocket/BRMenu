@@ -17,8 +17,15 @@ static void * kOrderItemsContext = &kOrderItemsContext;
 	BRMenuOrder *order;
 }
 
+
+@synthesize order;
+
 - (id)init {
 	return [self initWithTitle:[NSBundle localizedBRMenuString:@"menu.action.view.order"]];
+}
+
+- (void)dealloc {
+	[self setOrder:nil]; // clear KVO
 }
 
 - (id)initWithTitle:(NSString *)text {
@@ -27,8 +34,6 @@ static void * kOrderItemsContext = &kOrderItemsContext;
 	}
 	return self;
 }
-
-@synthesize order;
 
 - (void)setOrder:(BRMenuOrder *)theOrder {
 	if ( theOrder == order ) {
