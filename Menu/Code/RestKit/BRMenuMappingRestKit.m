@@ -73,7 +73,7 @@
 	 @"showItemDelimiters": @"showItemDelimiters",
 	 }];
 	[mapping addRelationshipMappingWithSourceKeyPath:@"items" mapping:[self menuItemMapping]];
-	[mapping addRelationshipMappingWithSourceKeyPath:@"itemGroups" mapping:mapping];
+	[mapping addRelationshipMappingWithSourceKeyPath:@"groups" mapping:mapping];
 	return mapping;
 }
 

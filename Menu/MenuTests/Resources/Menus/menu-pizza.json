@@ -492,7 +492,7 @@
             "description": "artisan, organic & local\u2026",
             "key": "drink",
             "showItemDelimiters": false,
-            "itemGroups": [
+            "groups": [
                 {
                     "title": "San Pellegrino",
                     "price": "1.82",

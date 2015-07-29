@@ -34,7 +34,7 @@
 			return stop;
 		}
 	}
-	for ( BRMenuItemGroup *nested in group.itemGroups ) {
+	for ( BRMenuItemGroup *nested in group.groups ) {
 		stop = [BRMenuItemGroup enumerateMenuItemsInGroup:nested startingAtIndex:index usingBlock:block];
 		if ( stop ) {
 			return stop;
@@ -49,7 +49,7 @@
 			return item;
 		}
 	}
-	for ( BRMenuItemGroup *nested in self.itemGroups ) {
+	for ( BRMenuItemGroup *nested in self.groups ) {
 		BRMenuItem *item = [nested menuItemForId:itemId];
 		if ( item != nil ) {
 			return item;
@@ -64,7 +64,7 @@
 			return item;
 		}
 	}
-	for ( BRMenuItemGroup *nested in self.itemGroups ) {
+	for ( BRMenuItemGroup *nested in self.groups ) {
 		BRMenuItem *item = [nested menuItemForKey:key];
 		if ( item != nil ) {
 			return item;
@@ -77,7 +77,7 @@
 	if ( [key isEqualToString:self.key] ) {
 		return self;
 	}
-	for ( BRMenuItemGroup *nested in self.itemGroups ) {
+	for ( BRMenuItemGroup *nested in self.groups ) {
 		BRMenuItemGroup *group = [nested menuItemGroupForKey:key];
 		if ( group != nil ) {
 			return group;
@@ -93,7 +93,7 @@
 			return component;
 		}
 	}
-	for ( BRMenuItemGroup *nested in self.itemGroups ) {
+	for ( BRMenuItemGroup *nested in self.groups ) {
 		BRMenuItemComponent *component = [nested menuItemComponentForId:(const UInt8)componentId];
 		if ( component != nil ) {
 			return component;
@@ -109,7 +109,7 @@
 			return group;
 		}
 	}
-	for ( BRMenuItemGroup *nested in self.itemGroups ) {
+	for ( BRMenuItemGroup *nested in self.groups ) {
 		BRMenuItemComponentGroup *group = [nested menuItemComponentGroupForKey:key];
 		if ( group != nil ) {
 			return group;
@@ -123,7 +123,7 @@
 	for ( BRMenuItem *item in self.items ) {
 		[result addObjectsFromArray:[item allComponents]];
 	}
-	for ( BRMenuItemGroup *nested in self.itemGroups ) {
+	for ( BRMenuItemGroup *nested in self.groups ) {
 		[result addObjectsFromArray:[nested allComponents]];
 	}
 	return result;

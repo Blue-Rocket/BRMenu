@@ -53,7 +53,7 @@
 	if ( stop ) {
 		return stop;
 	}
-	for ( BRMenuItemGroup *nested in group.itemGroups ) {
+	for ( BRMenuItemGroup *nested in group.groups ) {
 		stop = [BRMenu enumerateMenuItemGroups:nested startingAtIndex:index usingBlock:block];
 		if ( stop ) {
 			return stop;

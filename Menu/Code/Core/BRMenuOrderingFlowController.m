@@ -247,7 +247,7 @@
 - (NSInteger)numberOfSections {
 	if ( itemGroup != nil ) {
 		// return 1 section for all items in the group, plus sections for every nested group
-		return (itemGroup.items.count > 0 ? 1 : 0) + (itemGroup.itemGroups.count);
+		return (itemGroup.items.count > 0 ? 1 : 0) + (itemGroup.groups.count);
 	} else if ( item == nil ) {
 		return 1;
 	}
@@ -262,9 +262,9 @@
 			if ( section == 0 ) {
 				return nil;
 			}
-			group = itemGroup.itemGroups[section - 1];
+			group = itemGroup.groups[section - 1];
 		} else {
-			group = itemGroup.itemGroups[section];
+			group = itemGroup.groups[section];
 		}
 		return group.title;
 	} else if ( item == nil ) {
@@ -281,18 +281,18 @@
 
 - (NSInteger)numberOfItemsInSection:(NSInteger)section {
 	if ( itemGroup != nil ) {
-		// TODO: rename itemGroups to groups and create protocol for BRMenu and BRMenuItem to conform to
+		// TODO: rename groups to groups and create protocol for BRMenu and BRMenuItem to conform to
 		BRMenuItemGroup *group = nil;
 		if ( itemGroup.items.count > 0 ) {
 			// first section is items...
 			if ( section == 0 ) {
 				return itemGroup.items.count;
 			}
-			group = itemGroup.itemGroups[section - 1];
+			group = itemGroup.groups[section - 1];
 		} else {
-			group = itemGroup.itemGroups[section];
+			group = itemGroup.groups[section];
 		}
-		return (group.items.count + group.itemGroups.count);
+		return (group.items.count + group.groups.count);
 	} else if ( item == nil ) {
 		return (menu.items.count + menu.groups.count);
 	}
@@ -303,7 +303,7 @@
 - (id<BRMenuItemObject>)menuItemObjectAtIndexPath:(NSIndexPath *)indexPath {
 	id<BRMenuItemObject> result = nil;
 	if ( itemGroup != nil ) {
-		// TODO: rename itemGroups to groups and create protocol for BRMenu and BRMenuItem to conform to
+		// TODO: rename groups to groups and create protocol for BRMenu and BRMenuItem to conform to
 		NSUInteger section = [indexPath indexAtPosition:0];
 		NSUInteger index = [indexPath indexAtPosition:1];
 		BRMenuItemGroup *group = nil;
@@ -312,15 +312,15 @@
 			if ( section == 0 ) {
 				return itemGroup.items[index];
 			}
-			group = itemGroup.itemGroups[section - 1];
+			group = itemGroup.groups[section - 1];
 		} else {
-			group = itemGroup.itemGroups[section];
+			group = itemGroup.groups[section];
 		}
 		if ( index < group.items.count ) {
 			result = [group.items objectAtIndex:index];
 		} else {
 			index -= group.items.count;
-			result = [group.itemGroups objectAtIndex:index];
+			result = [group.groups objectAtIndex:index];
 		}
 	} else if ( item == nil ) {
 		NSUInteger index = [indexPath indexAtPosition:1];
@@ -349,11 +349,11 @@
 
 - (NSIndexPath *)indexPathForMenuItemObject:(id<BRMenuItemObject>)itemObject {
 	NSIndexPath *result = nil;
-	// TODO: rename itemGroups to groups and create protocol for BRMenu and BRMenuItem to conform to
+	// TODO: rename groups to groups and create protocol for BRMenu and BRMenuItem to conform to
 	if ( itemGroup != nil ) {
 		NSUInteger idx = [itemGroup.items indexOfObjectIdenticalTo:itemObject];
 		if ( idx == NSNotFound ) {
-			idx = [itemGroup.itemGroups indexOfObjectIdenticalTo:itemObject];
+			idx = [itemGroup.groups indexOfObjectIdenticalTo:itemObject];
 			if ( idx != NSNotFound ) {
 				idx += itemGroup.items.count;
 			}

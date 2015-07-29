@@ -74,7 +74,7 @@
             "description": "Relax with a simple Latte or treat yourself to one of our more indulgent varieties.",
             "key": "hot-drink",
             "showItemDelimiters": true,
-            "itemGroups": [
+            "groups": [
                 {"title": "Latte"},
                 {"title": "Creamy Caramel Latte"},
                 {"title": "Vanilla Bean Latte"},
@@ -235,35 +235,35 @@
             "description": "Healthier choices available in regular and low-fat varieties.",
             "key": "muffin",
             "showItemDelimiters": false,
-            "itemGroups": []
+            "groups": []
         },
         {
             "title": "Cookies",
             "description": "An essential part of anyone's sweet craving.",
             "key": "cookie",
             "showItemDelimiters": false,
-            "itemGroups": []
+            "groups": []
         },
         {
             "title": "Pastries",
             "description": "More options at snack time.",
             "key": "pastry",
             "showItemDelimiters": false,
-            "itemGroups": []
+            "groups": []
         },
         {
             "title": "Bagels",
             "description": "Everyone loves a freshly baked bagel.",
             "key": "bagel",
             "showItemDelimiters": false,
-            "itemGroups": []
+            "groups": []
         },
         {
             "title": "Hot Bowls",
             "description": "Homestyle soups and chili.",
             "key": "soup",
             "showItemDelimiters": false,
-            "itemGroups": []
+            "groups": []
         }
     ],
     "tags": [

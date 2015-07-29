@@ -107,7 +107,7 @@
             "description": "Our dense, rich and creamy ice cream\u2013spun fresh daily right here at the Shack! Our vanilla and chocolate recipes use only real sugar, no corn syrup, and milk from dairy farmers who pledge not to use artificial growth hormones.",
             "key": "custard",
             "showItemDelimiters": true,
-            "itemGroups": [
+            "groups": [
                 {
                     "title": "Shakes",
                     "items": [
@@ -228,7 +228,7 @@
             "description": "Hand-made lemonade, teas, soda\u2026",
             "key": "drink",
             "showItemDelimiters": false,
-            "itemGroups": [{
+            "groups": [{
                 "title": "Shack-made Lemonade",
                 "items": [
                     {

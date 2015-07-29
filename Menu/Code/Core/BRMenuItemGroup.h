@@ -22,7 +22,7 @@
 @property (nonatomic, copy) NSString *desc;
 @property (nonatomic, copy) NSString *key; // unique key assigned by data
 @property (nonatomic, copy) NSArray *items; // BRMenuItem
-@property (nonatomic, copy) NSArray *itemGroups; // BRMenuItemGroup
+@property (nonatomic, copy) NSArray *groups; // BRMenuItemGroup
 
 @property (nonatomic, weak) BRMenuItemGroup *parentGroup;
 

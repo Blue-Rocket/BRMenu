@@ -54,7 +54,7 @@
 		item.group = group;
 		[self assignMenu:menu menuItemIDs:item itemCounter:itemId componentCounter:componentId];
 	}
-	for ( BRMenuItemGroup *nested in group.itemGroups ) {
+	for ( BRMenuItemGroup *nested in group.groups ) {
 		nested.parentGroup = group;
 		[self assignMenu:menu groupItemIDs:nested itemCounter:itemId componentCounter:componentId];
 	}
