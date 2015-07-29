@@ -36,7 +36,7 @@
 	return [self initWithMenu:theMenu item:nil];
 }
 
-- (id)initWithMenu:(BRMenu *)theMenu item:(id<BRMenuItemObject>)theItem {
+- (id)initWithMenu:(BRMenu *)theMenu item:(BRMenuItem *)theItem {
 	if ( (self = [super init]) ) {
 		menu = theMenu;
 		item = theItem;
@@ -399,9 +399,9 @@
 	id<BRMenuItemObject> itemObj = [self menuItemObjectAtIndexPath:indexPath];
 	BRMenuOrderingFlowController *result = nil;
 	if ( [itemObj isKindOfClass:[BRMenuItem class]] ) {
-		result = [[[self class] alloc] initWithMenu:menu item:itemObj];
+		result = [[[self class] alloc] initWithMenu:menu item:(BRMenuItem *)itemObj];
 	} else if ( [itemObj isKindOfClass:[BRMenuItemGroup class]] ) {
-		result = [[[self class] alloc] initWithMenu:menu group:itemObj];
+		result = [[[self class] alloc] initWithMenu:menu group:(BRMenuItemGroup *)itemObj];
 	}
 	return result;
 }

@@ -17,7 +17,7 @@
 @end
 
 @implementation BRMenuGroupTableHeaderView {
-	BRMenuGroupTableHeaderView *headerView;
+	BRMenuGroupHeaderView *headerView;
 }
 
 @dynamic uiStyle;
