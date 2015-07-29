@@ -42,9 +42,9 @@ NSString * const BRMenuOrderingShowItemGroupSegue = @"ShowItemGroup";
 	}
 	
 	if ( !self.navigationItem.leftBarButtonItem ) {
-		self.navigationItem.leftBarButtonItem = [UIBarButtonItem standardBRMenuBackButtonItemWithWithTitle:nil
-																									target:self
-																									action:@selector(goBack:)];
+		self.navigationItem.leftBarButtonItem = [UIBarButtonItem standardBRMenuBackButtonItemWithTitle:nil
+																								target:self
+																								action:@selector(goBack:)];
 	}
 
 	[self refreshForStyle:self.uiStyle];

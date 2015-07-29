@@ -31,6 +31,6 @@
  @param action The action method to invoke when tapped.
  @return A new bar button item.
  */
-+ (UIBarButtonItem *)standardBRMenuBackButtonItemWithWithTitle:(NSString *)title target:(id)target action:(SEL)action;
++ (UIBarButtonItem *)standardBRMenuBackButtonItemWithTitle:(NSString *)title target:(id)target action:(SEL)action;
 
 @end

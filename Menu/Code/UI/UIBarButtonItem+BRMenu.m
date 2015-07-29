@@ -19,7 +19,7 @@
 
 }
 
-+ (UIBarButtonItem *)standardBRMenuBackButtonItemWithWithTitle:(NSString *)title target:(id)target action:(SEL)action {
++ (UIBarButtonItem *)standardBRMenuBackButtonItemWithTitle:(NSString *)title target:(id)target action:(SEL)action {
 	if ( !title ) {
 		title = [NSBundle localizedBRMenuString:@"menu.action.back"];
 	}

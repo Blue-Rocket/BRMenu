@@ -48,9 +48,9 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 	self.navigationItem.title = [NSString stringWithFormat:[NSBundle localizedBRMenuString:@"menu.ordering.group.title"], flowController.itemGroup.title];
 	
 	if ( !self.navigationItem.leftBarButtonItem ) {
-		self.navigationItem.leftBarButtonItem = [UIBarButtonItem standardBRMenuBackButtonItemWithWithTitle:nil
-																									target:self
-																									action:@selector(goBack:)];
+		self.navigationItem.leftBarButtonItem = [UIBarButtonItem standardBRMenuBackButtonItemWithTitle:nil
+																								target:self
+																								action:@selector(goBack:)];
 	}
 }
 
