@@ -892,37 +892,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="Axv-NR-5sQ">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="rmZ-Tv-4EI">
-                            <view key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" id="e2t-zV-LYr" customClass="BRMenuBarButtonItemView">
-                                <rect key="frame" x="16" y="5" width="80" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="badgeText" value="0"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="inverse" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Order"/>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                        </barButtonItem>
                         <view key="titleView" contentMode="scaleToFill" id="kwh-hl-7Uw" customClass="BRMenuNavigationTitleView">
                             <rect key="frame" x="180" y="6" width="240" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="title" value="BRMenu"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="title" value="BRMenuKit"/>
                             </userDefinedRuntimeAttributes>
                         </view>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="Ftc-bo-pv6">
-                            <view key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" id="gf9-kF-IP0" customClass="BRMenuBarButtonItemView">
-                                <rect key="frame" x="451" y="5" width="80" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Style"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="inverse" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="editGlobalStyle:" destination="YbO-Bo-4wU" eventType="touchUpInside" id="ABw-TH-W9d"/>
-                                </connections>
-                            </view>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="RVU-ed-HTm" kind="show" identifier="EditGlobalStyle" id="pzv-h6-hyJ"/>

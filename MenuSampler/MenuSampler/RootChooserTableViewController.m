@@ -10,8 +10,11 @@
 
 #import <BRCocoaLumberjack/BRCocoaLumberjack.h>
 #import <BRMenu/Core/Core.h>
+#import <BRMenu/Core/NSBundle+BRMenu.h>
 #import <BRMenu/RestKit/RestKit.h>
-#import <BRMenu/UI/BRMenuOrderingViewController.h>
+#import <BRMenu/UI/UI.h>
+#import <BRMenu/UI/BRMenuOrderCountBarButtonItemView.h>
+#import <BRMenu/UI/UIBarButtonItem+BRMenu.h>
 #import <RestKit/RestKit.h>
 #import "BRMenu+MenuSampler.h"
 
@@ -21,10 +24,24 @@ static NSString * const kShowMenuSegue = @"ShowMenu";
 
 @end
 
-@implementation RootChooserTableViewController
+@implementation RootChooserTableViewController {
+	BRMenuOrder *order;
+}
 
-- (IBAction)editGlobalStyle:(id)sender {
-	[self performSegueWithIdentifier:@"EditGlobalStyle" sender:sender];
+- (void)viewDidLoad {
+	[super viewDidLoad];
+	order = [BRMenuOrder new];
+	BRMenuOrderCountBarButtonItemView *reviewOrderButton = [BRMenuOrderCountBarButtonItemView new];
+	reviewOrderButton.order = order;
+	reviewOrderButton.inverse = YES;
+	[reviewOrderButton addTarget:self action:@selector(viewOrder:) forControlEvents:UIControlEventTouchUpInside];
+	[reviewOrderButton sizeToFit];
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:reviewOrderButton];
+	
+	self.navigationItem.leftBarButtonItem = [UIBarButtonItem standardBRMenuBarButtonItemWithTitle:NSLocalizedString(@"Style", nil)
+																							target:self
+																							action:@selector(editGlobalStyle:)];
+	
 }
 
 - (NSArray *)menuNames {
@@ -50,10 +67,29 @@ static NSString * const kShowMenuSegue = @"ShowMenu";
 			NSString *title = [self.tableView cellForRowAtIndexPath:indexPath].textLabel.text;
 			dest.navigationItem.title = title;
 			dest.menu = menu;
+			dest.order = order;
+			
+			BRMenuOrderCountBarButtonItemView *reviewOrderButton = [BRMenuOrderCountBarButtonItemView new];
+			reviewOrderButton.order = order;
+			reviewOrderButton.inverse = YES;
+			[reviewOrderButton addTarget:self action:@selector(viewOrder:) forControlEvents:UIControlEventTouchUpInside];
+			[reviewOrderButton sizeToFit];
+			dest.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:reviewOrderButton];
+
 			[self.navigationController pushViewController:dest animated:YES];
 		}
 	}
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - Actions
+
+- (IBAction)editGlobalStyle:(id)sender {
+	[self performSegueWithIdentifier:@"EditGlobalStyle" sender:sender];
+}
+
+- (IBAction)viewOrder:(id)sender {
+	// TODO
 }
 
 @end
