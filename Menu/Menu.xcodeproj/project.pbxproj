@@ -36,6 +36,7 @@
 		C92AEEFE1B5F56D50005AC79 /* BRMenuFlipToggleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C92AEEFD1B5F56D50005AC79 /* BRMenuFlipToggleButton.m */; };
 		C957D2E01B60B30300AD224C /* BRMenuLightHeavyQuantityButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C957D2DF1B60B30300AD224C /* BRMenuLightHeavyQuantityButton.m */; };
 		C957D2E31B60B76B00AD224C /* BRMenuFilledToggleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C957D2E21B60B76B00AD224C /* BRMenuFilledToggleButton.m */; };
+		C959D0381B6845EB00C153D7 /* BRMenuOrderCountBarButtonItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = C959D0371B6845EB00C153D7 /* BRMenuOrderCountBarButtonItemView.m */; };
 		C97948E11B66D79500281AFB /* BRMenuOrderingItemDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97948E01B66D79500281AFB /* BRMenuOrderingItemDetailsViewController.m */; };
 		C97948E41B66D86800281AFB /* BRMenuOrderItemDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = C97948E31B66D86800281AFB /* BRMenuOrderItemDetailsView.m */; };
 		C97948E71B66D9CF00281AFB /* BRMenuOrderItemComponentDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = C97948E61B66D9CF00281AFB /* BRMenuOrderItemComponentDetailsView.m */; };
@@ -149,6 +150,9 @@
 		C957D2DF1B60B30300AD224C /* BRMenuLightHeavyQuantityButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuLightHeavyQuantityButton.m; sourceTree = "<group>"; };
 		C957D2E11B60B76B00AD224C /* BRMenuFilledToggleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuFilledToggleButton.h; sourceTree = "<group>"; };
 		C957D2E21B60B76B00AD224C /* BRMenuFilledToggleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuFilledToggleButton.m; sourceTree = "<group>"; };
+		C959D0351B68440E00C153D7 /* BRMenuOrderingDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuOrderingDelegate.h; sourceTree = "<group>"; };
+		C959D0361B6845EB00C153D7 /* BRMenuOrderCountBarButtonItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuOrderCountBarButtonItemView.h; sourceTree = "<group>"; };
+		C959D0371B6845EB00C153D7 /* BRMenuOrderCountBarButtonItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderCountBarButtonItemView.m; sourceTree = "<group>"; };
 		C97948DD1B66B42400281AFB /* BRMenuModelPropertyEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuModelPropertyEditor.h; sourceTree = "<group>"; };
 		C97948DE1B66BB9800281AFB /* BRMenuUIModelPropertyEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuUIModelPropertyEditor.h; sourceTree = "<group>"; };
 		C97948DF1B66D79500281AFB /* BRMenuOrderingItemDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuOrderingItemDetailsViewController.h; sourceTree = "<group>"; };
@@ -440,6 +444,8 @@
 				C957D2DF1B60B30300AD224C /* BRMenuLightHeavyQuantityButton.m */,
 				C9819DB51B616812008A1393 /* BRMenuNavigationTitleView.h */,
 				C9819DB61B616812008A1393 /* BRMenuNavigationTitleView.m */,
+				C959D0361B6845EB00C153D7 /* BRMenuOrderCountBarButtonItemView.h */,
+				C959D0371B6845EB00C153D7 /* BRMenuOrderCountBarButtonItemView.m */,
 				C97948E21B66D86800281AFB /* BRMenuOrderItemDetailsView.h */,
 				C97948E31B66D86800281AFB /* BRMenuOrderItemDetailsView.m */,
 				C97948E51B66D9CF00281AFB /* BRMenuOrderItemComponentDetailsView.h */,
@@ -508,6 +514,7 @@
 				C9B812A11B5D7BA70014CBCB /* BRMenuOrder.m */,
 				C9B812A21B5D7BA70014CBCB /* BRMenuOrder+Encoding.h */,
 				C9B812A31B5D7BA70014CBCB /* BRMenuOrder+Encoding.m */,
+				C959D0351B68440E00C153D7 /* BRMenuOrderingDelegate.h */,
 				C9B812A41B5D7BA70014CBCB /* BRMenuOrderItem.h */,
 				C9B812A51B5D7BA70014CBCB /* BRMenuOrderItem.m */,
 				C9B812A61B5D7BA70014CBCB /* BRMenuOrderItemAttributes.h */,
@@ -864,6 +871,7 @@
 				C9819DE71B63563B008A1393 /* BRMenuItemComponentCell.m in Sources */,
 				C957D2E01B60B30300AD224C /* BRMenuLightHeavyQuantityButton.m in Sources */,
 				C9B8128C1B5D7B5C0014CBCB /* BRMenuMappingRestKit.m in Sources */,
+				C959D0381B6845EB00C153D7 /* BRMenuOrderCountBarButtonItemView.m in Sources */,
 				C92AEEF91B5F10630005AC79 /* BRMenuBarButtonItemView.m in Sources */,
 				C9B812B51B5D7BA70014CBCB /* BRMenuOrder.m in Sources */,
 			);

@@ -7,6 +7,7 @@
 "menu.action.next" = "Next";
 "menu.action.ok" = "OK";
 "menu.action.review" = "Review";
+"menu.action.view.order" = "My Order";
 
 "menu.ordering.item.title" = "Add %@";
 "menu.ordering.item.details.title" = "Details";

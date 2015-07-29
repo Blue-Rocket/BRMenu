@@ -11,15 +11,22 @@
 #import "BRMenuUIStyle.h"
 
 @class BRMenuOrderingFlowController;
+@protocol BRMenuOrderingDelegate;
 
 extern NSString * const BRMenuOrderingItemComponentCellIdentifier;
 extern NSString * const BRMenuOrderingGroupHeaderCellIdentifier;
 
 extern NSString * const BRMenuOrderingReviewOrderItemSegue;
 
+/**
+ Present a list of order item component groups for a single order item, pushing
+ new instances of this class for each step required based on the menu item component groupings.
+ */
 @interface BRMenuOrderingComponentsViewController : UITableViewController <BRMenuUIStylish>
 
-@property (nonatomic, strong) BRMenuOrderingFlowController *flowController;
 @property (nonatomic, assign, getter=isUsePrototypeCells) IBInspectable BOOL usePrototypeCells;
+
+@property (nonatomic, strong) BRMenuOrderingFlowController *flowController;
+@property (nonatomic, weak) id<BRMenuOrderingDelegate> orderingDelegate;
 
 @end

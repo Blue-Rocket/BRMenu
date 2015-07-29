@@ -11,6 +11,7 @@
 #import "BRMenu.h"
 #import "BRMenuItemObject.h"
 #import "BRMenuItemObjectCell.h"
+#import "BRMenuOrder.h"
 #import "BRMenuOrderingComponentsViewController.h"
 #import "BRMenuOrderingFlowController.h"
 #import "BRMenuUIStylishHost.h"
@@ -63,6 +64,16 @@ NSString * const BRMenuOrderingConfigureComponentsSegue = @"ConfigureComponents"
 	return flowController.menu;
 }
 
+#pragma mark - BRMenuOrderingDelegate
+
+- (void)addOrderItemToActiveOrder:(BRMenuOrderItem *)orderItem {
+	if ( self.order == nil ) {
+		self.order = [BRMenuOrder new];
+	}
+	[self.order addOrderItem:orderItem];
+	[self.navigationController popToViewController:self animated:YES];
+}
+
 #pragma mark - Navigation support
 
 - (IBAction)goBack:(id)sender {
@@ -73,6 +84,7 @@ NSString * const BRMenuOrderingConfigureComponentsSegue = @"ConfigureComponents"
 	if ( [segue.identifier isEqualToString:BRMenuOrderingConfigureComponentsSegue] ) {
 		BRMenuOrderingComponentsViewController *dest = segue.destinationViewController;
 		dest.flowController = [flowController flowControllerForItemAtIndexPath:[self.tableView indexPathForSelectedRow]];
+		dest.orderingDelegate = self;
 	}
 }
 

@@ -17,6 +17,7 @@
 #import "BRMenuOrderingFlowController.h"
 #import "BRMenuOrderItem.h"
 #import "BRMenuOrderItemComponent.h"
+#import "BRMenuOrderingDelegate.h"
 #import "BRMenuOrderingItemDetailsViewController.h"
 #import "BRMenuUIStylishHost.h"
 #import "NSBundle+BRMenu.h"
@@ -112,6 +113,7 @@ NSString * const BRMenuOrderingReviewOrderItemSegue = @"ReviewOrderItem";
 		BRMenuOrderingItemDetailsViewController *dest = (BRMenuOrderingItemDetailsViewController *)segue.destinationViewController;
 		dest.showAddToOrder = YES;
 		dest.orderItem = flowController.orderItem;
+		dest.orderingDelegate = self.orderingDelegate;
 	}
 }
 
@@ -126,8 +128,8 @@ NSString * const BRMenuOrderingReviewOrderItemSegue = @"ReviewOrderItem";
 		return;
 	}
 	BRMenuOrderingComponentsViewController *dest = [self.storyboard instantiateViewControllerWithIdentifier:@"MenuOrderingComponents"];
-	//dest.orderDelegate = self.orderDelegate;
 	dest.flowController = [flowController flowControllerForNextStep];
+	dest.orderingDelegate = self.orderingDelegate;
 	[self.navigationController pushViewController:dest animated:YES];
 }
 
@@ -139,7 +141,7 @@ NSString * const BRMenuOrderingReviewOrderItemSegue = @"ReviewOrderItem";
 }
 
 - (IBAction)addOrderItemToActiveOrder:(id)sender {
-	// TODO
+	[self.orderingDelegate addOrderItemToActiveOrder:flowController.orderItem];
 }
 
 - (IBAction)didToggleQualifierButton:(UIControl<BRMenuModelPropertyEditor> *)sender {
@@ -234,11 +236,6 @@ NSString * const BRMenuOrderingReviewOrderItemSegue = @"ReviewOrderItem";
 		[self configureSelectedCellState:cell];
 	}
 	return (makeSelected ? indexPath : nil);
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	id<BRMenuItemObject> item = [flowController menuItemObjectAtIndexPath:indexPath];
-	// TODO: implement
 }
 
 @end

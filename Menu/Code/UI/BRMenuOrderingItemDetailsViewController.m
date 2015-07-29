@@ -12,6 +12,7 @@
 #import "BRMenuItem.h"
 #import "BRMenuOrderItem.h"
 #import "BRMenuOrderItemDetailsView.h"
+#import "BRMenuOrderingDelegate.h"
 #import "BRMenuUIStylishHost.h"
 #import "NSBundle+BRMenu.h"
 #import "UIBarButtonItem+BRMenu.h"
@@ -40,7 +41,7 @@
 			make.width.equalTo(self.scrollView).with.offset(-20);
 			make.centerX.equalTo(self.scrollView);
 			make.top.equalTo(self.scrollView).with.offset(10);
-			make.bottom.equalTo(self.scrollView).with.offset(-10).priorityMedium;
+			make.bottom.equalTo(self.scrollView).with.offset(-10).priorityMedium();
 		}];
 	}
 	if ( !self.navigationItem.leftBarButtonItem ) {
@@ -84,7 +85,7 @@
 }
 
 - (IBAction)addOrderItemToActiveOrder:(id)sender {
-	
+	[self.orderingDelegate addOrderItemToActiveOrder:self.orderItem];
 }
 
 /*
