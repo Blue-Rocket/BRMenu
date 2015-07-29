@@ -20,6 +20,7 @@
                     <navigationItem key="navigationItem" title="Menu" id="cpp-a2-sHP"/>
                     <connections>
                         <segue destination="MfJ-iN-H4u" kind="show" identifier="ConfigureComponents" id="AOP-zo-mWG"/>
+                        <segue destination="xkh-NH-9d0" kind="show" identifier="ShowItemGroup" id="30G-Fd-4fe"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dGG-dn-86b" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -47,6 +48,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xs4-oA-Zp5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1903" y="182"/>
+        </scene>
+        <!--Add grouped items-->
+        <scene sceneID="TY5-n8-2gh">
+            <objects>
+                <tableViewController id="xkh-NH-9d0" customClass="BRMenuOrderingGroupViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9GF-8t-X0h">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="xkh-NH-9d0" id="6d4-3G-XNG"/>
+                            <outlet property="delegate" destination="xkh-NH-9d0" id="Xze-R3-2mr"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Add grouped items" id="AbV-a8-lgE"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E9b-ze-476" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1903" y="895"/>
         </scene>
         <!--Review Order Item-->
         <scene sceneID="evc-nc-AD1">
