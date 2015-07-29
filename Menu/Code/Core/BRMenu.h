@@ -8,12 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+#import "BRMenuGroupObject.h"
+
 @class BRMenuItem;
 @class BRMenuItemComponent;
 @class BRMenuItemComponentGroup;
 @class BRMenuItemGroup;
 
-@interface BRMenu : NSObject
+@interface BRMenu : NSObject <BRMenuGroupObject>
 
 @property (nonatomic) UInt16 version;
 @property (nonatomic, copy) NSArray *items; // BRMenuItem

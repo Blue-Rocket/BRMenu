@@ -10,13 +10,14 @@
 
 #import <Foundation/Foundation.h>
 
+#import "BRMenuGroupObject.h"
 #import "BRMenuItemObject.h"
 
 @class BRMenuItem;
 @class BRMenuItemComponent;
 @class BRMenuItemComponentGroup;
 
-@interface BRMenuItemGroup : NSObject <BRMenuItemObject>
+@interface BRMenuItemGroup : NSObject <BRMenuGroupObject, BRMenuItemObject>
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *desc;

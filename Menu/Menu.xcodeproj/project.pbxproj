@@ -159,6 +159,7 @@
 		C959D03A1B687C3E00C153D7 /* BRMenuOrderingGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderingGroupViewController.m; sourceTree = "<group>"; };
 		C959D03C1B68876500C153D7 /* BRMenuItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuItemCell.h; sourceTree = "<group>"; };
 		C959D03D1B68876500C153D7 /* BRMenuItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuItemCell.m; sourceTree = "<group>"; };
+		C959D03F1B689F4E00C153D7 /* BRMenuGroupObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuGroupObject.h; sourceTree = "<group>"; };
 		C97948DD1B66B42400281AFB /* BRMenuModelPropertyEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuModelPropertyEditor.h; sourceTree = "<group>"; };
 		C97948DE1B66BB9800281AFB /* BRMenuUIModelPropertyEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuUIModelPropertyEditor.h; sourceTree = "<group>"; };
 		C97948DF1B66D79500281AFB /* BRMenuOrderingItemDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuOrderingItemDetailsViewController.h; sourceTree = "<group>"; };
@@ -507,6 +508,7 @@
 				C9B8128E1B5D7BA70014CBCB /* BRMenu.h */,
 				C9B8128F1B5D7BA70014CBCB /* BRMenu.m */,
 				C9B812901B5D7BA70014CBCB /* BRMenuDataMapper.h */,
+				C959D03F1B689F4E00C153D7 /* BRMenuGroupObject.h */,
 				C9B812911B5D7BA70014CBCB /* BRMenuItem.h */,
 				C9B812921B5D7BA70014CBCB /* BRMenuItem.m */,
 				C9B812931B5D7BA70014CBCB /* BRMenuItemComponent.h */,
