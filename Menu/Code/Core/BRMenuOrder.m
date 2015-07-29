@@ -22,6 +22,10 @@ NSString * const kSpecialGroupKey = @"_special";
 
 @synthesize orderItems;
 
++ (NSSet *)keyPathsForValuesAffectingOrderItemCount {
+	return [NSSet setWithObject:@"orderItems"];
+}
+
 - (id)initWithOrder:(BRMenuOrder *)order {
 	if ( (self = [self init]) ) {
 		self.menu = order.menu;
@@ -36,11 +40,27 @@ NSString * const kSpecialGroupKey = @"_special";
 	return [[BRMenuOrder alloc] initWithOrder:self];
 }
 
+#pragma mark - KVC support for orderItems array
+
+- (void)insertObject:(BRMenuOrderItem *)item inOrderItemsAtIndex:(NSUInteger)index {
+	[orderItems insertObject:item atIndex:index];
+}
+
+- (void)insertOrderItems:(NSArray *)array atIndexes:(NSIndexSet *)indexes {
+	[orderItems insertObjects:array atIndexes:indexes];
+}
+
+- (void)removeObjectFromOrderItemsAtIndex:(NSUInteger)index {
+	[orderItems removeObjectAtIndex:index];
+}
+
 - (void)addOrderItem:(BRMenuOrderItem *)item {
 	if ( orderItems == nil ) {
+		[self willChangeValueForKey:@"orderItems"];
 		orderItems = [[NSMutableArray alloc] initWithCapacity:5];
+		[self didChangeValueForKey:@"orderItems"];
 	}
-	[orderItems addObject:item];
+	[self insertObject:item inOrderItemsAtIndex:orderItems.count];
 }
 
 - (BRMenuOrderItem *)orderItemForMenuItem:(BRMenuItem *)menuItem {
@@ -65,7 +85,8 @@ NSString * const kSpecialGroupKey = @"_special";
 - (void)removeItemForMenuItem:(BRMenuItem *)menuItem {
 	BRMenuOrderItem *item = [self orderItemForMenuItem:menuItem];
 	if ( item != nil ) {
-		[orderItems removeObjectIdenticalTo:item];
+		NSUInteger index = [orderItems indexOfObjectIdenticalTo:item];
+		[self removeObjectFromOrderItemsAtIndex:index];
 	}
 }
 
@@ -73,9 +94,12 @@ NSString * const kSpecialGroupKey = @"_special";
 	[orderItems removeAllObjects];
 	if ( newOrderItems != nil ) {
 		if ( orderItems == nil ) {
+			[self willChangeValueForKey:@"orderItems"];
 			orderItems = [newOrderItems mutableCopy];
+			[self didChangeValueForKey:@"orderItems"];
 		} else {
-			[orderItems addObjectsFromArray:newOrderItems];
+			NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange(orderItems.count, newOrderItems.count)];
+			[self insertOrderItems:newOrderItems atIndexes:indexSet];
 		}
 	}
 }
