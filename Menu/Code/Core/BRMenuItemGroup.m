@@ -43,6 +43,33 @@
 	return stop;
 }
 
+- (void)enumerateMenuItemGroupsUsingBlock:(void (^)(BRMenuItemGroup *menuItemGroup, NSUInteger idx, BOOL *stop))block {
+	if ( block == NULL ) {
+		return;
+	}
+	NSUInteger index = 0;
+	for ( BRMenuItemGroup *group in self.groups ) {
+		if ( [BRMenuItemGroup enumerateMenuItemGroups:group startingAtIndex:&index usingBlock:block] ) {
+			break;
+		}
+	}
+}
+
++ (BOOL)enumerateMenuItemGroups:(BRMenuItemGroup *)group startingAtIndex:(NSUInteger *)index usingBlock:(void (^)(BRMenuItemGroup *menuItemGroup, NSUInteger idx, BOOL *stop))block {
+	BOOL stop = NO;
+	block(group, (*index)++, &stop);
+	if ( stop ) {
+		return stop;
+	}
+	for ( BRMenuItemGroup *nested in group.groups ) {
+		stop = [BRMenuItemGroup enumerateMenuItemGroups:nested startingAtIndex:index usingBlock:block];
+		if ( stop ) {
+			return stop;
+		}
+	}
+	return stop;
+}
+
 - (BRMenuItem *)menuItemForId:(const UInt8)itemId {
 	for ( BRMenuItem *item in self.items ) {
 		if ( itemId == item.itemId ) {
