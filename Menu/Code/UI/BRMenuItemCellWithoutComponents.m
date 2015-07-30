@@ -11,6 +11,7 @@
 #import <Masonry/Masonry.h>
 #import "BRMenuFitToWidthLabel.h"
 #import "BRMenuItem.h"
+#import "BRMenuOrderItem.h"
 #import "BRMenuStepper.h"
 
 static const CGFloat kPriceTopMargin = 0;
@@ -68,13 +69,18 @@ static const CGFloat kDescTopMargin = 4;
 	[self.contentView addSubview:l];
 	
 	[self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.contentView attribute:NSLayoutAttributeHeight
-																 relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:nil attribute:nil
+																 relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:nil attribute:0
 																multiplier:1 constant:44]];
 }
 
 - (void)refreshForItem:(id<BRMenuItemObject>)item {
 	[super refreshForItem:item];
 	[self setNeedsUpdateConstraints];
+}
+
+
+- (void)configureForOrderItem:(BRMenuOrderItem *)orderItem {
+	self.stepper.value = orderItem.quantity;
 }
 
 - (void)refreshStyle:(BRMenuUIStyle *)style {

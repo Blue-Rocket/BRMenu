@@ -7,6 +7,7 @@
 "menu.action.next" = "Next";
 "menu.action.ok" = "OK";
 "menu.action.review" = "Review";
+"menu.action.saveto.order" = "Add to Order";
 "menu.action.view.order" = "My Order";
 
 "menu.ordering.group.title" = "%@";

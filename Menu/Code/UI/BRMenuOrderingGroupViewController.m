@@ -14,7 +14,11 @@
 #import "BRMenuItemCell.h"
 #import "BRMenuItemCellWithoutComponents.h"
 #import "BRMenuItemGroup.h"
+#import "BRMenuOrder.h"
+#import "BRMenuOrderingDelegate.h"
 #import "BRMenuOrderingFlowController.h"
+#import "BRMenuOrderItem.h"
+#import "BRMenuStepper.h"
 #import "BRMenuUIStylishHost.h"
 #import "NSBundle+BRMenu.h"
 #import "UIBarButtonItem+BRMenu.h"
@@ -57,10 +61,39 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 	}
 }
 
+- (void)setFlowController:(BRMenuOrderingFlowController *)controller {
+	if ( controller == flowController ) {
+		return;
+	}
+	flowController = controller;
+	if ( !self.navigationItem.rightBarButtonItem && flowController.hasMenuItemWithoutComponents ) {
+		self.navigationItem.rightBarButtonItem = [UIBarButtonItem standardBRMenuBarButtonItemWithTitle:[NSBundle localizedBRMenuString:@"menu.action.saveto.order"]
+																								target:self
+																								action:@selector(saveToOrder:)];
+	}
+}
+
 #pragma mark - Actions
 
 - (IBAction)goBack:(id)sender {
 	[self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)saveToOrder:(id)sender {
+	[self.orderingDelegate updateOrderItemsInActiveOrder:flowController.temporaryOrder.orderItems];
+}
+
+- (IBAction)didAdjustQuantity:(BRMenuStepper *)sender {
+	BRMenuItemObjectCell *cell = [sender nearestAncestorViewOfType:[BRMenuItemObjectCell class]];
+	if ( cell == nil ) {
+		return;
+	}
+	BRMenuItem *menuItem = cell.item;
+	if ( sender.value == 0 ) {
+		[flowController.temporaryOrder removeItemForMenuItem:menuItem];
+	} else {
+		[flowController.temporaryOrder getOrAddItemForMenuItem:menuItem].quantity = sender.value;
+	}
 }
 
 #pragma mark - Table support
@@ -92,13 +125,19 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	BRMenuItem *item = [flowController menuItemObjectAtIndexPath:indexPath];
-	BRMenuItemCell *cell = [tableView dequeueReusableCellWithIdentifier:(item.hasComponents ? BRMenuOrderingItemCellIdentifier : BRMenuOrderingItemWithoutComponentsCellIdentifier)
+	BRMenuItemObjectCell *cell = [tableView dequeueReusableCellWithIdentifier:(item.hasComponents ? BRMenuOrderingItemCellIdentifier : BRMenuOrderingItemWithoutComponentsCellIdentifier)
 														   forIndexPath:indexPath];
 	cell.item = item;
 	
-	// TODO: configure order state
-	//BRMenuOrderItem *orderItem = [flowController.orderItem componentForMenuItemComponent:cell.component];
-	//[cell configureForOrderItemComponent:orderComponent];
+	if ( !item.hasComponents && [cell isKindOfClass:[BRMenuItemCellWithoutComponents class]] ) {
+		// configure order state
+		BRMenuOrderItem *orderItem = [flowController.temporaryOrder orderItemForMenuItem:item];
+		BRMenuItemCellWithoutComponents *directCell = (BRMenuItemCellWithoutComponents *)cell;
+		[directCell configureForOrderItem:orderItem];
+		if ( [directCell.stepper actionsForTarget:self forControlEvent:UIControlEventValueChanged].count < 1 ) {
+			[directCell.stepper addTarget:self action:@selector(didAdjustQuantity:) forControlEvents:UIControlEventValueChanged];
+		}
+	}
 
 	// calling this (often, but not always) fixes an apparent bug in iOS 8.4 where the first pass of
 	// drawing the cells results in an incorrectly calculated height
