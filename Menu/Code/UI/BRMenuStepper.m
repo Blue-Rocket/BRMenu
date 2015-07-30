@@ -14,8 +14,8 @@
 @interface BRMenuStepper () <BRMenuUIStylishHost>
 @end
 
-static const CGFloat kHorizontalPadding = 5.0;
-static const CGFloat kVerticalPadding = 5.0;
+static const CGFloat kHorizontalPadding = 0;
+static const CGFloat kVerticalPadding = 0;
 static const CGFloat kNaturalWidth = 80.0;
 static const CGFloat kNaturalHeight = 28.0;
 static const CGFloat kBadgeWidth = 28.0;
