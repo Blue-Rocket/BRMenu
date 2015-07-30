@@ -50,6 +50,7 @@
 		C97C522F1B65F12C00E84105 /* NSBundle+BRMenuUI.m in Sources */ = {isa = PBXBuildFile; fileRef = C97C522E1B65F12C00E84105 /* NSBundle+BRMenuUI.m */; };
 		C97C52351B65FE2B00E84105 /* BRMenuConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = C97C52341B65FE2B00E84105 /* BRMenuConstants.m */; };
 		C980B0B21B698E100050BCA2 /* BRMenuItemCellWithoutComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = C980B0B11B698E100050BCA2 /* BRMenuItemCellWithoutComponents.m */; };
+		C980B0B51B69BCAC0050BCA2 /* BRMenuTagGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = C980B0B41B69BCAC0050BCA2 /* BRMenuTagGridView.m */; };
 		C9819DB71B616812008A1393 /* BRMenuNavigationTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9819DB61B616812008A1393 /* BRMenuNavigationTitleView.m */; };
 		C9819DC31B61A754008A1393 /* UIView+BRMenuUIStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = C9819DC21B61A754008A1393 /* UIView+BRMenuUIStyle.m */; };
 		C9819DD11B61CEE8008A1393 /* BRMenuOrderingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9819DD01B61CEE8008A1393 /* BRMenuOrderingViewController.m */; };
@@ -187,6 +188,8 @@
 		C97C52341B65FE2B00E84105 /* BRMenuConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuConstants.m; sourceTree = "<group>"; };
 		C980B0B01B698E100050BCA2 /* BRMenuItemCellWithoutComponents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuItemCellWithoutComponents.h; sourceTree = "<group>"; };
 		C980B0B11B698E100050BCA2 /* BRMenuItemCellWithoutComponents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuItemCellWithoutComponents.m; sourceTree = "<group>"; };
+		C980B0B31B69BCAC0050BCA2 /* BRMenuTagGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuTagGridView.h; sourceTree = "<group>"; };
+		C980B0B41B69BCAC0050BCA2 /* BRMenuTagGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuTagGridView.m; sourceTree = "<group>"; };
 		C9819DB51B616812008A1393 /* BRMenuNavigationTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuNavigationTitleView.h; sourceTree = "<group>"; };
 		C9819DB61B616812008A1393 /* BRMenuNavigationTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuNavigationTitleView.m; sourceTree = "<group>"; };
 		C9819DBE1B61A428008A1393 /* BRMenuUIStylishHost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuUIStylishHost.h; sourceTree = "<group>"; };
@@ -466,6 +469,8 @@
 				C9B812C01B5DD5DB0014CBCB /* BRMenuPlusMinusButton.m */,
 				C9B812BC1B5DD5800014CBCB /* BRMenuStepper.h */,
 				C9B812BD1B5DD5800014CBCB /* BRMenuStepper.m */,
+				C980B0B31B69BCAC0050BCA2 /* BRMenuTagGridView.h */,
+				C980B0B41B69BCAC0050BCA2 /* BRMenuTagGridView.m */,
 				C9B812C21B5DD6D70014CBCB /* BRMenuUIStyle.h */,
 				C9B812C31B5DD6D70014CBCB /* BRMenuUIStyle.m */,
 				C97C52211B65A41400E84105 /* BRMenuUIStyleObserver.h */,
@@ -881,6 +886,7 @@
 				C9B8128D1B5D7B5C0014CBCB /* BRMenuMappingRestKitPostProcessor.m in Sources */,
 				C9B812B41B5D7BA70014CBCB /* BRMenuMetadata.m in Sources */,
 				C9B812BE1B5DD5800014CBCB /* BRMenuStepper.m in Sources */,
+				C980B0B51B69BCAC0050BCA2 /* BRMenuTagGridView.m in Sources */,
 				C97C52201B65A38C00E84105 /* UIViewController+BRMenuUIStyle.m in Sources */,
 				C9C2162A1B6429B500D0A34F /* BRMenuGroupHeaderView.m in Sources */,
 				C9B812B61B5D7BA70014CBCB /* BRMenuOrder+Encoding.m in Sources */,

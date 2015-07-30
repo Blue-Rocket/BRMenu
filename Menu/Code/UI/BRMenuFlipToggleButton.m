@@ -10,15 +10,13 @@
 
 #import <BRPDFImage/BRPDFImage.h>
 #import "BRMenuUIStylishHost.h"
-#import "NSBundle+BRMenu.h"
+#import "NSBundle+BRMenuUI.h"
 #import "UIView+BRMenuUIStyle.h"
 
 @interface BRMenuFlipToggleButton () <BRMenuUIStylishHost>
 @end
 
 static const CGSize kDefaultIconSize = {46.0, 26.0};
-
-static NSMutableDictionary *IconCache;
 
 @implementation BRMenuFlipToggleButton {
 	NSString *frontImageName;
@@ -69,34 +67,8 @@ static NSMutableDictionary *IconCache;
 	}
 }
 
-- (NSString *)cacheKeyForIconNamed:(NSString *)iconName {
-	if ( [[iconName lowercaseString] hasSuffix:@".pdf"] ) {
-		// key components are: image name, render size, and tint color
-		return [NSString stringWithFormat:@"%@-%@-%x", iconName, NSStringFromCGSize(iconSize), (unsigned int)[BRMenuUIStyle rgbaHexIntegerForColor:[self.uiStyle appPrimaryColor]]];
-	}
-	return [NSString stringWithFormat:@"%@-%@", iconName, NSStringFromCGSize(iconSize)];
-}
-
 - (UIImage *)imageForResource:(NSString *)resourceName {
-	NSString *cacheKey = [self cacheKeyForIconNamed:resourceName];
-	UIImage *image = [IconCache objectForKey:cacheKey];
-	if ( image == nil ) {
-		NSURL *url = [NSBundle URLForBRMenuResourceNamed:resourceName];
-		if ( [[[url lastPathComponent] lowercaseString] hasSuffix:@".pdf"] ) {
-			image = [[BRPDFImage alloc] initWithURL:url
-											  pageNumber:1
-											  renderSize:iconSize
-										 backgroundColor:nil
-											   tintColor:self.uiStyle.appPrimaryColor
-										   tintBlendMode:kCGBlendModeSourceIn];
-		} else {
-			image = [[UIImage alloc] initWithContentsOfFile:[url path]];
-		}
-		if ( image ) {
-			[IconCache setObject:image forKey:cacheKey];
-		}
-	}
-	return image;
+	return [NSBundle iconForBRMenuResource:resourceName size:iconSize color:self.uiStyle.appPrimaryColor];
 }
 
 - (void)setupSubviews {

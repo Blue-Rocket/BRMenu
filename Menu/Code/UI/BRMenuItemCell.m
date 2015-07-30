@@ -11,8 +11,11 @@
 #import <Masonry/Masonry.h>
 #import "BRMenuFitToWidthLabel.h"
 #import "BRMenuItem.h"
+#import "BRMenuTagGridView.h"
 
-@implementation BRMenuItemCell
+@implementation BRMenuItemCell {
+	BRMenuTagGridView *tagGridView;
+}
 
 - (BRMenuItem *)menuItem {
 	return (BRMenuItem *)self.item;
@@ -49,7 +52,12 @@
 	l.textAlignment = NSTextAlignmentLeft;
 	self.desc = l;
 	[self.contentView addSubview:l];
-
+	
+	// tag grid: center X with price, top with desc
+	BRMenuTagGridView *t = [[BRMenuTagGridView alloc] initWithFrame:CGRectZero];
+	tagGridView = t;
+	[self.contentView addSubview:t];
+	
 	UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 10);
 	[self.title mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.top.equalTo(@(padding.top));
@@ -65,6 +73,10 @@
 		make.left.equalTo(self.title);
 		make.right.equalTo(self.title);
 		make.bottom.equalTo(@(-padding.bottom));
+	}];
+	[tagGridView mas_makeConstraints:^(MASConstraintMaker *make) {
+		make.top.equalTo(self.title.mas_bottom).with.offset(2);
+		make.right.equalTo(self.contentView.mas_rightMargin);
 	}];
 	
 	[self setNeedsUpdateConstraints];
