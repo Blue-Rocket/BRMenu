@@ -16,6 +16,7 @@
  */
 @interface BRMenuItemCell : BRMenuItemObjectCell
 
+/** The menu item to display. */
 @property (nonatomic, strong) BRMenuItem *menuItem;
 
 @end

@@ -14,6 +14,7 @@
 @protocol BRMenuOrderingDelegate;
 
 extern NSString * const BRMenuOrderingItemCellIdentifier;
+extern NSString * const BRMenuOrderingItemWithoutComponentsCellIdentifier;
 extern NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier;
 
 /**

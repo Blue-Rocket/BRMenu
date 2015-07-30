@@ -80,6 +80,8 @@ static const CGFloat kBadgeWidth = 28.0;
 	self.minimumValue = 0;
 	self.maximumValue = 32;
 	self.stepValue = 1;
+	
+	self.contentMode = UIViewContentModeRedraw;
 }
 
 - (void)updateStyle:(BRMenuUIStyle *)style {
@@ -95,6 +97,10 @@ static const CGFloat kBadgeWidth = 28.0;
 }
 
 - (CGSize)sizeThatFits:(CGSize)size {
+	return [self intrinsicContentSize];
+}
+
+- (CGSize)intrinsicContentSize {
 	return CGSizeMake(kNaturalWidth + 2 * kHorizontalPadding, kNaturalHeight + 2 * kVerticalPadding);
 }
 

@@ -92,6 +92,7 @@
 	self.desc.textColor = style.secondaryColor;
 	self.backgroundColor = style.appBodyColor;
 	[self invalidateIntrinsicContentSize];
+	[self setNeedsLayout];
 }
 
 - (void)setItem:(id<BRMenuItemObject>)theItem {
@@ -114,6 +115,7 @@
 		price = [[NSNumberFormatter standardBRMenuPriceFormatter] stringFromNumber:theItem.price];
 	}
 	self.price.text = price;
+	[self invalidateIntrinsicContentSize];
 	[self setNeedsLayout];
 }
 

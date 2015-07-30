@@ -12,6 +12,7 @@
 #import "BRMenuGroupTableHeaderView.h"
 #import "BRMenuItem.h"
 #import "BRMenuItemCell.h"
+#import "BRMenuItemCellWithoutComponents.h"
 #import "BRMenuItemGroup.h"
 #import "BRMenuOrderingFlowController.h"
 #import "BRMenuUIStylishHost.h"
@@ -21,6 +22,7 @@
 #import "UIViewController+BRMenuUIStyle.h"
 
 NSString * const BRMenuOrderingItemCellIdentifier = @"ItemCell";
+NSString * const BRMenuOrderingItemWithoutComponentsCellIdentifier = @"ItemCellWithoutComponents";
 NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell";
 
 @interface BRMenuOrderingGroupViewController () <BRMenuUIStylishHost>
@@ -42,6 +44,7 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 		self.tableView.estimatedSectionHeaderHeight = 50.0;
 		self.tableView.allowsMultipleSelection = YES;
 		[self.tableView registerClass:[BRMenuItemCell class] forCellReuseIdentifier:BRMenuOrderingItemCellIdentifier];
+		[self.tableView registerClass:[BRMenuItemCellWithoutComponents class] forCellReuseIdentifier:BRMenuOrderingItemWithoutComponentsCellIdentifier];
 		[self.tableView registerClass:[BRMenuGroupTableHeaderView class] forHeaderFooterViewReuseIdentifier:BRMenuOrderingItemGroupHeaderCellIdentifier];
 	}
 	
@@ -88,13 +91,17 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	BRMenuItemCell *cell = [tableView dequeueReusableCellWithIdentifier:BRMenuOrderingItemCellIdentifier forIndexPath:indexPath];
-	cell.item = [flowController menuItemObjectAtIndexPath:indexPath];
+	BRMenuItem *item = [flowController menuItemObjectAtIndexPath:indexPath];
+	BRMenuItemCell *cell = [tableView dequeueReusableCellWithIdentifier:(item.hasComponents ? BRMenuOrderingItemCellIdentifier : BRMenuOrderingItemWithoutComponentsCellIdentifier)
+														   forIndexPath:indexPath];
+	cell.item = item;
 	
 	// TODO: configure order state
 	//BRMenuOrderItem *orderItem = [flowController.orderItem componentForMenuItemComponent:cell.component];
 	//[cell configureForOrderItemComponent:orderComponent];
-	
+
+	// calling this fixes an apparent bug in iOS 8.4 where the first pass of drawing the cells results in an incorrectly calculated height
+	[cell layoutIfNeeded];
 	return cell;
 }
 
