@@ -62,12 +62,14 @@ static const CGFloat kIconMargin = 4;
 		}
 	}
 	views = [newViews copy];
+	[self invalidateIntrinsicContentSize];
 	[self setNeedsLayout];
 }
 
 - (void)setIconSize:(CGSize)size {
 	if ( !CGSizeEqualToSize(iconSize, size) ) {
 		iconSize = size;
+		[self invalidateIntrinsicContentSize];
 		[self refreshIcons];
 	}
 }
@@ -75,6 +77,7 @@ static const CGFloat kIconMargin = 4;
 - (void)setColumnCount:(NSUInteger)count {
 	if ( count != columnCount ) {
 		columnCount = count;
+		[self invalidateIntrinsicContentSize];
 		[self setNeedsLayout];
 	}
 }
