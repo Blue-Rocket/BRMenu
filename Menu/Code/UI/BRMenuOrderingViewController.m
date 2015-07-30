@@ -76,6 +76,14 @@ NSString * const BRMenuOrderingShowItemGroupSegue = @"ShowItemGroup";
 	[self.navigationController popToViewController:self animated:YES];
 }
 
+- (void)updateOrderItemsInActiveOrder:(NSArray *)orderItems {
+	if ( self.order == nil ) {
+		self.order = [BRMenuOrder new];
+	}
+	[self.order replaceOrderItems:orderItems];
+	[self.navigationController popToViewController:self animated:YES];
+}
+
 #pragma mark - Navigation support
 
 - (IBAction)goBack:(id)sender {
@@ -90,6 +98,7 @@ NSString * const BRMenuOrderingShowItemGroupSegue = @"ShowItemGroup";
 	} else if ( [segue.identifier isEqualToString:BRMenuOrderingShowItemGroupSegue] ) {
 		BRMenuOrderingGroupViewController *dest = segue.destinationViewController;
 		dest.flowController = [flowController flowControllerForItemAtIndexPath:[self.tableView indexPathForSelectedRow]];
+		dest.flowController.temporaryOrder = self.order;
 		dest.orderingDelegate = self;
 	}
 }
