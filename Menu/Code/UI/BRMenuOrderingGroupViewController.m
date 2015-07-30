@@ -100,7 +100,8 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 	//BRMenuOrderItem *orderItem = [flowController.orderItem componentForMenuItemComponent:cell.component];
 	//[cell configureForOrderItemComponent:orderComponent];
 
-	// calling this fixes an apparent bug in iOS 8.4 where the first pass of drawing the cells results in an incorrectly calculated height
+	// calling this (often, but not always) fixes an apparent bug in iOS 8.4 where the first pass of
+	// drawing the cells results in an incorrectly calculated height
 	[cell layoutIfNeeded];
 	return cell;
 }
