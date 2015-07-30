@@ -10,6 +10,7 @@
 		0B85F6C35BE74BF9D0020A25 /* libPods-MenuSampler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CBDF4C2B6BD161A02D291AF /* libPods-MenuSampler.a */; };
 		C97948EA1B66E2AA00281AFB /* OrderingViewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97948E91B66E2AA00281AFB /* OrderingViewsViewController.m */; };
 		C97948ED1B66E41500281AFB /* BRMenu+MenuSampler.m in Sources */ = {isa = PBXBuildFile; fileRef = C97948EC1B66E41500281AFB /* BRMenu+MenuSampler.m */; };
+		C980B0B81B69DBEF0050BCA2 /* IconsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C980B0B71B69DBEF0050BCA2 /* IconsViewController.m */; };
 		C9819DBD1B619217008A1393 /* RootChooserTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9819DBC1B619217008A1393 /* RootChooserTableViewController.m */; };
 		C9819DC91B61CD64008A1393 /* menu-donuts.json in Resources */ = {isa = PBXBuildFile; fileRef = C9819DC51B61CD64008A1393 /* menu-donuts.json */; };
 		C9819DCA1B61CD64008A1393 /* menu-lunchstop.json in Resources */ = {isa = PBXBuildFile; fileRef = C9819DC61B61CD64008A1393 /* menu-lunchstop.json */; };
@@ -51,6 +52,8 @@
 		C97948E91B66E2AA00281AFB /* OrderingViewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderingViewsViewController.m; sourceTree = "<group>"; };
 		C97948EB1B66E41500281AFB /* BRMenu+MenuSampler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BRMenu+MenuSampler.h"; sourceTree = "<group>"; };
 		C97948EC1B66E41500281AFB /* BRMenu+MenuSampler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BRMenu+MenuSampler.m"; sourceTree = "<group>"; };
+		C980B0B61B69DBEF0050BCA2 /* IconsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconsViewController.h; sourceTree = "<group>"; };
+		C980B0B71B69DBEF0050BCA2 /* IconsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconsViewController.m; sourceTree = "<group>"; };
 		C9819DBB1B619217008A1393 /* RootChooserTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootChooserTableViewController.h; sourceTree = "<group>"; };
 		C9819DBC1B619217008A1393 /* RootChooserTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootChooserTableViewController.m; sourceTree = "<group>"; };
 		C9819DC51B61CD64008A1393 /* menu-donuts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "menu-donuts.json"; sourceTree = "<group>"; };
@@ -225,6 +228,8 @@
 			children = (
 				C9C909681B60AEED00DDF191 /* ButtonsViewController.h */,
 				C9C909691B60AEED00DDF191 /* ButtonsViewController.m */,
+				C980B0B61B69DBEF0050BCA2 /* IconsViewController.h */,
+				C980B0B71B69DBEF0050BCA2 /* IconsViewController.m */,
 				C97948E81B66E2AA00281AFB /* OrderingViewsViewController.h */,
 				C97948E91B66E2AA00281AFB /* OrderingViewsViewController.m */,
 			);
@@ -410,6 +415,7 @@
 				C9C909751B60AEED00DDF191 /* ColorPickerViewController.m in Sources */,
 				C9819DBD1B619217008A1393 /* RootChooserTableViewController.m in Sources */,
 				C9C909451B60ACA800DDF191 /* main.m in Sources */,
+				C980B0B81B69DBEF0050BCA2 /* IconsViewController.m in Sources */,
 				C97948EA1B66E2AA00281AFB /* OrderingViewsViewController.m in Sources */,
 				C97948ED1B66E41500281AFB /* BRMenu+MenuSampler.m in Sources */,
 				C9C909781B60AEED00DDF191 /* GlobalStyleController.m in Sources */,
