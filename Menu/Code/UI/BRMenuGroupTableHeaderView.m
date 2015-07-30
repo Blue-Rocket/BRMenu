@@ -41,6 +41,11 @@
 		make.trailing.equalTo(container);
 		make.bottom.equalTo(container);
 	}];
+	[headerView.priceLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+		make.leading.equalTo(headerView.titleLabel.mas_trailing).with.offset(10);
+		make.right.equalTo(container.mas_rightMargin).with.offset(-10);
+		make.baseline.equalTo(headerView.titleLabel);
+	}];
 	
 	self.backgroundView = [[UIView alloc] initWithFrame:container.bounds];
 	self.backgroundView.backgroundColor = self.uiStyle.appBodyColor;
@@ -61,9 +66,9 @@
 - (void)setTitle:(NSString *)text {
 	headerView.title = text;
 }
-
+/*
 - (CGSize)intrinsicContentSize {
 	return [headerView intrinsicContentSize];
 }
-
+*/
 @end
