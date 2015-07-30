@@ -104,7 +104,6 @@
 	}
 	priceLabel.hidden = (aPrice == nil);
 	priceLabel.text = (aPrice == nil ? nil : [[NSNumberFormatter standardBRMenuPriceFormatter] stringFromNumber:aPrice]);
-	[self setNeedsUpdateConstraints];
 	[self invalidateIntrinsicContentSize];
 }
 
