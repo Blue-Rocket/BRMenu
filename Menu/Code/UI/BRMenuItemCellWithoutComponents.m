@@ -17,6 +17,8 @@ static const CGFloat kPriceTopMargin = 0;
 static const CGFloat kDescTopMargin = 4;
 
 @implementation BRMenuItemCellWithoutComponents {
+	MASConstraint *titleBottom;
+	MASConstraint *descBottom;
 	MASConstraint *priceTopMargin;
 	MASConstraint *descTopMargin;
 }
@@ -88,6 +90,7 @@ static const CGFloat kDescTopMargin = 4;
 		[self.title mas_makeConstraints:^(MASConstraintMaker *make) {
 			make.top.equalTo(@(padding.top));
 			make.left.equalTo(self.contentView.mas_leftMargin);
+			titleBottom = make.bottom.equalTo(@(-padding.bottom));
 		}];
 	}
 	if ( self.stepper.constraints.count < 1 ) {
@@ -110,11 +113,22 @@ static const CGFloat kDescTopMargin = 4;
 			descTopMargin = make.top.equalTo(self.price.mas_bottom).with.offset(kDescTopMargin);
 			make.left.equalTo(self.title);
 			make.right.equalTo(self.title);
-			make.bottom.equalTo(@(-padding.bottom));
+			descBottom = make.bottom.equalTo(@(-padding.bottom)).priorityHigh(); // have to do High here so we can uninstall, reset
 		}];
+		[descBottom uninstall];
+		descBottom.priority(MASLayoutPriorityRequired);
 	}
 	priceTopMargin.offset(item.price ? kPriceTopMargin : 0);
 	descTopMargin.offset(item.desc ? kDescTopMargin : 0);
+	if ( item.price || item.desc ) {
+		// let the price/desc bottom constrain the cell height
+		[titleBottom uninstall];
+		[descBottom install];
+	} else {
+		// no price or desc, so let the title constrain the cell height which makes the title centered vertically
+		[descBottom uninstall];
+		[titleBottom install];
+	}
 	[super updateConstraints];
 }
 
