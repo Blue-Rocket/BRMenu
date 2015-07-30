@@ -46,14 +46,19 @@ static void * kOrderItemsContext = &kOrderItemsContext;
 	if ( theOrder ) {
 		[theOrder addObserver:self forKeyPath:@"orderItemCount" options:0 context:kOrderItemsContext];
 	}
+	[self refreshOrderCount:theOrder];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
 	if ( context == kOrderItemsContext ) {
-		self.badgeText = [NSString stringWithFormat:@"%lu", (unsigned long)[self.order orderItemCount]];
+		[self refreshOrderCount:self.order];
 	} else {
 		return [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 	}
+}
+
+- (void)refreshOrderCount:(BRMenuOrder *)order {
+	self.badgeText = [NSString stringWithFormat:@"%lu", (unsigned long)[order orderItemCount]];
 }
 
 @end
