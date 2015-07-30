@@ -32,7 +32,9 @@ typedef enum : NSInteger {
 @property (nonatomic, readonly) NSUInteger stepCount;
 @property (nonatomic, readonly, getter=isFinalStep) BOOL finalStep;
 @property (nonatomic, readonly) BRMenuItemGroup *itemGroup;
-@property (nonatomic, readonly) BRMenuOrder *temporaryOrder;
+
+/** A temporary order copy that can be used to collect order item changes. */
+@property (nonatomic, copy) BRMenuOrder *temporaryOrder;
 
 /**
  Init for the root of a menu.
@@ -52,11 +54,11 @@ typedef enum : NSInteger {
 - (id)initWithMenu:(BRMenu *)menu item:(BRMenuItem *)item;
 
 /**
- Init for a single menu item group.
+ Init for a single menu item group. The @c temporaryOrder property can be used
+ to collect order item changes before committing them to a "real" order if needed.
  
  @param menu The menu.
  @param group The selected menu item group to start from.
- @param groupOrder An order object to collect group item additions into.
  @return The new controller instance.
  */
 - (id)initWithMenu:(BRMenu *)menu group:(BRMenuItemGroup *)group;

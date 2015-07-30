@@ -69,15 +69,6 @@
 	return self;
 }
 
-- (BRMenuOrder *)temporaryOrder {
-	BRMenuOrder *result = temporaryOrder;
-	if ( !result ) {
-		result = [BRMenuOrder new];
-		temporaryOrder = result;
-	}
-	return result;
-}
-
 - (void)setupFlow {
 	if ( item ) {
 		NSMutableArray *theSteps = [NSMutableArray arrayWithCapacity:3];
