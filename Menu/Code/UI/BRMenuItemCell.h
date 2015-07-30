@@ -11,8 +11,7 @@
 @class BRMenuItem;
 
 /**
- Table cell for displaying a single menu item. The display varies depending on 
- if the item has components or not.
+ Table cell for displaying a single menu item that includes components.
  */
 @interface BRMenuItemCell : BRMenuItemObjectCell
 
