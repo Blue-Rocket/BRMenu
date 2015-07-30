@@ -58,28 +58,39 @@
 	tagGridView = t;
 	[self.contentView addSubview:t];
 	
-	UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 10);
+	UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 0);
 	[self.title mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.top.equalTo(@(padding.top));
 		make.left.equalTo(self.contentView.mas_leftMargin);
 	}];
 	[self.price mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.leading.equalTo(self.title.mas_trailing).with.offset(10);
-		make.right.equalTo(self.contentView.mas_rightMargin);
+		make.right.equalTo(@(-padding.right));
 		make.baseline.equalTo(self.title);
 	}];
 	[self.desc mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.top.equalTo(self.title.mas_bottom).with.offset(2);
 		make.left.equalTo(self.title);
-		make.right.equalTo(self.title);
 		make.bottom.equalTo(@(-padding.bottom));
+		
+		// if multiple tag icons are present, they might be wider than the price, so make sure
+		// we don't overlap with that by adding two constraints of different priority for the right
+		make.right.equalTo(self.title).priorityHigh();
+		make.right.lessThanOrEqualTo(tagGridView.mas_left).with.offset(-5);
 	}];
 	[tagGridView mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.top.equalTo(self.title.mas_bottom).with.offset(2);
-		make.right.equalTo(self.contentView.mas_rightMargin);
+		make.right.equalTo(@(-padding.right));
 	}];
-	
-	[self setNeedsUpdateConstraints];
+}
+
+- (void)refreshForItem:(id<BRMenuItemObject>)item {
+	[super refreshForItem:item];
+	if ( ![item isKindOfClass:[BRMenuItem class]] ) {
+		return;
+	}
+	BRMenuItem *menuItem = item;
+	tagGridView.tags = [menuItem menuItemTags];
 }
 
 - (void)refreshStyle:(BRMenuUIStyle *)style {
