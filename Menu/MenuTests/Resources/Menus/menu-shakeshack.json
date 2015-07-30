@@ -13,6 +13,7 @@
                 {
                     "title": "ShackBurger® - single",
                     "description": "Cheeseburger topped with lettuce, tomato and ShackSauce",
+					"key": "burger",
                     "price": "4.75",
                     "askTakeaway": true
                 },

@@ -48,6 +48,18 @@
 	return menu;
 }
 
+- (BRMenu *)testMenuForResource:(NSString *)resource {
+	BRMenu *menu = [BRMenu new];
+	[[BRMenuRestKitTestingMapper testForMapping:[BRMenuMappingRestKit menuMapping]
+								   sourceObject:[[BRMenuRestKitTestingSupport parsedObjectWithContentsOfFixture:resource] valueForKey:@"menu"]
+							  destinationObject:menu]
+	 performMapping];
+	
+	[BRMenuMappingPostProcessor assignMenuIDs:menu];
+	
+	return menu;
+}
+
 - (void)testEncodeForBarcode {
 	BRMenu *menu = [self testMenu];
 	
@@ -201,11 +213,43 @@
 	pizzaPlusOrderItem.quantity = 1;
 	[order addOrderItem:pizzaPlusOrderItem];
 	
+	assertThat(order.menus, contains(menu, nil));
+   
 	BRMenuOrder *copy = [order copy];
 	assertThat(copy, notNilValue());
 	assertThat(copy.name, equalTo(order.name));
 	assertThat(copy.orderItems, equalTo(order.orderItems));
 	assertThatUnsignedInteger(copy.orderNumber, equalTo(@(NSNotFound)));
+	assertThat(copy.menus, equalTo(order.menus));
+}
+
+- (void)testCopyOrderWithMultipleMenus {
+	BRMenu *pizzaMenu = [self testMenu];
+	BRMenuItem *pizza = [pizzaMenu menuItemForKey:@"pizza"];
+	assertThat(pizza, notNilValue());
+	
+	BRMenuOrder *order = [BRMenuOrder new];
+	BRMenuOrderItem *pizzaOrderItem = [BRMenuOrderItem new];
+	pizzaOrderItem.item = pizza;
+	pizzaOrderItem.quantity = 1;
+	[order addOrderItem:pizzaOrderItem];
+
+	// get item from different menu
+	BRMenu *shackMenu = [self testMenuForResource:@"menu-shakeshack.json"];
+	BRMenuItem *burger = [shackMenu menuItemForKey:@"burger"];
+	assertThat(burger, notNilValue());
+	
+	BRMenuOrderItem *burgerOrderItem = [BRMenuOrderItem new];
+	burgerOrderItem.item = burger;
+	burgerOrderItem.quantity = 1;
+	[order addOrderItem:burgerOrderItem];
+
+	assertThat(order.menus, containsInAnyOrder(pizzaMenu, shackMenu, nil));
+	
+	BRMenuOrder *copy = [order copy];
+	assertThat(copy, notNilValue());
+	assertThat(copy.orderItems, equalTo(order.orderItems));
+	assertThat(copy.menus, equalTo(order.menus));
 }
 
 @end

@@ -16,10 +16,18 @@ extern NSString * const kSpecialGroupKey;
 
 @interface BRMenuOrder : NSObject <NSCopying>
 
+/** A menu reference. This can be set to any menu needed by the application. */
 @property (nonatomic, strong) BRMenu *menu;
+
 @property (nonatomic) NSUInteger orderNumber;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, readonly) NSArray *orderItems;
+
+/**
+ A set of all menus used within the order. The property will reflect all the menus used by any item added
+ to the receiver, for example via @ref addOrderItem: or @ref replaceOrderItems:.
+ */
+@property (nonatomic, strong, readonly) NSSet *menus;
 
 // add a single BRMenuOrderItem to the order
 - (void)addOrderItem:(BRMenuOrderItem *)item;

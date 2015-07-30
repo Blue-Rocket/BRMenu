@@ -18,12 +18,21 @@ NSString * const kSpecialGroupKey = @"_special";
 
 @implementation BRMenuOrder {
 	NSMutableArray *orderItems;
+	NSMutableSet *menus;
 }
 
 @synthesize orderItems;
+@synthesize menus;
 
 + (NSSet *)keyPathsForValuesAffectingOrderItemCount {
 	return [NSSet setWithObject:@"orderItems"];
+}
+
+- (id)init {
+	if ( (self = [super init]) ) {
+		menus = [[NSMutableSet alloc] initWithCapacity:4];
+	}
+	return self;
 }
 
 - (id)initWithOrder:(BRMenuOrder *)order {
@@ -32,6 +41,7 @@ NSString * const kSpecialGroupKey = @"_special";
 		self.orderNumber = NSNotFound;
 		self.name = order.name;
 		orderItems = [order.orderItems mutableCopy];
+		menus = [order.menus mutableCopy];
 	}
 	return self;
 }
@@ -44,15 +54,31 @@ NSString * const kSpecialGroupKey = @"_special";
 
 - (void)insertObject:(BRMenuOrderItem *)item inOrderItemsAtIndex:(NSUInteger)index {
 	[orderItems insertObject:item atIndex:index];
+	if ( item.item.menu && ![menus containsObject:item.item.menu] ) {
+		// maintain strong ref to menu, otherwise if menu released during ordering process
+		// (i.e. when multiple menus are supported) all menu items will lose their ref to their menu
+		[menus addObject:item.item.menu];
+	}
 }
 
 - (void)insertOrderItems:(NSArray *)array atIndexes:(NSIndexSet *)indexes {
 	[orderItems insertObjects:array atIndexes:indexes];
+	for ( BRMenuOrderItem *orderItem in orderItems ) {
+		if ( orderItem.item.menu && ![menus containsObject:orderItem.item.menu] ) {
+			[menus addObject:orderItem.item.menu];
+		}
+	}
 }
 
 - (void)removeObjectFromOrderItemsAtIndex:(NSUInteger)index {
 	[orderItems removeObjectAtIndex:index];
 }
+
+- (void)removeOrderItemsAtIndexes:(NSIndexSet *)indexes {
+	[orderItems removeObjectsAtIndexes:indexes];
+}
+
+#pragma mark - Public API
 
 - (void)addOrderItem:(BRMenuOrderItem *)item {
 	if ( orderItems == nil ) {
@@ -91,16 +117,15 @@ NSString * const kSpecialGroupKey = @"_special";
 }
 
 - (void)replaceOrderItems:(NSArray *)newOrderItems {
-	[orderItems removeAllObjects];
+	[self removeOrderItemsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, orderItems.count)]];
 	if ( newOrderItems != nil ) {
 		if ( orderItems == nil ) {
 			[self willChangeValueForKey:@"orderItems"];
-			orderItems = [newOrderItems mutableCopy];
+			orderItems = [[NSMutableArray alloc] initWithCapacity:5];
 			[self didChangeValueForKey:@"orderItems"];
-		} else {
-			NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange(orderItems.count, newOrderItems.count)];
-			[self insertOrderItems:newOrderItems atIndexes:indexSet];
 		}
+		NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange(orderItems.count, newOrderItems.count)];
+		[self insertOrderItems:newOrderItems atIndexes:indexSet];
 	}
 }
 
