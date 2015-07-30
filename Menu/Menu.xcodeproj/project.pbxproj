@@ -49,6 +49,7 @@
 		C97C522C1B65E66A00E84105 /* UIBarButtonItem+BRMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = C97C522B1B65E66A00E84105 /* UIBarButtonItem+BRMenu.m */; };
 		C97C522F1B65F12C00E84105 /* NSBundle+BRMenuUI.m in Sources */ = {isa = PBXBuildFile; fileRef = C97C522E1B65F12C00E84105 /* NSBundle+BRMenuUI.m */; };
 		C97C52351B65FE2B00E84105 /* BRMenuConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = C97C52341B65FE2B00E84105 /* BRMenuConstants.m */; };
+		C980B0B21B698E100050BCA2 /* BRMenuItemCellWithoutComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = C980B0B11B698E100050BCA2 /* BRMenuItemCellWithoutComponents.m */; };
 		C9819DB71B616812008A1393 /* BRMenuNavigationTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9819DB61B616812008A1393 /* BRMenuNavigationTitleView.m */; };
 		C9819DC31B61A754008A1393 /* UIView+BRMenuUIStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = C9819DC21B61A754008A1393 /* UIView+BRMenuUIStyle.m */; };
 		C9819DD11B61CEE8008A1393 /* BRMenuOrderingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9819DD01B61CEE8008A1393 /* BRMenuOrderingViewController.m */; };
@@ -184,6 +185,8 @@
 		C97C52311B65F3E400E84105 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Resources/Core/en.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		C97C52331B65FDF500E84105 /* BRMenuConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMenuConstants.h; sourceTree = "<group>"; };
 		C97C52341B65FE2B00E84105 /* BRMenuConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuConstants.m; sourceTree = "<group>"; };
+		C980B0B01B698E100050BCA2 /* BRMenuItemCellWithoutComponents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuItemCellWithoutComponents.h; sourceTree = "<group>"; };
+		C980B0B11B698E100050BCA2 /* BRMenuItemCellWithoutComponents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuItemCellWithoutComponents.m; sourceTree = "<group>"; };
 		C9819DB51B616812008A1393 /* BRMenuNavigationTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuNavigationTitleView.h; sourceTree = "<group>"; };
 		C9819DB61B616812008A1393 /* BRMenuNavigationTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuNavigationTitleView.m; sourceTree = "<group>"; };
 		C9819DBE1B61A428008A1393 /* BRMenuUIStylishHost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuUIStylishHost.h; sourceTree = "<group>"; };
@@ -486,6 +489,8 @@
 			children = (
 				C959D03C1B68876500C153D7 /* BRMenuItemCell.h */,
 				C959D03D1B68876500C153D7 /* BRMenuItemCell.m */,
+				C980B0B01B698E100050BCA2 /* BRMenuItemCellWithoutComponents.h */,
+				C980B0B11B698E100050BCA2 /* BRMenuItemCellWithoutComponents.m */,
 				C9819DE51B63563B008A1393 /* BRMenuItemComponentCell.h */,
 				C9819DE61B63563B008A1393 /* BRMenuItemComponentCell.m */,
 				C9819DD51B61EE94008A1393 /* BRMenuItemObjectCell.h */,
@@ -883,6 +888,7 @@
 				C92AEEFA1B5F10630005AC79 /* BRMenuBackBarButtonItemView.m in Sources */,
 				C9B812B21B5D7BA70014CBCB /* BRMenuItemTag.m in Sources */,
 				C9819DE71B63563B008A1393 /* BRMenuItemComponentCell.m in Sources */,
+				C980B0B21B698E100050BCA2 /* BRMenuItemCellWithoutComponents.m in Sources */,
 				C957D2E01B60B30300AD224C /* BRMenuLightHeavyQuantityButton.m in Sources */,
 				C9B8128C1B5D7B5C0014CBCB /* BRMenuMappingRestKit.m in Sources */,
 				C959D0381B6845EB00C153D7 /* BRMenuOrderCountBarButtonItemView.m in Sources */,
