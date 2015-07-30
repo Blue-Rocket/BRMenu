@@ -46,7 +46,9 @@
 }
 
 - (BOOL)isEqual:(id)object {
-	return ([object isKindOfClass:[BRMenuItem class]] && self.itemId == [(BRMenuItem *)object itemId]);
+	return ([object isKindOfClass:[BRMenuItem class]]
+			&& self.itemId == [(BRMenuItem *)object itemId]
+			&& [self.menu isEqual:[(BRMenuItem *)object menu]]);
 }
 
 - (NSUInteger)hash {

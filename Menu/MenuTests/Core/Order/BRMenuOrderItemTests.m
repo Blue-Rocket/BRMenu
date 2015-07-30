@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 
+#import "BRMenu.h"
 #import "BRMenuItem.h"
 #import "BRMenuItemComponent.h"
 #import "BRMenuOrderItem.h"
@@ -38,13 +39,16 @@
 }
 
 - (void)testEquals {
+	BRMenu *menu = [BRMenu new];
 	BRMenuItem *pizzaItem = [BRMenuItem new];
 	pizzaItem.title = @"Pizza";
 	pizzaItem.itemId = 1;
+	pizzaItem.menu = menu;
 	
 	BRMenuItem *pizzaPlusItem = [BRMenuItem new];
 	pizzaPlusItem.title = @"Pizza+";
 	pizzaPlusItem.itemId = 2;
+	pizzaPlusItem.menu = menu;
 	
 	BRMenuItemComponent *traditionalDough = [BRMenuItemComponent new];
 	traditionalDough.componentId = 1;

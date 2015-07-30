@@ -15,6 +15,10 @@
 
 @implementation BRMenu
 
+- (BOOL)isEqual:(id)object {
+	return (object == self || ([object isKindOfClass:[BRMenu class]] && [self.key isEqualToString:[object key]]));
+}
+
 - (void)enumerateMenuItemsUsingBlock:(void (^)(BRMenuItem *menuItem, NSUInteger idx, BOOL *stop))block {
 	__block NSUInteger index = 0;
 	BOOL stop = NO;

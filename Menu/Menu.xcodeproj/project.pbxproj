@@ -39,6 +39,7 @@
 		C959D0381B6845EB00C153D7 /* BRMenuOrderCountBarButtonItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = C959D0371B6845EB00C153D7 /* BRMenuOrderCountBarButtonItemView.m */; };
 		C959D03B1B687C3E00C153D7 /* BRMenuOrderingGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C959D03A1B687C3E00C153D7 /* BRMenuOrderingGroupViewController.m */; };
 		C959D03E1B68876500C153D7 /* BRMenuItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C959D03D1B68876500C153D7 /* BRMenuItemCell.m */; };
+		C97238171B6ACE15007CBEEA /* BRMenuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C97238161B6ACE15007CBEEA /* BRMenuTests.m */; };
 		C97948E11B66D79500281AFB /* BRMenuOrderingItemDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97948E01B66D79500281AFB /* BRMenuOrderingItemDetailsViewController.m */; };
 		C97948E41B66D86800281AFB /* BRMenuOrderItemDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = C97948E31B66D86800281AFB /* BRMenuOrderItemDetailsView.m */; };
 		C97948E71B66D9CF00281AFB /* BRMenuOrderItemComponentDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = C97948E61B66D9CF00281AFB /* BRMenuOrderItemComponentDetailsView.m */; };
@@ -162,6 +163,7 @@
 		C959D03C1B68876500C153D7 /* BRMenuItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuItemCell.h; sourceTree = "<group>"; };
 		C959D03D1B68876500C153D7 /* BRMenuItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuItemCell.m; sourceTree = "<group>"; };
 		C959D03F1B689F4E00C153D7 /* BRMenuGroupObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuGroupObject.h; sourceTree = "<group>"; };
+		C97238161B6ACE15007CBEEA /* BRMenuTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuTests.m; sourceTree = "<group>"; };
 		C97948DD1B66B42400281AFB /* BRMenuModelPropertyEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuModelPropertyEditor.h; sourceTree = "<group>"; };
 		C97948DE1B66BB9800281AFB /* BRMenuUIModelPropertyEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuUIModelPropertyEditor.h; sourceTree = "<group>"; };
 		C97948DF1B66D79500281AFB /* BRMenuOrderingItemDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuOrderingItemDetailsViewController.h; sourceTree = "<group>"; };
@@ -413,6 +415,7 @@
 			children = (
 				C9067A851B5CB8BC005FF260 /* BRMenuTestingMenuProvider.h */,
 				C9067A861B5CB8BC005FF260 /* BRMenuTestingMenuProvider.m */,
+				C97238161B6ACE15007CBEEA /* BRMenuTests.m */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -915,6 +918,7 @@
 				C988839C1B5883A60049491C /* BRMenuOrderItemTests.m in Sources */,
 				C9067A831B5CAF25005FF260 /* BRMenuOrderTests.m in Sources */,
 				C9067A6A1B5C5491005FF260 /* BRMenuRestKitTestingMapper.m in Sources */,
+				C97238171B6ACE15007CBEEA /* BRMenuTests.m in Sources */,
 				C988839B1B5883A60049491C /* BRMenuOrderItemAttributesProxyTests.m in Sources */,
 				C9067A481B5C29BA005FF260 /* BRMenuMappingPostProcessorTests.m in Sources */,
 				C9067A8C1B5CBEF5005FF260 /* BRMenuMetadataRestKitMappingTests.m in Sources */,

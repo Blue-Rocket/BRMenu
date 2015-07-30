@@ -17,6 +17,7 @@
 
 @interface BRMenu : NSObject <BRMenuGroupObject>
 
+@property (nonatomic, copy) NSString *key; // unique value between other BRMenu instances, assigned by data
 @property (nonatomic) UInt16 version;
 @property (nonatomic, copy) NSArray *items; // BRMenuItem
 @property (nonatomic, copy) NSArray *groups; // BRMenuItemGroup
