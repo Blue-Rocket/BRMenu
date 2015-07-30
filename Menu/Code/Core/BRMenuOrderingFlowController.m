@@ -275,8 +275,22 @@
 }
 
 - (NSDecimalNumber *)priceForSection:(NSInteger)section {
+	if ( itemGroup != nil ) {
+		BRMenuItemGroup *group = nil;
+		if ( itemGroup.items.count > 0 ) {
+			// first section is items..., which has no price
+			if ( section == 0 ) {
+				return nil;
+			}
+			group = itemGroup.groups[section - 1];
+		} else {
+			group = itemGroup.groups[section];
+		}
+		return group.price;
+	} else if ( item == nil ) {
+		return nil;
+	}
 	return nil;
-	// TODO: implement
 }
 
 - (NSInteger)numberOfItemsInSection:(NSInteger)section {
