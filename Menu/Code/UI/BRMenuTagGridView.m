@@ -32,6 +32,8 @@ static const CGFloat kIconMargin = 4;
 	if ( (self = [super initWithFrame:frame]) ) {
 		columnCount = 2;
 		iconSize = CGSizeMake(16, 16);
+		[self setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
+		[self setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
 	}
 	return self;
 }
