@@ -8,10 +8,10 @@
 
 #import "OrderingViewsViewController.h"
 
-#import <BRMenuKit/Core/Core.h>
-#import <BRMenuKit/UI/BRMenuOrderItemComponentDetailsView.h>
-#import <BRMenuKit/UI/BRMenuOrderItemDetailsView.h>
-#import <BRMenuKit/UI/BRMenuOrderItemPlacementDetailsView.h>
+#import <MenuKit/Core/Core.h>
+#import <MenuKit/UI/BRMenuOrderItemComponentDetailsView.h>
+#import <MenuKit/UI/BRMenuOrderItemDetailsView.h>
+#import <MenuKit/UI/BRMenuOrderItemPlacementDetailsView.h>
 #import "BRMenu+MenuSampler.h"
 
 @interface OrderingViewsViewController ()

@@ -9,7 +9,7 @@
 #import "ButtonsViewController.h"
 
 #import <BRCocoaLumberjack/BRCocoaLumberjack.h>
-#import <BRMenuKit/UI/UI.h>
+#import <MenuKit/UI/UI.h>
 
 @interface ButtonsViewController ()
 @property (strong, nonatomic) IBOutlet BRMenuStepper *stepper;

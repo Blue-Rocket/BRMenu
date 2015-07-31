@@ -8,8 +8,8 @@
 
 #import "IconsViewController.h"
 
-#import <BRMenuKit/Core/Core.h>
-#import <BRMenuKit/UI/BRMenuTagGridView.h>
+#import <MenuKit/Core/Core.h>
+#import <MenuKit/UI/BRMenuTagGridView.h>
 #import "BRMenu+MenuSampler.h"
 
 @interface IconsViewController ()

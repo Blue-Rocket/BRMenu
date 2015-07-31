@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 
-#import <BRMenuKit/UI/BRMenuUIStyle.h>
+#import <MenuKit/UI/BRMenuUIStyle.h>
 
 @interface AppDelegate ()
 

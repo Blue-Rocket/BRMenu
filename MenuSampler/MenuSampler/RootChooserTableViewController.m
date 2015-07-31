@@ -9,12 +9,12 @@
 #import "RootChooserTableViewController.h"
 
 #import <BRCocoaLumberjack/BRCocoaLumberjack.h>
-#import <BRMenuKit/Core/Core.h>
-#import <BRMenuKit/Core/NSBundle+BRMenu.h>
-#import <BRMenuKit/RestKit/RestKit.h>
-#import <BRMenuKit/UI/UI.h>
-#import <BRMenuKit/UI/BRMenuOrderCountBarButtonItemView.h>
-#import <BRMenuKit/UI/UIBarButtonItem+BRMenu.h>
+#import <MenuKit/Core/Core.h>
+#import <MenuKit/Core/NSBundle+BRMenu.h>
+#import <MenuKit/RestKit/RestKit.h>
+#import <MenuKit/UI/UI.h>
+#import <MenuKit/UI/BRMenuOrderCountBarButtonItemView.h>
+#import <MenuKit/UI/UIBarButtonItem+BRMenu.h>
 #import <RestKit/RestKit.h>
 #import "BRMenu+MenuSampler.h"
 
