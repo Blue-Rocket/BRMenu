@@ -11,6 +11,7 @@
 #import <Masonry/Masonry.h>
 #import "BRMenu.h"
 #import "BRMenuFitToWidthLabel.h"
+#import "BRMenuGroupObject.h"
 #import "BRMenuItemObject.h"
 #import "BRMenuUIStylishHost.h"
 #import "NSNumberFormatter+BRMenu.h"
@@ -109,6 +110,9 @@
 - (void)refreshForItem:(id<BRMenuItemObject>)theItem {
 	self.title.text = theItem.title;
 	self.desc.text = theItem.desc;
+	self.accessoryType = (theItem.hasComponents || [theItem conformsToProtocol:@protocol(BRMenuGroupObject)]
+						  ? UITableViewCellAccessoryDisclosureIndicator
+						  : UITableViewCellAccessoryNone);
 	
 	NSString *price = nil;
 	if ( theItem.price != nil ) {
