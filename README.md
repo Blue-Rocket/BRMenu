@@ -52,8 +52,8 @@ MenuKit is divided into several CocoaPod components, or subspecs.
     because `MenuKit` integrates with [AFNetworking][afn] **version 2** but RestKit
     networking depends on AFNetworking version 1.
     
-  4. `AFNetworking` - provides integration with [AFNetworking][afn] **version 2** to
-     support network requests for menu resources.
+ 4. `AFNetworking` - provides integration with [AFNetworking][afn] **version 2** to
+    support network requests for menu resources.
     
 
  [restkit]: https://github.com/RestKit/RestKit/
