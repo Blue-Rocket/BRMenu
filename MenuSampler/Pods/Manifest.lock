@@ -1,0 +1,100 @@
+PODS:
+  - AFNetworking (2.5.4):
+    - AFNetworking/NSURLConnection (= 2.5.4)
+    - AFNetworking/NSURLSession (= 2.5.4)
+    - AFNetworking/Reachability (= 2.5.4)
+    - AFNetworking/Security (= 2.5.4)
+    - AFNetworking/Serialization (= 2.5.4)
+    - AFNetworking/UIKit (= 2.5.4)
+  - AFNetworking/NSURLConnection (2.5.4):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.5.4):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.5.4)
+  - AFNetworking/Security (2.5.4)
+  - AFNetworking/Serialization (2.5.4)
+  - AFNetworking/UIKit (2.5.4):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - BRCocoaLumberjack (1.9.0):
+    - CocoaLumberjack (~> 1.9)
+  - BRPDFImage (1.0.0)
+  - CocoaAsyncSocket (7.4.1)
+  - CocoaHTTPServer (2.3):
+    - CocoaAsyncSocket
+    - CocoaLumberjack
+  - CocoaLumberjack (1.9.2):
+    - CocoaLumberjack/Extensions (= 1.9.2)
+  - CocoaLumberjack/Core (1.9.2)
+  - CocoaLumberjack/Extensions (1.9.2):
+    - CocoaLumberjack/Core
+  - Color-Picker-for-iOS (2.0.2)
+  - ISO8601DateFormatterValueTransformer (0.6.0):
+    - RKValueTransformers (~> 1.1.0)
+  - MAObjCRuntime (0.0.1)
+  - Masonry (0.6.2)
+  - MenuKit/AFNetworking (0.1.0):
+    - AFNetworking (~> 2.5)
+    - MenuKit/Core
+  - MenuKit/Core (0.1.0):
+    - BRCocoaLumberjack (~> 1.9)
+  - MenuKit/RestKit (0.1.0):
+    - MenuKit/Core
+    - RestKit/ObjectMapping (~> 0.24)
+  - MenuKit/UI (0.1.0):
+    - BRPDFImage (~> 1.0)
+    - Masonry (~> 0.6)
+    - MenuKit/Core
+  - OCHamcrest (4.1.1)
+  - OCMock (3.1.2)
+  - RestKit/ObjectMapping (0.24.1):
+    - ISO8601DateFormatterValueTransformer (~> 0.6.0)
+    - RestKit/Support
+    - RKValueTransformers (~> 1.1.0)
+  - RestKit/Support (0.24.1):
+    - TransitionKit (~> 2.1.0)
+  - RKValueTransformers (1.1.2)
+  - RoutingHTTPServer (1.0.0):
+    - CocoaHTTPServer (~> 2.3)
+  - TransitionKit (2.1.1)
+
+DEPENDENCIES:
+  - CocoaHTTPServer (~> 2.3)
+  - Color-Picker-for-iOS (~> 2.0)
+  - MAObjCRuntime (~> 0.0.1)
+  - MenuKit/AFNetworking (from `../`)
+  - MenuKit/Core (from `../`)
+  - MenuKit/RestKit (from `../`)
+  - MenuKit/UI (from `../`)
+  - OCHamcrest (~> 4.1)
+  - OCMock (~> 3.1)
+  - RoutingHTTPServer (~> 1.0)
+
+EXTERNAL SOURCES:
+  MenuKit:
+    :path: ../
+
+SPEC CHECKSUMS:
+  AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  BRCocoaLumberjack: 3ec999abcfa4fecec9816c9c63b11c93a16e4550
+  BRPDFImage: 6a68f820e4e06ef8627f305cda147d4a31feff51
+  CocoaAsyncSocket: 7cbf214b27f8e7f7574db6a3fd96352ffaed433d
+  CocoaHTTPServer: 5624681fc3473d43b18202f635f9b3abb013b530
+  CocoaLumberjack: 628fca2e88ef06f7cf6817309aa405f325d9a6fa
+  Color-Picker-for-iOS: 4980589b3e3cfe7198f227dd50be9adb02d8bc0b
+  ISO8601DateFormatterValueTransformer: 3ac3a721381697cab4e792d8049ce2f2e9ad3036
+  MAObjCRuntime: a6a1d95acbfa3784d66cb35bd42904e47943b488
+  Masonry: 362e8a1cc0beada4a4c4832d5e863da2a51533be
+  MenuKit: b3d1d6e71bc74bbee583bd8a3fe6c4f4fb66f47d
+  OCHamcrest: 6f03ffa81d12feab872638490a44ab0a6d3aca10
+  OCMock: a10ea9f0a6e921651f96f78b6faee95ebc813b92
+  RestKit: 1987b5efef289c6b27bd980714d6ca48d3871b78
+  RKValueTransformers: 66ac5e4f077fdbe3496e792d89eeff4c3eb67701
+  RoutingHTTPServer: fab8b13e725f26720500c146d43c98c11ebc4d47
+  TransitionKit: 3a14b6acc7cf2d1dd3e454e24dbad1cfab9a1ef1
+
+COCOAPODS: 0.38.2

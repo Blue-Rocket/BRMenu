@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Fzm-2s-anR">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <scenes>
+        <!--Menu-->
+        <scene sceneID="TUD-nf-2Fb">
+            <objects>
+                <tableViewController storyboardIdentifier="MenuOrdering" id="1Bg-5e-sDd" customClass="BRMenuOrderingViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="x3I-6I-nhw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="1Bg-5e-sDd" id="jkf-dm-kAd"/>
+                            <outlet property="delegate" destination="1Bg-5e-sDd" id="WzY-BW-CYg"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Menu" id="cpp-a2-sHP"/>
+                    <connections>
+                        <segue destination="MfJ-iN-H4u" kind="show" identifier="ConfigureComponents" id="AOP-zo-mWG"/>
+                        <segue destination="xkh-NH-9d0" kind="show" identifier="ShowItemGroup" id="30G-Fd-4fe"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dGG-dn-86b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1175" y="365"/>
+        </scene>
+        <!--Configure Components-->
+        <scene sceneID="74h-bX-cQ9">
+            <objects>
+                <tableViewController storyboardIdentifier="MenuOrderingComponents" id="MfJ-iN-H4u" customClass="BRMenuOrderingComponentsViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="uPx-pg-aCl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="MfJ-iN-H4u" id="rfi-gw-fIN"/>
+                            <outlet property="delegate" destination="MfJ-iN-H4u" id="I2d-R0-rQe"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Configure Components" id="S5O-Ty-WEX"/>
+                    <connections>
+                        <segue destination="sGE-iT-Qog" kind="show" identifier="ReviewOrderItem" id="IaU-rG-h95"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xs4-oA-Zp5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1903" y="182"/>
+        </scene>
+        <!--Add grouped items-->
+        <scene sceneID="TY5-n8-2gh">
+            <objects>
+                <tableViewController id="xkh-NH-9d0" customClass="BRMenuOrderingGroupViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9GF-8t-X0h">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="xkh-NH-9d0" id="6d4-3G-XNG"/>
+                            <outlet property="delegate" destination="xkh-NH-9d0" id="Xze-R3-2mr"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Add grouped items" id="AbV-a8-lgE"/>
+                    <connections>
+                        <segue destination="MfJ-iN-H4u" kind="show" identifier="ConfigureComponents" id="Bu7-IU-7NV"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E9b-ze-476" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1903" y="895"/>
+        </scene>
+        <!--Review Order Item-->
+        <scene sceneID="evc-nc-AD1">
+            <objects>
+                <viewController id="sGE-iT-Qog" customClass="BRMenuOrderingItemDetailsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oeJ-Nz-Wdj"/>
+                        <viewControllerLayoutGuide type="bottom" id="v7C-iv-xsC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gj5-SK-AaY">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QuU-qL-KQu">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="v7C-iv-xsC" firstAttribute="top" secondItem="QuU-qL-KQu" secondAttribute="bottom" id="9Xg-mq-XI9"/>
+                            <constraint firstItem="QuU-qL-KQu" firstAttribute="top" secondItem="gj5-SK-AaY" secondAttribute="top" id="NhY-Rd-wxP"/>
+                            <constraint firstAttribute="trailing" secondItem="QuU-qL-KQu" secondAttribute="trailing" id="xTo-4o-Ng5"/>
+                            <constraint firstItem="QuU-qL-KQu" firstAttribute="leading" secondItem="gj5-SK-AaY" secondAttribute="leading" id="zXK-m5-Zui"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Review Order Item" id="lyp-QK-bzf"/>
+                    <connections>
+                        <outlet property="scrollView" destination="QuU-qL-KQu" id="ute-Rj-Dhk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FeQ-SK-1Dm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2666" y="182"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="g1r-nG-tl2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fzm-2s-anR" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="W0M-1Q-ul5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="1Bg-5e-sDd" kind="relationship" relationship="rootViewController" id="By4-cF-Q4v"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sN1-w7-qyG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="363" y="365"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="m4o-SG-f8P">
+            <objects>
+                <viewController id="poZ-FA-H2r" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="n8E-rE-96k"/>
+                        <viewControllerLayoutGuide type="bottom" id="oxs-Ey-sIy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VZC-Bf-oF1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eb2-rb-5wy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Bu7-IU-7NV"/>
+    </inferredMetricsTieBreakers>
+</document>

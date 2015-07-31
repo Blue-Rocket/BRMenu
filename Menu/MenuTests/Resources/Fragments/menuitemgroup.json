@@ -1,0 +1,18 @@
+{
+	"title": "Suggestions",
+	"description": "your choice of dough…",
+	"key": "suggestions",
+	"price": "8.64",
+	"showItemDelimiters": true,
+	"items": [
+			  {
+			  "title": "Maverick",
+			  "description": "Classic Tomato, Housemade Mozzarella, Pepperoni, Hot Sausage, Smoked Bacon, Soppressata, Parmesan Reggiano, Oregano Oil"
+			  },
+			  {
+			  "title": "Redvine",
+			  "description": "Classic Tomato, Daiya Mozzarella, Roasted Peppers, Spinach, Eggplant, Cherry Tomatoes",
+			  "flags": 3
+			  }
+			  ]
+}

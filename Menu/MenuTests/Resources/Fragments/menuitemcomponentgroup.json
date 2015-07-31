@@ -1,0 +1,16 @@
+{
+	"title": "Cheese",
+	"description": "Tasty!",
+	"key": "foo",
+	"extends": "bar",
+	"multiSelect": true,
+	"requiredCount": 1,
+	"components": [
+				   {"title": "Housemade Mozzarella"},
+				   {"title": "Provolone Blend"},
+				   {"title": "Ricotta"},
+				   {"title": "Asiago"},
+				   {"title": "Goat Cheese"},
+				   {"title": "Daiya Mozzarella"}
+				   ]
+}

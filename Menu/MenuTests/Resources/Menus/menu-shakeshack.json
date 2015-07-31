@@ -1,0 +1,258 @@
+{"menu": {
+	"key": "shakeshack",
+    "version": 1,
+    "items": [],
+    "groups": [
+        {
+            "title": "Burgers",
+            "description": "100% all-natural Angus beef. No hormones and no antibiotics ever. Our proprietary Shack blend is freshly ground. All burgers are cooked medium unless otherwise requested.",
+            "key": "burger",
+            "askTakeaway": true,
+            "needsReview": true,
+            "items": [
+                {
+                    "title": "ShackBurger® - single",
+                    "description": "Cheeseburger topped with lettuce, tomato and ShackSauce",
+					"key": "burger",
+                    "price": "4.75",
+                    "askTakeaway": true
+                },
+                {
+                    "title": "ShackBurger® - double",
+                    "price": "7.35",
+                    "askTakeaway": true
+                },
+                {
+                    "title": "SmokeShack™ - single",
+                    "description": "Cheeseburger topped with all-natural applewood smoked bacon, chopped cherry pepper and ShackSauce",
+                    "price": "6.25"
+                },
+                {
+                    "title": "SmokeShack™ - double",
+                    "price": "8.80"
+                },
+                {
+                    "title": "'Shroom Burger",
+                    "description": "Crisp-fried portobello mushroom filled with melted muenster and cheddar cheeses, topped with lettuce, tomato and ShackSauce",
+                    "tags": 1,
+                    "price": "6.85"
+                }
+            ]
+        },
+        {
+            "title": "Flat-Top Dogs",
+            "description": "100% all-natural. No hormones and no antibiotics ever. Split and griddled crisp.",
+            "key": "dogs",
+            "showItemDelimiters": true,
+            "items": [
+                {
+                    "title": "Shack-cago Dog®",
+                    "askTakeaway": true,
+                    "price": "4.00",
+                    "description": "Dragged through the garden with Rick's Picks Shack relish, onion, cucumber, pickle, tomato, sport pepper, celery salt and mustard"
+                },
+                {
+                    "title": "DogMeister",
+                    "askTakeaway": true,
+                    "price": "4.00",
+                    "description": "Topped with Shack cheddar and American cheese sauce and crispy ShackMeister Ale-marinated shallots"
+                },
+                {
+                    "title": "Hot Dog",
+                    "askTakeaway": true,
+                    "price": "3.00",
+                    "description": "Vienna all-beef dog"
+                },
+                {
+                    "title": "Chicken Dog",
+                    "askTakeaway": true,
+                    "price": "4.40",
+                    "description": "Shake Shack chicken, apple and sage sausage"
+                }
+            ]
+        },
+        {
+            "title": "Fries",
+            "description": "100% free of artificial trans fats.",
+            "key": "fries",
+            "askQuantity": true,
+            "showItemDelimiters": true,
+            "items": [
+                {
+                    "title": "Fries",
+                    "askTakeaway": true,
+                    "price": "2.85",
+                    "description": "Dragged through the garden with Rick's Picks Shack relish, onion, cucumber, pickle, tomato, sport pepper, celery salt and mustard"
+                },
+                {
+                    "title": "Cheese Fries",
+                    "askTakeaway": true,
+                    "price": "3.85",
+                    "description": "Topped with our special blend of cheddar and American cheese sauce"
+                },
+                {
+                    "title": "Hot Dog",
+                    "askTakeaway": true,
+                    "price": "3.00",
+                    "description": "Vienna all-beef dog"
+                },
+                {
+                    "title": "Chicken Dog",
+                    "askTakeaway": true,
+                    "price": "4.40",
+                    "description": "Shake Shack chicken, apple and sage sausage"
+                }
+            ]
+        },
+        {
+            "title": "Frozen Custard",
+            "description": "Our dense, rich and creamy ice cream\u2013spun fresh daily right here at the Shack! Our vanilla and chocolate recipes use only real sugar, no corn syrup, and milk from dairy farmers who pledge not to use artificial growth hormones.",
+            "key": "custard",
+            "showItemDelimiters": true,
+            "groups": [
+                {
+                    "title": "Shakes",
+                    "items": [
+                        {
+                            "title": "Shake",
+                            "price": "5.00",
+                            "description": "Hand-spun",
+                            "componentGroups": [{
+                                "title": "Flavor",
+                                "requiredCount": 1,
+                                "key": "custard-flavor",
+                                "components": [
+                                    {
+                                        "title": "Vanilla",
+                                        "askQuantity": false,
+                                        "askPlacement": false
+                                    },
+                                    {
+                                        "title": "Chocolate",
+                                        "askQuantity": false,
+                                        "askPlacement": false
+                                    },
+                                    {
+                                        "title": "Caramel",
+                                        "askQuantity": false,
+                                        "askPlacement": false
+                                    },
+                                    {
+                                        "title": "Black & White",
+                                        "askQuantity": false,
+                                        "askPlacement": false
+                                    },
+                                    {
+                                        "title": "Strawberry",
+                                        "askQuantity": false,
+                                        "askPlacement": false
+                                    },
+                                    {
+                                        "title": "Peanut Butter",
+                                        "askQuantity": false,
+                                        "askPlacement": false
+                                    }
+                                ]
+                            }]
+                        },
+                        {
+                            "title": "Fiar Shake",
+                            "price": "5.50",
+                            "description": "Coffee shake made with 100% certified organic Arabica Fair Trade beans"
+                        },
+                        {
+                            "title": "Vitamin Creamsicle Shake",
+                            "price": "6.75",
+                            "description": "Vanilla shake blended with David Kirsch Vitamin Mineral Orange Super Juice"
+                        },
+                        {
+                            "title": "Floats",
+                            "price": "5.00",
+                            "componentGroups": [
+                                {
+                                    "title": "Root beer",
+                                    "askQuantity": false
+                                },
+                                {
+                                    "title": "Purple Cow",
+                                    "askQuantity": false,
+                                    "askPlacement": false
+                                },
+                                {
+                                    "title": "Creamsicle",
+                                    "askQuantity": false,
+                                    "askPlacement": false
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Cups & Cones",
+                    "description": "Homemade frozen custard ice cream in vanilla, chocolate or flavor of the day",
+                    "items": [
+                        {
+                            "title": "Single Dip",
+                            "price": "3.25",
+                            "componentGroups": [{
+                                "title": "Flavor",
+                                "requiredCount": 1,
+                                "extends": "custard-flavor"
+                            }]
+                        },
+                        {
+                            "title": "Double Dip",
+                            "price": "4.25",
+                            "componentGroups": [
+                                {
+                                    "title": "Flavor 1",
+                                    "requiredCount": 1,
+                                    "extends": "custard-flavor"
+                                },
+                                {
+                                    "title": "Flavor 2",
+                                    "requiredCount": 1,
+                                    "extends": "custard-flavor"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "Pints To Go",
+                            "price": "6.75",
+                            "componentGroups": [{"extends": "custard-flavor"}]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Drinks",
+            "description": "Hand-made lemonade, teas, soda\u2026",
+            "key": "drink",
+            "showItemDelimiters": false,
+            "groups": [{
+                "title": "Shack-made Lemonade",
+                "items": [
+                    {
+                        "title": "Regular",
+                        "price": "2.60"
+                    },
+                    {
+                        "title": "Large",
+                        "price": "3.20"
+                    }
+                ]
+            }]
+        }
+    ],
+    "tags": [
+        {
+            "title": "Vegetarian",
+            "key": "vegetarian"
+        },
+        {
+            "title": "Vegan",
+            "key": "vegan"
+        }
+    ]
+}}

@@ -1,0 +1,17 @@
+{
+	"title": "Cooked toppings",
+	"componentGroups": [
+						{
+						"title": "Cheese",
+						"description": "Tasty!",
+						"components": [
+									   {"title": "Housemade Mozzarella"},
+									   {"title": "Provolone Blend"},
+									   {"title": "Ricotta"},
+									   {"title": "Asiago"},
+									   {"title": "Goat Cheese"},
+									   {"title": "Daiya Mozzarella"}
+									   ]
+						}
+						]
+}

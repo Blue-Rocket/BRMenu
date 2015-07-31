@@ -1,0 +1,19 @@
+{
+	"title": "Side Salad",
+	"description": "Arugula, Spinach, Asiago, Pecans, Your Choice of Vinaigrette",
+	"key": "foo",
+	"extends": "bar",
+	"tags": 3,
+	"price": "3.18",
+	"askTakeaway": true,
+	"needsReview": true,
+	"componentGroups": [
+						{
+						"title": "Proteins",
+						"components": [
+									   {"title": "Pepperoni"},
+									   {"title": "Chicken"}
+									   ]
+						}
+						]
+}
