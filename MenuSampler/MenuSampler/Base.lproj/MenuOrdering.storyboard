@@ -63,6 +63,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Add grouped items" id="AbV-a8-lgE"/>
+                    <connections>
+                        <segue destination="MfJ-iN-H4u" kind="show" identifier="ConfigureComponents" id="Bu7-IU-7NV"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E9b-ze-476" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -137,4 +140,7 @@
             </objects>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Bu7-IU-7NV"/>
+    </inferredMetricsTieBreakers>
 </document>

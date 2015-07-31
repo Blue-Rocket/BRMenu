@@ -15,8 +15,10 @@
 #import "BRMenuItemCellWithoutComponents.h"
 #import "BRMenuItemGroup.h"
 #import "BRMenuOrder.h"
+#import "BRMenuOrderingComponentsViewController.h"
 #import "BRMenuOrderingDelegate.h"
 #import "BRMenuOrderingFlowController.h"
+#import "BRMenuOrderingViewController.h"
 #import "BRMenuOrderItem.h"
 #import "BRMenuStepper.h"
 #import "BRMenuUIStylishHost.h"
@@ -96,6 +98,37 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 	}
 }
 
+#pragma mark - BRMenuOrderingDelegate
+
+- (void)addOrderItemToActiveOrder:(BRMenuOrderItem *)orderItem {
+	if ( flowController.hasMenuItemWithoutComponents ) {
+		[flowController.temporaryOrder addOrderItem:orderItem];
+		[self.navigationController popToViewController:self animated:YES];
+	} else {
+		[self.orderingDelegate addOrderItemToActiveOrder:orderItem];
+	}
+}
+
+- (void)updateOrderItemsInActiveOrder:(NSArray *)orderItems {
+	if ( flowController.hasMenuItemWithoutComponents ) {
+		[flowController.temporaryOrder replaceOrderItems:orderItems];
+		[self.navigationController popToViewController:self animated:YES];
+	} else {
+		[self.orderingDelegate updateOrderItemsInActiveOrder:orderItems];
+	}
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	BRMenuItemObjectCell *cell = (BRMenuItemObjectCell *)[self.tableView cellForRowAtIndexPath:[self.tableView indexPathForSelectedRow]];
+	if ( [[segue identifier] isEqualToString:BRMenuOrderingConfigureComponentsSegue] ) {
+		BRMenuOrderingComponentsViewController *dest = [segue destinationViewController] ;
+		dest.flowController = [flowController flowControllerForItemAtIndexPath:[self.tableView indexPathForSelectedRow]];
+		dest.orderingDelegate = self;
+	}
+}
+
 #pragma mark - Table support
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -143,6 +176,23 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 	// drawing the cells results in an incorrectly calculated height
 	[cell layoutIfNeeded];
 	return cell;
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+	BRMenuItemObjectCell *cell = (BRMenuItemObjectCell *)[tableView cellForRowAtIndexPath:indexPath];
+	return cell.item.hasComponents;
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	if ( [self tableView:tableView shouldHighlightRowAtIndexPath:indexPath] ) {
+		return indexPath;
+	}
+	return nil;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	[self performSegueWithIdentifier:BRMenuOrderingConfigureComponentsSegue sender:self];
+	[tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 @end

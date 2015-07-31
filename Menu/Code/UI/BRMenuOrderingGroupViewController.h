@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import "BRMenuOrderingDelegate.h"
 #import "BRMenuUIStyle.h"
 
 @class BRMenuOrderingFlowController;
-@protocol BRMenuOrderingDelegate;
 
 extern NSString * const BRMenuOrderingItemCellIdentifier;
 extern NSString * const BRMenuOrderingItemWithoutComponentsCellIdentifier;
@@ -20,7 +20,7 @@ extern NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier;
 /**
  Present a list of menu item groups as sections of menu items.
  */
-@interface BRMenuOrderingGroupViewController : UITableViewController <BRMenuUIStylish>
+@interface BRMenuOrderingGroupViewController : UITableViewController <BRMenuOrderingDelegate, BRMenuUIStylish>
 
 @property (nonatomic, assign, getter=isUsePrototypeCells) IBInspectable BOOL usePrototypeCells;
 
