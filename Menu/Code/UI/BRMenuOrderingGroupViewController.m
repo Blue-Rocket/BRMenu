@@ -61,6 +61,15 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 																								target:self
 																								action:@selector(goBack:)];
 	}
+	[self refreshForStyle:self.uiStyle];
+}
+
+- (void)uiStyleDidChange:(BRMenuUIStyle *)style {
+	[self refreshForStyle:style];
+}
+
+- (void)refreshForStyle:(BRMenuUIStyle *)style {
+	self.view.backgroundColor = style.appBodyColor;
 }
 
 - (void)setFlowController:(BRMenuOrderingFlowController *)controller {

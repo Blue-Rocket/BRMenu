@@ -76,6 +76,15 @@ NSString * const BRMenuOrderingReviewOrderItemSegue = @"ReviewOrderItem";
 																								target:self
 																								action:@selector(gotoNextFlowStep:)];
 	}
+	[self refreshForStyle:self.uiStyle];
+}
+
+- (void)uiStyleDidChange:(BRMenuUIStyle *)style {
+	[self refreshForStyle:style];
+}
+
+- (void)refreshForStyle:(BRMenuUIStyle *)style {
+	self.view.backgroundColor = style.appBodyColor;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
