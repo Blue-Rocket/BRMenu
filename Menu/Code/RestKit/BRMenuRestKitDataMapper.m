@@ -50,4 +50,19 @@
 	return mappingOperation.destinationObject;
 }
 
+- (id)performEncodingWithObject:(id)domainObject error:(NSError *__autoreleasing *)error {
+	RKMappingOperation *mappingOperation = [[RKMappingOperation alloc] initWithSourceObject:domainObject
+																		  destinationObject:[NSMutableDictionary new]
+																					mapping:mapping];
+	id<RKMappingOperationDataSource> dataSource = [self dataSourceForMappingOperation:mappingOperation];
+	mappingOperation.dataSource = dataSource;
+	[mappingOperation start];
+	if ( mappingOperation.error ) {
+		if ( error ) {
+			*error = mappingOperation.error;
+		}
+	}
+	return mappingOperation.destinationObject;
+}
+
 @end

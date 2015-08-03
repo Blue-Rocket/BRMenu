@@ -19,4 +19,15 @@
  */
 - (id)performMappingWithSourceObject:(id)sourceObject error:(NSError *__autoreleasing *)error;
 
+/**
+ Encode a domain object into an encoded form, such as @c NSDictionary or @c NSData.
+ 
+ This is the logical reverse of the @ref performMappingWithSourceObject:error: method.
+ 
+ @param domainObject The domain object to encode.
+ @param error An optional output error pointer, or @c nil.
+ @return The serialized representation, or @c nil if an error occurs.
+ */
+- (id)performEncodingWithObject:(id)domainObject error:(NSError *__autoreleasing *)error;
+
 @end
