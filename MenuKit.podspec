@@ -51,4 +51,12 @@ Pod::Spec.new do |s|
     sp.resource_bundle = { 'BRMenuUI' => 'Menu/Resources/UI/**' }
   end
   
+  s.subspec 'UI-RestKit' do |sp|
+    sp.source_files = 'Menu/Code/UI-RestKit.h', 'Menu/Code/UI-RestKit'
+  	sp.header_dir = 'UI-RestKit'
+  	sp.dependency 'MenuKit/UI'
+  	sp.dependency 'MAObjCRuntime', '~> 0.0.1'
+    sp.dependency 'RestKit/ObjectMapping', '~> 0.24'
+  end
+  
 end
