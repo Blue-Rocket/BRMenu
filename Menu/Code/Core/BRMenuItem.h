@@ -1,6 +1,6 @@
 //
 //  BRMenuItem.h
-//  BRMenu
+//  MenuKit
 //
 //  Something on the menu that has an associated price and can be added to an order.
 //

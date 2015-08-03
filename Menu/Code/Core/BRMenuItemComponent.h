@@ -1,6 +1,6 @@
 //
 //  BRMenuItemComponent.h
-//  BRMenu
+//  MenuKit
 //
 //  A component of a BRMenuItem, e.g. a topping selection.
 //

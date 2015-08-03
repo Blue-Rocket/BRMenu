@@ -1,6 +1,6 @@
 //
 //  BRMenu.m
-//  BRMenu
+//  MenuKit
 //
 //  Created by Matt on 4/2/13.
 //  Copyright (c) 2013 Blue Rocket. Distributable under the terms of the Apache License, Version 2.0.

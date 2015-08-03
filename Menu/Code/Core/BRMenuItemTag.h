@@ -1,6 +1,6 @@
 //
 //  BRMenuItemTag.h
-//  BRMenu
+//  MenuKit
 //
 //  A "tag" applied to a BRMenuItem, e.g. Vegetarian.
 //

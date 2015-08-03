@@ -1,6 +1,6 @@
 //
 //  BRMenuOrderItem.h
-//  BRMenu
+//  MenuKit
 //
 //  A line item in an order. Refers to a specific BRMenuItem for the
 //  unit price. A collection of BRMenuItemComponents can be supplied
