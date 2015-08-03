@@ -14,9 +14,11 @@
 #import "ColorPickerViewController.h"
 #import "ColorSwatchView.h"
 #import "StyleColorTableViewCell.h"
+#import "StyleExportViewController.h"
 
 static NSString * const kColorCellIdentifier = @"ColorCell";
 static NSString * const kEditColorSegue = @"EditColor";
+static NSString * const kExportStyleSegue = @"ExportStyle";
 
 @interface GlobalStyleController () <ColorPickerViewControllerDelegate>
 
@@ -30,6 +32,7 @@ static NSString * const kEditColorSegue = @"EditColor";
 - (void)viewDidLoad {
     [super viewDidLoad];
 	uiStyle = [[BRMenuUIStyle defaultStyle] mutableCopy];
+	self.navigationItem.rightBarButtonItem = [UIBarButtonItem standardBRMenuBarButtonItemWithTitle:@"Export" target:self action:@selector(exportStyle:)];
 }
 
 - (NSArray *)colorStylePropertyNames {
@@ -120,6 +123,12 @@ static NSString * const kEditColorSegue = @"EditColor";
 	}
 }
 
+#pragma mark - Actions
+
+- (IBAction)exportStyle:(id)sender {
+	[self performSegueWithIdentifier:kExportStyleSegue sender:sender];
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -131,6 +140,9 @@ static NSString * const kEditColorSegue = @"EditColor";
 		StyleColorTableViewCell *cell = (StyleColorTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
 		dest.color = cell.colorSwatch.color;
 		dest.delegate = self;
+	} else if ( [segue.identifier isEqualToString:kExportStyleSegue] ) {
+		StyleExportViewController *export = segue.destinationViewController;
+		export.uiStyle = [BRMenuUIStyle defaultStyle];
 	}
 }
 

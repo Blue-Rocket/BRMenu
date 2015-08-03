@@ -56,6 +56,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Global Style Editor" id="u2f-Ay-0A1"/>
+                    <connections>
+                        <segue destination="bI3-KT-lqU" kind="show" identifier="ExportStyle" id="0xA-iq-uKp"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OBb-Gw-NlB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -667,6 +670,42 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vre-Or-wAg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1922" y="1857"/>
+        </scene>
+        <!--Export Style-->
+        <scene sceneID="buC-Fh-mkO">
+            <objects>
+                <viewController id="bI3-KT-lqU" customClass="StyleExportViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tNN-wp-u5f"/>
+                        <viewControllerLayoutGuide type="bottom" id="ao4-1W-76s"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IeB-E8-GeS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fjq-QT-ehc">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="11"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ao4-1W-76s" firstAttribute="top" secondItem="Fjq-QT-ehc" secondAttribute="bottom" id="IMe-AZ-9uP"/>
+                            <constraint firstItem="Fjq-QT-ehc" firstAttribute="leading" secondItem="IeB-E8-GeS" secondAttribute="leading" id="XG9-0d-w2K"/>
+                            <constraint firstItem="Fjq-QT-ehc" firstAttribute="top" secondItem="IeB-E8-GeS" secondAttribute="top" id="o0h-xZ-LHf"/>
+                            <constraint firstAttribute="trailing" secondItem="Fjq-QT-ehc" secondAttribute="trailing" id="zJY-Nf-FBY"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Export Style" id="L1D-dT-1Ye"/>
+                    <connections>
+                        <outlet property="textView" destination="Fjq-QT-ehc" id="GFX-Yc-fSH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xjy-2E-XdR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1922" y="-1066"/>
         </scene>
         <!--Edit Color-->
         <scene sceneID="kZC-R4-XWS">

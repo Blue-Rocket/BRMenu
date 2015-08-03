@@ -17,6 +17,7 @@
 		C9819DCB1B61CD64008A1393 /* menu-pizza.json in Resources */ = {isa = PBXBuildFile; fileRef = C9819DC71B61CD64008A1393 /* menu-pizza.json */; };
 		C9819DCC1B61CD64008A1393 /* menu-shakeshack.json in Resources */ = {isa = PBXBuildFile; fileRef = C9819DC81B61CD64008A1393 /* menu-shakeshack.json */; };
 		C9819DD41B61EB1C008A1393 /* MenuOrdering.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9819DD21B61EB1C008A1393 /* MenuOrdering.storyboard */; };
+		C9C5B0361B6F340800EA3B24 /* StyleExportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C5B0351B6F340800EA3B24 /* StyleExportViewController.m */; };
 		C9C909451B60ACA800DDF191 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C909441B60ACA800DDF191 /* main.m */; };
 		C9C909481B60ACA800DDF191 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C909471B60ACA800DDF191 /* AppDelegate.m */; };
 		C9C9094E1B60ACA800DDF191 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9C9094C1B60ACA800DDF191 /* Main.storyboard */; };
@@ -61,6 +62,8 @@
 		C9819DC71B61CD64008A1393 /* menu-pizza.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "menu-pizza.json"; sourceTree = "<group>"; };
 		C9819DC81B61CD64008A1393 /* menu-shakeshack.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "menu-shakeshack.json"; sourceTree = "<group>"; };
 		C9819DD31B61EB1C008A1393 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MenuOrdering.storyboard; sourceTree = "<group>"; };
+		C9C5B0341B6F340800EA3B24 /* StyleExportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyleExportViewController.h; sourceTree = "<group>"; };
+		C9C5B0351B6F340800EA3B24 /* StyleExportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyleExportViewController.m; sourceTree = "<group>"; };
 		C9C9093F1B60ACA800DDF191 /* MenuSampler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MenuSampler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9C909431B60ACA800DDF191 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9C909441B60ACA800DDF191 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -219,6 +222,8 @@
 				C9C909711B60AEED00DDF191 /* GlobalStyleController.m */,
 				C9C909721B60AEED00DDF191 /* StyleColorTableViewCell.h */,
 				C9C909731B60AEED00DDF191 /* StyleColorTableViewCell.m */,
+				C9C5B0341B6F340800EA3B24 /* StyleExportViewController.h */,
+				C9C5B0351B6F340800EA3B24 /* StyleExportViewController.m */,
 			);
 			name = "Style Editor";
 			sourceTree = "<group>";
@@ -411,6 +416,7 @@
 				C9C909761B60AEED00DDF191 /* ColorSwatchAlphaView.m in Sources */,
 				C9C909741B60AEED00DDF191 /* ButtonsViewController.m in Sources */,
 				C9C909771B60AEED00DDF191 /* ColorSwatchView.m in Sources */,
+				C9C5B0361B6F340800EA3B24 /* StyleExportViewController.m in Sources */,
 				C9C909481B60ACA800DDF191 /* AppDelegate.m in Sources */,
 				C9C909751B60AEED00DDF191 /* ColorPickerViewController.m in Sources */,
 				C9819DBD1B619217008A1393 /* RootChooserTableViewController.m in Sources */,
