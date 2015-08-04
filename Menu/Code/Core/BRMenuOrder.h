@@ -12,8 +12,9 @@
 @class BRMenuItem;
 @class BRMenuOrderItem;
 
-extern NSString * const kSpecialGroupKey;
-
+/**
+ An order object, which is a collection of order items with some additional overall properties.
+ */
 @interface BRMenuOrder : NSObject <NSCopying>
 
 /** A menu reference. This can be set to any menu needed by the application. */
@@ -51,8 +52,14 @@ extern NSString * const kSpecialGroupKey;
 // the sum total of all items in the order, accounting for quantities
 - (NSDecimalNumber *)totalPrice;
 
-// return an array of arrays of BRMenuOrderItem objects, grouped by the BRMenu set on this instance,
-// with BRMenuOrderItemAttributesProxy instances added for take away items where the item quantity > 1
-- (NSArray *)orderedGroupsWithSpecialGroupKey:(NSSet *)specialGroupKeys;
+/**
+ Get an array of arrays of @ref BRMenuOrderItem objects, grouped by the @ref BRMenu instances referenced
+ by the order items added to the receiver. For order items that support take away then @ref BRMenuOrderItemAttributesProxy
+ objects are returned when the item quantity is greater than 1.
+
+ @param groupMapping An optional mapping of order item keys to alternate key values.
+ @return An array of arrays of order item objects.
+ */
+- (NSArray *)orderedGroups:(NSDictionary *)groupMapping;
 
 @end

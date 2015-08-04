@@ -14,8 +14,6 @@
 #import "BRMenuOrderItem.h"
 #import "BRMenuOrderItemAttributesProxy.h"
 
-NSString * const kSpecialGroupKey = @"_special";
-
 @implementation BRMenuOrder {
 	NSMutableArray *orderItems;
 	NSMutableSet *menus;
@@ -150,14 +148,14 @@ NSString * const kSpecialGroupKey = @"_special";
 	return total;
 }
 
-- (NSArray *)orderedGroupsWithSpecialGroupKey:(NSSet *)specialGroupKeys {
+- (NSArray *)orderedGroups:(NSDictionary *)groupMapping {
 	const NSUInteger capacity = ([self.menu.items count] + [self.menu.groups count]);
 	NSMutableArray *sections = [NSMutableArray arrayWithCapacity:capacity];
 	
 	// order in same order as BRMenu
 	NSMutableDictionary *mapping = [NSMutableDictionary dictionaryWithCapacity:capacity];
 	NSMutableArray *sortKeys = [NSMutableArray arrayWithCapacity:capacity];
-	[sortKeys addObject:kSpecialGroupKey];
+	[sortKeys addObject:BRMenuOrderItemDefaultGroupKey];
 	for ( BRMenuItem *item in self.menu.items ) {
 		if ( item.key != nil ) {
 			[sortKeys addObject:item.key];
@@ -167,7 +165,7 @@ NSString * const kSpecialGroupKey = @"_special";
 		[sortKeys addObject:(group.key == nil ? @"" : group.key)];
 	}
 	for ( BRMenuOrderItem *orderItem in orderItems ) {
-		NSString *key = [orderItem orderGroupKeyWithSpecialGroupKeys:specialGroupKeys];
+		NSString *key = [orderItem orderGroupKey:groupMapping];
 		NSMutableArray *rows = [mapping objectForKey:key];
 		if ( rows == nil ) {
 			rows = [NSMutableArray arrayWithCapacity:10];

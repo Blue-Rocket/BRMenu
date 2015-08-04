@@ -8,9 +8,13 @@
 
 #import <XCTest/XCTest.h>
 
+#define HC_SHORTHAND
+#import <OCHamcrest/OCHamcrest.h>
+
 #import "BRMenu.h"
 #import "BRMenuItem.h"
 #import "BRMenuItemComponent.h"
+#import "BRMenuItemGroup.h"
 #import "BRMenuOrderItem.h"
 #import "BRMenuOrderItemAttributes.h"
 #import "BRMenuOrderItemComponent.h"
@@ -71,6 +75,62 @@
 	// but add component to other item and they should be equal again
 	[pizzaOrderItem2 addComponent:[[BRMenuOrderItemComponent alloc] initWithComponent:traditionalDough]];
 	XCTAssertEqual(YES, [pizzaOrderItem isEqual:pizzaOrderItem2], @"equal with components");
+}
+
+- (void)testGroupKeyNoGroup {
+	BRMenuItem *item = [BRMenuItem new];
+	BRMenuOrderItem *orderItem = [[BRMenuOrderItem alloc] initWithMenuItem:item];
+	assertThat([orderItem orderGroupKey:nil], equalTo(BRMenuOrderItemDefaultGroupKey));
+}
+
+- (void)testGroupKeyNoGroupKey {
+	BRMenuItem *item = [BRMenuItem new];
+	BRMenuItemGroup *group = [BRMenuItemGroup new];
+	item.group = group;
+	BRMenuOrderItem *orderItem = [[BRMenuOrderItem alloc] initWithMenuItem:item];
+	assertThat([orderItem orderGroupKey:nil], equalTo(BRMenuOrderItemDefaultGroupKey));
+}
+
+- (void)testGroupKeyDirect {
+	BRMenuItem *item = [BRMenuItem new];
+	BRMenuItemGroup *group = [BRMenuItemGroup new];
+	group.key = @"test-direct";
+	item.group = group;
+	BRMenuOrderItem *orderItem = [[BRMenuOrderItem alloc] initWithMenuItem:item];
+	assertThat([orderItem orderGroupKey:nil], equalTo(group.key));
+}
+
+- (void)testGroupKeyDirectMapped {
+	BRMenuItem *item = [BRMenuItem new];
+	BRMenuItemGroup *group = [BRMenuItemGroup new];
+	group.key = @"test-direct";
+	item.group = group;
+	BRMenuOrderItem *orderItem = [[BRMenuOrderItem alloc] initWithMenuItem:item];
+	assertThat([orderItem orderGroupKey:@{@"test-direct" : @"direct"}], equalTo(@"direct"));
+}
+
+- (void)testGroupKeyNested {
+	BRMenuItem *item = [BRMenuItem new];
+	BRMenuItemGroup *group = [BRMenuItemGroup new];
+	group.key = @"test-direct";
+	item.group = group;
+	BRMenuItemGroup *grandparentGroup = [BRMenuItemGroup new];
+	grandparentGroup.key = @"test-nested";
+	group.parentGroup = grandparentGroup;
+	BRMenuOrderItem *orderItem = [[BRMenuOrderItem alloc] initWithMenuItem:item];
+	assertThat([orderItem orderGroupKey:nil], equalTo(grandparentGroup.key));
+}
+
+- (void)testGroupKeyNestedMapped {
+	BRMenuItem *item = [BRMenuItem new];
+	BRMenuItemGroup *group = [BRMenuItemGroup new];
+	group.key = @"test-direct";
+	item.group = group;
+	BRMenuItemGroup *grandparentGroup = [BRMenuItemGroup new];
+	grandparentGroup.key = @"test-nested";
+	group.parentGroup = grandparentGroup;
+	BRMenuOrderItem *orderItem = [[BRMenuOrderItem alloc] initWithMenuItem:item];
+	assertThat([orderItem orderGroupKey:@{@"test-nested" : @"nested"}], equalTo(@"nested"));
 }
 
 @end

@@ -15,6 +15,7 @@
 #import "BRMenuOrderItemAttributes.h"
 #import "BRMenuOrderItemComponent.h"
 
+NSString * const BRMenuOrderItemDefaultGroupKey = @"default";
 
 @implementation BRMenuOrderItem {
 	NSMutableArray *components;
@@ -168,11 +169,13 @@
 		[attributes removeObjectAtIndex:index];
 	}
 }
-- (NSString *)orderGroupKeyWithSpecialGroupKeys:(NSSet *)pizzaGroupKeys {
+- (NSString *)orderGroupKey:(NSDictionary *)groupMapping {
 	BRMenuItem *menuItem = self.item;
 	NSString *key = (menuItem.group != nil ? [menuItem rootMenuItemGroup].key : menuItem.key);
-	if ( key == nil || [pizzaGroupKeys containsObject:key] ) {
-		key = kSpecialGroupKey;
+	if ( key != nil && groupMapping[key] != nil ) {
+		key = groupMapping[key];
+	} else if ( key == nil ) {
+		key = BRMenuOrderItemDefaultGroupKey;
 	}
 	return key;
 }
