@@ -109,7 +109,7 @@ typedef enum : NSInteger {
 /**
  Get an @c NSIndexPath for a given @c BRMenuItemObject instance.
  
- @param pack The item to find the index path of.
+ @param item The item to find the index path of.
  @return The found @c IndexPath, or @c nil if not found.
  */
 - (NSIndexPath *)indexPathForMenuItemObject:(id<BRMenuItemObject>)item;
