@@ -12,8 +12,11 @@
 #import "BRMenuFitToWidthLabel.h"
 #import "BRMenuFlipToggleButton.h"
 #import "BRMenuItem.h"
+#import "BRMenuItemGroup.h"
 #import "BRMenuOrderItem.h"
 #import "BRMenuPlusMinusButton.h"
+#import "NSBundle+BRMenu.h"
+#import "NSNumberFormatter+BRMenu.h"
 
 static const CGFloat kPlusMinusWidth = 40;
 
@@ -55,10 +58,37 @@ static const CGFloat kPlusMinusWidth = 40;
 
 - (void)refreshForItem:(id<BRMenuItemObject>)item {
 	[super refreshForItem:item];
+	[self refreshQuantity];
+	[self refreshPrice];
+}
+
+- (void)refreshQuantity {
+	self.quantity.text = [NSString stringWithFormat:[NSBundle localizedBRMenuString:@"menu.order.review.quantity.title"], orderItem.quantity];
+}
+
+- (void)refreshPrice {
+	NSString *priceValue = nil;
+	NSDecimalNumber *priceNumber;
+	if ( orderItem.item.price != nil ) {
+		priceNumber = orderItem.item.price;
+	} else if ( orderItem.item.group.price != nil ) {
+		priceNumber = orderItem.item.group.price;
+	}
+	if ( priceNumber != nil ) {
+		if ( orderItem.item.askTakeaway == NO &&  orderItem.quantity > 1 ) {
+			priceNumber = [priceNumber decimalNumberByMultiplyingBy:
+						   [NSDecimalNumber decimalNumberWithMantissa:orderItem.quantity exponent:0 isNegative:NO]];
+		}
+		priceValue = [[NSNumberFormatter standardBRMenuPriceFormatter]  stringFromNumber:priceNumber];
+	}
+	
+	self.price.text = priceValue;
 }
 
 - (void)refreshStyle:(BRMenuUIStyle *)style {
 	[super refreshStyle:style];
+	self.title.font = style.listFont;
+	self.title.textColor = self.uiStyle.textColor;
 	self.quantity.font = style.listSecondaryFont;
 	self.quantity.textColor = style.appPrimaryColor;
 }
@@ -127,7 +157,7 @@ static const CGFloat kPlusMinusWidth = 40;
 	}];
 	[self.title mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.top.equalTo(@(padding.top));
-		make.left.equalTo(self.minusButton.mas_right).with.offset(10);
+		make.left.equalTo(self.minusButton.mas_right).with.offset(self.separatorInset.left + 1);
 	}];
 	[self.price mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.baseline.equalTo(self.title);
