@@ -336,8 +336,8 @@ static void * kOrderItemQuantityContext = &kOrderItemQuantityContext;
 	}];
 	[self.deleteButton mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.left.equalTo(self.contentView.mas_right);
-		make.top.equalTo(self.contentView);
-		make.bottom.equalTo(self.contentView);
+		make.centerY.equalTo(self.contentView);
+		make.height.equalTo(@32);
 	}];
 }
 
