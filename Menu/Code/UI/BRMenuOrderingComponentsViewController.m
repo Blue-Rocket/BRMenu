@@ -116,6 +116,15 @@ NSString * const BRMenuOrderingReviewOrderItemSegue = @"ReviewOrderItem";
 	return result;
 }
 
+- (BOOL)canAddToOrder {
+	NSError *error = nil;
+	BOOL result = [flowController canAddItemToOrder:&error];
+	if ( !result ) {
+		[[[UIAlertView alloc] initWithTitle:nil message:[error localizedDescription] delegate:nil cancelButtonTitle:[NSBundle localizedBRMenuString:@"menu.action.ok"] otherButtonTitles:nil] show];
+	}
+	return result;
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ( [segue.identifier isEqualToString:BRMenuOrderingReviewOrderItemSegue] ) {
 		BRMenuOrderingItemDetailsViewController *dest = (BRMenuOrderingItemDetailsViewController *)segue.destinationViewController;
@@ -149,6 +158,9 @@ NSString * const BRMenuOrderingReviewOrderItemSegue = @"ReviewOrderItem";
 }
 
 - (IBAction)addOrderItemToActiveOrder:(id)sender {
+	if ( [self canAddToOrder] == NO ) {
+		return;
+	}
 	[self.orderingDelegate addOrderItemToActiveOrder:flowController.orderItem];
 }
 
