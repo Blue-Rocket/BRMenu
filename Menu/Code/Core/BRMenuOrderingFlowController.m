@@ -157,6 +157,10 @@
 	return result;
 }
 
+- (BOOL)canAddItemToOrder:(NSError * __autoreleasing *)error {
+	return [self canGotoNextStep:error];
+}
+
 - (BOOL)canGotoNextStep:(NSError * __autoreleasing *)error {
 	for ( BRMenuItemComponentGroup *group in [self menuItemComponentGroupsForStep:flowStep] ) {
 		if ( group.requiredCount < 1 ) {

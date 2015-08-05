@@ -134,6 +134,14 @@ typedef enum : NSInteger {
 - (BOOL)canGotoNextStep:(NSError * __autoreleasing *)error;
 
 /**
+ Test if based on the current conditions the user should be allowed to add the active item to an order.
+ 
+ @param error An error pointer to obtain the reason for any failure. Pass @c nil if not needed.
+ @return Flag indicating the navigation validation result.
+ */
+- (BOOL)canAddItemToOrder:(NSError * __autoreleasing *)error;
+
+/**
  Get a new controller instance for the next step;
  
  @return The new controller instance, or @c nil if not appropriate.

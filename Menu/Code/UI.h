@@ -28,6 +28,8 @@
 #import <MenuKit/UI/BRMenuOrderItemComponentDetailsView.h>
 #import <MenuKit/UI/BRMenuOrderItemDetailsView.h>
 #import <MenuKit/UI/BRMenuOrderItemPlacementDetailsView.h>
+#import <MenuKit/UI/BRMenuOrderReviewCell.h>
+#import <MenuKit/UI/BRMenuOrderReviewViewController.h>
 #import <MenuKit/UI/BRMenuPlusMinusButton.h>
 #import <MenuKit/UI/BRMenuStepper.h>
 #import <MenuKit/UI/BRMenuTagGridView.h>

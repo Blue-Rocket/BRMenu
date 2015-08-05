@@ -130,7 +130,6 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-	BRMenuItemObjectCell *cell = (BRMenuItemObjectCell *)[self.tableView cellForRowAtIndexPath:[self.tableView indexPathForSelectedRow]];
 	if ( [[segue identifier] isEqualToString:BRMenuOrderingConfigureComponentsSegue] ) {
 		BRMenuOrderingComponentsViewController *dest = [segue destinationViewController] ;
 		dest.flowController = [flowController flowControllerForItemAtIndexPath:[self.tableView indexPathForSelectedRow]];

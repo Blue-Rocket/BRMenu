@@ -20,6 +20,7 @@
 #import <MenuKit/Core/BRMenuMetadata.h>
 #import <MenuKit/Core/BRMenuModelPropertyEditor.h>
 #import <MenuKit/Core/BRMenuOrder+Encoding.h>
+#import <MenuKit/Core/BRMenuOrderGroupsController.h>
 #import <MenuKit/Core/BRMenuOrder.h>
 #import <MenuKit/Core/BRMenuOrderingDelegate.h>
 #import <MenuKit/Core/BRMenuOrderingFlowController.h>
