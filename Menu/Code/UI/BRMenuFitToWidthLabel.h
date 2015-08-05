@@ -10,4 +10,7 @@
 
 @interface BRMenuFitToWidthLabel : UILabel
 
+/** Flag to disable the automatic adjustment of @c preferredMaxLayoutWidth. */
+@property (nonatomic, assign, getter=isDisableAutoAdjustMaxLayoutWidth) BOOL disableAutoAdjustMaxLayoutWidth;
+
 @end
