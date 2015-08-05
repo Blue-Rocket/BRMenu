@@ -12,6 +12,8 @@
 #import "BRMenuFitToWidthLabel.h"
 #import "BRMenuFlipToggleButton.h"
 #import "BRMenuItem.h"
+#import "BRMenuItemComponent.h"
+#import "BRMenuOrderItemComponent.h"
 #import "BRMenuItemGroup.h"
 #import "BRMenuOrderItem.h"
 #import "BRMenuPlusMinusButton.h"
@@ -95,8 +97,24 @@ static const CGFloat kPlusMinusWidth = 40;
 
 - (void)refreshForItem:(id<BRMenuItemObject>)item {
 	[super refreshForItem:item];
+	[self refreshDescription];
 	[self refreshQuantity];
 	[self refreshPrice];
+}
+
+- (void)refreshDescription {
+	if ( [orderItem.components count] > 0 ) {
+		NSMutableString *buf = [NSMutableString stringWithCapacity:64];
+		for ( BRMenuOrderItemComponent *orderComponent in orderItem.components ) {
+			if ( [buf length] > 0 ) {
+				[buf appendString:@", "];
+			}
+			[buf appendString:orderComponent.component.title];
+		}
+		self.desc.text = buf;
+	} else {
+		self.desc.text = self.item.desc;
+	}
 }
 
 - (void)refreshQuantity {
@@ -126,6 +144,8 @@ static const CGFloat kPlusMinusWidth = 40;
 	[super refreshStyle:style];
 	self.title.font = style.listFont;
 	self.title.textColor = self.uiStyle.textColor;
+	self.desc.font = style.listCaptionFont;
+	self.desc.textColor = style.captionColor;
 	self.quantity.font = style.listSecondaryFont;
 	self.quantity.textColor = style.appPrimaryColor;
 }
