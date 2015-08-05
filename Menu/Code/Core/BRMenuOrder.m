@@ -28,6 +28,10 @@ static void * kOrderItemPriceContext = &kOrderItemPriceContext;
 	return [NSSet setWithObject:NSStringFromSelector(@selector(orderItems))];
 }
 
++ (NSSet *)keyPathsForValuesAffectingTotalPrice {
+	return [NSSet setWithObject:NSStringFromSelector(@selector(orderItems))];
+}
+
 - (id)init {
 	if ( (self = [super init]) ) {
 		menus = [[NSMutableOrderedSet alloc] initWithCapacity:4];
