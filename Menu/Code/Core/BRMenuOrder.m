@@ -14,6 +14,8 @@
 #import "BRMenuOrderItem.h"
 #import "BRMenuOrderItemAttributesProxy.h"
 
+static void * kOrderItemPriceContext = &kOrderItemPriceContext;
+
 @implementation BRMenuOrder {
 	NSMutableArray *orderItems;
 	NSMutableOrderedSet *menus;
@@ -23,7 +25,7 @@
 @synthesize menus;
 
 + (NSSet *)keyPathsForValuesAffectingOrderItemCount {
-	return [NSSet setWithObject:@"orderItems"];
+	return [NSSet setWithObject:NSStringFromSelector(@selector(orderItems))];
 }
 
 - (id)init {
@@ -38,14 +40,27 @@
 		self.menu = order.menu;
 		self.orderNumber = NSNotFound;
 		self.name = order.name;
-		orderItems = [order.orderItems mutableCopy];
+		[self replaceOrderItems:order.orderItems]; // handles KVO
 		menus = [order.menus mutableCopy];
 	}
 	return self;
 }
 
+- (void)dealloc {
+	[self removeOrderItemsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, orderItems.count)]]; // release KVO
+}
+
 - (id)copyWithZone:(NSZone *)zone {
 	return [[BRMenuOrder alloc] initWithOrder:self];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+	if ( context == kOrderItemPriceContext ) {
+		[self willChangeValueForKey:NSStringFromSelector(@selector(totalPrice))];
+		[self didChangeValueForKey:NSStringFromSelector(@selector(totalPrice))];
+	} else {
+		return [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+	}
 }
 
 #pragma mark - KVC support for orderItems array
@@ -57,11 +72,13 @@
 		// (i.e. when multiple menus are supported) all menu items will lose their ref to their menu
 		[menus addObject:item.item.menu];
 	}
+	[item addObserver:self forKeyPath:NSStringFromSelector(@selector(price)) options:NSKeyValueObservingOptionNew context:kOrderItemPriceContext];
 }
 
 - (void)insertOrderItems:(NSArray *)array atIndexes:(NSIndexSet *)indexes {
 	[orderItems insertObjects:array atIndexes:indexes];
-	for ( BRMenuOrderItem *orderItem in orderItems ) {
+	for ( BRMenuOrderItem *orderItem in array ) {
+		[orderItem addObserver:self forKeyPath:NSStringFromSelector(@selector(price)) options:NSKeyValueObservingOptionNew context:kOrderItemPriceContext];
 		if ( orderItem.item.menu && ![menus containsObject:orderItem.item.menu] ) {
 			[menus addObject:orderItem.item.menu];
 		}
@@ -69,10 +86,14 @@
 }
 
 - (void)removeObjectFromOrderItemsAtIndex:(NSUInteger)index {
+	[orderItems[index] removeObserver:self forKeyPath:NSStringFromSelector(@selector(price)) context:kOrderItemPriceContext];
 	[orderItems removeObjectAtIndex:index];
 }
 
 - (void)removeOrderItemsAtIndexes:(NSIndexSet *)indexes {
+	[orderItems enumerateObjectsAtIndexes:indexes options:0 usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+		[obj removeObserver:self forKeyPath:NSStringFromSelector(@selector(price)) context:kOrderItemPriceContext];
+	}];
 	[orderItems removeObjectsAtIndexes:indexes];
 }
 
@@ -80,9 +101,9 @@
 
 - (void)addOrderItem:(BRMenuOrderItem *)item {
 	if ( orderItems == nil ) {
-		[self willChangeValueForKey:@"orderItems"];
+		[self willChangeValueForKey:NSStringFromSelector(@selector(orderItems))];
 		orderItems = [[NSMutableArray alloc] initWithCapacity:5];
-		[self didChangeValueForKey:@"orderItems"];
+		[self didChangeValueForKey:NSStringFromSelector(@selector(orderItems))];
 	}
 	[self insertObject:item inOrderItemsAtIndex:orderItems.count];
 }
@@ -118,9 +139,9 @@
 	[self removeOrderItemsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, orderItems.count)]];
 	if ( newOrderItems != nil ) {
 		if ( orderItems == nil ) {
-			[self willChangeValueForKey:@"orderItems"];
+			[self willChangeValueForKey:NSStringFromSelector(@selector(orderItems))];
 			orderItems = [[NSMutableArray alloc] initWithCapacity:5];
-			[self didChangeValueForKey:@"orderItems"];
+			[self didChangeValueForKey:NSStringFromSelector(@selector(orderItems))];
 		}
 		NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange(orderItems.count, newOrderItems.count)];
 		[self insertOrderItems:newOrderItems atIndexes:indexSet];
@@ -138,11 +159,9 @@
 - (NSDecimalNumber *)totalPrice {
 	NSDecimalNumber *total = [NSDecimalNumber decimalNumberWithMantissa:0 exponent:0 isNegative:NO];
 	for ( BRMenuOrderItem *item in orderItems ) {
-		NSDecimalNumber *itemQuantity = [NSDecimalNumber decimalNumberWithMantissa:item.quantity exponent:0 isNegative:NO];
-		NSDecimalNumber *itemPrice = (item.item.price != nil ? item.item.price : item.item.group.price);
+		NSDecimalNumber *itemPrice = item.price;
 		if ( itemPrice != nil ) {
-			NSDecimalNumber *itemTotal = [itemPrice decimalNumberByMultiplyingBy:itemQuantity];
-			total = [total decimalNumberByAdding:itemTotal];
+			total = [total decimalNumberByAdding:itemPrice];
 		}
 	}
 	return total;

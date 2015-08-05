@@ -24,6 +24,10 @@ NSString * const BRMenuOrderItemDefaultGroupKey = @"default";
 
 @synthesize attributes, components;
 
++ (NSSet *)keyPathsForValuesAffectingPrice {
+	return [NSSet setWithObject:NSStringFromSelector(@selector(quantity))];
+}
+
 - (id)init {
 	if ( (self = [super init]) ) {
 		self.quantity = (UInt8)1;
@@ -65,6 +69,12 @@ NSString * const BRMenuOrderItemDefaultGroupKey = @"default";
 
 - (id)copyWithZone:(NSZone *)zone {
 	return [[BRMenuOrderItem alloc] initWithOrderItem:self];
+}
+
+- (NSDecimalNumber *)price {
+	NSDecimalNumber *itemQuantity = [NSDecimalNumber decimalNumberWithMantissa:self.quantity exponent:0 isNegative:NO];
+	NSDecimalNumber *itemPrice = (self.item.price != nil ? self.item.price : self.item.group.price);
+	return (itemPrice ? [itemPrice decimalNumberByMultiplyingBy:itemQuantity] : nil);
 }
 
 - (void)setTakeAway:(BOOL)takeAway {

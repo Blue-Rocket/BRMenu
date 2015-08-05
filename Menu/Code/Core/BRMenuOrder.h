@@ -30,6 +30,9 @@
  */
 @property (nonatomic, strong, readonly) NSOrderedSet *menus;
 
+/** The sum total of all items in the order, accounting for quantities. */
+@property (nonatomic, readonly) NSDecimalNumber *totalPrice;
+
 // add a single BRMenuOrderItem to the order
 - (void)addOrderItem:(BRMenuOrderItem *)item;
 
@@ -48,9 +51,6 @@
 // remove any existing BRMenuOrderItems and then add any provided BRMenuOrderItems; newOrderItems can be
 // nil or empty to simply remove all BRMenuOrderItems from the BRMenuOrder
 - (void)replaceOrderItems:(NSArray *)newOrderItems;
-
-// the sum total of all items in the order, accounting for quantities
-- (NSDecimalNumber *)totalPrice;
 
 /**
  Get an array of arrays of @ref BRMenuOrderItem objects, grouped by the @ref BRMenu instances referenced

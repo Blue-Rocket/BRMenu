@@ -33,6 +33,9 @@ extern NSString * const BRMenuOrderItemDefaultGroupKey;
 @property (nonatomic, readonly) NSArray *attributes; // BRMenuOrderItemAttributes
 @property (nonatomic, readonly) NSArray *components; // BRMenuOrderItemComponent
 
+/** The calculated price, based on the @ref BRMenuItem @c price and the receiver's @c quantity. */
+@property (nonatomic, readonly) NSDecimalNumber *price;
+
 - (id)init; // designated initializer
 - (id)initWithMenuItem:(BRMenuItem *)menuItem;
 - (id)initWithOrderItem:(BRMenuOrderItem *)other; // a copy initializer
