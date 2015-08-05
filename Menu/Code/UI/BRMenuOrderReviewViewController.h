@@ -10,6 +10,7 @@
 
 #import "BRMenuUIStyle.h"
 
+@class BRMenuBarButtonItemView;
 @class BRMenuOrder;
 
 extern NSString * const BRMenuOrderReviewOrderItemCellIdentifier;
@@ -25,6 +26,9 @@ extern NSString * const BRMenuOrderReviewGroupHeaderCellIdentifier;
 
 /** A button that toggles between editing and normal states. */
 @property (nonatomic, strong) IBOutlet id editButton;
+
+/** A button that displays the order total price as the badge text. */
+@property (strong, nonatomic) IBOutlet BRMenuBarButtonItemView *checkoutTotalButton;
 
 /** The order to display the items for. */
 @property (nonatomic, strong) BRMenuOrder *order;

@@ -21,12 +21,15 @@
 #import "BRMenuPlusMinusButton.h"
 #import "BRMenuUIStylishHost.h"
 #import "NSBundle+BRMenu.h"
+#import "NSNumberFormatter+BRMenu.h"
 #import "UIBarButtonItem+BRMenu.h"
 #import "UIView+BRMenuUIStyle.h"
 #import "UIViewController+BRMenuUIStyle.h"
 
 NSString * const BRMenuOrderReviewOrderItemCellIdentifier = @"OrderItemCell";
 NSString * const BRMenuOrderReviewGroupHeaderCellIdentifier = @"GroupHeaderCell";
+
+static void * kOrderTotalPriceContext = &kOrderTotalPriceContext;
 
 @interface BRMenuOrderReviewViewController () <BRMenuUIStylishHost>
 
@@ -41,6 +44,10 @@ NSString * const BRMenuOrderReviewGroupHeaderCellIdentifier = @"GroupHeaderCell"
 @dynamic uiStyle;
 @synthesize order;
 @synthesize groupKeyMapping;
+
+- (void)dealloc {
+	[self setOrder:nil]; // release KVO
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -91,6 +98,8 @@ NSString * const BRMenuOrderReviewGroupHeaderCellIdentifier = @"GroupHeaderCell"
 	if ( [self.editButton respondsToSelector:@selector(setEnabled:)] ) {
 		[(UIControl *)self.editButton setEnabled:([groupsController numberOfSections] > 0)];
 	}
+	self.checkoutTotalButton.badgeText = [[NSNumberFormatter standardBRMenuPriceFormatter] stringFromNumber:order.totalPrice];
+	[self.checkoutTotalButton sizeToFit];
 }
 
 - (void)uiStyleDidChange:(BRMenuUIStyle *)style {
@@ -102,14 +111,28 @@ NSString * const BRMenuOrderReviewGroupHeaderCellIdentifier = @"GroupHeaderCell"
 	self.tableView.backgroundColor = style.appBodyColor;
 }
 
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+	if ( context == kOrderTotalPriceContext ) {
+		[self refreshFromModel];
+	} else {
+		return [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+	}
+}
+
 #pragma mark - Accessors 
 
 - (void)setOrder:(BRMenuOrder *)theOrder {
 	if ( theOrder == order ) {
 		return;
 	}
+	if ( order ) {
+		[order removeObserver:self forKeyPath:NSStringFromSelector(@selector(totalPrice)) context:kOrderTotalPriceContext];
+	}
 	order = theOrder;
-	[self refresh];
+	if ( theOrder ) {
+		[theOrder addObserver:self forKeyPath:NSStringFromSelector(@selector(totalPrice)) options:NSKeyValueObservingOptionNew context:kOrderTotalPriceContext];
+		[self refresh];
+	}
 }
 
 - (void)setGroupKeyMapping:(NSDictionary *)mapping {
