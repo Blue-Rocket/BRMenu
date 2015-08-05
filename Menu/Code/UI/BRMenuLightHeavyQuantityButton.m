@@ -66,7 +66,7 @@
 }
 
 - (void)setPropertyEditorValue:(id)value {
-	quantity = [value intValue];
+	[self setQuantity:[value intValue] animated:NO];
 }
 
 #pragma mark - Internal API

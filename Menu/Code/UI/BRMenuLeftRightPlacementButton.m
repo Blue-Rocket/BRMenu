@@ -66,7 +66,7 @@
 }
 
 - (void)setPropertyEditorValue:(id)value {
-	placement = [value intValue];
+	[self setPlacement:[value intValue] animated:NO];
 }
 
 #pragma mark - Internal API

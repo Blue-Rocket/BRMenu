@@ -29,6 +29,11 @@
 	self.item = component;
 }
 
+- (void)prepareForReuse {
+	[super prepareForReuse];
+	[self configureForOrderItemComponent:nil];
+}
+
 - (void)configureForOrderItemComponent:(BRMenuOrderItemComponent *)orderComponent {
 	NSMutableArray *buttons = [[NSMutableArray alloc] initWithCapacity:2];
 	if ( self.placementButton ) {
