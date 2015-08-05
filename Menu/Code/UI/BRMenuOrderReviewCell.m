@@ -22,10 +22,6 @@ static const CGFloat kPlusMinusWidth = 40;
 
 @implementation BRMenuOrderReviewCell {
 	BRMenuOrderItem *orderItem;
-	
-	MASConstraint *minusLeftConstraint;
-	MASConstraint *plusRightConstraint;
-	MASConstraint *takeAwayLeftConstraint;
 }
 
 @synthesize orderItem;
@@ -51,6 +47,47 @@ static const CGFloat kPlusMinusWidth = 40;
 	// we force this to None; superclass tries to adjust this
 	if ( self.accessoryType != UITableViewCellAccessoryNone ) {
 		[super setAccessoryType:UITableViewCellAccessoryNone];
+	}
+}
+
+#pragma mark - Editing
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+	[super setEditing:editing animated:animated];
+
+	// slide the minus button in from the left
+	[self.minusButton mas_updateConstraints:^(MASConstraintMaker *make) {
+		make.left.equalTo(self.contentView).with.offset(editing ? 0 : -kPlusMinusWidth);
+	}];
+	
+	// slide the plus button in from the right
+	[self.plusButton mas_updateConstraints:^(MASConstraintMaker *make) {
+		make.right.equalTo(self.contentView).with.offset(editing ? 0 : kPlusMinusWidth);
+	}];
+	
+	// tighten up spacing between minus button and title
+	[self.title mas_updateConstraints:^(MASConstraintMaker *make) {
+		make.left.equalTo(self.minusButton.mas_right).with.offset(editing ? 5 : self.separatorInset.left + 1);
+	}];
+	
+	// tighten up spacing between plus button and price
+	[self.price mas_updateConstraints:^(MASConstraintMaker *make) {
+		make.right.equalTo(self.plusButton.mas_left).with.offset(editing ? -5 : -10);
+	}];
+	
+	self.title.lineBreakMode = (editing ? NSLineBreakByTruncatingTail : NSLineBreakByWordWrapping);
+	self.desc.lineBreakMode = (editing ? NSLineBreakByTruncatingTail : NSLineBreakByWordWrapping);
+	
+	[self setNeedsLayout];
+	/*
+	if ( editing == NO && [self isDeleteState] ) {
+		[self leaveDeleteState];
+	}
+	 */
+	if ( animated ) {
+		[UIView animateWithDuration:0.3 animations:^{
+			[self layoutIfNeeded];
+		}];
 	}
 }
 
@@ -153,7 +190,7 @@ static const CGFloat kPlusMinusWidth = 40;
 		make.width.equalTo(@(kPlusMinusWidth));
 		make.top.equalTo(self.contentView);
 		make.bottom.equalTo(self.contentView);
-		minusLeftConstraint = make.left.equalTo(self.contentView).with.offset(-kPlusMinusWidth);
+		make.left.equalTo(self.contentView).with.offset(-kPlusMinusWidth);
 	}];
 	[self.title mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.top.equalTo(@(padding.top));
@@ -161,13 +198,13 @@ static const CGFloat kPlusMinusWidth = 40;
 	}];
 	[self.price mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.baseline.equalTo(self.title);
+		make.right.equalTo(self.plusButton.mas_left).with.offset(-10);
 	}];
 	[self.plusButton mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.width.equalTo(@(kPlusMinusWidth));
 		make.top.equalTo(self.contentView);
 		make.bottom.equalTo(self.contentView);
-		plusRightConstraint = make.right.equalTo(self.contentView).with.offset(kPlusMinusWidth);
-		make.left.equalTo(self.price.mas_right).with.offset(10);
+		make.right.equalTo(self.contentView).with.offset(kPlusMinusWidth);
 	}];
 	[self.desc mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.top.equalTo(self.title.mas_bottom).with.offset(2);
@@ -178,6 +215,7 @@ static const CGFloat kPlusMinusWidth = 40;
 }
 
 - (void)updateConstraints {
+	const BOOL editing = self.editing;
 	if ( self.orderItem.item.askTakeaway ) {
 		self.quantity.hidden = YES;
 		[self.quantity mas_remakeConstraints:^(MASConstraintMaker *make) {
