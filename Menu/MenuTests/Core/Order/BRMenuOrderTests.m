@@ -15,6 +15,7 @@
 #import "BRMenuItem.h"
 #import "BRMenuItemComponent.h"
 #import "BRMenuItemComponentGroup.h"
+#import "BRMenuItemGroup.h"
 #import "BRMenuMappingPostProcessor.h"
 #import "BRMenuMappingRestKit.h"
 #import "BRMenuOrder+Encoding.h"
@@ -250,6 +251,112 @@
 	assertThat(copy, notNilValue());
 	assertThat(copy.orderItems, equalTo(order.orderItems));
 	assertThat(copy.menus, equalTo(order.menus));
+}
+
+- (void)testOrderedGroupsWithoutMapping {
+	BRMenu *pizzaMenu = [self testMenu];
+	
+	BRMenuOrder *order = [BRMenuOrder new];
+	order.name = @"Test Name";
+	order.orderNumber = 1;
+	
+	BRMenuItem *dessert = [pizzaMenu menuItemForKey:@"dessert-pizza"];
+	assertThat(dessert, notNilValue());
+	BRMenuOrderItem *dessertOrderItem = [[BRMenuOrderItem alloc] initWithMenuItem:dessert];
+	dessertOrderItem.quantity = 1;
+	[order addOrderItem:dessertOrderItem];
+	
+	BRMenuItem *pizza = [pizzaMenu menuItemForKey:@"pizza"];
+	BRMenuOrderItem *pizzaOrderItem = [[BRMenuOrderItem alloc] initWithMenuItem:pizza];
+	pizzaOrderItem.quantity = 1;
+	[order addOrderItem:pizzaOrderItem];
+	
+	BRMenuItem *salad = [[pizzaMenu menuItemGroupForKey:@"salad"].items firstObject];
+	assertThat(salad, notNilValue());
+	BRMenuOrderItem *saladOrderItem = [[BRMenuOrderItem alloc] initWithMenuItem:salad];
+	saladOrderItem.quantity = 1;
+	[order addOrderItem:saladOrderItem];
+	
+	BRMenuItem *pizzaPlus = [pizzaMenu menuItemForKey:@"pizza+"];
+	assertThat(pizzaPlus, notNilValue());
+	BRMenuOrderItem *pizzaPlusOrderItem = [[BRMenuOrderItem alloc] initWithMenuItem:pizzaPlus];
+	pizzaPlusOrderItem.quantity = 1;
+	[order addOrderItem:pizzaPlusOrderItem];
+	
+	// ok, we have 4 items in order, lets generate those groups
+	NSArray *groups = [order orderedGroups:nil];
+	
+	// we expect pizza, pizza+, salad, desert groups
+	assertThat(groups, hasCountOf(4));
+	NSUInteger i = 0;
+	for ( NSArray *rows in groups ) {
+		if ( i == 0 ) {
+			assertThat(rows, hasCountOf(1));
+			assertThat(rows[0], equalTo(pizzaOrderItem));
+		} else if ( i == 1 ) {
+			assertThat(rows, hasCountOf(1));
+			assertThat(rows[0], equalTo(pizzaPlusOrderItem));
+		} else if ( i == 2 ) {
+			assertThat(rows, hasCountOf(1));
+			assertThat(rows[0], equalTo(saladOrderItem));
+		} else {
+			assertThat(rows, hasCountOf(1));
+			assertThat(rows[0], equalTo(dessertOrderItem));
+		}
+		i++;
+	}
+}
+
+- (void)testOrderedGroupsWithMapping {
+	BRMenu *pizzaMenu = [self testMenu];
+
+	BRMenuOrder *order = [BRMenuOrder new];
+	order.name = @"Test Name";
+	order.orderNumber = 1;
+	
+	BRMenuItem *dessert = [pizzaMenu menuItemForKey:@"dessert-pizza"];
+	assertThat(dessert, notNilValue());
+	BRMenuOrderItem *dessertOrderItem = [[BRMenuOrderItem alloc] initWithMenuItem:dessert];
+	dessertOrderItem.quantity = 1;
+	[order addOrderItem:dessertOrderItem];
+	
+	BRMenuItem *pizza = [pizzaMenu menuItemForKey:@"pizza"];
+	BRMenuOrderItem *pizzaOrderItem = [[BRMenuOrderItem alloc] initWithMenuItem:pizza];
+	pizzaOrderItem.quantity = 1;
+	[order addOrderItem:pizzaOrderItem];
+	
+	BRMenuItem *salad = [[pizzaMenu menuItemGroupForKey:@"salad"].items firstObject];
+	assertThat(salad, notNilValue());
+	BRMenuOrderItem *saladOrderItem = [[BRMenuOrderItem alloc] initWithMenuItem:salad];
+	saladOrderItem.quantity = 1;
+	[order addOrderItem:saladOrderItem];
+	
+	BRMenuItem *pizzaPlus = [pizzaMenu menuItemForKey:@"pizza+"];
+	assertThat(pizzaPlus, notNilValue());
+	BRMenuOrderItem *pizzaPlusOrderItem = [[BRMenuOrderItem alloc] initWithMenuItem:pizzaPlus];
+	pizzaPlusOrderItem.quantity = 1;
+	[order addOrderItem:pizzaPlusOrderItem];
+	
+	// ok, we have 4 items in order, lets generate those groups
+	NSArray *groups = [order orderedGroups:@{@"pizza+" : @"pizza"}];
+	
+	// we expect pizza salad, desert groups
+	assertThat(groups, hasCountOf(3));
+	NSUInteger i = 0;
+	for ( NSArray *rows in groups ) {
+		if ( i == 0 ) {
+			assertThat(rows, hasCountOf(2));
+			assertThat(rows[0], equalTo(pizzaOrderItem));
+			assertThat(rows[1], equalTo(pizzaPlusOrderItem));
+		} else if ( i == 1 ) {
+			assertThat(rows, hasCountOf(1));
+			assertThat(rows[0], equalTo(saladOrderItem));
+		} else {
+			assertThat(rows, hasCountOf(1));
+			assertThat(rows[0], equalTo(dessertOrderItem));
+		}
+		i++;
+	}
 }
 
 @end
