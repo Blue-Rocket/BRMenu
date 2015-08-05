@@ -35,6 +35,15 @@
 // get the BRMenuItemComponentGroup for the given key, or nil if not found
 - (BRMenuItemComponentGroup *)menuItemComponentGroupForKey:(NSString *)key;
 
+/**
+ Get an ordering index for a given group key. Note this may not correlate directly to an index
+ from the @c groups array. It should only be used for sorting operations.
+ 
+ @param key The group key to get an ordering index for.
+ @return An ordering index.
+ */
+- (NSInteger)groupOrderingIndexForKey:(NSString *)key;
+
 // get a BRMenuItemGroup for the given key, or nil if not found
 - (BRMenuItemGroup *)menuItemGroupForKey:(NSString *)key;
 

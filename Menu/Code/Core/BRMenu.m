@@ -19,6 +19,14 @@
 	return (object == self || ([object isKindOfClass:[BRMenu class]] && [self.key isEqualToString:[object key]]));
 }
 
+- (NSInteger)groupOrderingIndexForKey:(NSString *)key {
+	NSUInteger idx = [self.groups indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+		BRMenuItemGroup *group = obj;
+		return [group.key isEqualToString:key];
+	}];
+	return (idx == NSNotFound ? -1 : idx);
+}
+
 - (void)enumerateMenuItemsUsingBlock:(void (^)(BRMenuItem *menuItem, NSUInteger idx, BOOL *stop))block {
 	__block NSUInteger index = 0;
 	BOOL stop = NO;
