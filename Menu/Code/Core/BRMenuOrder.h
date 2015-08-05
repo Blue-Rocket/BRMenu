@@ -28,7 +28,7 @@
  A set of all menus used within the order. The property will reflect all the menus used by any item added
  to the receiver, for example via @ref addOrderItem: or @ref replaceOrderItems:.
  */
-@property (nonatomic, strong, readonly) NSSet *menus;
+@property (nonatomic, strong, readonly) NSOrderedSet *menus;
 
 // add a single BRMenuOrderItem to the order
 - (void)addOrderItem:(BRMenuOrderItem *)item;

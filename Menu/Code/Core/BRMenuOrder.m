@@ -16,7 +16,7 @@
 
 @implementation BRMenuOrder {
 	NSMutableArray *orderItems;
-	NSMutableSet *menus;
+	NSMutableOrderedSet *menus;
 }
 
 @synthesize orderItems;
@@ -28,7 +28,7 @@
 
 - (id)init {
 	if ( (self = [super init]) ) {
-		menus = [[NSMutableSet alloc] initWithCapacity:4];
+		menus = [[NSMutableOrderedSet alloc] initWithCapacity:4];
 	}
 	return self;
 }
