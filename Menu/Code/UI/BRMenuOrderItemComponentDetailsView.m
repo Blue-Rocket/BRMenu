@@ -57,6 +57,7 @@
 	
 	if ( !self.quantity ) {
 		BRMenuLightHeavyQuantityButton *quantity = [[BRMenuLightHeavyQuantityButton alloc] initWithFrame:CGRectZero];
+		[quantity setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
 		quantity.diameter = floorf(self.title.font.capHeight);
 		quantity.cornerRadius = quantity.diameter / 2;
 		quantity.enabled = NO;
