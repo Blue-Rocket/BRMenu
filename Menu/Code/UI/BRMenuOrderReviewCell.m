@@ -21,6 +21,8 @@
 #import "NSBundle+BRMenu.h"
 #import "NSNumberFormatter+BRMenu.h"
 
+#define Deg2Rad(degrees) (degrees * M_PI / 180.0)
+
 static const CGFloat kPlusMinusWidth = 40;
 static void * kOrderItemQuantityContext = &kOrderItemQuantityContext;
 
@@ -75,7 +77,7 @@ static void * kOrderItemQuantityContext = &kOrderItemQuantityContext;
 
 - (void)prepareForReuse {
 	[super prepareForReuse];
-	self.minusButton.selected = NO;
+	[self leaveDeleteState:NO];
 }
 
 #pragma mark - Editing
@@ -127,7 +129,7 @@ static void * kOrderItemQuantityContext = &kOrderItemQuantityContext;
 }
 
 - (BOOL)isDeleteState {
-	return (self.minusButton.selected == YES);
+	return (self.minusButton.destructive == YES);
 }
 
 - (void)leaveDeleteState:(BOOL)animated {
@@ -140,6 +142,8 @@ static void * kOrderItemQuantityContext = &kOrderItemQuantityContext;
 	[self setNeedsLayout];
 	
 	void (^actions)(void) = ^{
+		self.minusButton.destructive = NO;
+		self.minusButton.transform = CGAffineTransformIdentity;
 		self.price.alpha = 1;
 		self.quantity.alpha = 1;
 		self.plusButton.alpha = 1;
@@ -167,6 +171,8 @@ static void * kOrderItemQuantityContext = &kOrderItemQuantityContext;
 	[self setNeedsLayout];
 	
 	void (^actions)(void) = ^{
+		self.minusButton.destructive = YES;
+		self.minusButton.transform = CGAffineTransformMakeRotation(Deg2Rad(-90));
 		self.price.alpha = 0;
 		self.quantity.alpha = 0;
 		self.plusButton.alpha = 0;

@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import "BRMenuUIControl.h"
 #import "BRMenuUIStyle.h"
 
 IB_DESIGNABLE
-@interface BRMenuPlusMinusButton : UIControl <BRMenuUIStylish>
+@interface BRMenuPlusMinusButton : UIControl <BRMenuUIControl, BRMenuUIStylish>
 
 @property (nonatomic, getter = isPlus) IBInspectable BOOL plus;
 
