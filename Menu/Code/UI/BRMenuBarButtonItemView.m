@@ -119,6 +119,14 @@ static const CGFloat kMinWidth = 48.0f;
 	}
 }
 
+- (void)setEnabled:(BOOL)enabled {
+	BOOL old = self.enabled;
+	[super setEnabled:enabled];
+	if ( old != enabled ) {
+		[self setNeedsDisplay];
+	}
+}
+
 - (void)setBadgeText:(NSString *)text {
 	if ( badgeText != text ) {
 		badgeText = text;
@@ -309,7 +317,8 @@ static const CGFloat kMinWidth = 48.0f;
 
 	//// Color Declarations
 	UIColor* strokeColor = (self.selected ? [self.uiStyle controlSelectedColor] : inverse ? [self.uiStyle inverseControlBorderColor] : [self.uiStyle controlBorderColor]);
-	UIColor* labelColor = (self.selected ? [self.uiStyle controlSelectedColor] : inverse || destructive ? [self.uiStyle inverseControlTextColor] : [self.uiStyle controlTextColor]);
+	UIColor* labelColor = (!self.enabled ? [self.uiStyle controlDisabledColor]
+						   : self.selected ? [self.uiStyle controlSelectedColor] : inverse || destructive ? [self.uiStyle inverseControlTextColor] : [self.uiStyle controlTextColor]);
 	UIColor* fillColor = (destructive ? [self.uiStyle controlDangerColor] : self.fillColor);
 	
 	//// Shadow Declarations
@@ -356,12 +365,15 @@ static const CGFloat kMinWidth = 48.0f;
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
 	const BOOL destructive = self.destructive;
+	const BOOL disabled = !self.enabled;
 
 	//// Color Declarations
 	UIColor* strokeColor = (inverse ? [self.uiStyle inverseControlBorderColor] : [self.uiStyle controlBorderColor]);
-	UIColor* labelColor = (inverse || destructive ? [self.uiStyle inverseControlTextColor] : [self.uiStyle controlTextColor]);
+	UIColor* labelColor = (disabled ? [self.uiStyle controlDisabledColor]
+						   : inverse || destructive ? [self.uiStyle inverseControlTextColor] : [self.uiStyle controlTextColor]);
 	UIColor* separatorColor = [strokeColor colorWithAlphaComponent: 0.8];
-	UIColor* badgeColor = (inverse || destructive ? [self.uiStyle inverseAppPrimaryColor] :  [self.uiStyle appPrimaryColor]);
+	UIColor* badgeColor = (disabled ? [self.uiStyle controlDisabledColor]
+						   : inverse || destructive ? [self.uiStyle inverseAppPrimaryColor] :  [self.uiStyle appPrimaryColor]);
 	UIColor* fillColor = (destructive ? [self.uiStyle controlDangerColor] : self.fillColor);
 	
 	//// Shadow Declarations
