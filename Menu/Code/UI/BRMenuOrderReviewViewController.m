@@ -95,11 +95,13 @@ static void * kOrderTotalPriceContext = &kOrderTotalPriceContext;
 }
 
 - (void)refreshFromModel {
+	const BOOL haveItems = ([groupsController numberOfSections] > 0);
 	if ( [self.editButton respondsToSelector:@selector(setEnabled:)] ) {
-		[(UIControl *)self.editButton setEnabled:([groupsController numberOfSections] > 0)];
+		[(UIControl *)self.editButton setEnabled:haveItems];
 	}
 	self.checkoutTotalButton.badgeText = [[NSNumberFormatter standardBRMenuPriceFormatter] stringFromNumber:order.totalPrice];
 	[self.checkoutTotalButton sizeToFit];
+	self.checkoutTotalButton.enabled = haveItems;
 }
 
 - (void)uiStyleDidChange:(BRMenuUIStyle *)style {
