@@ -49,6 +49,11 @@ NSString * const BRMenuOrderReviewGroupHeaderCellIdentifier = @"GroupHeaderCell"
 
 	[self refreshForStyle:self.uiStyle];
 	
+	if ( !self.navigationItem.leftBarButtonItem ) {
+		self.navigationItem.leftBarButtonItem = [UIBarButtonItem standardBRMenuBackButtonItemWithTitle:nil
+																								target:self
+																								action:@selector(goBack:)];
+	}
 	if ( self.navigationItem.rightBarButtonItem == nil ) {
 		UIBarButtonItem *rightItem = [UIBarButtonItem standardBRMenuBarButtonItemWithTitle:[NSBundle localizedBRMenuString:@"menu.action.edit"]
 																					target:self
@@ -100,6 +105,12 @@ NSString * const BRMenuOrderReviewGroupHeaderCellIdentifier = @"GroupHeaderCell"
 	if ( order ) {
 		[self refresh];
 	}
+}
+
+#pragma mark - Navigation support
+
+- (IBAction)goBack:(id)sender {
+	[self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Actions
