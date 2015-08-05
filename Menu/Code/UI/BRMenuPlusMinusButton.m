@@ -58,6 +58,10 @@
 
 #pragma mark - Drawing
 
+- (CGSize)intrinsicContentSize {
+	return CGSizeMake(30, 30);
+}
+
 - (void)drawPlusMinusInFrame:(CGRect)frame color:(UIColor *)labelColor {
 	//// Plus V Drawing
 	if ( self.plus ) {
