@@ -44,8 +44,8 @@ NSString * const BRMenuOrderReviewGroupHeaderCellIdentifier = @"GroupHeaderCell"
 	[self.tableView registerClass:[BRMenuOrderReviewCell class] forCellReuseIdentifier:BRMenuOrderReviewOrderItemCellIdentifier];
 	[self.tableView registerClass:[BRMenuGroupTableHeaderView class] forHeaderFooterViewReuseIdentifier:BRMenuOrderReviewGroupHeaderCellIdentifier];
 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // TODO self.navigationItem.rightBarButtonItem = self.editButtonItem;
+	[self refreshForStyle:self.uiStyle];
+
 	[self.tableView reloadData];
 }
 
@@ -61,6 +61,15 @@ NSString * const BRMenuOrderReviewGroupHeaderCellIdentifier = @"GroupHeaderCell"
 		groupsController = nil;
 	}
 	[self.tableView reloadData];
+}
+
+- (void)uiStyleDidChange:(BRMenuUIStyle *)style {
+	[self refreshForStyle:style];
+}
+
+- (void)refreshForStyle:(BRMenuUIStyle *)style {
+	self.view.backgroundColor = style.appBodyColor;
+	self.tableView.backgroundColor = style.appBodyColor;
 }
 
 #pragma mark - Accessors 
