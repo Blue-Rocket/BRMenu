@@ -244,12 +244,6 @@ static void * kOrderItemQuantityContext = &kOrderItemQuantityContext;
 	self.desc.textColor = style.captionColor;
 	self.quantity.font = style.listSecondaryFont;
 	self.quantity.textColor = style.appPrimaryColor;
-	
-	// make deleteButton a "danger" style button
-	self.deleteButton.fillColor = style.controlDangerColor;
-	BRMenuMutableUIStyle *dangerStyle = [style mutableCopy];
-	dangerStyle.controlTextColor = style.inverseControlTextColor;
-	self.deleteButton.uiStyle = dangerStyle;
 }
 
 - (void)setupSubviews {
@@ -308,7 +302,7 @@ static void * kOrderItemQuantityContext = &kOrderItemQuantityContext;
 	
 	// delete confirmation: right
 	BRMenuBarButtonItemView *d = [[BRMenuBarButtonItemView alloc] initWithTitle:[NSBundle localizedBRMenuString:@"menu.action.delete"]];
-	d.fillColor = self.uiStyle.controlDangerColor;
+	d.destructive = YES;
 	self.deleteButton = d;
 	[self.contentView addSubview:d];
 	
@@ -348,7 +342,6 @@ static void * kOrderItemQuantityContext = &kOrderItemQuantityContext;
 }
 
 - (void)updateConstraints {
-	const BOOL editing = self.editing;
 	if ( self.orderItem.item.askTakeaway ) {
 		self.quantity.hidden = YES;
 		[self.quantity mas_remakeConstraints:^(MASConstraintMaker *make) {

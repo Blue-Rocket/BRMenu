@@ -9,6 +9,7 @@
 #import "BRMenuBarButtonItemView.h"
 
 #import "BRMenuUIStylishHost.h"
+#import "UIControl+BRMenu.h"
 #import "UIView+BRMenuUIStyle.h"
 
 static const CGFloat kNormalHeight = 32.0f;
@@ -27,6 +28,7 @@ static const CGFloat kMinWidth = 48.0f;
 	BOOL inverse;
 }
 
+@dynamic destructive;
 @dynamic uiStyle;
 @synthesize badgeText, title, inverse;
 
@@ -97,6 +99,10 @@ static const CGFloat kMinWidth = 48.0f;
 	[self setNeedsDisplay];
 }
 
+- (void)controlStateDidChange:(UIControlState)state {
+	[self setNeedsDisplay];
+}
+
 - (void)setTitle:(NSString *)text {
 	if ( title != text ) {
 		title = text;
@@ -125,11 +131,14 @@ static const CGFloat kMinWidth = 48.0f;
 	//// General Declarations
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
+	const BOOL destructive = self.destructive;
+	
 	//// Color Declarations
 	UIColor* strokeColor = (inverse ? [self.uiStyle inverseControlBorderColor] : [self.uiStyle controlBorderColor]);
-	UIColor* labelColor = (inverse ? [self.uiStyle inverseControlTextColor] : [self.uiStyle controlTextColor]);
-	UIColor* insetShadowColor = (inverse ? [self.uiStyle inverseControlHighlightedShadowColor] : [self.uiStyle controlHighlightedShadowColor]);
-	UIColor* highlightedFill = (inverse ? [self.uiStyle inverseControlHighlightedColor] : [self.uiStyle controlHighlightedColor]);
+	UIColor* labelColor = (inverse || destructive ? [self.uiStyle inverseControlTextColor] : [self.uiStyle controlTextColor]);
+	UIColor* insetShadowColor = (inverse || destructive ? [self.uiStyle inverseControlHighlightedShadowColor] : [self.uiStyle controlHighlightedShadowColor]);
+	UIColor* highlightedFill = (inverse || destructive ? [self.uiStyle inverseControlHighlightedColor] : [self.uiStyle controlHighlightedColor]);
+	UIColor* fillColor = (destructive ? [self.uiStyle controlDangerColor] : self.fillColor);
 	
 	//// Shadow Declarations
 	UIColor* innerShadow = insetShadowColor;
@@ -146,8 +155,8 @@ static const CGFloat kMinWidth = 48.0f;
 	
 	//// Border Drawing
 	UIBezierPath* borderPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(CGRectGetMinX(frame) + 0.5, CGRectGetMinY(frame) + 1.5, CGRectGetWidth(frame) - 1, CGRectGetHeight(frame) - 3) cornerRadius: 3];
-	if ( self.fillColor != nil ) {
-		[self.fillColor setFill];
+	if ( fillColor != nil ) {
+		[fillColor setFill];
 		[borderPath fill];
 	}
 	[highlightedFill setFill];
@@ -201,14 +210,17 @@ static const CGFloat kMinWidth = 48.0f;
 - (void)drawHighlightedWithBadge {
 	//// General Declarations
 	CGContextRef context = UIGraphicsGetCurrentContext();
+
+	const BOOL destructive = self.destructive;
 	
 	//// Color Declarations
 	UIColor* strokeColor = (inverse ? [self.uiStyle inverseControlBorderColor] : [self.uiStyle controlBorderColor]);
-	UIColor* labelColor = (inverse ? [self.uiStyle inverseControlTextColor] : [self.uiStyle controlTextColor]);
-	UIColor* separatorColor = (inverse? strokeColor  : [strokeColor colorWithAlphaComponent:0.5]);
-	UIColor* badgeColor = (inverse ? [self.uiStyle inverseAppPrimaryColor] :  [self.uiStyle appPrimaryColor]);
-	UIColor* insetShadowColor = (inverse ? [self.uiStyle inverseControlHighlightedShadowColor] : [self.uiStyle controlHighlightedShadowColor]);
-	UIColor* highlightedFill = (inverse ? [self.uiStyle inverseControlHighlightedColor] : [self.uiStyle controlHighlightedColor]);
+	UIColor* labelColor = (inverse || destructive ? [self.uiStyle inverseControlTextColor] : [self.uiStyle controlTextColor]);
+	UIColor* separatorColor = (inverse ? strokeColor  : [strokeColor colorWithAlphaComponent:0.5]);
+	UIColor* badgeColor = (inverse || destructive ? [self.uiStyle inverseAppPrimaryColor] :  [self.uiStyle appPrimaryColor]);
+	UIColor* insetShadowColor = (inverse || destructive ? [self.uiStyle inverseControlHighlightedShadowColor] : [self.uiStyle controlHighlightedShadowColor]);
+	UIColor* highlightedFill = (inverse || destructive ? [self.uiStyle inverseControlHighlightedColor] : [self.uiStyle controlHighlightedColor]);
+	UIColor* fillColor = (destructive ? [self.uiStyle controlDangerColor] : self.fillColor);
 	
 	//// Shadow Declarations
 	UIColor* depressedShadow = insetShadowColor;
@@ -232,6 +244,10 @@ static const CGFloat kMinWidth = 48.0f;
 	
 	//// Border Drawing
 	UIBezierPath* borderPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(CGRectGetMinX(frame) + 0.5, CGRectGetMinY(frame) + 1.5, CGRectGetWidth(frame) - 1, CGRectGetHeight(frame) - 3) cornerRadius: 3];
+	if ( fillColor != nil ) {
+		[fillColor setFill];
+		[borderPath fill];
+	}
 	[highlightedFill setFill];
 	[borderPath fill];
 	
@@ -289,12 +305,15 @@ static const CGFloat kMinWidth = 48.0f;
 	//// General Declarations
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
+	const BOOL destructive = self.destructive;
+
 	//// Color Declarations
 	UIColor* strokeColor = (self.selected ? [self.uiStyle controlSelectedColor] : inverse ? [self.uiStyle inverseControlBorderColor] : [self.uiStyle controlBorderColor]);
-	UIColor* labelColor = (self.selected ? [self.uiStyle controlSelectedColor] : inverse ? [self.uiStyle inverseControlTextColor] : [self.uiStyle controlTextColor]);
+	UIColor* labelColor = (self.selected ? [self.uiStyle controlSelectedColor] : inverse || destructive ? [self.uiStyle inverseControlTextColor] : [self.uiStyle controlTextColor]);
+	UIColor* fillColor = (destructive ? [self.uiStyle controlDangerColor] : self.fillColor);
 	
 	//// Shadow Declarations
-	UIColor* shadow = (inverse ? [self.uiStyle inverseControlBorderGlossColor] : [self.uiStyle controlBorderGlossColor]);
+	UIColor* shadow = (inverse || destructive ? [self.uiStyle inverseControlBorderGlossColor] : [self.uiStyle controlBorderGlossColor]);
 	CGSize shadowOffset = CGSizeMake(0.1, 1.1);
 	CGFloat shadowBlurRadius = 0;
 	
@@ -312,8 +331,8 @@ static const CGFloat kMinWidth = 48.0f;
 	borderPath.lineWidth = 1;
 	[borderPath stroke];
 	CGContextRestoreGState(context);
-	if ( self.fillColor != nil ) {
-		[self.fillColor setFill];
+	if ( fillColor != nil ) {
+		[fillColor setFill];
 		[borderPath fill];
 	}
 	
@@ -336,14 +355,17 @@ static const CGFloat kMinWidth = 48.0f;
 	//// General Declarations
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
+	const BOOL destructive = self.destructive;
+
 	//// Color Declarations
 	UIColor* strokeColor = (inverse ? [self.uiStyle inverseControlBorderColor] : [self.uiStyle controlBorderColor]);
-	UIColor* labelColor = (inverse ? [self.uiStyle inverseControlTextColor] : [self.uiStyle controlTextColor]);
+	UIColor* labelColor = (inverse || destructive ? [self.uiStyle inverseControlTextColor] : [self.uiStyle controlTextColor]);
 	UIColor* separatorColor = [strokeColor colorWithAlphaComponent: 0.8];
-	UIColor* badgeColor = (inverse ? [self.uiStyle inverseAppPrimaryColor] :  [self.uiStyle appPrimaryColor]);
+	UIColor* badgeColor = (inverse || destructive ? [self.uiStyle inverseAppPrimaryColor] :  [self.uiStyle appPrimaryColor]);
+	UIColor* fillColor = (destructive ? [self.uiStyle controlDangerColor] : self.fillColor);
 	
 	//// Shadow Declarations
-	UIColor* shadow = (inverse ? [self.uiStyle inverseControlBorderGlossColor] : [self.uiStyle controlBorderGlossColor]);
+	UIColor* shadow = (inverse || destructive ? [self.uiStyle inverseControlBorderGlossColor] : [self.uiStyle controlBorderGlossColor]);
 	CGSize shadowOffset = CGSizeMake(0.1, 1.1);
 	CGFloat shadowBlurRadius = 0;
 	
@@ -365,6 +387,10 @@ static const CGFloat kMinWidth = 48.0f;
 	
 	//// Border Drawing
 	UIBezierPath* borderPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(CGRectGetMinX(frame) + 0.5, CGRectGetMinY(frame) + 1.5, CGRectGetWidth(frame) - 1, CGRectGetHeight(frame) - 3) cornerRadius: 3];
+	if ( fillColor != nil ) {
+		[fillColor setFill];
+		[borderPath fill];
+	}
 	CGContextSaveGState(context);
 	CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
 	[strokeColor setStroke];
