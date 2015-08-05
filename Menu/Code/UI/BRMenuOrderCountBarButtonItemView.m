@@ -57,8 +57,8 @@ static void * kOrderItemsContext = &kOrderItemsContext;
 	}
 }
 
-- (void)refreshOrderCount:(BRMenuOrder *)order {
-	self.badgeText = [NSString stringWithFormat:@"%lu", (unsigned long)[order orderItemCount]];
+- (void)refreshOrderCount:(BRMenuOrder *)theOrder {
+	self.badgeText = [NSString stringWithFormat:@"%lu", (unsigned long)[theOrder orderItemCount]];
 }
 
 @end
