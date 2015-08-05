@@ -102,6 +102,12 @@ NSString * const BRMenuOrderReviewGroupHeaderCellIdentifier = @"GroupHeaderCell"
     return [groupsController numberOfItemsInSection:section];
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+	BRMenuGroupTableHeaderView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:BRMenuOrderReviewGroupHeaderCellIdentifier];
+	header.title = [groupsController titleForSection:section];
+	return header;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     BRMenuOrderReviewCell *cell = [tableView dequeueReusableCellWithIdentifier:BRMenuOrderReviewOrderItemCellIdentifier forIndexPath:indexPath];
 	cell.orderItem = [groupsController orderItemAtIndexPath:indexPath];
