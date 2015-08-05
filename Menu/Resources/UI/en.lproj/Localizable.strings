@@ -4,6 +4,8 @@
 
 "menu.action.add" = "Add";
 "menu.action.back" = "Back";
+"menu.action.done" = "Done";
+"menu.action.edit" = "Edit";
 "menu.action.next" = "Next";
 "menu.action.ok" = "OK";
 "menu.action.review" = "Review";

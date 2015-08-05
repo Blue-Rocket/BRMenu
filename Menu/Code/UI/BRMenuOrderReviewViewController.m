@@ -8,12 +8,15 @@
 
 #import "BRMenuOrderReviewViewController.h"
 
+#import "BRMenuBarButtonItemView.h"
 #import "BRMenuGroupTableHeaderView.h"
 #import "BRMenuOrder.h"
 #import "BRMenuOrderItem.h"
 #import "BRMenuOrderGroupsController.h"
 #import "BRMenuOrderReviewCell.h"
 #import "BRMenuUIStylishHost.h"
+#import "NSBundle+BRMenu.h"
+#import "UIBarButtonItem+BRMenu.h"
 #import "UIViewController+BRMenuUIStyle.h"
 
 NSString * const BRMenuOrderReviewOrderItemCellIdentifier = @"OrderItemCell";
@@ -45,6 +48,13 @@ NSString * const BRMenuOrderReviewGroupHeaderCellIdentifier = @"GroupHeaderCell"
 	[self.tableView registerClass:[BRMenuGroupTableHeaderView class] forHeaderFooterViewReuseIdentifier:BRMenuOrderReviewGroupHeaderCellIdentifier];
 
 	[self refreshForStyle:self.uiStyle];
+	
+	if ( self.navigationItem.rightBarButtonItem == nil ) {
+		UIBarButtonItem *rightItem = [UIBarButtonItem standardBRMenuBarButtonItemWithTitle:[NSBundle localizedBRMenuString:@"menu.action.edit"]
+																					target:self
+																					action:@selector(toggleEditing:)];
+		self.navigationItem.rightBarButtonItem = rightItem;
+	}
 
 	[self.tableView reloadData];
 }
@@ -89,6 +99,18 @@ NSString * const BRMenuOrderReviewGroupHeaderCellIdentifier = @"GroupHeaderCell"
 	groupKeyMapping = mapping;
 	if ( order ) {
 		[self refresh];
+	}
+}
+
+#pragma mark - Actions
+
+- (IBAction)toggleEditing:(UIControl *)sender {
+	[self setEditing:!self.editing animated:YES];
+	if ( [sender isKindOfClass:[BRMenuBarButtonItemView class]] ) {
+		BRMenuBarButtonItemView *editingButton = (BRMenuBarButtonItemView *)sender;
+		editingButton.title = (self.editing
+							   ? [NSBundle localizedBRMenuString:@"menu.action.done"]
+							   : [NSBundle localizedBRMenuString:@"menu.action.edit"]);
 	}
 }
 
