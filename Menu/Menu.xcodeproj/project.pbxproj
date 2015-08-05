@@ -32,6 +32,7 @@
 		C9067A8C1B5CBEF5005FF260 /* BRMenuMetadataRestKitMappingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9067A8B1B5CBEF5005FF260 /* BRMenuMetadataRestKitMappingTests.m */; };
 		C9067A8E1B5CC0A1005FF260 /* menumetadata.json in Resources */ = {isa = PBXBuildFile; fileRef = C9067A8D1B5CC0A1005FF260 /* menumetadata.json */; };
 		C910EA3F1B7179B300DDAB40 /* BRMenuItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C910EA3E1B7179B300DDAB40 /* BRMenuItemTests.m */; };
+		C910EA411B71AD3600DDAB40 /* BRMenuOrderGroupsControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C910EA401B71AD3600DDAB40 /* BRMenuOrderGroupsControllerTests.m */; };
 		C92AEEF91B5F10630005AC79 /* BRMenuBarButtonItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = C92AEEF51B5F10630005AC79 /* BRMenuBarButtonItemView.m */; };
 		C92AEEFA1B5F10630005AC79 /* BRMenuBackBarButtonItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = C92AEEF71B5F10630005AC79 /* BRMenuBackBarButtonItemView.m */; };
 		C92AEEFE1B5F56D50005AC79 /* BRMenuFlipToggleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C92AEEFD1B5F56D50005AC79 /* BRMenuFlipToggleButton.m */; };
@@ -150,6 +151,7 @@
 		C9067A8B1B5CBEF5005FF260 /* BRMenuMetadataRestKitMappingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuMetadataRestKitMappingTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C9067A8D1B5CC0A1005FF260 /* menumetadata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = menumetadata.json; sourceTree = "<group>"; };
 		C910EA3E1B7179B300DDAB40 /* BRMenuItemTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuItemTests.m; sourceTree = "<group>"; };
+		C910EA401B71AD3600DDAB40 /* BRMenuOrderGroupsControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderGroupsControllerTests.m; sourceTree = "<group>"; };
 		C92AEEF51B5F10630005AC79 /* BRMenuBarButtonItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuBarButtonItemView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C92AEEF61B5F10630005AC79 /* BRMenuBackBarButtonItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuBackBarButtonItemView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C92AEEF71B5F10630005AC79 /* BRMenuBackBarButtonItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuBackBarButtonItemView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -656,6 +658,7 @@
 		C98883981B5883A60049491C /* Order */ = {
 			isa = PBXGroup;
 			children = (
+				C910EA401B71AD3600DDAB40 /* BRMenuOrderGroupsControllerTests.m */,
 				C98883991B5883A60049491C /* BRMenuOrderItemAttributesProxyTests.m */,
 				C988839A1B5883A60049491C /* BRMenuOrderItemTests.m */,
 				C9067A821B5CAF25005FF260 /* BRMenuOrderTests.m */,
@@ -950,6 +953,7 @@
 				C988839B1B5883A60049491C /* BRMenuOrderItemAttributesProxyTests.m in Sources */,
 				C9C5B0331B6F286400EA3B24 /* BRMenuUIMappingRestKitTests.m in Sources */,
 				C9067A481B5C29BA005FF260 /* BRMenuMappingPostProcessorTests.m in Sources */,
+				C910EA411B71AD3600DDAB40 /* BRMenuOrderGroupsControllerTests.m in Sources */,
 				C9067A8C1B5CBEF5005FF260 /* BRMenuMetadataRestKitMappingTests.m in Sources */,
 				C9067A701B5C69CD005FF260 /* BRMenuItemGroupRestKitMappingTests.m in Sources */,
 			);
