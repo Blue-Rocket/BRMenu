@@ -9,14 +9,20 @@
 #import "BRMenuOrderReviewViewController.h"
 
 #import "BRMenuBarButtonItemView.h"
+#import "BRMenuFlipToggleButton.h"
 #import "BRMenuGroupTableHeaderView.h"
+#import "BRMenuItem.h"
 #import "BRMenuOrder.h"
 #import "BRMenuOrderItem.h"
+#import "BRmenuOrderItemAttributes.h"
+#import "BRMenuOrderItemAttributesProxy.h"
 #import "BRMenuOrderGroupsController.h"
 #import "BRMenuOrderReviewCell.h"
+#import "BRMenuPlusMinusButton.h"
 #import "BRMenuUIStylishHost.h"
 #import "NSBundle+BRMenu.h"
 #import "UIBarButtonItem+BRMenu.h"
+#import "UIView+BRMenuUIStyle.h"
 #import "UIViewController+BRMenuUIStyle.h"
 
 NSString * const BRMenuOrderReviewOrderItemCellIdentifier = @"OrderItemCell";
@@ -125,9 +131,128 @@ NSString * const BRMenuOrderReviewGroupHeaderCellIdentifier = @"GroupHeaderCell"
 	}
 }
 
+- (IBAction)toggleTakeAway:(id)sender {
+	BRMenuOrderReviewCell *cell = [sender nearestAncestorViewOfType:[BRMenuOrderReviewCell class]];
+	if ( cell == nil ) {
+		return;
+	}
+	BRMenuOrderItem *orderItem = cell.orderItem;
+	orderItem.takeAway = !orderItem.takeAway;
+}
+
+- (IBAction)adjustQuantity:(UIControl *)sender {
+	BRMenuOrderReviewCell *cell = [sender nearestAncestorViewOfType:[BRMenuOrderReviewCell class]];
+	if ( cell == nil ) {
+		return;
+	}
+	BRMenuOrderItem *orderItem = cell.orderItem;
+	
+	if ( sender == cell.deleteButton ) {
+		[self removeOrderItem:cell];
+	} else if ( cell.orderItem.item.askTakeaway == YES && sender == cell.plusButton ) {
+		[self duplicateOrderItem:cell];
+	} else {
+		if ( sender == cell.plusButton ) {
+			if ( orderItem.quantity < 32 ) { // TODO: define constant or env prop for max
+				orderItem.quantity++;
+			}
+		} else if ( sender.selected == YES ) {
+			// cancel "delete"
+			[cell leaveDeleteState:YES];
+		} else if ( orderItem.quantity == 1 || orderItem.item.askTakeaway == YES ) {
+			// we must confirm this action; enter "delete" state
+			[cell enterDeleteState:YES];
+		} else if ( orderItem.quantity > 0 ) {
+			orderItem.quantity--;
+		}
+		
+		if ( cell.orderItem.quantity < 1 ) {
+			[self removeOrderItem:sender];
+		}
+	}
+	// TODO: [self refreshUI];
+}
+
+#pragma mark - Editing
+
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
 	[super setEditing:editing animated:animated];
 	[self.tableView setEditing:editing animated:animated];
+}
+
+- (void)removeOrderItem:(BRMenuOrderReviewCell *)cell {
+	BRMenuOrderItem *orderItem = cell.orderItem;
+	
+	[self.tableView beginUpdates];
+	
+	NSMutableArray *reloadIndexPaths = [NSMutableArray arrayWithCapacity:5];
+	NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+	const NSInteger row = indexPath.row;
+	const UInt8 attributeCount = [orderItem.attributes count];
+	const NSUInteger oldSectionCount = [groupsController numberOfSections];
+	
+	// special consideration for takeaway rows, to handle proxies
+	if ( orderItem.item.askTakeaway && attributeCount > (UInt8)1 ) {
+		const UInt8 removeIndex = ([orderItem isProxy] ? ((BRMenuOrderItemAttributesProxy *)orderItem).index : 0);
+		NSUInteger remapIndex;
+		const NSUInteger endRemapIndex = row + attributeCount - removeIndex;
+		for ( remapIndex = row + 1; remapIndex < endRemapIndex; remapIndex++ ) {
+			NSIndexPath *reloadIndexPath = [NSIndexPath indexPathForRow:remapIndex inSection:indexPath.section];
+			[reloadIndexPaths addObject:reloadIndexPath];
+		}
+		[orderItem removeAttributesAtIndex:removeIndex];
+		orderItem.quantity--;
+	} else {
+		[order removeItemForMenuItem:orderItem.item];
+	}
+	
+	[groupsController refresh];
+	
+	if ( reloadIndexPaths.count > 0 ) {
+		[self.tableView reloadRowsAtIndexPaths:reloadIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+	}
+	
+	// now delete the row, or entire section if we removed the last row in section
+	if ( [groupsController numberOfSections] == oldSectionCount ) {
+		[self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+	} else {
+		[self.tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
+	}
+	
+	[self.tableView endUpdates];
+	// TODO: [self refreshUI];
+	
+	// if no more rows, leave edit mode automatically
+	if ( [groupsController numberOfSections] < 1 ) {
+		[self toggleEditing:nil];
+	}
+}
+
+- (void)duplicateOrderItem:(BRMenuOrderReviewCell *)cell {
+	BRMenuOrderItem *orderItem = cell.orderItem;
+	BRMenuOrderItem *duplicate;
+	NSInteger insertRow;
+	NSIndexPath *origIndexPath = [self.tableView indexPathForCell:cell];
+	if ( orderItem.item.askTakeaway ) {
+		// add a new OrderItemAttributes
+		const UInt8 index = [orderItem.attributes count];
+		BRMenuOrderItemAttributes *attr = [BRMenuOrderItemAttributes new];
+		attr.takeAway = orderItem.takeAway;
+		[orderItem setAttributes:attr atIndex:index];
+		orderItem.quantity++;
+		duplicate = (BRMenuOrderItem *)[[BRMenuOrderItemAttributesProxy alloc] initWithOrderItem:orderItem attributeIndex:index];
+		insertRow = (origIndexPath.row + ([orderItem isProxy] ? (index - [(BRMenuOrderItemAttributesProxy *)orderItem index]) : index));
+	} else {
+		duplicate = [[BRMenuOrderItem alloc] initWithOrderItem:cell.orderItem];
+		insertRow = origIndexPath.row + 1;
+		[order addOrderItem:duplicate];
+	}
+	[groupsController refresh];
+	[self.tableView beginUpdates];
+	[self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:insertRow inSection:origIndexPath.section]]
+						  withRowAnimation:UITableViewRowAnimationAutomatic];
+	[self.tableView endUpdates];
+	// TODO: [self refreshUI];
 }
 
 #pragma mark - Table view support
@@ -148,6 +273,21 @@ NSString * const BRMenuOrderReviewGroupHeaderCellIdentifier = @"GroupHeaderCell"
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     BRMenuOrderReviewCell *cell = [tableView dequeueReusableCellWithIdentifier:BRMenuOrderReviewOrderItemCellIdentifier forIndexPath:indexPath];
+	if ( [[cell.plusButton actionsForTarget:self forControlEvent:UIControlEventTouchUpInside] count] < 1 ) {
+		[cell.plusButton addTarget:self action:@selector(adjustQuantity:) forControlEvents:UIControlEventTouchUpInside];
+	}
+	if ( [[cell.minusButton actionsForTarget:self forControlEvent:UIControlEventTouchUpInside] count] < 1 ) {
+		[cell.minusButton addTarget:self action:@selector(adjustQuantity:) forControlEvents:UIControlEventTouchUpInside];
+	}
+	if ( [[cell.deleteButton actionsForTarget:self forControlEvent:UIControlEventTouchUpInside] count] < 1 ) {
+		[cell.deleteButton addTarget:self action:@selector(adjustQuantity:) forControlEvents:UIControlEventTouchUpInside];
+		UISwipeGestureRecognizer *swipeToDelete = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(deleteRow:)];
+		swipeToDelete.direction = UISwipeGestureRecognizerDirectionRight;
+		[cell addGestureRecognizer:swipeToDelete];
+	}
+	if ( [[cell.takeAwayButton actionsForTarget:self forControlEvent:UIControlEventTouchUpInside] count] < 1 ) {
+		[cell.takeAwayButton addTarget:self action:@selector(toggleTakeAway:) forControlEvents:UIControlEventTouchUpInside];
+	}
 	cell.orderItem = [groupsController orderItemAtIndexPath:indexPath];
     return cell;
 }

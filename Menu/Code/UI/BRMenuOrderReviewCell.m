@@ -9,6 +9,7 @@
 #import "BRMenuOrderReviewCell.h"
 
 #import <Masonry/Masonry.h>
+#import "BRMenuBarButtonItemView.h"
 #import "BRMenuFitToWidthLabel.h"
 #import "BRMenuFlipToggleButton.h"
 #import "BRMenuItem.h"
@@ -52,6 +53,11 @@ static const CGFloat kPlusMinusWidth = 40;
 	}
 }
 
+- (void)prepareForReuse {
+	[super prepareForReuse];
+	self.minusButton.selected = NO;
+}
+
 #pragma mark - Editing
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
@@ -88,15 +94,72 @@ static const CGFloat kPlusMinusWidth = 40;
 	self.desc.lineBreakMode = (editing ? NSLineBreakByTruncatingTail : NSLineBreakByWordWrapping);
 	
 	[self setNeedsLayout];
-	/*
-	if ( editing == NO && [self isDeleteState] ) {
-		[self leaveDeleteState];
+
+	if ( editing == NO && self.deleteState ) {
+		[self leaveDeleteState:animated];
 	}
-	 */
+
 	if ( animated ) {
 		[UIView animateWithDuration:0.3 animations:^{
 			[self layoutIfNeeded];
 		}];
+	}
+}
+
+- (BOOL)isDeleteState {
+	return (self.minusButton.selected == YES);
+}
+
+- (void)leaveDeleteState:(BOOL)animated {
+	if ( !self.deleteState ) {
+		return;
+	}
+	[self.deleteButton mas_updateConstraints:^(MASConstraintMaker *make) {
+		make.left.equalTo(self.contentView.mas_right);
+	}];
+	[self setNeedsLayout];
+	
+	void (^actions)(void) = ^{
+		self.price.alpha = 1;
+		self.quantity.alpha = 1;
+		self.plusButton.alpha = 1;
+		self.deleteButton.alpha = 0;
+	};
+	
+	if ( animated ) {
+		[UIView animateWithDuration:0.3 animations:^{
+			actions();
+			[self layoutIfNeeded];
+		}];
+	} else {
+		actions();
+	}
+}
+
+- (void)enterDeleteState:(BOOL)animated {
+	if ( self.deleteState ) {
+		return;
+	}
+	CGFloat buttonWidth = [self.deleteButton intrinsicContentSize].width;
+	[self.deleteButton mas_updateConstraints:^(MASConstraintMaker *make) {
+		make.left.equalTo(self.contentView.mas_right).with.offset(-buttonWidth - 10);
+	}];
+	[self setNeedsLayout];
+	
+	void (^actions)(void) = ^{
+		self.price.alpha = 0;
+		self.quantity.alpha = 0;
+		self.plusButton.alpha = 0;
+		self.deleteButton.alpha = 1;
+	};
+
+	if ( animated ) {
+		[UIView animateWithDuration:0.3 animations:^{
+			actions();
+			[self layoutIfNeeded];
+		}];
+	} else {
+		actions();
 	}
 }
 
@@ -155,6 +218,12 @@ static const CGFloat kPlusMinusWidth = 40;
 	self.desc.textColor = style.captionColor;
 	self.quantity.font = style.listSecondaryFont;
 	self.quantity.textColor = style.appPrimaryColor;
+	
+	// make deleteButton a "danger" style button
+	self.deleteButton.fillColor = style.controlDangerColor;
+	BRMenuMutableUIStyle *dangerStyle = [style mutableCopy];
+	dangerStyle.controlTextColor = style.inverseControlTextColor;
+	self.deleteButton.uiStyle = dangerStyle;
 }
 
 - (void)setupSubviews {
@@ -211,6 +280,12 @@ static const CGFloat kPlusMinusWidth = 40;
 	self.desc = l;
 	[self.contentView addSubview:l];
 	
+	// delete confirmation: right
+	BRMenuBarButtonItemView *d = [[BRMenuBarButtonItemView alloc] initWithTitle:[NSBundle localizedBRMenuString:@"menu.action.delete"]];
+	d.fillColor = self.uiStyle.controlDangerColor;
+	self.deleteButton = d;
+	[self.contentView addSubview:d];
+	
 	const UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 10);
 	
 	[self.minusButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -238,6 +313,11 @@ static const CGFloat kPlusMinusWidth = 40;
 		make.left.equalTo(self.title);
 		make.right.equalTo(self.title);
 		make.bottom.equalTo(@(-padding.bottom));
+	}];
+	[self.deleteButton mas_makeConstraints:^(MASConstraintMaker *make) {
+		make.left.equalTo(self.contentView.mas_right);
+		make.top.equalTo(self.contentView);
+		make.bottom.equalTo(self.contentView);
 	}];
 }
 

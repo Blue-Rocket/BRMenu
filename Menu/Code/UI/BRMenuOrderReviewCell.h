@@ -34,4 +34,21 @@
 /** The order item to display. This also will set the @ref item property to the associated @ref BRMenuItem. */
 @property (nonatomic, strong) BRMenuOrderItem *orderItem;
 
+/** Flag indicating if the cell is in the special "delete confirmation" state. */
+@property (nonatomic, readonly, getter=isDeleteState) BOOL deleteState;
+
+/**
+ Request the cell to leave the "delete confirmation" state.
+ 
+ @param animated Flag to animate the transition or not.
+ */
+- (void)leaveDeleteState:(BOOL)animated;
+
+/**
+ Request the cell to enter the "delete confirmation" state.
+ 
+ @param animated Flag to animate the transition or not.
+ */
+- (void)enterDeleteState:(BOOL)animated;
+
 @end
