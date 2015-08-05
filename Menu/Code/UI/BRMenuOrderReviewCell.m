@@ -129,7 +129,7 @@ static void * kOrderItemQuantityContext = &kOrderItemQuantityContext;
 }
 
 - (BOOL)isDeleteState {
-	return (self.minusButton.destructive == YES);
+	return (self.minusButton.selected == YES);
 }
 
 - (void)leaveDeleteState:(BOOL)animated {
@@ -142,7 +142,7 @@ static void * kOrderItemQuantityContext = &kOrderItemQuantityContext;
 	[self setNeedsLayout];
 	
 	void (^actions)(void) = ^{
-		self.minusButton.destructive = NO;
+		self.minusButton.selected = NO;
 		self.minusButton.transform = CGAffineTransformIdentity;
 		self.price.alpha = 1;
 		self.quantity.alpha = 1;
@@ -171,7 +171,7 @@ static void * kOrderItemQuantityContext = &kOrderItemQuantityContext;
 	[self setNeedsLayout];
 	
 	void (^actions)(void) = ^{
-		self.minusButton.destructive = YES;
+		self.minusButton.selected = YES;
 		self.minusButton.transform = CGAffineTransformMakeRotation(Deg2Rad(-90));
 		self.price.alpha = 0;
 		self.quantity.alpha = 0;

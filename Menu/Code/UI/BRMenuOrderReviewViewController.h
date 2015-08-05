@@ -23,6 +23,9 @@ extern NSString * const BRMenuOrderReviewGroupHeaderCellIdentifier;
 /** The table view to display the order within. */
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 
+/** A button that toggles between editing and normal states. */
+@property (nonatomic, strong) IBOutlet id editButton;
+
 /** The order to display the items for. */
 @property (nonatomic, strong) BRMenuOrder *order;
 

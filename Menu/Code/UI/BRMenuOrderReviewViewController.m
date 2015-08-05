@@ -65,9 +65,11 @@ NSString * const BRMenuOrderReviewGroupHeaderCellIdentifier = @"GroupHeaderCell"
 																					target:self
 																					action:@selector(toggleEditing:)];
 		self.navigationItem.rightBarButtonItem = rightItem;
+		self.editButton = rightItem.customView;
 	}
 
 	[self.tableView reloadData];
+	[self refreshFromModel];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -82,6 +84,13 @@ NSString * const BRMenuOrderReviewGroupHeaderCellIdentifier = @"GroupHeaderCell"
 		groupsController = nil;
 	}
 	[self.tableView reloadData];
+	[self refreshFromModel];
+}
+
+- (void)refreshFromModel {
+	if ( [self.editButton respondsToSelector:@selector(setEnabled:)] ) {
+		[(UIControl *)self.editButton setEnabled:([groupsController numberOfSections] > 0)];
+	}
 }
 
 - (void)uiStyleDidChange:(BRMenuUIStyle *)style {
@@ -121,7 +130,7 @@ NSString * const BRMenuOrderReviewGroupHeaderCellIdentifier = @"GroupHeaderCell"
 
 #pragma mark - Actions
 
-- (IBAction)toggleEditing:(UIControl *)sender {
+- (IBAction)toggleEditing:(id)sender {
 	[self setEditing:!self.editing animated:YES];
 	if ( [sender isKindOfClass:[BRMenuBarButtonItemView class]] ) {
 		BRMenuBarButtonItemView *editingButton = (BRMenuBarButtonItemView *)sender;
@@ -156,7 +165,7 @@ NSString * const BRMenuOrderReviewGroupHeaderCellIdentifier = @"GroupHeaderCell"
 			if ( orderItem.quantity < 32 ) { // TODO: define constant or env prop for max
 				orderItem.quantity++;
 			}
-		} else if ( sender.selected == YES ) {
+		} else if ( cell.deleteState ) {
 			// cancel "delete"
 			[cell leaveDeleteState:YES];
 		} else if ( orderItem.quantity == 1 || orderItem.item.askTakeaway == YES ) {
@@ -167,10 +176,15 @@ NSString * const BRMenuOrderReviewGroupHeaderCellIdentifier = @"GroupHeaderCell"
 		}
 		
 		if ( cell.orderItem.quantity < 1 ) {
-			[self removeOrderItem:sender];
+			[self removeOrderItem:cell];
 		}
 	}
-	// TODO: [self refreshUI];
+}
+
+- (IBAction)deleteRow:(UISwipeGestureRecognizer *)sender {
+	BRMenuOrderReviewCell *row = [sender.view nearestAncestorViewOfType:[BRMenuOrderReviewCell class]];
+	row.editing = YES;
+	[row enterDeleteState:YES];
 }
 
 #pragma mark - Editing
@@ -224,7 +238,8 @@ NSString * const BRMenuOrderReviewGroupHeaderCellIdentifier = @"GroupHeaderCell"
 	
 	// if no more rows, leave edit mode automatically
 	if ( [groupsController numberOfSections] < 1 ) {
-		[self toggleEditing:nil];
+		[self toggleEditing:self.editButton];
+		[self refreshFromModel];
 	}
 }
 
