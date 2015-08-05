@@ -13,12 +13,11 @@
 #import <MenuKit/Core/NSBundle+BRMenu.h>
 #import <MenuKit/RestKit/RestKit.h>
 #import <MenuKit/UI/UI.h>
-#import <MenuKit/UI/BRMenuOrderCountBarButtonItemView.h>
-#import <MenuKit/UI/UIBarButtonItem+BRMenu.h>
 #import <RestKit/RestKit.h>
 #import "BRMenu+MenuSampler.h"
 
 static NSString * const kShowMenuSegue = @"ShowMenu";
+static NSString * const kReviewOrderSegue = @"ReviewOrder";
 
 @interface RootChooserTableViewController ()
 
@@ -89,7 +88,16 @@ static NSString * const kShowMenuSegue = @"ShowMenu";
 }
 
 - (IBAction)viewOrder:(id)sender {
-	// TODO
+	[self performSegueWithIdentifier:kReviewOrderSegue sender:sender];
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if ( [segue.identifier isEqualToString:kReviewOrderSegue] ) {
+		BRMenuOrderReviewViewController *dest = segue.destinationViewController;
+		dest.order = order;
+	}
 }
 
 @end

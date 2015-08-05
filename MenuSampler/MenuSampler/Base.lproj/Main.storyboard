@@ -520,6 +520,45 @@
             </objects>
             <point key="canvasLocation" x="1922" y="1136"/>
         </scene>
+        <!--Review Order-->
+        <scene sceneID="gry-f6-Phc">
+            <objects>
+                <viewController id="Ddw-4t-9eu" customClass="BRMenuOrderReviewViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ghp-XD-I8Q"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZYH-GU-TJ9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Jdn-F3-16d">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="gZ0-Z8-OAG">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Ddw-4t-9eu" id="Zr9-c8-BHi"/>
+                                    <outlet property="delegate" destination="Ddw-4t-9eu" id="YoR-kd-uig"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="gZ0-Z8-OAG" secondAttribute="trailing" id="7f8-VR-Ouc"/>
+                            <constraint firstItem="ZYH-GU-TJ9" firstAttribute="top" secondItem="gZ0-Z8-OAG" secondAttribute="bottom" id="Ggt-db-CgC"/>
+                            <constraint firstItem="gZ0-Z8-OAG" firstAttribute="leading" secondItem="Jdn-F3-16d" secondAttribute="leading" id="crk-Ug-OTG"/>
+                            <constraint firstItem="gZ0-Z8-OAG" firstAttribute="top" secondItem="Jdn-F3-16d" secondAttribute="top" id="dMJ-DC-ISM"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Review Order" id="bBb-uR-6cQ"/>
+                    <connections>
+                        <outlet property="tableView" destination="gZ0-Z8-OAG" id="QEK-W7-PYa"/>
+                        <outlet property="view" destination="Jdn-F3-16d" id="MXz-py-VqB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NUs-JK-QXc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1139" y="2488"/>
+        </scene>
         <!--Ordering Views-->
         <scene sceneID="F3C-Yo-rR7">
             <objects>
@@ -532,7 +571,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="417"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="stY-K3-fvi">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="stY-K3-fvi">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="417"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="OrderItemComponentDetails" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ts2-ot-xGg">
@@ -600,7 +639,7 @@
                                         <rect key="frame" x="8" y="296" width="584" height="32"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tB1-94-02B" customClass="BRMenuOrderItemDetailsView">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tB1-94-02B" customClass="BRMenuOrderItemDetailsView">
                                         <rect key="frame" x="8" y="365" width="584" height="32"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
@@ -957,6 +996,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="RVU-ed-HTm" kind="show" identifier="EditGlobalStyle" id="pzv-h6-hyJ"/>
+                        <segue destination="Ddw-4t-9eu" kind="show" identifier="ReviewOrder" id="K89-SO-vub"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fSn-rO-vew" userLabel="First Responder" sceneMemberID="firstResponder"/>
