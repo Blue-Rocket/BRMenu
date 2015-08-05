@@ -62,14 +62,7 @@ static const CGFloat kMinWidth = 48.0f;
 						constrainedToSize:CGSizeMake(CGFLOAT_MAX, kNormalHeight)
 							lineBreakMode:NSLineBreakByWordWrapping];
 	CGFloat width = ceilf(textSize.width) + 2 * kTextMargins;
-	if ( [badgeText length] > 0 ) {
-		CGSize badgeTextSize = [badgeText sizeWithFont:[self.uiStyle uiFont]
-									 constrainedToSize:CGSizeMake(CGFLOAT_MAX, kNormalHeight)
-										 lineBreakMode:NSLineBreakByWordWrapping];
-		CGFloat badgeWidth = ceilf(badgeTextSize.width) + 2 * kBadgeTextMargins;
-		badgeWidth = MAX(kBadgeMinWidth, badgeWidth);
-		width += badgeWidth;
-	}
+	width += [self badgeFrameWidth];
 	width = MAX(kMinWidth, width);
 	if ( (int)width % 2 == 1 ) {
 		width += 1;
@@ -209,7 +202,11 @@ static const CGFloat kMinWidth = 48.0f;
 		CGSize badgeTextSize = [badgeText sizeWithFont:[self.uiStyle uiFont]
 									 constrainedToSize:CGSizeMake(CGFLOAT_MAX, kNormalHeight)
 										 lineBreakMode:NSLineBreakByWordWrapping];
-		CGFloat badgeWidth = ceilf(badgeTextSize.width) + 2 * kBadgeTextMargins;
+
+		// if the badge text is only a number, use the (tighter) kBadgeTextMargin, otherwise use the (more generous) kTextMargin
+		BOOL hasNonNumeric = [badgeText rangeOfCharacterFromSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]].location != NSNotFound;
+		CGFloat badgeWidth = ceilf(badgeTextSize.width) + 2 * (hasNonNumeric ? kTextMargins : kBadgeTextMargins);
+		
 		width = MAX(kBadgeMinWidth, badgeWidth);
 	}
 	return width;
