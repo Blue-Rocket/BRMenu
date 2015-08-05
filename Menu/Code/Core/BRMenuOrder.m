@@ -148,28 +148,40 @@
 	return total;
 }
 
-- (NSArray *)orderedGroups:(NSDictionary *)groupMapping {
-	const NSUInteger capacity = ([self.menu.items count] + [self.menu.groups count]);
-	NSMutableArray *sections = [NSMutableArray arrayWithCapacity:capacity];
-	
-	// order in same order as BRMenu
-	NSMutableDictionary *mapping = [NSMutableDictionary dictionaryWithCapacity:capacity];
-	NSMutableArray *sortKeys = [NSMutableArray arrayWithCapacity:capacity];
-	[sortKeys addObject:BRMenuOrderItemDefaultGroupKey];
-	for ( BRMenuItem *item in self.menu.items ) {
-		if ( item.key != nil ) {
-			[sortKeys addObject:item.key];
+- (BRMenu *)menuForKey:(NSString *)key {
+	for ( BRMenu *menu in menus ) {
+		NSString *menuKey = menu.key;
+		if ( !menuKey ) {
+			menuKey = @"";
+		}
+		if ( [key isEqualToString:menuKey] ) {
+			return menu;
 		}
 	}
-	for ( BRMenuItemGroup *group in self.menu.groups ) {
-		[sortKeys addObject:(group.key == nil ? @"" : group.key)];
-	}
+	return nil;
+}
+
+- (NSArray *)orderedGroups:(NSDictionary *)groupMapping {
+	// order sections in same order as BRMenu groups
+	NSMutableDictionary *mapping = [NSMutableDictionary new];
+
 	for ( BRMenuOrderItem *orderItem in orderItems ) {
+		// mapping is a dictionary of menu keys to dictionaries of group keys to arrays of order items for that group
+		NSMutableDictionary *menuMapping = mapping;
+		NSString *menuKey = orderItem.item.menu.key;
+		if ( !menuKey ) {
+			menuKey = @"";
+		}
+		menuMapping = mapping[menuKey];
+		if ( !menuMapping ) {
+			menuMapping = [NSMutableDictionary new];
+			mapping[menuKey] = menuMapping;
+		}
 		NSString *key = [orderItem orderGroupKey:groupMapping];
-		NSMutableArray *rows = [mapping objectForKey:key];
+		NSMutableArray *rows = [menuMapping objectForKey:key];
 		if ( rows == nil ) {
-			rows = [NSMutableArray arrayWithCapacity:10];
-			[mapping setObject:rows forKey:key];
+			rows = [[NSMutableArray alloc] initWithCapacity:10];
+			[menuMapping setObject:rows forKey:key];
 		}
 		[rows addObject:orderItem];
 		
@@ -187,12 +199,31 @@
 			}
 		}
 	}
-	for ( NSString *key in sortKeys ) {
-		NSArray *array = [mapping objectForKey:key];
-		if ( array != nil ) {
-			[sections addObject:array];
+	
+	NSMutableArray *sections = [NSMutableArray new];
+	for ( NSString *menuKey in mapping ) {
+		NSDictionary *menuMapping = mapping[menuKey];
+		BRMenu *menu = [self menuForKey:menuKey];
+		NSArray *sortedGroupKeys = [[menuMapping allKeys] sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+			if ( [obj1 isEqualToString:obj2] ) {
+				return NSOrderedSame;
+			}
+			if ( [obj1 isEqualToString:BRMenuOrderItemDefaultGroupKey] ) {
+				return NSOrderedAscending;
+			}
+			if ( [obj2 isEqualToString:BRMenuOrderItemDefaultGroupKey] ) {
+				return NSOrderedDescending;
+			}
+			NSInteger idx1 = [menu groupOrderingIndexForKey:obj1];
+			NSInteger idx2 = [menu groupOrderingIndexForKey:obj2];;
+			return (idx1 < idx2 ? NSOrderedAscending : idx1 > idx2 ? NSOrderedDescending : NSOrderedSame);
+		}];
+		for ( NSString *groupKey in sortedGroupKeys ) {
+			NSMutableArray *section = menuMapping[groupKey];
+			[sections addObject:section];
 		}
 	}
+	
 	return sections;
 }
 
