@@ -77,7 +77,14 @@ static const CGFloat kPlusMinusWidth = 40;
 		make.right.equalTo(self.plusButton.mas_left).with.offset(editing ? -5 : -10);
 	}];
 	
+	if ( [self.title respondsToSelector:@selector(setDisableAutoAdjustMaxLayoutWidth:)] ) {
+		((BRMenuFitToWidthLabel *)self.title).disableAutoAdjustMaxLayoutWidth = editing;
+	}
 	self.title.lineBreakMode = (editing ? NSLineBreakByTruncatingTail : NSLineBreakByWordWrapping);
+
+	if ( [self.desc respondsToSelector:@selector(setDisableAutoAdjustMaxLayoutWidth:)] ) {
+		((BRMenuFitToWidthLabel *)self.desc).disableAutoAdjustMaxLayoutWidth = editing;
+	}
 	self.desc.lineBreakMode = (editing ? NSLineBreakByTruncatingTail : NSLineBreakByWordWrapping);
 	
 	[self setNeedsLayout];
