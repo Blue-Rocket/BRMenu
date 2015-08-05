@@ -22,6 +22,7 @@
 #import "NSNumberFormatter+BRMenu.h"
 
 static const CGFloat kPlusMinusWidth = 40;
+static void * kOrderItemQuantityContext = &kOrderItemQuantityContext;
 
 @implementation BRMenuOrderReviewCell {
 	BRMenuOrderItem *orderItem;
@@ -36,13 +37,32 @@ static const CGFloat kPlusMinusWidth = 40;
 	return self;
 }
 
+- (void)dealloc {
+	[self setOrderItem:nil]; // clear KVO
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+	if ( context == kOrderItemQuantityContext ) {
+		[self refreshQuantity];
+		[self refreshPrice];
+	} else {
+		return [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+	}
+}
+
 #pragma mark - Accessors
 
 - (void)setOrderItem:(BRMenuOrderItem *)theOrderItem {
 	if ( theOrderItem == orderItem ) {
 		return;
 	}
+	if ( orderItem ) {
+		[orderItem removeObserver:self forKeyPath:@"quantity" context:kOrderItemQuantityContext];
+	}
 	orderItem = theOrderItem;
+	if ( theOrderItem ) {
+		[theOrderItem addObserver:self forKeyPath:@"quantity" options:0 context:kOrderItemQuantityContext];
+	}
 	self.item = orderItem.item;
 }
 
