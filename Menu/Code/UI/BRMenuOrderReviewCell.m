@@ -59,11 +59,11 @@ static void * kOrderItemQuantityContext = &kOrderItemQuantityContext;
 		return;
 	}
 	if ( orderItem ) {
-		[orderItem removeObserver:self forKeyPath:@"quantity" context:kOrderItemQuantityContext];
+		[orderItem removeObserver:self forKeyPath:NSStringFromSelector(@selector(quantity)) context:kOrderItemQuantityContext];
 	}
 	orderItem = theOrderItem;
 	if ( theOrderItem ) {
-		[theOrderItem addObserver:self forKeyPath:@"quantity" options:0 context:kOrderItemQuantityContext];
+		[theOrderItem addObserver:self forKeyPath:NSStringFromSelector(@selector(quantity)) options:0 context:kOrderItemQuantityContext];
 	}
 	self.item = orderItem.item;
 }
