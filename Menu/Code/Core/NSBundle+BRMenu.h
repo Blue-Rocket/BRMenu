@@ -1,6 +1,6 @@
 //
 //  NSBundle+BRMenu.h
-//  Menu
+//  MenuKit
 //
 //  Created by Matt on 27/07/15.
 //  Copyright (c) 2015 Blue Rocket. Distributable under the terms of the Apache License, Version 2.0.
@@ -30,5 +30,12 @@
  @return The URL for the resource, or @c nil if not found.
  */
 + (NSURL *)URLForBRMenuResourceNamed:(NSString *)resourceName;
+
+/**
+ Get a bundle that contains a resource with a specific name, searching through all registered bundles.
+ 
+ @return The bundle, or @c nil if not found.
+ */
++ (NSBundle *)bundleContainingBRMenuResourceNamed:(NSString *)resourceName;
 
 @end

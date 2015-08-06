@@ -1,6 +1,6 @@
 //
 //  BRMenuOrderingGroupViewController.m
-//  Menu
+//  MenuKit
 //
 //  Created by Matt on 29/07/15.
 //  Copyright (c) 2015 Blue Rocket. Distributable under the terms of the Apache License, Version 2.0.
@@ -61,6 +61,15 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 																								target:self
 																								action:@selector(goBack:)];
 	}
+	[self refreshForStyle:self.uiStyle];
+}
+
+- (void)uiStyleDidChange:(BRMenuUIStyle *)style {
+	[self refreshForStyle:style];
+}
+
+- (void)refreshForStyle:(BRMenuUIStyle *)style {
+	self.view.backgroundColor = style.appBodyColor;
 }
 
 - (void)setFlowController:(BRMenuOrderingFlowController *)controller {
@@ -121,7 +130,6 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-	BRMenuItemObjectCell *cell = (BRMenuItemObjectCell *)[self.tableView cellForRowAtIndexPath:[self.tableView indexPathForSelectedRow]];
 	if ( [[segue identifier] isEqualToString:BRMenuOrderingConfigureComponentsSegue] ) {
 		BRMenuOrderingComponentsViewController *dest = [segue destinationViewController] ;
 		dest.flowController = [flowController flowControllerForItemAtIndexPath:[self.tableView indexPathForSelectedRow]];

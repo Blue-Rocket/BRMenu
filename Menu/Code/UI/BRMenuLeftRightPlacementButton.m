@@ -1,6 +1,6 @@
 //
 //  BRMenuLeftRightPlacementButton.m
-//  Menu
+//  MenuKit
 //
 //  Created by Matt on 4/10/13.
 //  Copyright (c) 2013 Blue Rocket, Inc. Distributable under the terms of the Apache License, Version 2.0.
@@ -66,7 +66,7 @@
 }
 
 - (void)setPropertyEditorValue:(id)value {
-	placement = [value intValue];
+	[self setPlacement:[value intValue] animated:NO];
 }
 
 #pragma mark - Internal API

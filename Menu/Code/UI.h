@@ -1,6 +1,6 @@
 //
 //  Mapping.h
-//  Menu
+//  MenuKit
 //
 //  Created by Matt on 21/07/15.
 //  Copyright (c) 2015 Blue Rocket. Distributable under the terms of the Apache License, Version 2.0.
@@ -28,6 +28,8 @@
 #import <MenuKit/UI/BRMenuOrderItemComponentDetailsView.h>
 #import <MenuKit/UI/BRMenuOrderItemDetailsView.h>
 #import <MenuKit/UI/BRMenuOrderItemPlacementDetailsView.h>
+#import <MenuKit/UI/BRMenuOrderReviewCell.h>
+#import <MenuKit/UI/BRMenuOrderReviewViewController.h>
 #import <MenuKit/UI/BRMenuPlusMinusButton.h>
 #import <MenuKit/UI/BRMenuStepper.h>
 #import <MenuKit/UI/BRMenuTagGridView.h>

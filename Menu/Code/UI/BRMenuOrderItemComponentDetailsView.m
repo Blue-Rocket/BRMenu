@@ -1,6 +1,6 @@
 //
 //  BRMenuOrderItemComponentDetailsView.m
-//  Menu
+//  MenuKit
 //
 //  Created by Matt on 28/07/15.
 //  Copyright (c) 2015 Blue Rocket. Distributable under the terms of the Apache License, Version 2.0.
@@ -57,6 +57,7 @@
 	
 	if ( !self.quantity ) {
 		BRMenuLightHeavyQuantityButton *quantity = [[BRMenuLightHeavyQuantityButton alloc] initWithFrame:CGRectZero];
+		[quantity setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
 		quantity.diameter = floorf(self.title.font.capHeight);
 		quantity.cornerRadius = quantity.diameter / 2;
 		quantity.enabled = NO;

@@ -38,7 +38,7 @@ Pod::Spec.new do |s|
   s.subspec 'AFNetworking' do |sp|
     sp.source_files = 'Menu/Code/AFNetworking.h', 'Menu/Code/AFNetworking'
   	sp.header_dir = 'AFNetworking'
-    sp.dependency 'MenuKit/Core'
+    sp.dependency 'MenuKit/RestKit'
     sp.dependency 'AFNetworking', '~> 2.5'
   end
   
@@ -48,7 +48,15 @@ Pod::Spec.new do |s|
     sp.dependency 'MenuKit/Core'
     sp.dependency 'BRPDFImage', '~> 1.0'
 	sp.dependency 'Masonry', '~> 0.6'
-    sp.resource_bundle = { 'BRMenuUI' => 'Menu/Resources/UI/**' }
+    sp.resource_bundle = { 'BRMenuUI' => 'Menu/Resources/UI/**/*.{storyboard,lproj,pdf}' }
+  end
+  
+  s.subspec 'UI-RestKit' do |sp|
+    sp.source_files = 'Menu/Code/UI-RestKit.h', 'Menu/Code/UI-RestKit'
+  	sp.header_dir = 'UI-RestKit'
+  	sp.dependency 'MenuKit/UI'
+  	sp.dependency 'MAObjCRuntime', '~> 0.0.1'
+    sp.dependency 'RestKit/ObjectMapping', '~> 0.24'
   end
   
 end

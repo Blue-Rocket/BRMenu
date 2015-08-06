@@ -1,6 +1,6 @@
 //
 //  BRMenuItemGroup.h
-//  BRMenu
+//  MenuKit
 //
 //  A grouping of BRMenuItem objects, e.g. Suggestions.
 //

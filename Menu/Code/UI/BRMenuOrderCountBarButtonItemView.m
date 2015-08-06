@@ -1,6 +1,6 @@
 //
 //  BRMenuOrderCountBarButtonItemView.m
-//  Menu
+//  MenuKit
 //
 //  Created by Matt on 29/07/15.
 //  Copyright (c) 2015 Blue Rocket. Distributable under the terms of the Apache License, Version 2.0.
@@ -57,8 +57,8 @@ static void * kOrderItemsContext = &kOrderItemsContext;
 	}
 }
 
-- (void)refreshOrderCount:(BRMenuOrder *)order {
-	self.badgeText = [NSString stringWithFormat:@"%lu", (unsigned long)[order orderItemCount]];
+- (void)refreshOrderCount:(BRMenuOrder *)theOrder {
+	self.badgeText = [NSString stringWithFormat:@"%lu", (unsigned long)[theOrder orderItemCount]];
 }
 
 @end

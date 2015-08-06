@@ -2,6 +2,13 @@
 
 A menu and order framework optimized for encoding into barcodes.
 
+# MenuKit Sampler
+
+A `MenuSampler` iOS application is included that demonstrates the core
+components of MenuKit. See the [wiki](https://github.com/Blue-Rocket/BRMenu/wiki/MenuSampler)
+for more details.
+
+
 _TODO: this is a work in progress._
 
 # Project Integration
@@ -52,8 +59,8 @@ MenuKit is divided into several CocoaPod components, or subspecs.
     because `MenuKit` integrates with [AFNetworking][afn] **version 2** but RestKit
     networking depends on AFNetworking version 1.
     
-  4. `AFNetworking` - provides integration with [AFNetworking][afn] **version 2** to
-     support network requests for menu resources.
+ 4. `AFNetworking` - provides integration with [AFNetworking][afn] **version 2** to
+    support network requests for menu resources.
     
 
  [restkit]: https://github.com/RestKit/RestKit/

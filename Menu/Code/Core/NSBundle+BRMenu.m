@@ -1,6 +1,6 @@
 //
 //  NSBundle+BRMenu.m
-//  Menu
+//  MenuKit
 //
 //  Created by Matt on 27/07/15.
 //  Copyright (c) 2015 Blue Rocket. Distributable under the terms of the Apache License, Version 2.0.
@@ -30,6 +30,13 @@ static NSArray *registeredBundles;
 		if ( bundlePath ) {
 			[bundles addObject:[NSBundle bundleWithPath:bundlePath]];
 		}
+		
+		// and last add the main bundle
+		NSBundle *mainBundle = [NSBundle mainBundle];
+		if ( mainBundle ) {
+			[bundles addObject:mainBundle];
+		}
+		
 		registeredBundles = [bundles copy];
 	}
 }
@@ -68,5 +75,17 @@ static NSArray *registeredBundles;
 	return url;
 }
 
++ (NSBundle *)bundleContainingBRMenuResourceNamed:(NSString *)resourceName {
+	__block NSBundle *bundle = nil;
+	[registeredBundles enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+		NSBundle *b = obj;
+		NSURL *url = [b URLForResource:resourceName withExtension:nil];
+		if ( url ) {
+			bundle = b;
+			*stop = YES;
+		}
+	}];
+	return bundle;
+}
 
 @end

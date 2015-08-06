@@ -1,6 +1,6 @@
 //
 //  BRMenuItemComopnentGroup.h
-//  BRMenu
+//  MenuKit
 //
 //  A grouping of BRMenuItemComponent objects, e.g. Dough group with
 //  Traditional, Whole Wheat, and Multigrain components.

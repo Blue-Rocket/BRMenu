@@ -1,6 +1,6 @@
 //
 //  BRMenu.m
-//  BRMenu
+//  MenuKit
 //
 //  Created by Matt on 4/2/13.
 //  Copyright (c) 2013 Blue Rocket. Distributable under the terms of the Apache License, Version 2.0.
@@ -17,6 +17,14 @@
 
 - (BOOL)isEqual:(id)object {
 	return (object == self || ([object isKindOfClass:[BRMenu class]] && [self.key isEqualToString:[object key]]));
+}
+
+- (NSInteger)groupOrderingIndexForKey:(NSString *)key {
+	NSUInteger idx = [self.groups indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+		BRMenuItemGroup *group = obj;
+		return [group.key isEqualToString:key];
+	}];
+	return (idx == NSNotFound ? -1 : idx);
 }
 
 - (void)enumerateMenuItemsUsingBlock:(void (^)(BRMenuItem *menuItem, NSUInteger idx, BOOL *stop))block {

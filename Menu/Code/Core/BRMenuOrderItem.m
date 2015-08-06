@@ -1,6 +1,6 @@
 //
 //  BRMenuOrderItem.m
-//  BRMenu
+//  MenuKit
 //
 //  Created by Matt on 4/2/13.
 //  Copyright (c) 2013 Blue Rocket. Distributable under the terms of the Apache License, Version 2.0.
@@ -15,6 +15,7 @@
 #import "BRMenuOrderItemAttributes.h"
 #import "BRMenuOrderItemComponent.h"
 
+NSString * const BRMenuOrderItemDefaultGroupKey = @"default";
 
 @implementation BRMenuOrderItem {
 	NSMutableArray *components;
@@ -22,6 +23,10 @@
 }
 
 @synthesize attributes, components;
+
++ (NSSet *)keyPathsForValuesAffectingPrice {
+	return [NSSet setWithObject:NSStringFromSelector(@selector(quantity))];
+}
 
 - (id)init {
 	if ( (self = [super init]) ) {
@@ -64,6 +69,12 @@
 
 - (id)copyWithZone:(NSZone *)zone {
 	return [[BRMenuOrderItem alloc] initWithOrderItem:self];
+}
+
+- (NSDecimalNumber *)price {
+	NSDecimalNumber *itemQuantity = [NSDecimalNumber decimalNumberWithMantissa:self.quantity exponent:0 isNegative:NO];
+	NSDecimalNumber *itemPrice = (self.item.price != nil ? self.item.price : self.item.group.price);
+	return (itemPrice ? [itemPrice decimalNumberByMultiplyingBy:itemQuantity] : nil);
 }
 
 - (void)setTakeAway:(BOOL)takeAway {
@@ -168,11 +179,13 @@
 		[attributes removeObjectAtIndex:index];
 	}
 }
-- (NSString *)orderGroupKeyWithSpecialGroupKeys:(NSSet *)pizzaGroupKeys {
+- (NSString *)orderGroupKey:(NSDictionary *)groupMapping {
 	BRMenuItem *menuItem = self.item;
 	NSString *key = (menuItem.group != nil ? [menuItem rootMenuItemGroup].key : menuItem.key);
-	if ( key == nil || [pizzaGroupKeys containsObject:key] ) {
-		key = kSpecialGroupKey;
+	if ( key != nil && groupMapping[key] != nil ) {
+		key = groupMapping[key];
+	} else if ( key == nil ) {
+		key = BRMenuOrderItemDefaultGroupKey;
 	}
 	return key;
 }

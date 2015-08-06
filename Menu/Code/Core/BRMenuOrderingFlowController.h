@@ -1,6 +1,6 @@
 //
 //  BRMenuOrderingFlowController.h
-//  Menu
+//  MenuKit
 //
 //  Created by Matt on 25/07/15.
 //  Copyright (c) 2015 Blue Rocket. Distributable under the terms of the Apache License, Version 2.0.
@@ -109,7 +109,7 @@ typedef enum : NSInteger {
 /**
  Get an @c NSIndexPath for a given @c BRMenuItemObject instance.
  
- @param pack The item to find the index path of.
+ @param item The item to find the index path of.
  @return The found @c IndexPath, or @c nil if not found.
  */
 - (NSIndexPath *)indexPathForMenuItemObject:(id<BRMenuItemObject>)item;
@@ -132,6 +132,14 @@ typedef enum : NSInteger {
  @return Flag indicating the navigation validation result.
  */
 - (BOOL)canGotoNextStep:(NSError * __autoreleasing *)error;
+
+/**
+ Test if based on the current conditions the user should be allowed to add the active item to an order.
+ 
+ @param error An error pointer to obtain the reason for any failure. Pass @c nil if not needed.
+ @return Flag indicating the navigation validation result.
+ */
+- (BOOL)canAddItemToOrder:(NSError * __autoreleasing *)error;
 
 /**
  Get a new controller instance for the next step;

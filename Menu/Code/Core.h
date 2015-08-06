@@ -1,6 +1,6 @@
 //
 //  Core.h
-//  Menu
+//  MenuKit
 //
 //  Created by Matt on 21/07/15.
 //  Copyright (c) 2015 Blue Rocket. Distributable under the terms of the Apache License, Version 2.0.
@@ -20,6 +20,7 @@
 #import <MenuKit/Core/BRMenuMetadata.h>
 #import <MenuKit/Core/BRMenuModelPropertyEditor.h>
 #import <MenuKit/Core/BRMenuOrder+Encoding.h>
+#import <MenuKit/Core/BRMenuOrderGroupsController.h>
 #import <MenuKit/Core/BRMenuOrder.h>
 #import <MenuKit/Core/BRMenuOrderingDelegate.h>
 #import <MenuKit/Core/BRMenuOrderingFlowController.h>

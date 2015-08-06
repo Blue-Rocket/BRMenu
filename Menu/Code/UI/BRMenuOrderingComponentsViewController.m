@@ -1,6 +1,6 @@
 //
 //  BRMenuOrderingComponentsViewController.m
-//  Menu
+//  MenuKit
 //
 //  Created by Matt on 25/07/15.
 //  Copyright (c) 2015 Blue Rocket. Distributable under the terms of the Apache License, Version 2.0.
@@ -76,6 +76,15 @@ NSString * const BRMenuOrderingReviewOrderItemSegue = @"ReviewOrderItem";
 																								target:self
 																								action:@selector(gotoNextFlowStep:)];
 	}
+	[self refreshForStyle:self.uiStyle];
+}
+
+- (void)uiStyleDidChange:(BRMenuUIStyle *)style {
+	[self refreshForStyle:style];
+}
+
+- (void)refreshForStyle:(BRMenuUIStyle *)style {
+	self.view.backgroundColor = style.appBodyColor;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -101,6 +110,15 @@ NSString * const BRMenuOrderingReviewOrderItemSegue = @"ReviewOrderItem";
 - (BOOL)canGotoNextStep {
 	NSError *error = nil;
 	BOOL result = [flowController canGotoNextStep:&error];
+	if ( !result ) {
+		[[[UIAlertView alloc] initWithTitle:nil message:[error localizedDescription] delegate:nil cancelButtonTitle:[NSBundle localizedBRMenuString:@"menu.action.ok"] otherButtonTitles:nil] show];
+	}
+	return result;
+}
+
+- (BOOL)canAddToOrder {
+	NSError *error = nil;
+	BOOL result = [flowController canAddItemToOrder:&error];
 	if ( !result ) {
 		[[[UIAlertView alloc] initWithTitle:nil message:[error localizedDescription] delegate:nil cancelButtonTitle:[NSBundle localizedBRMenuString:@"menu.action.ok"] otherButtonTitles:nil] show];
 	}
@@ -140,6 +158,9 @@ NSString * const BRMenuOrderingReviewOrderItemSegue = @"ReviewOrderItem";
 }
 
 - (IBAction)addOrderItemToActiveOrder:(id)sender {
+	if ( [self canAddToOrder] == NO ) {
+		return;
+	}
 	[self.orderingDelegate addOrderItemToActiveOrder:flowController.orderItem];
 }
 

@@ -1,6 +1,6 @@
 //
 //  BRMenuUIStyle.h
-//  Menu
+//  MenuKit
 //
 //  Created by Matt on 21/07/15.
 //  Copyright (c) 2015 Blue Rocket. Distributable under the terms of the Apache License, Version 2.0.
@@ -114,6 +114,7 @@ IB_DESIGNABLE
 @property (nonatomic, readonly) UIColor *controlHighlightedShadowColor;
 @property (nonatomic, readonly) UIColor *controlSelectedColor;
 @property (nonatomic, readonly) UIColor *controlDisabledColor;
+@property (nonatomic, readonly) UIColor *controlDangerColor;
 
 @property (nonatomic, readonly) UIColor *inverseControlTextColor;
 @property (nonatomic, readonly) UIColor *inverseControlBorderColor;
@@ -187,6 +188,7 @@ IB_DESIGNABLE
 @property (nonatomic, readwrite) UIColor *controlHighlightedShadowColor;
 @property (nonatomic, readwrite) UIColor *controlSelectedColor;
 @property (nonatomic, readwrite) UIColor *controlDisabledColor;
+@property (nonatomic, readwrite) UIColor *controlDangerColor;
 
 @property (nonatomic, readwrite) UIColor *inverseControlTextColor;
 @property (nonatomic, readwrite) UIColor *inverseControlBorderColor;

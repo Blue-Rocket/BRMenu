@@ -1,6 +1,6 @@
 //
 //  BRMenuOrder.h
-//  BRMenu
+//  MenuKit
 //
 //  Created by Matt on 4/2/13.
 //  Copyright (c) 2013 Blue Rocket. Distributable under the terms of the Apache License, Version 2.0.
@@ -12,8 +12,9 @@
 @class BRMenuItem;
 @class BRMenuOrderItem;
 
-extern NSString * const kSpecialGroupKey;
-
+/**
+ An order object, which is a collection of order items with some additional overall properties.
+ */
 @interface BRMenuOrder : NSObject <NSCopying>
 
 /** A menu reference. This can be set to any menu needed by the application. */
@@ -27,7 +28,10 @@ extern NSString * const kSpecialGroupKey;
  A set of all menus used within the order. The property will reflect all the menus used by any item added
  to the receiver, for example via @ref addOrderItem: or @ref replaceOrderItems:.
  */
-@property (nonatomic, strong, readonly) NSSet *menus;
+@property (nonatomic, strong, readonly) NSOrderedSet *menus;
+
+/** The sum total of all items in the order, accounting for quantities. */
+@property (nonatomic, readonly) NSDecimalNumber *totalPrice;
 
 // add a single BRMenuOrderItem to the order
 - (void)addOrderItem:(BRMenuOrderItem *)item;
@@ -48,11 +52,14 @@ extern NSString * const kSpecialGroupKey;
 // nil or empty to simply remove all BRMenuOrderItems from the BRMenuOrder
 - (void)replaceOrderItems:(NSArray *)newOrderItems;
 
-// the sum total of all items in the order, accounting for quantities
-- (NSDecimalNumber *)totalPrice;
+/**
+ Get an array of arrays of @ref BRMenuOrderItem objects, grouped by the @ref BRMenu instances referenced
+ by the order items added to the receiver. For order items that support take away then @ref BRMenuOrderItemAttributesProxy
+ objects are returned when the item quantity is greater than 1.
 
-// return an array of arrays of BRMenuOrderItem objects, grouped by the BRMenu set on this instance,
-// with BRMenuOrderItemAttributesProxy instances added for take away items where the item quantity > 1
-- (NSArray *)orderedGroupsWithSpecialGroupKey:(NSSet *)specialGroupKeys;
+ @param groupMapping An optional mapping of order item keys to alternate key values.
+ @return An array of arrays of order item objects.
+ */
+- (NSArray *)orderedGroups:(NSDictionary *)groupMapping;
 
 @end

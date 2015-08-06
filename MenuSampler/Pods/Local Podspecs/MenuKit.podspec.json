@@ -61,7 +61,7 @@
       ],
       "header_dir": "AFNetworking",
       "dependencies": {
-        "MenuKit/Core": [
+        "MenuKit/RestKit": [
 
         ],
         "AFNetworking": [
@@ -88,7 +88,26 @@
         ]
       },
       "resource_bundles": {
-        "BRMenuUI": "Menu/Resources/UI/**"
+        "BRMenuUI": "Menu/Resources/UI/**/*.{storyboard,lproj,pdf}"
+      }
+    },
+    {
+      "name": "UI-RestKit",
+      "source_files": [
+        "Menu/Code/UI-RestKit.h",
+        "Menu/Code/UI-RestKit"
+      ],
+      "header_dir": "UI-RestKit",
+      "dependencies": {
+        "MenuKit/UI": [
+
+        ],
+        "MAObjCRuntime": [
+          "~> 0.0.1"
+        ],
+        "RestKit/ObjectMapping": [
+          "~> 0.24"
+        ]
       }
     }
   ]

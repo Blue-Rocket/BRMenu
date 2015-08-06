@@ -1,6 +1,6 @@
 //
 //  BRMenuRestKitTestingMapper.h
-//  Menu
+//  MenuKit
 //
 //  Adpated from RestKit's RKMappingTest.
 //

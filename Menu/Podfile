@@ -6,6 +6,7 @@ target :Menu do
 	pod 'BRCocoaLumberjack',		'~> 1.9'
 	pod 'BREnvironment',			'~> 1.1'
 	pod 'BRPDFImage',				'~> 1.0'
+	pod 'MAObjCRuntime', 			'~> 0.0.1'
 	pod 'Masonry',					'~> 0.6'
 	pod 'RestKit/ObjectMapping',	'~> 0.24'
 	

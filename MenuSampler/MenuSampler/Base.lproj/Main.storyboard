@@ -56,6 +56,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Global Style Editor" id="u2f-Ay-0A1"/>
+                    <connections>
+                        <segue destination="bI3-KT-lqU" kind="show" identifier="ExportStyle" id="0xA-iq-uKp"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OBb-Gw-NlB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -517,6 +520,67 @@
             </objects>
             <point key="canvasLocation" x="1922" y="1136"/>
         </scene>
+        <!--Review Order-->
+        <scene sceneID="gry-f6-Phc">
+            <objects>
+                <viewController id="Ddw-4t-9eu" customClass="BRMenuOrderReviewViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ghp-XD-I8Q"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZYH-GU-TJ9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Jdn-F3-16d">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="gZ0-Z8-OAG">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Ddw-4t-9eu" id="Zr9-c8-BHi"/>
+                                    <outlet property="delegate" destination="Ddw-4t-9eu" id="YoR-kd-uig"/>
+                                </connections>
+                            </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dha-vI-r4v">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="zzz-fS-MFW"/>
+                                    <barButtonItem style="plain" id="wcH-6Q-ufh">
+                                        <view key="customView" contentMode="scaleToFill" id="RFa-bw-BHh" customClass="BRMenuBarButtonItemView">
+                                            <rect key="frame" x="464" y="6" width="200" height="33"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="title" value="Checkout"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="badgeText" value="$0.00"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="inverse" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="gZ0-Z8-OAG" secondAttribute="trailing" id="7f8-VR-Ouc"/>
+                            <constraint firstItem="Dha-vI-r4v" firstAttribute="leading" secondItem="Jdn-F3-16d" secondAttribute="leading" id="EAI-W8-O0o"/>
+                            <constraint firstItem="Dha-vI-r4v" firstAttribute="top" secondItem="gZ0-Z8-OAG" secondAttribute="bottom" id="Gcc-6H-ghn"/>
+                            <constraint firstItem="ZYH-GU-TJ9" firstAttribute="top" secondItem="Dha-vI-r4v" secondAttribute="bottom" id="VR1-se-6Lv"/>
+                            <constraint firstItem="gZ0-Z8-OAG" firstAttribute="leading" secondItem="Jdn-F3-16d" secondAttribute="leading" id="crk-Ug-OTG"/>
+                            <constraint firstItem="gZ0-Z8-OAG" firstAttribute="top" secondItem="Jdn-F3-16d" secondAttribute="top" id="dMJ-DC-ISM"/>
+                            <constraint firstAttribute="trailing" secondItem="Dha-vI-r4v" secondAttribute="trailing" id="yCA-EH-gKY"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Review Order" id="bBb-uR-6cQ"/>
+                    <connections>
+                        <outlet property="checkoutTotalButton" destination="RFa-bw-BHh" id="9yK-U2-BX3"/>
+                        <outlet property="tableView" destination="gZ0-Z8-OAG" id="QEK-W7-PYa"/>
+                        <outlet property="view" destination="Jdn-F3-16d" id="MXz-py-VqB"/>
+                        <segue destination="w5z-uB-x8K" kind="show" identifier="ViewOrderItemDetails" id="RPZ-Tw-Cvb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NUs-JK-QXc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1139" y="2488"/>
+        </scene>
         <!--Ordering Views-->
         <scene sceneID="F3C-Yo-rR7">
             <objects>
@@ -667,6 +731,75 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vre-Or-wAg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1922" y="1857"/>
+        </scene>
+        <!--Review Item Details-->
+        <scene sceneID="gtC-wa-mw4">
+            <objects>
+                <viewController id="w5z-uB-x8K" customClass="BRMenuOrderingItemDetailsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RCn-lK-I0i"/>
+                        <viewControllerLayoutGuide type="bottom" id="lhb-T2-pPp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Inl-RO-JnO">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nca-Zn-M8l">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nca-Zn-M8l" firstAttribute="top" secondItem="Inl-RO-JnO" secondAttribute="top" id="06p-fq-K2b"/>
+                            <constraint firstItem="lhb-T2-pPp" firstAttribute="top" secondItem="nca-Zn-M8l" secondAttribute="bottom" id="H6U-Co-wEA"/>
+                            <constraint firstAttribute="trailing" secondItem="nca-Zn-M8l" secondAttribute="trailing" id="HWh-Ep-wUo"/>
+                            <constraint firstItem="nca-Zn-M8l" firstAttribute="leading" secondItem="Inl-RO-JnO" secondAttribute="leading" id="WFM-hR-KmQ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Review Item Details" id="Ho2-eA-2be"/>
+                    <connections>
+                        <outlet property="scrollView" destination="nca-Zn-M8l" id="mgb-07-ehf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z5Q-YZ-A1Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1982" y="2488"/>
+        </scene>
+        <!--Export Style-->
+        <scene sceneID="buC-Fh-mkO">
+            <objects>
+                <viewController id="bI3-KT-lqU" customClass="StyleExportViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tNN-wp-u5f"/>
+                        <viewControllerLayoutGuide type="bottom" id="ao4-1W-76s"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IeB-E8-GeS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fjq-QT-ehc">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="11"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ao4-1W-76s" firstAttribute="top" secondItem="Fjq-QT-ehc" secondAttribute="bottom" id="IMe-AZ-9uP"/>
+                            <constraint firstItem="Fjq-QT-ehc" firstAttribute="leading" secondItem="IeB-E8-GeS" secondAttribute="leading" id="XG9-0d-w2K"/>
+                            <constraint firstItem="Fjq-QT-ehc" firstAttribute="top" secondItem="IeB-E8-GeS" secondAttribute="top" id="o0h-xZ-LHf"/>
+                            <constraint firstAttribute="trailing" secondItem="Fjq-QT-ehc" secondAttribute="trailing" id="zJY-Nf-FBY"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Export Style" id="L1D-dT-1Ye"/>
+                    <connections>
+                        <outlet property="textView" destination="Fjq-QT-ehc" id="GFX-Yc-fSH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xjy-2E-XdR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1922" y="-1066"/>
         </scene>
         <!--Edit Color-->
         <scene sceneID="kZC-R4-XWS">
@@ -918,6 +1051,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="RVU-ed-HTm" kind="show" identifier="EditGlobalStyle" id="pzv-h6-hyJ"/>
+                        <segue destination="Ddw-4t-9eu" kind="show" identifier="ReviewOrder" id="K89-SO-vub"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fSn-rO-vew" userLabel="First Responder" sceneMemberID="firstResponder"/>

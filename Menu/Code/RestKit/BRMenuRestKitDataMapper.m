@@ -1,6 +1,6 @@
 //
 //  BRMenuRestKitDataMapper.m
-//  Menu
+//  MenuKit
 //
 //  Created by Matt on 20/07/15.
 //  Copyright (c) 2015 Blue Rocket. Distributable under the terms of the Apache License, Version 2.0.
@@ -38,6 +38,21 @@
 - (id)performMappingWithSourceObject:(id)sourceObject error:(NSError *__autoreleasing *)error {
 	RKMappingOperation *mappingOperation = [[RKMappingOperation alloc] initWithSourceObject:sourceObject
 																		  destinationObject:nil
+																					mapping:mapping];
+	id<RKMappingOperationDataSource> dataSource = [self dataSourceForMappingOperation:mappingOperation];
+	mappingOperation.dataSource = dataSource;
+	[mappingOperation start];
+	if ( mappingOperation.error ) {
+		if ( error ) {
+			*error = mappingOperation.error;
+		}
+	}
+	return mappingOperation.destinationObject;
+}
+
+- (id)performEncodingWithObject:(id)domainObject error:(NSError *__autoreleasing *)error {
+	RKMappingOperation *mappingOperation = [[RKMappingOperation alloc] initWithSourceObject:domainObject
+																		  destinationObject:[NSMutableDictionary new]
 																					mapping:mapping];
 	id<RKMappingOperationDataSource> dataSource = [self dataSourceForMappingOperation:mappingOperation];
 	mappingOperation.dataSource = dataSource;

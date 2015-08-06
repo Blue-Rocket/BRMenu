@@ -1,6 +1,6 @@
 //
 //  BRMenuStepperStepper.m
-//  Menu
+//  MenuKit
 //
 //  Created by Matt on 4/12/13.
 //  Copyright (c) 2013 Blue Rocket, Inc. Distributable under the terms of the Apache License, Version 2.0.
@@ -14,8 +14,8 @@
 @interface BRMenuStepper () <BRMenuUIStylishHost>
 @end
 
-static const CGFloat kHorizontalPadding = 0;
-static const CGFloat kVerticalPadding = 0;
+const CGSize BRMenuStepperPadding = {8.0, 4.0};
+
 static const CGFloat kNaturalWidth = 80.0;
 static const CGFloat kNaturalHeight = 28.0;
 static const CGFloat kBadgeWidth = 28.0;
@@ -101,7 +101,7 @@ static const CGFloat kBadgeWidth = 28.0;
 }
 
 - (CGSize)intrinsicContentSize {
-	return CGSizeMake(kNaturalWidth + 2 * kHorizontalPadding, kNaturalHeight + 2 * kVerticalPadding);
+	return CGSizeMake(kNaturalWidth + 2 * BRMenuStepperPadding.width, kNaturalHeight + 2 * BRMenuStepperPadding.height);
 }
 
 - (void)layoutSubviews {
@@ -111,8 +111,8 @@ static const CGFloat kBadgeWidth = 28.0;
 	CGRect frame = CGRectMake(CGRectGetMidX(self.bounds) - (kNaturalWidth / 2.0), CGRectGetMidY(self.bounds) - (kNaturalHeight / 2.0) + 1.0, kNaturalWidth, kNaturalHeight);
 
 	//// Subframes
-	CGRect minusFrame = CGRectMake(CGRectGetMinX(frame) - kHorizontalPadding, 0, 25 + kHorizontalPadding * 2.0, bounds.size.height);
-	CGRect plusFrame = CGRectMake(CGRectGetMaxX(frame) - 25 - kHorizontalPadding, 0, 25 + kHorizontalPadding * 2.0, bounds.size.height);
+	CGRect minusFrame = CGRectMake(CGRectGetMinX(frame) - BRMenuStepperPadding.width, 0, 25 + BRMenuStepperPadding.width * 2.0, bounds.size.height);
+	CGRect plusFrame = CGRectMake(CGRectGetMaxX(frame) - 25 - BRMenuStepperPadding.width, 0, 25 + BRMenuStepperPadding.width * 2.0, bounds.size.height);
 	minusButton.frame = minusFrame;
 	plusButton.frame = plusFrame;
 
@@ -201,7 +201,7 @@ static const CGFloat kBadgeWidth = 28.0;
 }
 
 - (CGRect)minusFrame {
-	return CGRectMake(kHorizontalPadding, CGRectGetMidY(self.bounds) - (kNaturalHeight / 2.0) + 1.0, 25, 27);
+	return CGRectMake(BRMenuStepperPadding.width, CGRectGetMidY(self.bounds) - (kNaturalHeight / 2.0) + 1.0, 25, 27);
 }
 
 - (void)drawNormal {
@@ -356,7 +356,7 @@ static const CGFloat kBadgeWidth = 28.0;
 }
 
 - (CGRect)plusFrame {
-	return CGRectMake(kHorizontalPadding, CGRectGetMidY(self.bounds) - (kNaturalHeight / 2.0) + 1.0, 25, 27);
+	return CGRectMake(BRMenuStepperPadding.width, CGRectGetMidY(self.bounds) - (kNaturalHeight / 2.0) + 1.0, 25, 27);
 }
 
 - (void)drawNormal {

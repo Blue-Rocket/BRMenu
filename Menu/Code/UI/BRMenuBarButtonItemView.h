@@ -1,6 +1,6 @@
 //
 //  BRMenuBarButtonItemView.h
-//  Menu
+//  MenuKit
 //
 //  Created by Matt on 4/8/13.
 //  Copyright (c) 2013 Blue Rocket, Inc. Distributable under the terms of the Apache License, Version 2.0.
@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+#import "BRMenuUIControl.h"
 #import "BRMenuUIStyle.h"
 
 /**
  Button that renders a standard menu button with support for a title and badge value (for example count).
  */
 IB_DESIGNABLE
-@interface BRMenuBarButtonItemView : UIButton <BRMenuUIStylish>
+@interface BRMenuBarButtonItemView : UIButton <BRMenuUIControl, BRMenuUIStylish>
 
 /** A title to display as the button text. */
 @property (nonatomic, copy) IBInspectable NSString *title;

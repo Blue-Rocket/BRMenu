@@ -1,9 +1,9 @@
 //
 //  BRMenuItemCellWithoutComponents.m
-//  Menu
+//  MenuKit
 //
 //  Created by Matt on 30/07/15.
-//  Copyright (c) 2015 Blue Rocket. All rights reserved.
+//  Copyright (c) 2015 Blue Rocket. Distributable under the terms of the Apache License, Version 2.0.
 //
 
 #import "BRMenuItemCellWithoutComponents.h"
@@ -87,6 +87,8 @@ static const CGFloat kDescTopMargin = 4;
 	[super refreshStyle:style];
 	self.title.font = style.listFont;
 	self.title.textColor = (self.selected ? self.uiStyle.appPrimaryColor : self.uiStyle.textColor);
+	self.desc.font = style.listCaptionFont;
+	self.desc.textColor = style.captionColor;
 }
 
 - (void)updateConstraints {
@@ -103,7 +105,7 @@ static const CGFloat kDescTopMargin = 4;
 		// give stepper minimum of 44 height, so cells with only a single line title aren't too short
 		[self.stepper mas_makeConstraints:^(MASConstraintMaker *make) {
 			make.left.equalTo(self.title.mas_right).with.offset(10);
-			make.right.equalTo(self.contentView.mas_rightMargin);
+			make.right.equalTo(self.contentView.mas_rightMargin).with.offset(BRMenuStepperPadding.width);
 			make.height.equalTo(@44);
 			make.centerY.equalTo(self.contentView);
 		}];

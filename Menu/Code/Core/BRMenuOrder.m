@@ -1,6 +1,6 @@
 //
 //  BRMenuOrder.m
-//  BRMenu
+//  MenuKit
 //
 //  Created by Matt on 4/2/13.
 //  Copyright (c) 2013 Blue Rocket. Distributable under the terms of the Apache License, Version 2.0.
@@ -14,23 +14,27 @@
 #import "BRMenuOrderItem.h"
 #import "BRMenuOrderItemAttributesProxy.h"
 
-NSString * const kSpecialGroupKey = @"_special";
+static void * kOrderItemPriceContext = &kOrderItemPriceContext;
 
 @implementation BRMenuOrder {
 	NSMutableArray *orderItems;
-	NSMutableSet *menus;
+	NSMutableOrderedSet *menus;
 }
 
 @synthesize orderItems;
 @synthesize menus;
 
 + (NSSet *)keyPathsForValuesAffectingOrderItemCount {
-	return [NSSet setWithObject:@"orderItems"];
+	return [NSSet setWithObject:NSStringFromSelector(@selector(orderItems))];
+}
+
++ (NSSet *)keyPathsForValuesAffectingTotalPrice {
+	return [NSSet setWithObject:NSStringFromSelector(@selector(orderItems))];
 }
 
 - (id)init {
 	if ( (self = [super init]) ) {
-		menus = [[NSMutableSet alloc] initWithCapacity:4];
+		menus = [[NSMutableOrderedSet alloc] initWithCapacity:4];
 	}
 	return self;
 }
@@ -40,14 +44,27 @@ NSString * const kSpecialGroupKey = @"_special";
 		self.menu = order.menu;
 		self.orderNumber = NSNotFound;
 		self.name = order.name;
-		orderItems = [order.orderItems mutableCopy];
+		[self replaceOrderItems:order.orderItems]; // handles KVO
 		menus = [order.menus mutableCopy];
 	}
 	return self;
 }
 
+- (void)dealloc {
+	[self removeOrderItemsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, orderItems.count)]]; // release KVO
+}
+
 - (id)copyWithZone:(NSZone *)zone {
 	return [[BRMenuOrder alloc] initWithOrder:self];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+	if ( context == kOrderItemPriceContext ) {
+		[self willChangeValueForKey:NSStringFromSelector(@selector(totalPrice))];
+		[self didChangeValueForKey:NSStringFromSelector(@selector(totalPrice))];
+	} else {
+		return [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+	}
 }
 
 #pragma mark - KVC support for orderItems array
@@ -59,11 +76,13 @@ NSString * const kSpecialGroupKey = @"_special";
 		// (i.e. when multiple menus are supported) all menu items will lose their ref to their menu
 		[menus addObject:item.item.menu];
 	}
+	[item addObserver:self forKeyPath:NSStringFromSelector(@selector(price)) options:NSKeyValueObservingOptionNew context:kOrderItemPriceContext];
 }
 
 - (void)insertOrderItems:(NSArray *)array atIndexes:(NSIndexSet *)indexes {
 	[orderItems insertObjects:array atIndexes:indexes];
-	for ( BRMenuOrderItem *orderItem in orderItems ) {
+	for ( BRMenuOrderItem *orderItem in array ) {
+		[orderItem addObserver:self forKeyPath:NSStringFromSelector(@selector(price)) options:NSKeyValueObservingOptionNew context:kOrderItemPriceContext];
 		if ( orderItem.item.menu && ![menus containsObject:orderItem.item.menu] ) {
 			[menus addObject:orderItem.item.menu];
 		}
@@ -71,10 +90,14 @@ NSString * const kSpecialGroupKey = @"_special";
 }
 
 - (void)removeObjectFromOrderItemsAtIndex:(NSUInteger)index {
+	[orderItems[index] removeObserver:self forKeyPath:NSStringFromSelector(@selector(price)) context:kOrderItemPriceContext];
 	[orderItems removeObjectAtIndex:index];
 }
 
 - (void)removeOrderItemsAtIndexes:(NSIndexSet *)indexes {
+	[orderItems enumerateObjectsAtIndexes:indexes options:0 usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+		[obj removeObserver:self forKeyPath:NSStringFromSelector(@selector(price)) context:kOrderItemPriceContext];
+	}];
 	[orderItems removeObjectsAtIndexes:indexes];
 }
 
@@ -82,9 +105,9 @@ NSString * const kSpecialGroupKey = @"_special";
 
 - (void)addOrderItem:(BRMenuOrderItem *)item {
 	if ( orderItems == nil ) {
-		[self willChangeValueForKey:@"orderItems"];
+		[self willChangeValueForKey:NSStringFromSelector(@selector(orderItems))];
 		orderItems = [[NSMutableArray alloc] initWithCapacity:5];
-		[self didChangeValueForKey:@"orderItems"];
+		[self didChangeValueForKey:NSStringFromSelector(@selector(orderItems))];
 	}
 	[self insertObject:item inOrderItemsAtIndex:orderItems.count];
 }
@@ -120,9 +143,9 @@ NSString * const kSpecialGroupKey = @"_special";
 	[self removeOrderItemsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, orderItems.count)]];
 	if ( newOrderItems != nil ) {
 		if ( orderItems == nil ) {
-			[self willChangeValueForKey:@"orderItems"];
+			[self willChangeValueForKey:NSStringFromSelector(@selector(orderItems))];
 			orderItems = [[NSMutableArray alloc] initWithCapacity:5];
-			[self didChangeValueForKey:@"orderItems"];
+			[self didChangeValueForKey:NSStringFromSelector(@selector(orderItems))];
 		}
 		NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange(orderItems.count, newOrderItems.count)];
 		[self insertOrderItems:newOrderItems atIndexes:indexSet];
@@ -140,38 +163,48 @@ NSString * const kSpecialGroupKey = @"_special";
 - (NSDecimalNumber *)totalPrice {
 	NSDecimalNumber *total = [NSDecimalNumber decimalNumberWithMantissa:0 exponent:0 isNegative:NO];
 	for ( BRMenuOrderItem *item in orderItems ) {
-		NSDecimalNumber *itemQuantity = [NSDecimalNumber decimalNumberWithMantissa:item.quantity exponent:0 isNegative:NO];
-		NSDecimalNumber *itemPrice = (item.item.price != nil ? item.item.price : item.item.group.price);
+		NSDecimalNumber *itemPrice = item.price;
 		if ( itemPrice != nil ) {
-			NSDecimalNumber *itemTotal = [itemPrice decimalNumberByMultiplyingBy:itemQuantity];
-			total = [total decimalNumberByAdding:itemTotal];
+			total = [total decimalNumberByAdding:itemPrice];
 		}
 	}
 	return total;
 }
 
-- (NSArray *)orderedGroupsWithSpecialGroupKey:(NSSet *)specialGroupKeys {
-	const NSUInteger capacity = ([self.menu.items count] + [self.menu.groups count]);
-	NSMutableArray *sections = [NSMutableArray arrayWithCapacity:capacity];
-	
-	// order in same order as BRMenu
-	NSMutableDictionary *mapping = [NSMutableDictionary dictionaryWithCapacity:capacity];
-	NSMutableArray *sortKeys = [NSMutableArray arrayWithCapacity:capacity];
-	[sortKeys addObject:kSpecialGroupKey];
-	for ( BRMenuItem *item in self.menu.items ) {
-		if ( item.key != nil ) {
-			[sortKeys addObject:item.key];
+- (BRMenu *)menuForKey:(NSString *)key {
+	for ( BRMenu *menu in menus ) {
+		NSString *menuKey = menu.key;
+		if ( !menuKey ) {
+			menuKey = @"";
+		}
+		if ( [key isEqualToString:menuKey] ) {
+			return menu;
 		}
 	}
-	for ( BRMenuItemGroup *group in self.menu.groups ) {
-		[sortKeys addObject:(group.key == nil ? @"" : group.key)];
-	}
+	return nil;
+}
+
+- (NSArray *)orderedGroups:(NSDictionary *)groupMapping {
+	// order sections in same order as BRMenu groups
+	NSMutableDictionary *mapping = [NSMutableDictionary new];
+
 	for ( BRMenuOrderItem *orderItem in orderItems ) {
-		NSString *key = [orderItem orderGroupKeyWithSpecialGroupKeys:specialGroupKeys];
-		NSMutableArray *rows = [mapping objectForKey:key];
+		// mapping is a dictionary of menu keys to dictionaries of group keys to arrays of order items for that group
+		NSMutableDictionary *menuMapping = mapping;
+		NSString *menuKey = orderItem.item.menu.key;
+		if ( !menuKey ) {
+			menuKey = @"";
+		}
+		menuMapping = mapping[menuKey];
+		if ( !menuMapping ) {
+			menuMapping = [NSMutableDictionary new];
+			mapping[menuKey] = menuMapping;
+		}
+		NSString *key = [orderItem orderGroupKey:groupMapping];
+		NSMutableArray *rows = [menuMapping objectForKey:key];
 		if ( rows == nil ) {
-			rows = [NSMutableArray arrayWithCapacity:10];
-			[mapping setObject:rows forKey:key];
+			rows = [[NSMutableArray alloc] initWithCapacity:10];
+			[menuMapping setObject:rows forKey:key];
 		}
 		[rows addObject:orderItem];
 		
@@ -189,12 +222,31 @@ NSString * const kSpecialGroupKey = @"_special";
 			}
 		}
 	}
-	for ( NSString *key in sortKeys ) {
-		NSArray *array = [mapping objectForKey:key];
-		if ( array != nil ) {
-			[sections addObject:array];
+	
+	NSMutableArray *sections = [NSMutableArray new];
+	for ( NSString *menuKey in mapping ) {
+		NSDictionary *menuMapping = mapping[menuKey];
+		BRMenu *menu = [self menuForKey:menuKey];
+		NSArray *sortedGroupKeys = [[menuMapping allKeys] sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+			if ( [obj1 isEqualToString:obj2] ) {
+				return NSOrderedSame;
+			}
+			if ( [obj1 isEqualToString:BRMenuOrderItemDefaultGroupKey] ) {
+				return NSOrderedAscending;
+			}
+			if ( [obj2 isEqualToString:BRMenuOrderItemDefaultGroupKey] ) {
+				return NSOrderedDescending;
+			}
+			NSInteger idx1 = [menu groupOrderingIndexForKey:obj1];
+			NSInteger idx2 = [menu groupOrderingIndexForKey:obj2];;
+			return (idx1 < idx2 ? NSOrderedAscending : idx1 > idx2 ? NSOrderedDescending : NSOrderedSame);
+		}];
+		for ( NSString *groupKey in sortedGroupKeys ) {
+			NSMutableArray *section = menuMapping[groupKey];
+			[sections addObject:section];
 		}
 	}
+	
 	return sections;
 }
 

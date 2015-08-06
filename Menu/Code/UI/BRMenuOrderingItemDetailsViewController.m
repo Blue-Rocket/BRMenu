@@ -1,6 +1,6 @@
 //
 //  BRMenuOrderingItemDetailsViewController.m
-//  Menu
+//  MenuKit
 //
 //  Created by Matt on 28/07/15.
 //  Copyright (c) 2015 Blue Rocket. Distributable under the terms of the Apache License, Version 2.0.
@@ -43,6 +43,7 @@
 			make.top.equalTo(self.scrollView).with.offset(10);
 			make.bottom.equalTo(self.scrollView).with.offset(-10).priorityMedium();
 		}];
+		self.orderDetailsView = detailsView;
 	}
 	if ( !self.navigationItem.leftBarButtonItem ) {
 		self.navigationItem.leftBarButtonItem = [UIBarButtonItem standardBRMenuBackButtonItemWithTitle:nil
@@ -65,9 +66,16 @@
 	}
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
+	if ( self.scrollView.scrollEnabled ) {
+		[self.scrollView flashScrollIndicators];
+	}
+}
+
 - (void)viewDidLayoutSubviews {
 	[super viewDidLayoutSubviews];
-	self.scrollView.scrollEnabled = (CGRectGetMaxY(self.orderDetailsView.frame) > CGRectGetHeight(self.view.bounds));
+	self.scrollView.scrollEnabled = (CGRectGetHeight(self.orderDetailsView.bounds) > CGRectGetHeight(self.view.bounds));
 }
 
 - (void)setOrderItem:(BRMenuOrderItem *)item {
@@ -87,15 +95,5 @@
 - (IBAction)addOrderItemToActiveOrder:(id)sender {
 	[self.orderingDelegate addOrderItemToActiveOrder:self.orderItem];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

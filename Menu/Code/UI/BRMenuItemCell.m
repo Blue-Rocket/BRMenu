@@ -1,6 +1,6 @@
 //
 //  BRMenuItemCell.m
-//  Menu
+//  MenuKit
 //
 //  Created by Matt on 29/07/15.
 //  Copyright (c) 2015 Blue Rocket. Distributable under the terms of the Apache License, Version 2.0.
@@ -97,6 +97,8 @@
 	[super refreshStyle:style];
 	self.title.font = style.listFont;
 	self.title.textColor = (self.selected ? self.uiStyle.appPrimaryColor : self.uiStyle.textColor);
+	self.desc.font = style.listCaptionFont;
+	self.desc.textColor = style.captionColor;
 }
 
 @end

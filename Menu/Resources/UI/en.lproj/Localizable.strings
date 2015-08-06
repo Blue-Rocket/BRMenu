@@ -4,6 +4,9 @@
 
 "menu.action.add" = "Add";
 "menu.action.back" = "Back";
+"menu.action.delete" = "Delete";
+"menu.action.done" = "Done";
+"menu.action.edit" = "Edit";
 "menu.action.next" = "Next";
 "menu.action.ok" = "OK";
 "menu.action.review" = "Review";
@@ -16,3 +19,5 @@
 "menu.ordering.item.details.title" = "Details";
 "menu.ordering.item.details.left.title" = "Left side";
 "menu.ordering.item.details.right.title" = "Right side";
+
+"menu.order.review.quantity.title" = "x%u";

@@ -1,6 +1,6 @@
 //
 //  BRMenuRestKitTestingSupport.h
-//  Menu
+//  MenuKit
 //
 //  Adapted from RestKit's RKTestFixture.
 //

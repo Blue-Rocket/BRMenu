@@ -1,6 +1,6 @@
 //
 //  NSNumberFormatter+BRMenu.h
-//  Menu
+//  MenuKit
 //
 //  Created by Matt on 25/07/15.
 //  Copyright (c) 2015 Blue Rocket. Distributable under the terms of the Apache License, Version 2.0.

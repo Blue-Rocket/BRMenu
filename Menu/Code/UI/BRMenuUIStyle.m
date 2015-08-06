@@ -1,6 +1,6 @@
 //
 //  BRMenuUIStyle.m
-//  Menu
+//  MenuKit
 //
 //  Created by Matt on 21/07/15.
 //  Copyright (c) 2015 Blue Rocket. Distributable under the terms of the Apache License, Version 2.0.
@@ -87,6 +87,7 @@ static BRMenuUIStyle *DefaultStyle;
 	UIColor *controlHighlightedShadowColor;
 	UIColor *controlSelectedColor;
 	UIColor *controlDisabledColor;
+	UIColor *controlDangerColor;
 
 	UIColor *inverseControlTextColor;
 	UIColor *inverseControlBorderColor;
@@ -129,6 +130,7 @@ static BRMenuUIStyle *DefaultStyle;
 @synthesize controlHighlightedShadowColor, inverseControlHighlightedShadowColor;
 @synthesize controlSelectedColor, inverseControlSelectedColor;
 @synthesize controlDisabledColor, inverseControlDisabledColor;
+@dynamic controlDangerColor;
 
 @synthesize uiFont, uiBoldFont;
 @synthesize bodyFont, titleFont;
@@ -231,6 +233,7 @@ static BRMenuUIStyle *DefaultStyle;
 			controlHighlightedShadowColor = [controlTextColor colorWithAlphaComponent: 0.5];
 			controlSelectedColor = appPrimaryColor;
 			controlDisabledColor = controlBorderColor;
+			controlDangerColor = [BRMenuUIStyle colorWithRGBHexInteger:0xEB2D38];
 			
 			inverseControlTextColor = [UIColor whiteColor];
 			inverseControlBorderColor = [BRMenuUIStyle colorWithRGBHexInteger:0x264891];
@@ -240,19 +243,19 @@ static BRMenuUIStyle *DefaultStyle;
 			inverseControlSelectedColor = controlSelectedColor;
 			inverseControlDisabledColor = controlBorderColor;
 			
-			uiFont = [UIFont fontWithName:@"AvenirNext-Medium" size:13];
-			uiBoldFont = [UIFont fontWithName:@"AvenirNext-DemiBold" size:13];
+			uiFont = [UIFont fontWithName:@"AvenirNext-Medium" size:15];
+			uiBoldFont = [UIFont fontWithName:@"AvenirNext-DemiBold" size:15];
 			
-			bodyFont = [UIFont fontWithName:@"GillSans-Light" size:14];
+			bodyFont = [UIFont fontWithName:@"GillSans-Light" size:15];
 			titleFont = [UIFont fontWithName:@"GillSans" size:21];
 			heroFont = [UIFont fontWithName:@"GillSans-Bold" size:21];
 			headlineFont = [UIFont fontWithName:@"GillSans-Bold" size:17];
-			secondaryFont = [UIFont fontWithName:@"GillSans-Light" size:13];
-			captionFont = [UIFont fontWithName:@"GillSans" size:14];
+			secondaryFont = [UIFont fontWithName:@"GillSans-Light" size:15];
+			captionFont = [UIFont fontWithName:@"GillSans" size:15];
 			
 			listFont = [UIFont fontWithName:@"GillSans" size:17];
-			listSecondaryFont = [UIFont fontWithName:@"GillSans-Light" size:12];
-			listCaptionFont = [UIFont fontWithName:@"GillSans" size:12];
+			listSecondaryFont = [UIFont fontWithName:@"GillSans-Light" size:15];
+			listCaptionFont = [UIFont fontWithName:@"GillSans" size:15];
 			
 			alertBodyFont = [UIFont fontWithName:@"GillSans-Light" size:16];
 			alertHeadlineFont = [UIFont fontWithName:@"GillSans" size:24];
@@ -280,6 +283,7 @@ static BRMenuUIStyle *DefaultStyle;
 			controlHighlightedShadowColor = other.controlHighlightedShadowColor;
 			controlSelectedColor = other.controlSelectedColor;
 			controlDisabledColor = other.controlDisabledColor;
+			controlDangerColor = other.controlDangerColor;
 
 			inverseControlTextColor = other.inverseControlTextColor;
 			inverseControlBorderColor = other.inverseControlBorderColor;
@@ -356,6 +360,7 @@ static BRMenuUIStyle *DefaultStyle;
 	controlHighlightedShadowColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(controlHighlightedShadowColor))];
 	controlSelectedColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(controlSelectedColor))];
 	controlDisabledColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(controlDisabledColor))];
+	controlDangerColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(controlDangerColor))];
 
 	inverseControlTextColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(inverseControlTextColor))];
 	inverseControlBorderColor = [decoder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(inverseControlBorderColor))];
@@ -408,6 +413,7 @@ static BRMenuUIStyle *DefaultStyle;
 	[coder encodeObject:controlHighlightedShadowColor forKey:NSStringFromSelector(@selector(controlHighlightedShadowColor))];
 	[coder encodeObject:controlSelectedColor forKey:NSStringFromSelector(@selector(controlSelectedColor))];
 	[coder encodeObject:controlDisabledColor forKey:NSStringFromSelector(@selector(controlDisabledColor))];
+	[coder encodeObject:controlDangerColor forKey:NSStringFromSelector(@selector(controlDangerColor))];
 	
 	[coder encodeObject:inverseControlTextColor forKey:NSStringFromSelector(@selector(inverseControlTextColor))];
 	[coder encodeObject:inverseControlBorderColor forKey:NSStringFromSelector(@selector(inverseControlBorderColor))];
@@ -536,6 +542,10 @@ static BRMenuUIStyle *DefaultStyle;
 	return (controlDisabledColor || self.defaultStyle ? controlDisabledColor : [BRMenuUIStyle defaultStyle].controlDisabledColor);
 }
 
+- (UIColor *)controlDangerColor {
+	return (controlDangerColor || self.defaultStyle ? controlDangerColor : [BRMenuUIStyle defaultStyle].controlDangerColor);
+}
+
 - (UIColor *)inverseControlTextColor {
 	return (inverseControlTextColor || self.defaultStyle ? inverseControlTextColor : [BRMenuUIStyle defaultStyle].inverseControlTextColor);
 }
@@ -631,6 +641,7 @@ static BRMenuUIStyle *DefaultStyle;
 @dynamic controlHighlightedShadowColor, inverseControlHighlightedShadowColor;
 @dynamic controlSelectedColor, inverseControlSelectedColor;
 @dynamic controlDisabledColor, inverseControlDisabledColor;
+@dynamic controlDangerColor;
 
 @dynamic uiFont, uiBoldFont;
 @dynamic bodyFont, titleFont;

@@ -1,6 +1,6 @@
 //
 //  BRMenuPlusMinusButton.m
-//  Menu
+//  MenuKit
 //
 //  Created by Matt on 4/17/13.
 //  Copyright (c) 2013 Blue Rocket, Inc. Distributable under the terms of the Apache License, Version 2.0.
@@ -9,6 +9,7 @@
 #import "BRMenuPlusMinusButton.h"
 
 #import "BRMenuUIStylishHost.h"
+#import "UIControl+BRMenu.h"
 #import "UIView+BRMenuUIStyle.h"
 
 @interface BRMenuPlusMinusButton () <BRMenuUIStylishHost>
@@ -16,6 +17,7 @@
 
 @implementation BRMenuPlusMinusButton
 
+@dynamic destructive;
 @dynamic uiStyle;
 
 - (id)initWithFrame:(CGRect)frame {
@@ -56,7 +58,21 @@
 	}
 }
 
+#pragma mark - UI changes
+
+- (void)uiStyleDidChange:(BRMenuUIStyle *)style {
+	[self setNeedsDisplay];
+}
+
+- (void)controlStateDidChange:(UIControlState)state {
+	[self setNeedsDisplay];
+}
+
 #pragma mark - Drawing
+
+- (CGSize)intrinsicContentSize {
+	return CGSizeMake(30, 30);
+}
 
 - (void)drawPlusMinusInFrame:(CGRect)frame color:(UIColor *)labelColor {
 	//// Plus V Drawing
@@ -78,10 +94,13 @@
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
 	const BOOL selected = self.selected;
+	const BOOL destructive = self.destructive;
 	
 	//// Color Declarations
-	UIColor* strokeColor = (selected ? [self.uiStyle controlSelectedColor] : [self.uiStyle controlBorderColor]);
-	UIColor* labelColor = (selected ? [self.uiStyle controlSelectedColor] : [self.uiStyle controlTextColor]);
+	UIColor* strokeColor = (destructive ? [self.uiStyle controlDangerColor] :
+							selected ? [self.uiStyle controlSelectedColor] : [self.uiStyle controlBorderColor]);
+	UIColor* labelColor = (destructive ? [self.uiStyle controlDangerColor] :
+						   selected ? [self.uiStyle controlSelectedColor] : [self.uiStyle controlTextColor]);
 	
 	//// Shadow Declarations
 	UIColor* shadow = [self.uiStyle controlBorderGlossColor];
@@ -109,10 +128,13 @@
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
 	const BOOL selected = self.selected;
+	const BOOL destructive = self.destructive;
 	
 	//// Color Declarations
-	UIColor* strokeColor = (selected ? [self.uiStyle controlSelectedColor] : [self.uiStyle controlBorderColor]);
-	UIColor* labelColor = (selected ? [self.uiStyle controlSelectedColor] : [self.uiStyle controlTextColor]);
+	UIColor* strokeColor = (destructive ? [self.uiStyle controlDangerColor] :
+							selected ? [self.uiStyle controlSelectedColor] : [self.uiStyle controlBorderColor]);
+	UIColor* labelColor = (destructive ? [self.uiStyle controlDangerColor] :
+						   selected ? [self.uiStyle controlSelectedColor] : [self.uiStyle controlTextColor]);
 	UIColor* insetShadowColor = [labelColor colorWithAlphaComponent: 0.5];
 	UIColor* highlightedFill = [self.uiStyle controlHighlightedColor];
 	

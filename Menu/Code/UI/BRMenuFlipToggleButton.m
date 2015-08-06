@@ -1,6 +1,6 @@
 //
 //  BRMenuFlipToggleButton.m
-//  Menu
+//  MenuKit
 //
 //  Created by Matt on 4/16/13.
 //  Copyright (c) 2013 Blue Rocket, Inc. Distributable under the terms of the Apache License, Version 2.0.
@@ -43,6 +43,8 @@ static const CGSize kDefaultIconSize = {46.0, 26.0};
 - (id)initWithFrame:(CGRect)frame {
 	if ( (self = [self initWithIconSize:kDefaultIconSize]) ) {
 		self.frame = frame;
+		self.opaque = NO;
+		[self setupDefaultImages];
 	}
     return self;
 }
@@ -56,6 +58,11 @@ static const CGSize kDefaultIconSize = {46.0, 26.0};
 }
 
 - (void)awakeFromNib {
+	[super awakeFromNib];
+	[self setupDefaultImages];
+}
+
+- (void)setupDefaultImages {
 	// for historical reasons, this class represent a "dine-in" and "takeaway" toggle button
 	if ( frontImageName == nil ) {
 		self.frontImageName = @"icon-dinein.pdf";
