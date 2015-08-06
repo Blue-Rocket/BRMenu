@@ -243,19 +243,19 @@ static BRMenuUIStyle *DefaultStyle;
 			inverseControlSelectedColor = controlSelectedColor;
 			inverseControlDisabledColor = controlBorderColor;
 			
-			uiFont = [UIFont fontWithName:@"AvenirNext-Medium" size:13];
-			uiBoldFont = [UIFont fontWithName:@"AvenirNext-DemiBold" size:13];
+			uiFont = [UIFont fontWithName:@"AvenirNext-Medium" size:15];
+			uiBoldFont = [UIFont fontWithName:@"AvenirNext-DemiBold" size:15];
 			
-			bodyFont = [UIFont fontWithName:@"GillSans-Light" size:14];
+			bodyFont = [UIFont fontWithName:@"GillSans-Light" size:15];
 			titleFont = [UIFont fontWithName:@"GillSans" size:21];
 			heroFont = [UIFont fontWithName:@"GillSans-Bold" size:21];
 			headlineFont = [UIFont fontWithName:@"GillSans-Bold" size:17];
-			secondaryFont = [UIFont fontWithName:@"GillSans-Light" size:13];
-			captionFont = [UIFont fontWithName:@"GillSans" size:14];
+			secondaryFont = [UIFont fontWithName:@"GillSans-Light" size:15];
+			captionFont = [UIFont fontWithName:@"GillSans" size:15];
 			
 			listFont = [UIFont fontWithName:@"GillSans" size:17];
-			listSecondaryFont = [UIFont fontWithName:@"GillSans-Light" size:12];
-			listCaptionFont = [UIFont fontWithName:@"GillSans" size:12];
+			listSecondaryFont = [UIFont fontWithName:@"GillSans-Light" size:15];
+			listCaptionFont = [UIFont fontWithName:@"GillSans" size:15];
 			
 			alertBodyFont = [UIFont fontWithName:@"GillSans-Light" size:16];
 			alertHeadlineFont = [UIFont fontWithName:@"GillSans" size:24];
