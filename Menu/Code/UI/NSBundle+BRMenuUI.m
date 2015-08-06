@@ -68,4 +68,15 @@ static NSCache *IconCache;
 	return image;
 }
 
++ (UIStoryboard *)storyboardForBRMenuOrdering {
+	NSArray *sbNames = @[@"MenuKitOrdering", @"BRMenuOrdering"];
+	for ( NSString *sbName in sbNames ) {
+		NSBundle *bundle = [NSBundle bundleContainingBRMenuResourceNamed:[sbName stringByAppendingString:@".storyboard"]];
+		if ( bundle ) {
+			return [UIStoryboard storyboardWithName:sbName bundle:bundle];
+		}
+	}
+	return nil;
+}
+
 @end

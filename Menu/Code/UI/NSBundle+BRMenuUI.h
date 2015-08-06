@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ Extension of NSBundle to assist with loading MenuKit UI resources.
+ */
 @interface NSBundle (BRMenuUI)
 
 /**
@@ -23,5 +26,14 @@
  @return An image, or @c nil if the resource cannot be loaded.
  */
 + (UIImage *)iconForBRMenuResource:(NSString *)resourceName size:(CGSize)iconSize color:(UIColor *)tintColor;
+
+/**
+ Get the storyboard for menu ordering.
+ 
+ This will first search for a storyboard named @c MenuKitOrdering. If that is not found, then a storyboard named @c BRMenuOrdering will be used.
+ 
+ @return The storyboard, or @c nil if not available.
+ */
++ (UIStoryboard *)storyboardForBRMenuOrdering;
 
 @end

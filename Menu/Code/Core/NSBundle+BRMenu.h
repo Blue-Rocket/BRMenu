@@ -31,4 +31,11 @@
  */
 + (NSURL *)URLForBRMenuResourceNamed:(NSString *)resourceName;
 
+/**
+ Get a bundle that contains a resource with a specific name, searching through all registered bundles.
+ 
+ @return The bundle, or @c nil if not found.
+ */
++ (NSBundle *)bundleContainingBRMenuResourceNamed:(NSString *)resourceName;
+
 @end
