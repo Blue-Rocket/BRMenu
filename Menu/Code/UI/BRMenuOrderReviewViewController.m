@@ -162,6 +162,7 @@ static void * kOrderTotalPriceContext = &kOrderTotalPriceContext;
 		editingButton.title = (self.editing
 							   ? [NSBundle localizedBRMenuString:@"menu.action.done"]
 							   : [NSBundle localizedBRMenuString:@"menu.action.edit"]);
+		[editingButton sizeToFit];
 	}
 }
 
@@ -259,7 +260,6 @@ static void * kOrderTotalPriceContext = &kOrderTotalPriceContext;
 	}
 	
 	[self.tableView endUpdates];
-	// TODO: [self refreshUI];
 	
 	// if no more rows, leave edit mode automatically
 	if ( [groupsController numberOfSections] < 1 ) {
@@ -292,7 +292,6 @@ static void * kOrderTotalPriceContext = &kOrderTotalPriceContext;
 	[self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:insertRow inSection:origIndexPath.section]]
 						  withRowAnimation:UITableViewRowAnimationAutomatic];
 	[self.tableView endUpdates];
-	// TODO: [self refreshUI];
 }
 
 #pragma mark - Table view support
