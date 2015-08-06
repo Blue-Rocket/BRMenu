@@ -574,6 +574,7 @@
                         <outlet property="checkoutTotalButton" destination="RFa-bw-BHh" id="9yK-U2-BX3"/>
                         <outlet property="tableView" destination="gZ0-Z8-OAG" id="QEK-W7-PYa"/>
                         <outlet property="view" destination="Jdn-F3-16d" id="MXz-py-VqB"/>
+                        <segue destination="w5z-uB-x8K" kind="show" identifier="ViewOrderItemDetails" id="RPZ-Tw-Cvb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NUs-JK-QXc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -730,6 +731,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vre-Or-wAg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1922" y="1857"/>
+        </scene>
+        <!--Review Item Details-->
+        <scene sceneID="gtC-wa-mw4">
+            <objects>
+                <viewController id="w5z-uB-x8K" customClass="BRMenuOrderingItemDetailsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RCn-lK-I0i"/>
+                        <viewControllerLayoutGuide type="bottom" id="lhb-T2-pPp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Inl-RO-JnO">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nca-Zn-M8l">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nca-Zn-M8l" firstAttribute="top" secondItem="Inl-RO-JnO" secondAttribute="top" id="06p-fq-K2b"/>
+                            <constraint firstItem="lhb-T2-pPp" firstAttribute="top" secondItem="nca-Zn-M8l" secondAttribute="bottom" id="H6U-Co-wEA"/>
+                            <constraint firstAttribute="trailing" secondItem="nca-Zn-M8l" secondAttribute="trailing" id="HWh-Ep-wUo"/>
+                            <constraint firstItem="nca-Zn-M8l" firstAttribute="leading" secondItem="Inl-RO-JnO" secondAttribute="leading" id="WFM-hR-KmQ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Review Item Details" id="Ho2-eA-2be"/>
+                    <connections>
+                        <outlet property="scrollView" destination="nca-Zn-M8l" id="mgb-07-ehf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z5Q-YZ-A1Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1982" y="2488"/>
         </scene>
         <!--Export Style-->
         <scene sceneID="buC-Fh-mkO">
