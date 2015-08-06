@@ -13,6 +13,7 @@
 #import "BRMenuGroupTableHeaderView.h"
 #import "BRMenuItem.h"
 #import "BRMenuOrder.h"
+#import "BRMenuOrderingItemDetailsViewController.h"
 #import "BRMenuOrderItem.h"
 #import "BRmenuOrderItemAttributes.h"
 #import "BRMenuOrderItemAttributesProxy.h"
@@ -28,6 +29,8 @@
 
 NSString * const BRMenuOrderReviewOrderItemCellIdentifier = @"OrderItemCell";
 NSString * const BRMenuOrderReviewGroupHeaderCellIdentifier = @"GroupHeaderCell";
+
+NSString * const BRMenuOrderReviewViewOrderItemDetailsSegue = @"ViewOrderItemDetails";
 
 static void * kOrderTotalPriceContext = &kOrderTotalPriceContext;
 
@@ -151,6 +154,18 @@ static void * kOrderTotalPriceContext = &kOrderTotalPriceContext;
 
 - (IBAction)goBack:(id)sender {
 	[self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if ( [segue.identifier isEqualToString:BRMenuOrderReviewViewOrderItemDetailsSegue] ) {
+		BRMenuOrderingItemDetailsViewController *dest = segue.destinationViewController;
+		NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+		if ( indexPath ) {
+			BRMenuOrderReviewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+			dest.orderItem = cell.orderItem;
+			[self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+		}
+	}
 }
 
 #pragma mark - Actions
@@ -356,8 +371,7 @@ static void * kOrderTotalPriceContext = &kOrderTotalPriceContext;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	// jump to details
-	// TODO: [self performSegueWithIdentifier:kViewOrderItemDetailsSegue sender:self];
-	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+	[self performSegueWithIdentifier:BRMenuOrderReviewViewOrderItemDetailsSegue sender:self];
 }
 
 // we manually handle showing custom +/- editing controls, so disable indentation while editing with the

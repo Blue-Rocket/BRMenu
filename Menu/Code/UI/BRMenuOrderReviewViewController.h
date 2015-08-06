@@ -16,6 +16,8 @@
 extern NSString * const BRMenuOrderReviewOrderItemCellIdentifier;
 extern NSString * const BRMenuOrderReviewGroupHeaderCellIdentifier;
 
+extern NSString * const BRMenuOrderReviewViewOrderItemDetailsSegue;
+
 /**
  Display an entire order, allowing quantities to be adjusted (add/remove).
  */
