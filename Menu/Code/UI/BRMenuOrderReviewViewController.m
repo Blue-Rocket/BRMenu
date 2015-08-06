@@ -321,7 +321,7 @@ static void * kOrderTotalPriceContext = &kOrderTotalPriceContext;
 	if ( [[cell.deleteButton actionsForTarget:self forControlEvent:UIControlEventTouchUpInside] count] < 1 ) {
 		[cell.deleteButton addTarget:self action:@selector(adjustQuantity:) forControlEvents:UIControlEventTouchUpInside];
 		UISwipeGestureRecognizer *swipeToDelete = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(deleteRow:)];
-		swipeToDelete.direction = UISwipeGestureRecognizerDirectionRight;
+		swipeToDelete.direction = UISwipeGestureRecognizerDirectionLeft;
 		[cell addGestureRecognizer:swipeToDelete];
 	}
 	if ( [[cell.takeAwayButton actionsForTarget:self forControlEvent:UIControlEventTouchUpInside] count] < 1 ) {
