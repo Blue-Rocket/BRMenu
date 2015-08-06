@@ -246,14 +246,13 @@ static void * kOrderTotalPriceContext = &kOrderTotalPriceContext;
 	NSMutableArray *reloadIndexPaths = [NSMutableArray arrayWithCapacity:5];
 	NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
 	const NSInteger row = indexPath.row;
-	const UInt8 attributeCount = [orderItem.attributes count];
 	const NSUInteger oldSectionCount = [groupsController numberOfSections];
 	
 	// special consideration for takeaway rows, to handle proxies
-	if ( orderItem.item.askTakeaway && attributeCount > (UInt8)1 ) {
+	if ( orderItem.item.askTakeaway && orderItem.quantity > 1 ) {
 		const UInt8 removeIndex = ([orderItem isProxy] ? ((BRMenuOrderItemAttributesProxy *)orderItem).index : 0);
 		NSUInteger remapIndex;
-		const NSUInteger endRemapIndex = row + attributeCount - removeIndex;
+		const NSUInteger endRemapIndex = row + orderItem.quantity - removeIndex;
 		for ( remapIndex = row + 1; remapIndex < endRemapIndex; remapIndex++ ) {
 			NSIndexPath *reloadIndexPath = [NSIndexPath indexPathForRow:remapIndex inSection:indexPath.section];
 			[reloadIndexPaths addObject:reloadIndexPath];
