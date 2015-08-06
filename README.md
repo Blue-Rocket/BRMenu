@@ -2,6 +2,13 @@
 
 A menu and order framework optimized for encoding into barcodes.
 
+# MenuKit Sampler
+
+A `MenuSampler` iOS application is included that demonstrates the core
+components of MenuKit. See the [wiki](https://github.com/Blue-Rocket/BRMenu/wiki/MenuSampler)
+for more details.
+
+
 _TODO: this is a work in progress._
 
 # Project Integration
