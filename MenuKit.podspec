@@ -48,7 +48,7 @@ Pod::Spec.new do |s|
     sp.dependency 'MenuKit/Core'
     sp.dependency 'BRPDFImage', '~> 1.0'
 	sp.dependency 'Masonry', '~> 0.6'
-    sp.resource_bundle = { 'BRMenuUI' => 'Menu/Resources/UI/**' }
+    sp.resource_bundle = { 'BRMenuUI' => 'Menu/Resources/UI/**/*.{storyboard,lproj,pdf}' }
   end
   
   s.subspec 'UI-RestKit' do |sp|

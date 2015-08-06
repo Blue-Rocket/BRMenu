@@ -94,7 +94,7 @@ SPEC CHECKSUMS:
   ISO8601DateFormatterValueTransformer: 3ac3a721381697cab4e792d8049ce2f2e9ad3036
   MAObjCRuntime: a6a1d95acbfa3784d66cb35bd42904e47943b488
   Masonry: 362e8a1cc0beada4a4c4832d5e863da2a51533be
-  MenuKit: 5b44fee02206ec4ae543faf5a7be852a6bba1358
+  MenuKit: cdb626c389eaf767d78227dbf0d4a209ffa80c2b
   OCHamcrest: 6f03ffa81d12feab872638490a44ab0a6d3aca10
   OCMock: a10ea9f0a6e921651f96f78b6faee95ebc813b92
   RestKit: 1987b5efef289c6b27bd980714d6ca48d3871b78

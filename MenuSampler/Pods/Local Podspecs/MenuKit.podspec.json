@@ -88,7 +88,7 @@
         ]
       },
       "resource_bundles": {
-        "BRMenuUI": "Menu/Resources/UI/**"
+        "BRMenuUI": "Menu/Resources/UI/**/*.{storyboard,lproj,pdf}"
       }
     },
     {

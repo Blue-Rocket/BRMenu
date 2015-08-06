@@ -16,7 +16,6 @@
 		C9819DCA1B61CD64008A1393 /* menu-lunchstop.json in Resources */ = {isa = PBXBuildFile; fileRef = C9819DC61B61CD64008A1393 /* menu-lunchstop.json */; };
 		C9819DCB1B61CD64008A1393 /* menu-pizza.json in Resources */ = {isa = PBXBuildFile; fileRef = C9819DC71B61CD64008A1393 /* menu-pizza.json */; };
 		C9819DCC1B61CD64008A1393 /* menu-shakeshack.json in Resources */ = {isa = PBXBuildFile; fileRef = C9819DC81B61CD64008A1393 /* menu-shakeshack.json */; };
-		C9819DD41B61EB1C008A1393 /* MenuOrdering.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9819DD21B61EB1C008A1393 /* MenuOrdering.storyboard */; };
 		C9C5B0361B6F340800EA3B24 /* StyleExportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C5B0351B6F340800EA3B24 /* StyleExportViewController.m */; };
 		C9C909451B60ACA800DDF191 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C909441B60ACA800DDF191 /* main.m */; };
 		C9C909481B60ACA800DDF191 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C909471B60ACA800DDF191 /* AppDelegate.m */; };
@@ -61,7 +60,6 @@
 		C9819DC61B61CD64008A1393 /* menu-lunchstop.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "menu-lunchstop.json"; sourceTree = "<group>"; };
 		C9819DC71B61CD64008A1393 /* menu-pizza.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "menu-pizza.json"; sourceTree = "<group>"; };
 		C9819DC81B61CD64008A1393 /* menu-shakeshack.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "menu-shakeshack.json"; sourceTree = "<group>"; };
-		C9819DD31B61EB1C008A1393 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MenuOrdering.storyboard; sourceTree = "<group>"; };
 		C9C5B0341B6F340800EA3B24 /* StyleExportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyleExportViewController.h; sourceTree = "<group>"; };
 		C9C5B0351B6F340800EA3B24 /* StyleExportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyleExportViewController.m; sourceTree = "<group>"; };
 		C9C9093F1B60ACA800DDF191 /* MenuSampler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MenuSampler.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -172,7 +170,6 @@
 				C9819DBB1B619217008A1393 /* RootChooserTableViewController.h */,
 				C9819DBC1B619217008A1393 /* RootChooserTableViewController.m */,
 				C9C9094C1B60ACA800DDF191 /* Main.storyboard */,
-				C9819DD21B61EB1C008A1393 /* MenuOrdering.storyboard */,
 				C9C9097A1B60AEF000DDF191 /* Style Editor */,
 				C9C9097B1B60AF1C00DDF191 /* UI Components */,
 				C9819DC41B61CD64008A1393 /* Menus */,
@@ -330,7 +327,6 @@
 				C9C909531B60ACA800DDF191 /* LaunchScreen.xib in Resources */,
 				C9819DCA1B61CD64008A1393 /* menu-lunchstop.json in Resources */,
 				C9819DCB1B61CD64008A1393 /* menu-pizza.json in Resources */,
-				C9819DD41B61EB1C008A1393 /* MenuOrdering.storyboard in Resources */,
 				C9C909501B60ACA800DDF191 /* Images.xcassets in Resources */,
 				C9819DC91B61CD64008A1393 /* menu-donuts.json in Resources */,
 			);
@@ -448,14 +444,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C9819DD21B61EB1C008A1393 /* MenuOrdering.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C9819DD31B61EB1C008A1393 /* Base */,
-			);
-			name = MenuOrdering.storyboard;
-			sourceTree = "<group>";
-		};
 		C9C9094C1B60ACA800DDF191 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

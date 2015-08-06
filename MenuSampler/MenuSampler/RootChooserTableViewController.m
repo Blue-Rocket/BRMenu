@@ -60,7 +60,8 @@ static NSString * const kReviewOrderSegue = @"ReviewOrder";
 		BRMenu *menu = [self menuForIndexPath:indexPath];
 		if ( menu ) {
 			// TODO: move the storybaord and instantiation code into BRMenu
-			UIStoryboard *menuStoryboard = [UIStoryboard storyboardWithName:@"MenuOrdering" bundle:nil];
+			UIStoryboard *menuStoryboard = [NSBundle storyboardForBRMenuOrdering];
+			NSAssert(menuStoryboard != nil, @"MenuKitOrdering storyboard not found!");
 			// the root is a nav controller, but we can re-use our existing controller here
 			BRMenuOrderingViewController *dest = [menuStoryboard instantiateViewControllerWithIdentifier:@"MenuOrdering"];
 			NSString *title = [self.tableView cellForRowAtIndexPath:indexPath].textLabel.text;
