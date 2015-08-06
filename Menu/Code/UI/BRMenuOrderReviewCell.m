@@ -58,11 +58,11 @@ static void * kOrderItemQuantityContext = &kOrderItemQuantityContext;
 	if ( theOrderItem == orderItem ) {
 		return;
 	}
-	if ( orderItem ) {
+	if ( orderItem && [orderItem isProxy] == NO ) {
 		[orderItem removeObserver:self forKeyPath:NSStringFromSelector(@selector(quantity)) context:kOrderItemQuantityContext];
 	}
 	orderItem = theOrderItem;
-	if ( theOrderItem ) {
+	if ( theOrderItem && [theOrderItem isProxy] == NO ) {
 		[theOrderItem addObserver:self forKeyPath:NSStringFromSelector(@selector(quantity)) options:0 context:kOrderItemQuantityContext];
 	}
 	self.item = orderItem.item;
