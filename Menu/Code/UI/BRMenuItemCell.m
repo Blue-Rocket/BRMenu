@@ -97,6 +97,8 @@
 	[super refreshStyle:style];
 	self.title.font = style.listFont;
 	self.title.textColor = (self.selected ? self.uiStyle.appPrimaryColor : self.uiStyle.textColor);
+	self.desc.font = style.listCaptionFont;
+	self.desc.textColor = style.captionColor;
 }
 
 @end
