@@ -270,19 +270,19 @@ static void * kOrderTotalPriceContext = &kOrderTotalPriceContext;
 
 - (void)duplicateOrderItem:(BRMenuOrderReviewCell *)cell {
 	BRMenuOrderItem *orderItem = cell.orderItem;
-	BRMenuOrderItem *duplicate;
 	NSInteger insertRow;
 	NSIndexPath *origIndexPath = [self.tableView indexPathForCell:cell];
 	if ( orderItem.item.askTakeaway ) {
-		// add a new OrderItemAttributes
+		// For items that support take away, we don't create duplicate items. Instead we manage each "duplicate" as a proxy
+		// for the attributes at a speicific index within a single BRMenuOrderItem.
 		const UInt8 index = [orderItem.attributes count];
 		BRMenuOrderItemAttributes *attr = [BRMenuOrderItemAttributes new];
 		attr.takeAway = orderItem.takeAway;
 		[orderItem setAttributes:attr atIndex:index];
 		orderItem.quantity++;
-		duplicate = (BRMenuOrderItem *)[[BRMenuOrderItemAttributesProxy alloc] initWithOrderItem:orderItem attributeIndex:index];
 		insertRow = (origIndexPath.row + ([orderItem isProxy] ? (index - [(BRMenuOrderItemAttributesProxy *)orderItem index]) : index));
 	} else {
+		BRMenuOrderItem *duplicate;
 		duplicate = [[BRMenuOrderItem alloc] initWithOrderItem:cell.orderItem];
 		insertRow = origIndexPath.row + 1;
 		[order addOrderItem:duplicate];
