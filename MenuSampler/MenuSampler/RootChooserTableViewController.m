@@ -59,7 +59,6 @@ static NSString * const kReviewOrderSegue = @"ReviewOrder";
 	if ( indexPath.section == 1 ) {
 		BRMenu *menu = [self menuForIndexPath:indexPath];
 		if ( menu ) {
-			// TODO: move the storybaord and instantiation code into BRMenu
 			UIStoryboard *menuStoryboard = [NSBundle storyboardForBRMenuOrdering];
 			NSAssert(menuStoryboard != nil, @"MenuKitOrdering storyboard not found!");
 			// the root is a nav controller, but we can re-use our existing controller here
