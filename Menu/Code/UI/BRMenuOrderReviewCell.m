@@ -214,7 +214,9 @@ static void * kOrderItemQuantityContext = &kOrderItemQuantityContext;
 }
 
 - (void)refreshQuantity {
-	self.quantity.text = [NSString stringWithFormat:[NSBundle localizedBRMenuString:@"menu.order.review.quantity.title"], orderItem.quantity];
+	self.quantity.text = (orderItem.quantity > 1
+						  ? [NSString stringWithFormat:[NSBundle localizedBRMenuString:@"menu.order.review.quantity.title"], orderItem.quantity]
+						  : nil);
 }
 
 - (void)refreshPrice {
