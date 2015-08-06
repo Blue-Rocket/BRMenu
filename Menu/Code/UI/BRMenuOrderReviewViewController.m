@@ -194,6 +194,9 @@ static void * kOrderTotalPriceContext = &kOrderTotalPriceContext;
 		} else if ( cell.deleteState ) {
 			// cancel "delete"
 			[cell leaveDeleteState:YES];
+			if ( cell.editing != self.editing ) {
+				cell.editing = self.editing;
+			}
 		} else if ( orderItem.quantity == 1 || orderItem.item.askTakeaway == YES ) {
 			// we must confirm this action; enter "delete" state
 			[cell enterDeleteState:YES];
@@ -329,6 +332,32 @@ static void * kOrderTotalPriceContext = &kOrderTotalPriceContext;
 	}
 	cell.orderItem = [groupsController orderItemAtIndexPath:indexPath];
     return cell;
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+	BRMenuOrderReviewCell *cell = (BRMenuOrderReviewCell *)[tableView cellForRowAtIndexPath:indexPath];
+	// allow highlight when cell is in delete state, or when item requires review (and thus we can show details)
+	return (cell.deleteState || (self.editing == NO && cell.orderItem.item.needsReview == YES));
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	// if we are in editing mode, and the cell is in delete state, we should cancel the delete (mimic standard iOS behavior)
+	BRMenuOrderReviewCell *cell = (BRMenuOrderReviewCell *)[tableView cellForRowAtIndexPath:indexPath];
+	if ( cell.deleteState ) {
+		[cell leaveDeleteState:YES];
+		if ( cell.editing != self.editing ) {
+			cell.editing = self.editing;
+		}
+	} else if ( self.editing == NO && cell.orderItem.item.needsReview == YES ) {
+		return indexPath;
+	}
+	return nil;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	// jump to details
+	// TODO: [self performSegueWithIdentifier:kViewOrderItemDetailsSegue sender:self];
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 // we manually handle showing custom +/- editing controls, so disable indentation while editing with the
