@@ -103,7 +103,7 @@ static const CGFloat kDescTopMargin = 4;
 		// give stepper minimum of 44 height, so cells with only a single line title aren't too short
 		[self.stepper mas_makeConstraints:^(MASConstraintMaker *make) {
 			make.left.equalTo(self.title.mas_right).with.offset(10);
-			make.right.equalTo(self.contentView.mas_rightMargin);
+			make.right.equalTo(self.contentView.mas_rightMargin).with.offset(BRMenuStepperPadding.width);
 			make.height.equalTo(@44);
 			make.centerY.equalTo(self.contentView);
 		}];
