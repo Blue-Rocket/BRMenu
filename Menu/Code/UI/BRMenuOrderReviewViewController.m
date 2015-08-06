@@ -161,7 +161,7 @@ static void * kOrderTotalPriceContext = &kOrderTotalPriceContext;
 		BRMenuOrderingItemDetailsViewController *dest = segue.destinationViewController;
 		NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
 		if ( indexPath ) {
-			BRMenuOrderReviewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+			BRMenuOrderReviewCell *cell = (BRMenuOrderReviewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
 			dest.orderItem = cell.orderItem;
 			[self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 		}
