@@ -37,7 +37,7 @@ Pod::Spec.new do |s|
   
   s.subspec 'AFNetworking' do |sp|
     sp.source_files = 'Menu/Code/AFNetworking.h', 'Menu/Code/AFNetworking'
-  	sp.header_dir = 'AFNetworking'
+  	sp.header_dir = 'AFNetworking/Serialization'
     sp.dependency 'MenuKit/RestKit'
     sp.dependency 'AFNetworking', '~> 2.5'
   end
