@@ -49,7 +49,7 @@
 	 performMapping];
 	assertThat(dict[@"appPrimaryColor"], equalTo(@0x1247b8ff));
 	assertThat(dict[@"textShadowColor"], equalTo(@0xCACACA7F));
-	assertThat(dict[@"uiFont"], equalTo(@{@"name" :@"AvenirNext-Medium", @"size":@13}));
+	assertThat(dict[@"uiFont"], equalTo(@{@"name" :@"AvenirNext-Medium", @"size":@15}));
 }
 
 @end
