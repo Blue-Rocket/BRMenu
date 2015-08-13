@@ -240,8 +240,8 @@
 		C9B8126D1B5D75910014CBCB /* Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = Core.h; path = Code/Core.h; sourceTree = SOURCE_ROOT; };
 		C9B812771B5D7B040014CBCB /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = AFNetworking.h; path = Code/AFNetworking.h; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C9B812781B5D7B040014CBCB /* RestKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = RestKit.h; path = Code/RestKit.h; sourceTree = SOURCE_ROOT; };
-		C9B8127A1B5D7B040014CBCB /* BRMenuAFHTTPResponseSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuAFHTTPResponseSerializer.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		C9B8127B1B5D7B040014CBCB /* BRMenuAFHTTPResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuAFHTTPResponseSerializer.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		C9B8127A1B5D7B040014CBCB /* BRMenuAFHTTPResponseSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuAFHTTPResponseSerializer.h; sourceTree = "<group>"; };
+		C9B8127B1B5D7B040014CBCB /* BRMenuAFHTTPResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuAFHTTPResponseSerializer.m; sourceTree = "<group>"; };
 		C9B8127D1B5D7B040014CBCB /* BRMenuRestKitDataMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuRestKitDataMapper.h; sourceTree = "<group>"; };
 		C9B8127E1B5D7B040014CBCB /* BRMenuRestKitDataMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuRestKitDataMapper.m; sourceTree = "<group>"; };
 		C9B812881B5D7B5C0014CBCB /* BRMenuMappingRestKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuMappingRestKit.m; sourceTree = "<group>"; };
@@ -250,7 +250,7 @@
 		C9B8128B1B5D7B5C0014CBCB /* BRMenuMappingRestKitPostProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuMappingRestKitPostProcessor.m; sourceTree = "<group>"; };
 		C9B8128E1B5D7BA70014CBCB /* BRMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenu.h; sourceTree = "<group>"; };
 		C9B8128F1B5D7BA70014CBCB /* BRMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenu.m; sourceTree = "<group>"; };
-		C9B812901B5D7BA70014CBCB /* BRMenuDataMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuDataMapper.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		C9B812901B5D7BA70014CBCB /* BRMenuDataMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuDataMapper.h; sourceTree = "<group>"; };
 		C9B812911B5D7BA70014CBCB /* BRMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuItem.h; sourceTree = "<group>"; };
 		C9B812921B5D7BA70014CBCB /* BRMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuItem.m; sourceTree = "<group>"; };
 		C9B812931B5D7BA70014CBCB /* BRMenuItemComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuItemComponent.h; sourceTree = "<group>"; };

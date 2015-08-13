@@ -52,6 +52,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5)
+  - AFNetworking/Serialization (~> 2.5)
   - BRCocoaLumberjack (~> 1.9)
   - BREnvironment (~> 1.1)
   - BRPDFImage (~> 1.0)
