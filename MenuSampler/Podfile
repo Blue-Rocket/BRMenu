@@ -3,6 +3,7 @@ platform :ios, '8.4'
 inhibit_all_warnings!
 
 target :MenuSampler do
+	pod 'BRCocoaLumberjack',        '~> 2.0'
 	pod 'MenuKit', :subspecs => ['Core', 'RestKit', 'AFNetworking', 'UI', 'UI-RestKit'], 
 		:path => '../'
 	pod 'Color-Picker-for-iOS', 	'~> 2.0'
