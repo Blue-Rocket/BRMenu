@@ -9,10 +9,9 @@
 #import "RootChooserTableViewController.h"
 
 #import <BRCocoaLumberjack/BRCocoaLumberjack.h>
-#import <MenuKit/Core/Core.h>
-#import <MenuKit/Core/NSBundle+BRMenu.h>
-#import <MenuKit/RestKit/RestKit.h>
-#import <MenuKit/UI/UI.h>
+#import <MenuKit/Core.h>
+#import <MenuKit/RestKit.h>
+#import <MenuKit/UI.h>
 #import <RestKit/RestKit.h>
 #import "BRMenu+MenuSampler.h"
 

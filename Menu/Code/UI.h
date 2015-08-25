@@ -35,4 +35,4 @@
 #import <MenuKit/BRMenuTagGridView.h>
 #import <MenuKit/BRMenuUIModelPropertyEditor.h>
 #import <MenuKit/NSBundle+BRMenuUI.h>
-#import <MenuKitBarButtonItem+BRMenu.h>
+#import <MenuKit/UIBarButtonItem+BRMenu.h>

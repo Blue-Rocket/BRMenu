@@ -9,7 +9,7 @@
 #import "ButtonsViewController.h"
 
 #import <BRCocoaLumberjack/BRCocoaLumberjack.h>
-#import <MenuKit/UI/UI.h>
+#import <MenuKit/UI.h>
 
 @interface ButtonsViewController ()
 @property (strong, nonatomic) IBOutlet BRMenuStepper *stepper;
@@ -23,10 +23,10 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	
-	BRMenuMutableUIStyle *mStyle = [[BRMenuUIStyle defaultStyle] mutableCopy];
+	BRMutableUIStyle *mStyle = [[BRUIStyle defaultStyle] mutableCopy];
 	mStyle.uiFont = [UIFont fontWithName:@"MarkerFelt-Thin" size:12];
 	mStyle.uiBoldFont = [UIFont fontWithName:@"Zapfino" size:12];
-	mStyle.appPrimaryColor = [BRMenuUIStyle colorWithRGBHexInteger:0x60ae2b];
+	mStyle.appPrimaryColor = [BRUIStyle colorWithRGBHexInteger:0x60ae2b];
 	mStyle.controlSelectedColor =  mStyle.appPrimaryColor;
 	self.stepper2.uiStyle = mStyle;
 }

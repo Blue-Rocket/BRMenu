@@ -9,11 +9,11 @@
 #import "StyleExportViewController.h"
 
 #import <BRCocoaLumberjack/BRCocoaLumberjack.h>
-#import <MenuKit/UI/UIViewController+BRMenuUIStyle.h>
-#import <MenuKit/RestKit/RestKit.h>
-#import <MenuKit/UI-RestKit/BRMenuUIMappingRestKit.h>
+#import <BRStyle/Core.h>
+#import <BRStyle/BRUIStyleMappingRestKit.h>
+#import <MenuKit/RestKit.h>
 
-@interface StyleExportViewController () <BRMenuUIStylish>
+@interface StyleExportViewController () <BRUIStylish>
 @property (strong, nonatomic) IBOutlet UITextView *textView;
 @end
 
@@ -23,15 +23,15 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
-	BRMenuUIStyle *style = self.uiStyle;
+	BRUIStyle *style = self.uiStyle;
 	NSString *json = [self jsonForStyle:style];
 	self.textView.text = json;
 }
 
-- (NSString *)jsonForStyle:(BRMenuUIStyle *)style {
+- (NSString *)jsonForStyle:(BRUIStyle *)style {
 	static BRMenuRestKitDataMapper *mapper;
 	if ( !mapper ) {
-		mapper = [[BRMenuRestKitDataMapper alloc] initWithObjectMapping:[BRMenuUIMappingRestKit uiStyleMapping]];
+		mapper = [[BRMenuRestKitDataMapper alloc] initWithObjectMapping:[BRUIStyleMappingRestKit uiStyleMapping]];
 	}
 	
 	NSError *error = nil;

@@ -8,7 +8,8 @@
 
 #import "GlobalStyleController.h"
 
-#import <MenuKit/UI/UI.h>
+#import <BRStyle/Core.h>
+#import <MenuKit/UI.h>
 #import <MAObjCRuntime/MARTNSObject.h>
 #import <MAObjCRuntime/RTProperty.h>
 #import "ColorPickerViewController.h"
@@ -25,13 +26,13 @@ static NSString * const kExportStyleSegue = @"ExportStyle";
 @end
 
 @implementation GlobalStyleController {
-	BRMenuMutableUIStyle *uiStyle;
+	BRMutableUIStyle *uiStyle;
 	NSString *selectedStyleName;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	uiStyle = [[BRMenuUIStyle defaultStyle] mutableCopy];
+	uiStyle = [[BRUIStyle defaultStyle] mutableCopy];
 	self.navigationItem.rightBarButtonItem = [UIBarButtonItem standardBRMenuBarButtonItemWithTitle:@"Export" target:self action:@selector(exportStyle:)];
 }
 
@@ -39,7 +40,7 @@ static NSString * const kExportStyleSegue = @"ExportStyle";
 	static NSArray *names;
 	if ( !names ) {
 		NSMutableArray *colors = [NSMutableArray new];
-		for ( RTProperty *prop in [[BRMenuUIStyle class] rt_properties] ) {
+		for ( RTProperty *prop in [[BRUIStyle class] rt_properties] ) {
 			if ( [prop.name hasSuffix:@"Color"] ) {
 				[colors addObject:[prop.name substringToIndex:(prop.name.length - 5)]];
 			}
@@ -50,13 +51,13 @@ static NSString * const kExportStyleSegue = @"ExportStyle";
 	return names;
 }
 
-- (UIColor *)colorForName:(NSString *)colorName inStyle:(BRMenuUIStyle *)style {
+- (UIColor *)colorForName:(NSString *)colorName inStyle:(BRUIStyle *)style {
 	return [style valueForKeyPath:[colorName stringByAppendingString:@"Color"]];
 }
 
-- (void)setColor:(UIColor *)color forName:(NSString *)colorName inStyle:(BRMenuMutableUIStyle *)style {
+- (void)setColor:(UIColor *)color forName:(NSString *)colorName inStyle:(BRMutableUIStyle *)style {
 	[style setValue:color forKeyPath:[colorName stringByAppendingString:@"Color"]];
-	[BRMenuUIStyle setDefaultStyle:style];
+	[BRUIStyle setDefaultStyle:style];
 }
 
 - (NSString *)displayNameForStyleName:(NSString *)name {
@@ -103,7 +104,7 @@ static NSString * const kExportStyleSegue = @"ExportStyle";
 		NSString *colorName = [self colorStylePropertyNames][indexPath.row];
 		StyleColorTableViewCell *colorCell = [tableView dequeueReusableCellWithIdentifier:kColorCellIdentifier forIndexPath:indexPath];
 		colorCell.titleLabel.text = [self displayNameForStyleName:colorName];
-		colorCell.colorSwatch.color = [self colorForName:colorName inStyle:[BRMenuUIStyle defaultStyle]];
+		colorCell.colorSwatch.color = [self colorForName:colorName inStyle:[BRUIStyle defaultStyle]];
 		cell = colorCell;
 	}
 	
@@ -142,7 +143,7 @@ static NSString * const kExportStyleSegue = @"ExportStyle";
 		dest.delegate = self;
 	} else if ( [segue.identifier isEqualToString:kExportStyleSegue] ) {
 		StyleExportViewController *export = segue.destinationViewController;
-		export.uiStyle = [BRMenuUIStyle defaultStyle];
+		export.uiStyle = [uiStyle copy];
 	}
 }
 

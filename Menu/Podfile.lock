@@ -24,9 +24,9 @@ PODS:
     - CocoaLumberjack (~> 2.0)
   - BREnvironment (1.2.0)
   - BRPDFImage (1.0.0)
-  - BRStyle (0.9.1):
-    - BRStyle/Core (= 0.9.1)
-  - BRStyle/Core (0.9.1)
+  - BRStyle (0.9.2):
+    - BRStyle/Core (= 0.9.2)
+  - BRStyle/Core (0.9.2)
   - CocoaAsyncSocket (7.4.2)
   - CocoaHTTPServer (2.3):
     - CocoaAsyncSocket
@@ -76,7 +76,7 @@ SPEC CHECKSUMS:
   BRCocoaLumberjack: 529d9525681ea2514d3d607011267848bc337bbe
   BREnvironment: 021cc4ef4d2dfbe9b90e42265cadd3c5f942eb2b
   BRPDFImage: 6a68f820e4e06ef8627f305cda147d4a31feff51
-  BRStyle: 3d00154c7c57b5e9e4215739e5e1b50c26ce7cc6
+  BRStyle: c0e5c361270899a9cc1ba271297304432bd57454
   CocoaAsyncSocket: f5783bdedd232d91b89769bc4b5a1580aed518ad
   CocoaHTTPServer: 5624681fc3473d43b18202f635f9b3abb013b530
   CocoaLumberjack: 019d1361244274a6138c788c6cb80baabc13fb8f

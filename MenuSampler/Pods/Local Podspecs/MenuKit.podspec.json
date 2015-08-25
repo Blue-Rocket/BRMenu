@@ -1,6 +1,6 @@
 {
   "name": "MenuKit",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "summary": "Objective-C menu and order framework optimized for encoding into barcodes.",
   "description": "This project provides an implementation of a menu domain model and menu\nordering framework that is designed with encoding orders into 2D barcodes.",
   "homepage": "https://github.com/Blue-Rocket/BRMenu",
@@ -16,21 +16,40 @@
   },
   "source": {
     "git": "https://github.com/Blue-Rocket/BRMenu.git",
-    "tag": "0.1.0"
+    "tag": "0.3.0"
   },
   "requires_arc": true,
   "default_subspecs": "Core",
   "subspecs": [
+    {
+      "name": "All",
+      "dependencies": {
+        "MenuKit/Core": [
+
+        ],
+        "MenuKit/RestKit": [
+
+        ],
+        "MenuKit/AFNetworking": [
+
+        ],
+        "MenuKit/UI": [
+
+        ]
+      }
+    },
     {
       "name": "Core",
       "source_files": [
         "Menu/Code/Core.h",
         "Menu/Code/Core"
       ],
-      "header_dir": "Core",
       "dependencies": {
-        "BRCocoaLumberjack": [
-          "~> 1.9"
+        "CocoaLumberjack": [
+          "~> 2.0"
+        ],
+        "BRStyle/Core": [
+          "~> 0.9"
         ]
       },
       "resource_bundles": {
@@ -43,8 +62,10 @@
         "Menu/Code/RestKit.h",
         "Menu/Code/RestKit"
       ],
-      "header_dir": "RestKit",
       "dependencies": {
+        "BRStyle/RestKit": [
+          "~> 0.9"
+        ],
         "MenuKit/Core": [
 
         ],
@@ -59,7 +80,6 @@
         "Menu/Code/AFNetworking.h",
         "Menu/Code/AFNetworking"
       ],
-      "header_dir": "AFNetworking",
       "dependencies": {
         "MenuKit/RestKit": [
 
@@ -75,7 +95,6 @@
         "Menu/Code/UI.h",
         "Menu/Code/UI"
       ],
-      "header_dir": "UI",
       "dependencies": {
         "MenuKit/Core": [
 
@@ -89,25 +108,6 @@
       },
       "resource_bundles": {
         "BRMenuUI": "Menu/Resources/UI/**/*.{storyboard,lproj,pdf}"
-      }
-    },
-    {
-      "name": "UI-RestKit",
-      "source_files": [
-        "Menu/Code/UI-RestKit.h",
-        "Menu/Code/UI-RestKit"
-      ],
-      "header_dir": "UI-RestKit",
-      "dependencies": {
-        "MenuKit/UI": [
-
-        ],
-        "MAObjCRuntime": [
-          "~> 0.0.1"
-        ],
-        "RestKit/ObjectMapping": [
-          "~> 0.24"
-        ]
       }
     }
   ]
