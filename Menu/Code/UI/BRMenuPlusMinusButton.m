@@ -8,11 +8,11 @@
 
 #import "BRMenuPlusMinusButton.h"
 
-#import "BRMenuUIStylishHost.h"
+#import <BRStyle/BRUIStylishHost.h>
 #import "UIControl+BRMenu.h"
-#import "UIView+BRMenuUIStyle.h"
+#import "UIView+BRUIStyle.h"
 
-@interface BRMenuPlusMinusButton () <BRMenuUIStylishHost>
+@interface BRMenuPlusMinusButton () <BRUIStylishHost>
 @end
 
 @implementation BRMenuPlusMinusButton
@@ -60,7 +60,7 @@
 
 #pragma mark - UI changes
 
-- (void)uiStyleDidChange:(BRMenuUIStyle *)style {
+- (void)uiStyleDidChange:(BRUIStyle *)style {
 	[self setNeedsDisplay];
 }
 

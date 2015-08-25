@@ -13,10 +13,10 @@
 #import "BRMenuOrderItem.h"
 #import "BRMenuOrderItemComponent.h"
 #import "BRMenuOrderItemPlacementDetailsView.h"
-#import "BRMenuUIStylishHost.h"
-#import "UIView+BRMenuUIStyle.h"
+#import <BRStyle/BRUIStylishHost.h>
+#import "UIView+BRUIStyle.h"
 
-@interface BRMenuOrderItemDetailsView () <BRMenuUIStylishHost>
+@interface BRMenuOrderItemDetailsView () <BRUIStylishHost>
 @end
 
 @implementation BRMenuOrderItemDetailsView {

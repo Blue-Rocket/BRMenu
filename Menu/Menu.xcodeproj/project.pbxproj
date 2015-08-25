@@ -50,8 +50,6 @@
 		C97948E41B66D86800281AFB /* BRMenuOrderItemDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = C97948E31B66D86800281AFB /* BRMenuOrderItemDetailsView.m */; };
 		C97948E71B66D9CF00281AFB /* BRMenuOrderItemComponentDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = C97948E61B66D9CF00281AFB /* BRMenuOrderItemComponentDetailsView.m */; };
 		C97948F01B6700FD00281AFB /* BRMenuOrderItemPlacementDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = C97948EF1B6700FD00281AFB /* BRMenuOrderItemPlacementDetailsView.m */; };
-		C97C52201B65A38C00E84105 /* UIViewController+BRMenuUIStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = C97C521F1B65A38C00E84105 /* UIViewController+BRMenuUIStyle.m */; };
-		C97C52231B65A41400E84105 /* BRMenuUIStyleObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = C97C52221B65A41400E84105 /* BRMenuUIStyleObserver.m */; };
 		C97C52261B65BB2400E84105 /* NSBundle+BRMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = C97C52251B65BB2400E84105 /* NSBundle+BRMenu.m */; };
 		C97C522C1B65E66A00E84105 /* UIBarButtonItem+BRMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = C97C522B1B65E66A00E84105 /* UIBarButtonItem+BRMenu.m */; };
 		C97C522F1B65F12C00E84105 /* NSBundle+BRMenuUI.m in Sources */ = {isa = PBXBuildFile; fileRef = C97C522E1B65F12C00E84105 /* NSBundle+BRMenuUI.m */; };
@@ -59,7 +57,6 @@
 		C980B0B21B698E100050BCA2 /* BRMenuItemCellWithoutComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = C980B0B11B698E100050BCA2 /* BRMenuItemCellWithoutComponents.m */; };
 		C980B0B51B69BCAC0050BCA2 /* BRMenuTagGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = C980B0B41B69BCAC0050BCA2 /* BRMenuTagGridView.m */; };
 		C9819DB71B616812008A1393 /* BRMenuNavigationTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9819DB61B616812008A1393 /* BRMenuNavigationTitleView.m */; };
-		C9819DC31B61A754008A1393 /* UIView+BRMenuUIStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = C9819DC21B61A754008A1393 /* UIView+BRMenuUIStyle.m */; };
 		C9819DD11B61CEE8008A1393 /* BRMenuOrderingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9819DD01B61CEE8008A1393 /* BRMenuOrderingViewController.m */; };
 		C9819DD71B61EE94008A1393 /* BRMenuItemObjectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9819DD61B61EE94008A1393 /* BRMenuItemObjectCell.m */; };
 		C9819DDA1B62D38E008A1393 /* BRMenuFitToWidthLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9819DD81B62D38E008A1393 /* BRMenuFitToWidthLabel.m */; };
@@ -90,12 +87,9 @@
 		C9B812BA1B5D7BA70014CBCB /* BRMenuOrderItemComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B812AB1B5D7BA70014CBCB /* BRMenuOrderItemComponent.m */; };
 		C9B812BE1B5DD5800014CBCB /* BRMenuStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B812BD1B5DD5800014CBCB /* BRMenuStepper.m */; };
 		C9B812C11B5DD5DB0014CBCB /* BRMenuPlusMinusButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B812C01B5DD5DB0014CBCB /* BRMenuPlusMinusButton.m */; };
-		C9B812C41B5DD6D70014CBCB /* BRMenuUIStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B812C31B5DD6D70014CBCB /* BRMenuUIStyle.m */; };
 		C9C216271B64261C00D0A34F /* BRMenuGroupTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C216261B64261C00D0A34F /* BRMenuGroupTableHeaderView.m */; };
 		C9C2162A1B6429B500D0A34F /* BRMenuGroupHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C216291B6429B500D0A34F /* BRMenuGroupHeaderView.m */; };
 		C9C5B0291B6F1A2000EA3B24 /* uistyle.json in Resources */ = {isa = PBXBuildFile; fileRef = C9C5B0281B6F1A2000EA3B24 /* uistyle.json */; };
-		C9C5B02E1B6F1B8700EA3B24 /* BRMenuUIMappingRestKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C5B02D1B6F1B8700EA3B24 /* BRMenuUIMappingRestKit.m */; };
-		C9C5B0331B6F286400EA3B24 /* BRMenuUIMappingRestKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C5B0321B6F286400EA3B24 /* BRMenuUIMappingRestKitTests.m */; };
 		C9C909251B60248600DDF191 /* BRMenuLeftRightPlacementButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C909241B60248600DDF191 /* BRMenuLeftRightPlacementButton.m */; };
 /* End PBXBuildFile section */
 
@@ -162,23 +156,23 @@
 		C910EA3C1B7167CC00DDAB40 /* BRMenuOrderGroupsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderGroupsController.m; sourceTree = "<group>"; };
 		C910EA3E1B7179B300DDAB40 /* BRMenuItemTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuItemTests.m; sourceTree = "<group>"; };
 		C910EA401B71AD3600DDAB40 /* BRMenuOrderGroupsControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderGroupsControllerTests.m; sourceTree = "<group>"; };
-		C92AEEF51B5F10630005AC79 /* BRMenuBarButtonItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuBarButtonItemView.m; sourceTree = "<group>"; };
+		C92AEEF51B5F10630005AC79 /* BRMenuBarButtonItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuBarButtonItemView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C92AEEF61B5F10630005AC79 /* BRMenuBackBarButtonItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuBackBarButtonItemView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C92AEEF71B5F10630005AC79 /* BRMenuBackBarButtonItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuBackBarButtonItemView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		C92AEEF81B5F10630005AC79 /* BRMenuBarButtonItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuBarButtonItemView.h; sourceTree = "<group>"; };
-		C92AEEFC1B5F56D50005AC79 /* BRMenuFlipToggleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuFlipToggleButton.h; sourceTree = "<group>"; };
-		C92AEEFD1B5F56D50005AC79 /* BRMenuFlipToggleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuFlipToggleButton.m; sourceTree = "<group>"; };
+		C92AEEF81B5F10630005AC79 /* BRMenuBarButtonItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuBarButtonItemView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		C92AEEFC1B5F56D50005AC79 /* BRMenuFlipToggleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuFlipToggleButton.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		C92AEEFD1B5F56D50005AC79 /* BRMenuFlipToggleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuFlipToggleButton.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C957D2DE1B60B30300AD224C /* BRMenuLightHeavyQuantityButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuLightHeavyQuantityButton.h; sourceTree = "<group>"; };
-		C957D2DF1B60B30300AD224C /* BRMenuLightHeavyQuantityButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuLightHeavyQuantityButton.m; sourceTree = "<group>"; };
-		C957D2E11B60B76B00AD224C /* BRMenuFilledToggleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuFilledToggleButton.h; sourceTree = "<group>"; };
-		C957D2E21B60B76B00AD224C /* BRMenuFilledToggleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuFilledToggleButton.m; sourceTree = "<group>"; };
+		C957D2DF1B60B30300AD224C /* BRMenuLightHeavyQuantityButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuLightHeavyQuantityButton.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		C957D2E11B60B76B00AD224C /* BRMenuFilledToggleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuFilledToggleButton.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		C957D2E21B60B76B00AD224C /* BRMenuFilledToggleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuFilledToggleButton.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C959D0351B68440E00C153D7 /* BRMenuOrderingDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuOrderingDelegate.h; sourceTree = "<group>"; };
 		C959D0361B6845EB00C153D7 /* BRMenuOrderCountBarButtonItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuOrderCountBarButtonItemView.h; sourceTree = "<group>"; };
 		C959D0371B6845EB00C153D7 /* BRMenuOrderCountBarButtonItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderCountBarButtonItemView.m; sourceTree = "<group>"; };
-		C959D0391B687C3E00C153D7 /* BRMenuOrderingGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuOrderingGroupViewController.h; sourceTree = "<group>"; };
-		C959D03A1B687C3E00C153D7 /* BRMenuOrderingGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderingGroupViewController.m; sourceTree = "<group>"; };
+		C959D0391B687C3E00C153D7 /* BRMenuOrderingGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuOrderingGroupViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		C959D03A1B687C3E00C153D7 /* BRMenuOrderingGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuOrderingGroupViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C959D03C1B68876500C153D7 /* BRMenuItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuItemCell.h; sourceTree = "<group>"; };
-		C959D03D1B68876500C153D7 /* BRMenuItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuItemCell.m; sourceTree = "<group>"; };
+		C959D03D1B68876500C153D7 /* BRMenuItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuItemCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C959D03F1B689F4E00C153D7 /* BRMenuGroupObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuGroupObject.h; sourceTree = "<group>"; };
 		C96FBCCE1B728B060000EEBF /* UIControl+BRMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+BRMenu.h"; sourceTree = "<group>"; };
 		C96FBCCF1B728B060000EEBF /* UIControl+BRMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+BRMenu.m"; sourceTree = "<group>"; };
@@ -186,18 +180,14 @@
 		C97238161B6ACE15007CBEEA /* BRMenuTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C97948DD1B66B42400281AFB /* BRMenuModelPropertyEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuModelPropertyEditor.h; sourceTree = "<group>"; };
 		C97948DE1B66BB9800281AFB /* BRMenuUIModelPropertyEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuUIModelPropertyEditor.h; sourceTree = "<group>"; };
-		C97948DF1B66D79500281AFB /* BRMenuOrderingItemDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuOrderingItemDetailsViewController.h; sourceTree = "<group>"; };
-		C97948E01B66D79500281AFB /* BRMenuOrderingItemDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderingItemDetailsViewController.m; sourceTree = "<group>"; };
+		C97948DF1B66D79500281AFB /* BRMenuOrderingItemDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuOrderingItemDetailsViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		C97948E01B66D79500281AFB /* BRMenuOrderingItemDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuOrderingItemDetailsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C97948E21B66D86800281AFB /* BRMenuOrderItemDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuOrderItemDetailsView.h; sourceTree = "<group>"; };
 		C97948E31B66D86800281AFB /* BRMenuOrderItemDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderItemDetailsView.m; sourceTree = "<group>"; };
-		C97948E51B66D9CF00281AFB /* BRMenuOrderItemComponentDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuOrderItemComponentDetailsView.h; sourceTree = "<group>"; };
-		C97948E61B66D9CF00281AFB /* BRMenuOrderItemComponentDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderItemComponentDetailsView.m; sourceTree = "<group>"; };
+		C97948E51B66D9CF00281AFB /* BRMenuOrderItemComponentDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuOrderItemComponentDetailsView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		C97948E61B66D9CF00281AFB /* BRMenuOrderItemComponentDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuOrderItemComponentDetailsView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C97948EE1B6700FD00281AFB /* BRMenuOrderItemPlacementDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuOrderItemPlacementDetailsView.h; sourceTree = "<group>"; };
 		C97948EF1B6700FD00281AFB /* BRMenuOrderItemPlacementDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderItemPlacementDetailsView.m; sourceTree = "<group>"; };
-		C97C521E1B65A38C00E84105 /* UIViewController+BRMenuUIStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BRMenuUIStyle.h"; sourceTree = "<group>"; };
-		C97C521F1B65A38C00E84105 /* UIViewController+BRMenuUIStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BRMenuUIStyle.m"; sourceTree = "<group>"; };
-		C97C52211B65A41400E84105 /* BRMenuUIStyleObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuUIStyleObserver.h; sourceTree = "<group>"; };
-		C97C52221B65A41400E84105 /* BRMenuUIStyleObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuUIStyleObserver.m; sourceTree = "<group>"; };
 		C97C52241B65BB2400E84105 /* NSBundle+BRMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+BRMenu.h"; sourceTree = "<group>"; };
 		C97C52251B65BB2400E84105 /* NSBundle+BRMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+BRMenu.m"; sourceTree = "<group>"; };
 		C97C52281B65BD9500E84105 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Resources/UI/en.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
@@ -209,28 +199,25 @@
 		C97C52331B65FDF500E84105 /* BRMenuConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuConstants.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C97C52341B65FE2B00E84105 /* BRMenuConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuConstants.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C980B0B01B698E100050BCA2 /* BRMenuItemCellWithoutComponents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuItemCellWithoutComponents.h; sourceTree = "<group>"; };
-		C980B0B11B698E100050BCA2 /* BRMenuItemCellWithoutComponents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuItemCellWithoutComponents.m; sourceTree = "<group>"; };
+		C980B0B11B698E100050BCA2 /* BRMenuItemCellWithoutComponents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuItemCellWithoutComponents.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C980B0B31B69BCAC0050BCA2 /* BRMenuTagGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuTagGridView.h; sourceTree = "<group>"; };
 		C980B0B41B69BCAC0050BCA2 /* BRMenuTagGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuTagGridView.m; sourceTree = "<group>"; };
-		C9819DB51B616812008A1393 /* BRMenuNavigationTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuNavigationTitleView.h; sourceTree = "<group>"; };
-		C9819DB61B616812008A1393 /* BRMenuNavigationTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuNavigationTitleView.m; sourceTree = "<group>"; };
-		C9819DBE1B61A428008A1393 /* BRMenuUIStylishHost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuUIStylishHost.h; sourceTree = "<group>"; };
-		C9819DC11B61A754008A1393 /* UIView+BRMenuUIStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+BRMenuUIStyle.h"; sourceTree = "<group>"; };
-		C9819DC21B61A754008A1393 /* UIView+BRMenuUIStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+BRMenuUIStyle.m"; sourceTree = "<group>"; };
-		C9819DCF1B61CEE8008A1393 /* BRMenuOrderingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuOrderingViewController.h; sourceTree = "<group>"; };
-		C9819DD01B61CEE8008A1393 /* BRMenuOrderingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderingViewController.m; sourceTree = "<group>"; };
-		C9819DD51B61EE94008A1393 /* BRMenuItemObjectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuItemObjectCell.h; sourceTree = "<group>"; };
-		C9819DD61B61EE94008A1393 /* BRMenuItemObjectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuItemObjectCell.m; sourceTree = "<group>"; };
+		C9819DB51B616812008A1393 /* BRMenuNavigationTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuNavigationTitleView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		C9819DB61B616812008A1393 /* BRMenuNavigationTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuNavigationTitleView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		C9819DCF1B61CEE8008A1393 /* BRMenuOrderingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuOrderingViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		C9819DD01B61CEE8008A1393 /* BRMenuOrderingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuOrderingViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		C9819DD51B61EE94008A1393 /* BRMenuItemObjectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuItemObjectCell.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		C9819DD61B61EE94008A1393 /* BRMenuItemObjectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuItemObjectCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C9819DD81B62D38E008A1393 /* BRMenuFitToWidthLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuFitToWidthLabel.m; sourceTree = "<group>"; };
 		C9819DD91B62D38E008A1393 /* BRMenuFitToWidthLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuFitToWidthLabel.h; sourceTree = "<group>"; };
 		C9819DDB1B6319A8008A1393 /* NSNumberFormatter+BRMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumberFormatter+BRMenu.h"; sourceTree = "<group>"; };
 		C9819DDC1B6319A8008A1393 /* NSNumberFormatter+BRMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumberFormatter+BRMenu.m"; sourceTree = "<group>"; };
 		C9819DDE1B6336C9008A1393 /* BRMenuOrderingFlowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuOrderingFlowController.h; sourceTree = "<group>"; };
 		C9819DDF1B6336C9008A1393 /* BRMenuOrderingFlowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderingFlowController.m; sourceTree = "<group>"; };
-		C9819DE21B6347F8008A1393 /* BRMenuOrderingComponentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuOrderingComponentsViewController.h; sourceTree = "<group>"; };
-		C9819DE31B6347F8008A1393 /* BRMenuOrderingComponentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderingComponentsViewController.m; sourceTree = "<group>"; };
+		C9819DE21B6347F8008A1393 /* BRMenuOrderingComponentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuOrderingComponentsViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		C9819DE31B6347F8008A1393 /* BRMenuOrderingComponentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuOrderingComponentsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C9819DE51B63563B008A1393 /* BRMenuItemComponentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuItemComponentCell.h; sourceTree = "<group>"; };
-		C9819DE61B63563B008A1393 /* BRMenuItemComponentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuItemComponentCell.m; sourceTree = "<group>"; };
+		C9819DE61B63563B008A1393 /* BRMenuItemComponentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuItemComponentCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C98883541B58820D0049491C /* libMenu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMenu.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C988835F1B58820D0049491C /* MenuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MenuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C98883651B58820D0049491C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -238,7 +225,7 @@
 		C988839A1B5883A60049491C /* BRMenuOrderItemTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuOrderItemTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C998FE231E4544850D1A0FA7 /* Pods-MenuTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MenuTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MenuTests/Pods-MenuTests.release.xcconfig"; sourceTree = "<group>"; };
 		C9B8126D1B5D75910014CBCB /* Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = Core.h; path = Code/Core.h; sourceTree = SOURCE_ROOT; };
-		C9B812771B5D7B040014CBCB /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = AFNetworking.h; path = Code/AFNetworking.h; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		C9B812771B5D7B040014CBCB /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = AFNetworking.h; path = Code/AFNetworking.h; sourceTree = SOURCE_ROOT; };
 		C9B812781B5D7B040014CBCB /* RestKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = RestKit.h; path = Code/RestKit.h; sourceTree = SOURCE_ROOT; };
 		C9B8127A1B5D7B040014CBCB /* BRMenuAFHTTPResponseSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuAFHTTPResponseSerializer.h; sourceTree = "<group>"; };
 		C9B8127B1B5D7B040014CBCB /* BRMenuAFHTTPResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuAFHTTPResponseSerializer.m; sourceTree = "<group>"; };
@@ -283,20 +270,14 @@
 		C9B812BD1B5DD5800014CBCB /* BRMenuStepper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuStepper.m; sourceTree = "<group>"; };
 		C9B812BF1B5DD5DB0014CBCB /* BRMenuPlusMinusButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuPlusMinusButton.h; sourceTree = "<group>"; };
 		C9B812C01B5DD5DB0014CBCB /* BRMenuPlusMinusButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuPlusMinusButton.m; sourceTree = "<group>"; };
-		C9B812C21B5DD6D70014CBCB /* BRMenuUIStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuUIStyle.h; sourceTree = "<group>"; };
-		C9B812C31B5DD6D70014CBCB /* BRMenuUIStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuUIStyle.m; sourceTree = "<group>"; };
 		C9B812C51B5DDD7C0014CBCB /* UI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = UI.h; path = Code/UI.h; sourceTree = SOURCE_ROOT; };
-		C9C216251B64261C00D0A34F /* BRMenuGroupTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuGroupTableHeaderView.h; sourceTree = "<group>"; };
-		C9C216261B64261C00D0A34F /* BRMenuGroupTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuGroupTableHeaderView.m; sourceTree = "<group>"; };
-		C9C216281B6429B500D0A34F /* BRMenuGroupHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuGroupHeaderView.h; sourceTree = "<group>"; };
-		C9C216291B6429B500D0A34F /* BRMenuGroupHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuGroupHeaderView.m; sourceTree = "<group>"; };
+		C9C216251B64261C00D0A34F /* BRMenuGroupTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuGroupTableHeaderView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		C9C216261B64261C00D0A34F /* BRMenuGroupTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuGroupTableHeaderView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		C9C216281B6429B500D0A34F /* BRMenuGroupHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuGroupHeaderView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		C9C216291B6429B500D0A34F /* BRMenuGroupHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuGroupHeaderView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C9C5B0281B6F1A2000EA3B24 /* uistyle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = uistyle.json; sourceTree = "<group>"; };
-		C9C5B02A1B6F1B8700EA3B24 /* UI-RestKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UI-RestKit.h"; path = "Code/UI-RestKit.h"; sourceTree = SOURCE_ROOT; };
-		C9C5B02C1B6F1B8700EA3B24 /* BRMenuUIMappingRestKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuUIMappingRestKit.h; sourceTree = "<group>"; };
-		C9C5B02D1B6F1B8700EA3B24 /* BRMenuUIMappingRestKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuUIMappingRestKit.m; sourceTree = "<group>"; };
-		C9C5B0321B6F286400EA3B24 /* BRMenuUIMappingRestKitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuUIMappingRestKitTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C9C909231B60248600DDF191 /* BRMenuLeftRightPlacementButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuLeftRightPlacementButton.h; sourceTree = "<group>"; };
-		C9C909241B60248600DDF191 /* BRMenuLeftRightPlacementButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuLeftRightPlacementButton.m; sourceTree = "<group>"; };
+		C9C909241B60248600DDF191 /* BRMenuLeftRightPlacementButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuLeftRightPlacementButton.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F959BE2D01376003BF6AF46A /* Pods-Menu-MenuTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Menu-MenuTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Menu-MenuTests/Pods-Menu-MenuTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -403,7 +384,6 @@
 				C9067A631B5C49FC005FF260 /* BRMenuRestKitMappingTests.m */,
 				C9067A6F1B5C69CD005FF260 /* BRMenuItemGroupRestKitMappingTests.m */,
 				C9067A8B1B5CBEF5005FF260 /* BRMenuMetadataRestKitMappingTests.m */,
-				C9C5B0321B6F286400EA3B24 /* BRMenuUIMappingRestKitTests.m */,
 			);
 			path = RestKit;
 			sourceTree = "<group>";
@@ -446,6 +426,17 @@
 				C97238161B6ACE15007CBEEA /* BRMenuTests.m */,
 			);
 			path = Menu;
+			sourceTree = "<group>";
+		};
+		C93ABF111B8C506E00202CA9 /* Packaging */ = {
+			isa = PBXGroup;
+			children = (
+				C9B812771B5D7B040014CBCB /* AFNetworking.h */,
+				C9B8126D1B5D75910014CBCB /* Core.h */,
+				C9B812781B5D7B040014CBCB /* RestKit.h */,
+				C9B812C51B5DDD7C0014CBCB /* UI.h */,
+			);
+			name = Packaging;
 			sourceTree = "<group>";
 		};
 		C97C52291B65BD9C00E84105 /* Resources */ = {
@@ -503,21 +494,12 @@
 				C980B0B31B69BCAC0050BCA2 /* BRMenuTagGridView.h */,
 				C980B0B41B69BCAC0050BCA2 /* BRMenuTagGridView.m */,
 				C96FBCD11B728B750000EEBF /* BRMenuUIControl.h */,
-				C9B812C21B5DD6D70014CBCB /* BRMenuUIStyle.h */,
-				C9B812C31B5DD6D70014CBCB /* BRMenuUIStyle.m */,
-				C97C52211B65A41400E84105 /* BRMenuUIStyleObserver.h */,
-				C97C52221B65A41400E84105 /* BRMenuUIStyleObserver.m */,
-				C9819DBE1B61A428008A1393 /* BRMenuUIStylishHost.h */,
 				C97C522D1B65F12C00E84105 /* NSBundle+BRMenuUI.h */,
 				C97C522E1B65F12C00E84105 /* NSBundle+BRMenuUI.m */,
 				C97C522A1B65E66A00E84105 /* UIBarButtonItem+BRMenu.h */,
 				C97C522B1B65E66A00E84105 /* UIBarButtonItem+BRMenu.m */,
 				C96FBCCE1B728B060000EEBF /* UIControl+BRMenu.h */,
 				C96FBCCF1B728B060000EEBF /* UIControl+BRMenu.m */,
-				C9819DC11B61A754008A1393 /* UIView+BRMenuUIStyle.h */,
-				C9819DC21B61A754008A1393 /* UIView+BRMenuUIStyle.m */,
-				C97C521E1B65A38C00E84105 /* UIViewController+BRMenuUIStyle.h */,
-				C97C521F1B65A38C00E84105 /* UIViewController+BRMenuUIStyle.m */,
 				C97948DE1B66BB9800281AFB /* BRMenuUIModelPropertyEditor.h */,
 			);
 			name = Components;
@@ -611,16 +593,11 @@
 		C98883561B58820D0049491C /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				C9B812771B5D7B040014CBCB /* AFNetworking.h */,
-				C9B8126D1B5D75910014CBCB /* Core.h */,
-				C9B812781B5D7B040014CBCB /* RestKit.h */,
-				C9B812C51B5DDD7C0014CBCB /* UI.h */,
-				C9C5B02A1B6F1B8700EA3B24 /* UI-RestKit.h */,
+				C93ABF111B8C506E00202CA9 /* Packaging */,
 				C9B812791B5D7B040014CBCB /* AFNetworking */,
 				C988836E1B58832C0049491C /* Core */,
 				C9B8127C1B5D7B040014CBCB /* RestKit */,
 				C9B812BB1B5DD5800014CBCB /* UI */,
-				C9C5B02B1B6F1B8700EA3B24 /* UI-RestKit */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -721,16 +698,6 @@
 			);
 			name = UI;
 			path = Code/UI;
-			sourceTree = SOURCE_ROOT;
-		};
-		C9C5B02B1B6F1B8700EA3B24 /* UI-RestKit */ = {
-			isa = PBXGroup;
-			children = (
-				C9C5B02C1B6F1B8700EA3B24 /* BRMenuUIMappingRestKit.h */,
-				C9C5B02D1B6F1B8700EA3B24 /* BRMenuUIMappingRestKit.m */,
-			);
-			name = "UI-RestKit";
-			path = "Code/UI-RestKit";
 			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
@@ -913,7 +880,6 @@
 				C97C522F1B65F12C00E84105 /* NSBundle+BRMenuUI.m in Sources */,
 				C9B812AE1B5D7BA70014CBCB /* BRMenuItem.m in Sources */,
 				C9B812B71B5D7BA70014CBCB /* BRMenuOrderItem.m in Sources */,
-				C9819DC31B61A754008A1393 /* UIView+BRMenuUIStyle.m in Sources */,
 				C9C216271B64261C00D0A34F /* BRMenuGroupTableHeaderView.m in Sources */,
 				C9C909251B60248600DDF191 /* BRMenuLeftRightPlacementButton.m in Sources */,
 				C9819DD11B61CEE8008A1393 /* BRMenuOrderingViewController.m in Sources */,
@@ -923,19 +889,16 @@
 				C97948E71B66D9CF00281AFB /* BRMenuOrderItemComponentDetailsView.m in Sources */,
 				C97C52261B65BB2400E84105 /* NSBundle+BRMenu.m in Sources */,
 				C97C522C1B65E66A00E84105 /* UIBarButtonItem+BRMenu.m in Sources */,
-				C9B812C41B5DD6D70014CBCB /* BRMenuUIStyle.m in Sources */,
 				C9819DDD1B6319A8008A1393 /* NSNumberFormatter+BRMenu.m in Sources */,
 				C9B812BA1B5D7BA70014CBCB /* BRMenuOrderItemComponent.m in Sources */,
 				C957D2E31B60B76B00AD224C /* BRMenuFilledToggleButton.m in Sources */,
 				C9819DE01B6336C9008A1393 /* BRMenuOrderingFlowController.m in Sources */,
 				C9B812C11B5DD5DB0014CBCB /* BRMenuPlusMinusButton.m in Sources */,
 				C97948E11B66D79500281AFB /* BRMenuOrderingItemDetailsViewController.m in Sources */,
-				C97C52231B65A41400E84105 /* BRMenuUIStyleObserver.m in Sources */,
 				C97948E41B66D86800281AFB /* BRMenuOrderItemDetailsView.m in Sources */,
 				C959D03B1B687C3E00C153D7 /* BRMenuOrderingGroupViewController.m in Sources */,
 				C96FBCD01B728B060000EEBF /* UIControl+BRMenu.m in Sources */,
 				C9B812B11B5D7BA70014CBCB /* BRMenuItemGroup.m in Sources */,
-				C9C5B02E1B6F1B8700EA3B24 /* BRMenuUIMappingRestKit.m in Sources */,
 				C9B812B91B5D7BA70014CBCB /* BRMenuOrderItemAttributesProxy.m in Sources */,
 				C9B812AD1B5D7BA70014CBCB /* BRMenu.m in Sources */,
 				C9B812B31B5D7BA70014CBCB /* BRMenuMappingPostProcessor.m in Sources */,
@@ -946,7 +909,6 @@
 				C9B812B41B5D7BA70014CBCB /* BRMenuMetadata.m in Sources */,
 				C9B812BE1B5DD5800014CBCB /* BRMenuStepper.m in Sources */,
 				C980B0B51B69BCAC0050BCA2 /* BRMenuTagGridView.m in Sources */,
-				C97C52201B65A38C00E84105 /* UIViewController+BRMenuUIStyle.m in Sources */,
 				C9C2162A1B6429B500D0A34F /* BRMenuGroupHeaderView.m in Sources */,
 				C9B812B61B5D7BA70014CBCB /* BRMenuOrder+Encoding.m in Sources */,
 				C9819DD71B61EE94008A1393 /* BRMenuItemObjectCell.m in Sources */,
@@ -977,7 +939,6 @@
 				C97238171B6ACE15007CBEEA /* BRMenuTests.m in Sources */,
 				C910EA3F1B7179B300DDAB40 /* BRMenuItemTests.m in Sources */,
 				C988839B1B5883A60049491C /* BRMenuOrderItemAttributesProxyTests.m in Sources */,
-				C9C5B0331B6F286400EA3B24 /* BRMenuUIMappingRestKitTests.m in Sources */,
 				C9067A481B5C29BA005FF260 /* BRMenuMappingPostProcessorTests.m in Sources */,
 				C910EA411B71AD3600DDAB40 /* BRMenuOrderGroupsControllerTests.m in Sources */,
 				C9067A8C1B5CBEF5005FF260 /* BRMenuMetadataRestKitMappingTests.m in Sources */,

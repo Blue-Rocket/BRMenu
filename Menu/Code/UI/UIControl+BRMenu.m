@@ -10,7 +10,7 @@
 
 #import <objc/runtime.h>
 #import "BRMenuUIControl.h"
-#import "BRMenuUIStyleObserver.h"
+#import <BRStyle/BRUIStyleObserver.h>
 
 const UIControlState BRMenuUIControlStateDestructive = (1 << 16);
 

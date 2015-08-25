@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-#import "BRMenuUIStyle.h"
+#import <BRStyle/BRUIStyle.h>
 
-@interface BRMenuGroupHeaderView : UIView <BRMenuUIStylish>
+@interface BRMenuGroupHeaderView : UIView <BRUIStylish>
 
 @property (nonatomic, strong) IBOutlet UILabel *titleLabel;
 @property (nonatomic, strong) IBOutlet UILabel *priceLabel;

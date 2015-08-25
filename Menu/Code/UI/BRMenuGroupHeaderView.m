@@ -10,11 +10,11 @@
 
 #import <Masonry/Masonry.h>
 #import "BRMenuFitToWidthLabel.h"
-#import "BRMenuUIStylishHost.h"
+#import <BRStyle/BRUIStylishHost.h>
 #import "NSNumberFormatter+BRMenu.h"
-#import "UIView+BRMenuUIStyle.h"
+#import "UIView+BRUIStyle.h"
 
-@interface BRMenuGroupHeaderView () <BRMenuUIStylishHost>
+@interface BRMenuGroupHeaderView () <BRUIStylishHost>
 @end
 
 @implementation BRMenuGroupHeaderView {

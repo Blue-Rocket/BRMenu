@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-#import "BRMenuUIStyle.h"
+#import <BRStyle/BRUIStyle.h>
 
 @class BRMenuOrderItemComponent;
 
-@interface BRMenuOrderItemComponentDetailsView : UIView <BRMenuUIStylish>
+@interface BRMenuOrderItemComponentDetailsView : UIView <BRUIStylish>
 
 /** The order item component to display. */
 @property (nonatomic, strong) BRMenuOrderItemComponent *orderItemComponent;

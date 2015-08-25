@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-#import "BRMenuUIStyle.h"
+#import <BRStyle/BRUIStyle.h>
 
 IB_DESIGNABLE
-@interface BRMenuBackBarButtonItemView : UIButton <BRMenuUIStylish>
+@interface BRMenuBackBarButtonItemView : UIButton <BRUIStylish>
 
 @property (nonatomic, copy) IBInspectable NSString *title;
 @property (nonatomic, getter = isInverse) IBInspectable BOOL inverse;

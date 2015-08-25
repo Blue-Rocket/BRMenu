@@ -21,17 +21,17 @@
 #import "BRMenuOrderingViewController.h"
 #import "BRMenuOrderItem.h"
 #import "BRMenuStepper.h"
-#import "BRMenuUIStylishHost.h"
+#import <BRStyle/BRUIStylishHost.h>
 #import "NSBundle+BRMenu.h"
 #import "UIBarButtonItem+BRMenu.h"
-#import "UIView+BRMenuUIStyle.h"
-#import "UIViewController+BRMenuUIStyle.h"
+#import "UIView+BRUIStyle.h"
+#import "UIViewController+BRUIStyle.h"
 
 NSString * const BRMenuOrderingItemCellIdentifier = @"ItemCell";
 NSString * const BRMenuOrderingItemWithoutComponentsCellIdentifier = @"ItemCellWithoutComponents";
 NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell";
 
-@interface BRMenuOrderingGroupViewController () <BRMenuUIStylishHost>
+@interface BRMenuOrderingGroupViewController () <BRUIStylishHost>
 @end
 
 @implementation BRMenuOrderingGroupViewController {
@@ -64,11 +64,11 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 	[self refreshForStyle:self.uiStyle];
 }
 
-- (void)uiStyleDidChange:(BRMenuUIStyle *)style {
+- (void)uiStyleDidChange:(BRUIStyle *)style {
 	[self refreshForStyle:style];
 }
 
-- (void)refreshForStyle:(BRMenuUIStyle *)style {
+- (void)refreshForStyle:(BRUIStyle *)style {
 	self.view.backgroundColor = style.appBodyColor;
 }
 

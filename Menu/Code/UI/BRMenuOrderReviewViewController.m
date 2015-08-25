@@ -20,12 +20,12 @@
 #import "BRMenuOrderGroupsController.h"
 #import "BRMenuOrderReviewCell.h"
 #import "BRMenuPlusMinusButton.h"
-#import "BRMenuUIStylishHost.h"
+#import <BRStyle/BRUIStylishHost.h>
 #import "NSBundle+BRMenu.h"
 #import "NSNumberFormatter+BRMenu.h"
 #import "UIBarButtonItem+BRMenu.h"
-#import "UIView+BRMenuUIStyle.h"
-#import "UIViewController+BRMenuUIStyle.h"
+#import "UIView+BRUIStyle.h"
+#import "UIViewController+BRUIStyle.h"
 
 NSString * const BRMenuOrderReviewOrderItemCellIdentifier = @"OrderItemCell";
 NSString * const BRMenuOrderReviewGroupHeaderCellIdentifier = @"GroupHeaderCell";
@@ -34,7 +34,7 @@ NSString * const BRMenuOrderReviewViewOrderItemDetailsSegue = @"ViewOrderItemDet
 
 static void * kOrderTotalPriceContext = &kOrderTotalPriceContext;
 
-@interface BRMenuOrderReviewViewController () <BRMenuUIStylishHost>
+@interface BRMenuOrderReviewViewController () <BRUIStylishHost>
 
 @end
 
@@ -107,11 +107,11 @@ static void * kOrderTotalPriceContext = &kOrderTotalPriceContext;
 	self.checkoutTotalButton.enabled = haveItems;
 }
 
-- (void)uiStyleDidChange:(BRMenuUIStyle *)style {
+- (void)uiStyleDidChange:(BRUIStyle *)style {
 	[self refreshForStyle:style];
 }
 
-- (void)refreshForStyle:(BRMenuUIStyle *)style {
+- (void)refreshForStyle:(BRUIStyle *)style {
 	self.view.backgroundColor = style.appBodyColor;
 	self.tableView.backgroundColor = style.appBodyColor;
 }

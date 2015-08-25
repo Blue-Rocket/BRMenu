@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "BRMenuUIStyle.h"
+#import <BRStyle/BRUIStyle.h>
 
 @class BRMenuOrderingFlowController;
 @protocol BRMenuOrderingDelegate;
@@ -22,7 +22,7 @@ extern NSString * const BRMenuOrderingReviewOrderItemSegue;
  Present a list of order item component groups for a single order item, pushing
  new instances of this class for each step required based on the menu item component groupings.
  */
-@interface BRMenuOrderingComponentsViewController : UITableViewController <BRMenuUIStylish>
+@interface BRMenuOrderingComponentsViewController : UITableViewController <BRUIStylish>
 
 @property (nonatomic, assign, getter=isUsePrototypeCells) IBInspectable BOOL usePrototypeCells;
 

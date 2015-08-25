@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-#import "BRMenuUIStyle.h"
+#import <BRStyle/BRUIStyle.h>
 
-@interface BRMenuGroupTableHeaderView : UITableViewHeaderFooterView <BRMenuUIStylish>
+@interface BRMenuGroupTableHeaderView : UITableViewHeaderFooterView <BRUIStylish>
 
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSDecimalNumber *price;

@@ -9,10 +9,10 @@
 #import "BRMenuFilledToggleButton.h"
 
 #import <QuartzCore/QuartzCore.h>
-#import "BRMenuUIStylishHost.h"
-#import "UIView+BRMenuUIStyle.h"
+#import <BRStyle/BRUIStylishHost.h>
+#import "UIView+BRUIStyle.h"
 
-@interface BRMenuFilledToggleButton () <BRMenuUIStylishHost>
+@interface BRMenuFilledToggleButton () <BRUIStylishHost>
 @end
 
 @implementation BRMenuFilledToggleButton {
@@ -72,7 +72,7 @@
 	return l;
 }
 
-- (void)uiStyleDidChange:(BRMenuUIStyle *)style {
+- (void)uiStyleDidChange:(BRUIStyle *)style {
 //		BOOL changed = !([style.controlDisabledColor isEqual:uiStyle.controlDisabledColor]
 //						 && [style.appPrimaryColor isEqual:uiStyle.appPrimaryColor]);
 	[self setNeedsLayout];

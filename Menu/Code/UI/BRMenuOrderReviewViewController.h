@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "BRMenuUIStyle.h"
+#import <BRStyle/BRUIStyle.h>
 
 @class BRMenuBarButtonItemView;
 @class BRMenuOrder;
@@ -21,7 +21,7 @@ extern NSString * const BRMenuOrderReviewViewOrderItemDetailsSegue;
 /**
  Display an entire order, allowing quantities to be adjusted (add/remove).
  */
-@interface BRMenuOrderReviewViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, BRMenuUIStylish>
+@interface BRMenuOrderReviewViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, BRUIStylish>
 
 /** The table view to display the order within. */
 @property (nonatomic, strong) IBOutlet UITableView *tableView;

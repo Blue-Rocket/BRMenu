@@ -8,10 +8,10 @@
 
 #import "BRMenuNavigationTitleView.h"
 
-#import "BRMenuUIStylishHost.h"
-#import "UIView+BRMenuUIStyle.h"
+#import <BRStyle/BRUIStylishHost.h>
+#import "UIView+BRUIStyle.h"
 
-@interface BRMenuNavigationTitleView () <BRMenuUIStylishHost>
+@interface BRMenuNavigationTitleView () <BRUIStylishHost>
 @end
 
 @implementation BRMenuNavigationTitleView {
@@ -47,7 +47,7 @@
 	[self addSubview:titleLabel];
 }
 
-- (void)uStyleDidChange:(BRMenuUIStyle *)style {
+- (void)uStyleDidChange:(BRUIStyle *)style {
 	[self setNeedsDisplay];
 }
 

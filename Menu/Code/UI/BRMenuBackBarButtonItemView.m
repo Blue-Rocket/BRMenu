@@ -8,15 +8,15 @@
 
 #import "BRMenuBackBarButtonItemView.h"
 
-#import "BRMenuUIStylishHost.h"
-#import "UIView+BRMenuUIStyle.h"
+#import <BRStyle/BRUIStylishHost.h>
+#import "UIView+BRUIStyle.h"
 
 static const CGFloat kNormalHeight = 32.0f;
 static const CGFloat kCompactHeight = 26.0f;
 static const CGFloat kArrowMargin = 10.0f;
 static const CGFloat kTextMargins = 5.0f;
 
-@interface BRMenuBackBarButtonItemView () <BRMenuUIStylishHost>
+@interface BRMenuBackBarButtonItemView () <BRUIStylishHost>
 @end
 
 @implementation BRMenuBackBarButtonItemView {
@@ -65,7 +65,7 @@ static const CGFloat kTextMargins = 5.0f;
 	}
 }
 
-- (void)uiStyleDidChange:(BRMenuUIStyle *)style {
+- (void)uiStyleDidChange:(BRUIStyle *)style {
 	[self invalidateIntrinsicContentSize];
 	[self setNeedsDisplay];
 }

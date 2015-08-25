@@ -8,9 +8,9 @@
 
 #import "BRMenuBarButtonItemView.h"
 
-#import "BRMenuUIStylishHost.h"
+#import <BRStyle/BRUIStylishHost.h>
 #import "UIControl+BRMenu.h"
-#import "UIView+BRMenuUIStyle.h"
+#import "UIView+BRUIStyle.h"
 
 static const CGFloat kNormalHeight = 32.0f;
 static const CGFloat kCompactHeight = 26.0f;
@@ -19,7 +19,7 @@ static const CGFloat kBadgeTextMargins = 5.0f;
 static const CGFloat kBadgeMinWidth = 24.0f;
 static const CGFloat kMinWidth = 48.0f;
 
-@interface BRMenuBarButtonItemView () <BRMenuUIStylishHost>
+@interface BRMenuBarButtonItemView () <BRUIStylishHost>
 @end
 
 @implementation BRMenuBarButtonItemView {
@@ -87,7 +87,7 @@ static const CGFloat kMinWidth = 48.0f;
 	}
 }
 
-- (void)uiStyleDidChange:(BRMenuUIStyle *)style {
+- (void)uiStyleDidChange:(BRUIStyle *)style {
 	[self invalidateIntrinsicContentSize];
 	[self setNeedsDisplay];
 }

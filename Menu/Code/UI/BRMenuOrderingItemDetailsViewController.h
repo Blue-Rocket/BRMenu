@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-#import "BRMenuUIStyle.h"
+#import <BRStyle/BRUIStyle.h>
 
 @class BRMenuOrderItem;
 @protocol BRMenuOrderingDelegate;
 
-@interface BRMenuOrderingItemDetailsViewController : UIViewController <BRMenuUIStylish>
+@interface BRMenuOrderingItemDetailsViewController : UIViewController <BRUIStylish>
 
 @property (nonatomic, strong) BRMenuOrderItem *orderItem;
 @property (nonatomic, weak) id<BRMenuOrderingDelegate> orderingDelegate;

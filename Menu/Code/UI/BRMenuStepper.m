@@ -8,10 +8,10 @@
 
 #import "BRMenuStepper.h"
 
-#import "BRMenuUIStylishHost.h"
-#import "UIView+BRMenuUIStyle.h"
+#import <BRStyle/BRUIStylishHost.h>
+#import "UIView+BRUIStyle.h"
 
-@interface BRMenuStepper () <BRMenuUIStylishHost>
+@interface BRMenuStepper () <BRUIStylishHost>
 @end
 
 const CGSize BRMenuStepperPadding = {8.0, 4.0};
@@ -84,7 +84,7 @@ static const CGFloat kBadgeWidth = 28.0;
 	self.contentMode = UIViewContentModeRedraw;
 }
 
-- (void)updateStyle:(BRMenuUIStyle *)style {
+- (void)updateStyle:(BRUIStyle *)style {
 	badgeLabel.font = [style uiBoldFont] ;
 	badgeLabel.font = [badgeLabel.font fontWithSize:badgeLabel.font.pointSize + 2.0];
 	badgeLabel.textColor = (self.value > 0 ? [style appPrimaryColor] : [style controlDisabledColor]);
@@ -92,7 +92,7 @@ static const CGFloat kBadgeWidth = 28.0;
 	[self setNeedsDisplay];
 }
 
-- (void)uiStyleDidChange:(BRMenuUIStyle *)style {
+- (void)uiStyleDidChange:(BRUIStyle *)style {
 	[self updateStyle:style];
 }
 

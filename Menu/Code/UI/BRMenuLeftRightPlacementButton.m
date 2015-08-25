@@ -9,7 +9,7 @@
 #import "BRMenuLeftRightPlacementButton.h"
 
 #import <QuartzCore/QuartzCore.h>
-#import "BRMenuUIStyle.h"
+#import <BRStyle/BRUIStyle.h>
 
 @implementation BRMenuLeftRightPlacementButton {
 	BRMenuOrderItemComponentPlacement placement;

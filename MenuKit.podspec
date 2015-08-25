@@ -23,40 +23,29 @@ Pod::Spec.new do |s|
   
   s.subspec 'Core' do |sp|
   	sp.source_files = 'Menu/Code/Core.h', 'Menu/Code/Core'
-  	sp.header_dir = 'Core'
     sp.dependency 'CocoaLumberjack', '~> 2.0'
+    sp.dependency 'BRStyle',         '~> 0.9'
     sp.resource_bundle = { 'BRMenu' => 'Menu/Resources/Core/**' }
   end
   
   s.subspec 'RestKit' do |sp|
     sp.source_files = 'Menu/Code/RestKit.h', 'Menu/Code/RestKit'
-  	sp.header_dir = 'RestKit'
     sp.dependency 'MenuKit/Core'
     sp.dependency 'RestKit/ObjectMapping', '~> 0.24'
   end
   
   s.subspec 'AFNetworking' do |sp|
     sp.source_files = 'Menu/Code/AFNetworking.h', 'Menu/Code/AFNetworking'
-  	sp.header_dir = 'AFNetworking/Serialization'
     sp.dependency 'MenuKit/RestKit'
     sp.dependency 'AFNetworking', '~> 2.5'
   end
   
   s.subspec 'UI' do |sp|
     sp.source_files = 'Menu/Code/UI.h', 'Menu/Code/UI'
-  	sp.header_dir = 'UI'
     sp.dependency 'MenuKit/Core'
     sp.dependency 'BRPDFImage', '~> 1.0'
 	sp.dependency 'Masonry', '~> 0.6'
     sp.resource_bundle = { 'BRMenuUI' => 'Menu/Resources/UI/**/*.{storyboard,lproj,pdf}' }
-  end
-  
-  s.subspec 'UI-RestKit' do |sp|
-    sp.source_files = 'Menu/Code/UI-RestKit.h', 'Menu/Code/UI-RestKit'
-  	sp.header_dir = 'UI-RestKit'
-  	sp.dependency 'MenuKit/UI'
-  	sp.dependency 'MAObjCRuntime', '~> 0.0.1'
-    sp.dependency 'RestKit/ObjectMapping', '~> 0.24'
   end
   
 end

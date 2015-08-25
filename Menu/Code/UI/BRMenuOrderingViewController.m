@@ -15,15 +15,15 @@
 #import "BRMenuOrderingComponentsViewController.h"
 #import "BRMenuOrderingFlowController.h"
 #import "BRMenuOrderingGroupViewController.h"
-#import "BRMenuUIStylishHost.h"
+#import <BRStyle/BRUIStylishHost.h>
 #import "UIBarButtonItem+BRMenu.h"
-#import "UIViewController+BRMenuUIStyle.h"
+#import "UIViewController+BRUIStyle.h"
 
 NSString * const BRMenuOrderingItemObjectCellIdentifier = @"ItemObjectCell";
 NSString * const BRMenuOrderingConfigureComponentsSegue = @"ConfigureComponents";
 NSString * const BRMenuOrderingShowItemGroupSegue = @"ShowItemGroup";
 
-@interface BRMenuOrderingViewController () <BRMenuUIStylishHost>
+@interface BRMenuOrderingViewController () <BRUIStylishHost>
 
 @end
 
@@ -50,11 +50,11 @@ NSString * const BRMenuOrderingShowItemGroupSegue = @"ShowItemGroup";
 	[self refreshForStyle:self.uiStyle];
 }
 
-- (void)uiStyleDidChange:(BRMenuUIStyle *)style {
+- (void)uiStyleDidChange:(BRUIStyle *)style {
 	[self refreshForStyle:style];
 }
 
-- (void)refreshForStyle:(BRMenuUIStyle *)style {
+- (void)refreshForStyle:(BRUIStyle *)style {
 	self.view.backgroundColor = style.appBodyColor;
 }
 

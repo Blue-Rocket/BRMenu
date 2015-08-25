@@ -9,13 +9,13 @@
 #import "BRMenuTagGridView.h"
 
 #import "BRMenuItemTag.h"
-#import "BRMenuUIStylishHost.h"
+#import <BRStyle/BRUIStylishHost.h>
 #import "NSBundle+BRMenuUI.h"
-#import "UIView+BRMenuUIStyle.h"
+#import "UIView+BRUIStyle.h"
 
 static const CGFloat kIconMargin = 4;
 
-@interface BRMenuTagGridView () <BRMenuUIStylishHost>
+@interface BRMenuTagGridView () <BRUIStylishHost>
 @end
 
 @implementation BRMenuTagGridView {
@@ -100,7 +100,7 @@ static const CGFloat kIconMargin = 4;
 	}
 }
 
-- (void)uiStyleDidChange:(BRMenuUIStyle *)style {
+- (void)uiStyleDidChange:(BRUIStyle *)style {
 	[self refreshIcons];
 }
 

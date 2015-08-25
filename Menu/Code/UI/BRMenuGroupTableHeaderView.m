@@ -10,10 +10,10 @@
 
 #import <Masonry/Masonry.h>
 #import "BRMenuGroupHeaderView.h"
-#import "BRMenuUIStylishHost.h"
-#import "UIView+BRMenuUIStyle.h"
+#import <BRStyle/BRUIStylishHost.h>
+#import "UIView+BRUIStyle.h"
 
-@interface BRMenuGroupTableHeaderView () <BRMenuUIStylishHost>
+@interface BRMenuGroupTableHeaderView () <BRUIStylishHost>
 @end
 
 @implementation BRMenuGroupTableHeaderView {

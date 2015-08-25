@@ -14,11 +14,11 @@
 #import "BRMenuItem.h"
 #import "BRMenuOrderItem.h"
 #import "BRMenuOrderItemComponentDetailsView.h"
-#import "BRMenuUIStylishHost.h"
+#import <BRStyle/BRUIStylishHost.h>
 #import "NSBundle+BRMenu.h"
-#import "UIView+BRMenuUIStyle.h"
+#import "UIView+BRUIStyle.h"
 
-@interface BRMenuOrderItemPlacementDetailsView () <BRMenuUIStylishHost>
+@interface BRMenuOrderItemPlacementDetailsView () <BRUIStylishHost>
 @property (nonatomic, strong) UIView *titleRule;
 @end
 

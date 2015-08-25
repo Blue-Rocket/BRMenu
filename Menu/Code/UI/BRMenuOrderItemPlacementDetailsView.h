@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 
 #import "BRMenuOrderItemComponent.h"
-#import "BRMenuUIStyle.h"
+#import <BRStyle/BRUIStyle.h>
 
 @class BRMenuOrderItem;
 @protocol BRMenuUIModelPropertyEditor;
 
-@interface BRMenuOrderItemPlacementDetailsView : UIView <BRMenuUIStylish>
+@interface BRMenuOrderItemPlacementDetailsView : UIView <BRUIStylish>
 
 @property (nonatomic, strong) IBOutlet UILabel *title;
 @property (nonatomic, strong) IBOutlet UIControl<BRMenuUIModelPropertyEditor> *placement;
