@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-#import "BRMenuUIStyle.h"
+#import <BRStyle/BRUIStyle.h>
 
 @protocol BRMenuItemObject;
 
 /**
  Table cell for displaying root-level BRMenuItemObject details for the ordering process.
  */
-@interface BRMenuItemObjectCell : UITableViewCell <BRMenuUIStylish>
+@interface BRMenuItemObjectCell : UITableViewCell <BRUIStylish>
 
 @property (nonatomic, strong) id<BRMenuItemObject> item;
 
@@ -38,7 +38,7 @@
  
  @param style The style to refresh with.
  */
-- (void)refreshStyle:(BRMenuUIStyle *)style;
+- (void)refreshStyle:(BRUIStyle *)style;
 
 
 /**

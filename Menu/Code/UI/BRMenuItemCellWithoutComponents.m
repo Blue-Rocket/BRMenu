@@ -83,7 +83,7 @@ static const CGFloat kDescTopMargin = 4;
 	self.stepper.value = orderItem.quantity;
 }
 
-- (void)refreshStyle:(BRMenuUIStyle *)style {
+- (void)refreshStyle:(BRUIStyle *)style {
 	[super refreshStyle:style];
 	self.title.font = style.listFont;
 	self.title.textColor = (self.selected ? self.uiStyle.appPrimaryColor : self.uiStyle.textColor);

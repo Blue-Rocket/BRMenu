@@ -9,11 +9,11 @@
 #import "BRMenuFlipToggleButton.h"
 
 #import <BRPDFImage/BRPDFImage.h>
-#import "BRMenuUIStylishHost.h"
+#import <BRStyle/BRUIStylishHost.h>
 #import "NSBundle+BRMenuUI.h"
-#import "UIView+BRMenuUIStyle.h"
+#import "UIView+BRUIStyle.h"
 
-@interface BRMenuFlipToggleButton () <BRMenuUIStylishHost>
+@interface BRMenuFlipToggleButton () <BRUIStylishHost>
 @end
 
 static const CGSize kDefaultIconSize = {46.0, 26.0};
@@ -94,7 +94,7 @@ static const CGSize kDefaultIconSize = {46.0, 26.0};
 	imageView.image = image;
 }
 
-- (void)uiStyleDidChange:(BRMenuUIStyle *)style {
+- (void)uiStyleDidChange:(BRUIStyle *)style {
 	[self setNeedsDisplay];
 }
 

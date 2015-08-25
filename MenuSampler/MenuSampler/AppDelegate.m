@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 
-#import <MenuKit/UI/BRMenuUIStyle.h>
+#import <BRStyle/Core.h>
 
 @interface AppDelegate ()
 
@@ -20,16 +20,16 @@
 
 - (void)setupAppearance {
 	UINavigationBar *bar = [UINavigationBar appearance];
-	bar.tintColor = [BRMenuUIStyle defaultStyle].inverseAppPrimaryColor;
-	bar.barTintColor = [BRMenuUIStyle defaultStyle].appPrimaryColor;
+	bar.tintColor = [BRUIStyle defaultStyle].inverseAppPrimaryColor;
+	bar.barTintColor = [BRUIStyle defaultStyle].appPrimaryColor;
 	[bar setTitleTextAttributes:@{
 								  NSForegroundColorAttributeName: [UIColor whiteColor],
-								  NSFontAttributeName: [BRMenuUIStyle defaultStyle].titleFont,
+								  NSFontAttributeName: [BRUIStyle defaultStyle].titleFont,
 								  }];
 	
 	UIToolbar *toolbar = [UIToolbar appearance];
-	toolbar.tintColor = [BRMenuUIStyle defaultStyle].inverseAppPrimaryColor;
-	toolbar.barTintColor = [BRMenuUIStyle defaultStyle].appPrimaryColor;
+	toolbar.tintColor = [BRUIStyle defaultStyle].inverseAppPrimaryColor;
+	toolbar.barTintColor = [BRUIStyle defaultStyle].appPrimaryColor;
 }
 
 - (void)refreshAppearance {
@@ -44,7 +44,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	[self setupAppearance];
-	styleChangeObserver = [[NSNotificationCenter defaultCenter] addObserverForName:BRMenuNotificationUIStyleDidChange object:nil queue:nil usingBlock:^(NSNotification *note) {
+	styleChangeObserver = [[NSNotificationCenter defaultCenter] addObserverForName:BRNotificationUIStyleDidChange object:nil queue:nil usingBlock:^(NSNotification *note) {
 		[AppDelegate cancelPreviousPerformRequestsWithTarget:self selector:@selector(refreshAppearance) object:nil];
 		[self setupAppearance];
 		[self performSelector:@selector(refreshAppearance) withObject:nil afterDelay:1];

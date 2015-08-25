@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-#import "BRMenuUIStyle.h"
+#import <BRStyle/BRUIStyle.h>
 
 /** A padding applied to the internal drawing of the control, so can be aligned to content if desired. */
 extern const CGSize BRMenuStepperPadding;
 
-@interface BRMenuStepper : UIControl <BRMenuUIStylish>
+@interface BRMenuStepper : UIControl <BRUIStylish>
 
 @property (nonatomic) NSInteger value;
 @property (nonatomic) NSInteger minimumValue;

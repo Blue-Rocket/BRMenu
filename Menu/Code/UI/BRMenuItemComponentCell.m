@@ -12,7 +12,7 @@
 #import "BRMenuItemComponent.h"
 #import "BRMenuFitToWidthLabel.h"
 #import "BRMenuOrderItemComponent.h"
-#import "UIView+BRMenuUIStyle.h"
+#import "UIView+BRUIStyle.h"
 
 // TODO: actual component configuration button classes should be configurable
 #import "BRMenuLeftRightPlacementButton.h"
@@ -136,7 +136,7 @@
 	[super updateConstraints];
 }
 
-- (void)refreshStyle:(BRMenuUIStyle *)style {
+- (void)refreshStyle:(BRUIStyle *)style {
 	[super refreshStyle:style];
 	self.title.font = style.listFont;
 	self.title.textColor = (self.selected ? self.uiStyle.appPrimaryColor : self.uiStyle.textColor);

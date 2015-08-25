@@ -238,7 +238,7 @@ static void * kOrderItemQuantityContext = &kOrderItemQuantityContext;
 	self.price.text = priceValue;
 }
 
-- (void)refreshStyle:(BRMenuUIStyle *)style {
+- (void)refreshStyle:(BRUIStyle *)style {
 	[super refreshStyle:style];
 	self.title.font = style.listFont;
 	self.title.textColor = self.uiStyle.textColor;

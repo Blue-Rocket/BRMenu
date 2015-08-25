@@ -14,10 +14,10 @@
 #import "BRMenuOrderItemComponent.h"
 #import "BRMenuUIModelPropertyEditor.h"
 #import "BRMenuLightHeavyQuantityButton.h"
-#import "BRMenuUIStylishHost.h"
-#import "UIView+BRMenuUIStyle.h"
+#import <BRStyle/BRUIStylishHost.h>
+#import "UIView+BRUIStyle.h"
 
-@interface BRMenuOrderItemComponentDetailsView () <BRMenuUIStylishHost>
+@interface BRMenuOrderItemComponentDetailsView () <BRUIStylishHost>
 @property (nonatomic, strong) IBOutlet UIControl<BRMenuUIModelPropertyEditor> *quantity;
 @property (nonatomic, strong) IBOutlet UILabel *title;
 @property (nonatomic, assign) UIEdgeInsets contentInsets;

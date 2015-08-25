@@ -13,13 +13,13 @@
 #import "BRMenuOrderItem.h"
 #import "BRMenuOrderItemDetailsView.h"
 #import "BRMenuOrderingDelegate.h"
-#import "BRMenuUIStylishHost.h"
+#import <BRStyle/BRUIStylishHost.h>
 #import "NSBundle+BRMenu.h"
 #import "UIBarButtonItem+BRMenu.h"
-#import "UIView+BRMenuUIStyle.h"
-#import "UIViewController+BRMenuUIStyle.h"
+#import "UIView+BRUIStyle.h"
+#import "UIViewController+BRUIStyle.h"
 
-@interface BRMenuOrderingItemDetailsViewController () <BRMenuUIStylishHost>
+@interface BRMenuOrderingItemDetailsViewController () <BRUIStylishHost>
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet BRMenuOrderItemDetailsView *orderDetailsView;
 @end

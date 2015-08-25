@@ -9,9 +9,9 @@
 #import "NSBundle+BRMenuUI.h"
 
 #import <BRPDFImage/BRPDFImage.h>
-#import <BRCocoaLumberjack/BRCocoaLumberjack.h>
+#import <BRStyle/Core.h>
 #import "BRMenuItemTag.h"
-#import "BRMenuUIStyle.h"
+#import "BRMenuStepper.h"
 #import "NSBundle+BRMenu.h"
 
 static NSCache *IconCache;
@@ -30,7 +30,7 @@ static NSCache *IconCache;
 		}
 		
 		// register BRMenuUI, provided by BRMenu, as default fallback
-		bundlePath = [[NSBundle bundleForClass:[BRMenuUIStyle class]] pathForResource:@"BRMenuUI" ofType:@"bundle"];
+		bundlePath = [[NSBundle bundleForClass:[BRMenuStepper class]] pathForResource:@"BRMenuUI" ofType:@"bundle"];
 		if ( bundlePath ) {
 			[NSBundle registerBRMenuBundle:[NSBundle bundleWithPath:bundlePath]];
 		}
@@ -41,7 +41,7 @@ static NSCache *IconCache;
 	if ( [[iconName lowercaseString] hasSuffix:@".pdf"] ) {
 		// key components are: image name, render size, and tint color
 		return [NSString stringWithFormat:@"%@-%@-%x", iconName, NSStringFromCGSize(iconSize),
-				(unsigned int)[BRMenuUIStyle rgbaHexIntegerForColor:color]];
+				(unsigned int)[BRUIStyle rgbaHexIntegerForColor:color]];
 	}
 	return [NSString stringWithFormat:@"%@-%@", iconName, NSStringFromCGSize(iconSize)];
 }

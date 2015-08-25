@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "BRMenuOrderingDelegate.h"
-#import "BRMenuUIStyle.h"
+#import <BRStyle/BRUIStyle.h>
 
 @class BRMenu;
 @class BRMenuOrder;
@@ -26,7 +26,7 @@ extern NSString * const BRMenuOrderingShowItemGroupSegue;
 /**
  Display a single menu and allow adding items from the menu to an order.
  */
-@interface BRMenuOrderingViewController : UITableViewController <BRMenuOrderingDelegate, BRMenuUIStylish>
+@interface BRMenuOrderingViewController : UITableViewController <BRMenuOrderingDelegate, BRUIStylish>
 
 @property (nonatomic, assign, getter=isUsePrototypeCells) IBInspectable BOOL usePrototypeCells;
 

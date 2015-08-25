@@ -13,11 +13,11 @@
 #import "BRMenuFitToWidthLabel.h"
 #import "BRMenuGroupObject.h"
 #import "BRMenuItemObject.h"
-#import "BRMenuUIStylishHost.h"
+#import <BRStyle/BRUIStylishHost.h>
 #import "NSNumberFormatter+BRMenu.h"
-#import "UIView+BRMenuUIStyle.h"
+#import "UIView+BRUIStyle.h"
 
-@interface BRMenuItemObjectCell () <BRMenuUIStylishHost>
+@interface BRMenuItemObjectCell () <BRUIStylishHost>
 @end
 
 @implementation BRMenuItemObjectCell {
@@ -84,7 +84,7 @@
 	}];
 }
 
-- (void)refreshStyle:(BRMenuUIStyle *)style {
+- (void)refreshStyle:(BRUIStyle *)style {
 	self.title.font = style.headlineFont;
 	self.title.textColor = style.appPrimaryColor;
 	self.price.font = style.listSecondaryFont;
@@ -103,7 +103,7 @@
 	}
 }
 
-- (void)uiStyleDidChange:(BRMenuUIStyle *)style {
+- (void)uiStyleDidChange:(BRUIStyle *)style {
 	[self refreshStyle:style];
 }
 

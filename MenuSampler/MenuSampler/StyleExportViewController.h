@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-#import <MenuKit/UI/BRMenuUIStyle.h>
+#import <BRStyle/Core.h>
 
-@interface StyleExportViewController : UIViewController <BRMenuUIStylish>
+@interface StyleExportViewController : UIViewController <BRUIStylish>
 
 @end

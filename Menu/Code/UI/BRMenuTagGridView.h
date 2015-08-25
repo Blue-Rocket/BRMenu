@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-#import "BRMenuUIStyle.h"
+#import <BRStyle/BRUIStyle.h>
 
 /**
  Render a set of menu item tags as a grid of icons.
  */
 IB_DESIGNABLE
-@interface BRMenuTagGridView : UIView <BRMenuUIStylish>
+@interface BRMenuTagGridView : UIView <BRUIStylish>
 
 @property (nonatomic, strong) NSArray *tags;  // of MenuItemTag
 @property (nonatomic) IBInspectable NSUInteger columnCount; // defaults to 2

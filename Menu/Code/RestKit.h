@@ -6,6 +6,6 @@
 //  Copyright (c) 2015 Blue Rocket. Distributable under the terms of the Apache License, Version 2.0.
 //
 
-#import <MenuKit/RestKit/BRMenuMappingRestKit.h>
-#import <MenuKit/RestKit/BRMenuMappingRestKitPostProcessor.h>
-#import <MenuKit/RestKit/BRMenuRestKitDataMapper.h>
+#import <MenuKit/BRMenuMappingRestKit.h>
+#import <MenuKit/BRMenuMappingRestKitPostProcessor.h>
+#import <MenuKit/BRMenuRestKitDataMapper.h>

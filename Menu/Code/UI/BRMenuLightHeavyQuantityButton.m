@@ -9,7 +9,7 @@
 #import "BRMenuLightHeavyQuantityButton.h"
 
 #import <QuartzCore/QuartzCore.h>
-#import "BRMenuUIStyle.h"
+#import <BRStyle/BRUIStyle.h>
 
 @implementation BRMenuLightHeavyQuantityButton {
 	BRMenuOrderItemComponentQuantity quantity;
