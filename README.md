@@ -29,12 +29,11 @@ contents similar to this:
 
 	source 'https://github.com/CocoaPods/Specs.git'
 	platform :ios, '8.4'
-	pod 'MenuKit', :subspecs => ['Core', 'RestKit', 'AFNetworking', 'UI']
+	pod 'MenuKit/All'
 
 That will pull in the default **Core** subspec in addition to various other
 subspecs. You can tweak this list as needed, for example if you don't want
-to use the [RestKit][restkit] integration you can
-omit the `'RestKit'` subspec.
+to use the [RestKit][restkit] integration you can omit the `'RestKit'` subspec.
 
 Install into your project:
 
