@@ -385,6 +385,7 @@ static const CGFloat kMinWidth = 48.0f;
 						   : destructive ? controlStateColors.dangerousColorSettings.actionColor : controlStateColors.normalColorSettings.actionColor);
 	UIColor* separatorColor = [strokeColor colorWithAlphaComponent: 0.8];
 	UIColor* badgeColor = (disabled ? controlStateColors.disabledColorSettings.actionColor :
+						   inverse ? controlStateColors.normalColorSettings.actionColor :
 						   self.uiStyle.colors.primaryColor);
 	UIColor* fillColor = (destructive ? controlStateColors.dangerousColorSettings.fillColor : self.fillColor);
 	
