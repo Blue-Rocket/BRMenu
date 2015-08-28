@@ -24,10 +24,9 @@
 	[super viewDidLoad];
 	
 	BRMutableUIStyle *mStyle = [[BRUIStyle defaultStyle] mutableCopy];
-	mStyle.uiFont = [UIFont fontWithName:@"MarkerFelt-Thin" size:12];
-	mStyle.uiBoldFont = [UIFont fontWithName:@"Zapfino" size:12];
-	mStyle.appPrimaryColor = [BRUIStyle colorWithRGBHexInteger:0x60ae2b];
-	mStyle.controlSelectedColor =  mStyle.appPrimaryColor;
+	mStyle.fonts.actionFont = [UIFont fontWithName:@"MarkerFelt-Thin" size:12];
+	mStyle.colors.primaryColor = [BRUIStyle colorWithRGBInteger:0x60ae2b];
+	mStyle.colors.controlSettings.selectedColorSettings.actionColor =  mStyle.colors.primaryColor;
 	self.stepper2.uiStyle = mStyle;
 }
 
