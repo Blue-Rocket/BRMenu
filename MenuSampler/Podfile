@@ -4,6 +4,7 @@ inhibit_all_warnings!
 
 target :MenuSampler do
 	pod 'BRCocoaLumberjack',        '~> 2.0'
+	pod 'BRStyle/Core',             :path => '../../BRStyle'
 	pod 'MenuKit/All',              :path => '../'
 	
 	target :MenuSamplerTests do
