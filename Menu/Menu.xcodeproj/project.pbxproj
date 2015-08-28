@@ -276,6 +276,7 @@
 		C9C216281B6429B500D0A34F /* BRMenuGroupHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuGroupHeaderView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C9C216291B6429B500D0A34F /* BRMenuGroupHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuGroupHeaderView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C9C5B0281B6F1A2000EA3B24 /* uistyle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = uistyle.json; sourceTree = "<group>"; };
+		C9C5D12A1B9015AD00FAF431 /* MenuKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = MenuKit.podspec; path = ../MenuKit.podspec; sourceTree = SOURCE_ROOT; };
 		C9C909231B60248600DDF191 /* BRMenuLeftRightPlacementButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuLeftRightPlacementButton.h; sourceTree = "<group>"; };
 		C9C909241B60248600DDF191 /* BRMenuLeftRightPlacementButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuLeftRightPlacementButton.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F959BE2D01376003BF6AF46A /* Pods-Menu-MenuTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Menu-MenuTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Menu-MenuTests/Pods-Menu-MenuTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -431,6 +432,7 @@
 		C93ABF111B8C506E00202CA9 /* Packaging */ = {
 			isa = PBXGroup;
 			children = (
+				C9C5D12A1B9015AD00FAF431 /* MenuKit.podspec */,
 				C9B812771B5D7B040014CBCB /* AFNetworking.h */,
 				C9B8126D1B5D75910014CBCB /* Core.h */,
 				C9B812781B5D7B040014CBCB /* RestKit.h */,

@@ -84,9 +84,9 @@ static const CGFloat kBadgeWidth = 28.0;
 }
 
 - (void)updateStyle:(BRUIStyle *)style {
-	badgeLabel.font = [style.fonts.actionFont fontWithUIStyleCSSFontWeight:BRUIStyleCSSFontWeightBold] ;
+	badgeLabel.font = [style.fonts.actionFont fontWithUIStyleCSSFontWeight:500] ;
 	badgeLabel.font = [badgeLabel.font fontWithSize:badgeLabel.font.pointSize + 2.0];
-	badgeLabel.textColor = (self.value > 0 ? self.uiStyle.colors.controlSettings.normalColorSettings.actionColor :
+	badgeLabel.textColor = (self.value > 0 ? self.uiStyle.colors.primaryColor :
 							self.uiStyle.colors.controlSettings.disabledColorSettings.actionColor);
 	[self setNeedsLayout];
 	[self setNeedsDisplay];
@@ -129,7 +129,7 @@ static const CGFloat kBadgeWidth = 28.0;
 	_value = newValue;
 	badgeLabel.text = [NSString stringWithFormat:@"%ld", (long)_value];
 	if ( old != newValue ) {
-		badgeLabel.textColor = (newValue > 0 ? self.uiStyle.colors.controlSettings.normalColorSettings.actionColor :
+		badgeLabel.textColor = (newValue > 0 ? self.uiStyle.colors.primaryColor :
 								self.uiStyle.colors.controlSettings.disabledColorSettings.actionColor);
 		[self sendActionsForControlEvents:UIControlEventValueChanged];
 		

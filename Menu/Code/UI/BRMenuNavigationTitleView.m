@@ -40,7 +40,7 @@
 	titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds))];
 	titleLabel.backgroundColor = [UIColor clearColor];
 	titleLabel.font = self.uiStyle.fonts.navigationFont;
-	titleLabel.textColor = self.uiStyle.colors.navigationColor;
+	titleLabel.textColor = self.uiStyle.colors.inverseControlSettings.normalColorSettings.actionColor;
 	titleLabel.shadowColor = self.uiStyle.colors.inverseControlSettings.normalColorSettings.shadowColor;
 	titleLabel.shadowOffset = CGSizeMake(0, -1);
 	titleLabel.textAlignment = NSTextAlignmentCenter;
