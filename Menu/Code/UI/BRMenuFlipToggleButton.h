@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import <BRStyle/BRUIStyle.h>
+#import <BRStyle/BRUIStylish.h>
 
 /**
  A button type control that flips between two images when tapped.

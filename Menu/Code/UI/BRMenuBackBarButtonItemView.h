@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import <BRStyle/BRUIStyle.h>
+#import <BRStyle/BRUIStylish.h>
 
 IB_DESIGNABLE
 @interface BRMenuBackBarButtonItemView : UIButton <BRUIStylish>

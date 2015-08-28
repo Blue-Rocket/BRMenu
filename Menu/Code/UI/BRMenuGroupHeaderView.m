@@ -10,9 +10,8 @@
 
 #import <Masonry/Masonry.h>
 #import "BRMenuFitToWidthLabel.h"
-#import <BRStyle/BRUIStylishHost.h>
+#import <BRStyle/Core.h>
 #import "NSNumberFormatter+BRMenu.h"
-#import "UIView+BRUIStyle.h"
 
 @interface BRMenuGroupHeaderView () <BRUIStylishHost>
 @end
@@ -41,7 +40,7 @@
 
 	// rule: bottom
 	ruleView = [[UIView alloc] initWithFrame:CGRectZero];
-	ruleView.backgroundColor = self.uiStyle.appPrimaryColor;
+	ruleView.backgroundColor = self.uiStyle.colors.primaryColor;
 	[self addSubview:ruleView];
 
 	// title: left
@@ -53,8 +52,8 @@
 	l.numberOfLines = 0;
 	l.lineBreakMode = NSLineBreakByWordWrapping;
 	l.preferredMaxLayoutWidth = 260;
-	l.font = self.uiStyle.headlineFont;
-	l.textColor = self.uiStyle.appPrimaryColor;
+	l.font = self.uiStyle.fonts.headlineFont;
+	l.textColor = self.uiStyle.colors.primaryColor;
 	l.backgroundColor = [UIColor clearColor];
 	l.shadowColor = [UIColor whiteColor];
 	l.shadowOffset = CGSizeMake(0.0, 1.0);
@@ -66,8 +65,8 @@
 	[l setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
 	[l setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
 	[l setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
-	l.font = self.uiStyle.listSecondaryFont;
-	l.textColor = self.uiStyle.appPrimaryColor;
+	l.font = self.uiStyle.fonts.listSecondaryFont;
+	l.textColor = self.uiStyle.colors.primaryColor;
 	l.backgroundColor = [UIColor clearColor];
 	l.textAlignment = NSTextAlignmentRight;
 	l.numberOfLines = 1;

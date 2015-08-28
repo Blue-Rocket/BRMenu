@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "BRMenuOrderItemComponent.h"
-#import <BRStyle/BRUIStyle.h>
+#import <BRStyle/BRUIStylish.h>
 
 @class BRMenuOrderItem;
 @protocol BRMenuUIModelPropertyEditor;

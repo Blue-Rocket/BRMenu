@@ -41,7 +41,7 @@ static NSCache *IconCache;
 	if ( [[iconName lowercaseString] hasSuffix:@".pdf"] ) {
 		// key components are: image name, render size, and tint color
 		return [NSString stringWithFormat:@"%@-%@-%x", iconName, NSStringFromCGSize(iconSize),
-				(unsigned int)[BRUIStyle rgbaHexIntegerForColor:color]];
+				(unsigned int)[BRUIStyle rgbaIntegerForColor:color]];
 	}
 	return [NSString stringWithFormat:@"%@-%@", iconName, NSStringFromCGSize(iconSize)];
 }

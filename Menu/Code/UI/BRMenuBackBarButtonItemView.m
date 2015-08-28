@@ -41,7 +41,7 @@ static const CGFloat kTextMargins = 5.0f;
 }
 
 - (CGSize)intrinsicContentSize {
-	CGSize textSize = [title sizeWithFont:self.uiStyle.uiFont
+	CGSize textSize = [title sizeWithFont:self.uiStyle.fonts.actionFont
 						constrainedToSize:CGSizeMake(CGFLOAT_MAX, kNormalHeight)
 							lineBreakMode:NSLineBreakByWordWrapping];
 	CGFloat width = ceilf(textSize.width) + 2 * kTextMargins + kArrowMargin;
@@ -90,12 +90,14 @@ static const CGFloat kTextMargins = 5.0f;
 	//// General Declarations
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
+	BRUIStyleControlStateColorSettings *controlSettings = (inverse ? self.uiStyle.colors.inverseControlSettings : self.uiStyle.colors.controlSettings);
+	
 	//// Color Declarations
-	UIColor* strokeColor = (inverse ? [self.uiStyle inverseControlBorderColor] : [self.uiStyle controlBorderColor]);
-	UIColor* labelColor = (inverse ? [self.uiStyle inverseControlTextColor] : [self.uiStyle controlTextColor]);
+	UIColor* strokeColor = controlSettings.normalColorSettings.borderColor;
+ 	UIColor* labelColor = controlSettings.normalColorSettings.actionColor;
 	
 	//// Shadow Declarations
-	UIColor* shadow = (inverse ?[self.uiStyle inverseControlBorderGlossColor] : [self.uiStyle controlBorderGlossColor]);
+	UIColor* shadow = controlSettings.normalColorSettings.glossColor;
 	CGSize shadowOffset = CGSizeMake(0.1, 1.1);
 	CGFloat shadowBlurRadius = 0;
 	
@@ -110,7 +112,7 @@ static const CGFloat kTextMargins = 5.0f;
 	
 	//// Abstracted Attributes
 	NSString* buttonLabelContent = self.title;
-	UIFont* buttonLabelFont = [self.uiStyle uiFont];
+	UIFont* buttonLabelFont = self.uiStyle.fonts.actionFont;
 	
 	
 	//// Border Drawing
@@ -148,12 +150,14 @@ static const CGFloat kTextMargins = 5.0f;
 - (void)drawHighlighted {
 	//// General Declarations
 	CGContextRef context = UIGraphicsGetCurrentContext();
-	
+
+	BRUIStyleControlStateColorSettings *controlSettings = (inverse ? self.uiStyle.colors.inverseControlSettings : self.uiStyle.colors.controlSettings);
+
 	//// Color Declarations
-	UIColor* strokeColor = (inverse ? [self.uiStyle inverseControlBorderColor] : [self.uiStyle controlBorderColor]);
-	UIColor* labelColor = (inverse ? [self.uiStyle inverseControlTextColor] : [self.uiStyle controlTextColor]);
-	UIColor* insetShadowColor = (inverse ? [self.uiStyle inverseControlHighlightedShadowColor] : [self.uiStyle controlHighlightedShadowColor]);
-	UIColor* highlightedFill = (inverse ? [self.uiStyle inverseControlHighlightedColor] : [self.uiStyle controlHighlightedColor]);
+	UIColor* strokeColor = controlSettings.highlightedColorSettings.borderColor;
+	UIColor* labelColor = controlSettings.highlightedColorSettings.actionColor;
+	UIColor* insetShadowColor = controlSettings.highlightedColorSettings.shadowColor;
+	UIColor* highlightedFill = controlSettings.highlightedColorSettings.fillColor;
 	
 	//// Shadow Declarations
 	UIColor* depressedShadow = insetShadowColor;
@@ -171,7 +175,7 @@ static const CGFloat kTextMargins = 5.0f;
 	
 	//// Abstracted Attributes
 	NSString* buttonLabelContent = self.title;
-	UIFont* buttonLabelFont = [self.uiStyle uiFont];
+	UIFont* buttonLabelFont = self.uiStyle.fonts.actionFont;
 	
 	
 	//// Border Drawing

@@ -85,10 +85,10 @@ static const CGFloat kDescTopMargin = 4;
 
 - (void)refreshStyle:(BRUIStyle *)style {
 	[super refreshStyle:style];
-	self.title.font = style.listFont;
-	self.title.textColor = (self.selected ? self.uiStyle.appPrimaryColor : self.uiStyle.textColor);
-	self.desc.font = style.listCaptionFont;
-	self.desc.textColor = style.captionColor;
+	self.title.font = style.fonts.listFont;
+	self.title.textColor = (self.selected ? style.colors.primaryColor : style.colors.textColor);
+	self.desc.font = style.fonts.listCaptionFont;
+	self.desc.textColor = style.colors.captionColor;
 }
 
 - (void)updateConstraints {

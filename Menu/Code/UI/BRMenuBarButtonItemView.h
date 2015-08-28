@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "BRMenuUIControl.h"
-#import <BRStyle/BRUIStyle.h>
+#import <BRStyle/BRUIStylish.h>
 
 /**
  Button that renders a standard menu button with support for a title and badge value (for example count).

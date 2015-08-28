@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import <BRStyle/BRUIStyle.h>
+#import <BRStyle/BRUIStylish.h>
 
 /**
  A custom navigation bar title view that attempts to keep the title centered 

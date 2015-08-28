@@ -9,7 +9,7 @@ target :Menu do
 	pod 'MAObjCRuntime', 			  '~> 0.0.1'
 	pod 'Masonry',					  '~> 0.6'
 	pod 'RestKit/ObjectMapping',	  '~> 0.24'
-	pod 'BRStyle',                    '~> 0.9'
+	pod 'BRStyle/Core',               '~> 0.9'
 	
 	target :MenuTests do
 		pod 'AFNetworking',           '~> 2.5', :inhibit_warnings => true

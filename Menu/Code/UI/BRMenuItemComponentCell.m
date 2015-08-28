@@ -8,11 +8,11 @@
 
 #import "BRMenuItemComponentCell.h"
 
+#import <BRStyle/Core.h>
 #import <Masonry/Masonry.h>
 #import "BRMenuItemComponent.h"
 #import "BRMenuFitToWidthLabel.h"
 #import "BRMenuOrderItemComponent.h"
-#import "UIView+BRUIStyle.h"
 
 // TODO: actual component configuration button classes should be configurable
 #import "BRMenuLeftRightPlacementButton.h"
@@ -138,14 +138,14 @@
 
 - (void)refreshStyle:(BRUIStyle *)style {
 	[super refreshStyle:style];
-	self.title.font = style.listFont;
-	self.title.textColor = (self.selected ? self.uiStyle.appPrimaryColor : self.uiStyle.textColor);
+	self.title.font = style.fonts.listFont;
+	self.title.textColor = (self.selected ? self.uiStyle.colors.primaryColor : self.uiStyle.colors.textColor);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
 	[super setSelected:selected animated:animated];
 
-	self.title.textColor = (selected ? self.uiStyle.appPrimaryColor : self.uiStyle.textColor);
+	self.title.textColor = (selected ? self.uiStyle.colors.primaryColor : self.uiStyle.colors.textColor);
 	[self.placementButton setSelected:selected animated:animated];
 	[self.quantityButton setSelected:selected animated:animated];
 	

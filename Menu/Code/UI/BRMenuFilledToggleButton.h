@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "BRMenuUIModelPropertyEditor.h"
-#import <BRStyle/BRUIStyle.h>
+#import <BRStyle/BRUIStylish.h>
 
 IB_DESIGNABLE
 @interface BRMenuFilledToggleButton : UIControl <BRMenuUIModelPropertyEditor, BRUIStylish>

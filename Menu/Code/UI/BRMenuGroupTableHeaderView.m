@@ -48,7 +48,7 @@
 	}];
 	
 	self.backgroundView = [[UIView alloc] initWithFrame:container.bounds];
-	self.backgroundView.backgroundColor = self.uiStyle.appBodyColor;
+	self.backgroundView.backgroundColor = self.uiStyle.colors.backgroundColor;
 }
 
 - (NSDecimalNumber *)price {

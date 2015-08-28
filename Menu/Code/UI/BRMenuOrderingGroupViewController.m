@@ -69,7 +69,7 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 }
 
 - (void)refreshForStyle:(BRUIStyle *)style {
-	self.view.backgroundColor = style.appBodyColor;
+	self.view.backgroundColor = style.colors.backgroundColor;
 }
 
 - (void)setFlowController:(BRMenuOrderingFlowController *)controller {
