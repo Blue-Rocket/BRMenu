@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+#import <BRLocalize/BRLocalizable.h>
 #import <BRStyle/BRUIStylish.h>
 
 /**
@@ -16,7 +17,7 @@
  right bar buttons items so that more of the title text appears.
  */
 IB_DESIGNABLE
-@interface BRMenuNavigationTitleView : UIView <BRUIStylish>
+@interface BRMenuNavigationTitleView : UIView <BRLocalizable, BRUIStylish>
 
 /** The title to display. */
 @property (nonatomic) IBInspectable NSString *title;

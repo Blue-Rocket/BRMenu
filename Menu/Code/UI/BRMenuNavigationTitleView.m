@@ -8,6 +8,7 @@
 
 #import "BRMenuNavigationTitleView.h"
 
+#import <BRLocalize/Core.h>
 #import <BRStyle/BRUIStylishHost.h>
 #import "UIView+BRUIStyle.h"
 
@@ -45,6 +46,10 @@
 	titleLabel.shadowOffset = CGSizeMake(0, -1);
 	titleLabel.textAlignment = NSTextAlignmentCenter;
 	[self addSubview:titleLabel];
+}
+
+- (void)localizeWithAppStrings:(NSDictionary *)strings {
+	self.title = [self.title localizedStringWithAppStrings:strings];
 }
 
 - (void)uStyleDidChange:(BRUIStyle *)style {

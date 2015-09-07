@@ -8,6 +8,7 @@
 
 #import "BRMenuBarButtonItemView.h"
 
+#import <BRLocalize/Core.h>
 #import <BRStyle/BRUIStylishHost.h>
 #import "UIControl+BRMenu.h"
 #import "UIView+BRUIStyle.h"
@@ -51,6 +52,11 @@ static const CGFloat kMinWidth = 48.0f;
 		self.opaque = NO;
 	}
 	return self;
+}
+
+- (void)localizeWithAppStrings:(NSDictionary *)strings {
+	self.title = [self.title localizedStringWithAppStrings:strings];
+	self.badgeText = [self.badgeText localizedStringWithAppStrings:strings];
 }
 
 - (CGSize)sizeThatFits:(CGSize)size {

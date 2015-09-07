@@ -8,6 +8,7 @@
 
 #import "BRMenuBackBarButtonItemView.h"
 
+#import <BRLocalize/Core.h>
 #import <BRStyle/BRUIStylishHost.h>
 #import "UIView+BRUIStyle.h"
 
@@ -38,6 +39,10 @@ static const CGFloat kTextMargins = 5.0f;
 		self.opaque = NO;
 	}
 	return self;
+}
+
+- (void)localizeWithAppStrings:(NSDictionary *)strings {
+	self.title = [self.title localizedStringWithAppStrings:strings];
 }
 
 - (CGSize)intrinsicContentSize {

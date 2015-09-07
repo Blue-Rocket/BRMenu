@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = 'MenuKit'
-  s.version      = '0.4.0'
+  s.version      = '0.5.0'
   s.summary      = 'Objective-C menu and order framework optimized for encoding into barcodes.'
   s.description  = <<-DESC
                    This project provides an implementation of a menu domain model and menu
@@ -31,7 +31,6 @@ Pod::Spec.new do |s|
   s.subspec 'Core' do |sp|
   	sp.source_files = 'Menu/Code/Core.h', 'Menu/Code/Core'
     sp.dependency 'CocoaLumberjack', '~> 2.0'
-    sp.dependency 'BRLocalize/Core', '~> 0.9'
 	sp.dependency 'BRStyle/Core',    '~> 0.9.8'
     sp.resource_bundle = { 'BRMenu' => 'Menu/Resources/Core/**' }
   end
@@ -51,8 +50,9 @@ Pod::Spec.new do |s|
   s.subspec 'UI' do |sp|
     sp.source_files = 'Menu/Code/UI.h', 'Menu/Code/UI'
     sp.dependency 'MenuKit/Core'
-    sp.dependency 'BRPDFImage', '~> 1.0'
-	sp.dependency 'Masonry', '~> 0.6'
+	sp.dependency 'BRLocalize/Core', '~> 0.9'
+    sp.dependency 'BRPDFImage',      '~> 1.0'
+	sp.dependency 'Masonry',         '~> 0.6'
     sp.resource_bundle = { 'BRMenuUI' => 'Menu/Resources/UI/**/*.{storyboard,lproj,pdf}' }
   end
   
