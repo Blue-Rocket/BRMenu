@@ -31,7 +31,8 @@ Pod::Spec.new do |s|
   s.subspec 'Core' do |sp|
   	sp.source_files = 'Menu/Code/Core.h', 'Menu/Code/Core'
     sp.dependency 'CocoaLumberjack', '~> 2.0'
-    sp.dependency 'BRStyle/Core',    '~> 0.9.8'
+    sp.dependency 'BRLocalize/Core', '~> 0.9'
+	sp.dependency 'BRStyle/Core',    '~> 0.9.8'
     sp.resource_bundle = { 'BRMenu' => 'Menu/Resources/Core/**' }
   end
   

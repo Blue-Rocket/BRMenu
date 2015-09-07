@@ -5,6 +5,7 @@ target :Menu do
 	pod 'AFNetworking/Serialization', '~> 2.5'
 	pod 'BRCocoaLumberjack',		  '~> 2.0'
 	pod 'BREnvironment',			  '~> 1.1'
+	pod 'BRLocalize',				  '~> 0.9'
 	pod 'BRPDFImage',				  '~> 1.0'
 	pod 'MAObjCRuntime', 			  '~> 0.0.1'
 	pod 'Masonry',					  '~> 0.6'
