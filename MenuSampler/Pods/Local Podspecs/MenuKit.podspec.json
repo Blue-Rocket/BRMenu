@@ -96,6 +96,9 @@
         "MenuKit/Core": [
 
         ],
+        "BRLocalize/Core": [
+          "~> 0.9"
+        ],
         "BRPDFImage": [
           "~> 1.0"
         ],

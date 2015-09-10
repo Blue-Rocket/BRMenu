@@ -22,8 +22,9 @@ PODS:
     - AFNetworking/NSURLSession
   - BRCocoaLumberjack (2.0.1):
     - CocoaLumberjack (~> 2.0)
+  - BRLocalize/Core (0.9.0)
   - BRPDFImage (1.0.0)
-  - BRStyle/Core (0.9.9)
+  - BRStyle/Core (0.9.10)
   - CocoaAsyncSocket (7.4.2)
   - CocoaHTTPServer (2.3):
     - CocoaAsyncSocket
@@ -54,6 +55,7 @@ PODS:
     - MenuKit/Core
     - RestKit/ObjectMapping (~> 0.24)
   - MenuKit/UI (0.4.0):
+    - BRLocalize/Core (~> 0.9)
     - BRPDFImage (~> 1.0)
     - Masonry (~> 0.6)
     - MenuKit/Core
@@ -72,7 +74,7 @@ PODS:
 
 DEPENDENCIES:
   - BRCocoaLumberjack (~> 2.0)
-  - BRStyle/Core (from `../../BRStyle`)
+  - BRStyle/Core (~> 0.9)
   - CocoaHTTPServer (~> 2.3)
   - MenuKit/All (from `../`)
   - OCHamcrest (~> 4.1)
@@ -80,22 +82,21 @@ DEPENDENCIES:
   - RoutingHTTPServer (~> 1.0)
 
 EXTERNAL SOURCES:
-  BRStyle:
-    :path: ../../BRStyle
   MenuKit:
     :path: ../
 
 SPEC CHECKSUMS:
   AFNetworking: 79f7eb1a0fcfa7beb409332b2ca49afe9ce53b05
   BRCocoaLumberjack: 529d9525681ea2514d3d607011267848bc337bbe
+  BRLocalize: 31acf754b2b645f61c0c3ba99aeacd5ba205a404
   BRPDFImage: 6a68f820e4e06ef8627f305cda147d4a31feff51
-  BRStyle: 3a7ba0db14b722ed28e8bf389927939d6021609c
+  BRStyle: e97e8730e48ef4de08fa4165e695a8e91406b4af
   CocoaAsyncSocket: f5783bdedd232d91b89769bc4b5a1580aed518ad
   CocoaHTTPServer: 5624681fc3473d43b18202f635f9b3abb013b530
   CocoaLumberjack: 019d1361244274a6138c788c6cb80baabc13fb8f
   ISO8601DateFormatterValueTransformer: 52da467d6ec899d6aedda8e48280ac92e8ee97e6
   Masonry: 362e8a1cc0beada4a4c4832d5e863da2a51533be
-  MenuKit: 4b8fe61d227e3bc9a00de5011c9c34043e571c70
+  MenuKit: 69d7223d664b668a8a4e37db1db1227cfac20cad
   OCHamcrest: 6f03ffa81d12feab872638490a44ab0a6d3aca10
   OCMock: 4c2925291f80407c3738dd1db14d21d0cc278864
   RestKit: a4fcaf3d4bb2c204679856a46d596160bf208095
