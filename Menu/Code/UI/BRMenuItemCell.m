@@ -89,7 +89,7 @@
 	if ( ![item isKindOfClass:[BRMenuItem class]] ) {
 		return;
 	}
-	BRMenuItem *menuItem = item;
+	BRMenuItem *menuItem = (BRMenuItem *)item;
 	tagGridView.tags = [menuItem menuItemTags];
 }
 
