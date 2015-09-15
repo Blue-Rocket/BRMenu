@@ -25,7 +25,7 @@ extern NSString * const BRMenuOrderItemDefaultGroupKey;
  [Traditional, Classic Tomato, Housemade Mozzarella] for the
  dough, sauce, and cheese selections.
  */
-@interface BRMenuOrderItem : NSObject <NSCopying>
+@interface BRMenuOrderItem : NSObject <NSCopying, NSSecureCoding>
 
 @property (nonatomic) UInt8 quantity;
 @property (nonatomic, getter = isTakeAway) BOOL takeAway; // YES == take away, NO == dine in; shortcut for first BRMenuOrderItemAttributes

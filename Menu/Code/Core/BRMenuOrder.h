@@ -15,7 +15,7 @@
 /**
  An order object, which is a collection of order items with some additional overall properties.
  */
-@interface BRMenuOrder : NSObject <NSCopying>
+@interface BRMenuOrder : NSObject <NSCopying, NSSecureCoding>
 
 /** A menu reference. This can be set to any menu needed by the application. */
 @property (nonatomic, strong) BRMenu *menu;

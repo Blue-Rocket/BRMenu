@@ -12,6 +12,9 @@
 #import <OCHamcrest/OCHamcrest.h>
 
 #import "BRMenu.h"
+#import "BRMenuItem.h"
+#import "BRMenuItemGroup.h"
+#import "BRMenuItemTag.h"
 
 @interface BRMenuTests : XCTestCase
 @end
@@ -63,6 +66,77 @@
 - (void)testEqualsMatchingInstanceNoKey {
 	BRMenu *menu = [BRMenu new];
 	assertThatBool([menu isEqual:menu], isTrue());
+}
+
+- (void)testArchive {
+	BRMenu *menu = [BRMenu new];
+	menu.key = @"k";
+	menu.version = 1;
+	
+	BRMenuItem *item = [BRMenuItem new];
+	item.itemId = 1;
+	item.key = @"k";
+	item.menu = menu;
+	
+	BRMenuItemGroup *group = [BRMenuItemGroup new];
+	group.key = @"gk";
+	
+	BRMenuItem *groupedItem = [BRMenuItem new];
+	groupedItem.itemId = 2;
+	groupedItem.key = @"gik";
+	groupedItem.group = group;
+	
+	BRMenuItemGroup *nestedGroup = [BRMenuItemGroup new];
+	nestedGroup.key = @"ng";
+	nestedGroup.parentGroup = group;
+	
+	BRMenuItem *nestedGroupItem = [BRMenuItem new];
+	nestedGroupItem.itemId = 3;
+	nestedGroupItem.key = @"ngi";
+	nestedGroupItem.group = nestedGroup;
+	nestedGroupItem.menu = menu;
+	
+	nestedGroup.items = @[nestedGroupItem];
+	
+	group.items = @[groupedItem];
+	group.groups = @[nestedGroup];
+
+	BRMenuItemTag *tag = [BRMenuItemTag new];
+	tag.key = @"t";
+	
+	menu.items = @[item];
+	menu.groups = @[group];
+	menu.tags = @[tag];
+
+	BRMenu *unarchived = [NSKeyedUnarchiver unarchiveObjectWithData:[NSKeyedArchiver archivedDataWithRootObject:menu]];
+	assertThat(unarchived, notNilValue());
+	assertThat(unarchived, isNot(sameInstance(item)));
+	assertThatUnsignedInt(unarchived.version, equalToUnsignedInt(menu.version));
+	assertThat(unarchived.key, equalTo(menu.key));
+	
+	assertThat(unarchived.items, hasCountOf(1));
+	assertThat([unarchived.items[0] key], equalTo(item.key));
+	assertThat([unarchived.items[0] menu], sameInstance(unarchived));
+	
+	assertThat(unarchived.groups, hasCountOf(1));
+	BRMenuItemGroup *g = unarchived.groups[0];
+	assertThat(g.key, equalTo(group.key));
+	assertThat(g.parentGroup, nilValue());
+	assertThat(g.items, hasCountOf(1));
+	assertThat([g.items[0] key], equalTo(groupedItem.key));
+	assertThat([g.items[0] group], sameInstance(g));
+	assertThat(g.groups, hasCountOf(1));
+	BRMenuItemGroup *ng = g.groups[0];
+	assertThat(ng.key, equalTo(nestedGroup.key));
+	assertThat(ng.parentGroup, sameInstance(g));
+	assertThat(ng.groups, nilValue());
+	assertThat(ng.items, hasCountOf(1));
+	assertThat([ng.items[0] key], equalTo(nestedGroupItem.key));
+	assertThat([ng.items[0] menu], sameInstance(unarchived));
+	assertThat([ng.items[0] group], sameInstance(ng));
+	
+	assertThat(unarchived.tags, hasCountOf(1));
+	assertThat([unarchived.tags [0] key], equalTo(tag.key));
 }
 
 @end

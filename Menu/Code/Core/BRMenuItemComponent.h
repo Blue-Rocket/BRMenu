@@ -14,7 +14,7 @@
 
 @class BRMenuItemComponentGroup;
 
-@interface BRMenuItemComponent : NSObject <BRMenuItemObject>
+@interface BRMenuItemComponent : NSObject <BRMenuItemObject, NSSecureCoding>
 
 @property (nonatomic) UInt8 componentId;
 @property (nonatomic, copy) NSString *title;

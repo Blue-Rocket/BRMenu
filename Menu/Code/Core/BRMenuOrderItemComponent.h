@@ -22,7 +22,7 @@ typedef enum {
 
 @class BRMenuItemComponent;
 
-@interface BRMenuOrderItemComponent : NSObject
+@interface BRMenuOrderItemComponent : NSObject <NSSecureCoding>
 
 @property (nonatomic, strong) BRMenuItemComponent *component;
 @property (nonatomic) BRMenuOrderItemComponentPlacement placement;

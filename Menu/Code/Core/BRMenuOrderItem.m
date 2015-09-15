@@ -71,6 +71,33 @@ NSString * const BRMenuOrderItemDefaultGroupKey = @"default";
 	return [[BRMenuOrderItem alloc] initWithOrderItem:self];
 }
 
+#pragma mark - NSCoding
+
++ (BOOL)supportsSecureCoding {
+	return YES;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+	BRMenuItem *i = [aDecoder decodeObjectOfClass:[BRMenuItem class] forKey:NSStringFromSelector(@selector(item))];
+	if ( (self = [self initWithMenuItem:i]) ) {
+		self.quantity = [aDecoder decodeIntForKey:NSStringFromSelector(@selector(quantity))];
+		self.takeAway = [aDecoder decodeBoolForKey:NSStringFromSelector(@selector(isTakeAway))];
+		attributes = [[aDecoder decodeObjectOfClasses:[NSSet setWithObjects:[NSArray class], [BRMenuOrderItemAttributes class], nil] forKey:NSStringFromSelector(@selector(attributes))] mutableCopy];
+		components = [[aDecoder decodeObjectOfClasses:[NSSet setWithObjects:[NSArray class], [BRMenuOrderItemComponent class], nil] forKey:NSStringFromSelector(@selector(components))] mutableCopy];
+	}
+	return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+	[aCoder encodeObject:self.item forKey:NSStringFromSelector(@selector(item))];
+	[aCoder encodeInt:self.quantity forKey:NSStringFromSelector(@selector(quantity))];
+	[aCoder encodeBool:self.takeAway forKey:NSStringFromSelector(@selector(isTakeAway))];
+	[aCoder encodeObject:attributes forKey:NSStringFromSelector(@selector(attributes))];
+	[aCoder encodeObject:components forKey:NSStringFromSelector(@selector(components))];
+}
+
+#pragma mark -
+
 - (NSDecimalNumber *)price {
 	NSDecimalNumber *itemQuantity = [NSDecimalNumber decimalNumberWithMantissa:self.quantity exponent:0 isNegative:NO];
 	NSDecimalNumber *itemPrice = (self.item.price != nil ? self.item.price : self.item.group.price);

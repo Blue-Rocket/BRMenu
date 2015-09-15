@@ -10,7 +10,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BRMenuItemTag : NSObject
+@interface BRMenuItemTag : NSObject <NSSecureCoding>
 
 @property (nonatomic, copy) NSString *key;
 @property (nonatomic, copy) NSString *title;

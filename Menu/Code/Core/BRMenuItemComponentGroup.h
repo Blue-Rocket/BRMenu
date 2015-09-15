@@ -13,7 +13,7 @@
 
 @class BRMenuItemComponent;
 
-@interface BRMenuItemComponentGroup : NSObject
+@interface BRMenuItemComponentGroup : NSObject <NSSecureCoding>
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *desc;

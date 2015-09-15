@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BRMenuOrderItemAttributes : NSObject
+@interface BRMenuOrderItemAttributes : NSObject <NSSecureCoding>
 
 @property (nonatomic, getter = isTakeAway) BOOL takeAway; // YES == take away, NO == dine in
 

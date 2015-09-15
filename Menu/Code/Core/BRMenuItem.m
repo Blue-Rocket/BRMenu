@@ -21,6 +21,49 @@
 
 @synthesize tags;
 
+#pragma mark - NSCoding
+
++ (BOOL)supportsSecureCoding {
+	return YES;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+	if ( (self = [self init]) ) {
+		self.itemId = [aDecoder decodeIntForKey:NSStringFromSelector(@selector(itemId))];
+		self.key = [aDecoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(key))];
+		self.extendsKey = [aDecoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(extendsKey))];
+		self.title = [aDecoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(title))];
+		self.desc = [aDecoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(desc))];
+		self.tags = [aDecoder decodeIntForKey:NSStringFromSelector(@selector(tags))];
+		self.askQuantity = [aDecoder decodeBoolForKey:NSStringFromSelector(@selector(isAskQuantity))];
+		self.askTakeaway = [aDecoder decodeBoolForKey:NSStringFromSelector(@selector(isAskTakeaway))];
+		self.needsReview = [aDecoder decodeBoolForKey:NSStringFromSelector(@selector(isNeedsReview))];
+		self.price = [aDecoder decodeObjectOfClass:[NSDecimalNumber class] forKey:NSStringFromSelector(@selector(price))];
+		self.componentGroups = [aDecoder decodeObjectOfClasses:[NSSet setWithObjects:[NSArray class], [BRMenuItemComponentGroup class], nil] forKey:NSStringFromSelector(@selector(componentGroups))];
+		self.group = [aDecoder decodeObjectOfClass:[BRMenuItemGroup class] forKey:NSStringFromSelector(@selector(group))];
+		self.menu = [aDecoder decodeObjectOfClass:[BRMenu class] forKey:NSStringFromSelector(@selector(menu))];
+	}
+	return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+	[aCoder encodeInt:self.itemId forKey:NSStringFromSelector(@selector(itemId))];
+	[aCoder encodeObject:self.key forKey:NSStringFromSelector(@selector(key))];
+	[aCoder encodeObject:self.extendsKey forKey:NSStringFromSelector(@selector(extendsKey))];
+	[aCoder encodeObject:self.title forKey:NSStringFromSelector(@selector(title))];
+	[aCoder encodeObject:self.desc forKey:NSStringFromSelector(@selector(desc))];
+	[aCoder encodeInt:self.tags forKey:NSStringFromSelector(@selector(tags))];
+	[aCoder encodeBool:self.askQuantity forKey:NSStringFromSelector(@selector(isAskQuantity))];
+	[aCoder encodeBool:self.askTakeaway forKey:NSStringFromSelector(@selector(isAskTakeaway))];
+	[aCoder encodeBool:self.needsReview forKey:NSStringFromSelector(@selector(isNeedsReview))];
+	[aCoder encodeObject:self.price forKey:NSStringFromSelector(@selector(price))];
+	[aCoder encodeObject:self.componentGroups forKey:NSStringFromSelector(@selector(componentGroups))];
+	[aCoder encodeObject:self.group forKey:NSStringFromSelector(@selector(group))];
+	[aCoder encodeObject:self.menu forKey:NSStringFromSelector(@selector(menu))];
+}
+
+#pragma mark -
+
 - (void)enumerateMenuItemComponentGroupsUsingBlock:(void (^)(BRMenuItemComponentGroup *, NSUInteger, BOOL *))block {
 	NSUInteger index = 0;
 	for ( BRMenuItemComponentGroup *group in self.componentGroups ) {
