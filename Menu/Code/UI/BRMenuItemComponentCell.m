@@ -122,7 +122,7 @@
 
 - (void)updateConstraints {
 	UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 0);
-	BRMenuItemComponent *component = self.item;
+	BRMenuItemComponent *component = (BRMenuItemComponent *)self.item;
 	[self.title mas_remakeConstraints:^(MASConstraintMaker *make) {
 		make.top.equalTo(@(padding.top));
 		make.leading.equalTo(self.contentView.mas_leadingMargin);
