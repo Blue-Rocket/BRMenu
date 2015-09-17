@@ -7,6 +7,7 @@
 *~.nib/
 *.xcuserstate
 *.xccheckout
+*.xcscmblueprint
 xcuserdata
 
 # old skool
