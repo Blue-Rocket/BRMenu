@@ -240,12 +240,12 @@ static void * kOrderItemQuantityContext = &kOrderItemQuantityContext;
 
 - (void)refreshStyle:(BRUIStyle *)style {
 	[super refreshStyle:style];
-	self.title.font = style.listFont;
-	self.title.textColor = self.uiStyle.textColor;
-	self.desc.font = style.listCaptionFont;
-	self.desc.textColor = style.captionColor;
-	self.quantity.font = style.listSecondaryFont;
-	self.quantity.textColor = style.appPrimaryColor;
+	self.title.font = style.fonts.listFont;
+	self.title.textColor = self.uiStyle.colors.textColor;
+	self.desc.font = style.fonts.listCaptionFont;
+	self.desc.textColor = style.colors.captionColor;
+	self.quantity.font = style.fonts.listSecondaryFont;
+	self.quantity.textColor = style.colors.primaryColor;
 }
 
 - (void)setupSubviews {

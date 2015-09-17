@@ -35,11 +35,6 @@ static NSString * const kReviewOrderSegue = @"ReviewOrder";
 	[reviewOrderButton addTarget:self action:@selector(viewOrder:) forControlEvents:UIControlEventTouchUpInside];
 	[reviewOrderButton sizeToFit];
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:reviewOrderButton];
-	
-	self.navigationItem.leftBarButtonItem = [UIBarButtonItem standardBRMenuBarButtonItemWithTitle:NSLocalizedString(@"Style", nil)
-																							target:self
-																							action:@selector(editGlobalStyle:)];
-	
 }
 
 - (NSArray *)menuNames {
@@ -81,10 +76,6 @@ static NSString * const kReviewOrderSegue = @"ReviewOrder";
 }
 
 #pragma mark - Actions
-
-- (IBAction)editGlobalStyle:(id)sender {
-	[self performSegueWithIdentifier:@"EditGlobalStyle" sender:sender];
-}
 
 - (IBAction)viewOrder:(id)sender {
 	[self performSegueWithIdentifier:kReviewOrderSegue sender:sender];

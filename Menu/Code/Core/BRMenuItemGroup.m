@@ -14,6 +14,39 @@
 
 @implementation BRMenuItemGroup
 
+#pragma mark - NSCoding
+
++ (BOOL)supportsSecureCoding {
+	return YES;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+	if ( (self = [self init]) ) {
+		self.key = [aDecoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(key))];
+		self.title = [aDecoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(title))];
+		self.desc = [aDecoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(desc))];
+		self.price = [aDecoder decodeObjectOfClass:[NSDecimalNumber class] forKey:NSStringFromSelector(@selector(price))];
+		self.showItemDelimiters = [aDecoder decodeBoolForKey:NSStringFromSelector(@selector(isShowItemDelimiters))];
+		self.parentGroup = [aDecoder decodeObjectOfClass:[BRMenuItemGroup class] forKey:NSStringFromSelector(@selector(parentGroup))];
+		self.items = [aDecoder decodeObjectOfClasses:[NSSet setWithObjects:[NSArray class], [BRMenuItem class], nil] forKey:NSStringFromSelector(@selector(items))];
+		self.groups = [aDecoder decodeObjectOfClasses:[NSSet setWithObjects:[NSArray class], [BRMenuItemGroup class], nil] forKey:NSStringFromSelector(@selector(groups))];
+	}
+	return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+	[aCoder encodeObject:self.key forKey:NSStringFromSelector(@selector(key))];
+	[aCoder encodeObject:self.title forKey:NSStringFromSelector(@selector(title))];
+	[aCoder encodeObject:self.desc forKey:NSStringFromSelector(@selector(desc))];
+	[aCoder encodeObject:self.price forKey:NSStringFromSelector(@selector(price))];
+	[aCoder encodeBool:self.showItemDelimiters forKey:NSStringFromSelector(@selector(isShowItemDelimiters))];
+	[aCoder encodeObject:self.parentGroup forKey:NSStringFromSelector(@selector(parentGroup))];
+	[aCoder encodeObject:self.items forKey:NSStringFromSelector(@selector(items))];
+	[aCoder encodeObject:self.groups forKey:NSStringFromSelector(@selector(groups))];
+}
+
+#pragma mark -
+
 - (BOOL)hasComponents {
 	return NO;
 }

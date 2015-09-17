@@ -39,6 +39,9 @@
 		C92AEEF91B5F10630005AC79 /* BRMenuBarButtonItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = C92AEEF51B5F10630005AC79 /* BRMenuBarButtonItemView.m */; };
 		C92AEEFA1B5F10630005AC79 /* BRMenuBackBarButtonItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = C92AEEF71B5F10630005AC79 /* BRMenuBackBarButtonItemView.m */; };
 		C92AEEFE1B5F56D50005AC79 /* BRMenuFlipToggleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C92AEEFD1B5F56D50005AC79 /* BRMenuFlipToggleButton.m */; };
+		C92FF4791BA89D0F00B1AF48 /* BRMenuItemTagTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C92FF4781BA89D0F00B1AF48 /* BRMenuItemTagTests.m */; };
+		C92FF47B1BA89E0500B1AF48 /* BRMenuItemComponentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C92FF47A1BA89E0500B1AF48 /* BRMenuItemComponentTests.m */; };
+		C92FF47D1BA8A06400B1AF48 /* BRMenuItemComponentGroupTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C92FF47C1BA8A06400B1AF48 /* BRMenuItemComponentGroupTests.m */; };
 		C957D2E01B60B30300AD224C /* BRMenuLightHeavyQuantityButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C957D2DF1B60B30300AD224C /* BRMenuLightHeavyQuantityButton.m */; };
 		C957D2E31B60B76B00AD224C /* BRMenuFilledToggleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C957D2E21B60B76B00AD224C /* BRMenuFilledToggleButton.m */; };
 		C959D0381B6845EB00C153D7 /* BRMenuOrderCountBarButtonItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = C959D0371B6845EB00C153D7 /* BRMenuOrderCountBarButtonItemView.m */; };
@@ -156,23 +159,26 @@
 		C910EA3C1B7167CC00DDAB40 /* BRMenuOrderGroupsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderGroupsController.m; sourceTree = "<group>"; };
 		C910EA3E1B7179B300DDAB40 /* BRMenuItemTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuItemTests.m; sourceTree = "<group>"; };
 		C910EA401B71AD3600DDAB40 /* BRMenuOrderGroupsControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderGroupsControllerTests.m; sourceTree = "<group>"; };
-		C92AEEF51B5F10630005AC79 /* BRMenuBarButtonItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuBarButtonItemView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		C92AEEF51B5F10630005AC79 /* BRMenuBarButtonItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuBarButtonItemView.m; sourceTree = "<group>"; };
 		C92AEEF61B5F10630005AC79 /* BRMenuBackBarButtonItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuBackBarButtonItemView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C92AEEF71B5F10630005AC79 /* BRMenuBackBarButtonItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuBackBarButtonItemView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		C92AEEF81B5F10630005AC79 /* BRMenuBarButtonItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuBarButtonItemView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		C92AEEF81B5F10630005AC79 /* BRMenuBarButtonItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuBarButtonItemView.h; sourceTree = "<group>"; };
 		C92AEEFC1B5F56D50005AC79 /* BRMenuFlipToggleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuFlipToggleButton.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C92AEEFD1B5F56D50005AC79 /* BRMenuFlipToggleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuFlipToggleButton.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		C92FF4781BA89D0F00B1AF48 /* BRMenuItemTagTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuItemTagTests.m; sourceTree = "<group>"; };
+		C92FF47A1BA89E0500B1AF48 /* BRMenuItemComponentTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuItemComponentTests.m; sourceTree = "<group>"; };
+		C92FF47C1BA8A06400B1AF48 /* BRMenuItemComponentGroupTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuItemComponentGroupTests.m; sourceTree = "<group>"; };
 		C957D2DE1B60B30300AD224C /* BRMenuLightHeavyQuantityButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuLightHeavyQuantityButton.h; sourceTree = "<group>"; };
 		C957D2DF1B60B30300AD224C /* BRMenuLightHeavyQuantityButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuLightHeavyQuantityButton.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		C957D2E11B60B76B00AD224C /* BRMenuFilledToggleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuFilledToggleButton.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		C957D2E21B60B76B00AD224C /* BRMenuFilledToggleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuFilledToggleButton.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		C957D2E11B60B76B00AD224C /* BRMenuFilledToggleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuFilledToggleButton.h; sourceTree = "<group>"; };
+		C957D2E21B60B76B00AD224C /* BRMenuFilledToggleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuFilledToggleButton.m; sourceTree = "<group>"; };
 		C959D0351B68440E00C153D7 /* BRMenuOrderingDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuOrderingDelegate.h; sourceTree = "<group>"; };
 		C959D0361B6845EB00C153D7 /* BRMenuOrderCountBarButtonItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuOrderCountBarButtonItemView.h; sourceTree = "<group>"; };
 		C959D0371B6845EB00C153D7 /* BRMenuOrderCountBarButtonItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderCountBarButtonItemView.m; sourceTree = "<group>"; };
 		C959D0391B687C3E00C153D7 /* BRMenuOrderingGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuOrderingGroupViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		C959D03A1B687C3E00C153D7 /* BRMenuOrderingGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuOrderingGroupViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		C959D03A1B687C3E00C153D7 /* BRMenuOrderingGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuOrderingGroupViewController.m; sourceTree = "<group>"; };
 		C959D03C1B68876500C153D7 /* BRMenuItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuItemCell.h; sourceTree = "<group>"; };
-		C959D03D1B68876500C153D7 /* BRMenuItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuItemCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		C959D03D1B68876500C153D7 /* BRMenuItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuItemCell.m; sourceTree = "<group>"; };
 		C959D03F1B689F4E00C153D7 /* BRMenuGroupObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuGroupObject.h; sourceTree = "<group>"; };
 		C96FBCCE1B728B060000EEBF /* UIControl+BRMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+BRMenu.h"; sourceTree = "<group>"; };
 		C96FBCCF1B728B060000EEBF /* UIControl+BRMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+BRMenu.m"; sourceTree = "<group>"; };
@@ -204,9 +210,9 @@
 		C980B0B41B69BCAC0050BCA2 /* BRMenuTagGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuTagGridView.m; sourceTree = "<group>"; };
 		C9819DB51B616812008A1393 /* BRMenuNavigationTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuNavigationTitleView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C9819DB61B616812008A1393 /* BRMenuNavigationTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuNavigationTitleView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		C9819DCF1B61CEE8008A1393 /* BRMenuOrderingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuOrderingViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		C9819DD01B61CEE8008A1393 /* BRMenuOrderingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuOrderingViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		C9819DD51B61EE94008A1393 /* BRMenuItemObjectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuItemObjectCell.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		C9819DCF1B61CEE8008A1393 /* BRMenuOrderingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuOrderingViewController.h; sourceTree = "<group>"; };
+		C9819DD01B61CEE8008A1393 /* BRMenuOrderingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuOrderingViewController.m; sourceTree = "<group>"; };
+		C9819DD51B61EE94008A1393 /* BRMenuItemObjectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuItemObjectCell.h; sourceTree = "<group>"; };
 		C9819DD61B61EE94008A1393 /* BRMenuItemObjectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuItemObjectCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C9819DD81B62D38E008A1393 /* BRMenuFitToWidthLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuFitToWidthLabel.m; sourceTree = "<group>"; };
 		C9819DD91B62D38E008A1393 /* BRMenuFitToWidthLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuFitToWidthLabel.h; sourceTree = "<group>"; };
@@ -214,10 +220,10 @@
 		C9819DDC1B6319A8008A1393 /* NSNumberFormatter+BRMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumberFormatter+BRMenu.m"; sourceTree = "<group>"; };
 		C9819DDE1B6336C9008A1393 /* BRMenuOrderingFlowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuOrderingFlowController.h; sourceTree = "<group>"; };
 		C9819DDF1B6336C9008A1393 /* BRMenuOrderingFlowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderingFlowController.m; sourceTree = "<group>"; };
-		C9819DE21B6347F8008A1393 /* BRMenuOrderingComponentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuOrderingComponentsViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		C9819DE31B6347F8008A1393 /* BRMenuOrderingComponentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuOrderingComponentsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		C9819DE21B6347F8008A1393 /* BRMenuOrderingComponentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuOrderingComponentsViewController.h; sourceTree = "<group>"; };
+		C9819DE31B6347F8008A1393 /* BRMenuOrderingComponentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuOrderingComponentsViewController.m; sourceTree = "<group>"; };
 		C9819DE51B63563B008A1393 /* BRMenuItemComponentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuItemComponentCell.h; sourceTree = "<group>"; };
-		C9819DE61B63563B008A1393 /* BRMenuItemComponentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuItemComponentCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		C9819DE61B63563B008A1393 /* BRMenuItemComponentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuItemComponentCell.m; sourceTree = "<group>"; };
 		C98883541B58820D0049491C /* libMenu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMenu.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C988835F1B58820D0049491C /* MenuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MenuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C98883651B58820D0049491C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -271,11 +277,12 @@
 		C9B812BF1B5DD5DB0014CBCB /* BRMenuPlusMinusButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuPlusMinusButton.h; sourceTree = "<group>"; };
 		C9B812C01B5DD5DB0014CBCB /* BRMenuPlusMinusButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuPlusMinusButton.m; sourceTree = "<group>"; };
 		C9B812C51B5DDD7C0014CBCB /* UI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = UI.h; path = Code/UI.h; sourceTree = SOURCE_ROOT; };
-		C9C216251B64261C00D0A34F /* BRMenuGroupTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuGroupTableHeaderView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		C9C216261B64261C00D0A34F /* BRMenuGroupTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuGroupTableHeaderView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		C9C216251B64261C00D0A34F /* BRMenuGroupTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuGroupTableHeaderView.h; sourceTree = "<group>"; };
+		C9C216261B64261C00D0A34F /* BRMenuGroupTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuGroupTableHeaderView.m; sourceTree = "<group>"; };
 		C9C216281B6429B500D0A34F /* BRMenuGroupHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuGroupHeaderView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C9C216291B6429B500D0A34F /* BRMenuGroupHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuGroupHeaderView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C9C5B0281B6F1A2000EA3B24 /* uistyle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = uistyle.json; sourceTree = "<group>"; };
+		C9C5D12A1B9015AD00FAF431 /* MenuKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = MenuKit.podspec; path = ../MenuKit.podspec; sourceTree = SOURCE_ROOT; };
 		C9C909231B60248600DDF191 /* BRMenuLeftRightPlacementButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuLeftRightPlacementButton.h; sourceTree = "<group>"; };
 		C9C909241B60248600DDF191 /* BRMenuLeftRightPlacementButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuLeftRightPlacementButton.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F959BE2D01376003BF6AF46A /* Pods-Menu-MenuTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Menu-MenuTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Menu-MenuTests/Pods-Menu-MenuTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -422,7 +429,10 @@
 			children = (
 				C9067A851B5CB8BC005FF260 /* BRMenuTestingMenuProvider.h */,
 				C9067A861B5CB8BC005FF260 /* BRMenuTestingMenuProvider.m */,
+				C92FF47C1BA8A06400B1AF48 /* BRMenuItemComponentGroupTests.m */,
+				C92FF47A1BA89E0500B1AF48 /* BRMenuItemComponentTests.m */,
 				C910EA3E1B7179B300DDAB40 /* BRMenuItemTests.m */,
+				C92FF4781BA89D0F00B1AF48 /* BRMenuItemTagTests.m */,
 				C97238161B6ACE15007CBEEA /* BRMenuTests.m */,
 			);
 			path = Menu;
@@ -431,6 +441,7 @@
 		C93ABF111B8C506E00202CA9 /* Packaging */ = {
 			isa = PBXGroup;
 			children = (
+				C9C5D12A1B9015AD00FAF431 /* MenuKit.podspec */,
 				C9B812771B5D7B040014CBCB /* AFNetworking.h */,
 				C9B8126D1B5D75910014CBCB /* Core.h */,
 				C9B812781B5D7B040014CBCB /* RestKit.h */,
@@ -931,6 +942,7 @@
 				C9067A671B5C4B6C005FF260 /* BRMenuRestKitTestingSupport.m in Sources */,
 				C9067A801B5C8B8A005FF260 /* BRMenuNetworkingTestingSupport.m in Sources */,
 				C9067A871B5CB8BC005FF260 /* BRMenuTestingMenuProvider.m in Sources */,
+				C92FF4791BA89D0F00B1AF48 /* BRMenuItemTagTests.m in Sources */,
 				C9067A7D1B5C8B4B005FF260 /* BRMenuRestKitNetworkMappingTests.m in Sources */,
 				C9067A641B5C49FC005FF260 /* BRMenuRestKitMappingTests.m in Sources */,
 				C988839C1B5883A60049491C /* BRMenuOrderItemTests.m in Sources */,
@@ -938,8 +950,10 @@
 				C9067A6A1B5C5491005FF260 /* BRMenuRestKitTestingMapper.m in Sources */,
 				C97238171B6ACE15007CBEEA /* BRMenuTests.m in Sources */,
 				C910EA3F1B7179B300DDAB40 /* BRMenuItemTests.m in Sources */,
+				C92FF47D1BA8A06400B1AF48 /* BRMenuItemComponentGroupTests.m in Sources */,
 				C988839B1B5883A60049491C /* BRMenuOrderItemAttributesProxyTests.m in Sources */,
 				C9067A481B5C29BA005FF260 /* BRMenuMappingPostProcessorTests.m in Sources */,
+				C92FF47B1BA89E0500B1AF48 /* BRMenuItemComponentTests.m in Sources */,
 				C910EA411B71AD3600DDAB40 /* BRMenuOrderGroupsControllerTests.m in Sources */,
 				C9067A8C1B5CBEF5005FF260 /* BRMenuMetadataRestKitMappingTests.m in Sources */,
 				C9067A701B5C69CD005FF260 /* BRMenuItemGroupRestKitMappingTests.m in Sources */,

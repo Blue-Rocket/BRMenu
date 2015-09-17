@@ -128,18 +128,11 @@
 	assertThat(item.key, equalTo(@"vege"));
 }
 
-- (void)testParseMenu {
-	BRMenu *menu = [BRMenu new];
-	[[BRMenuRestKitTestingMapper testForMapping:[BRMenuMappingRestKit menuMapping]
-								   sourceObject:[BRMenuRestKitTestingSupport parsedObjectWithContentsOfFixture:@"menu.json"]
-							  destinationObject:menu]
-	 performMapping];
+- (void)verifyMenuData:(BRMenu *)menu {
 	assertThatInt(menu.version, equalTo(@1));
 	assertThat(menu.key, equalTo(@"test"));
 	assertThat(menu.items, hasCountOf(2));
 	assertThat(menu.groups, hasCountOf(4));
-	
-	[BRMenuMappingPostProcessor assignMenuIDs:menu];
 	
 	// let's verify a bit of the data as populated into our Menu object
 	BRMenuItem *item = [menu.items lastObject];
@@ -148,7 +141,7 @@
 	assertThatUnsignedInt(item.itemId, equalTo(@2));
 	assertThat(item.price, equalTo([NSDecimalNumber decimalNumberWithMantissa:864 exponent:-2 isNegative:NO]));
 	assertThat(item.extendsKey, equalTo(@"pizza"));
-
+	
 	assertThat(item.componentGroups, hasCountOf(2));
 	BRMenuItemComponentGroup *group = item.componentGroups[1];
 	assertThat(group.title, equalTo(@"Finished & Oils"));
@@ -183,12 +176,22 @@
 	assertThat(item, notNilValue());
 	assertThat(item.title, equalTo(@"Maverick"));
 	assertThat(item.componentGroups, hasCountOf(1));
-
+	
 	group = item.componentGroups[0];
 	assertThat(group.title, equalTo(@"Dough"));
 	for ( NSUInteger i = 0; i < [group.components count]; i++ ) {
 		assertThat(group.components[i], equalTo(dough.components[i]));
 	}
+}
+
+- (void)testParseMenu {
+	BRMenu *menu = [BRMenu new];
+	[[BRMenuRestKitTestingMapper testForMapping:[BRMenuMappingRestKit menuMapping]
+								   sourceObject:[BRMenuRestKitTestingSupport parsedObjectWithContentsOfFixture:@"menu.json"]
+							  destinationObject:menu]
+	 performMapping];
+	[BRMenuMappingPostProcessor assignMenuIDs:menu];
+	[self verifyMenuData:menu];
 }
 
 - (void)testEnumerateMenuItemObjects {
@@ -254,6 +257,21 @@
 		count++;
 	}];
 	assertThatUnsignedInteger(count, equalTo(@([expected count])));
+}
+
+- (void)testArchive {
+	BRMenu *menu = [BRMenu new];
+	[[BRMenuRestKitTestingMapper testForMapping:[BRMenuMappingRestKit menuMapping]
+								   sourceObject:[BRMenuRestKitTestingSupport parsedObjectWithContentsOfFixture:@"menu.json"]
+							  destinationObject:menu]
+	 performMapping];
+	[BRMenuMappingPostProcessor assignMenuIDs:menu];
+	
+	// archive, unarchive it
+	NSData *data = [NSKeyedArchiver archivedDataWithRootObject:menu];
+	BRMenu *unarchived = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+	assertThat(unarchived, isNot(sameInstance(menu)));
+	[self verifyMenuData:unarchived];
 }
 
 @end

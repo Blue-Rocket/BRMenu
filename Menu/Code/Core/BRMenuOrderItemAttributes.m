@@ -21,4 +21,20 @@
 	return self;
 }
 
+#pragma mark - NSCoding
+
++ (BOOL)supportsSecureCoding {
+	return YES;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+	BOOL t = [aDecoder decodeBoolForKey:NSStringFromSelector(@selector(isTakeAway))];
+	self = [self initWithTakeAway:t];
+	return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+	[aCoder encodeBool:self.takeAway forKey:NSStringFromSelector(@selector(isTakeAway))];
+}
+
 @end

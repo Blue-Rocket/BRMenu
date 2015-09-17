@@ -10,9 +10,11 @@
 
 @protocol BRUIStylishHost;
 
+/**
+ An internal object used to observe changes to @c BRUIStylishHost objects.
+ */
 @interface BRUIStyleObserver : NSObject
 
-@property (nonatomic, assign) __unsafe_unretained id host;
 @property (nonatomic, strong) id updateObserver;
 
 /**

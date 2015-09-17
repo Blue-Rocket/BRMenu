@@ -58,6 +58,33 @@ static void * kOrderItemPriceContext = &kOrderItemPriceContext;
 	return [[BRMenuOrder alloc] initWithOrder:self];
 }
 
+#pragma mark - NSCoding
+
++ (BOOL)supportsSecureCoding {
+	return YES;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+	if ( (self = [self init]) ) {
+		self.menu = [aDecoder decodeObjectOfClass:[BRMenu class] forKey:NSStringFromSelector(@selector(menu))];
+		self.orderNumber = [aDecoder decodeIntegerForKey:NSStringFromSelector(@selector(orderNumber))];
+		self.name = [aDecoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(name))];
+		orderItems = [[aDecoder decodeObjectOfClasses:[NSSet setWithObjects:[NSArray class], [BRMenuOrderItem class], nil] forKey:NSStringFromSelector(@selector(orderItems))] mutableCopy];
+		menus = [[aDecoder decodeObjectOfClasses:[NSSet setWithObjects:[NSOrderedSet class], [BRMenu class], nil] forKey:NSStringFromSelector(@selector(menus))] mutableCopy];
+	}
+	return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+	[aCoder encodeObject:self.menu forKey:NSStringFromSelector(@selector(menu))];
+	[aCoder encodeInteger:self.orderNumber forKey:NSStringFromSelector(@selector(orderNumber))];
+	[aCoder encodeObject:self.name forKey:NSStringFromSelector(@selector(name))];
+	[aCoder encodeObject:orderItems forKey:NSStringFromSelector(@selector(orderItems))];
+	[aCoder encodeObject:menus forKey:NSStringFromSelector(@selector(menus))];
+}
+
+#pragma mark - Observing
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
 	if ( context == kOrderItemPriceContext ) {
 		[self willChangeValueForKey:NSStringFromSelector(@selector(totalPrice))];

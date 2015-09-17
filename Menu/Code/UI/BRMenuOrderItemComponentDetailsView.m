@@ -49,8 +49,8 @@
 	
 	if ( !self.title ) {
 		UILabel *l = [[BRMenuFitToWidthLabel alloc] initWithFrame:CGRectZero];
-		l.font = self.uiStyle.secondaryFont;
-		l.textColor = self.uiStyle.secondaryColor;
+		l.font = self.uiStyle.fonts.secondaryHeadlineFont;
+		l.textColor = self.uiStyle.colors.secondaryColor;
 		self.title = l;
 		[self addSubview:l];
 	}

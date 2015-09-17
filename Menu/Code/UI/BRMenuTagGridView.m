@@ -56,7 +56,7 @@ static const CGFloat kIconMargin = 4;
 	NSMutableArray *newViews = [[NSMutableArray alloc] initWithCapacity:[tags count]];
 	for ( BRMenuItemTag *tag in tags ) {
 		NSString *iconResource = [NSString stringWithFormat:@"icon-%@.pdf", tag.key];
-		UIImage *icon = [NSBundle iconForBRMenuResource:iconResource size:iconSize color:self.uiStyle.appPrimaryColor];
+		UIImage *icon = [NSBundle iconForBRMenuResource:iconResource size:iconSize color:self.uiStyle.colors.primaryColor];
 		if ( icon != nil ) {
 			UIImageView *image = [[UIImageView alloc] initWithImage:icon];
 			[newViews addObject:image];
@@ -93,7 +93,7 @@ static const CGFloat kIconMargin = 4;
 		}
 		if ( tag ) {
 			NSString *iconResource = [NSString stringWithFormat:@"icon-%@.pdf", tag.key];
-			UIImage *icon = [NSBundle iconForBRMenuResource:iconResource size:iconSize color:self.uiStyle.appPrimaryColor];
+			UIImage *icon = [NSBundle iconForBRMenuResource:iconResource size:iconSize color:self.uiStyle.colors.primaryColor];
 			imageView.image = icon;
 			i++;
 		}

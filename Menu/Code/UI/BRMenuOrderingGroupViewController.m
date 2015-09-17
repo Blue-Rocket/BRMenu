@@ -69,7 +69,7 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 }
 
 - (void)refreshForStyle:(BRUIStyle *)style {
-	self.view.backgroundColor = style.appBodyColor;
+	self.view.backgroundColor = style.colors.backgroundColor;
 }
 
 - (void)setFlowController:(BRMenuOrderingFlowController *)controller {
@@ -99,7 +99,7 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 	if ( cell == nil ) {
 		return;
 	}
-	BRMenuItem *menuItem = cell.item;
+	BRMenuItem *menuItem = (BRMenuItem *)cell.item;
 	if ( sender.value == 0 ) {
 		[flowController.temporaryOrder removeItemForMenuItem:menuItem];
 	} else {
@@ -165,7 +165,7 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	BRMenuItem *item = [flowController menuItemObjectAtIndexPath:indexPath];
+	BRMenuItem *item = (BRMenuItem *)[flowController menuItemObjectAtIndexPath:indexPath];
 	BRMenuItemObjectCell *cell = [tableView dequeueReusableCellWithIdentifier:(item.hasComponents ? BRMenuOrderingItemCellIdentifier : BRMenuOrderingItemWithoutComponentsCellIdentifier)
 														   forIndexPath:indexPath];
 	cell.item = item;

@@ -49,7 +49,7 @@
 - (void)setupSubviews {
 	if ( !self.titleRule ) {
 		UIView *rule = [[UIView alloc] initWithFrame:CGRectZero];
-		rule.backgroundColor = self.uiStyle.appSeparatorColor;
+		rule.backgroundColor = self.uiStyle.colors.separatorColor;
 		rule.translatesAutoresizingMaskIntoConstraints = NO;
 		[self addSubview:rule];
 		self.titleRule = rule;
@@ -57,8 +57,8 @@
 	
 	if ( !self.title ) {
 		UILabel *l = [[BRMenuFitToWidthLabel alloc] initWithFrame:CGRectZero];
-		l.font = self.uiStyle.headlineFont;
-		l.textColor = self.uiStyle.appPrimaryColor;
+		l.font = self.uiStyle.fonts.headlineFont;
+		l.textColor = self.uiStyle.colors.primaryColor;
 		self.title = l;
 		[self addSubview:l];
 	}

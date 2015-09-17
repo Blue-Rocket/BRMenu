@@ -8,8 +8,7 @@
 
 #import "BRMenuStepper.h"
 
-#import <BRStyle/BRUIStylishHost.h>
-#import "UIView+BRUIStyle.h"
+#import <BRStyle/Core.h>
 
 @interface BRMenuStepper () <BRUIStylishHost>
 @end
@@ -85,9 +84,10 @@ static const CGFloat kBadgeWidth = 28.0;
 }
 
 - (void)updateStyle:(BRUIStyle *)style {
-	badgeLabel.font = [style uiBoldFont] ;
+	badgeLabel.font = [style.fonts.actionFont fontWithUIStyleCSSFontWeight:500] ;
 	badgeLabel.font = [badgeLabel.font fontWithSize:badgeLabel.font.pointSize + 2.0];
-	badgeLabel.textColor = (self.value > 0 ? [style appPrimaryColor] : [style controlDisabledColor]);
+	badgeLabel.textColor = (self.value > 0 ? self.uiStyle.colors.primaryColor :
+							self.uiStyle.colors.controlSettings.disabledColorSettings.actionColor);
 	[self setNeedsLayout];
 	[self setNeedsDisplay];
 }
@@ -129,7 +129,8 @@ static const CGFloat kBadgeWidth = 28.0;
 	_value = newValue;
 	badgeLabel.text = [NSString stringWithFormat:@"%ld", (long)_value];
 	if ( old != newValue ) {
-		badgeLabel.textColor = (newValue > 0 ? [self.uiStyle appPrimaryColor] : [self.uiStyle controlDisabledColor]);
+		badgeLabel.textColor = (newValue > 0 ? self.uiStyle.colors.primaryColor :
+								self.uiStyle.colors.controlSettings.disabledColorSettings.actionColor);
 		[self sendActionsForControlEvents:UIControlEventValueChanged];
 		
 		// enable the opposite button if we moved off the edge cases
@@ -162,10 +163,10 @@ static const CGFloat kBadgeWidth = 28.0;
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
 	//// Color Declarations
-	UIColor* strokeColor = [self.uiStyle controlBorderColor];
+	UIColor* strokeColor = self.uiStyle.colors.controlSettings.normalColorSettings.borderColor;
 	
 	//// Shadow Declarations
-	UIColor* shadow = [self.uiStyle controlBorderGlossColor];
+	UIColor* shadow = self.uiStyle.colors.controlSettings.normalColorSettings.glossColor;
 	CGSize shadowOffset = CGSizeMake(0.1, 1.1);
 	CGFloat shadowBlurRadius = 0;
 	
@@ -208,12 +209,16 @@ static const CGFloat kBadgeWidth = 28.0;
 	//// General Declarations
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
+	BRUIStyleControlStateColorSettings *controlSettings = self.uiStyle.colors.controlSettings;
+	
 	//// Color Declarations
-	UIColor* strokeColor = [self.stepper.uiStyle controlBorderColor];
-	UIColor* labelColor = (self.stepper.value <= self.stepper.minimumValue ? [self.stepper.uiStyle controlDisabledColor] : [self.stepper.uiStyle controlTextColor]);
+	UIColor* strokeColor = controlSettings.normalColorSettings.borderColor;
+	UIColor* labelColor = (self.stepper.value <= self.stepper.minimumValue
+						   ? controlSettings.disabledColorSettings.actionColor
+						   : controlSettings.normalColorSettings.actionColor);
 	
 	//// Shadow Declarations
-	UIColor* shadow = [self.stepper.uiStyle controlBorderGlossColor];
+	UIColor* shadow = self.uiStyle.colors.controlSettings.normalColorSettings.glossColor;
 	CGSize shadowOffset = CGSizeMake(0.1, 1.1);
 	CGFloat shadowBlurRadius = 0;
 	
@@ -244,15 +249,19 @@ static const CGFloat kBadgeWidth = 28.0;
 - (void)drawHighlighted {
 	//// General Declarations
 	CGContextRef context = UIGraphicsGetCurrentContext();
-	
+
+	BRUIStyleControlStateColorSettings *controlSettings = self.uiStyle.colors.controlSettings;
+
 	//// Color Declarations
-	UIColor* strokeColor = [self.stepper.uiStyle controlBorderColor];
-	UIColor* labelColor = (self.stepper.value <= self.stepper.minimumValue ? [self.stepper.uiStyle controlDisabledColor] : [self.stepper.uiStyle controlTextColor]);
+	UIColor* strokeColor = controlSettings.highlightedColorSettings.borderColor;
+	UIColor* labelColor = (self.stepper.value <= self.stepper.minimumValue
+						   ? controlSettings.disabledColorSettings.actionColor
+						   : controlSettings.highlightedColorSettings.actionColor);
 	UIColor* insetShadowColor = [labelColor colorWithAlphaComponent: 0.5];
-	UIColor* highlightedFill = [self.stepper.uiStyle controlHighlightedColor];
+	UIColor* highlightedFill = controlSettings.highlightedColorSettings.fillColor;
 	
 	//// Shadow Declarations
-	UIColor* shadow = [self.stepper.uiStyle controlBorderGlossColor];
+	UIColor* shadow = controlSettings.highlightedColorSettings.glossColor;
 	CGSize shadowOffset = CGSizeMake(0.1, 1.1);
 	CGFloat shadowBlurRadius = 0;
 	UIColor* depressedShadow = insetShadowColor;
@@ -363,12 +372,16 @@ static const CGFloat kBadgeWidth = 28.0;
 	//// General Declarations
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
+	BRUIStyleControlStateColorSettings *controlSettings = self.uiStyle.colors.controlSettings;
+	
 	//// Color Declarations
-	UIColor* strokeColor = [self.stepper.uiStyle controlBorderColor];
-	UIColor* labelColor = (self.stepper.value >= self.stepper.maximumValue ? [self.stepper.uiStyle controlDisabledColor] : [self.stepper.uiStyle controlTextColor]);
+	UIColor* strokeColor = controlSettings.normalColorSettings.borderColor;
+	UIColor* labelColor = (self.stepper.value >= self.stepper.maximumValue
+						   ? controlSettings.disabledColorSettings.actionColor
+						   : controlSettings.normalColorSettings.actionColor);
 	
 	//// Shadow Declarations
-	UIColor* shadow = [self.stepper.uiStyle controlBorderGlossColor];
+	UIColor* shadow = controlSettings.normalColorSettings.glossColor;
 	CGSize shadowOffset = CGSizeMake(0.1, 1.1);
 	CGFloat shadowBlurRadius = 0;
 	
@@ -400,14 +413,18 @@ static const CGFloat kBadgeWidth = 28.0;
 	//// General Declarations
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
+	BRUIStyleControlStateColorSettings *controlSettings = self.uiStyle.colors.controlSettings;
+
 	//// Color Declarations
-	UIColor* strokeColor = [self.stepper.uiStyle controlBorderColor];
-	UIColor* labelColor = (self.stepper.value >= self.stepper.maximumValue ? [self.stepper.uiStyle controlDisabledColor] : [self.stepper.uiStyle controlTextColor]);
+	UIColor* strokeColor = controlSettings.highlightedColorSettings.borderColor;
+	UIColor* labelColor = (self.stepper.value >= self.stepper.maximumValue
+						   ? controlSettings.disabledColorSettings.actionColor
+						   : controlSettings.highlightedColorSettings.actionColor);
 	UIColor* insetShadowColor = [labelColor colorWithAlphaComponent: 0.5];
-	UIColor* highlightedFill = [self.stepper.uiStyle controlHighlightedColor];
+	UIColor* highlightedFill = controlSettings.highlightedColorSettings.fillColor;
 	
 	//// Shadow Declarations
-	UIColor* shadow = [self.stepper.uiStyle controlBorderGlossColor];
+	UIColor* shadow = controlSettings.highlightedColorSettings.glossColor;
 	CGSize shadowOffset = CGSizeMake(0.1, 1.1);
 	CGFloat shadowBlurRadius = 0;
 	UIColor* depressedShadow = insetShadowColor;

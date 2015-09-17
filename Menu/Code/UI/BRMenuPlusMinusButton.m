@@ -97,13 +97,17 @@
 	const BOOL destructive = self.destructive;
 	
 	//// Color Declarations
-	UIColor* strokeColor = (destructive ? [self.uiStyle controlDangerColor] :
-							selected ? [self.uiStyle controlSelectedColor] : [self.uiStyle controlBorderColor]);
-	UIColor* labelColor = (destructive ? [self.uiStyle controlDangerColor] :
-						   selected ? [self.uiStyle controlSelectedColor] : [self.uiStyle controlTextColor]);
+	UIColor* strokeColor = (destructive ? self.uiStyle.colors.controlSettings.dangerousColorSettings.borderColor :
+							selected ? self.uiStyle.colors.controlSettings.selectedColorSettings.borderColor :
+							self.uiStyle.colors.controlSettings.normalColorSettings.borderColor);
+	UIColor* labelColor = (destructive ? self.uiStyle.colors.controlSettings.dangerousColorSettings.actionColor :
+						   selected ? self.uiStyle.colors.controlSettings.selectedColorSettings.actionColor :
+						   self.uiStyle.colors.controlSettings.normalColorSettings.actionColor);
 	
 	//// Shadow Declarations
-	UIColor* shadow = [self.uiStyle controlBorderGlossColor];
+	UIColor* shadow = (destructive ? self.uiStyle.colors.controlSettings.dangerousColorSettings.glossColor :
+					   selected ? self.uiStyle.colors.controlSettings.selectedColorSettings.glossColor :
+					   self.uiStyle.colors.controlSettings.normalColorSettings.glossColor);
 	CGSize shadowOffset = CGSizeMake(0.1, 1.1);
 	CGFloat shadowBlurRadius = 0;
 	
@@ -131,12 +135,14 @@
 	const BOOL destructive = self.destructive;
 	
 	//// Color Declarations
-	UIColor* strokeColor = (destructive ? [self.uiStyle controlDangerColor] :
-							selected ? [self.uiStyle controlSelectedColor] : [self.uiStyle controlBorderColor]);
-	UIColor* labelColor = (destructive ? [self.uiStyle controlDangerColor] :
-						   selected ? [self.uiStyle controlSelectedColor] : [self.uiStyle controlTextColor]);
+	UIColor* strokeColor = (destructive ? self.uiStyle.colors.controlSettings.dangerousColorSettings.borderColor :
+							selected ? self.uiStyle.colors.controlSettings.selectedColorSettings.borderColor :
+							self.uiStyle.colors.controlSettings.highlightedColorSettings.borderColor);
+	UIColor* labelColor = (destructive ? self.uiStyle.colors.controlSettings.dangerousColorSettings.actionColor :
+						   selected ? self.uiStyle.colors.controlSettings.selectedColorSettings.actionColor :
+						   self.uiStyle.colors.controlSettings.highlightedColorSettings.actionColor);
 	UIColor* insetShadowColor = [labelColor colorWithAlphaComponent: 0.5];
-	UIColor* highlightedFill = [self.uiStyle controlHighlightedColor];
+	UIColor* highlightedFill = self.uiStyle.colors.controlSettings.highlightedColorSettings.fillColor;
 	
 	//// Shadow Declarations
 	UIColor* depressedShadow = insetShadowColor;

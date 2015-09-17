@@ -20,16 +20,16 @@
 
 - (void)setupAppearance {
 	UINavigationBar *bar = [UINavigationBar appearance];
-	bar.tintColor = [BRUIStyle defaultStyle].inverseAppPrimaryColor;
-	bar.barTintColor = [BRUIStyle defaultStyle].appPrimaryColor;
+	bar.tintColor = [UIColor whiteColor];
+	bar.barTintColor = [BRUIStyle defaultStyle].colors.primaryColor;
 	[bar setTitleTextAttributes:@{
 								  NSForegroundColorAttributeName: [UIColor whiteColor],
-								  NSFontAttributeName: [BRUIStyle defaultStyle].titleFont,
+								  NSFontAttributeName: [BRUIStyle defaultStyle].fonts.navigationFont,
 								  }];
 	
 	UIToolbar *toolbar = [UIToolbar appearance];
-	toolbar.tintColor = [BRUIStyle defaultStyle].inverseAppPrimaryColor;
-	toolbar.barTintColor = [BRUIStyle defaultStyle].appPrimaryColor;
+	toolbar.tintColor = bar.tintColor;
+	toolbar.barTintColor = bar.barTintColor;
 }
 
 - (void)refreshAppearance {
@@ -44,7 +44,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	[self setupAppearance];
-	styleChangeObserver = [[NSNotificationCenter defaultCenter] addObserverForName:BRNotificationUIStyleDidChange object:nil queue:nil usingBlock:^(NSNotification *note) {
+	styleChangeObserver = [[NSNotificationCenter defaultCenter] addObserverForName:BRStyleNotificationUIStyleDidChange object:nil queue:nil usingBlock:^(NSNotification *note) {
 		[AppDelegate cancelPreviousPerformRequestsWithTarget:self selector:@selector(refreshAppearance) object:nil];
 		[self setupAppearance];
 		[self performSelector:@selector(refreshAppearance) withObject:nil afterDelay:1];

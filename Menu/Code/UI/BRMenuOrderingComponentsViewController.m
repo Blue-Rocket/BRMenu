@@ -84,7 +84,7 @@ NSString * const BRMenuOrderingReviewOrderItemSegue = @"ReviewOrderItem";
 }
 
 - (void)refreshForStyle:(BRUIStyle *)style {
-	self.view.backgroundColor = style.appBodyColor;
+	self.view.backgroundColor = style.colors.backgroundColor;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

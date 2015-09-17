@@ -17,7 +17,7 @@
 @class BRMenuItemComponent;
 @class BRMenuItemComponentGroup;
 
-@interface BRMenuItem : NSObject <BRMenuItemObject>
+@interface BRMenuItem : NSObject <BRMenuItemObject, NSSecureCoding>
 
 @property (nonatomic) UInt8 itemId;
 @property (nonatomic, strong) NSDecimalNumber *price;

@@ -17,7 +17,7 @@
 @class BRMenuItemComponent;
 @class BRMenuItemComponentGroup;
 
-@interface BRMenuItemGroup : NSObject <BRMenuGroupObject, BRMenuItemObject>
+@interface BRMenuItemGroup : NSObject <BRMenuGroupObject, BRMenuItemObject, NSSecureCoding>
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *desc;

@@ -55,7 +55,7 @@ NSString * const BRMenuOrderingShowItemGroupSegue = @"ShowItemGroup";
 }
 
 - (void)refreshForStyle:(BRUIStyle *)style {
-	self.view.backgroundColor = style.appBodyColor;
+	self.view.backgroundColor = style.colors.backgroundColor;
 }
 
 - (void)setMenu:(BRMenu *)menu {

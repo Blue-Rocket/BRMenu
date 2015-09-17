@@ -15,7 +15,7 @@
 @class BRMenuItemComponentGroup;
 @class BRMenuItemGroup;
 
-@interface BRMenu : NSObject <BRMenuGroupObject>
+@interface BRMenu : NSObject <BRMenuGroupObject, NSSecureCoding>
 
 @property (nonatomic, copy) NSString *key; // unique value between other BRMenu instances, assigned by data
 @property (nonatomic) UInt16 version;

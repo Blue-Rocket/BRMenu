@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "BRMenuUIControl.h"
-#import <BRStyle/BRUIStyle.h>
+#import <BRStyle/BRUIStylish.h>
 
 IB_DESIGNABLE
 @interface BRMenuPlusMinusButton : UIControl <BRMenuUIControl, BRUIStylish>

@@ -8,6 +8,7 @@
 
 #import "BRMenuNavigationTitleView.h"
 
+#import <BRLocalize/Core.h>
 #import <BRStyle/BRUIStylishHost.h>
 #import "UIView+BRUIStyle.h"
 
@@ -39,12 +40,16 @@
 	self.backgroundColor = [UIColor clearColor];
 	titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds))];
 	titleLabel.backgroundColor = [UIColor clearColor];
-	titleLabel.font = self.uiStyle.titleFont;
-	titleLabel.textColor = self.uiStyle.inverseAppPrimaryColor;
-	titleLabel.shadowColor = self.uiStyle.inverseTextShadowColor;
+	titleLabel.font = self.uiStyle.fonts.navigationFont;
+	titleLabel.textColor = self.uiStyle.colors.inverseControlSettings.normalColorSettings.actionColor;
+	titleLabel.shadowColor = self.uiStyle.colors.inverseControlSettings.normalColorSettings.shadowColor;
 	titleLabel.shadowOffset = CGSizeMake(0, -1);
 	titleLabel.textAlignment = NSTextAlignmentCenter;
 	[self addSubview:titleLabel];
+}
+
+- (void)localizeWithAppStrings:(NSDictionary *)strings {
+	self.title = [self.title localizedStringWithAppStrings:strings];
 }
 
 - (void)uStyleDidChange:(BRUIStyle *)style {

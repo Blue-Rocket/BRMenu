@@ -8,6 +8,7 @@
 
 #import "BRMenuBarButtonItemView.h"
 
+#import <BRLocalize/Core.h>
 #import <BRStyle/BRUIStylishHost.h>
 #import "UIControl+BRMenu.h"
 #import "UIView+BRUIStyle.h"
@@ -53,12 +54,17 @@ static const CGFloat kMinWidth = 48.0f;
 	return self;
 }
 
+- (void)localizeWithAppStrings:(NSDictionary *)strings {
+	self.title = [self.title localizedStringWithAppStrings:strings];
+	self.badgeText = [self.badgeText localizedStringWithAppStrings:strings];
+}
+
 - (CGSize)sizeThatFits:(CGSize)size {
 	return [self intrinsicContentSize];
 }
 
 - (CGSize)intrinsicContentSize {
-	CGSize textSize = [title sizeWithFont:[self.uiStyle uiFont]
+	CGSize textSize = [title sizeWithFont:self.uiStyle.fonts.actionFont
 						constrainedToSize:CGSizeMake(CGFLOAT_MAX, kNormalHeight)
 							lineBreakMode:NSLineBreakByWordWrapping];
 	CGFloat width = ceilf(textSize.width) + 2 * kTextMargins;
@@ -135,11 +141,15 @@ static const CGFloat kMinWidth = 48.0f;
 	const BOOL destructive = self.destructive;
 	
 	//// Color Declarations
-	UIColor* strokeColor = (inverse ? [self.uiStyle inverseControlBorderColor] : [self.uiStyle controlBorderColor]);
-	UIColor* labelColor = (inverse || destructive ? [self.uiStyle inverseControlTextColor] : [self.uiStyle controlTextColor]);
-	UIColor* insetShadowColor = (inverse || destructive ? [self.uiStyle inverseControlHighlightedShadowColor] : [self.uiStyle controlHighlightedShadowColor]);
-	UIColor* highlightedFill = (inverse || destructive ? [self.uiStyle inverseControlHighlightedColor] : [self.uiStyle controlHighlightedColor]);
-	UIColor* fillColor = (destructive ? [self.uiStyle controlDangerColor] : self.fillColor);
+	UIColor* strokeColor = (inverse ? self.uiStyle.colors.inverseControlSettings.highlightedColorSettings.borderColor :
+							self.uiStyle.colors.controlSettings.highlightedColorSettings.borderColor);
+	UIColor* labelColor = (inverse || destructive ? self.uiStyle.colors.inverseControlSettings.highlightedColorSettings.actionColor :
+						   self.uiStyle.colors.controlSettings.highlightedColorSettings.actionColor);
+	UIColor* insetShadowColor = (inverse || destructive ? self.uiStyle.colors.inverseControlSettings.highlightedColorSettings.shadowColor :
+								 self.uiStyle.colors.controlSettings.highlightedColorSettings.shadowColor);
+	UIColor* highlightedFill = (inverse || destructive ? self.uiStyle.colors.inverseControlSettings.highlightedColorSettings.fillColor :
+								self.uiStyle.colors.controlSettings.highlightedColorSettings.fillColor);
+	UIColor* fillColor = (destructive ? self.uiStyle.colors.controlSettings.dangerousColorSettings.fillColor : self.fillColor);
 	
 	//// Shadow Declarations
 	UIColor* innerShadow = insetShadowColor;
@@ -193,13 +203,13 @@ static const CGFloat kMinWidth = 48.0f;
 	borderPath.lineWidth = 1;
 	[borderPath stroke];
 	
-	[self drawLabel:textContent inFrame:frame withFont:[self.uiStyle uiFont] color:labelColor];
+	[self drawLabel:textContent inFrame:frame withFont:self.uiStyle.fonts.actionFont color:labelColor];
 }
 
 - (CGFloat)badgeFrameWidth {
 	CGFloat width = 0.0;
 	if ( [badgeText length] > 0 ) {
-		CGSize badgeTextSize = [badgeText sizeWithFont:[self.uiStyle uiFont]
+		CGSize badgeTextSize = [badgeText sizeWithFont:self.uiStyle.fonts.actionFont
 									 constrainedToSize:CGSizeMake(CGFLOAT_MAX, kNormalHeight)
 										 lineBreakMode:NSLineBreakByWordWrapping];
 
@@ -219,13 +229,19 @@ static const CGFloat kMinWidth = 48.0f;
 	const BOOL destructive = self.destructive;
 	
 	//// Color Declarations
-	UIColor* strokeColor = (inverse ? [self.uiStyle inverseControlBorderColor] : [self.uiStyle controlBorderColor]);
-	UIColor* labelColor = (inverse || destructive ? [self.uiStyle inverseControlTextColor] : [self.uiStyle controlTextColor]);
+	UIColor* strokeColor = (inverse ? self.uiStyle.colors.inverseControlSettings.highlightedColorSettings.borderColor :
+							self.uiStyle.colors.controlSettings.highlightedColorSettings.borderColor);
+	UIColor* labelColor = (inverse || destructive ? self.uiStyle.colors.inverseControlSettings.highlightedColorSettings.actionColor :
+						   self.uiStyle.colors.controlSettings.highlightedColorSettings.actionColor);
+	UIColor* insetShadowColor = (inverse || destructive ? self.uiStyle.colors.inverseControlSettings.highlightedColorSettings.shadowColor :
+								 self.uiStyle.colors.controlSettings.highlightedColorSettings.shadowColor);
+	UIColor* highlightedFill = (inverse || destructive ? self.uiStyle.colors.inverseControlSettings.highlightedColorSettings.fillColor :
+								self.uiStyle.colors.controlSettings.highlightedColorSettings.fillColor);
+	UIColor* fillColor = (destructive ? self.uiStyle.colors.controlSettings.dangerousColorSettings.fillColor : self.fillColor);
+
 	UIColor* separatorColor = (inverse ? strokeColor  : [strokeColor colorWithAlphaComponent:0.5]);
-	UIColor* badgeColor = (inverse || destructive ? [self.uiStyle inverseAppPrimaryColor] :  [self.uiStyle appPrimaryColor]);
-	UIColor* insetShadowColor = (inverse || destructive ? [self.uiStyle inverseControlHighlightedShadowColor] : [self.uiStyle controlHighlightedShadowColor]);
-	UIColor* highlightedFill = (inverse || destructive ? [self.uiStyle inverseControlHighlightedColor] : [self.uiStyle controlHighlightedColor]);
-	UIColor* fillColor = (destructive ? [self.uiStyle controlDangerColor] : self.fillColor);
+	UIColor* badgeColor = (inverse || destructive ? self.uiStyle.colors.inverseControlSettings.normalColorSettings.actionColor :
+						   self.uiStyle.colors.primaryColor);
 	
 	//// Shadow Declarations
 	UIColor* depressedShadow = insetShadowColor;
@@ -242,7 +258,7 @@ static const CGFloat kMinWidth = 48.0f;
 	
 	//// Abstracted Attributes
 	NSString* buttonLabelContent = self.title;
-	UIFont* buttonLabelFont = [self.uiStyle uiFont];
+	UIFont* buttonLabelFont = self.uiStyle.fonts.actionFont;
 	NSString* badgeLabelContent = self.badgeText;
 	UIFont* badgeLabelFont = buttonLabelFont;
 	
@@ -311,15 +327,18 @@ static const CGFloat kMinWidth = 48.0f;
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
 	const BOOL destructive = self.destructive;
+	
+	BRUIStyleControlStateColorSettings *controlStateColors = (inverse ? self.uiStyle.colors.inverseControlSettings : self.uiStyle.colors.controlSettings);
 
 	//// Color Declarations
-	UIColor* strokeColor = (self.selected ? [self.uiStyle controlSelectedColor] : inverse ? [self.uiStyle inverseControlBorderColor] : [self.uiStyle controlBorderColor]);
-	UIColor* labelColor = (!self.enabled ? [self.uiStyle controlDisabledColor]
-						   : self.selected ? [self.uiStyle controlSelectedColor] : inverse || destructive ? [self.uiStyle inverseControlTextColor] : [self.uiStyle controlTextColor]);
-	UIColor* fillColor = (destructive ? [self.uiStyle controlDangerColor] : self.fillColor);
+	UIColor* strokeColor = (self.selected ? controlStateColors.selectedColorSettings.borderColor : controlStateColors.normalColorSettings.borderColor);
+	UIColor* labelColor = (!self.enabled ? controlStateColors.disabledColorSettings.actionColor :
+						   self.selected ? controlStateColors.selectedColorSettings.actionColor :
+						   controlStateColors.normalColorSettings.actionColor);
+	UIColor* fillColor = (destructive ? controlStateColors.dangerousColorSettings.fillColor : self.fillColor);
 	
 	//// Shadow Declarations
-	UIColor* shadow = (inverse || destructive ? [self.uiStyle inverseControlBorderGlossColor] : [self.uiStyle controlBorderGlossColor]);
+	UIColor* shadow = (destructive ? controlStateColors.dangerousColorSettings.glossColor : controlStateColors.normalColorSettings.glossColor);
 	CGSize shadowOffset = CGSizeMake(0.1, 1.1);
 	CGFloat shadowBlurRadius = 0;
 	
@@ -343,7 +362,7 @@ static const CGFloat kMinWidth = 48.0f;
 	}
 	
 	//// Text Drawing
-	[self drawLabel:textContent inFrame:frame withFont:[self.uiStyle uiFont] color:labelColor];
+	[self drawLabel:textContent inFrame:frame withFont:self.uiStyle.fonts.actionFont color:labelColor];
 }
 
 - (void)drawLabel:(NSString *)labelContent inFrame:(CGRect)frame withFont:(UIFont *)labelFont color:(UIColor *)labelColor {
@@ -364,17 +383,20 @@ static const CGFloat kMinWidth = 48.0f;
 	const BOOL destructive = self.destructive;
 	const BOOL disabled = !self.enabled;
 
+	BRUIStyleControlStateColorSettings *controlStateColors = (inverse ? self.uiStyle.colors.inverseControlSettings : self.uiStyle.colors.controlSettings);
+
 	//// Color Declarations
-	UIColor* strokeColor = (inverse ? [self.uiStyle inverseControlBorderColor] : [self.uiStyle controlBorderColor]);
-	UIColor* labelColor = (disabled ? [self.uiStyle controlDisabledColor]
-						   : inverse || destructive ? [self.uiStyle inverseControlTextColor] : [self.uiStyle controlTextColor]);
+	UIColor* strokeColor = controlStateColors.normalColorSettings.borderColor;
+	UIColor* labelColor = (disabled ? controlStateColors.disabledColorSettings.actionColor
+						   : destructive ? controlStateColors.dangerousColorSettings.actionColor : controlStateColors.normalColorSettings.actionColor);
 	UIColor* separatorColor = [strokeColor colorWithAlphaComponent: 0.8];
-	UIColor* badgeColor = (disabled ? [self.uiStyle controlDisabledColor]
-						   : inverse || destructive ? [self.uiStyle inverseAppPrimaryColor] :  [self.uiStyle appPrimaryColor]);
-	UIColor* fillColor = (destructive ? [self.uiStyle controlDangerColor] : self.fillColor);
+	UIColor* badgeColor = (disabled ? controlStateColors.disabledColorSettings.actionColor :
+						   inverse ? controlStateColors.normalColorSettings.actionColor :
+						   self.uiStyle.colors.primaryColor);
+	UIColor* fillColor = (destructive ? controlStateColors.dangerousColorSettings.fillColor : self.fillColor);
 	
 	//// Shadow Declarations
-	UIColor* shadow = (inverse || destructive ? [self.uiStyle inverseControlBorderGlossColor] : [self.uiStyle controlBorderGlossColor]);
+	UIColor* shadow = controlStateColors.normalColorSettings.glossColor;
 	CGSize shadowOffset = CGSizeMake(0.1, 1.1);
 	CGFloat shadowBlurRadius = 0;
 	
@@ -389,7 +411,7 @@ static const CGFloat kMinWidth = 48.0f;
 	
 	//// Abstracted Attributes
 	NSString* buttonLabelContent = self.title;
-	UIFont* buttonLabelFont = [self.uiStyle uiFont];
+	UIFont* buttonLabelFont = self.uiStyle.fonts.actionFont;
 	NSString* badgeLabelContent = self.badgeText;
 	UIFont* badgeLabelFont = buttonLabelFont;
 	

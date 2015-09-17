@@ -112,8 +112,8 @@ static void * kOrderTotalPriceContext = &kOrderTotalPriceContext;
 }
 
 - (void)refreshForStyle:(BRUIStyle *)style {
-	self.view.backgroundColor = style.appBodyColor;
-	self.tableView.backgroundColor = style.appBodyColor;
+	self.view.backgroundColor = style.colors.backgroundColor;
+	self.tableView.backgroundColor = style.colors.backgroundColor;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {

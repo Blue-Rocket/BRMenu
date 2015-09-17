@@ -75,7 +75,7 @@ static const CGSize kDefaultIconSize = {46.0, 26.0};
 }
 
 - (UIImage *)imageForResource:(NSString *)resourceName {
-	return [NSBundle iconForBRMenuResource:resourceName size:iconSize color:self.uiStyle.appPrimaryColor];
+	return [NSBundle iconForBRMenuResource:resourceName size:iconSize color:self.uiStyle.colors.primaryColor];
 }
 
 - (void)setupSubviews {

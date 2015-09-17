@@ -1,6 +1,6 @@
 {
   "name": "MenuKit",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "summary": "Objective-C menu and order framework optimized for encoding into barcodes.",
   "description": "This project provides an implementation of a menu domain model and menu\nordering framework that is designed with encoding orders into 2D barcodes.",
   "homepage": "https://github.com/Blue-Rocket/BRMenu",
@@ -16,7 +16,7 @@
   },
   "source": {
     "git": "https://github.com/Blue-Rocket/BRMenu.git",
-    "tag": "0.3.0"
+    "tag": "0.4.0"
   },
   "requires_arc": true,
   "default_subspecs": "Core",
@@ -49,7 +49,7 @@
           "~> 2.0"
         ],
         "BRStyle/Core": [
-          "~> 0.9"
+          "~> 0.9.8"
         ]
       },
       "resource_bundles": {
@@ -63,9 +63,6 @@
         "Menu/Code/RestKit"
       ],
       "dependencies": {
-        "BRStyle/RestKit": [
-          "~> 0.9"
-        ],
         "MenuKit/Core": [
 
         ],
@@ -98,6 +95,9 @@
       "dependencies": {
         "MenuKit/Core": [
 
+        ],
+        "BRLocalize/Core": [
+          "~> 0.9"
         ],
         "BRPDFImage": [
           "~> 1.0"
