@@ -25,6 +25,10 @@
 - (id)initWithReuseIdentifier:(NSString *)reuseIdentifier {
 	if ( (self = [super initWithReuseIdentifier:reuseIdentifier]) ) {
 		[self initializeStandardTableHeaderViewDefaults];
+		
+		// without the following margin settings, when compiling on iOS 9 SDK the margins are different on iOS 8
+		self.preservesSuperviewLayoutMargins = YES;
+		self.contentView.preservesSuperviewLayoutMargins = YES;
 	}
 	return self;
 }
@@ -41,9 +45,13 @@
 		make.trailing.equalTo(container);
 		make.bottom.equalTo(container);
 	}];
+	[headerView.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+		make.top.equalTo(@10);
+		make.leading.equalTo(headerView);
+	}];
 	[headerView.priceLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
 		make.leading.equalTo(headerView.titleLabel.mas_trailing).with.offset(10);
-		make.right.equalTo(container.mas_rightMargin).with.offset(-10);
+		make.trailing.equalTo(container.mas_trailingMargin);
 		make.baseline.equalTo(headerView.titleLabel);
 	}];
 	
