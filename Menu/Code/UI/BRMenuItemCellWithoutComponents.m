@@ -70,7 +70,7 @@ static const CGFloat kDescTopMargin = 4;
 	
 	[self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.contentView attribute:NSLayoutAttributeHeight
 																 relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:nil attribute:0
-																multiplier:1 constant:44]];
+																multiplier:1 constant:43.5]];
 }
 
 - (void)refreshForItem:(id<BRMenuItemObject>)item {
