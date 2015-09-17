@@ -77,7 +77,7 @@
 	UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 2, 10);
 	[self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.top.equalTo(@(padding.top));
-		make.leading.equalTo(self.mas_leftMargin);
+		make.leading.equalTo(self.mas_leadingMargin);
 	}];
 	[self.priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.leading.equalTo(self.titleLabel.mas_trailing).with.offset(10);
