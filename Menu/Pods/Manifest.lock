@@ -23,13 +23,13 @@ PODS:
   - BRCocoaLumberjack (2.0.1):
     - CocoaLumberjack (~> 2.0)
   - BREnvironment (1.2.0)
-  - BRLocalize (0.9.0):
-    - BRLocalize/All (= 0.9.0)
-  - BRLocalize/All (0.9.0):
+  - BRLocalize (0.9.1):
+    - BRLocalize/All (= 0.9.1)
+  - BRLocalize/All (0.9.1):
     - BRLocalize/Core
     - BRLocalize/UI
-  - BRLocalize/Core (0.9.0)
-  - BRLocalize/UI (0.9.0):
+  - BRLocalize/Core (0.9.1)
+  - BRLocalize/UI (0.9.1):
     - BRLocalize/Core
   - BRPDFImage (1.0.0)
   - BRStyle/Core (0.9.8)
@@ -82,7 +82,7 @@ SPEC CHECKSUMS:
   AFNetworking: 79f7eb1a0fcfa7beb409332b2ca49afe9ce53b05
   BRCocoaLumberjack: 529d9525681ea2514d3d607011267848bc337bbe
   BREnvironment: 021cc4ef4d2dfbe9b90e42265cadd3c5f942eb2b
-  BRLocalize: 31acf754b2b645f61c0c3ba99aeacd5ba205a404
+  BRLocalize: ae240c67587ff408a377b486d2c3a8de1f48aebd
   BRPDFImage: 6a68f820e4e06ef8627f305cda147d4a31feff51
   BRStyle: 6f4f482e3d94c229330e9785ce7145d438432581
   CocoaAsyncSocket: f5783bdedd232d91b89769bc4b5a1580aed518ad
