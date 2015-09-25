@@ -529,20 +529,20 @@
                     "title": "Wine",
                     "price": "5.45",
                     "items": [
-                        {"title": "Piazzo Barbera Piemonte"},
-                        {"title": "Hahn Pinot Noir"},
-                        {"title": "Angelini Pinot Grigio"}
+                        {"title": "Piazzo Barbera Piemonte", "tags": 4},
+                        {"title": "Hahn Pinot Noir", "tags": 4},
+                        {"title": "Angelini Pinot Grigio", "tags": 4}
                     ]
                 },
                 {
                     "title": "Craft Beer",
                     "price": "4.77",
                     "items": [
-                        {"title": "Avery Joe\u2019s Premium American Pilsner"},
-                        {"title": "21st Amendment Back in Black"},
-                        {"title": "DC Brau The Public Pale Ale"},
-                        {"title": "Butternuts Porkslap Pale Ale"},
-                        {"title": "König Pilsener"}
+                        {"title": "Avery Joe\u2019s Premium American Pilsner", "tags": 4},
+                        {"title": "21st Amendment Back in Black", "tags": 4},
+                        {"title": "DC Brau The Public Pale Ale", "tags": 4},
+                        {"title": "Butternuts Porkslap Pale Ale", "tags": 4},
+                        {"title": "König Pilsener", "tags": 4}
                     ]
                 },
                 {
@@ -573,6 +573,10 @@
         {
             "title": "Vegan",
             "key": "vegan"
+        },
+        {
+            "title": "Alcoholic",
+            "key": "alcoholic"
         }
     ]
 }}

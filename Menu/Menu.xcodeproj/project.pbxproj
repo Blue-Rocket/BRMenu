@@ -213,7 +213,7 @@
 		C9819DCF1B61CEE8008A1393 /* BRMenuOrderingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuOrderingViewController.h; sourceTree = "<group>"; };
 		C9819DD01B61CEE8008A1393 /* BRMenuOrderingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuOrderingViewController.m; sourceTree = "<group>"; };
 		C9819DD51B61EE94008A1393 /* BRMenuItemObjectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuItemObjectCell.h; sourceTree = "<group>"; };
-		C9819DD61B61EE94008A1393 /* BRMenuItemObjectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuItemObjectCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		C9819DD61B61EE94008A1393 /* BRMenuItemObjectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuItemObjectCell.m; sourceTree = "<group>"; };
 		C9819DD81B62D38E008A1393 /* BRMenuFitToWidthLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuFitToWidthLabel.m; sourceTree = "<group>"; };
 		C9819DD91B62D38E008A1393 /* BRMenuFitToWidthLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuFitToWidthLabel.h; sourceTree = "<group>"; };
 		C9819DDB1B6319A8008A1393 /* NSNumberFormatter+BRMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumberFormatter+BRMenu.h"; sourceTree = "<group>"; };
