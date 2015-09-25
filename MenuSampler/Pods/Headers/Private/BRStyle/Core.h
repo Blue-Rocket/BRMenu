@@ -1,1 +1,1 @@
-../../../BRStyle/BRStyle/Code/Core.h
+../../../../../../BRStyle/BRStyle/Code/Core.h

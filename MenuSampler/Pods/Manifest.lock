@@ -74,7 +74,7 @@ PODS:
 
 DEPENDENCIES:
   - BRCocoaLumberjack (~> 2.0)
-  - BRStyle/Core (~> 0.9)
+  - BRStyle/Core (from `../../BRStyle`)
   - CocoaHTTPServer (~> 2.3)
   - MenuKit/All (from `../`)
   - OCHamcrest (~> 4.1)
@@ -82,6 +82,8 @@ DEPENDENCIES:
   - RoutingHTTPServer (~> 1.0)
 
 EXTERNAL SOURCES:
+  BRStyle:
+    :path: ../../BRStyle
   MenuKit:
     :path: ../
 
