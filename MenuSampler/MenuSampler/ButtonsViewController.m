@@ -12,10 +12,12 @@
 #import <MenuKit/UI.h>
 
 @interface ButtonsViewController ()
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet BRMenuStepper *stepper;
 @property (strong, nonatomic) IBOutlet BRMenuStepper *stepper2;
 @property (strong, nonatomic) IBOutlet BRMenuBarButtonItemView *cartButton;
 @property (strong, nonatomic) IBOutlet BRMenuBarButtonItemView *dangerousButton;
+@property (strong, nonatomic) IBOutlet BRMenuBarButtonItemView *inverseDisabledButton;
 
 @end
 
@@ -31,6 +33,15 @@
 	self.stepper2.uiStyle = mStyle;
 	
 	self.dangerousButton.destructive = YES;
+}
+
+- (void)viewWillLayoutSubviews {
+	[super viewWillLayoutSubviews];
+	UIEdgeInsets insets = UIEdgeInsetsMake(self.topLayoutGuide.length, 0, 0, 0);
+	self.scrollView.contentInset = insets;
+	insets = self.scrollView.scrollIndicatorInsets;
+	insets.top = self.topLayoutGuide.length;
+	self.scrollView.scrollIndicatorInsets = insets;
 }
 
 - (IBAction)stepperDidChange:(BRMenuStepper *)sender {

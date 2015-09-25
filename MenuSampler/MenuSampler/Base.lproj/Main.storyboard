@@ -185,7 +185,7 @@
                                         <rect key="frame" x="470" y="421" width="130" height="44"/>
                                         <items>
                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="PcX-uo-aoU"/>
-                                            <barButtonItem enabled="NO" style="plain" id="qK6-ZM-S6S">
+                                            <barButtonItem style="plain" id="qK6-ZM-S6S">
                                                 <button key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3k0-c4-97X" userLabel="Back Inverse" customClass="BRMenuBarButtonItemView">
                                                     <rect key="frame" x="25" y="5" width="80" height="34"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -299,6 +299,8 @@
                     <connections>
                         <outlet property="cartButton" destination="uzB-bL-Brp" id="iBx-Wj-hzQ"/>
                         <outlet property="dangerousButton" destination="dg7-Ar-psY" id="P7B-Ed-RJd"/>
+                        <outlet property="inverseDisabledButton" destination="3k0-c4-97X" id="8mC-Jp-Ir0"/>
+                        <outlet property="scrollView" destination="aWF-Nh-qk8" id="9bf-90-KnP"/>
                         <outlet property="stepper" destination="gbi-AS-Ew0" id="GPc-BH-Wh5"/>
                         <outlet property="stepper2" destination="bOc-1Y-QnW" id="AQw-5w-fdA"/>
                     </connections>
