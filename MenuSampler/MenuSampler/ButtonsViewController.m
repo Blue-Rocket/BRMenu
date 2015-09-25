@@ -15,6 +15,7 @@
 @property (strong, nonatomic) IBOutlet BRMenuStepper *stepper;
 @property (strong, nonatomic) IBOutlet BRMenuStepper *stepper2;
 @property (strong, nonatomic) IBOutlet BRMenuBarButtonItemView *cartButton;
+@property (strong, nonatomic) IBOutlet BRMenuBarButtonItemView *dangerousButton;
 
 @end
 
@@ -28,6 +29,8 @@
 	mStyle.colors.primaryColor = [BRUIStyle colorWithRGBInteger:0x60ae2b];
 	mStyle.colors.controlSettings.selectedColorSettings.actionColor =  mStyle.colors.primaryColor;
 	self.stepper2.uiStyle = mStyle;
+	
+	self.dangerousButton.destructive = YES;
 }
 
 - (IBAction)stepperDidChange:(BRMenuStepper *)sender {
