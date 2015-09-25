@@ -330,15 +330,21 @@ static const CGFloat kMinWidth = 48.0f;
 	
 	BRUIStyleControlStateColorSettings *controlStateColors = (inverse ? self.uiStyle.colors.inverseControlSettings : self.uiStyle.colors.controlSettings);
 
+	BRMutableUIStyleControlColorSettings *controlColors = (self.selected
+														   ? controlStateColors.selectedColorSettings
+														   : self.enabled == NO
+														   ? controlStateColors.disabledColorSettings
+														   : destructive
+														   ? controlStateColors.dangerousColorSettings
+														   : controlStateColors.normalColorSettings);
+	
 	//// Color Declarations
-	UIColor* strokeColor = (self.selected ? controlStateColors.selectedColorSettings.borderColor : controlStateColors.normalColorSettings.borderColor);
-	UIColor* labelColor = (!self.enabled ? controlStateColors.disabledColorSettings.actionColor :
-						   self.selected ? controlStateColors.selectedColorSettings.actionColor :
-						   controlStateColors.normalColorSettings.actionColor);
-	UIColor* fillColor = (destructive ? controlStateColors.dangerousColorSettings.fillColor : self.fillColor);
+	UIColor* strokeColor = controlColors.borderColor;
+	UIColor* labelColor = controlColors.actionColor;
+	UIColor* fillColor = (self.fillColor ? self.fillColor : controlColors.fillColor);
 	
 	//// Shadow Declarations
-	UIColor* shadow = (destructive ? controlStateColors.dangerousColorSettings.glossColor : controlStateColors.normalColorSettings.glossColor);
+	UIColor* shadow = controlColors.glossColor;
 	CGSize shadowOffset = CGSizeMake(0.1, 1.1);
 	CGFloat shadowBlurRadius = 0;
 	
