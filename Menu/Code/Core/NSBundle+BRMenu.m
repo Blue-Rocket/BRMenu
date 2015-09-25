@@ -19,22 +19,22 @@ static NSArray *registeredBundles;
 		NSMutableArray *bundles = [[NSMutableArray alloc] initWithCapacity:2];
 		NSString *bundlePath;
 
-		// first add Menu.bundle... not provided by BRMenu, but provided as a default extension point
+		// first add the main bundle as the default extension point
+		NSBundle *mainBundle = [NSBundle mainBundle];
+		if ( mainBundle ) {
+			[bundles addObject:mainBundle];
+		}
+		
+		// then add Menu.bundle... not provided by BRMenu, but provided as an extension point
 		bundlePath = [[NSBundle mainBundle] pathForResource:@"Menu" ofType:@"bundle"];
 		if ( bundlePath ) {
 			[bundles addObject:[NSBundle bundleWithPath:bundlePath]];
 		}
 
-		// second add BRMenu.bundle... provided by BRMenu as the default fallback bundle
+		// last add BRMenu.bundle... provided by BRMenu as the default fallback bundle
 		bundlePath = [[NSBundle bundleForClass:[BRMenu class]] pathForResource:@"BRMenu" ofType:@"bundle"];
 		if ( bundlePath ) {
 			[bundles addObject:[NSBundle bundleWithPath:bundlePath]];
-		}
-		
-		// and last add the main bundle
-		NSBundle *mainBundle = [NSBundle mainBundle];
-		if ( mainBundle ) {
-			[bundles addObject:mainBundle];
 		}
 		
 		registeredBundles = [bundles copy];
@@ -44,7 +44,7 @@ static NSArray *registeredBundles;
 + (void)registerBRMenuBundle:(NSBundle *)bundle {
 	if ( bundle != nil ) {
 		NSMutableArray *bundles = [registeredBundles mutableCopy];
-		[bundles insertObject:bundle atIndex:0];
+		[bundles insertObject:bundle atIndex:1]; // just after the main bundle
 		registeredBundles = [bundles copy];
 	}
 }
