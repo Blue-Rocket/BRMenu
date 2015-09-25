@@ -185,7 +185,7 @@
                                         <rect key="frame" x="470" y="421" width="130" height="44"/>
                                         <items>
                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="PcX-uo-aoU"/>
-                                            <barButtonItem style="plain" id="qK6-ZM-S6S">
+                                            <barButtonItem enabled="NO" style="plain" id="qK6-ZM-S6S">
                                                 <button key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3k0-c4-97X" userLabel="Back Inverse" customClass="BRMenuBarButtonItemView">
                                                     <rect key="frame" x="25" y="5" width="80" height="34"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
