@@ -1,1 +1,1 @@
-../../../../../../BRStyle/BRStyle/Code/Core/UIFont+BRUIStyle.h
+../../../BRStyle/BRStyle/Code/Core/UIFont+BRUIStyle.h
