@@ -140,16 +140,15 @@ static const CGFloat kMinWidth = 48.0f;
 	
 	const BOOL destructive = self.destructive;
 	
+	BRUIStyleControlStateColorSettings *controlStateColors = (inverse ? self.uiStyle.colors.inverseControlSettings : self.uiStyle.colors.controlSettings);
+	BRMutableUIStyleControlColorSettings *controlColors = controlStateColors.highlightedColorSettings;
+	
 	//// Color Declarations
-	UIColor* strokeColor = (inverse ? self.uiStyle.colors.inverseControlSettings.highlightedColorSettings.borderColor :
-							self.uiStyle.colors.controlSettings.highlightedColorSettings.borderColor);
-	UIColor* labelColor = (inverse || destructive ? self.uiStyle.colors.inverseControlSettings.highlightedColorSettings.actionColor :
-						   self.uiStyle.colors.controlSettings.highlightedColorSettings.actionColor);
-	UIColor* insetShadowColor = (inverse || destructive ? self.uiStyle.colors.inverseControlSettings.highlightedColorSettings.shadowColor :
-								 self.uiStyle.colors.controlSettings.highlightedColorSettings.shadowColor);
-	UIColor* highlightedFill = (inverse || destructive ? self.uiStyle.colors.inverseControlSettings.highlightedColorSettings.fillColor :
-								self.uiStyle.colors.controlSettings.highlightedColorSettings.fillColor);
-	UIColor* fillColor = (destructive ? self.uiStyle.colors.controlSettings.dangerousColorSettings.fillColor : self.fillColor);
+	UIColor* strokeColor = (destructive ? controlStateColors.dangerousColorSettings.borderColor : controlColors.borderColor);
+	UIColor* labelColor = (destructive ? controlStateColors.dangerousColorSettings.actionColor : controlColors.actionColor);
+	UIColor* insetShadowColor = controlColors.shadowColor;
+	UIColor* highlightedFill = controlColors.fillColor;
+	UIColor* fillColor = (self.fillColor ? self.fillColor : controlColors.fillColor);
 	
 	//// Shadow Declarations
 	UIColor* innerShadow = insetShadowColor;
@@ -228,20 +227,20 @@ static const CGFloat kMinWidth = 48.0f;
 
 	const BOOL destructive = self.destructive;
 	
+	BRUIStyleControlStateColorSettings *controlStateColors = (inverse ? self.uiStyle.colors.inverseControlSettings : self.uiStyle.colors.controlSettings);
+	BRMutableUIStyleControlColorSettings *controlColors = controlStateColors.highlightedColorSettings;
+
 	//// Color Declarations
-	UIColor* strokeColor = (inverse ? self.uiStyle.colors.inverseControlSettings.highlightedColorSettings.borderColor :
-							self.uiStyle.colors.controlSettings.highlightedColorSettings.borderColor);
-	UIColor* labelColor = (inverse || destructive ? self.uiStyle.colors.inverseControlSettings.highlightedColorSettings.actionColor :
-						   self.uiStyle.colors.controlSettings.highlightedColorSettings.actionColor);
-	UIColor* insetShadowColor = (inverse || destructive ? self.uiStyle.colors.inverseControlSettings.highlightedColorSettings.shadowColor :
-								 self.uiStyle.colors.controlSettings.highlightedColorSettings.shadowColor);
-	UIColor* highlightedFill = (inverse || destructive ? self.uiStyle.colors.inverseControlSettings.highlightedColorSettings.fillColor :
-								self.uiStyle.colors.controlSettings.highlightedColorSettings.fillColor);
-	UIColor* fillColor = (destructive ? self.uiStyle.colors.controlSettings.dangerousColorSettings.fillColor : self.fillColor);
+	UIColor* strokeColor = (destructive ? controlStateColors.dangerousColorSettings.borderColor : controlColors.borderColor);
+	UIColor* labelColor = (destructive ? controlStateColors.dangerousColorSettings.actionColor : controlColors.actionColor);
+	UIColor* insetShadowColor = controlColors.shadowColor;
+	UIColor* highlightedFill = controlColors.fillColor;
+	UIColor* fillColor = (self.fillColor ? self.fillColor : controlColors.fillColor);
 
 	UIColor* separatorColor = (inverse ? strokeColor  : [strokeColor colorWithAlphaComponent:0.5]);
-	UIColor* badgeColor = (inverse || destructive ? self.uiStyle.colors.inverseControlSettings.normalColorSettings.actionColor :
-						   self.uiStyle.colors.primaryColor);
+	UIColor* badgeColor = (inverse
+						   ? controlColors.actionColor
+						   : self.uiStyle.colors.primaryColor);
 	
 	//// Shadow Declarations
 	UIColor* depressedShadow = insetShadowColor;
@@ -390,16 +389,24 @@ static const CGFloat kMinWidth = 48.0f;
 	const BOOL disabled = !self.enabled;
 
 	BRUIStyleControlStateColorSettings *controlStateColors = (inverse ? self.uiStyle.colors.inverseControlSettings : self.uiStyle.colors.controlSettings);
+	
+	BRMutableUIStyleControlColorSettings *controlColors = (self.selected
+														   ? controlStateColors.selectedColorSettings
+														   : self.enabled == NO
+														   ? controlStateColors.disabledColorSettings
+														   : destructive
+														   ? controlStateColors.dangerousColorSettings
+														   : controlStateColors.normalColorSettings);
+	
 
 	//// Color Declarations
-	UIColor* strokeColor = controlStateColors.normalColorSettings.borderColor;
-	UIColor* labelColor = (disabled ? controlStateColors.disabledColorSettings.actionColor
-						   : destructive ? controlStateColors.dangerousColorSettings.actionColor : controlStateColors.normalColorSettings.actionColor);
+	UIColor* strokeColor = controlColors.borderColor;
+	UIColor* labelColor = controlColors.actionColor;
+	UIColor* fillColor = (self.fillColor ? self.fillColor : controlColors.fillColor);
 	UIColor* separatorColor = [strokeColor colorWithAlphaComponent: 0.8];
-	UIColor* badgeColor = (disabled ? controlStateColors.disabledColorSettings.actionColor :
-						   inverse ? controlStateColors.normalColorSettings.actionColor :
-						   self.uiStyle.colors.primaryColor);
-	UIColor* fillColor = (destructive ? controlStateColors.dangerousColorSettings.fillColor : self.fillColor);
+	UIColor* badgeColor = (disabled || inverse
+						   ? controlColors.actionColor
+						   : self.uiStyle.colors.primaryColor);
 	
 	//// Shadow Declarations
 	UIColor* shadow = controlStateColors.normalColorSettings.glossColor;
