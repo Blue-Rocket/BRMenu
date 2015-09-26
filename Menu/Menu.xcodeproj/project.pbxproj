@@ -168,6 +168,7 @@
 		C92FF4781BA89D0F00B1AF48 /* BRMenuItemTagTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuItemTagTests.m; sourceTree = "<group>"; };
 		C92FF47A1BA89E0500B1AF48 /* BRMenuItemComponentTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuItemComponentTests.m; sourceTree = "<group>"; };
 		C92FF47C1BA8A06400B1AF48 /* BRMenuItemComponentGroupTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuItemComponentGroupTests.m; sourceTree = "<group>"; };
+		C9513CD81BB73C0F002737E2 /* MenuKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MenuKit.h; path = Code/MenuKit.h; sourceTree = SOURCE_ROOT; };
 		C957D2DE1B60B30300AD224C /* BRMenuLightHeavyQuantityButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuLightHeavyQuantityButton.h; sourceTree = "<group>"; };
 		C957D2DF1B60B30300AD224C /* BRMenuLightHeavyQuantityButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuLightHeavyQuantityButton.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C957D2E11B60B76B00AD224C /* BRMenuFilledToggleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuFilledToggleButton.h; sourceTree = "<group>"; };
@@ -444,6 +445,7 @@
 				C9C5D12A1B9015AD00FAF431 /* MenuKit.podspec */,
 				C9B812771B5D7B040014CBCB /* AFNetworking.h */,
 				C9B8126D1B5D75910014CBCB /* Core.h */,
+				C9513CD81BB73C0F002737E2 /* MenuKit.h */,
 				C9B812781B5D7B040014CBCB /* RestKit.h */,
 				C9B812C51B5DDD7C0014CBCB /* UI.h */,
 			);
