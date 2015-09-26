@@ -46,9 +46,8 @@
 		self.orderDetailsView = detailsView;
 	}
 	if ( !self.navigationItem.leftBarButtonItem ) {
-		self.navigationItem.leftBarButtonItem = [UIBarButtonItem standardBRMenuBackButtonItemWithTitle:nil
-																								target:self
-																								action:@selector(goBack:)];
+		NSArray *leftItems = @[[UIBarButtonItem standardBRMenuBackButtonItemWithTitle:nil target:self action:@selector(goBack:)]];
+		self.navigationItem.leftBarButtonItems = [UIBarButtonItem marginAdjustedBRMenuLeftNavigationBarButtonItems:leftItems];
 	}
 }
 
@@ -60,7 +59,7 @@
 		UIBarButtonItem *rightItem = [UIBarButtonItem standardBRMenuBarButtonItemWithTitle:[NSBundle localizedBRMenuString:@"menu.action.add"]
 																					target:self
 																					action:@selector(addOrderItemToActiveOrder:)];
-		self.navigationItem.rightBarButtonItem = rightItem;
+		self.navigationItem.rightBarButtonItems = [UIBarButtonItem marginAdjustedBRMenuRightNavigationBarButtonItems:@[rightItem]];
 	} else {
 		self.navigationItem.rightBarButtonItem = nil;
 	}

@@ -55,27 +55,28 @@ NSString * const BRMenuOrderingReviewOrderItemSegue = @"ReviewOrderItem";
 	self.navigationItem.title = [NSString stringWithFormat:[NSBundle localizedBRMenuString:@"menu.ordering.item.title"], flowController.item.title];
 	
 	if ( !self.navigationItem.leftBarButtonItem ) {
-		self.navigationItem.leftBarButtonItem = [UIBarButtonItem standardBRMenuBackButtonItemWithTitle:nil
-																								target:self
-																								action:@selector(goBack:)];
+		NSArray *leftItems = @[[UIBarButtonItem standardBRMenuBackButtonItemWithTitle:nil target:self action:@selector(goBack:)]];
+		self.navigationItem.leftBarButtonItems = [UIBarButtonItem marginAdjustedBRMenuLeftNavigationBarButtonItems:leftItems];
 	}
 	
 	// add right nav button: Review or Add or Next
+	UIBarButtonItem *rightItem = nil;
 	if ( flowController.finalStep ) {
 		if ( flowController.item.needsReview ) {
-			self.navigationItem.rightBarButtonItem = [UIBarButtonItem standardBRMenuBarButtonItemWithTitle:[NSBundle localizedBRMenuString:@"menu.action.review"]
-																									target:self
-																									action:@selector(reviewOrderItem:)];
+			rightItem = [UIBarButtonItem standardBRMenuBarButtonItemWithTitle:[NSBundle localizedBRMenuString:@"menu.action.review"]
+																	   target:self
+																	   action:@selector(reviewOrderItem:)];
 		} else {
-			self.navigationItem.rightBarButtonItem = [UIBarButtonItem standardBRMenuBarButtonItemWithTitle:[NSBundle localizedBRMenuString:@"menu.action.add"]
-																									target:self
-																									action:@selector(addOrderItemToActiveOrder:)];
+			rightItem = [UIBarButtonItem standardBRMenuBarButtonItemWithTitle:[NSBundle localizedBRMenuString:@"menu.action.add"]
+																	   target:self
+																	   action:@selector(addOrderItemToActiveOrder:)];
 		}
 	} else {
-		self.navigationItem.rightBarButtonItem = [UIBarButtonItem standardBRMenuBarButtonItemWithTitle:[NSBundle localizedBRMenuString:@"menu.action.next"]
-																								target:self
-																								action:@selector(gotoNextFlowStep:)];
+		rightItem = [UIBarButtonItem standardBRMenuBarButtonItemWithTitle:[NSBundle localizedBRMenuString:@"menu.action.next"]
+																   target:self
+																   action:@selector(gotoNextFlowStep:)];
 	}
+	self.navigationItem.rightBarButtonItems = [UIBarButtonItem marginAdjustedBRMenuRightNavigationBarButtonItems:@[rightItem]];
 	[self refreshForStyle:self.uiStyle];
 }
 

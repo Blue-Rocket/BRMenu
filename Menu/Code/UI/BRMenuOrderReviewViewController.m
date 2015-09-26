@@ -66,19 +66,27 @@ static void * kOrderTotalPriceContext = &kOrderTotalPriceContext;
 	[self refreshForStyle:self.uiStyle];
 	
 	if ( !self.navigationItem.leftBarButtonItem ) {
-		self.navigationItem.leftBarButtonItem = [UIBarButtonItem standardBRMenuBackButtonItemWithTitle:nil
-																								target:self
-																								action:@selector(goBack:)];
+		NSArray *leftItems = @[[UIBarButtonItem standardBRMenuBackButtonItemWithTitle:nil target:self action:@selector(goBack:)]];
+		self.navigationItem.leftBarButtonItems = [UIBarButtonItem marginAdjustedBRMenuLeftNavigationBarButtonItems:leftItems];
 	}
 	if ( self.navigationItem.rightBarButtonItem == nil ) {
 		UIBarButtonItem *rightItem = [UIBarButtonItem standardBRMenuBarButtonItemWithTitle:[NSBundle localizedBRMenuString:@"menu.action.edit"]
 																					target:self
 																					action:@selector(toggleEditing:)];
-		self.navigationItem.rightBarButtonItem = rightItem;
+		self.navigationItem.rightBarButtonItems = [UIBarButtonItem marginAdjustedBRMenuRightNavigationBarButtonItems:@[rightItem]];
 		self.editButton = rightItem.customView;
 	}
 
 	[self.tableView reloadData];
+	
+	if ( [self.checkoutTotalButton.superview isKindOfClass:[UIToolbar class]] && [self.checkoutTotalButton isKindOfClass:[BRMenuBarButtonItemView class]] ) {
+		UIToolbar *toolbar = (UIToolbar *)self.checkoutTotalButton.superview;
+		if ( [toolbar.items lastObject].customView == self.checkoutTotalButton ) {
+			// adjust our right margin to align better within a toolbar
+			toolbar.items = [UIBarButtonItem marginAdjustedBRMenuRightToolbarBarButtonItems:toolbar.items];
+		}
+	}
+	
 	[self refreshFromModel];
 }
 
