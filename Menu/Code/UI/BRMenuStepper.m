@@ -125,13 +125,19 @@ static const CGFloat kBadgeWidth = 28.0;
 }
 
 - (void)setValue:(NSInteger)newValue {
+	[self setValue:newValue actions:NO];
+}
+
+- (void)setValue:(NSInteger)newValue actions:(const BOOL)actions {
 	NSInteger old = _value;
 	_value = newValue;
 	badgeLabel.text = [NSString stringWithFormat:@"%ld", (long)_value];
 	if ( old != newValue ) {
 		badgeLabel.textColor = (newValue > 0 ? self.uiStyle.colors.primaryColor :
 								self.uiStyle.colors.controlSettings.disabledColorSettings.actionColor);
-		[self sendActionsForControlEvents:UIControlEventValueChanged];
+		if ( actions ) {
+			[self sendActionsForControlEvents:UIControlEventValueChanged];
+		}
 		
 		// enable the opposite button if we moved off the edge cases
 		if ( old == _minimumValue ) {
@@ -142,20 +148,20 @@ static const CGFloat kBadgeWidth = 28.0;
 	}
 }
 
-- (void)minus:(id)sender {
+- (IBAction)minus:(id)sender {
 	NSInteger offset = 0;
 	if ( _value > _minimumValue ) {
 		offset = -_stepValue;
 	}
-	self.value = MAX(_minimumValue, _value + offset);
+	[self setValue:MAX(_minimumValue, _value + offset) actions:YES];
 }
 
-- (void)plus:(id)sender {
+- (IBAction)plus:(id)sender {
 	NSInteger offset = 0;
 	if ( _value < _maximumValue ) {
 		offset = _stepValue;
 	}
-	self.value = MIN(_maximumValue, _value + offset);
+	[self setValue: MIN(_maximumValue, _value + offset) actions:YES];
 }
 
 - (void)drawRect:(CGRect)rect {
