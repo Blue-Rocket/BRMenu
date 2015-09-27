@@ -28,13 +28,6 @@ NSString * const BRMenuOrderItemDefaultGroupKey = @"default";
 	return [NSSet setWithObject:NSStringFromSelector(@selector(quantity))];
 }
 
-- (id)init {
-	if ( (self = [super init]) ) {
-		self.quantity = (UInt8)1;
-	}
-	return self;
-}
-
 - (id)initWithMenuItem:(BRMenuItem *)menuItem {
 	if ( (self = [self init]) ) {
 		self.item = menuItem;
