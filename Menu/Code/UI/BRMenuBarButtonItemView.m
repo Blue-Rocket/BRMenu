@@ -141,7 +141,7 @@ static const CGFloat kMinWidth = 48.0f;
 	const BOOL destructive = self.destructive;
 	
 	BRUIStyleControlStateColorSettings *controlStateColors = (inverse ? self.uiStyle.colors.inverseControlSettings : self.uiStyle.colors.controlSettings);
-	BRMutableUIStyleControlColorSettings *controlColors = controlStateColors.highlightedColorSettings;
+	BRUIStyleControlColorSettings *controlColors = controlStateColors.highlightedColorSettings;
 	
 	//// Color Declarations
 	UIColor* strokeColor = (destructive ? controlStateColors.dangerousColorSettings.borderColor : controlColors.borderColor);
@@ -228,7 +228,7 @@ static const CGFloat kMinWidth = 48.0f;
 	const BOOL destructive = self.destructive;
 	
 	BRUIStyleControlStateColorSettings *controlStateColors = (inverse ? self.uiStyle.colors.inverseControlSettings : self.uiStyle.colors.controlSettings);
-	BRMutableUIStyleControlColorSettings *controlColors = controlStateColors.highlightedColorSettings;
+	BRUIStyleControlColorSettings *controlColors = controlStateColors.highlightedColorSettings;
 
 	//// Color Declarations
 	UIColor* strokeColor = (destructive ? controlStateColors.dangerousColorSettings.borderColor : controlColors.borderColor);
@@ -329,13 +329,13 @@ static const CGFloat kMinWidth = 48.0f;
 	
 	BRUIStyleControlStateColorSettings *controlStateColors = (inverse ? self.uiStyle.colors.inverseControlSettings : self.uiStyle.colors.controlSettings);
 
-	BRMutableUIStyleControlColorSettings *controlColors = (self.selected
-														   ? controlStateColors.selectedColorSettings
-														   : self.enabled == NO
-														   ? controlStateColors.disabledColorSettings
-														   : destructive
-														   ? controlStateColors.dangerousColorSettings
-														   : controlStateColors.normalColorSettings);
+	BRUIStyleControlColorSettings *controlColors = (self.selected
+													? controlStateColors.selectedColorSettings
+													: self.enabled == NO
+													? controlStateColors.disabledColorSettings
+													: destructive
+													? controlStateColors.dangerousColorSettings
+													: controlStateColors.normalColorSettings);
 	
 	//// Color Declarations
 	UIColor* strokeColor = controlColors.borderColor;
@@ -390,13 +390,13 @@ static const CGFloat kMinWidth = 48.0f;
 
 	BRUIStyleControlStateColorSettings *controlStateColors = (inverse ? self.uiStyle.colors.inverseControlSettings : self.uiStyle.colors.controlSettings);
 	
-	BRMutableUIStyleControlColorSettings *controlColors = (self.selected
-														   ? controlStateColors.selectedColorSettings
-														   : self.enabled == NO
-														   ? controlStateColors.disabledColorSettings
-														   : destructive
-														   ? controlStateColors.dangerousColorSettings
-														   : controlStateColors.normalColorSettings);
+	BRUIStyleControlColorSettings *controlColors = (self.selected
+													? controlStateColors.selectedColorSettings
+													: self.enabled == NO
+													? controlStateColors.disabledColorSettings
+													: destructive
+													? controlStateColors.dangerousColorSettings
+													: controlStateColors.normalColorSettings);
 	
 
 	//// Color Declarations
