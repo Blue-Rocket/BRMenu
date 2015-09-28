@@ -42,6 +42,7 @@
 		item = theItem;
 		if ( theItem ) {
 			orderItem = [[BRMenuOrderItem alloc] initWithMenuItem:theItem];
+			orderItem.quantity = 1; // default to 1
 		}
 		[self setupFlow];
 	}
