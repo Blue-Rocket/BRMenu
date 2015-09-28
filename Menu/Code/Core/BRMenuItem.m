@@ -110,7 +110,7 @@
 	return nil;
 }
 
-- (BRMenuItemComponent *)menuItemComponentForId:(const UInt8)componentId {
+- (BRMenuItemComponent *)menuItemComponentForId:(const uint8_t)componentId {
 	for ( BRMenuItemComponentGroup *group in self.componentGroups ) {
 		BRMenuItemComponent *component = [group menuItemComponentForId:componentId];
 		if ( component != nil ) {

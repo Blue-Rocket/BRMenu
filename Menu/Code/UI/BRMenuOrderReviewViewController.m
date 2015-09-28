@@ -258,7 +258,7 @@ static void * kOrderTotalPriceContext = &kOrderTotalPriceContext;
 	
 	// special consideration for takeaway rows, to handle proxies
 	if ( orderItem.item.askTakeaway && orderItem.quantity > 1 ) {
-		const UInt8 removeIndex = ([orderItem isProxy] ? ((BRMenuOrderItemAttributesProxy *)orderItem).index : 0);
+		const uint8_t removeIndex = ([orderItem isProxy] ? ((BRMenuOrderItemAttributesProxy *)orderItem).index : 0);
 		NSUInteger remapIndex;
 		const NSUInteger endRemapIndex = row + orderItem.quantity - removeIndex;
 		for ( remapIndex = row + 1; remapIndex < endRemapIndex; remapIndex++ ) {
@@ -300,7 +300,7 @@ static void * kOrderTotalPriceContext = &kOrderTotalPriceContext;
 	if ( orderItem.item.askTakeaway ) {
 		// For items that support take away, we don't create duplicate items. Instead we manage each "duplicate" as a proxy
 		// for the attributes at a speicific index within a single BRMenuOrderItem.
-		const UInt8 index = [orderItem.attributes count];
+		const uint8_t index = [orderItem.attributes count];
 		BRMenuOrderItemAttributes *attr = [BRMenuOrderItemAttributes new];
 		attr.takeAway = orderItem.takeAway;
 		[orderItem setAttributes:attr atIndex:index];

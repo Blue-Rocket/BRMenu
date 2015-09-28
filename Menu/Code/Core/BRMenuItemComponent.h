@@ -16,7 +16,7 @@
 
 @interface BRMenuItemComponent : NSObject <BRMenuItemObject, NSSecureCoding>
 
-@property (nonatomic) UInt8 componentId;
+@property (nonatomic) uint8_t componentId;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *desc;
 @property (nonatomic, getter = isAskQuantity) BOOL askQuantity; // defaults to YES

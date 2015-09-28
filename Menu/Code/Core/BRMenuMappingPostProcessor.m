@@ -16,7 +16,7 @@
 
 @implementation BRMenuMappingPostProcessor
 
-+ (void)assignMenu:(BRMenu *)menu menuItemComponentGroupIDs:(BRMenuItemComponentGroup *)group itemCounter:(UInt8 *)itemId componentCounter:(UInt8*)componentId {
++ (void)assignMenu:(BRMenu *)menu menuItemComponentGroupIDs:(BRMenuItemComponentGroup *)group itemCounter:(uint8_t *)itemId componentCounter:(uint8_t*)componentId {
 	for ( BRMenuItemComponent *component in group.components ) {
 		component.group = group;
 		component.componentId = ++(*componentId);
@@ -41,7 +41,7 @@
 	}
 }
 
-+ (void)assignMenu:(BRMenu *)menu menuItemIDs:(BRMenuItem *)item itemCounter:(UInt8 *)itemId componentCounter:(UInt8*)componentId {
++ (void)assignMenu:(BRMenu *)menu menuItemIDs:(BRMenuItem *)item itemCounter:(uint8_t *)itemId componentCounter:(uint8_t*)componentId {
 	item.itemId = ++(*itemId);
 	item.menu = menu;
 	for ( BRMenuItemComponentGroup *componentGroup in item.componentGroups ) {
@@ -49,7 +49,7 @@
 	}
 }
 
-+ (void)assignMenu:(BRMenu *)menu groupItemIDs:(BRMenuItemGroup *)group itemCounter:(UInt8 *)itemId componentCounter:(UInt8*)componentId {
++ (void)assignMenu:(BRMenu *)menu groupItemIDs:(BRMenuItemGroup *)group itemCounter:(uint8_t *)itemId componentCounter:(uint8_t*)componentId {
 	for ( BRMenuItem *item in group.items ) {
 		item.group = group;
 		[self assignMenu:menu menuItemIDs:item itemCounter:itemId componentCounter:componentId];
@@ -61,8 +61,8 @@
 }
 
 + (void)assignMenuIDs:(BRMenu *)menu {
-	UInt8 itemId = 0;
-	UInt8 componentId = 0;
+	uint8_t itemId = 0;
+	uint8_t componentId = 0;
 	for ( BRMenuItem *item in menu.items ) {
 		[self assignMenu:menu menuItemIDs:item itemCounter:&itemId componentCounter:&componentId];
 	}

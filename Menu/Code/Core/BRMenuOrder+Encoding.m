@@ -16,22 +16,22 @@
 #import "BRMenuOrderItemComponent.h"
 
 
-const UInt8 BRMenuOrderEncodingFormat_v1 = 0x1;
+const uint8_t BRMenuOrderEncodingFormat_v1 = 0x1;
 
 static const int kBufSize = 1024;
 
 @implementation BRMenuOrder (Encoding)
 
 - (NSData *)dataForBarcodeEncoding {
-	UInt8 buf[kBufSize];
+	uint8_t buf[kBufSize];
 	NSMutableData *data = [[NSMutableData alloc] initWithCapacity:1024];
 	
 	// first byte is the data format... only type 1 supported now
 	buf[0] = BRMenuOrderEncodingFormat_v1;
 	
 	// add menu version, 16 bits as hi, lo bytes
-	buf[1] = (UInt8)((self.menu.version >> 8) & 0xF);
-	buf[2] = (UInt8)(self.menu.version & 0xF);
+	buf[1] = (uint8_t)((self.menu.version >> 8) & 0xF);
+	buf[2] = (uint8_t)(self.menu.version & 0xF);
 	[data appendBytes:buf length:3];
 	
 	// encode order name
@@ -40,11 +40,11 @@ static const int kBufSize = 1024;
 	}
 	
 	// add NULL name terminator byte to mark end of name
-	buf[0] = (UInt8)0;
+	buf[0] = (uint8_t)0;
 	[data appendBytes:&buf length:1];
 	
 	// add item count
-	buf[0] = (UInt8)[self.orderItems count];
+	buf[0] = (uint8_t)[self.orderItems count];
 	[data appendBytes:&buf length:1];
 	
 	// add items
@@ -58,7 +58,7 @@ static const int kBufSize = 1024;
 		// quantity allowed 6 bits (0-63) and takeAway flag stored on bit 7; bit 8 free still
 		buf[0] = item.item.itemId;
 		buf[1] = (item.quantity & 0x3F);
-		buf[2] = (UInt8)[item.components count];
+		buf[2] = (uint8_t)[item.components count];
 		int idx = 3;
 		for ( BRMenuOrderItemComponent *component in item.components ) {
 			buf[idx++] = component.component.componentId;
@@ -82,7 +82,7 @@ static const int kBufSize = 1024;
 		return nil;
 	}
 	
-	UInt8 *buf = malloc(sizeof(UInt8) * dataLength);
+	uint8_t *buf = malloc(sizeof(uint8_t) * dataLength);
 	if ( buf == NULL ) {
 		NSLog(@"Unable to malloc buffer of size %lu", (unsigned long)dataLength);
 		return nil;
@@ -92,7 +92,7 @@ static const int kBufSize = 1024;
 	BRMenuOrder *result = nil;
 	int i = 0, j, k, len;
 	NSString *string = nil;
-	UInt16 menuVersion = 0;
+	uint16_t menuVersion = 0;
 	@try {
 		[data getBytes:buf length:dataLength];
 		// encoding format is byte 1, must be v1
@@ -102,8 +102,8 @@ static const int kBufSize = 1024;
 		}
 		
 		// get menu version (bytes 2 and 3)
-		menuVersion = (UInt16)buf[++i] << 8;
-		menuVersion |= (UInt16)buf[++i];
+		menuVersion = (uint16_t)buf[++i] << 8;
+		menuVersion |= (uint16_t)buf[++i];
 		menu = [provider menuForVersion:menuVersion];
 		if ( menu == nil ) {
 			NSLog(@"No menu provided for version %u", menuVersion);
@@ -133,7 +133,7 @@ static const int kBufSize = 1024;
 		
 		// increment index to get past null character and read item count
 		const int itemCount = (int)buf[++i];
-		UInt8 quantity, itemId, compCount;
+		uint8_t quantity, itemId, compCount;
 		if ( (++i) < dataLength ) {
 			// decode order items, at most itemCount but also checking against buffer length
 			for ( j = 0; j < itemCount && i < (dataLength - 3); j++ ) {

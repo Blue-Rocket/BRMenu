@@ -13,6 +13,6 @@
 @protocol BRMenuProvider <NSObject>
 
 - (BRMenu *)menu;
-- (BRMenu *)menuForVersion:(UInt16)version;
+- (BRMenu *)menuForVersion:(uint16_t)version;
 
 @end

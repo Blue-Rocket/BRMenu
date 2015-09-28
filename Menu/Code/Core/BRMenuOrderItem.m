@@ -168,7 +168,7 @@ NSString * const BRMenuOrderItemDefaultGroupKey = @"default";
 	return component;
 }
 
-- (void)setAttributes:(BRMenuOrderItemAttributes *)theAttributes atIndex:(UInt8)index {
+- (void)setAttributes:(BRMenuOrderItemAttributes *)theAttributes atIndex:(uint8_t)index {
 	if ( attributes == nil ) {
 		attributes = [NSMutableArray arrayWithCapacity:8];
 	}
@@ -178,14 +178,14 @@ NSString * const BRMenuOrderItemDefaultGroupKey = @"default";
 	[attributes replaceObjectAtIndex:index withObject:theAttributes];
 }
 
-- (BRMenuOrderItemAttributes *)attributesAtIndex:(UInt8)index {
+- (BRMenuOrderItemAttributes *)attributesAtIndex:(uint8_t)index {
 	if ( index >= [attributes count] ) {
 		return nil;
 	}
 	return [attributes objectAtIndex:index];
 }
 
-- (BRMenuOrderItemAttributes *)getOrAddAttributesAtIndex:(UInt8)index {
+- (BRMenuOrderItemAttributes *)getOrAddAttributesAtIndex:(uint8_t)index {
 	BRMenuOrderItemAttributes *attr = [self attributesAtIndex:index];
 	if ( attr == nil ) {
 		attr = [BRMenuOrderItemAttributes new];
@@ -194,7 +194,7 @@ NSString * const BRMenuOrderItemDefaultGroupKey = @"default";
 	return attr;
 }
 
-- (void)removeAttributesAtIndex:(UInt8)index {
+- (void)removeAttributesAtIndex:(uint8_t)index {
 	if ( index < [attributes count] ) {
 		[attributes removeObjectAtIndex:index];
 	}

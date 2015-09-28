@@ -238,7 +238,7 @@ static void * kOrderItemPriceContext = &kOrderItemPriceContext;
 		// if BRMenuItem supports take away, and quantity is > 0, we must add additional items for all quantities
 		if ( orderItem.item.askTakeaway ) {
 			if ( orderItem.quantity > 1 ) {
-				UInt8 index;
+				uint8_t index;
 				for ( index = 1; index < orderItem.quantity; index++ ) {
 					BRMenuOrderItemAttributesProxy *proxy = [[BRMenuOrderItemAttributesProxy alloc] initWithOrderItem:orderItem attributeIndex:index];
 					[rows addObject:proxy];

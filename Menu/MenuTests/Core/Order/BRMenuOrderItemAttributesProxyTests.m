@@ -28,7 +28,7 @@
 	XCTAssertEqual((NSUInteger)4, [item.attributes count], @"attributes count");
 }
 
-- (void)exerciseTakeAwayFlagTestsWithOrderItem:(BRMenuOrderItem *)orderItem atIndex:(UInt8)index {
+- (void)exerciseTakeAwayFlagTestsWithOrderItem:(BRMenuOrderItem *)orderItem atIndex:(uint8_t)index {
 	BRMenuOrderItemAttributesProxy *proxy = [[BRMenuOrderItemAttributesProxy alloc] initWithOrderItem:orderItem attributeIndex:index];
 	BRMenuOrderItemAttributes *attr = [proxy.target attributesAtIndex:index];
 	XCTAssertNil(attr, @"initial attributes value");

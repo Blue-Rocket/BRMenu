@@ -18,19 +18,19 @@
 @interface BRMenu : NSObject <BRMenuGroupObject, NSSecureCoding>
 
 @property (nonatomic, copy) NSString *key; // unique value between other BRMenu instances, assigned by data
-@property (nonatomic) UInt16 version;
+@property (nonatomic) uint16_t version;
 @property (nonatomic, copy) NSArray *items; // BRMenuItem
 @property (nonatomic, copy) NSArray *groups; // BRMenuItemGroup
 @property (nonatomic, copy) NSArray *tags; // BRMenuItemTag
 
 // get the BRMenuItem for the given menu ID, or nil if not found
-- (BRMenuItem *)menuItemForId:(UInt8)menuId;
+- (BRMenuItem *)menuItemForId:(uint8_t)menuId;
 
 // get the BRMenuItem for the given key, or nil if not found
 - (BRMenuItem *)menuItemForKey:(NSString *)key;
 
 // get the BRMenuItemComponent for the given component ID, or nil if not found
-- (BRMenuItemComponent *)menuItemComponentForId:(UInt8)componentId;
+- (BRMenuItemComponent *)menuItemComponentForId:(uint8_t)componentId;
 
 // get the BRMenuItemComponentGroup for the given key, or nil if not found
 - (BRMenuItemComponentGroup *)menuItemComponentGroupForKey:(NSString *)key;

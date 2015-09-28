@@ -13,12 +13,12 @@
 
 @implementation BRMenuOrderItemAttributesProxy {
 	BRMenuOrderItem *target;
-	UInt8 index;
+	uint8_t index;
 }
 
 @synthesize target, index;
 
-- (id)initWithOrderItem:(BRMenuOrderItem *)item attributeIndex:(UInt8)idx {
+- (id)initWithOrderItem:(BRMenuOrderItem *)item attributeIndex:(uint8_t)idx {
 	if ( self ) {
 		target = ([item isProxy] ? [(id)item target] : item);
 		index = idx;

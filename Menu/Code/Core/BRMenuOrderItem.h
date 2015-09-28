@@ -27,7 +27,7 @@ extern NSString * const BRMenuOrderItemDefaultGroupKey;
  */
 @interface BRMenuOrderItem : NSObject <NSCopying, NSSecureCoding>
 
-@property (nonatomic) UInt8 quantity;
+@property (nonatomic) uint8_t quantity;
 @property (nonatomic, getter = isTakeAway) BOOL takeAway; // YES == take away, NO == dine in; shortcut for first BRMenuOrderItemAttributes
 @property (nonatomic, strong) BRMenuItem *item;
 @property (nonatomic, readonly) NSArray *attributes; // BRMenuOrderItemAttributes
@@ -82,10 +82,10 @@ extern NSString * const BRMenuOrderItemDefaultGroupKey;
 - (void)removeComponentForMenuItemComponent:(BRMenuItemComponent *)menuItemComponent;
 
 // manage the BRMenuOrderItemAttributes
-- (void)setAttributes:(BRMenuOrderItemAttributes *)attributes atIndex:(UInt8)index;
-- (BRMenuOrderItemAttributes *)attributesAtIndex:(UInt8)index;
-- (BRMenuOrderItemAttributes *)getOrAddAttributesAtIndex:(UInt8)index;
-- (void)removeAttributesAtIndex:(UInt8)index;
+- (void)setAttributes:(BRMenuOrderItemAttributes *)attributes atIndex:(uint8_t)index;
+- (BRMenuOrderItemAttributes *)attributesAtIndex:(uint8_t)index;
+- (BRMenuOrderItemAttributes *)getOrAddAttributesAtIndex:(uint8_t)index;
+- (void)removeAttributesAtIndex:(uint8_t)index;
 
 /**
  Get a grouping key for this item.
