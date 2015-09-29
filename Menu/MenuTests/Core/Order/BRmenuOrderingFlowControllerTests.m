@@ -65,9 +65,6 @@
 - (void)testTopLevelSectionInfo {
 	BRMenuOrderingFlowController *controller = [[BRMenuOrderingFlowController alloc] initWithMenu:[self testMenu]];
 	assertThatInteger([controller numberOfSections], describedAs(@"All groups and items at root are in 1 section", equalToInteger(1), nil));
-	//assertThat([controller titleForSection:0], equalTo(@"Pizza"));
-	//assertThat([controller titleForSection:5], equalTo(@"Drink"));
-	//assertThat([controller priceForSection:0], equalTo([NSDecimalNumber decimalNumberWithString:@"6.82"]));
 	assertThat([controller priceForSection:5], nilValue());
 	
 	assertThat([controller titleForSection:0], nilValue());
