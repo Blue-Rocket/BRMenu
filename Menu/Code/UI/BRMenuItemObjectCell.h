@@ -24,6 +24,9 @@
 @property (nonatomic, strong) IBOutlet UILabel *price;
 @property (nonatomic, strong) IBOutlet UIView *insetSeparatorView;
 
+/** Set the cell into a "disabled" state, to support things like "out of stock". */
+@property (nonatomic, assign, getter=isDisabled) BOOL disabled;
+
 @end
 
 @interface BRMenuItemObjectCell (ImplementationSupport)

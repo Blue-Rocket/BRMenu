@@ -8,6 +8,7 @@
 
 #import "BRMenuOrderingGroupViewController.h"
 
+#import <BRStyle/BRUIStylishHost.h>
 #import <Masonry/Masonry.h>
 #import "BRMenuGroupTableHeaderView.h"
 #import "BRMenuItem.h"
@@ -21,7 +22,6 @@
 #import "BRMenuOrderingViewController.h"
 #import "BRMenuOrderItem.h"
 #import "BRMenuStepper.h"
-#import <BRStyle/BRUIStylishHost.h>
 #import "NSBundle+BRMenu.h"
 #import "UIBarButtonItem+BRMenu.h"
 #import "UIView+BRUIStyle.h"
@@ -127,6 +127,10 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 	}
 }
 
+- (BOOL)shouldExcludeMenuItemObject:(id<BRMenuItemObject>)item {
+	return [self.orderingDelegate shouldExcludeMenuItemObject:item];
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -179,6 +183,8 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 			[directCell.stepper addTarget:self action:@selector(didAdjustQuantity:) forControlEvents:UIControlEventValueChanged];
 		}
 	}
+	
+	cell.disabled = [self shouldExcludeMenuItemObject:item];
 
 	// calling this (often, but not always) fixes an apparent bug in iOS 8.4 where the first pass of
 	// drawing the cells results in an incorrectly calculated height
@@ -188,7 +194,13 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
 	BRMenuItemObjectCell *cell = (BRMenuItemObjectCell *)[tableView cellForRowAtIndexPath:indexPath];
-	return cell.item.hasComponents;
+	id<BRMenuItemObject> item = cell.item;
+	BOOL excluded = [self shouldExcludeMenuItemObject:item];
+	if ( excluded ) {
+		NSString *msg = [NSString stringWithFormat:[NSBundle localizedBRMenuString:@"menu.validation.item.excluded"], item.title];
+		[[[UIAlertView alloc] initWithTitle:nil message:msg delegate:nil cancelButtonTitle:[NSBundle localizedBRMenuString:@"menu.action.ok"] otherButtonTitles:nil] show];
+	}
+	return (cell.item.hasComponents && !excluded);
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {

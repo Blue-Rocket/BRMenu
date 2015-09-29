@@ -10,5 +10,6 @@
 "menu.validation.componentGroup.requiredPlacement.message" = "You must choose %@ for the %@ side.";
 "menu.validation.componentGroup.overlap.message" = "You can’t select both %@ and %@ for the whole item.";
 "menu.validation.componentGroup.overlapSide.message" = "You can’t select both %@ and %@ on the %@ side.";
+"menu.validation.item.excluded" = "Sorry! %@ is not available right now.";
 
 "menu.order.group.default.title" = "Items";

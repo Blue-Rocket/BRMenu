@@ -16,6 +16,7 @@
 #import "BRMenuOrderingFlowController.h"
 #import "BRMenuOrderingGroupViewController.h"
 #import <BRStyle/BRUIStylishHost.h>
+#import "NSBundle+BRMenu.h"
 #import "UIBarButtonItem+BRMenu.h"
 #import "UIViewController+BRUIStyle.h"
 
@@ -83,6 +84,11 @@ NSString * const BRMenuOrderingShowItemGroupSegue = @"ShowItemGroup";
 	[self.navigationController popToViewController:self animated:YES];
 }
 
+- (BOOL)shouldExcludeMenuItemObject:(id<BRMenuItemObject>)item {
+	// extending classes can implement different logic here, for example to support out-of-stock items
+	return NO;
+}
+
 #pragma mark - Navigation support
 
 - (IBAction)goBack:(id)sender {
@@ -114,17 +120,23 @@ NSString * const BRMenuOrderingShowItemGroupSegue = @"ShowItemGroup";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     BRMenuItemObjectCell *cell = [tableView dequeueReusableCellWithIdentifier:BRMenuOrderingItemObjectCellIdentifier forIndexPath:indexPath];
-	cell.item = [flowController menuItemObjectAtIndexPath:indexPath];
-    return cell;
+	id<BRMenuItemObject> item = [flowController menuItemObjectAtIndexPath:indexPath];
+	cell.item = item;
+	cell.disabled = [self shouldExcludeMenuItemObject:item];
+	return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	id<BRMenuItemObject> item = [flowController menuItemObjectAtIndexPath:indexPath];
-	if ( item.hasComponents ) {
+	if ( [self shouldExcludeMenuItemObject:item] ) {
+		NSString *msg = [NSString stringWithFormat:[NSBundle localizedBRMenuString:@"menu.validation.item.excluded"], item.title];
+		[[[UIAlertView alloc] initWithTitle:nil message:msg delegate:nil cancelButtonTitle:[NSBundle localizedBRMenuString:@"menu.action.ok"] otherButtonTitles:nil] show];
+	} else if ( item.hasComponents ) {
 		[self performSegueWithIdentifier:BRMenuOrderingConfigureComponentsSegue sender:self];
 	} else {
 		[self performSegueWithIdentifier:BRMenuOrderingShowItemGroupSegue sender:self];
 	}
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end
