@@ -124,6 +124,15 @@ static const CGFloat kBadgeWidth = 28.0;
 	badgeLabel.frame = badgeFrame;
 }
 
+- (void)setEnabled:(BOOL)enabled {
+	BOOL changed = (self.enabled != enabled);
+	[super setEnabled:enabled];
+	if ( changed ) {
+		plusButton.enabled = minusButton.enabled = enabled;
+		[self setNeedsDisplay];
+	}
+}
+
 - (void)setValue:(NSInteger)newValue {
 	[self setValue:newValue actions:NO];
 }
@@ -219,7 +228,7 @@ static const CGFloat kBadgeWidth = 28.0;
 	
 	//// Color Declarations
 	UIColor* strokeColor = controlSettings.normalColorSettings.borderColor;
-	UIColor* labelColor = (self.stepper.value <= self.stepper.minimumValue
+	UIColor* labelColor = (!self.enabled || self.stepper.value <= self.stepper.minimumValue
 						   ? controlSettings.disabledColorSettings.actionColor
 						   : controlSettings.normalColorSettings.actionColor);
 	
@@ -382,7 +391,7 @@ static const CGFloat kBadgeWidth = 28.0;
 	
 	//// Color Declarations
 	UIColor* strokeColor = controlSettings.normalColorSettings.borderColor;
-	UIColor* labelColor = (self.stepper.value >= self.stepper.maximumValue
+	UIColor* labelColor = (!self.enabled || self.stepper.value >= self.stepper.maximumValue
 						   ? controlSettings.disabledColorSettings.actionColor
 						   : controlSettings.normalColorSettings.actionColor);
 	
