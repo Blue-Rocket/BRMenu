@@ -76,7 +76,7 @@ NSString * const BRMenuOrderingShowItemGroupSegue = @"ShowItemGroup";
 	[self.navigationController popToViewController:self animated:YES];
 }
 
-- (void)updateOrderItemsInActiveOrder:(NSArray *)orderItems {
+- (void)updateOrderItemsInActiveOrder:(NSArray<BRMenuOrderItem *> *)orderItems {
 	if ( self.order == nil ) {
 		self.order = [BRMenuOrder new];
 	}

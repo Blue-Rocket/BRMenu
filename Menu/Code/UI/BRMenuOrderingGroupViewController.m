@@ -118,7 +118,7 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 	}
 }
 
-- (void)updateOrderItemsInActiveOrder:(NSArray *)orderItems {
+- (void)updateOrderItemsInActiveOrder:(NSArray<BRMenuOrderItem *> *)orderItems {
 	if ( flowController.hasMenuItemWithoutComponents ) {
 		[flowController.temporaryOrder replaceOrderItems:orderItems];
 		[self.navigationController popToViewController:self animated:YES];

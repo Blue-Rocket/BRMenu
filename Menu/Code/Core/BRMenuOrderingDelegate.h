@@ -31,7 +31,7 @@
  
  @param orderItems The array of order items to update the active order with.
  */
-- (void)updateOrderItemsInActiveOrder:(NSArray *)orderItems;
+- (void)updateOrderItemsInActiveOrder:(NSArray<BRMenuOrderItem *> *)orderItems;
 
 /**
  Inform the sender if a specific menu item should be excluded from ordering.
