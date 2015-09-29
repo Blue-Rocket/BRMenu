@@ -14,12 +14,15 @@
 @class BRMenuOrder;
 @class BRMenuOrderItem;
 @protocol BRMenuItemObject;
+@protocol BRMenuOrderingFlowControllerDelegate;
 
 typedef enum : NSInteger {
 	BRMenuOrderingFlowErrorUnknown,
 	BRMenuOrderingFlowErrorComponentOverlap,
 	BRMenuOrderingFlowErrorRequiredComponentMissing,
 } BRMenuOrderingFlowError;
+
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  A controller object to assist with rendering a menu.
@@ -36,6 +39,9 @@ typedef enum : NSInteger {
 /** A temporary order copy that can be used to collect order item changes. */
 @property (nonatomic, copy) BRMenuOrder *temporaryOrder;
 
+/** A delegate to respond to dynamic business logic. */
+@property (nonatomic, weak) id<BRMenuOrderingFlowControllerDelegate> delegate;
+
 /**
  Init for the root of a menu.
  
@@ -48,10 +54,10 @@ typedef enum : NSInteger {
  Init for a single menu item.
  
  @param menu The menu.
- @param item The selected menu item to start from.
+ @param item The selected menu item to start from, or @c for the root menu.
  @return The new controller instance.
  */
-- (id)initWithMenu:(BRMenu *)menu item:(BRMenuItem *)item;
+- (id)initWithMenu:(BRMenu *)menu item:(nullable BRMenuItem *)item;
 
 /**
  Init for a single menu item group. The @c temporaryOrder property can be used
@@ -78,9 +84,9 @@ typedef enum : NSInteger {
  Get a title for a section.
  
  @param section The section to get the title for.
- @return The title.
+ @return The title, or @c nil if not available.
  */
-- (NSString *)titleForSection:(NSInteger)section;
+- (nullable NSString *)titleForSection:(NSInteger)section;
 
 /**
  Get a price for a section.
@@ -88,7 +94,7 @@ typedef enum : NSInteger {
  @param section The section to get the price for.
  @return The group price, or @c nil if there is no group-wide price.
  */
-- (NSDecimalNumber *)priceForSection:(NSInteger)section;
+- (nullable NSDecimalNumber *)priceForSection:(NSInteger)section;
 
 /**
  Get the count of items within a given section.
@@ -104,7 +110,7 @@ typedef enum : NSInteger {
  @param indexPath The section and item index path to retrieve.
  @return The BRMenuItemObject for the given index path, or @c nil if not available.
  */
-- (id<BRMenuItemObject>)menuItemObjectAtIndexPath:(NSIndexPath *)indexPath;
+- (nullable id<BRMenuItemObject>)menuItemObjectAtIndexPath:(NSIndexPath *)indexPath;
 
 /**
  Get an @c NSIndexPath for a given @c BRMenuItemObject instance.
@@ -112,14 +118,14 @@ typedef enum : NSInteger {
  @param item The item to find the index path of.
  @return The found @c IndexPath, or @c nil if not found.
  */
-- (NSIndexPath *)indexPathForMenuItemObject:(id<BRMenuItemObject>)item;
+- (nullable NSIndexPath *)indexPathForMenuItemObject:(id<BRMenuItemObject>)item;
 
 /**
  Get an arry of @c NSIndexPath objects for all components selected in the current step.
  
- @return An array of index paths.
+ @return An array of index paths, or @nil if no item is selected.
  */
-- (NSArray *)indexPathsForSelectedComponents;
+- (nullable NSArray<NSIndexPath *> *)indexPathsForSelectedComponents;
 
 /// ---------------------
 /// @name Navigation Flow
@@ -146,7 +152,7 @@ typedef enum : NSInteger {
  
  @return The new controller instance, or @c nil if not appropriate.
  */
-- (instancetype)flowControllerForNextStep;
+- (nullable instancetype)flowControllerForNextStep;
 
 /**
  Get a new flow controller for an item selection.
@@ -168,3 +174,30 @@ typedef enum : NSInteger {
 @property (nonatomic, readonly) BOOL hasMenuItemWithoutComponents;
 
 @end
+
+#pragma mark - 
+
+/// -----
+/// @name Delegate
+/// -----
+
+/**
+ A delegate API for the @c BRMenuOrderingFlowController class.
+ */
+@protocol BRMenuOrderingFlowControllerDelegate <NSObject>
+
+/**
+ Inform the controller if a specific menu item should be excluded from the controller's generated model.
+ 
+ This can be used to exclude out of stock menu items, for example.
+ 
+ @param controller The controller.
+ @param menuItem   The menu item in question.
+ 
+ @return @c YES if @c menuItem should not be included in the flow controller's generated model.
+ */
+- (BOOL)menuOrderingFlowController:(BRMenuOrderingFlowController *)controller shouldExcludeMenuItem:(BRMenuItem *)menuItem;
+
+@end
+
+NS_ASSUME_NONNULL_END

@@ -12,6 +12,7 @@
                 {
                     "title": "Dough",
                     "key": "dough",
+                    "requiredCount": 1,
                     "desc": "Fresh prepared dough",
                     "components": [
                         {
@@ -34,6 +35,8 @@
                 {
                     "title": "Sauce or Spread",
                     "key": "sauce",
+                    "requiredCount": 1,
+                    "multiSelect": true,
                     "desc": "Freshly prepared sauces",
                     "components": [
                         {"title": "Classic Tomato"},
@@ -47,6 +50,8 @@
                 {
                     "title": "Cheese",
                     "key": "cheese",
+                    "requiredCount": 1,
+                    "multiSelect": true,
                     "desc": "Collection of the finest cheeses",
                     "components": [
                         {"title": "Housemade Mozzarella"},
