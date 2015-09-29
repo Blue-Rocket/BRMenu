@@ -14,7 +14,6 @@
 @class BRMenuOrder;
 @class BRMenuOrderItem;
 @protocol BRMenuItemObject;
-@protocol BRMenuOrderingFlowControllerDelegate;
 
 typedef enum : NSInteger {
 	BRMenuOrderingFlowErrorUnknown,
@@ -38,9 +37,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** A temporary order copy that can be used to collect order item changes. */
 @property (nonatomic, copy) BRMenuOrder *temporaryOrder;
-
-/** A delegate to respond to dynamic business logic. */
-@property (nonatomic, weak) id<BRMenuOrderingFlowControllerDelegate> delegate;
 
 /**
  Init for the root of a menu.
@@ -172,31 +168,6 @@ NS_ASSUME_NONNULL_BEGIN
  order is used to facilitate an "undo" behavior.
  */
 @property (nonatomic, readonly) BOOL hasMenuItemWithoutComponents;
-
-@end
-
-#pragma mark - 
-
-/// -----
-/// @name Delegate
-/// -----
-
-/**
- A delegate API for the @c BRMenuOrderingFlowController class.
- */
-@protocol BRMenuOrderingFlowControllerDelegate <NSObject>
-
-/**
- Inform the controller if a specific menu item should be excluded from the controller's generated model.
- 
- This can be used to exclude out of stock menu items, for example.
- 
- @param controller The controller.
- @param menuItem   The menu item in question.
- 
- @return @c YES if @c menuItem should not be included in the flow controller's generated model.
- */
-- (BOOL)menuOrderingFlowController:(BRMenuOrderingFlowController *)controller shouldExcludeMenuItem:(BRMenuItem *)menuItem;
 
 @end
 
