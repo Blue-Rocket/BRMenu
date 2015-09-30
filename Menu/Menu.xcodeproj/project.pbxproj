@@ -42,6 +42,7 @@
 		C92FF4791BA89D0F00B1AF48 /* BRMenuItemTagTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C92FF4781BA89D0F00B1AF48 /* BRMenuItemTagTests.m */; };
 		C92FF47B1BA89E0500B1AF48 /* BRMenuItemComponentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C92FF47A1BA89E0500B1AF48 /* BRMenuItemComponentTests.m */; };
 		C92FF47D1BA8A06400B1AF48 /* BRMenuItemComponentGroupTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C92FF47C1BA8A06400B1AF48 /* BRMenuItemComponentGroupTests.m */; };
+		C9509C431BBC826800BE6450 /* BRMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C9509C421BBC826800BE6450 /* BRMenuButton.m */; settings = {ASSET_TAGS = (); }; };
 		C957D2E01B60B30300AD224C /* BRMenuLightHeavyQuantityButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C957D2DF1B60B30300AD224C /* BRMenuLightHeavyQuantityButton.m */; };
 		C957D2E31B60B76B00AD224C /* BRMenuFilledToggleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C957D2E21B60B76B00AD224C /* BRMenuFilledToggleButton.m */; };
 		C959D0381B6845EB00C153D7 /* BRMenuOrderCountBarButtonItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = C959D0371B6845EB00C153D7 /* BRMenuOrderCountBarButtonItemView.m */; };
@@ -161,14 +162,16 @@
 		C910EA3E1B7179B300DDAB40 /* BRMenuItemTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuItemTests.m; sourceTree = "<group>"; };
 		C910EA401B71AD3600DDAB40 /* BRMenuOrderGroupsControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuOrderGroupsControllerTests.m; sourceTree = "<group>"; };
 		C92AEEF51B5F10630005AC79 /* BRMenuBarButtonItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuBarButtonItemView.m; sourceTree = "<group>"; };
-		C92AEEF61B5F10630005AC79 /* BRMenuBackBarButtonItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuBackBarButtonItemView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		C92AEEF71B5F10630005AC79 /* BRMenuBackBarButtonItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuBackBarButtonItemView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		C92AEEF61B5F10630005AC79 /* BRMenuBackBarButtonItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuBackBarButtonItemView.h; sourceTree = "<group>"; };
+		C92AEEF71B5F10630005AC79 /* BRMenuBackBarButtonItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuBackBarButtonItemView.m; sourceTree = "<group>"; };
 		C92AEEF81B5F10630005AC79 /* BRMenuBarButtonItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuBarButtonItemView.h; sourceTree = "<group>"; };
 		C92AEEFC1B5F56D50005AC79 /* BRMenuFlipToggleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BRMenuFlipToggleButton.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C92AEEFD1B5F56D50005AC79 /* BRMenuFlipToggleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuFlipToggleButton.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C92FF4781BA89D0F00B1AF48 /* BRMenuItemTagTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuItemTagTests.m; sourceTree = "<group>"; };
 		C92FF47A1BA89E0500B1AF48 /* BRMenuItemComponentTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuItemComponentTests.m; sourceTree = "<group>"; };
 		C92FF47C1BA8A06400B1AF48 /* BRMenuItemComponentGroupTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuItemComponentGroupTests.m; sourceTree = "<group>"; };
+		C9509C411BBC826800BE6450 /* BRMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuButton.h; sourceTree = "<group>"; };
+		C9509C421BBC826800BE6450 /* BRMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMenuButton.m; sourceTree = "<group>"; };
 		C9513CD81BB73C0F002737E2 /* MenuKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MenuKit.h; path = Code/MenuKit.h; sourceTree = SOURCE_ROOT; };
 		C957D2DE1B60B30300AD224C /* BRMenuLightHeavyQuantityButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMenuLightHeavyQuantityButton.h; sourceTree = "<group>"; };
 		C957D2DF1B60B30300AD224C /* BRMenuLightHeavyQuantityButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BRMenuLightHeavyQuantityButton.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -478,6 +481,8 @@
 				C92AEEF51B5F10630005AC79 /* BRMenuBarButtonItemView.m */,
 				C92AEEF61B5F10630005AC79 /* BRMenuBackBarButtonItemView.h */,
 				C92AEEF71B5F10630005AC79 /* BRMenuBackBarButtonItemView.m */,
+				C9509C411BBC826800BE6450 /* BRMenuButton.h */,
+				C9509C421BBC826800BE6450 /* BRMenuButton.m */,
 				C957D2E11B60B76B00AD224C /* BRMenuFilledToggleButton.h */,
 				C957D2E21B60B76B00AD224C /* BRMenuFilledToggleButton.m */,
 				C9819DD91B62D38E008A1393 /* BRMenuFitToWidthLabel.h */,
@@ -918,6 +923,7 @@
 				C9B812B91B5D7BA70014CBCB /* BRMenuOrderItemAttributesProxy.m in Sources */,
 				C9B812AD1B5D7BA70014CBCB /* BRMenu.m in Sources */,
 				C9B812B31B5D7BA70014CBCB /* BRMenuMappingPostProcessor.m in Sources */,
+				C9509C431BBC826800BE6450 /* BRMenuButton.m in Sources */,
 				C92AEEFE1B5F56D50005AC79 /* BRMenuFlipToggleButton.m in Sources */,
 				C9819DB71B616812008A1393 /* BRMenuNavigationTitleView.m in Sources */,
 				C9B812B01B5D7BA70014CBCB /* BRMenuItemComponentGroup.m in Sources */,

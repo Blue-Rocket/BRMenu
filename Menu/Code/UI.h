@@ -8,6 +8,7 @@
 
 #import <MenuKit/BRMenuBackBarButtonItemView.h>
 #import <MenuKit/BRMenuBarButtonItemView.h>
+#import <MenuKit/BRMenuButton.h>
 #import <MenuKit/BRMenuFilledToggleButton.h>
 #import <MenuKit/BRMenuFitToWidthLabel.h>
 #import <MenuKit/BRMenuFlipToggleButton.h>
