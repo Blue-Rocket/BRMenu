@@ -12,6 +12,9 @@
 #import <BRLocalize/BRLocalizable.h>
 #import <BRStyle/BRUIStylish.h>
 
+/**
+ A button that displays a title along with an optional @i badge. The badge can be used to display additional information, such as a count.
+ */
 @interface BRMenuButton : UIButton <BRLocalizable, BRMenuUIControl, BRUIStylish>
 
 /** A title to display as the button text. */
@@ -20,10 +23,10 @@
 /** An optional "badge" to display next to the title. This has been designed with displaying a "count" integer in mind. */
 @property (nonatomic, copy) IBInspectable NSString *badgeText;
 
-/** Flag to render the button in "inverse" mode, to support use within a UINavigationBar or UIToolbar. */
+/** Flag to render the button in an inverted display mode, to support showing on top of an alternate background, such as a UINavigationBar or UIToolbar. */
 @property (nonatomic, getter = isInverse) IBInspectable BOOL inverse;
 
-/** Manage a destructive state. */
+/** Manage a destructive state. Setting this to @c YES causes the button to render using an alternate color scheme to represent an action that performs a destructive task. */
 @property (nonatomic, assign, getter=isDestructive) IBInspectable BOOL destructive;
 
 /** A custom fill color to use. */
