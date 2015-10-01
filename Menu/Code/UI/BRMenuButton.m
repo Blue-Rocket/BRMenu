@@ -158,9 +158,8 @@ static const CGFloat kMinWidth = 48.0f;
 			[l setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
 			[self addSubview:l];
 			[l mas_makeConstraints:^(MASConstraintMaker *make) {
-				make.top.equalTo(self).offset(1);
 				make.right.equalTo(self);
-				make.bottom.equalTo(self).offset(-1);
+				make.centerY.equalTo(self);
 				badgeWidthConstraint = make.width.offset(0);
 			}];
 			badgeLabel = l;
