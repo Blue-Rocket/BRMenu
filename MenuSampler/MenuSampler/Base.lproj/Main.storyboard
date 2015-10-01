@@ -570,7 +570,7 @@
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="zzz-fS-MFW"/>
                                     <barButtonItem style="plain" id="wcH-6Q-ufh">
-                                        <view key="customView" contentMode="scaleToFill" id="RFa-bw-BHh" customClass="BRMenuBarButtonItemView">
+                                        <view key="customView" contentMode="scaleToFill" id="RFa-bw-BHh" customClass="BRMenuButton">
                                             <rect key="frame" x="380" y="6" width="200" height="33"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <userDefinedRuntimeAttributes>
