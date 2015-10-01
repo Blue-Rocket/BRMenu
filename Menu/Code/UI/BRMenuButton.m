@@ -27,7 +27,7 @@ static const CGFloat kMinWidth = 48.0f;
 @end
 
 @implementation BRMenuButton {
-	//MASConstraint *badgeWidthConstraint;
+	MASConstraint *badgeWidthConstraint;
 	UILabel *badgeLabel;
 
 }
@@ -68,11 +68,28 @@ static const CGFloat kMinWidth = 48.0f;
 	[self setTitleColor:controlSettings.normalColorSettings.actionColor forState:UIControlStateNormal];
 	[self setTitleColor:controlSettings.highlightedColorSettings.actionColor forState:UIControlStateHighlighted];
 	[self setTitleColor:controlSettings.disabledColorSettings.actionColor forState:UIControlStateDisabled];
+	[self refreshBadgeStyle:style];
 	[self invalidateIntrinsicContentSize];
 	[self setNeedsDisplay];
 }
 
+- (void)refreshBadgeStyle:(BRUIStyle *)style {
+	BRUIStyleControlStateColorSettings *controlSettings = (inverse ? self.uiStyle.colors.inverseControlSettings : self.uiStyle.colors.controlSettings);
+	BRUIStyleControlColorSettings *controlColors = (self.selected
+													? controlSettings.selectedColorSettings
+													: self.enabled == NO
+													? controlSettings.disabledColorSettings
+													: self.destructive
+													? controlSettings.dangerousColorSettings
+													: controlSettings.normalColorSettings);
+	badgeLabel.font = self.titleLabel.font;
+	badgeLabel.textColor = (!self.enabled || inverse
+							? controlColors.actionColor
+							: self.uiStyle.colors.primaryColor);
+}
+
 - (void)controlStateDidChange:(UIControlState)state {
+	[self refreshBadgeStyle:self.uiStyle];
 	[self setNeedsDisplay];
 }
 
@@ -89,6 +106,7 @@ static const CGFloat kMinWidth = 48.0f;
 	BOOL old = self.highlighted;
 	[super setHighlighted:highlighted];
 	if ( old != highlighted ) {
+		[self refreshBadgeStyle:self.uiStyle];
 		[self setNeedsDisplay];
 	}
 }
@@ -97,6 +115,16 @@ static const CGFloat kMinWidth = 48.0f;
 	BOOL old = self.enabled;
 	[super setEnabled:enabled];
 	if ( old != enabled ) {
+		[self refreshBadgeStyle:self.uiStyle];
+		[self setNeedsDisplay];
+	}
+}
+
+- (void)setSelected:(BOOL)enabled {
+	BOOL old = self.selected;
+	[super setSelected:enabled];
+	if ( old != enabled ) {
+		[self refreshBadgeStyle:self.uiStyle];
 		[self setNeedsDisplay];
 	}
 }
@@ -104,6 +132,23 @@ static const CGFloat kMinWidth = 48.0f;
 - (void)setBadgeText:(NSString *)text {
 	if ( badgeText != text ) {
 		badgeText = text;
+		if ( text && !badgeLabel ) {
+			UILabel *l = [[UILabel alloc] initWithFrame:CGRectZero];
+			l.textAlignment = NSTextAlignmentCenter;
+			[l setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
+			[self addSubview:l];
+			[l mas_makeConstraints:^(MASConstraintMaker *make) {
+				make.top.equalTo(self).offset(1);
+				make.right.equalTo(self);
+				make.bottom.equalTo(self).offset(-1);
+				badgeWidthConstraint = make.width.offset(0);
+			}];
+			badgeLabel = l;
+			[self uiStyleDidChange:self.uiStyle];
+		}
+		badgeLabel.text = text;
+		[badgeLabel layoutIfNeeded];
+		[self setNeedsUpdateConstraints];
 		[self invalidateIntrinsicContentSize];
 		[self setNeedsDisplay];
 	}
@@ -111,10 +156,18 @@ static const CGFloat kMinWidth = 48.0f;
 
 #pragma mark - Layout
 
+- (void)updateConstraints {
+	if ( badgeWidthConstraint ) {
+		badgeWidthConstraint.offset(MAX(kBadgeMinWidth, [self badgeFrameWidthForMaxHeight:CGFLOAT_MAX]));
+	}
+	[super updateConstraints];
+}
+
 - (CGRect)titleRectForContentRect:(CGRect)contentRect {
 	CGRect result = [super titleRectForContentRect:contentRect];
 	// adjust for badge
-	result.size.width -= badgeLabel.bounds.size.width;
+	CGFloat badgeWidth = badgeLabel.bounds.size.width;
+	result.origin.x -= badgeWidth / 2;
 	return result;
 }
 
@@ -183,14 +236,25 @@ static const CGFloat kMinWidth = 48.0f;
 	BRUIStyleControlStateColorSettings *controlSettings = (inverse ? self.uiStyle.colors.inverseControlSettings : self.uiStyle.colors.controlSettings);
 	BRUIStyleControlColorSettings *colorSettings = (pressed ? controlSettings.highlightedColorSettings : controlSettings.normalColorSettings);
 
+	BRUIStyleControlColorSettings *controlColors = (self.selected
+													? controlSettings.selectedColorSettings
+													: self.enabled == NO
+													? controlSettings.disabledColorSettings
+													: pressed
+													? controlSettings.highlightedColorSettings
+													: self.destructive
+													? controlSettings.dangerousColorSettings
+													: controlSettings.normalColorSettings
+													);
+	
 	//// General Declarations
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
 	//// Color Declarations
-	UIColor* strokeColor = colorSettings.borderColor;
+	UIColor* strokeColor = controlColors.borderColor;
 	UIColor* separatorColor = [strokeColor colorWithAlphaComponent: 0.8];
 	UIColor* pressedSeparatorColor = [separatorColor colorWithAlphaComponent: 0.4];
-	UIColor* pressedFillColor = colorSettings.fillColor;
+	UIColor* fillColor = (self.fillColor ? self.fillColor : controlColors.fillColor);
 	UIColor* strokeShadowColor = colorSettings.glossColor;
 	UIColor* pressedShadowColor = colorSettings.shadowColor;
 	
@@ -229,7 +293,7 @@ static const CGFloat kMinWidth = 48.0f;
 		[borderPressedPath addCurveToPoint: CGPointMake(CGRectGetMinX(frame) + 0.5, CGRectGetMinY(frame) + 4.5) controlPoint1: CGPointMake(CGRectGetMinX(frame) + 1.84, CGRectGetMinY(frame) + 1.5) controlPoint2: CGPointMake(CGRectGetMinX(frame) + 0.5, CGRectGetMinY(frame) + 2.84)];
 		[borderPressedPath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 0.5, CGRectGetMaxY(frame) - 4.5)];
 		[borderPressedPath closePath];
-		[pressedFillColor setFill];
+		[fillColor setFill];
 		[borderPressedPath fill];
 		
 		////// Border Pressed Inner Shadow
@@ -273,6 +337,8 @@ static const CGFloat kMinWidth = 48.0f;
 		[borderPath addCurveToPoint: CGPointMake(CGRectGetMinX(frame) + 0.5, CGRectGetMinY(frame) + 4.6) controlPoint1: CGPointMake(CGRectGetMinX(frame) + 1.84, CGRectGetMinY(frame) + 1.5) controlPoint2: CGPointMake(CGRectGetMinX(frame) + 0.5, CGRectGetMinY(frame) + 2.89)];
 		[borderPath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 0.5, CGRectGetMaxY(frame) - 4.6)];
 		[borderPath closePath];
+		[fillColor setFill];
+		[borderPath fill];
 		CGContextSaveGState(context);
 		CGContextSetShadowWithColor(context, glossShadow.shadowOffset, glossShadow.shadowBlurRadius, [glossShadow.shadowColor CGColor]);
 		[strokeColor setStroke];
