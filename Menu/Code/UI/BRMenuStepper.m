@@ -85,6 +85,7 @@ static const CGFloat kMinimumBadgeWidth = (kNaturalWidth - kMinimumPlusMinusButt
 - (void)setStepButtonSize:(CGSize)value {
 	if ( !CGSizeEqualToSize(value, _stepButtonSize) && !(value.width < kMinimumPlusMinusButtonWidth) && !(value.height < kNaturalHeight) ) {
 		_stepButtonSize = value;
+		[self invalidateIntrinsicContentSize];
 		[self setNeedsLayout];
 		[self setNeedsDisplay];
 	}
@@ -359,13 +360,13 @@ static const CGFloat kMinimumBadgeWidth = (kNaturalWidth - kMinimumPlusMinusButt
 	{
 		//// Plus tab Drawing
 		UIBezierPath* plusTabPath = [UIBezierPath bezierPath];
-		[plusTabPath moveToPoint: CGPointMake(CGRectGetMinX(plusFrame) + 0.5, CGRectGetMaxY(plusFrame) - 2.5)];
-		[plusTabPath addLineToPoint: CGPointMake(CGRectGetMaxX(plusFrame) - 4.5, CGRectGetMaxY(plusFrame) - 2.5)];
-		[plusTabPath addCurveToPoint: CGPointMake(CGRectGetMaxX(plusFrame) - 0.5, CGRectGetMaxY(plusFrame) - 6.5) controlPoint1: CGPointMake(CGRectGetMaxX(plusFrame) - 2.29, CGRectGetMaxY(plusFrame) - 2.5) controlPoint2: CGPointMake(CGRectGetMaxX(plusFrame) - 0.5, CGRectGetMaxY(plusFrame) - 4.29)];
-		[plusTabPath addLineToPoint: CGPointMake(CGRectGetMaxX(plusFrame) - 0.5, CGRectGetMinY(plusFrame) + 4.5)];
-		[plusTabPath addCurveToPoint: CGPointMake(CGRectGetMaxX(plusFrame) - 4.5, CGRectGetMinY(plusFrame) + 0.5) controlPoint1: CGPointMake(CGRectGetMaxX(plusFrame) - 0.5, CGRectGetMinY(plusFrame) + 2.29) controlPoint2: CGPointMake(CGRectGetMaxX(plusFrame) - 2.29, CGRectGetMinY(plusFrame) + 0.5)];
+		[plusTabPath moveToPoint: CGPointMake(CGRectGetMinX(plusFrame) + 0.5, CGRectGetMaxY(plusFrame) - 1.5)];
+		[plusTabPath addLineToPoint: CGPointMake(CGRectGetMaxX(plusFrame) - 4.5, CGRectGetMaxY(plusFrame) - 1.5)];
+		[plusTabPath addCurveToPoint: CGPointMake(CGRectGetMaxX(plusFrame) - 0.5, CGRectGetMaxY(plusFrame) - 5.66) controlPoint1: CGPointMake(CGRectGetMaxX(plusFrame) - 2.29, CGRectGetMaxY(plusFrame) - 1.5) controlPoint2: CGPointMake(CGRectGetMaxX(plusFrame) - 0.5, CGRectGetMaxY(plusFrame) - 3.36)];
+		[plusTabPath addLineToPoint: CGPointMake(CGRectGetMaxX(plusFrame) - 0.5, CGRectGetMinY(plusFrame) + 4.66)];
+		[plusTabPath addCurveToPoint: CGPointMake(CGRectGetMaxX(plusFrame) - 4.5, CGRectGetMinY(plusFrame) + 0.5) controlPoint1: CGPointMake(CGRectGetMaxX(plusFrame) - 0.5, CGRectGetMinY(plusFrame) + 2.36) controlPoint2: CGPointMake(CGRectGetMaxX(plusFrame) - 2.29, CGRectGetMinY(plusFrame) + 0.5)];
 		[plusTabPath addLineToPoint: CGPointMake(CGRectGetMinX(plusFrame) + 0.5, CGRectGetMinY(plusFrame) + 0.5)];
-		[plusTabPath addLineToPoint: CGPointMake(CGRectGetMinX(plusFrame) + 0.5, CGRectGetMaxY(plusFrame) - 2.5)];
+		[plusTabPath addLineToPoint: CGPointMake(CGRectGetMinX(plusFrame) + 0.5, CGRectGetMaxY(plusFrame) - 1.5)];
 		[plusTabPath closePath];
 		[highlightedFillColor setFill];
 		[plusTabPath fill];
@@ -427,13 +428,13 @@ static const CGFloat kMinimumBadgeWidth = (kNaturalWidth - kMinimumPlusMinusButt
 	{
 		//// Minus tab Drawing
 		UIBezierPath* minusTabPath = [UIBezierPath bezierPath];
-		[minusTabPath moveToPoint: CGPointMake(CGRectGetMaxX(minusFrame) - 0.5, CGRectGetMaxY(minusFrame) - 2.5)];
-		[minusTabPath addLineToPoint: CGPointMake(CGRectGetMinX(minusFrame) + 4.5, CGRectGetMaxY(minusFrame) - 2.5)];
-		[minusTabPath addCurveToPoint: CGPointMake(CGRectGetMinX(minusFrame) + 0.5, CGRectGetMaxY(minusFrame) - 6.5) controlPoint1: CGPointMake(CGRectGetMinX(minusFrame) + 2.29, CGRectGetMaxY(minusFrame) - 2.5) controlPoint2: CGPointMake(CGRectGetMinX(minusFrame) + 0.5, CGRectGetMaxY(minusFrame) - 4.29)];
-		[minusTabPath addLineToPoint: CGPointMake(CGRectGetMinX(minusFrame) + 0.5, CGRectGetMinY(minusFrame) + 4.5)];
-		[minusTabPath addCurveToPoint: CGPointMake(CGRectGetMinX(minusFrame) + 4.5, CGRectGetMinY(minusFrame) + 0.5) controlPoint1: CGPointMake(CGRectGetMinX(minusFrame) + 0.5, CGRectGetMinY(minusFrame) + 2.29) controlPoint2: CGPointMake(CGRectGetMinX(minusFrame) + 2.29, CGRectGetMinY(minusFrame) + 0.5)];
+		[minusTabPath moveToPoint: CGPointMake(CGRectGetMaxX(minusFrame) - 0.5, CGRectGetMaxY(minusFrame) - 1.5)];
+		[minusTabPath addLineToPoint: CGPointMake(CGRectGetMinX(minusFrame) + 4.5, CGRectGetMaxY(minusFrame) - 1.5)];
+		[minusTabPath addCurveToPoint: CGPointMake(CGRectGetMinX(minusFrame) + 0.5, CGRectGetMaxY(minusFrame) - 5.66) controlPoint1: CGPointMake(CGRectGetMinX(minusFrame) + 2.29, CGRectGetMaxY(minusFrame) - 1.5) controlPoint2: CGPointMake(CGRectGetMinX(minusFrame) + 0.5, CGRectGetMaxY(minusFrame) - 3.36)];
+		[minusTabPath addLineToPoint: CGPointMake(CGRectGetMinX(minusFrame) + 0.5, CGRectGetMinY(minusFrame) + 4.66)];
+		[minusTabPath addCurveToPoint: CGPointMake(CGRectGetMinX(minusFrame) + 4.5, CGRectGetMinY(minusFrame) + 0.5) controlPoint1: CGPointMake(CGRectGetMinX(minusFrame) + 0.5, CGRectGetMinY(minusFrame) + 2.36) controlPoint2: CGPointMake(CGRectGetMinX(minusFrame) + 2.29, CGRectGetMinY(minusFrame) + 0.5)];
 		[minusTabPath addLineToPoint: CGPointMake(CGRectGetMaxX(minusFrame) - 0.5, CGRectGetMinY(minusFrame) + 0.5)];
-		[minusTabPath addLineToPoint: CGPointMake(CGRectGetMaxX(minusFrame) - 0.5, CGRectGetMaxY(minusFrame) - 2.5)];
+		[minusTabPath addLineToPoint: CGPointMake(CGRectGetMaxX(minusFrame) - 0.5, CGRectGetMaxY(minusFrame) - 1.5)];
 		[minusTabPath closePath];
 		[highlightedFillColor setFill];
 		[minusTabPath fill];
@@ -466,7 +467,7 @@ static const CGFloat kMinimumBadgeWidth = (kNaturalWidth - kMinimumPlusMinusButt
 	
 	
 	//// Minus Drawing
-	UIBezierPath* minusPath = [UIBezierPath bezierPathWithRect: CGRectMake(CGRectGetMinX(minusFrame) + 7, CGRectGetMinY(minusFrame) + floor((CGRectGetHeight(minusFrame) - 2) * 0.50000 + 0.5), 12, 2)];
+	UIBezierPath* minusPath = [UIBezierPath bezierPathWithRect: CGRectMake(CGRectGetMinX(minusFrame) + floor((CGRectGetWidth(minusFrame) - 12) * 0.53846 + 0.5), CGRectGetMinY(minusFrame) + floor((CGRectGetHeight(minusFrame) - 2) * 0.50000 + 0.5), 12, 2)];
 	[minusColor setFill];
 	[minusPath fill];
 }
