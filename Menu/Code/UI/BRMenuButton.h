@@ -23,6 +23,9 @@
 /** Flag to render the button in "inverse" mode, to support use within a UINavigationBar or UIToolbar. */
 @property (nonatomic, getter = isInverse) IBInspectable BOOL inverse;
 
+/** Manage a destructive state. */
+@property (nonatomic, assign, getter=isDestructive) IBInspectable BOOL destructive;
+
 /** A custom fill color to use. */
 @property (nonatomic, strong) IBInspectable UIColor *fillColor;
 

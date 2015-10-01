@@ -63,29 +63,36 @@ static const CGFloat kMinWidth = 48.0f;
 }
 
 - (void)uiStyleDidChange:(BRUIStyle *)style {
-	BRUIStyleControlStateColorSettings *controlSettings = (inverse ? self.uiStyle.colors.inverseControlSettings : self.uiStyle.colors.controlSettings);
-	self.titleLabel.font = self.uiStyle.fonts.actionFont;
-	[self setTitleColor:controlSettings.normalColorSettings.actionColor forState:UIControlStateNormal];
-	[self setTitleColor:controlSettings.highlightedColorSettings.actionColor forState:UIControlStateHighlighted];
-	[self setTitleColor:controlSettings.disabledColorSettings.actionColor forState:UIControlStateDisabled];
+	[self refreshTitleStyle:style];
 	[self refreshBadgeStyle:style];
 	[self invalidateIntrinsicContentSize];
 	[self setNeedsDisplay];
 }
 
+- (void)refreshTitleStyle:(BRUIStyle *)style {
+	BRUIStyleControlStateColorSettings *controlSettings = (inverse
+														   ? self.uiStyle.colors.inverseControlSettings
+														   : self.uiStyle.colors.controlSettings);
+	self.titleLabel.font = self.uiStyle.fonts.actionFont;
+	if ( self.destructive ) {
+		[self setTitleColor:controlSettings.dangerousColorSettings.actionColor forState:UIControlStateNormal];
+		[self setTitleColor:controlSettings.dangerousColorSettings.actionColor forState:UIControlStateHighlighted];
+	} else {
+		[self setTitleColor:controlSettings.normalColorSettings.actionColor forState:UIControlStateNormal];
+		[self setTitleColor:controlSettings.highlightedColorSettings.actionColor forState:UIControlStateHighlighted];
+	}
+	[self setTitleColor:controlSettings.disabledColorSettings.actionColor forState:UIControlStateDisabled];
+}
+
 - (void)refreshBadgeStyle:(BRUIStyle *)style {
 	BRUIStyleControlStateColorSettings *controlSettings = (inverse ? self.uiStyle.colors.inverseControlSettings : self.uiStyle.colors.controlSettings);
-	BRUIStyleControlColorSettings *controlColors = (self.selected
-													? controlSettings.selectedColorSettings
-													: self.enabled == NO
+	BRUIStyleControlColorSettings *controlColors = (self.enabled == NO
 													? controlSettings.disabledColorSettings
 													: self.destructive
 													? controlSettings.dangerousColorSettings
-													: controlSettings.normalColorSettings);
+													: controlSettings.selectedColorSettings);
 	badgeLabel.font = self.titleLabel.font;
-	badgeLabel.textColor = (!self.enabled || inverse
-							? controlColors.actionColor
-							: self.uiStyle.colors.primaryColor);
+	badgeLabel.textColor = controlColors.actionColor;
 }
 
 - (void)controlStateDidChange:(UIControlState)state {
@@ -251,7 +258,7 @@ static const CGFloat kMinWidth = 48.0f;
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
 	//// Color Declarations
-	UIColor* strokeColor = controlColors.borderColor;
+	UIColor* strokeColor = (self.destructive ? controlSettings.dangerousColorSettings.borderColor : controlColors.borderColor);
 	UIColor* separatorColor = [strokeColor colorWithAlphaComponent: 0.8];
 	UIColor* pressedSeparatorColor = [separatorColor colorWithAlphaComponent: 0.4];
 	UIColor* fillColor = (self.fillColor ? self.fillColor : controlColors.fillColor);

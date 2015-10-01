@@ -15,18 +15,18 @@
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="660"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FqM-n3-OQ0" userLabel="Control Background">
-                                <rect key="frame" x="470" y="0.0" width="130" height="660"/>
+                                <rect key="frame" x="470" y="0.0" width="130" height="800"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="DLX-wV-DLg"/>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aWF-Nh-qk8">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="660"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stepper" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TAT-8c-7dG">
                                         <rect key="frame" x="405" y="21" width="55" height="18"/>
@@ -255,6 +255,20 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="badgeText" value="123"/>
                                         </userDefinedRuntimeAttributes>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Button (danger)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XHU-uP-t5j">
+                                        <rect key="frame" x="352" y="624" width="108" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xlx-VL-szP" userLabel="Button" customClass="BRMenuButton">
+                                        <rect key="frame" x="520" y="618" width="30" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Danger"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="destructive" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="V7F-2E-XYb" firstAttribute="trailing" secondItem="TAT-8c-7dG" secondAttribute="trailing" id="656-lP-qcj"/>
@@ -274,7 +288,9 @@
                                     <constraint firstItem="yVN-Fp-Zpe" firstAttribute="trailing" secondItem="TAT-8c-7dG" secondAttribute="trailing" id="Lfr-A1-6nJ"/>
                                     <constraint firstItem="azV-vo-qo5" firstAttribute="centerY" secondItem="SIP-ue-8j4" secondAttribute="centerY" id="OPP-R2-eYE"/>
                                     <constraint firstItem="HsO-pj-MY8" firstAttribute="trailing" secondItem="TAT-8c-7dG" secondAttribute="trailing" id="PTm-w2-OAI"/>
+                                    <constraint firstItem="XHU-uP-t5j" firstAttribute="centerY" secondItem="xlx-VL-szP" secondAttribute="centerY" id="RcW-qo-TR2"/>
                                     <constraint firstItem="TAT-8c-7dG" firstAttribute="centerY" secondItem="gbi-AS-Ew0" secondAttribute="centerY" id="TKm-jo-Z1x"/>
+                                    <constraint firstAttribute="bottom" secondItem="xlx-VL-szP" secondAttribute="bottom" constant="152" id="UkZ-Yq-5Dr"/>
                                     <constraint firstItem="auc-be-MVs" firstAttribute="top" secondItem="Adg-KL-dr2" secondAttribute="bottom" constant="10" id="V1V-Ic-BrC"/>
                                     <constraint firstItem="dg7-Ar-psY" firstAttribute="top" secondItem="hEJ-KV-aQa" secondAttribute="bottom" constant="16" id="Vrg-Lm-cdo"/>
                                     <constraint firstItem="SIP-ue-8j4" firstAttribute="top" secondItem="bOc-1Y-QnW" secondAttribute="bottom" constant="8" id="XDK-gr-wX0"/>
@@ -282,10 +298,10 @@
                                     <constraint firstItem="jVm-LL-5CO" firstAttribute="trailing" secondItem="TAT-8c-7dG" secondAttribute="trailing" id="Xym-1l-VdO"/>
                                     <constraint firstItem="V7F-2E-XYb" firstAttribute="centerY" secondItem="Adg-KL-dr2" secondAttribute="centerY" id="bA0-2y-Ny8"/>
                                     <constraint firstItem="ifn-B5-rGB" firstAttribute="trailing" secondItem="TAT-8c-7dG" secondAttribute="trailing" id="bvO-pf-Hle"/>
+                                    <constraint firstItem="XHU-uP-t5j" firstAttribute="trailing" secondItem="TAT-8c-7dG" secondAttribute="trailing" id="c3y-ca-rI2"/>
                                     <constraint firstItem="jVm-LL-5CO" firstAttribute="centerY" secondItem="9BB-CG-kV8" secondAttribute="centerY" id="dI2-m4-otF"/>
                                     <constraint firstItem="HsO-pj-MY8" firstAttribute="centerY" secondItem="bSl-yj-8ak" secondAttribute="centerY" id="e6X-it-4pK"/>
                                     <constraint firstItem="SIP-ue-8j4" firstAttribute="leading" secondItem="azV-vo-qo5" secondAttribute="trailing" constant="20" id="eGF-yK-jaY"/>
-                                    <constraint firstAttribute="bottom" secondItem="auc-be-MVs" secondAttribute="bottom" constant="52" id="f6c-8J-MgI"/>
                                     <constraint firstItem="fzC-xO-vgW" firstAttribute="centerY" secondItem="bOc-1Y-QnW" secondAttribute="centerY" id="fhT-0Q-tba"/>
                                     <constraint firstItem="Adg-KL-dr2" firstAttribute="top" secondItem="uzB-bL-Brp" secondAttribute="bottom" constant="23" id="hS8-aN-MdQ"/>
                                     <constraint firstItem="gbi-AS-Ew0" firstAttribute="top" secondItem="aWF-Nh-qk8" secondAttribute="top" constant="8" id="j8i-Qo-kq7"/>
@@ -293,6 +309,7 @@
                                     <constraint firstItem="bSl-yj-8ak" firstAttribute="top" secondItem="hYH-UH-4Zy" secondAttribute="bottom" constant="8" id="kD7-VT-CTk"/>
                                     <constraint firstItem="dg7-Ar-psY" firstAttribute="centerY" secondItem="70h-ph-S5h" secondAttribute="centerY" id="l1p-us-Dkf"/>
                                     <constraint firstItem="70h-ph-S5h" firstAttribute="trailing" secondItem="TAT-8c-7dG" secondAttribute="trailing" id="m2G-OX-3C9"/>
+                                    <constraint firstItem="xlx-VL-szP" firstAttribute="top" secondItem="auc-be-MVs" secondAttribute="bottom" constant="10" id="mVv-5L-vgF"/>
                                     <constraint firstItem="9BB-CG-kV8" firstAttribute="top" secondItem="bSl-yj-8ak" secondAttribute="bottom" constant="13" id="ujk-8v-jhk"/>
                                     <constraint firstItem="mKm-KP-nk4" firstAttribute="centerY" secondItem="uzB-bL-Brp" secondAttribute="centerY" id="y8h-Ar-0zk"/>
                                 </constraints>
@@ -308,6 +325,7 @@
                             <constraint firstItem="aWF-Nh-qk8" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="J0I-xA-19K"/>
                             <constraint firstItem="XZp-AN-kYC" firstAttribute="centerX" secondItem="FqM-n3-OQ0" secondAttribute="centerX" id="JnF-ti-eCn"/>
                             <constraint firstItem="FqM-n3-OQ0" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="NsL-Hx-cLD"/>
+                            <constraint firstItem="xlx-VL-szP" firstAttribute="centerX" secondItem="FqM-n3-OQ0" secondAttribute="centerX" id="Q9z-a4-C0o"/>
                             <constraint firstAttribute="trailing" secondItem="aWF-Nh-qk8" secondAttribute="trailing" id="Sd0-3e-lfl"/>
                             <constraint firstItem="auc-be-MVs" firstAttribute="centerX" secondItem="FqM-n3-OQ0" secondAttribute="centerX" id="UsO-Bo-yMi"/>
                             <constraint firstItem="gbi-AS-Ew0" firstAttribute="centerX" secondItem="FqM-n3-OQ0" secondAttribute="centerX" id="cEl-4J-scL"/>
@@ -330,7 +348,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="660"/>
+                    <size key="freeformSize" width="600" height="800"/>
                     <connections>
                         <outlet property="cartButton" destination="uzB-bL-Brp" id="iBx-Wj-hzQ"/>
                         <outlet property="dangerousButton" destination="dg7-Ar-psY" id="P7B-Ed-RJd"/>
