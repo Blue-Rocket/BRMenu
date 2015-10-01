@@ -17,7 +17,6 @@ const CGSize BRMenuStepperPadding = {8.0, 4.0};
 
 static const CGFloat kNaturalWidth = 80.0;
 static const CGFloat kNaturalHeight = 28.0;
-static const CGFloat kBadgeWidth = 28.0;
 static const CGFloat kBadgeHorizonalPadding = 2;
 
 static const CGFloat kMinimumPlusMinusButtonWidth = 25.0;
