@@ -277,6 +277,7 @@ static const CGFloat kMinimumBadgeWidth = (kNaturalWidth - kMinimumPlusMinusButt
 													? controlSettings.disabledColorSettings
 													: controlSettings.normalColorSettings
 													);
+	const CGFloat stepButtonWidth = self.stepButtonSize.width;
 
 	//// General Declarations
 	CGContextRef context = UIGraphicsGetCurrentContext();
@@ -306,8 +307,8 @@ static const CGFloat kMinimumBadgeWidth = (kNaturalWidth - kMinimumPlusMinusButt
 	
 	
 	//// Subframes
-	CGRect minusFrame = CGRectMake(CGRectGetMinX(frame), CGRectGetMinY(frame), 25, CGRectGetHeight(frame));
-	CGRect plusFrame = CGRectMake(CGRectGetMinX(frame) + CGRectGetWidth(frame) - 25, CGRectGetMinY(frame), 25, CGRectGetHeight(frame));
+	CGRect minusFrame = CGRectMake(CGRectGetMinX(frame), CGRectGetMinY(frame), stepButtonWidth, CGRectGetHeight(frame));
+	CGRect plusFrame = CGRectMake(CGRectGetMinX(frame) + CGRectGetWidth(frame) - stepButtonWidth, CGRectGetMinY(frame), stepButtonWidth, CGRectGetHeight(frame));
 	CGRect plus = CGRectMake(CGRectGetMinX(plusFrame) + floor((CGRectGetWidth(plusFrame) - 12) * 0.46154 + 0.5), CGRectGetMinY(plusFrame) + floor((CGRectGetHeight(plusFrame) - 12) * 0.50000 + 0.5), 12, 12);
 	
 	
