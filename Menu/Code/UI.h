@@ -21,7 +21,7 @@
 #import <MenuKit/BRMenuLeftRightPlacementButton.h>
 #import <MenuKit/BRMenuLightHeavyQuantityButton.h>
 #import <MenuKit/BRMenuNavigationTitleView.h>
-#import <MenuKit/BRMenuOrderCountBarButtonItemView.h>
+#import <MenuKit/BRMenuOrderCountButton.h>
 #import <MenuKit/BRMenuOrderingComponentsViewController.h>
 #import <MenuKit/BRMenuOrderingGroupViewController.h>
 #import <MenuKit/BRMenuOrderingItemDetailsViewController.h>

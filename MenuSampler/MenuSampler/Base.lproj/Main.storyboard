@@ -273,32 +273,6 @@
                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="Wc7-FP-2Ev"/>
                                         </items>
                                     </toolbar>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Button (inverse)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8B-y8-qQK">
-                                        <rect key="frame" x="351" y="648" width="109" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHN-Gk-j24">
-                                        <rect key="frame" x="470" y="635" width="130" height="44"/>
-                                        <items>
-                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="pQZ-XX-ZMM"/>
-                                            <barButtonItem style="plain" id="Lfa-HJ-pAx">
-                                                <button key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="tr9-Ol-kOt" customClass="BRMenuButton">
-                                                    <rect key="frame" x="25" y="5" width="80" height="34"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Laugh"/>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="inverse" value="YES"/>
-                                                    </userDefinedRuntimeAttributes>
-                                                </button>
-                                            </barButtonItem>
-                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="mZH-BJ-hEg"/>
-                                        </items>
-                                    </toolbar>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="UiD-gc-fkR" firstAttribute="centerY" secondItem="Bn8-Jw-9NM" secondAttribute="centerY" id="1Jm-86-3fA"/>
@@ -338,7 +312,6 @@
                                     <constraint firstItem="uuz-15-MEh" firstAttribute="trailing" secondItem="TAT-8c-7dG" secondAttribute="trailing" id="n1q-Ew-D3p"/>
                                     <constraint firstItem="uuz-15-MEh" firstAttribute="centerY" secondItem="0vt-mS-f9r" secondAttribute="centerY" id="nci-ee-rfh"/>
                                     <constraint firstItem="IXl-Ov-vIa" firstAttribute="top" secondItem="Bn8-Jw-9NM" secondAttribute="bottom" constant="10" id="uGk-nt-sHj"/>
-                                    <constraint firstItem="b8B-y8-qQK" firstAttribute="centerY" secondItem="MHN-Gk-j24" secondAttribute="centerY" id="uId-mg-Ykz"/>
                                     <constraint firstItem="pBa-A3-9fa" firstAttribute="top" secondItem="0vt-mS-f9r" secondAttribute="bottom" constant="10" id="usQ-nE-BKz"/>
                                     <constraint firstItem="Bn8-Jw-9NM" firstAttribute="top" secondItem="pBa-A3-9fa" secondAttribute="bottom" constant="10" id="v5b-0S-Zfv"/>
                                     <constraint firstItem="0vt-mS-f9r" firstAttribute="top" secondItem="xlx-VL-szP" secondAttribute="bottom" constant="10" id="xkr-QR-l64"/>

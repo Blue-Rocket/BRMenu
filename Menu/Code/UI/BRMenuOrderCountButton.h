@@ -13,7 +13,7 @@
 /**
  Specialized extension of @c BRMenuButton that displays the count of items in an order as the badge text value.
  */
-@interface BRMenuOrderCountBarButtonItemView : BRMenuButton
+@interface BRMenuOrderCountButton : BRMenuButton
 
 /** The order to display the item count for. */
 @property (nonatomic, strong) BRMenuOrder *order;
