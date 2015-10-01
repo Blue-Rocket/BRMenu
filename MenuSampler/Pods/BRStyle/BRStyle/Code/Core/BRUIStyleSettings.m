@@ -584,7 +584,7 @@ static NSString * SettingNameForSelector(BOOL mutable, SEL aSEL, BOOL *setter) {
 	// normal settings
 	inverseControlSettings.normalColorSettings.actionColor = [UIColor whiteColor];
 	inverseControlSettings.normalColorSettings.borderColor = [BRUIStyle colorWithRGBInteger:0x264891];
-	inverseControlSettings.normalColorSettings.glossColor = [inverseControlSettings.normalColorSettings.glossColor colorWithAlphaComponent:0.5];
+	inverseControlSettings.normalColorSettings.glossColor = [inverseControlSettings.normalColorSettings.glossColor colorWithAlphaComponent:0.4];
 	inverseControlSettings.normalColorSettings.shadowColor = [[UIColor whiteColor] colorWithAlphaComponent:0.3];
 	
 	// highlighted settings
@@ -592,6 +592,23 @@ static NSString * SettingNameForSelector(BOOL mutable, SEL aSEL, BOOL *setter) {
 	highlightedControlColorSettings.shadowColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
 	highlightedControlColorSettings.fillColor = [[UIColor blackColor] colorWithAlphaComponent:0.1];
 	inverseControlSettings.highlightedColorSettings = highlightedControlColorSettings;
+	
+	// selected settings
+	BRMutableUIStyleControlColorSettings *selectedControlColorSettings = [inverseControlSettings.normalColorSettings mutableCopy];
+	inverseControlSettings.selectedColorSettings = selectedControlColorSettings;
+	
+	// disabled settings
+	BRMutableUIStyleControlColorSettings *disabledControlColorSettings = [inverseControlSettings.normalColorSettings mutableCopy];
+	disabledControlColorSettings.actionColor = controlSettings.disabledColorSettings.actionColor;
+	disabledControlColorSettings.borderColor = [inverseControlSettings.normalColorSettings.borderColor colorWithAlphaComponent:0.8];
+	disabledControlColorSettings.glossColor = [inverseControlSettings.normalColorSettings.glossColor colorWithAlphaComponent:0.3];
+	inverseControlSettings.disabledColorSettings = disabledControlColorSettings;
+	
+	// dangerous settings
+	BRMutableUIStyleControlColorSettings *dangerousControlColorSettings = [inverseControlSettings.normalColorSettings mutableCopy];
+	dangerousControlColorSettings.fillColor = [BRUIStyle colorWithRGBInteger:0xEB2D38];
+	dangerousControlColorSettings.glossColor = nil;
+	inverseControlSettings.dangerousColorSettings = dangerousControlColorSettings;
 	
 	defaults[NSStringFromSelector(@selector(inverseControlSettings))] = (mutable ? inverseControlSettings : [inverseControlSettings copy]);
 

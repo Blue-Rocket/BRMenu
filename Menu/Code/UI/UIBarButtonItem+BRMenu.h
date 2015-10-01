@@ -33,4 +33,40 @@
  */
 + (UIBarButtonItem *)standardBRMenuBackButtonItemWithTitle:(NSString *)title target:(id)target action:(SEL)action;
 
+/**
+ Get a set of bar button items with a margin adjustment applied for left navigation items.
+ 
+ @param barButtonItems The array of bar button items.
+ 
+ @return A new array of bar button items.
+ */
++ (NSArray *)marginAdjustedBRMenuLeftNavigationBarButtonItems:(NSArray *)barButtonItems;
+
+/**
+ Get a set of bar button items with a margin adjustment applied for right navigation items.
+ 
+ @param barButtonItems The array of bar button items.
+ 
+ @return A new array of bar button items.
+ */
++ (NSArray *)marginAdjustedBRMenuRightNavigationBarButtonItems:(NSArray *)barButtonItems;
+
+/**
+ Get a set of bar button items with a margin adjustment applied for left toolbar items.
+ 
+ @param barButtonItems The array of bar button items.
+ 
+ @return A new array of bar button items.
+ */
++ (NSArray *)marginAdjustedBRMenuLeftToolbarBarButtonItems:(NSArray *)barButtonItems;
+
+/**
+ Get a set of bar button items with a margin adjustment applied for right toolbar items.
+ 
+ @param barButtonItems The array of bar button items.
+ 
+ @return A new array of bar button items.
+ */
++ (NSArray *)marginAdjustedBRMenuRightToolbarBarButtonItems:(NSArray *)barButtonItems;
+
 @end

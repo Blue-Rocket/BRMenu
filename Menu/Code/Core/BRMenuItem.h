@@ -19,7 +19,7 @@
 
 @interface BRMenuItem : NSObject <BRMenuItemObject, NSSecureCoding>
 
-@property (nonatomic) UInt8 itemId;
+@property (nonatomic) uint8_t itemId;
 @property (nonatomic, strong) NSDecimalNumber *price;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *desc;
@@ -36,7 +36,7 @@
 @property (nonatomic, weak) BRMenuItemGroup *group;
 @property (nonatomic, weak) BRMenu *menu;
 
-- (BRMenuItemComponent *)menuItemComponentForId:(const UInt8)componentId;
+- (BRMenuItemComponent *)menuItemComponentForId:(const uint8_t)componentId;
 - (BRMenuItemComponentGroup *)menuItemComponentGroupForKey:(NSString *)key;
 
 // get the root BRMenuItemGroup for this item, i.e. the farthest ancestor, or nil if none available

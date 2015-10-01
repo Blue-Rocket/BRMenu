@@ -25,7 +25,7 @@
 @property (nonatomic, readonly) BRMenuOrderItem *target;
 
 /** The attribute index to manage in this proxy. */
-@property (nonatomic) UInt8 index;
+@property (nonatomic) uint8_t index;
 
 /**
  Initialize a new proxy instance.
@@ -34,6 +34,6 @@
  @param index The attribute index to manage.
  @return The initialized instance.
  */
-- (id)initWithOrderItem:(BRMenuOrderItem *)target attributeIndex:(UInt8)index;
+- (id)initWithOrderItem:(BRMenuOrderItem *)target attributeIndex:(uint8_t)index;
 
 @end

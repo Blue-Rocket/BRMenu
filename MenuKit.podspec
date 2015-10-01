@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = 'MenuKit'
-  s.version      = '0.4.0'
+  s.version      = '0.5.0'
   s.summary      = 'Objective-C menu and order framework optimized for encoding into barcodes.'
   s.description  = <<-DESC
                    This project provides an implementation of a menu domain model and menu
@@ -19,9 +19,10 @@ Pod::Spec.new do |s|
   
   s.requires_arc = true
   
-  s.default_subspecs = 'Core'
+  s.default_subspecs = 'All'
   
   s.subspec 'All' do |sp|
+    sp.source_files = 'Menu/Code/MenuKit.h'
     sp.dependency 'MenuKit/Core'
     sp.dependency 'MenuKit/RestKit'
 	sp.dependency 'MenuKit/AFNetworking'

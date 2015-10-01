@@ -103,7 +103,7 @@
 	return stop;
 }
 
-- (BRMenuItem *)menuItemForId:(const UInt8)itemId {
+- (BRMenuItem *)menuItemForId:(const uint8_t)itemId {
 	for ( BRMenuItem *item in self.items ) {
 		if ( itemId == item.itemId ) {
 			return item;
@@ -146,15 +146,15 @@
 	return nil;
 }
 
-- (BRMenuItemComponent *)menuItemComponentForId:(const UInt8)componentId {
+- (BRMenuItemComponent *)menuItemComponentForId:(const uint8_t)componentId {
 	for ( BRMenuItem *item in self.items ) {
-		BRMenuItemComponent *component = [item menuItemComponentForId:(const UInt8)componentId];
+		BRMenuItemComponent *component = [item menuItemComponentForId:(const uint8_t)componentId];
 		if ( component != nil ) {
 			return component;
 		}
 	}
 	for ( BRMenuItemGroup *nested in self.groups ) {
-		BRMenuItemComponent *component = [nested menuItemComponentForId:(const UInt8)componentId];
+		BRMenuItemComponent *component = [nested menuItemComponentForId:(const uint8_t)componentId];
 		if ( component != nil ) {
 			return component;
 		}

@@ -13,6 +13,6 @@
  */
 @interface BRMenuMetadata : NSObject
 
-@property (nonatomic) UInt16 latestMenuVersion;
+@property (nonatomic) uint16_t latestMenuVersion;
 
 @end

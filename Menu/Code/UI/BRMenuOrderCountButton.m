@@ -6,14 +6,14 @@
 //  Copyright (c) 2015 Blue Rocket. Distributable under the terms of the Apache License, Version 2.0.
 //
 
-#import "BRMenuOrderCountBarButtonItemView.h"
+#import "BRMenuOrderCountButton.h"
 
 #import "BRMenuOrder.h"
 #import "NSBundle+BRMenu.h"
 
 static void * kOrderItemsContext = &kOrderItemsContext;
 
-@implementation BRMenuOrderCountBarButtonItemView {
+@implementation BRMenuOrderCountButton {
 	BRMenuOrder *order;
 }
 

@@ -21,10 +21,12 @@
 
 @implementation BRMenuItemObjectCell {
 	id<BRMenuItemObject> item;
+	BOOL disabled;
 }
 
 @dynamic uiStyle;
 @synthesize item;
+@synthesize disabled;
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
 	if ( (self = [super initWithCoder:aDecoder]) ) {
@@ -85,14 +87,21 @@
 
 - (void)refreshStyle:(BRUIStyle *)style {
 	self.title.font = style.fonts.headlineFont;
-	self.title.textColor = style.colors.primaryColor;
+	self.title.textColor = (disabled ? style.colors.placeholderColor : style.colors.primaryColor);
 	self.price.font = style.fonts.listSecondaryFont;
-	self.price.textColor = style.colors.primaryColor;
+	self.price.textColor = (disabled ? style.colors.placeholderColor : style.colors.primaryColor);
 	self.desc.font = style.fonts.listCaptionFont;
-	self.desc.textColor = style.colors.secondaryColor;
+	self.desc.textColor = (disabled ? style.colors.placeholderColor : style.colors.secondaryColor);
 	self.backgroundColor = style.colors.backgroundColor;
 	[self invalidateIntrinsicContentSize];
 	[self setNeedsLayout];
+}
+
+- (void)setDisabled:(BOOL)value {
+	if ( value != disabled ) {
+		disabled = value;
+		[self refreshStyle:self.uiStyle];
+	}
 }
 
 - (void)setItem:(id<BRMenuItemObject>)theItem {

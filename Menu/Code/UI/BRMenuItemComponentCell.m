@@ -139,7 +139,7 @@
 - (void)refreshStyle:(BRUIStyle *)style {
 	[super refreshStyle:style];
 	self.title.font = style.fonts.listFont;
-	self.title.textColor = (self.selected ? self.uiStyle.colors.primaryColor : self.uiStyle.colors.textColor);
+	self.title.textColor = (self.selected ? style.colors.primaryColor : style.colors.textColor);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

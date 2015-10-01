@@ -47,7 +47,7 @@
 
 #pragma mark -
 
-- (BRMenuItemComponent *)menuItemComponentForId:(const UInt8)componentId {
+- (BRMenuItemComponent *)menuItemComponentForId:(const uint8_t)componentId {
 	for ( BRMenuItemComponent *component in self.components ) {
 		if ( componentId == component.componentId ) {
 			return component;

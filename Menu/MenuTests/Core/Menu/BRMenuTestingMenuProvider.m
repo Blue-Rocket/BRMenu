@@ -25,7 +25,7 @@
 	return menu;
 }
 
-- (BRMenu *)menuForVersion:(UInt16)version {
+- (BRMenu *)menuForVersion:(uint16_t)version {
 	return (version == menu.version ? menu : nil);
 }
 

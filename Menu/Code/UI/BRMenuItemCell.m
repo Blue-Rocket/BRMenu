@@ -96,9 +96,9 @@
 - (void)refreshStyle:(BRUIStyle *)style {
 	[super refreshStyle:style];
 	self.title.font = style.fonts.listFont;
-	self.title.textColor = (self.selected ? self.uiStyle.colors.primaryColor : self.uiStyle.colors.textColor);
+	self.title.textColor = (self.disabled ? style.colors.placeholderColor : self.selected ? self.uiStyle.colors.primaryColor : self.uiStyle.colors.textColor);
 	self.desc.font = style.fonts.listCaptionFont;
-	self.desc.textColor = style.colors.captionColor;
+	self.desc.textColor = (self.disabled ? style.colors.placeholderColor : style.colors.captionColor);
 }
 
 @end

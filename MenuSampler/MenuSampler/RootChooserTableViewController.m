@@ -29,7 +29,7 @@ static NSString * const kReviewOrderSegue = @"ReviewOrder";
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	order = [BRMenuOrder new];
-	BRMenuOrderCountBarButtonItemView *reviewOrderButton = [BRMenuOrderCountBarButtonItemView new];
+	BRMenuOrderCountButton *reviewOrderButton = [BRMenuOrderCountButton new];
 	reviewOrderButton.order = order;
 	reviewOrderButton.inverse = YES;
 	[reviewOrderButton addTarget:self action:@selector(viewOrder:) forControlEvents:UIControlEventTouchUpInside];
@@ -62,7 +62,7 @@ static NSString * const kReviewOrderSegue = @"ReviewOrder";
 			dest.menu = menu;
 			dest.order = order;
 			
-			BRMenuOrderCountBarButtonItemView *reviewOrderButton = [BRMenuOrderCountBarButtonItemView new];
+			BRMenuOrderCountButton *reviewOrderButton = [BRMenuOrderCountButton new];
 			reviewOrderButton.order = order;
 			reviewOrderButton.inverse = YES;
 			[reviewOrderButton addTarget:self action:@selector(viewOrder:) forControlEvents:UIControlEventTouchUpInside];

@@ -27,7 +27,7 @@
 
 @property (nonatomic, weak) BRMenuItemComponentGroup *parentGroup; // parent group
 
-- (BRMenuItemComponent *)menuItemComponentForId:(const UInt8)componentId;
+- (BRMenuItemComponent *)menuItemComponentForId:(const uint8_t)componentId;
 
 // all unique BRMenuItemComponent objects within this group
 - (NSArray *)allComponents;

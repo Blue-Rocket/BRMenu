@@ -9,7 +9,7 @@
 #import "UIBarButtonItem+BRMenu.h"
 
 #import "BRMenuBackBarButtonItemView.h"
-#import "BRMenuBarButtonItemView.h"
+#import "BRMenuButton.h"
 #import "NSBundle+BRMenu.h"
 
 @implementation UIBarButtonItem (BRMenu)
@@ -26,10 +26,42 @@
 	return [[UIBarButtonItem alloc] initWithCustomView:[self standardBackBarButtonItemCustomViewWithTitle:title target:target action:action]];
 }
 
++ (NSArray *)insertMarginAdjustment:(CGFloat)amount forBRMenuNavigationBarButtonItems:(NSArray *)barButtonItems {
+	UIBarButtonItem *adjustLeft = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+	adjustLeft.width = amount;
+	NSMutableArray *result = [[NSMutableArray alloc] initWithObjects:adjustLeft, nil];
+	[result addObjectsFromArray:barButtonItems];
+	return result;
+}
+
++ (NSArray *)marginAdjustedBRMenuLeftNavigationBarButtonItems:(NSArray *)barButtonItems {
+	return [self insertMarginAdjustment:-12 forBRMenuNavigationBarButtonItems:barButtonItems];
+}
+
++ (NSArray *)marginAdjustedBRMenuRightNavigationBarButtonItems:(NSArray *)barButtonItems {
+	return [self insertMarginAdjustment:-8 forBRMenuNavigationBarButtonItems:barButtonItems];
+}
+
++ (NSArray *)marginAdjustedBRMenuLeftToolbarBarButtonItems:(NSArray *)barButtonItems {
+	UIBarButtonItem *adjustLeft = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+	adjustLeft.width = -8;
+	NSMutableArray *result = [[NSMutableArray alloc] initWithObjects:adjustLeft, nil];
+	[result addObjectsFromArray:barButtonItems];
+	return result;
+}
+
++ (NSArray *)marginAdjustedBRMenuRightToolbarBarButtonItems:(NSArray *)barButtonItems {
+	UIBarButtonItem *adjustRight = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+	adjustRight.width = -8;
+	NSMutableArray *result = [[NSMutableArray alloc] initWithArray:barButtonItems];
+	[result addObject:adjustRight];
+	return result;
+}
+
 #pragma mark - Support
 
-+ (BRMenuBarButtonItemView *)standardBarButtonItemCustomViewWithTitle:(NSString *)title target:(id)target action:(SEL)action {
-	BRMenuBarButtonItemView *view = [[BRMenuBarButtonItemView alloc] initWithTitle:title];
++ (BRMenuButton *)standardBarButtonItemCustomViewWithTitle:(NSString *)title target:(id)target action:(SEL)action {
+	BRMenuButton *view = [[BRMenuButton alloc] initWithTitle:title];
 	CGSize size = [view intrinsicContentSize];
 	view.frame = CGRectMake(0, 0, size.width, size.height);
 	if ( target && action ) {

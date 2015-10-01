@@ -91,7 +91,7 @@
 	NSData *data = [order dataForBarcodeEncoding];
 	assertThat(data, notNilValue());
 	assertThatUnsignedInteger([data length], equalTo(@(kExpectedEncodedSize)));
-	UInt8 bytes[kExpectedEncodedSize];
+	uint8_t bytes[kExpectedEncodedSize];
 	[data getBytes:&bytes length:kExpectedEncodedSize];
 	assertThatUnsignedInt(bytes[0], describedAs(@"encoding format %0", equalTo(@(BRMenuOrderEncodingFormat_v1)), @(BRMenuOrderEncodingFormat_v1), nil));
 	assertThatUnsignedInt(bytes[1], describedAs(@"version hi byte %0", equalTo(@0), @0, nil));
@@ -119,7 +119,7 @@
 	
 	const NSUInteger kExpectedEncodedSize = 19;
 	
-	UInt8 buf[kExpectedEncodedSize] = {1,0,1,'T','e','s','t',0,1,1,1,3,1,4,4,0,0xA,0xA,1};
+	uint8_t buf[kExpectedEncodedSize] = {1,0,1,'T','e','s','t',0,1,1,1,3,1,4,4,0,0xA,0xA,1};
 	NSData *data = [NSData dataWithBytes:&buf length:kExpectedEncodedSize];
 	BRMenuOrder *order = [BRMenuOrder orderWithBarcodeData:data menuProvider:provider];
 	assertThat(order, notNilValue());

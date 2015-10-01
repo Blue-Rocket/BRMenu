@@ -13,11 +13,15 @@
 #import "BRMenuItem.h"
 #import "BRMenuOrderItem.h"
 #import "BRMenuStepper.h"
+#import "BRMenuTagGridView.h"
 
 static const CGFloat kPriceTopMargin = 0;
 static const CGFloat kDescTopMargin = 4;
+static const CGFloat kTagGridHorizontalMargin = 10;
 
 @implementation BRMenuItemCellWithoutComponents {
+	BRMenuTagGridView *tagGridView;
+	MASConstraint *tagGridLeftMargin; // to collapse if no tag grid
 	MASConstraint *titleBottom;
 	MASConstraint *descBottom;
 	MASConstraint *priceTopMargin;
@@ -50,6 +54,12 @@ static const CGFloat kDescTopMargin = 4;
 	self.stepper = s;
 	[self.contentView addSubview:s];
 	
+	// tag grid: left of stepper, center Y aligned
+	BRMenuTagGridView *t = [[BRMenuTagGridView alloc] initWithFrame:CGRectZero];
+	[t setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
+	tagGridView = t;
+	[self.contentView addSubview:t];
+	
 	// price: beneath title
 	l = [[UILabel alloc] initWithFrame:CGRectZero];
 	l.numberOfLines = 1;
@@ -75,6 +85,11 @@ static const CGFloat kDescTopMargin = 4;
 
 - (void)refreshForItem:(id<BRMenuItemObject>)item {
 	[super refreshForItem:item];
+	NSArray *tags = nil;
+	if ( [item respondsToSelector:@selector(menuItemTags)] ) {
+		tags = [(BRMenuItem *)item menuItemTags];
+	}
+	tagGridView.tags = tags;
 	[self setNeedsUpdateConstraints];
 }
 
@@ -86,9 +101,10 @@ static const CGFloat kDescTopMargin = 4;
 - (void)refreshStyle:(BRUIStyle *)style {
 	[super refreshStyle:style];
 	self.title.font = style.fonts.listFont;
-	self.title.textColor = (self.selected ? style.colors.primaryColor : style.colors.textColor);
+	self.title.textColor = (self.disabled ? style.colors.placeholderColor : self.selected ? style.colors.primaryColor : style.colors.textColor);
 	self.desc.font = style.fonts.listCaptionFont;
-	self.desc.textColor = style.colors.captionColor;
+	self.desc.textColor = (self.disabled ? style.colors.placeholderColor : style.colors.captionColor);
+	self.stepper.enabled = !self.disabled;
 }
 
 - (void)updateConstraints {
@@ -101,10 +117,17 @@ static const CGFloat kDescTopMargin = 4;
 			titleBottom = make.bottom.equalTo(@(-padding.bottom));
 		}];
 	}
+	if ( tagGridView.constraints.count < 1 ) {
+		[tagGridView mas_makeConstraints:^(MASConstraintMaker *make) {
+			tagGridLeftMargin = make.left.equalTo(self.title.mas_right).with.offset(kTagGridHorizontalMargin);
+			make.top.equalTo(self.contentView);
+			make.bottom.equalTo(self.contentView);
+		}];
+	}
 	if ( self.stepper.constraints.count < 1 ) {
 		// give stepper minimum of 44 height, so cells with only a single line title aren't too short
 		[self.stepper mas_makeConstraints:^(MASConstraintMaker *make) {
-			make.left.equalTo(self.title.mas_right).with.offset(10);
+			make.left.equalTo(tagGridView.mas_right).with.offset(kTagGridHorizontalMargin);
 			make.right.equalTo(self.contentView.mas_rightMargin).with.offset(BRMenuStepperPadding.width);
 			make.height.equalTo(@44);
 			make.centerY.equalTo(self.contentView);
@@ -126,6 +149,7 @@ static const CGFloat kDescTopMargin = 4;
 		[descBottom uninstall];
 		descBottom.priority(MASLayoutPriorityRequired);
 	}
+	tagGridLeftMargin.offset(tagGridView.tags.count > 0 ? kTagGridHorizontalMargin : 0);
 	priceTopMargin.offset(item.price ? kPriceTopMargin : 0);
 	descTopMargin.offset(item.desc ? kDescTopMargin : 0);
 	if ( item.price || item.desc ) {

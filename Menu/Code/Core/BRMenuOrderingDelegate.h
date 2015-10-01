@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class BRMenuOrderItem;
+@protocol BRMenuItemObject;
 
 /**
  A delegate to the ordering process, tasked with managing an active order.
@@ -30,6 +31,17 @@
  
  @param orderItems The array of order items to update the active order with.
  */
-- (void)updateOrderItemsInActiveOrder:(NSArray *)orderItems;
+- (void)updateOrderItemsInActiveOrder:(NSArray<BRMenuOrderItem *> *)orderItems;
+
+/**
+ Inform the sender if a specific menu item should be excluded from ordering.
+ 
+ This can be used to exclude out of stock menu items, for example.
+ 
+ @param item   The item in question.
+ 
+ @return @c YES if @c menuItem should not be allowed to be ordered.
+ */
+- (BOOL)shouldExcludeMenuItemObject:(id<BRMenuItemObject>)item;
 
 @end

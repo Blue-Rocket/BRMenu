@@ -8,7 +8,7 @@
 
 #import "BRMenuOrderReviewViewController.h"
 
-#import "BRMenuBarButtonItemView.h"
+#import "BRMenuButton.h"
 #import "BRMenuFlipToggleButton.h"
 #import "BRMenuGroupTableHeaderView.h"
 #import "BRMenuItem.h"
@@ -66,19 +66,27 @@ static void * kOrderTotalPriceContext = &kOrderTotalPriceContext;
 	[self refreshForStyle:self.uiStyle];
 	
 	if ( !self.navigationItem.leftBarButtonItem ) {
-		self.navigationItem.leftBarButtonItem = [UIBarButtonItem standardBRMenuBackButtonItemWithTitle:nil
-																								target:self
-																								action:@selector(goBack:)];
+		NSArray *leftItems = @[[UIBarButtonItem standardBRMenuBackButtonItemWithTitle:nil target:self action:@selector(goBack:)]];
+		self.navigationItem.leftBarButtonItems = [UIBarButtonItem marginAdjustedBRMenuLeftNavigationBarButtonItems:leftItems];
 	}
 	if ( self.navigationItem.rightBarButtonItem == nil ) {
 		UIBarButtonItem *rightItem = [UIBarButtonItem standardBRMenuBarButtonItemWithTitle:[NSBundle localizedBRMenuString:@"menu.action.edit"]
 																					target:self
 																					action:@selector(toggleEditing:)];
-		self.navigationItem.rightBarButtonItem = rightItem;
+		self.navigationItem.rightBarButtonItems = [UIBarButtonItem marginAdjustedBRMenuRightNavigationBarButtonItems:@[rightItem]];
 		self.editButton = rightItem.customView;
 	}
 
 	[self.tableView reloadData];
+	
+	if ( [self.checkoutTotalButton.superview isKindOfClass:[UIToolbar class]] && [self.checkoutTotalButton isKindOfClass:[BRMenuButton class]] ) {
+		UIToolbar *toolbar = (UIToolbar *)self.checkoutTotalButton.superview;
+		if ( [toolbar.items lastObject].customView == self.checkoutTotalButton ) {
+			// adjust our right margin to align better within a toolbar
+			toolbar.items = [UIBarButtonItem marginAdjustedBRMenuRightToolbarBarButtonItems:toolbar.items];
+		}
+	}
+	
 	[self refreshFromModel];
 }
 
@@ -172,8 +180,8 @@ static void * kOrderTotalPriceContext = &kOrderTotalPriceContext;
 
 - (IBAction)toggleEditing:(id)sender {
 	[self setEditing:!self.editing animated:YES];
-	if ( [sender isKindOfClass:[BRMenuBarButtonItemView class]] ) {
-		BRMenuBarButtonItemView *editingButton = (BRMenuBarButtonItemView *)sender;
+	if ( [sender isKindOfClass:[BRMenuButton class]] ) {
+		BRMenuButton *editingButton = (BRMenuButton *)sender;
 		editingButton.title = (self.editing
 							   ? [NSBundle localizedBRMenuString:@"menu.action.done"]
 							   : [NSBundle localizedBRMenuString:@"menu.action.edit"]);
@@ -250,7 +258,7 @@ static void * kOrderTotalPriceContext = &kOrderTotalPriceContext;
 	
 	// special consideration for takeaway rows, to handle proxies
 	if ( orderItem.item.askTakeaway && orderItem.quantity > 1 ) {
-		const UInt8 removeIndex = ([orderItem isProxy] ? ((BRMenuOrderItemAttributesProxy *)orderItem).index : 0);
+		const uint8_t removeIndex = ([orderItem isProxy] ? ((BRMenuOrderItemAttributesProxy *)orderItem).index : 0);
 		NSUInteger remapIndex;
 		const NSUInteger endRemapIndex = row + orderItem.quantity - removeIndex;
 		for ( remapIndex = row + 1; remapIndex < endRemapIndex; remapIndex++ ) {
@@ -292,7 +300,7 @@ static void * kOrderTotalPriceContext = &kOrderTotalPriceContext;
 	if ( orderItem.item.askTakeaway ) {
 		// For items that support take away, we don't create duplicate items. Instead we manage each "duplicate" as a proxy
 		// for the attributes at a speicific index within a single BRMenuOrderItem.
-		const UInt8 index = [orderItem.attributes count];
+		const uint8_t index = [orderItem.attributes count];
 		BRMenuOrderItemAttributes *attr = [BRMenuOrderItemAttributes new];
 		attr.takeAway = orderItem.takeAway;
 		[orderItem setAttributes:attr atIndex:index];

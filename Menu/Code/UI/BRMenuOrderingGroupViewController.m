@@ -8,6 +8,7 @@
 
 #import "BRMenuOrderingGroupViewController.h"
 
+#import <BRStyle/BRUIStylishHost.h>
 #import <Masonry/Masonry.h>
 #import "BRMenuGroupTableHeaderView.h"
 #import "BRMenuItem.h"
@@ -21,7 +22,6 @@
 #import "BRMenuOrderingViewController.h"
 #import "BRMenuOrderItem.h"
 #import "BRMenuStepper.h"
-#import <BRStyle/BRUIStylishHost.h>
 #import "NSBundle+BRMenu.h"
 #import "UIBarButtonItem+BRMenu.h"
 #import "UIView+BRUIStyle.h"
@@ -57,9 +57,8 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 	self.navigationItem.title = [NSString stringWithFormat:[NSBundle localizedBRMenuString:@"menu.ordering.group.title"], flowController.itemGroup.title];
 	
 	if ( !self.navigationItem.leftBarButtonItem ) {
-		self.navigationItem.leftBarButtonItem = [UIBarButtonItem standardBRMenuBackButtonItemWithTitle:nil
-																								target:self
-																								action:@selector(goBack:)];
+		NSArray *leftItems = @[[UIBarButtonItem standardBRMenuBackButtonItemWithTitle:nil target:self action:@selector(goBack:)]];
+		self.navigationItem.leftBarButtonItems = [UIBarButtonItem marginAdjustedBRMenuLeftNavigationBarButtonItems:leftItems];
 	}
 	[self refreshForStyle:self.uiStyle];
 }
@@ -78,9 +77,10 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 	}
 	flowController = controller;
 	if ( !self.navigationItem.rightBarButtonItem && flowController.hasMenuItemWithoutComponents ) {
-		self.navigationItem.rightBarButtonItem = [UIBarButtonItem standardBRMenuBarButtonItemWithTitle:[NSBundle localizedBRMenuString:@"menu.action.saveto.order"]
-																								target:self
-																								action:@selector(saveToOrder:)];
+		UIBarButtonItem *saveItem = [UIBarButtonItem standardBRMenuBarButtonItemWithTitle:[NSBundle localizedBRMenuString:@"menu.action.saveto.order"]
+																				   target:self
+																				   action:@selector(saveToOrder:)];
+		self.navigationItem.rightBarButtonItems = [UIBarButtonItem marginAdjustedBRMenuRightNavigationBarButtonItems:@[saveItem]];
 	}
 }
 
@@ -118,13 +118,17 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 	}
 }
 
-- (void)updateOrderItemsInActiveOrder:(NSArray *)orderItems {
+- (void)updateOrderItemsInActiveOrder:(NSArray<BRMenuOrderItem *> *)orderItems {
 	if ( flowController.hasMenuItemWithoutComponents ) {
 		[flowController.temporaryOrder replaceOrderItems:orderItems];
 		[self.navigationController popToViewController:self animated:YES];
 	} else {
 		[self.orderingDelegate updateOrderItemsInActiveOrder:orderItems];
 	}
+}
+
+- (BOOL)shouldExcludeMenuItemObject:(id<BRMenuItemObject>)item {
+	return [self.orderingDelegate shouldExcludeMenuItemObject:item];
 }
 
 #pragma mark - Navigation
@@ -179,6 +183,8 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 			[directCell.stepper addTarget:self action:@selector(didAdjustQuantity:) forControlEvents:UIControlEventValueChanged];
 		}
 	}
+	
+	cell.disabled = [self shouldExcludeMenuItemObject:item];
 
 	// calling this (often, but not always) fixes an apparent bug in iOS 8.4 where the first pass of
 	// drawing the cells results in an incorrectly calculated height
@@ -188,7 +194,13 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
 	BRMenuItemObjectCell *cell = (BRMenuItemObjectCell *)[tableView cellForRowAtIndexPath:indexPath];
-	return cell.item.hasComponents;
+	id<BRMenuItemObject> item = cell.item;
+	BOOL excluded = [self shouldExcludeMenuItemObject:item];
+	if ( excluded ) {
+		NSString *msg = [NSString stringWithFormat:[NSBundle localizedBRMenuString:@"menu.validation.item.excluded"], item.title];
+		[[[UIAlertView alloc] initWithTitle:nil message:msg delegate:nil cancelButtonTitle:[NSBundle localizedBRMenuString:@"menu.action.ok"] otherButtonTitles:nil] show];
+	}
+	return (cell.item.hasComponents && !excluded);
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
