@@ -13,7 +13,13 @@
 /** A padding applied to the internal drawing of the control, so can be aligned to content if desired. */
 extern const CGSize BRMenuStepperPadding;
 
+/**
+ A button control that renders minus and plus icons and allows stepping a value up or down, like UIStepper.
+ */
 @interface BRMenuStepper : UIControl <BRUIStylish>
+
+/** A width and height to visual render the plus and minus buttons within. */
+@property (nonatomic, assign) IBInspectable CGSize stepButtonSize;
 
 @property (nonatomic) NSInteger value;
 @property (nonatomic) NSInteger minimumValue;
