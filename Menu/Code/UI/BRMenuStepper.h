@@ -21,9 +21,16 @@ extern const CGSize BRMenuStepperPadding;
 /** A width and height to visual render the plus and minus buttons within. */
 @property (nonatomic, assign) IBInspectable CGSize stepButtonSize;
 
+/** The value to display. */
 @property (nonatomic) NSInteger value;
+
+/** The minimum allowed value. */
 @property (nonatomic) NSInteger minimumValue;
+
+/** The maximum allowed value. */
 @property (nonatomic) NSInteger maximumValue;
+
+/** The increment/decrement amount. */
 @property (nonatomic) NSInteger stepValue;
 
 @end
