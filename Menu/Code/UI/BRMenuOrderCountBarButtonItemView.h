@@ -6,12 +6,16 @@
 //  Copyright (c) 2015 Blue Rocket. Distributable under the terms of the Apache License, Version 2.0.
 //
 
-#import "BRMenuBarButtonItemView.h"
+#import "BRMenuButton.h"
 
 @class BRMenuOrder;
 
-@interface BRMenuOrderCountBarButtonItemView : BRMenuBarButtonItemView
+/**
+ Specialized extension of @c BRMenuButton that displays the count of items in an order as the badge text value.
+ */
+@interface BRMenuOrderCountBarButtonItemView : BRMenuButton
 
+/** The order to display the item count for. */
 @property (nonatomic, strong) BRMenuOrder *order;
 
 @end
