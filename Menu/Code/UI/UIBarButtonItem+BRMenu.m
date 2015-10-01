@@ -9,7 +9,7 @@
 #import "UIBarButtonItem+BRMenu.h"
 
 #import "BRMenuBackBarButtonItemView.h"
-#import "BRMenuBarButtonItemView.h"
+#import "BRMenuButton.h"
 #import "NSBundle+BRMenu.h"
 
 @implementation UIBarButtonItem (BRMenu)
@@ -60,8 +60,8 @@
 
 #pragma mark - Support
 
-+ (BRMenuBarButtonItemView *)standardBarButtonItemCustomViewWithTitle:(NSString *)title target:(id)target action:(SEL)action {
-	BRMenuBarButtonItemView *view = [[BRMenuBarButtonItemView alloc] initWithTitle:title];
++ (BRMenuButton *)standardBarButtonItemCustomViewWithTitle:(NSString *)title target:(id)target action:(SEL)action {
+	BRMenuButton *view = [[BRMenuButton alloc] initWithTitle:title];
 	CGSize size = [view intrinsicContentSize];
 	view.frame = CGRectMake(0, 0, size.width, size.height);
 	if ( target && action ) {

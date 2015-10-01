@@ -8,7 +8,7 @@
 
 #import "BRMenuItemObjectCell.h"
 
-@class BRMenuBarButtonItemView;
+@protocol BRMenuUIControl;
 @class BRMenuFlipToggleButton;
 @class BRMenuOrderItem;
 @class BRMenuPlusMinusButton;
@@ -29,7 +29,7 @@
 @property (nonatomic, strong) IBOutlet BRMenuPlusMinusButton *plusButton;
 
 /** A button to delete the item. */
-@property (nonatomic, strong) IBOutlet BRMenuBarButtonItemView *deleteButton;
+@property (nonatomic, strong) IBOutlet UIButton<BRMenuUIControl> *deleteButton;
 
 /** The order item to display. This also will set the @ref item property to the associated @ref BRMenuItem. */
 @property (nonatomic, strong) BRMenuOrderItem *orderItem;

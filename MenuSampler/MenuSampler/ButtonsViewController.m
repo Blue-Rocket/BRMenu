@@ -15,9 +15,9 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet BRMenuStepper *stepper;
 @property (strong, nonatomic) IBOutlet BRMenuStepper *stepper2;
-@property (strong, nonatomic) IBOutlet BRMenuBarButtonItemView *cartButton;
-@property (strong, nonatomic) IBOutlet BRMenuBarButtonItemView *dangerousButton;
-@property (strong, nonatomic) IBOutlet BRMenuBarButtonItemView *inverseDisabledButton;
+@property (strong, nonatomic) IBOutlet BRMenuButton *cartButton;
+@property (strong, nonatomic) IBOutlet BRMenuButton *dangerousButton;
+@property (strong, nonatomic) IBOutlet BRMenuButton *inverseDisabledButton;
 
 @end
 

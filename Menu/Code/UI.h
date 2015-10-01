@@ -7,7 +7,7 @@
 //
 
 #import <MenuKit/BRMenuBackBarButtonItemView.h>
-#import <MenuKit/BRMenuBarButtonItemView.h>
+#import <MenuKit/BRMenuButton.h>
 #import <MenuKit/BRMenuFilledToggleButton.h>
 #import <MenuKit/BRMenuFitToWidthLabel.h>
 #import <MenuKit/BRMenuFlipToggleButton.h>
@@ -20,7 +20,7 @@
 #import <MenuKit/BRMenuLeftRightPlacementButton.h>
 #import <MenuKit/BRMenuLightHeavyQuantityButton.h>
 #import <MenuKit/BRMenuNavigationTitleView.h>
-#import <MenuKit/BRMenuOrderCountBarButtonItemView.h>
+#import <MenuKit/BRMenuOrderCountButton.h>
 #import <MenuKit/BRMenuOrderingComponentsViewController.h>
 #import <MenuKit/BRMenuOrderingGroupViewController.h>
 #import <MenuKit/BRMenuOrderingItemDetailsViewController.h>

@@ -1,9 +1,9 @@
 //
-//  BRMenuBarButtonItemView.h
-//  MenuKit
+//  BRMenuButton.h
+//  Menu
 //
-//  Created by Matt on 4/8/13.
-//  Copyright (c) 2013 Blue Rocket, Inc. Distributable under the terms of the Apache License, Version 2.0.
+//  Created by Matt on 1/10/15.
+//  Copyright © 2015 Blue Rocket. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -12,11 +12,7 @@
 #import <BRLocalize/BRLocalizable.h>
 #import <BRStyle/BRUIStylish.h>
 
-/**
- Button that renders a standard menu button with support for a title and badge value (for example count).
- */
-IB_DESIGNABLE
-@interface BRMenuBarButtonItemView : UIButton <BRLocalizable, BRMenuUIControl, BRUIStylish>
+@interface BRMenuButton : UIButton <BRLocalizable, BRMenuUIControl, BRUIStylish>
 
 /** A title to display as the button text. */
 @property (nonatomic, copy) IBInspectable NSString *title;
@@ -26,6 +22,9 @@ IB_DESIGNABLE
 
 /** Flag to render the button in "inverse" mode, to support use within a UINavigationBar or UIToolbar. */
 @property (nonatomic, getter = isInverse) IBInspectable BOOL inverse;
+
+/** Manage a destructive state. */
+@property (nonatomic, assign, getter=isDestructive) IBInspectable BOOL destructive;
 
 /** A custom fill color to use. */
 @property (nonatomic, strong) IBInspectable UIColor *fillColor;
