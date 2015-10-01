@@ -40,6 +40,9 @@ static const CGFloat kMinWidth = 48.0f;
 	if ( (self = [super initWithCoder:aDecoder]) ) {
 		self.opaque = NO;
 		self.title = @"";
+		self.backgroundColor = [UIColor clearColor];
+		self.adjustsImageWhenDisabled = NO;
+		self.adjustsImageWhenHighlighted = NO;
 	}
 	return self;
 }
@@ -51,8 +54,10 @@ static const CGFloat kMinWidth = 48.0f;
 - (id)initWithTitle:(NSString *)text {
 	if ( (self = [super initWithFrame:CGRectZero]) ) {
 		self.title = text;
-		self.backgroundColor = [UIColor clearColor];
 		self.opaque = NO;
+		self.backgroundColor = [UIColor clearColor];
+		self.adjustsImageWhenDisabled = NO;
+		self.adjustsImageWhenHighlighted = NO;
 	}
 	return self;
 }
@@ -63,40 +68,45 @@ static const CGFloat kMinWidth = 48.0f;
 }
 
 - (void)uiStyleDidChange:(BRUIStyle *)style {
-	[self refreshTitleStyle:style];
-	[self refreshBadgeStyle:style];
+	self.titleLabel.font = self.uiStyle.fonts.actionFont;
+	[self refreshTitleColor:style];
+	badgeLabel.font = self.titleLabel.font;
+	[self refreshBadgeColor:style];
 	[self invalidateIntrinsicContentSize];
 	[self setNeedsDisplay];
 }
 
-- (void)refreshTitleStyle:(BRUIStyle *)style {
+- (void)refreshTitleColor:(BRUIStyle *)style {
+	// the disabled/selected states are not respected by UIButton, so we have to set the Normal state always
 	BRUIStyleControlStateColorSettings *controlSettings = (inverse
 														   ? self.uiStyle.colors.inverseControlSettings
 														   : self.uiStyle.colors.controlSettings);
-	self.titleLabel.font = self.uiStyle.fonts.actionFont;
-	if ( self.destructive ) {
-		[self setTitleColor:controlSettings.dangerousColorSettings.actionColor forState:UIControlStateNormal];
-		[self setTitleColor:controlSettings.dangerousColorSettings.actionColor forState:UIControlStateHighlighted];
-	} else {
-		[self setTitleColor:controlSettings.normalColorSettings.actionColor forState:UIControlStateNormal];
-		[self setTitleColor:controlSettings.highlightedColorSettings.actionColor forState:UIControlStateHighlighted];
-	}
-	[self setTitleColor:controlSettings.disabledColorSettings.actionColor forState:UIControlStateDisabled];
+	BRUIStyleControlColorSettings *controlColors = (self.enabled == NO
+													? controlSettings.disabledColorSettings
+													: self.destructive
+													? controlSettings.dangerousColorSettings
+													: self.selected
+													? controlSettings.selectedColorSettings
+													: self.highlighted
+													? controlSettings.highlightedColorSettings
+													: controlSettings.normalColorSettings
+													);
+	[self setTitleColor:controlColors.actionColor forState:UIControlStateNormal];
 }
 
-- (void)refreshBadgeStyle:(BRUIStyle *)style {
+- (void)refreshBadgeColor:(BRUIStyle *)style {
 	BRUIStyleControlStateColorSettings *controlSettings = (inverse ? self.uiStyle.colors.inverseControlSettings : self.uiStyle.colors.controlSettings);
 	BRUIStyleControlColorSettings *controlColors = (self.enabled == NO
 													? controlSettings.disabledColorSettings
 													: self.destructive
 													? controlSettings.dangerousColorSettings
 													: controlSettings.selectedColorSettings);
-	badgeLabel.font = self.titleLabel.font;
 	badgeLabel.textColor = controlColors.actionColor;
 }
 
 - (void)controlStateDidChange:(UIControlState)state {
-	[self refreshBadgeStyle:self.uiStyle];
+	[self refreshTitleColor:self.uiStyle];
+	[self refreshBadgeColor:self.uiStyle];
 	[self setNeedsDisplay];
 }
 
@@ -113,7 +123,8 @@ static const CGFloat kMinWidth = 48.0f;
 	BOOL old = self.highlighted;
 	[super setHighlighted:highlighted];
 	if ( old != highlighted ) {
-		[self refreshBadgeStyle:self.uiStyle];
+		[self refreshTitleColor:self.uiStyle];
+		[self refreshBadgeColor:self.uiStyle];
 		[self setNeedsDisplay];
 	}
 }
@@ -122,7 +133,8 @@ static const CGFloat kMinWidth = 48.0f;
 	BOOL old = self.enabled;
 	[super setEnabled:enabled];
 	if ( old != enabled ) {
-		[self refreshBadgeStyle:self.uiStyle];
+		[self refreshTitleColor:self.uiStyle];
+		[self refreshBadgeColor:self.uiStyle];
 		[self setNeedsDisplay];
 	}
 }
@@ -131,7 +143,8 @@ static const CGFloat kMinWidth = 48.0f;
 	BOOL old = self.selected;
 	[super setSelected:enabled];
 	if ( old != enabled ) {
-		[self refreshBadgeStyle:self.uiStyle];
+		[self refreshTitleColor:self.uiStyle];
+		[self refreshBadgeColor:self.uiStyle];
 		[self setNeedsDisplay];
 	}
 }
@@ -261,9 +274,9 @@ static const CGFloat kMinWidth = 48.0f;
 	UIColor* strokeColor = (self.destructive ? controlSettings.dangerousColorSettings.borderColor : controlColors.borderColor);
 	UIColor* separatorColor = [strokeColor colorWithAlphaComponent: 0.8];
 	UIColor* pressedSeparatorColor = [separatorColor colorWithAlphaComponent: 0.4];
-	UIColor* fillColor = (self.fillColor ? self.fillColor : controlColors.fillColor);
+	UIColor* fillColor = (self.fillColor ? self.fillColor : pressed ? controlSettings.highlightedColorSettings.fillColor : controlColors.fillColor);
 	UIColor* strokeShadowColor = colorSettings.glossColor;
-	UIColor* pressedShadowColor = colorSettings.shadowColor;
+	UIColor* pressedShadowColor = controlSettings.highlightedColorSettings.shadowColor;
 	
 	//// Shadow Declarations
 	NSShadow* glossShadow = [[NSShadow alloc] init];
