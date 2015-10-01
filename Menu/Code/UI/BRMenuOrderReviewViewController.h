@@ -10,7 +10,7 @@
 
 #import <BRStyle/BRUIStylish.h>
 
-@class BRMenuBarButtonItemView;
+@class BRMenuButton;
 @class BRMenuOrder;
 
 extern NSString * const BRMenuOrderReviewOrderItemCellIdentifier;
@@ -30,7 +30,7 @@ extern NSString * const BRMenuOrderReviewViewOrderItemDetailsSegue;
 @property (nonatomic, strong) IBOutlet id editButton;
 
 /** A button that displays the order total price as the badge text. */
-@property (strong, nonatomic) IBOutlet BRMenuBarButtonItemView *checkoutTotalButton;
+@property (strong, nonatomic) IBOutlet BRMenuButton *checkoutTotalButton;
 
 /** The order to display the items for. */
 @property (nonatomic, strong) BRMenuOrder *order;

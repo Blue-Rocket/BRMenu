@@ -9,7 +9,7 @@
 #import "BRMenuOrderReviewCell.h"
 
 #import <Masonry/Masonry.h>
-#import "BRMenuBarButtonItemView.h"
+#import "BRMenuButton.h"
 #import "BRMenuFitToWidthLabel.h"
 #import "BRMenuFlipToggleButton.h"
 #import "BRMenuItem.h"
@@ -303,7 +303,7 @@ static void * kOrderItemQuantityContext = &kOrderItemQuantityContext;
 	[self.contentView addSubview:l];
 	
 	// delete confirmation: right
-	BRMenuBarButtonItemView *d = [[BRMenuBarButtonItemView alloc] initWithTitle:[NSBundle localizedBRMenuString:@"menu.action.delete"]];
+	BRMenuButton *d = [[BRMenuButton alloc] initWithTitle:[NSBundle localizedBRMenuString:@"menu.action.delete"]];
 	d.destructive = YES;
 	self.deleteButton = d;
 	[self.contentView addSubview:d];

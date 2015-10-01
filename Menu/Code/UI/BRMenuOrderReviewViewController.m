@@ -8,7 +8,7 @@
 
 #import "BRMenuOrderReviewViewController.h"
 
-#import "BRMenuBarButtonItemView.h"
+#import "BRMenuButton.h"
 #import "BRMenuFlipToggleButton.h"
 #import "BRMenuGroupTableHeaderView.h"
 #import "BRMenuItem.h"
@@ -79,7 +79,7 @@ static void * kOrderTotalPriceContext = &kOrderTotalPriceContext;
 
 	[self.tableView reloadData];
 	
-	if ( [self.checkoutTotalButton.superview isKindOfClass:[UIToolbar class]] && [self.checkoutTotalButton isKindOfClass:[BRMenuBarButtonItemView class]] ) {
+	if ( [self.checkoutTotalButton.superview isKindOfClass:[UIToolbar class]] && [self.checkoutTotalButton isKindOfClass:[BRMenuButton class]] ) {
 		UIToolbar *toolbar = (UIToolbar *)self.checkoutTotalButton.superview;
 		if ( [toolbar.items lastObject].customView == self.checkoutTotalButton ) {
 			// adjust our right margin to align better within a toolbar
@@ -180,8 +180,8 @@ static void * kOrderTotalPriceContext = &kOrderTotalPriceContext;
 
 - (IBAction)toggleEditing:(id)sender {
 	[self setEditing:!self.editing animated:YES];
-	if ( [sender isKindOfClass:[BRMenuBarButtonItemView class]] ) {
-		BRMenuBarButtonItemView *editingButton = (BRMenuBarButtonItemView *)sender;
+	if ( [sender isKindOfClass:[BRMenuButton class]] ) {
+		BRMenuButton *editingButton = (BRMenuButton *)sender;
 		editingButton.title = (self.editing
 							   ? [NSBundle localizedBRMenuString:@"menu.action.done"]
 							   : [NSBundle localizedBRMenuString:@"menu.action.edit"]);
