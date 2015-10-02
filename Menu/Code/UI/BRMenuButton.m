@@ -185,7 +185,7 @@ static const CGFloat kMinWidth = 48.0f;
 - (CGRect)titleRectForContentRect:(CGRect)contentRect {
 	CGRect result = [super titleRectForContentRect:contentRect];
 	// adjust for badge
-	CGFloat badgeWidth = badgeLabel.bounds.size.width;
+	CGFloat badgeWidth = [self badgeFrameWidthForMaxHeight:self.bounds.size.height];
 	result.origin.x -= badgeWidth / 2;
 	return result;
 }
