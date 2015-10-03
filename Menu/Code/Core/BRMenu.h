@@ -18,6 +18,9 @@
 @interface BRMenu : NSObject <BRMenuGroupObject, NSSecureCoding>
 
 @property (nonatomic, copy) NSString *key; // unique value between other BRMenu instances, assigned by data
+
+/** A display-friendly title for this menu. */
+@property (nonatomic, copy) NSString *title;
 @property (nonatomic) uint16_t version;
 @property (nonatomic, copy) NSArray *items; // BRMenuItem
 @property (nonatomic, copy) NSArray *groups; // BRMenuItemGroup

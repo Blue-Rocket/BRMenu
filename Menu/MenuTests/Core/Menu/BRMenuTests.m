@@ -71,6 +71,7 @@
 - (void)testArchive {
 	BRMenu *menu = [BRMenu new];
 	menu.key = @"k";
+	menu.title = @"K";
 	menu.version = 1;
 	
 	BRMenuItem *item = [BRMenuItem new];
@@ -111,8 +112,9 @@
 	BRMenu *unarchived = [NSKeyedUnarchiver unarchiveObjectWithData:[NSKeyedArchiver archivedDataWithRootObject:menu]];
 	assertThat(unarchived, notNilValue());
 	assertThat(unarchived, isNot(sameInstance(item)));
-	assertThatUnsignedInt(unarchived.version, equalToUnsignedInt(menu.version));
 	assertThat(unarchived.key, equalTo(menu.key));
+	assertThat(unarchived.title, equalTo(menu.title));
+	assertThatUnsignedInt(unarchived.version, equalToUnsignedInt(menu.version));
 	
 	assertThat(unarchived.items, hasCountOf(1));
 	assertThat([unarchived.items[0] key], equalTo(item.key));
