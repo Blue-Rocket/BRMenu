@@ -50,4 +50,11 @@ extern NSString * const BRMenuOrderReviewViewOrderItemDetailsSegue;
  */
 - (void)refreshForStyle:(BRUIStyle *)style;
 
+/**
+ Refresh views from changes to the order model.
+ 
+ This method is designed for subclasses to override. Subclasses must call the super implementation at some point within their own implementation.
+ */
+- (void)refreshFromModel;
+
 @end
