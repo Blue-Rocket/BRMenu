@@ -14,7 +14,9 @@
 @interface NSNumberFormatter (BRMenu)
 
 /**
- Get a formatter suitable for formatting prices.
+ Get a formatter suitable for formatting prices in the US locale.
+ 
+ The formatter will be configured to return @c NSDecimalNumber values when parsing strings.
  
  @return A number formatter instance.
  */
