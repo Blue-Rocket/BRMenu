@@ -82,7 +82,6 @@
 		[plusVPath fill];
 	}
 	
-	
 	//// Plus H Drawing
 	UIBezierPath* plusHPath = [UIBezierPath bezierPathWithRect: CGRectMake(CGRectGetMinX(frame) + floor((CGRectGetWidth(frame) - 12) * 0.50000 + 0.5), CGRectGetMinY(frame) + floor((CGRectGetHeight(frame) - 2) * 0.50000 + 0.5), 12, 2)];
 	[labelColor setFill];
