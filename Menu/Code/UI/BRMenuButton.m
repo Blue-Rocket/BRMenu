@@ -119,6 +119,15 @@ static const CGFloat kMinWidth = 48.0f;
 	}
 }
 
+- (void)setInverse:(BOOL)value {
+	if ( value != inverse ) {
+		inverse = value;
+		[self refreshTitleColor:self.uiStyle];
+		[self refreshBadgeColor:self.uiStyle];
+		[self setNeedsDisplay];
+	}
+}
+
 - (void)setHighlighted:(BOOL)highlighted {
 	BOOL old = self.highlighted;
 	[super setHighlighted:highlighted];
