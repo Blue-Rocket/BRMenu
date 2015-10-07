@@ -8,16 +8,14 @@
 
 #import "BRMenuPlusMinusButton.h"
 
-#import <BRStyle/BRUIStylishHost.h>
-#import "UIControl+BRMenu.h"
-#import "UIView+BRUIStyle.h"
+#import <BRStyle/Core.h>
 
 @interface BRMenuPlusMinusButton () <BRUIStylishHost>
 @end
 
 @implementation BRMenuPlusMinusButton
 
-@dynamic destructive;
+@dynamic dangerous;
 @dynamic uiStyle;
 
 - (id)initWithFrame:(CGRect)frame {
@@ -89,24 +87,25 @@
 }
 
 - (void)drawNormal {
+	UIControlState renderState = UIControlStateNormal;
+	if ( self.selected ) {
+		renderState |= UIControlStateSelected;
+	}
+	if ( self.dangerous ) {
+		renderState |= BRUIStyleControlStateDangerous;
+	}
+	
+	BRUIStyleControlSettings *controlSettings = [self uiStyleForState:renderState].controls;
+	
 	//// General Declarations
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
-	const BOOL selected = self.selected;
-	const BOOL destructive = self.destructive;
-	
 	//// Color Declarations
-	UIColor* strokeColor = (destructive ? self.uiStyle.colors.controlSettings.dangerousColorSettings.borderColor :
-							selected ? self.uiStyle.colors.controlSettings.selectedColorSettings.borderColor :
-							self.uiStyle.colors.controlSettings.normalColorSettings.borderColor);
-	UIColor* labelColor = (destructive ? self.uiStyle.colors.controlSettings.dangerousColorSettings.actionColor :
-						   selected ? self.uiStyle.colors.controlSettings.selectedColorSettings.actionColor :
-						   self.uiStyle.colors.controlSettings.normalColorSettings.actionColor);
+	UIColor* strokeColor = controlSettings.borderColor;
+	UIColor* labelColor = controlSettings.actionColor;
 	
 	//// Shadow Declarations
-	UIColor* shadow = (destructive ? self.uiStyle.colors.controlSettings.dangerousColorSettings.glossColor :
-					   selected ? self.uiStyle.colors.controlSettings.selectedColorSettings.glossColor :
-					   self.uiStyle.colors.controlSettings.normalColorSettings.glossColor);
+	UIColor* shadow = controlSettings.glossColor;
 	CGSize shadowOffset = CGSizeMake(0.1, 1.1);
 	CGFloat shadowBlurRadius = 0;
 	
@@ -127,21 +126,24 @@
 }
 
 - (void)drawHighlighted {
+	UIControlState renderState = UIControlStateHighlighted;
+	if ( self.selected ) {
+		renderState |= UIControlStateSelected;
+	}
+	if ( self.dangerous ) {
+		renderState |= BRUIStyleControlStateDangerous;
+	}
+	
+	BRUIStyleControlSettings *controlSettings = [self uiStyleForState:renderState].controls;
+	
 	//// General Declarations
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
-	const BOOL selected = self.selected;
-	const BOOL destructive = self.destructive;
-	
 	//// Color Declarations
-	UIColor* strokeColor = (destructive ? self.uiStyle.colors.controlSettings.dangerousColorSettings.borderColor :
-							selected ? self.uiStyle.colors.controlSettings.selectedColorSettings.borderColor :
-							self.uiStyle.colors.controlSettings.highlightedColorSettings.borderColor);
-	UIColor* labelColor = (destructive ? self.uiStyle.colors.controlSettings.dangerousColorSettings.actionColor :
-						   selected ? self.uiStyle.colors.controlSettings.selectedColorSettings.actionColor :
-						   self.uiStyle.colors.controlSettings.highlightedColorSettings.actionColor);
+	UIColor* strokeColor = controlSettings.borderColor;
+	UIColor* labelColor = controlSettings.actionColor;
 	UIColor* insetShadowColor = [labelColor colorWithAlphaComponent: 0.5];
-	UIColor* highlightedFill = self.uiStyle.colors.controlSettings.highlightedColorSettings.fillColor;
+	UIColor* highlightedFill = controlSettings.fillColor;
 	
 	//// Shadow Declarations
 	UIColor* depressedShadow = insetShadowColor;

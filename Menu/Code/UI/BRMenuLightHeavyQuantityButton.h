@@ -10,7 +10,6 @@
 
 #import "BRMenuOrderItemComponent.h"
 
-IB_DESIGNABLE
 @interface BRMenuLightHeavyQuantityButton : BRMenuFilledToggleButton
 
 @property (nonatomic) BRMenuOrderItemComponentQuantity quantity;

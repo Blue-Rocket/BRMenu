@@ -9,7 +9,7 @@
 #import "BRMenuBackBarButtonItemView.h"
 
 #import <BRLocalize/Core.h>
-#import <BRStyle/BRUIStylishHost.h>
+#import <BRStyle/Core.h>
 #import "UIView+BRUIStyle.h"
 
 static const CGFloat kNormalHeight = 32.0f;
@@ -95,14 +95,14 @@ static const CGFloat kTextMargins = 5.0f;
 	//// General Declarations
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
-	BRUIStyleControlStateColorSettings *controlSettings = (inverse ? self.uiStyle.colors.inverseControlSettings : self.uiStyle.colors.controlSettings);
+	BRUIStyleControlSettings *controlSettings = [self uiStyleForState:UIControlStateNormal].controls;
 	
 	//// Color Declarations
-	UIColor* strokeColor = controlSettings.normalColorSettings.borderColor;
- 	UIColor* labelColor = controlSettings.normalColorSettings.actionColor;
+	UIColor* strokeColor = controlSettings.borderColor;
+ 	UIColor* labelColor = controlSettings.actionColor;
 	
 	//// Shadow Declarations
-	UIColor* shadow = controlSettings.normalColorSettings.glossColor;
+	UIColor* shadow = controlSettings.glossColor;
 	CGSize shadowOffset = CGSizeMake(0.1, 1.1);
 	CGFloat shadowBlurRadius = 0;
 	
@@ -156,13 +156,13 @@ static const CGFloat kTextMargins = 5.0f;
 	//// General Declarations
 	CGContextRef context = UIGraphicsGetCurrentContext();
 
-	BRUIStyleControlStateColorSettings *controlSettings = (inverse ? self.uiStyle.colors.inverseControlSettings : self.uiStyle.colors.controlSettings);
+	BRUIStyleControlSettings *controlSettings = [self uiStyleForState:UIControlStateHighlighted].controls;
 
 	//// Color Declarations
-	UIColor* strokeColor = controlSettings.highlightedColorSettings.borderColor;
-	UIColor* labelColor = controlSettings.highlightedColorSettings.actionColor;
-	UIColor* insetShadowColor = controlSettings.highlightedColorSettings.shadowColor;
-	UIColor* highlightedFill = controlSettings.highlightedColorSettings.fillColor;
+	UIColor* strokeColor = controlSettings.borderColor;
+	UIColor* labelColor = controlSettings.actionColor;
+	UIColor* insetShadowColor = controlSettings.shadowColor;
+	UIColor* highlightedFill = controlSettings.fillColor;
 	
 	//// Shadow Declarations
 	UIColor* depressedShadow = insetShadowColor;

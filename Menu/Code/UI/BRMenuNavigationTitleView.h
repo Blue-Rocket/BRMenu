@@ -16,7 +16,6 @@
  within the screen width, but adjusts the position when there are left or 
  right bar buttons items so that more of the title text appears.
  */
-IB_DESIGNABLE
 @interface BRMenuNavigationTitleView : UIView <BRLocalizable, BRUIStylish>
 
 /** The title to display. */

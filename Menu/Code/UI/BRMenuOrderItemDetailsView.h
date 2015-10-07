@@ -15,7 +15,6 @@
 /**
  View that renders the details of a single @c BRMenuOrderItem.
  */
-IB_DESIGNABLE
 @interface BRMenuOrderItemDetailsView : UIView <BRUIStylish>
 
 /** The order item to display. */

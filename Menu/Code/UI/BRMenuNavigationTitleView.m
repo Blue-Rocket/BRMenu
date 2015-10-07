@@ -9,7 +9,7 @@
 #import "BRMenuNavigationTitleView.h"
 
 #import <BRLocalize/Core.h>
-#import <BRStyle/BRUIStylishHost.h>
+#import <BRStyle/Core.h>
 #import "UIView+BRUIStyle.h"
 
 @interface BRMenuNavigationTitleView () <BRUIStylishHost>
@@ -41,9 +41,9 @@
 	titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds))];
 	titleLabel.backgroundColor = [UIColor clearColor];
 	titleLabel.font = self.uiStyle.fonts.navigationFont;
-	titleLabel.textColor = self.uiStyle.colors.inverseControlSettings.normalColorSettings.actionColor;
-	titleLabel.shadowColor = self.uiStyle.colors.inverseControlSettings.normalColorSettings.shadowColor;
-	titleLabel.shadowOffset = CGSizeMake(0, -1);
+	titleLabel.textColor = self.uiStyle.controls.actionColor;
+	titleLabel.shadowColor = self.uiStyle.controls.textShadow.shadowColor;
+	titleLabel.shadowOffset = self.uiStyle.controls.textShadow.shadowOffset;
 	titleLabel.textAlignment = NSTextAlignmentCenter;
 	[self addSubview:titleLabel];
 }

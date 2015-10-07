@@ -304,7 +304,7 @@ static void * kOrderItemQuantityContext = &kOrderItemQuantityContext;
 	
 	// delete confirmation: right
 	BRMenuButton *d = [[BRMenuButton alloc] initWithTitle:[NSBundle localizedBRMenuString:@"menu.action.delete"]];
-	d.destructive = YES;
+	d.dangerous = YES;
 	self.deleteButton = d;
 	[self.contentView addSubview:d];
 	

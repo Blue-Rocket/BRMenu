@@ -26,8 +26,8 @@
 /** Flag to render the button in an inverted display mode, to support showing on top of an alternate background, such as a UINavigationBar or UIToolbar. */
 @property (nonatomic, getter = isInverse) IBInspectable BOOL inverse UI_APPEARANCE_SELECTOR;
 
-/** Manage a destructive state. Setting this to @c YES causes the button to render using an alternate color scheme to represent an action that performs a destructive task. */
-@property (nonatomic, assign, getter=isDestructive) IBInspectable BOOL destructive;
+/** Manage a dangerous state. Setting this to @c YES causes the button to render using an alternate color scheme to represent an action that performs a dangerous task. */
+@property (nonatomic, assign, getter=isDangerous) IBInspectable BOOL dangerous;
 
 /** A custom fill color to use. */
 @property (nonatomic, strong) IBInspectable UIColor *fillColor;
