@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 
 #import <BRStyle/Core.h>
+#import <MenuKit/MenuKit.h>
 
 @interface AppDelegate ()
 
@@ -30,6 +31,43 @@
 	UIToolbar *toolbar = [UIToolbar appearance];
 	toolbar.tintColor = bar.tintColor;
 	toolbar.barTintColor = bar.barTintColor;
+	
+	BRUIStyle *baseStyle = [BRUIStyle defaultStyle];
+	
+	BRMenuBackBarButtonItemView *navBackButton = [BRMenuBackBarButtonItemView appearanceWhenContainedIn:[UINavigationBar class], nil];
+	BRMenuBackBarButtonItemView *toolbarBackButton = [BRMenuBackBarButtonItemView appearanceWhenContainedIn:[UIToolbar class], nil];
+	BRMenuButton *navButton = [BRMenuButton appearanceWhenContainedIn:[UINavigationBar class], nil];
+	BRMenuButton *toolbarButton = [BRMenuButton appearanceWhenContainedIn:[UIToolbar class], nil];
+	NSArray *inverted = @[navBackButton, toolbarBackButton, navButton, toolbarButton];
+	
+	// normal settings
+	BRMutableUIStyle *inverseStyle = [baseStyle mutableCopy];
+	inverseStyle.controls.actionColor = [UIColor whiteColor];
+	inverseStyle.controls.borderColor = [BRUIStyle colorWithRGBInteger:0x264891];
+	inverseStyle.controls.glossColor = [inverseStyle.controls.glossColor colorWithAlphaComponent:0.4];
+	inverseStyle.controls.shadowColor = [[UIColor whiteColor] colorWithAlphaComponent:0.3];
+	BRUIStyle *inverseNormalStyle = [inverseStyle copy];
+	for ( UIControl *control in inverted ) {
+		[control setUiStyle:inverseNormalStyle forState:UIControlStateNormal];
+	}
+	
+	// highlighted settings
+	inverseStyle.controls.shadowColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
+	inverseStyle.controls.fillColor = [[UIColor blackColor] colorWithAlphaComponent:0.1];
+	BRUIStyle *inverseHighlightedStyle = [inverseStyle copy];
+	for ( UIControl *control in inverted ) {
+		[control setUiStyle:inverseHighlightedStyle forState:UIControlStateHighlighted];
+	}
+	
+	// disabled settings
+	inverseStyle = [inverseNormalStyle mutableCopy];
+	inverseStyle.controls.actionColor = [BRUIStyle colorWithRGBInteger:0xCACACA];
+	inverseStyle.controls.borderColor = [inverseStyle.controls.borderColor colorWithAlphaComponent:0.8];
+	inverseStyle.controls.glossColor = [inverseStyle.controls.glossColor colorWithAlphaComponent:0.3];
+	BRUIStyle *inverseDisabled = [inverseStyle copy];
+	for ( UIControl *control in inverted ) {
+		[control setUiStyle:inverseDisabled forState:UIControlStateDisabled];
+	}
 }
 
 - (void)refreshAppearance {
