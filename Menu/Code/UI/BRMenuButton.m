@@ -9,10 +9,8 @@
 #import "BRMenuButton.h"
 
 #import <BRLocalize/Core.h>
-#import <BRStyle/BRUIStylishHost.h>
+#import <BRStyle/Core.h>
 #import <Masonry/Masonry.h>
-#import "UIControl+BRMenu.h"
-#import "UIView+BRUIStyle.h"
 
 static const CGFloat kNormalHeight = 32.0f;
 static const CGFloat kCompactHeight = 26.0f;
@@ -32,7 +30,7 @@ static const CGFloat kMinWidth = 48.0f;
 
 }
 
-@dynamic destructive;
+@dynamic dangerous;
 @dynamic uiStyle;
 @synthesize badgeText, title, inverse;
 
@@ -78,30 +76,13 @@ static const CGFloat kMinWidth = 48.0f;
 
 - (void)refreshTitleColor:(BRUIStyle *)style {
 	// the disabled/selected states are not respected by UIButton, so we have to set the Normal state always
-	BRUIStyleControlStateColorSettings *controlSettings = (inverse
-														   ? self.uiStyle.colors.inverseControlSettings
-														   : self.uiStyle.colors.controlSettings);
-	BRUIStyleControlColorSettings *controlColors = (self.enabled == NO
-													? controlSettings.disabledColorSettings
-													: self.destructive
-													? controlSettings.dangerousColorSettings
-													: self.selected
-													? controlSettings.selectedColorSettings
-													: self.highlighted
-													? controlSettings.highlightedColorSettings
-													: controlSettings.normalColorSettings
-													);
-	[self setTitleColor:controlColors.actionColor forState:UIControlStateNormal];
+	BRUIStyleControlSettings *controls = [self uiStyleForState:self.state].controls;
+	[self setTitleColor:controls.actionColor forState:UIControlStateNormal];
 }
 
 - (void)refreshBadgeColor:(BRUIStyle *)style {
-	BRUIStyleControlStateColorSettings *controlSettings = (inverse ? self.uiStyle.colors.inverseControlSettings : self.uiStyle.colors.controlSettings);
-	BRUIStyleControlColorSettings *controlColors = (self.enabled == NO
-													? controlSettings.disabledColorSettings
-													: self.destructive
-													? controlSettings.dangerousColorSettings
-													: controlSettings.selectedColorSettings);
-	badgeLabel.textColor = controlColors.actionColor;
+	BRUIStyleControlSettings *controls = [self uiStyleForState:self.state].controls;
+	badgeLabel.textColor = controls.actionColor;
 }
 
 - (void)controlStateDidChange:(UIControlState)state {
@@ -115,6 +96,15 @@ static const CGFloat kMinWidth = 48.0f;
 		title = text;
 		[self setTitle:text forState:UIControlStateNormal];
 		[self invalidateIntrinsicContentSize];
+		[self setNeedsDisplay];
+	}
+}
+
+- (void)setInverse:(BOOL)value {
+	if ( value != inverse ) {
+		inverse = value;
+		[self refreshTitleColor:self.uiStyle];
+		[self refreshBadgeColor:self.uiStyle];
 		[self setNeedsDisplay];
 	}
 }
@@ -185,7 +175,7 @@ static const CGFloat kMinWidth = 48.0f;
 - (CGRect)titleRectForContentRect:(CGRect)contentRect {
 	CGRect result = [super titleRectForContentRect:contentRect];
 	// adjust for badge
-	CGFloat badgeWidth = badgeLabel.bounds.size.width;
+	CGFloat badgeWidth = [self badgeFrameWidthForMaxHeight:self.bounds.size.height];
 	result.origin.x -= badgeWidth / 2;
 	return result;
 }
@@ -252,30 +242,22 @@ static const CGFloat kMinWidth = 48.0f;
 - (void)drawBadgeButtonWithButtonRect: (CGRect)buttonRect badgeWidth: (CGFloat)badgeWidth pressed: (BOOL)pressed
 {
 	//// BRStyle Declarations
-	BRUIStyleControlStateColorSettings *controlSettings = (inverse ? self.uiStyle.colors.inverseControlSettings : self.uiStyle.colors.controlSettings);
-	BRUIStyleControlColorSettings *colorSettings = (pressed ? controlSettings.highlightedColorSettings : controlSettings.normalColorSettings);
-
-	BRUIStyleControlColorSettings *controlColors = (self.selected
-													? controlSettings.selectedColorSettings
-													: self.enabled == NO
-													? controlSettings.disabledColorSettings
-													: pressed
-													? controlSettings.highlightedColorSettings
-													: self.destructive
-													? controlSettings.dangerousColorSettings
-													: controlSettings.normalColorSettings
-													);
+	UIControlState renderState = self.state;
+	if ( pressed ) {
+		renderState |= UIControlStateHighlighted;
+	}
+	BRUIStyleControlSettings *controlColors = [self uiStyleForState:renderState].controls;
 	
 	//// General Declarations
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
 	//// Color Declarations
-	UIColor* strokeColor = (self.destructive ? controlSettings.dangerousColorSettings.borderColor : controlColors.borderColor);
+	UIColor* strokeColor = controlColors.borderColor;
 	UIColor* separatorColor = [strokeColor colorWithAlphaComponent: 0.8];
 	UIColor* pressedSeparatorColor = [separatorColor colorWithAlphaComponent: 0.4];
-	UIColor* fillColor = (self.fillColor ? self.fillColor : pressed ? controlSettings.highlightedColorSettings.fillColor : controlColors.fillColor);
-	UIColor* strokeShadowColor = colorSettings.glossColor;
-	UIColor* pressedShadowColor = controlSettings.highlightedColorSettings.shadowColor;
+	UIColor* fillColor = (self.fillColor ? self.fillColor : controlColors.fillColor);
+	UIColor* strokeShadowColor = controlColors.glossColor;
+	UIColor* pressedShadowColor = controlColors.shadowColor;
 	
 	//// Shadow Declarations
 	NSShadow* glossShadow = [[NSShadow alloc] init];

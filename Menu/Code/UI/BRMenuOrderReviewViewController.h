@@ -41,4 +41,20 @@ extern NSString * const BRMenuOrderReviewViewOrderItemDetailsSegue;
  */
 @property (nonatomic, strong) NSDictionary *groupKeyMapping;
 
+/**
+ Refresh based on a specific style.
+ 
+ This method is designed for subclasses to override. Subclasses must call the super implementation at some point within their own implementation.
+ 
+ @param style The style to apply.
+ */
+- (void)refreshForStyle:(BRUIStyle *)style;
+
+/**
+ Refresh views from changes to the order model.
+ 
+ This method is designed for subclasses to override. Subclasses must call the super implementation at some point within their own implementation.
+ */
+- (void)refreshFromModel;
+
 @end

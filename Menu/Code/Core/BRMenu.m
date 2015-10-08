@@ -24,8 +24,9 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
 	if ( (self = [self init]) ) {
-		self.version = [aDecoder decodeIntForKey:NSStringFromSelector(@selector(version))];
 		self.key = [aDecoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(key))];
+		self.title = [aDecoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(title))];
+		self.version = [aDecoder decodeIntForKey:NSStringFromSelector(@selector(version))];
 		self.items = [aDecoder decodeObjectOfClasses:[NSSet setWithObjects:[NSArray class], [BRMenuItem class], nil] forKey:NSStringFromSelector(@selector(items))];
 		self.groups = [aDecoder decodeObjectOfClasses:[NSSet setWithObjects:[NSArray class], [BRMenuItemGroup class], nil] forKey:NSStringFromSelector(@selector(groups))];
 		self.tags = [aDecoder decodeObjectOfClasses:[NSSet setWithObjects:[NSArray class], [BRMenuItemTag class], nil] forKey:NSStringFromSelector(@selector(tags))];
@@ -34,8 +35,9 @@
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-	[aCoder encodeInt:self.version forKey:NSStringFromSelector(@selector(version))];
 	[aCoder encodeObject:self.key forKey:NSStringFromSelector(@selector(key))];
+	[aCoder encodeObject:self.title forKey:NSStringFromSelector(@selector(title))];
+	[aCoder encodeInt:self.version forKey:NSStringFromSelector(@selector(version))];
 	[aCoder encodeObject:self.items forKey:NSStringFromSelector(@selector(items))];
 	[aCoder encodeObject:self.groups forKey:NSStringFromSelector(@selector(groups))];
 	[aCoder encodeObject:self.tags forKey:NSStringFromSelector(@selector(tags))];

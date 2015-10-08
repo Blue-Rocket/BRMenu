@@ -11,7 +11,6 @@
 #import "BRMenuUIModelPropertyEditor.h"
 #import <BRStyle/BRUIStylish.h>
 
-IB_DESIGNABLE
 @interface BRMenuFilledToggleButton : UIControl <BRMenuUIModelPropertyEditor, BRUIStylish>
 
 @property (nonatomic, strong) IBInspectable UIColor *fillColor;

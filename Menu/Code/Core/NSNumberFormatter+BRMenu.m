@@ -17,8 +17,9 @@
 		// this WILL need to be updated if other countries are to be supported... could be from environment setting
 		NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
 		NSNumberFormatter *fmt = [[NSNumberFormatter alloc] init];
-		[fmt setLocale:usLocale];
-		[fmt setNumberStyle:NSNumberFormatterCurrencyStyle];
+		fmt.locale = usLocale;
+		fmt.numberStyle = NSNumberFormatterCurrencyStyle;
+		fmt.generatesDecimalNumbers = YES;
 		result = fmt;
 	}
 	return result;

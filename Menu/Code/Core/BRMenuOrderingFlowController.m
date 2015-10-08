@@ -359,7 +359,6 @@
 
 - (NSIndexPath *)indexPathForMenuItemObject:(id<BRMenuItemObject>)itemObject {
 	NSIndexPath *result = nil;
-	// TODO: rename groups to groups and create protocol for BRMenu and BRMenuItem to conform to
 	if ( itemGroup != nil ) {
 		NSUInteger idx = [itemGroup.items indexOfObjectIdenticalTo:itemObject];
 		if ( idx == NSNotFound ) {
@@ -370,9 +369,9 @@
 		}
 		result = [BRMenuOrderingFlowController indexPathForRow:idx inSection:1];
 	} else if ( item == nil ) {
-		NSUInteger idx = [menu.items indexOfObjectIdenticalTo:itemObject];
+		NSUInteger idx = [menu.items indexOfObjectIdenticalTo:(id)itemObject];
 		if ( idx == NSNotFound ) {
-			idx = [menu.groups indexOfObjectIdenticalTo:itemObject];
+			idx = [menu.groups indexOfObjectIdenticalTo:(id)itemObject];
 			if ( idx != NSNotFound ) {
 				idx += menu.items.count;
 			}

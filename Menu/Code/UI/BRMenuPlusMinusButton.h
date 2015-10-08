@@ -11,7 +11,6 @@
 #import "BRMenuUIControl.h"
 #import <BRStyle/BRUIStylish.h>
 
-IB_DESIGNABLE
 @interface BRMenuPlusMinusButton : UIControl <BRMenuUIControl, BRUIStylish>
 
 @property (nonatomic, getter = isPlus) IBInspectable BOOL plus;

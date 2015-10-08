@@ -9,7 +9,7 @@
 #import "BRMenuFilledToggleButton.h"
 
 #import <QuartzCore/QuartzCore.h>
-#import <BRStyle/BRUIStylishHost.h>
+#import <BRStyle/Core.h>
 #import "UIView+BRUIStyle.h"
 
 @interface BRMenuFilledToggleButton () <BRUIStylishHost>
@@ -68,7 +68,7 @@
 	l.backgroundColor = [UIColor clearColor].CGColor;
 	l.bounds = CGRectMake(0, 0, self.diameter, self.diameter);
 	l.borderWidth = 0.0f;
-	l.borderColor = self.uiStyle.colors.controlSettings.disabledColorSettings.borderColor.CGColor;
+	l.borderColor = [self uiStyleForState:UIControlStateDisabled].controls.borderColor.CGColor;
 	return l;
 }
 
@@ -192,7 +192,7 @@
 	[super layoutSubviews];
 	const CGRect b = self.bounds;
 	const CGRect frame = [self iconFrameInRect:b];
-	CGColorRef color = (self.selected ? self.fillColor.CGColor : self.uiStyle.colors.controlSettings.disabledColorSettings.borderColor.CGColor);
+	CGColorRef color = (self.selected ? self.fillColor.CGColor : [self uiStyleForState:UIControlStateDisabled].controls.borderColor.CGColor);
 	
 	[CATransaction begin];
 	[CATransaction setDisableActions:YES];

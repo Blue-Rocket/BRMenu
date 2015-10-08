@@ -9,46 +9,45 @@
 #import "AppDelegate.h"
 
 #import <BRStyle/Core.h>
+#import <MenuKit/MenuKit.h>
 
 @interface AppDelegate ()
 
 @end
 
-@implementation AppDelegate {
-	id styleChangeObserver;
-}
+@implementation AppDelegate
 
 - (void)setupAppearance {
-	UINavigationBar *bar = [UINavigationBar appearance];
-	bar.tintColor = [UIColor whiteColor];
-	bar.barTintColor = [BRUIStyle defaultStyle].colors.primaryColor;
-	[bar setTitleTextAttributes:@{
-								  NSForegroundColorAttributeName: [UIColor whiteColor],
-								  NSFontAttributeName: [BRUIStyle defaultStyle].fonts.navigationFont,
-								  }];
-	
-	UIToolbar *toolbar = [UIToolbar appearance];
-	toolbar.tintColor = bar.tintColor;
-	toolbar.barTintColor = bar.barTintColor;
-}
+	NSDictionary<NSString *, BRUIStyle *> *styles = [BRUIStyle registerDefaultStylesWithJSONResource:@"styles.json" inBundle:nil];
+	BRUIStyle *defaultStyle = [BRUIStyle defaultStyle];
+	BRUIStyle *navStyle = styles[@"bar-controls-normal"];
+	if ( navStyle ) {
+		UIBarButtonItem *bbItem = [UIBarButtonItem appearance];
+		[bbItem setTitleTextAttributes:@{ NSForegroundColorAttributeName: navStyle.controls.actionColor,
+										  NSFontAttributeName: navStyle.fonts.actionFont }
+							  forState:UIControlStateNormal];
 
-- (void)refreshAppearance {
-	// reapply appearance styles
-	for ( UIWindow *window in [UIApplication sharedApplication].windows ) {
-		for ( UIView *view in window.subviews ) {
-			[view removeFromSuperview];
-			[window addSubview:view];
-		}
+
+		UINavigationBar *bar = [UINavigationBar appearance];
+		bar.tintColor = navStyle.controls.actionColor;
+		bar.barTintColor = defaultStyle.colors.primaryColor;
+		[bar setTitleTextAttributes:@{
+									  NSForegroundColorAttributeName: navStyle.controls.actionColor,
+									  NSFontAttributeName: navStyle.fonts.navigationFont,
+									  }];
+		
+		UIToolbar *toolbar = [UIToolbar appearance];
+		toolbar.tintColor = bar.tintColor;
+		toolbar.barTintColor = bar.barTintColor;
+		
+		[BRMenuNavigationTitleView appearanceWhenContainedIn:[UINavigationBar class], nil].uiStyle = navStyle;
+		
+		[UITableViewCell appearance].tintColor = defaultStyle.colors.primaryColor;
 	}
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	[self setupAppearance];
-	styleChangeObserver = [[NSNotificationCenter defaultCenter] addObserverForName:BRStyleNotificationUIStyleDidChange object:nil queue:nil usingBlock:^(NSNotification *note) {
-		[AppDelegate cancelPreviousPerformRequestsWithTarget:self selector:@selector(refreshAppearance) object:nil];
-		[self setupAppearance];
-		[self performSelector:@selector(refreshAppearance) withObject:nil afterDelay:1];
-	}];
 	return YES;
 }
 

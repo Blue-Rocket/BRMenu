@@ -13,7 +13,6 @@
 /**
  Render a set of menu item tags as a grid of icons.
  */
-IB_DESIGNABLE
 @interface BRMenuTagGridView : UIView <BRUIStylish>
 
 @property (nonatomic, strong) NSArray *tags;  // of MenuItemTag

@@ -11,7 +11,6 @@
 #import <BRLocalize/BRLocalizable.h>
 #import <BRStyle/BRUIStylish.h>
 
-IB_DESIGNABLE
 @interface BRMenuBackBarButtonItemView : UIButton <BRLocalizable, BRUIStylish>
 
 @property (nonatomic, copy) IBInspectable NSString *title;

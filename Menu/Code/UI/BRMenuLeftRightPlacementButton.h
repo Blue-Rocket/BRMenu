@@ -10,7 +10,6 @@
 
 #import "BRMenuOrderItemComponent.h"
 
-IB_DESIGNABLE
 @interface BRMenuLeftRightPlacementButton : BRMenuFilledToggleButton
 
 @property (nonatomic) BRMenuOrderItemComponentPlacement placement;

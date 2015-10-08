@@ -99,8 +99,10 @@ static const CGFloat kMinimumBadgeWidth = (kNaturalWidth - kMinimumPlusMinusButt
 }
 
 - (void)refreshBadgeColor:(BRUIStyle *)style {
-	badgeLabel.textColor = (self.value > 0 ? self.uiStyle.colors.primaryColor :
-							self.uiStyle.colors.controlSettings.disabledColorSettings.actionColor);
+	BRUIStyleControlSettings *controlSettings = [self uiStyleForState:UIControlStateDisabled].controls;
+	badgeLabel.textColor = (self.value > 0
+							? style.colors.primaryColor
+							: controlSettings.actionColor);
 }
 
 - (void)uiStyleDidChange:(BRUIStyle *)style {
@@ -263,32 +265,28 @@ static const CGFloat kMinimumBadgeWidth = (kNaturalWidth - kMinimumPlusMinusButt
 	// TODO: cache drawing into stretchable image
 	CGRect frame = [self intrinsicContentFrame];
 	[self drawStepperWithFrame:frame plusPressed:plusHighlighted minusPressed:minusHighlighted plusEnabled:(_value < _maximumValue) minusEnabled:(_value > _minimumValue)];
-	
 }
 
 - (void)drawStepperWithFrame: (CGRect)frame plusPressed: (BOOL)plusPressed minusPressed: (BOOL)minusPressed plusEnabled: (BOOL)plusEnabled minusEnabled: (BOOL)minusEnabled
 {
 	//// BRStyle Declarations
-	BRUIStyleControlStateColorSettings *controlSettings = self.uiStyle.colors.controlSettings;
-	BRUIStyleControlColorSettings *controlColors = (self.selected
-													? controlSettings.selectedColorSettings
-													: self.enabled == NO
-													? controlSettings.disabledColorSettings
-													: controlSettings.normalColorSettings
-													);
+	BRUIStyleControlSettings *highlightedSettings = [self uiStyleForState:(self.state | UIControlStateHighlighted)].controls;
+	BRUIStyleControlSettings *disabledSettings = [self uiStyleForState:(self.state | UIControlStateDisabled)].controls;
+	BRUIStyleControlSettings *controlSettings = [self uiStyleForState:self.state].controls;
+
 	const CGFloat stepButtonWidth = self.stepButtonSize.width;
 
 	//// General Declarations
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
 	//// Color Declarations
-	UIColor* strokeColor = controlColors.borderColor;
-	UIColor* labelEnabledColor = controlSettings.normalColorSettings.actionColor;
-	UIColor* labelDisabledColor = controlSettings.disabledColorSettings.actionColor;
-	UIColor* fillColor = controlColors.fillColor;
-	UIColor* highlightedFillColor = controlSettings.highlightedColorSettings.fillColor;
-	UIColor* glossColor = controlColors.glossColor;
-	UIColor* pressedShadowColor = controlSettings.highlightedColorSettings.shadowColor;
+	UIColor* strokeColor = controlSettings.borderColor;
+	UIColor* labelEnabledColor = controlSettings.actionColor;
+	UIColor* labelDisabledColor = disabledSettings.actionColor;
+	UIColor* fillColor = controlSettings.fillColor;
+	UIColor* highlightedFillColor = highlightedSettings.fillColor;
+	UIColor* glossColor = controlSettings.glossColor;
+	UIColor* pressedShadowColor = highlightedSettings.shadowColor;
 
 	//// Shadow Declarations
 	NSShadow* glossShadow = [[NSShadow alloc] init];

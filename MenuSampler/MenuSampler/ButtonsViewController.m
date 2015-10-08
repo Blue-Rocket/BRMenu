@@ -29,10 +29,9 @@
 	BRMutableUIStyle *mStyle = [[BRUIStyle defaultStyle] mutableCopy];
 	mStyle.fonts.actionFont = [UIFont fontWithName:@"MarkerFelt-Thin" size:12];
 	mStyle.colors.primaryColor = [BRUIStyle colorWithRGBInteger:0x60ae2b];
-	mStyle.colors.controlSettings.selectedColorSettings.actionColor =  mStyle.colors.primaryColor;
 	self.stepper2.uiStyle = mStyle;
 	
-	self.dangerousButton.destructive = YES;
+	self.dangerousButton.dangerous = YES;
 }
 
 - (void)viewWillLayoutSubviews {
