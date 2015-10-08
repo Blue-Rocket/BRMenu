@@ -23,6 +23,7 @@
 		C9C909531B60ACA800DDF191 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9C909511B60ACA800DDF191 /* LaunchScreen.xib */; };
 		C9C9095F1B60ACA800DDF191 /* MenuSamplerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C9095E1B60ACA800DDF191 /* MenuSamplerTests.m */; };
 		C9C909741B60AEED00DDF191 /* ButtonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C909691B60AEED00DDF191 /* ButtonsViewController.m */; };
+		C9E4072E1BC6DBBF0051E0FE /* styles.json in Resources */ = {isa = PBXBuildFile; fileRef = C9E4072D1BC6DBBF0051E0FE /* styles.json */; settings = {ASSET_TAGS = (); }; };
 		EB56B03FDC1B34988D8AE8E7 /* libPods-MenuSampler-MenuSamplerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 13AF175B1790390430949838 /* libPods-MenuSampler-MenuSamplerTests.a */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		C9C9095E1B60ACA800DDF191 /* MenuSamplerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuSamplerTests.m; sourceTree = "<group>"; };
 		C9C909681B60AEED00DDF191 /* ButtonsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonsViewController.h; sourceTree = "<group>"; };
 		C9C909691B60AEED00DDF191 /* ButtonsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonsViewController.m; sourceTree = "<group>"; };
+		C9E4072D1BC6DBBF0051E0FE /* styles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = styles.json; sourceTree = "<group>"; };
 		FC5CEA451CC06D442DF7CE38 /* Pods-MenuSampler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MenuSampler.release.xcconfig"; path = "Pods/Target Support Files/Pods-MenuSampler/Pods-MenuSampler.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,6 +168,7 @@
 			children = (
 				C9C909431B60ACA800DDF191 /* Info.plist */,
 				C9C909441B60ACA800DDF191 /* main.m */,
+				C9E4072D1BC6DBBF0051E0FE /* styles.json */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				C9819DCB1B61CD64008A1393 /* menu-pizza.json in Resources */,
 				C9C909501B60ACA800DDF191 /* Images.xcassets in Resources */,
 				C9819DC91B61CD64008A1393 /* menu-donuts.json in Resources */,
+				C9E4072E1BC6DBBF0051E0FE /* styles.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

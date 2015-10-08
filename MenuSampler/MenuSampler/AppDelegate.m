@@ -15,78 +15,39 @@
 
 @end
 
-@implementation AppDelegate {
-	id styleChangeObserver;
-}
+@implementation AppDelegate
 
 - (void)setupAppearance {
-	UINavigationBar *bar = [UINavigationBar appearance];
-	bar.tintColor = [UIColor whiteColor];
-	bar.barTintColor = [BRUIStyle defaultStyle].colors.primaryColor;
-	[bar setTitleTextAttributes:@{
-								  NSForegroundColorAttributeName: [UIColor whiteColor],
-								  NSFontAttributeName: [BRUIStyle defaultStyle].fonts.navigationFont,
-								  }];
-	
-	UIToolbar *toolbar = [UIToolbar appearance];
-	toolbar.tintColor = bar.tintColor;
-	toolbar.barTintColor = bar.barTintColor;
-	
-	BRUIStyle *baseStyle = [BRUIStyle defaultStyle];
-	
-	BRMenuBackBarButtonItemView *navBackButton = [BRMenuBackBarButtonItemView appearanceWhenContainedIn:[UINavigationBar class], nil];
-	BRMenuBackBarButtonItemView *toolbarBackButton = [BRMenuBackBarButtonItemView appearanceWhenContainedIn:[UIToolbar class], nil];
-	BRMenuButton *navButton = [BRMenuButton appearanceWhenContainedIn:[UINavigationBar class], nil];
-	BRMenuButton *toolbarButton = [BRMenuButton appearanceWhenContainedIn:[UIToolbar class], nil];
-	NSArray *inverted = @[navBackButton, toolbarBackButton, navButton, toolbarButton];
-	
-	// normal settings
-	BRMutableUIStyle *inverseStyle = [baseStyle mutableCopy];
-	inverseStyle.controls.actionColor = [UIColor whiteColor];
-	inverseStyle.controls.borderColor = [BRUIStyle colorWithRGBInteger:0x264891];
-	inverseStyle.controls.glossColor = [inverseStyle.controls.glossColor colorWithAlphaComponent:0.4];
-	inverseStyle.controls.shadowColor = [[UIColor whiteColor] colorWithAlphaComponent:0.3];
-	BRUIStyle *inverseNormalStyle = [inverseStyle copy];
-	for ( UIControl *control in inverted ) {
-		[control setUiStyle:inverseNormalStyle forState:UIControlStateNormal];
-	}
-	
-	// highlighted settings
-	inverseStyle.controls.shadowColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
-	inverseStyle.controls.fillColor = [[UIColor blackColor] colorWithAlphaComponent:0.1];
-	BRUIStyle *inverseHighlightedStyle = [inverseStyle copy];
-	for ( UIControl *control in inverted ) {
-		[control setUiStyle:inverseHighlightedStyle forState:UIControlStateHighlighted];
-	}
-	
-	// disabled settings
-	inverseStyle = [inverseNormalStyle mutableCopy];
-	inverseStyle.controls.actionColor = [BRUIStyle colorWithRGBInteger:0xCACACA];
-	inverseStyle.controls.borderColor = [inverseStyle.controls.borderColor colorWithAlphaComponent:0.8];
-	inverseStyle.controls.glossColor = [inverseStyle.controls.glossColor colorWithAlphaComponent:0.3];
-	BRUIStyle *inverseDisabled = [inverseStyle copy];
-	for ( UIControl *control in inverted ) {
-		[control setUiStyle:inverseDisabled forState:UIControlStateDisabled];
-	}
-}
+	NSDictionary<NSString *, BRUIStyle *> *styles = [BRUIStyle registerDefaultStylesWithJSONResource:@"styles.json" inBundle:nil];
+	BRUIStyle *defaultStyle = [BRUIStyle defaultStyle];
+	BRUIStyle *navStyle = styles[@"bar-controls-normal"];
+	if ( navStyle ) {
+		UIBarButtonItem *bbItem = [UIBarButtonItem appearance];
+		[bbItem setTitleTextAttributes:@{ NSForegroundColorAttributeName: navStyle.controls.actionColor,
+										  NSFontAttributeName: navStyle.fonts.actionFont }
+							  forState:UIControlStateNormal];
 
-- (void)refreshAppearance {
-	// reapply appearance styles
-	for ( UIWindow *window in [UIApplication sharedApplication].windows ) {
-		for ( UIView *view in window.subviews ) {
-			[view removeFromSuperview];
-			[window addSubview:view];
-		}
+
+		UINavigationBar *bar = [UINavigationBar appearance];
+		bar.tintColor = navStyle.controls.actionColor;
+		bar.barTintColor = defaultStyle.colors.primaryColor;
+		[bar setTitleTextAttributes:@{
+									  NSForegroundColorAttributeName: navStyle.controls.actionColor,
+									  NSFontAttributeName: navStyle.fonts.navigationFont,
+									  }];
+		
+		UIToolbar *toolbar = [UIToolbar appearance];
+		toolbar.tintColor = bar.tintColor;
+		toolbar.barTintColor = bar.barTintColor;
+		
+		[BRMenuNavigationTitleView appearanceWhenContainedIn:[UINavigationBar class], nil].uiStyle = navStyle;
+		
+		[UITableViewCell appearance].tintColor = defaultStyle.colors.primaryColor;
 	}
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	[self setupAppearance];
-	styleChangeObserver = [[NSNotificationCenter defaultCenter] addObserverForName:BRStyleNotificationUIStyleDidChange object:nil queue:nil usingBlock:^(NSNotification *note) {
-		[AppDelegate cancelPreviousPerformRequestsWithTarget:self selector:@selector(refreshAppearance) object:nil];
-		[self setupAppearance];
-		[self performSelector:@selector(refreshAppearance) withObject:nil afterDelay:1];
-	}];
 	return YES;
 }
 

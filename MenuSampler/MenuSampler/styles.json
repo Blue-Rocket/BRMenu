@@ -1,0 +1,28 @@
+{
+	"default" : {},
+	"bar-controls-normal" : {
+		"controls" : {
+			"actionColor" : "#ffffffff",
+			"borderColor" : "#264891ff",
+			"glossColor" : "#ffffff66",
+			"shadowColor" : "#ffffff33"
+		}
+	},
+	"bar-controls-highlighted" : {
+		"controls" : {
+			"actionColor" : "#ffffffff",
+			"borderColor" : "#264891ff",
+			"glossColor" : "#ffffff66",
+			"shadowColor" : "#0000004c",
+			"fillColor" : "#00000019"
+		}
+	},
+	"bar-controls-disabled" : {
+		"controls" : {
+			"actionColor" : "#CACACAff",
+			"borderColor" : "#264891cc",
+			"glossColor" : "#ffffff66",
+			"shadowColor" : "#ffffff4c"
+		}
+	}
+}
