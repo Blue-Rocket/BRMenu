@@ -40,10 +40,6 @@
 	self.backgroundColor = [UIColor clearColor];
 	titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds))];
 	titleLabel.backgroundColor = [UIColor clearColor];
-	titleLabel.font = self.uiStyle.fonts.navigationFont;
-	titleLabel.textColor = self.uiStyle.controls.actionColor;
-	titleLabel.shadowColor = self.uiStyle.controls.textShadow.shadowColor;
-	titleLabel.shadowOffset = self.uiStyle.controls.textShadow.shadowOffset;
 	titleLabel.textAlignment = NSTextAlignmentCenter;
 	[self addSubview:titleLabel];
 }
@@ -52,8 +48,12 @@
 	self.title = [self.title localizedStringWithAppStrings:strings];
 }
 
-- (void)uStyleDidChange:(BRUIStyle *)style {
-	[self setNeedsDisplay];
+- (void)uiStyleDidChange:(BRUIStyle *)style {
+	titleLabel.font = style.fonts.navigationFont;
+	titleLabel.textColor = style.controls.actionColor;
+	titleLabel.shadowColor = style.controls.textShadow.shadowColor;
+	titleLabel.shadowOffset = style.controls.textShadow.shadowOffset;
+	[self setNeedsLayout];
 }
 
 #pragma mark - Accessors
