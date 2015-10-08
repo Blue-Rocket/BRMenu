@@ -19,7 +19,7 @@ extern const CGSize BRMenuStepperPadding;
 @interface BRMenuStepper : UIControl <BRUIStylish>
 
 /** A width and height to visual render the plus and minus buttons within. */
-@property (nonatomic, assign) IBInspectable CGSize stepButtonSize;
+@property (nonatomic, assign) IBInspectable CGSize stepButtonSize UI_APPEARANCE_SELECTOR;
 
 /** The value to display. */
 @property (nonatomic) NSInteger value;

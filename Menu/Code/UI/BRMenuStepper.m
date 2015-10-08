@@ -75,7 +75,7 @@ static const CGFloat kMinimumBadgeWidth = (kNaturalWidth - kMinimumPlusMinusButt
 		stepSize.height = kNaturalHeight;
 	}
 	if ( !CGSizeEqualToSize(self.stepButtonSize, stepSize) ) {
-		self.stepButtonSize = stepSize;
+		_stepButtonSize = stepSize;
 	}
 
 	[self updateStyle:self.uiStyle];
