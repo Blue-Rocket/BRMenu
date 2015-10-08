@@ -1,1 +1,1 @@
-../../../../../../BRStyle/BRStyle/Code/Core/UIViewController+BRUIStyle.h
+../../../BRStyle/BRStyle/Code/Core/UIViewController+BRUIStyle.h

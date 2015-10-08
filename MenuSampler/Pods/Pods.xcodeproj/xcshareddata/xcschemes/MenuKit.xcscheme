@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "64D1FE68D717C3229767C692"
+               BlueprintIdentifier = "1415921B58E1C1557305DA1F"
                BuildableName = "libMenuKit.a"
                BlueprintName = "MenuKit"
                ReferencedContainer = "container:Pods.xcodeproj">

@@ -1,1 +1,1 @@
-../../../../../../BRStyle/BRStyle/Code/Core/BRUIStylish.h
+../../../BRStyle/BRStyle/Code/Core/BRUIStylish.h

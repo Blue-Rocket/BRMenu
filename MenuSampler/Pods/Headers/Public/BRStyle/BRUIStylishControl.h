@@ -1,1 +1,1 @@
-../../../../../../BRStyle/BRStyle/Code/Core/BRUIStylishControl.h
+../../../BRStyle/BRStyle/Code/Core/BRUIStylishControl.h
