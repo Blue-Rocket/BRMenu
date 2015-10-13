@@ -12,23 +12,25 @@
 @class BRMenuItem;
 @class BRMenuOrderItem;
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  An order object, which is a collection of order items with some additional overall properties.
  */
 @interface BRMenuOrder : NSObject <NSCopying, NSSecureCoding>
 
 /** A menu reference. This can be set to any menu needed by the application. */
-@property (nonatomic, strong) BRMenu *menu;
+@property (nonatomic, strong, nullable) BRMenu *menu;
 
 @property (nonatomic) NSUInteger orderNumber;
-@property (nonatomic, copy) NSString *name;
-@property (nonatomic, readonly) NSArray *orderItems;
+@property (nonatomic, copy, nullable) NSString *name;
+@property (nonatomic, readonly) NSArray<BRMenuOrderItem *> *orderItems;
 
 /**
  A set of all menus used within the order. The property will reflect all the menus used by any item added
  to the receiver, for example via @ref addOrderItem: or @ref replaceOrderItems:.
  */
-@property (nonatomic, strong, readonly) NSOrderedSet *menus;
+@property (nonatomic, strong, readonly, nullable) NSOrderedSet<BRMenu *> *menus;
 
 /** The sum total of all items in the order, accounting for quantities. */
 @property (nonatomic, readonly) NSDecimalNumber *totalPrice;
@@ -40,7 +42,7 @@
 - (NSUInteger)orderItemCount;
 
 // get an BRMenuOrderItem for a given BRMenuItem, or nil if not available
-- (BRMenuOrderItem *)orderItemForMenuItem:(BRMenuItem *)menuItem;
+- (nullable BRMenuOrderItem *)orderItemForMenuItem:(BRMenuItem *)menuItem;
 
 // get the existing BRMenuOrderItem for a given BRMenuItem, or create it and add
 - (BRMenuOrderItem *)getOrAddItemForMenuItem:(BRMenuItem *)menuItem;
@@ -50,7 +52,7 @@
 
 // remove any existing BRMenuOrderItems and then add any provided BRMenuOrderItems; newOrderItems can be
 // nil or empty to simply remove all BRMenuOrderItems from the BRMenuOrder
-- (void)replaceOrderItems:(NSArray *)newOrderItems;
+- (void)replaceOrderItems:(nullable NSArray<BRMenuOrderItem *> *)newOrderItems;
 
 /**
  Get an array of arrays of @ref BRMenuOrderItem objects, grouped by the @ref BRMenu instances referenced
@@ -60,6 +62,8 @@
  @param groupMapping An optional mapping of order item keys to alternate key values.
  @return An array of arrays of order item objects.
  */
-- (NSArray *)orderedGroups:(NSDictionary *)groupMapping;
+- (NSArray *)orderedGroups:(nullable NSDictionary<NSString *, NSString *> *)groupMapping;
 
 @end
+
+NS_ASSUME_NONNULL_END
