@@ -174,7 +174,7 @@ static const CGFloat kMinWidth = 48.0f;
 
 - (void)updateConstraints {
 	if ( badgeWidthConstraint ) {
-		badgeWidthConstraint.offset(MAX(kBadgeMinWidth, [self badgeFrameWidthForMaxHeight:CGFLOAT_MAX]));
+		badgeWidthConstraint.offset([badgeText length] > 0 ? MAX(kBadgeMinWidth, [self badgeFrameWidthForMaxHeight:CGFLOAT_MAX]) : 0);
 	}
 	[super updateConstraints];
 }
