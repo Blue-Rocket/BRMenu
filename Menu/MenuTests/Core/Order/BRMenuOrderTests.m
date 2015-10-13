@@ -219,7 +219,11 @@
 	BRMenuOrder *copy = [order copy];
 	assertThat(copy, notNilValue());
 	assertThat(copy.name, equalTo(order.name));
+	assertThat(copy.orderItems, isNot(sameInstance(order.orderItems)));
 	assertThat(copy.orderItems, equalTo(order.orderItems));
+	[copy.orderItems enumerateObjectsUsingBlock:^(BRMenuOrderItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+		assertThat(obj, describedAs(@"Order item %0 is deeply copied", isNot(sameInstance(order.orderItems[idx])), @(idx), nil));
+	}];
 	assertThatUnsignedInteger(copy.orderNumber, equalTo(@(NSNotFound)));
 	assertThat(copy.menus, equalTo(order.menus));
 }

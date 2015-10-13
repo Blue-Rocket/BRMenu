@@ -44,7 +44,8 @@ static void * kOrderItemPriceContext = &kOrderItemPriceContext;
 		self.menu = order.menu;
 		self.orderNumber = NSNotFound;
 		self.name = order.name;
-		[self replaceOrderItems:order.orderItems]; // handles KVO
+		NSArray<BRMenuOrderItem *> *copiedItems = [[NSArray alloc] initWithArray:order.orderItems copyItems:YES];
+		[self replaceOrderItems:copiedItems]; // handles KVO
 		menus = [order.menus mutableCopy];
 	}
 	return self;
