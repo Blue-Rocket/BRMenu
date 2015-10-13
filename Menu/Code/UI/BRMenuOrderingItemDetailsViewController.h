@@ -13,6 +13,14 @@
 @class BRMenuOrderItem;
 @protocol BRMenuOrderingDelegate;
 
+/**
+ Show the selected components of an order item, in either a "review before adding to order" mode 
+ or a "inspect item details in order" mode. The "review" mode is configured by setting @c showAddToOrder
+ to @c YES, and the @c orderingDelegate should be configured to handle adding the order item to
+ the order.
+ 
+ If @c showAddToOrder is @c NO, then no @c orderingDelegate is needed, and no "add to order" button is shown.
+ */
 @interface BRMenuOrderingItemDetailsViewController : UIViewController <BRUIStylish>
 
 @property (nonatomic, strong) BRMenuOrderItem *orderItem;
