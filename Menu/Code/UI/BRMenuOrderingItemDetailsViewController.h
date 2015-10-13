@@ -29,4 +29,7 @@
 /** If @c YES then add an "Add to Order" button in the navigation item right side. */
 @property (nonatomic, getter = isShowAddToOrder) IBInspectable BOOL showAddToOrder;
 
+/** If @c YES then add a @c BRMenuStepper control to allow adjusting the quantity of the order item. */
+@property (nonatomic, getter = isShowQuantityStepper) IBInspectable BOOL showQuantityStepper;
+
 @end
