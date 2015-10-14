@@ -30,6 +30,12 @@ extern NSString * const BRMenuOrderingShowItemGroupSegue;
 
 @property (nonatomic, assign, getter=isUsePrototypeCells) IBInspectable BOOL usePrototypeCells;
 
+/** 
+ If @c YES, then allow removing items from the active order via any menu items that do not contain any components.
+ If @c NO, then only allow adding items to the active order.
+ */
+@property (nonatomic, assign, getter=isAllowRemoveFromOrder) IBInspectable BOOL allowRemoveFromOrder;
+
 /** The menu to order items from. */
 @property (nonatomic, strong) BRMenu *menu;
 

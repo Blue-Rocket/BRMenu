@@ -10,6 +10,7 @@
 
 #import <BRStyle/BRUIStylishHost.h>
 #import <Masonry/Masonry.h>
+#import "BRMenuButton.h"
 #import "BRMenuGroupTableHeaderView.h"
 #import "BRMenuItem.h"
 #import "BRMenuItemCell.h"
@@ -36,6 +37,7 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 
 @implementation BRMenuOrderingGroupViewController {
 	BRMenuOrderingFlowController *flowController;
+	BRMenuButton *saveToOrderButton;
 }
 
 @dynamic uiStyle;
@@ -80,7 +82,16 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 		UIBarButtonItem *saveItem = [UIBarButtonItem standardBRMenuBarButtonItemWithTitle:[NSBundle localizedBRMenuString:@"menu.action.saveto.order"]
 																				   target:self
 																				   action:@selector(saveToOrder:)];
+		saveToOrderButton = saveItem.customView;
+		[self refreshSaveToOrderButton];
 		self.navigationItem.rightBarButtonItems = [UIBarButtonItem marginAdjustedBRMenuRightNavigationBarButtonItems:@[saveItem]];
+	}
+}
+
+- (void)refreshSaveToOrderButton {
+	if ( self.showSaveToOrderCount && flowController.temporaryOrder ) {
+		NSUInteger orderCount = [flowController.temporaryOrder orderItemCount];
+		saveToOrderButton.badgeText = (orderCount < 1 ? nil : [NSString stringWithFormat:@"%lu", (unsigned long)orderCount]);
 	}
 }
 
@@ -105,6 +116,7 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 	} else {
 		[flowController.temporaryOrder getOrAddItemForMenuItem:menuItem].quantity = sender.value;
 	}
+	[self refreshSaveToOrderButton];
 }
 
 #pragma mark - BRMenuOrderingDelegate
@@ -112,6 +124,7 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 - (void)addOrderItemToActiveOrder:(BRMenuOrderItem *)orderItem {
 	if ( flowController.hasMenuItemWithoutComponents ) {
 		[flowController.temporaryOrder addOrderItem:orderItem];
+		[self refreshSaveToOrderButton];
 		[self.navigationController popToViewController:self animated:YES];
 	} else {
 		[self.orderingDelegate addOrderItemToActiveOrder:orderItem];
@@ -121,6 +134,7 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 - (void)updateOrderItemsInActiveOrder:(NSArray<BRMenuOrderItem *> *)orderItems {
 	if ( flowController.hasMenuItemWithoutComponents ) {
 		[flowController.temporaryOrder replaceOrderItems:orderItems];
+		[self refreshSaveToOrderButton];
 		[self.navigationController popToViewController:self animated:YES];
 	} else {
 		[self.orderingDelegate updateOrderItemsInActiveOrder:orderItems];

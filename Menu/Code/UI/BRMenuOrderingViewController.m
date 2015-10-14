@@ -12,6 +12,7 @@
 #import "BRMenuItemObject.h"
 #import "BRMenuItemObjectCell.h"
 #import "BRMenuOrder.h"
+#import "BRMenuOrderItem.h"
 #import "BRMenuOrderingComponentsViewController.h"
 #import "BRMenuOrderingFlowController.h"
 #import "BRMenuOrderingGroupViewController.h"
@@ -80,6 +81,25 @@ NSString * const BRMenuOrderingShowItemGroupSegue = @"ShowItemGroup";
 	if ( self.order == nil ) {
 		self.order = [BRMenuOrder new];
 	}
+	if ( !self.allowRemoveFromOrder ) {
+		// merge quantities if we find the same line item, otherwise add new line item.
+		// we use a temporary array so that KVO on that array still works, e.g. BRMenuOrderCountButton
+		NSMutableArray<BRMenuOrderItem *> *mergedOrderItems = [NSMutableArray arrayWithArray:self.order.orderItems];
+		for ( BRMenuOrderItem *item in orderItems ) {
+			BOOL added = NO;
+			for ( BRMenuOrderItem *existing in mergedOrderItems ) {
+				if ( [item isEqual:existing] ) {
+					existing.quantity += item.quantity;
+					added = YES;
+					break;
+				}
+			}
+			if ( !added ) {
+				[mergedOrderItems addObject:item];
+			}
+		}
+		orderItems = mergedOrderItems;
+	}
 	[self.order replaceOrderItems:orderItems];
 	[self.navigationController popToViewController:self animated:YES];
 }
@@ -103,7 +123,8 @@ NSString * const BRMenuOrderingShowItemGroupSegue = @"ShowItemGroup";
 	} else if ( [segue.identifier isEqualToString:BRMenuOrderingShowItemGroupSegue] ) {
 		BRMenuOrderingGroupViewController *dest = segue.destinationViewController;
 		dest.flowController = [flowController flowControllerForItemAtIndexPath:[self.tableView indexPathForSelectedRow]];
-		dest.flowController.temporaryOrder = self.order;
+		dest.flowController.temporaryOrder = (self.allowRemoveFromOrder ? self.order : [BRMenuOrder new]);
+		dest.showSaveToOrderCount = !self.allowRemoveFromOrder;
 		dest.orderingDelegate = self;
 	}
 }
