@@ -1,1 +1,1 @@
-../../../../../../BRStyle/BRStyle/Code/Core/NSObject+BRUIStyle.h
+../../../BRStyle/BRStyle/Code/Core/NSObject+BRUIStyle.h

@@ -130,6 +130,7 @@ NSString * const BRMenuOrderingReviewOrderItemSegue = @"ReviewOrderItem";
 	if ( [segue.identifier isEqualToString:BRMenuOrderingReviewOrderItemSegue] ) {
 		BRMenuOrderingItemDetailsViewController *dest = (BRMenuOrderingItemDetailsViewController *)segue.destinationViewController;
 		dest.showAddToOrder = YES;
+		dest.showQuantityStepper = YES;
 		dest.orderItem = flowController.orderItem;
 		dest.orderingDelegate = self.orderingDelegate;
 	}

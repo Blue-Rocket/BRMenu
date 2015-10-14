@@ -71,6 +71,13 @@ static const CGFloat kMinWidth = 48.0f;
 	badgeLabel.font = self.titleLabel.font;
 	[self refreshBadgeColor:style];
 	[self invalidateIntrinsicContentSize];
+	[self sizeToFit];
+	[self setNeedsDisplay];
+}
+
+- (void)uiStyleDidChange:(BRUIStyle *)style forState:(UIControlState)state {
+	[self invalidateIntrinsicContentSize];
+	[self sizeToFit];
 	[self setNeedsDisplay];
 }
 
@@ -167,7 +174,7 @@ static const CGFloat kMinWidth = 48.0f;
 
 - (void)updateConstraints {
 	if ( badgeWidthConstraint ) {
-		badgeWidthConstraint.offset(MAX(kBadgeMinWidth, [self badgeFrameWidthForMaxHeight:CGFLOAT_MAX]));
+		badgeWidthConstraint.offset([badgeText length] > 0 ? MAX(kBadgeMinWidth, [self badgeFrameWidthForMaxHeight:CGFLOAT_MAX]) : 0);
 	}
 	[super updateConstraints];
 }

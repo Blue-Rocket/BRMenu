@@ -18,6 +18,9 @@
 @property (strong, nonatomic) IBOutlet BRMenuButton *cartButton;
 @property (strong, nonatomic) IBOutlet BRMenuButton *dangerousButton;
 @property (strong, nonatomic) IBOutlet BRMenuButton *inverseDisabledButton;
+@property (strong, nonatomic) IBOutlet BRMenuPlusMinusButton *disabledPlus;
+@property (strong, nonatomic) IBOutlet BRMenuPlusMinusButton *selectedPlus;
+@property (strong, nonatomic) IBOutlet BRMenuPlusMinusButton *dangerousPlus;
 
 @end
 
@@ -32,6 +35,9 @@
 	self.stepper2.uiStyle = mStyle;
 	
 	self.dangerousButton.dangerous = YES;
+	self.disabledPlus.enabled = NO;
+	self.selectedPlus.selected = YES;
+	self.dangerousPlus.dangerous = YES;
 }
 
 - (void)viewWillLayoutSubviews {

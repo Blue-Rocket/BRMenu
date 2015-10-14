@@ -19,7 +19,9 @@
 + (void)assignMenu:(BRMenu *)menu menuItemComponentGroupIDs:(BRMenuItemComponentGroup *)group itemCounter:(uint8_t *)itemId componentCounter:(uint8_t*)componentId {
 	for ( BRMenuItemComponent *component in group.components ) {
 		component.group = group;
-		component.componentId = ++(*componentId);
+		if ( !component.componentId ) {
+			component.componentId = ++(*componentId);
+		}
 	}
 	if ( group.extendsKey != nil ) {
 		BRMenuItemComponentGroup *ref = [menu menuItemComponentGroupForKey:group.extendsKey];
@@ -42,7 +44,9 @@
 }
 
 + (void)assignMenu:(BRMenu *)menu menuItemIDs:(BRMenuItem *)item itemCounter:(uint8_t *)itemId componentCounter:(uint8_t*)componentId {
-	item.itemId = ++(*itemId);
+	if ( !item.itemId ) {
+		item.itemId = ++(*itemId);
+	}
 	item.menu = menu;
 	for ( BRMenuItemComponentGroup *componentGroup in item.componentGroups ) {
 		[self assignMenu:menu menuItemComponentGroupIDs:componentGroup itemCounter:itemId componentCounter:componentId];

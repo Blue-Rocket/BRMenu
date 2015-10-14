@@ -17,8 +17,8 @@
 static void * kOrderItemPriceContext = &kOrderItemPriceContext;
 
 @implementation BRMenuOrder {
-	NSMutableArray *orderItems;
-	NSMutableOrderedSet *menus;
+	NSMutableArray<BRMenuOrderItem *> *orderItems;
+	NSMutableOrderedSet<BRMenu *> *menus;
 }
 
 @synthesize orderItems;
@@ -44,7 +44,8 @@ static void * kOrderItemPriceContext = &kOrderItemPriceContext;
 		self.menu = order.menu;
 		self.orderNumber = NSNotFound;
 		self.name = order.name;
-		[self replaceOrderItems:order.orderItems]; // handles KVO
+		NSArray<BRMenuOrderItem *> *copiedItems = [[NSArray alloc] initWithArray:order.orderItems copyItems:YES];
+		[self replaceOrderItems:copiedItems]; // handles KVO
 		menus = [order.menus mutableCopy];
 	}
 	return self;
@@ -166,7 +167,7 @@ static void * kOrderItemPriceContext = &kOrderItemPriceContext;
 	}
 }
 
-- (void)replaceOrderItems:(NSArray *)newOrderItems {
+- (void)replaceOrderItems:(NSArray<BRMenuOrderItem *> *)newOrderItems {
 	[self removeOrderItemsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, orderItems.count)]];
 	if ( newOrderItems != nil ) {
 		if ( orderItems == nil ) {
@@ -211,7 +212,7 @@ static void * kOrderItemPriceContext = &kOrderItemPriceContext;
 	return nil;
 }
 
-- (NSArray *)orderedGroups:(NSDictionary *)groupMapping {
+- (NSArray *)orderedGroups:(NSDictionary<NSString *, NSString *> *)groupMapping {
 	// order sections in same order as BRMenu groups
 	NSMutableDictionary *mapping = [NSMutableDictionary new];
 

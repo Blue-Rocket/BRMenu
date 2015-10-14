@@ -46,12 +46,17 @@ static const CGFloat kTextMargins = 5.0f;
 }
 
 - (CGSize)intrinsicContentSize {
-	CGSize textSize = [title sizeWithFont:self.uiStyle.fonts.actionFont
+	UIFont *font = [self uiStyleForState:self.state].fonts.actionFont;
+	CGSize textSize = [title sizeWithFont:font
 						constrainedToSize:CGSizeMake(CGFLOAT_MAX, kNormalHeight)
 							lineBreakMode:NSLineBreakByWordWrapping];
 	CGFloat width = ceilf(textSize.width) + 2 * kTextMargins + kArrowMargin;
 	return CGSizeMake(width, (self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassCompact
 							  ? kCompactHeight : kNormalHeight));
+}
+
+- (CGSize)sizeThatFits:(CGSize)size {
+	return [self intrinsicContentSize];
 }
 
 - (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
@@ -72,6 +77,13 @@ static const CGFloat kTextMargins = 5.0f;
 
 - (void)uiStyleDidChange:(BRUIStyle *)style {
 	[self invalidateIntrinsicContentSize];
+	[self sizeToFit];
+	[self setNeedsDisplay];
+}
+
+- (void)uiStyleDidChange:(BRUIStyle *)style forState:(UIControlState)state {
+	[self invalidateIntrinsicContentSize];
+	[self sizeToFit];
 	[self setNeedsDisplay];
 }
 

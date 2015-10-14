@@ -12,7 +12,7 @@ target :Menu do
 	pod 'MAObjCRuntime', 			  '~> 0.0.1'
 	pod 'Masonry',					  '~> 0.6'
 	pod 'RestKit/ObjectMapping',	  '~> 0.24'
-	pod 'BRStyle/Core',               :path => '../../BRStyle'
+	pod 'BRStyle/Core',               '~> 0.10.0'
 	
 	target :MenuTests do
 		pod 'AFNetworking',           '~> 2.5'

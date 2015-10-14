@@ -75,7 +75,7 @@ static const CGFloat kMinimumBadgeWidth = (kNaturalWidth - kMinimumPlusMinusButt
 		stepSize.height = kNaturalHeight;
 	}
 	if ( !CGSizeEqualToSize(self.stepButtonSize, stepSize) ) {
-		self.stepButtonSize = stepSize;
+		_stepButtonSize = stepSize;
 	}
 
 	[self updateStyle:self.uiStyle];
@@ -99,10 +99,11 @@ static const CGFloat kMinimumBadgeWidth = (kNaturalWidth - kMinimumPlusMinusButt
 }
 
 - (void)refreshBadgeColor:(BRUIStyle *)style {
-	BRUIStyleControlSettings *controlSettings = [self uiStyleForState:UIControlStateDisabled].controls;
+	BRUIStyleControlSettings *disabledSettings = [self uiStyleForState:UIControlStateDisabled].controls;
+	BRUIStyleControlSettings *selectedSettings = [self uiStyleForState:UIControlStateSelected].controls;
 	badgeLabel.textColor = (self.value > 0
-							? style.colors.primaryColor
-							: controlSettings.actionColor);
+							? selectedSettings.actionColor
+							: disabledSettings.actionColor);
 }
 
 - (void)uiStyleDidChange:(BRUIStyle *)style {
@@ -273,6 +274,7 @@ static const CGFloat kMinimumBadgeWidth = (kNaturalWidth - kMinimumPlusMinusButt
 	BRUIStyleControlSettings *highlightedSettings = [self uiStyleForState:(self.state | UIControlStateHighlighted)].controls;
 	BRUIStyleControlSettings *disabledSettings = [self uiStyleForState:(self.state | UIControlStateDisabled)].controls;
 	BRUIStyleControlSettings *controlSettings = [self uiStyleForState:self.state].controls;
+	BRUIStyleControlSettings *notHighlightedSettings = [self uiStyleForState:(self.state & ~UIControlStateHighlighted)].controls;
 
 	const CGFloat stepButtonWidth = self.stepButtonSize.width;
 
@@ -283,6 +285,7 @@ static const CGFloat kMinimumBadgeWidth = (kNaturalWidth - kMinimumPlusMinusButt
 	UIColor* strokeColor = controlSettings.borderColor;
 	UIColor* labelEnabledColor = controlSettings.actionColor;
 	UIColor* labelDisabledColor = disabledSettings.actionColor;
+	UIColor *notHighlightedLabelColor = notHighlightedSettings.actionColor;
 	UIColor* fillColor = controlSettings.fillColor;
 	UIColor* highlightedFillColor = highlightedSettings.fillColor;
 	UIColor* glossColor = controlSettings.glossColor;
@@ -299,8 +302,8 @@ static const CGFloat kMinimumBadgeWidth = (kNaturalWidth - kMinimumPlusMinusButt
 	[depressedShadow setShadowBlurRadius: 2];
 	
 	//// Variable Declarations
-	UIColor* plusColor = plusEnabled ? labelEnabledColor : labelDisabledColor;
-	UIColor* minusColor = minusEnabled ? labelEnabledColor : labelDisabledColor;
+	UIColor* plusColor = !plusEnabled ? labelDisabledColor : plusPressed ? labelEnabledColor : notHighlightedLabelColor;
+	UIColor* minusColor = !minusEnabled ? labelDisabledColor : minusPressed ? labelEnabledColor : notHighlightedLabelColor;
 	
 	
 	//// Subframes
