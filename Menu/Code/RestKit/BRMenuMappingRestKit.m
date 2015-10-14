@@ -21,6 +21,7 @@
 + (RKObjectMapping *)menuItemComponentMapping {
 	RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[BRMenuItemComponent class]];
 	[mapping addAttributeMappingsFromDictionary:@{
+	 @"id" : @"componentId",
 	 @"title" : @"title",
      @"description" : @"desc",
 	 @"askQuantity" : @"askQuantity",
@@ -49,6 +50,7 @@
 + (RKObjectMapping *)menuItemMapping {
 	RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[BRMenuItem class]];
 	[mapping addAttributeMappingsFromDictionary:@{
+	 @"id" : @"itemId",
 	 @"title" : @"title",
 	 @"description" : @"desc",
 	 @"key": @"key",
