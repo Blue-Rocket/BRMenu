@@ -91,10 +91,7 @@
 
 + (RKObjectMapping *)menuMapping {
 	RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[BRMenu class]];
-	[mapping addAttributeMappingsFromDictionary:@{
-	 @"key": @"key",
-	 @"version" : @"version"
-	 }];
+	[mapping addAttributeMappingsFromArray:@[@"key", @"title", @"version"]];
 	[mapping addRelationshipMappingWithSourceKeyPath:@"items" mapping:[self menuItemMapping]];
 	[mapping addRelationshipMappingWithSourceKeyPath:@"groups" mapping:[self menuItemGroupMapping]];
 	[mapping addRelationshipMappingWithSourceKeyPath:@"tags" mapping:[self menuItemTagMapping]];

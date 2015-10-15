@@ -131,6 +131,7 @@
 - (void)verifyMenuData:(BRMenu *)menu {
 	assertThatInt(menu.version, equalTo(@1));
 	assertThat(menu.key, equalTo(@"test"));
+	assertThat(menu.title, equalTo(@"Test Menu"));
 	assertThat(menu.items, hasCountOf(2));
 	assertThat(menu.groups, hasCountOf(4));
 	
