@@ -26,11 +26,11 @@
 #import "BRMenuRestKitTestingSupport.h"
 #import "BRMenuTestingMenuProvider.h"
 
-@interface BRmenuOrderingFlowControllerTests : XCTestCase
+@interface BRMenuOrderingFlowControllerTests : XCTestCase
 
 @end
 
-@implementation BRmenuOrderingFlowControllerTests
+@implementation BRMenuOrderingFlowControllerTests
 
 - (void)setUp {
 	[super setUp];

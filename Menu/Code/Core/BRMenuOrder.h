@@ -62,7 +62,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param groupMapping An optional mapping of order item keys to alternate key values.
  @return An array of arrays of order item objects.
  */
-- (NSArray *)orderedGroups:(nullable NSDictionary<NSString *, NSString *> *)groupMapping;
+- (NSArray<NSArray<BRMenuOrderItem *> *> *)orderedGroups:(nullable NSDictionary<NSString *, NSString *> *)groupMapping;
 
 @end
 

@@ -10,8 +10,12 @@
 
 #import <BRStyle/BRUIStylish.h>
 
+
 @class BRMenuButton;
 @class BRMenuOrder;
+@protocol BRMenuOrderGroupingConrtroller;
+
+NS_ASSUME_NONNULL_BEGIN
 
 extern NSString * const BRMenuOrderReviewOrderItemCellIdentifier;
 extern NSString * const BRMenuOrderReviewGroupHeaderCellIdentifier;
@@ -33,13 +37,16 @@ extern NSString * const BRMenuOrderReviewViewOrderItemDetailsSegue;
 @property (strong, nonatomic) IBOutlet BRMenuButton *checkoutTotalButton;
 
 /** The order to display the items for. */
-@property (nonatomic, strong) BRMenuOrder *order;
+@property (nonatomic, strong, nullable) BRMenuOrder *order;
+
+/** A controller to manage the grouping of order items. */
+@property (nonatomic, strong) id<BRMenuOrderGroupingConrtroller> groupsController;
 
 /**
  A mapping of string group keys to effective key string values. This can be used to combine
  multiple, related groups into a single section.
  */
-@property (nonatomic, strong) NSDictionary *groupKeyMapping;
+@property (nonatomic, strong) NSDictionary<NSString *, NSString *> *groupKeyMapping;
 
 /**
  Refresh based on a specific style.
@@ -57,4 +64,16 @@ extern NSString * const BRMenuOrderReviewViewOrderItemDetailsSegue;
  */
 - (void)refreshFromModel;
 
+/**
+ Create a new @c BRMenuOrderGroupingController instance.
+ 
+ This method is designed for subclasses to override. It will be invoked when the @c order property changes. The default implementation returns 
+ a @c BRMenuOrderGroupsController object.
+ 
+ @return The new controller instance.
+ */
+- (id<BRMenuOrderGroupingConrtroller>)createGroupingController;
+
 @end
+
+NS_ASSUME_NONNULL_END

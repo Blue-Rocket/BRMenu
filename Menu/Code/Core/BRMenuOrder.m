@@ -212,7 +212,7 @@ static void * kOrderItemPriceContext = &kOrderItemPriceContext;
 	return nil;
 }
 
-- (NSArray *)orderedGroups:(NSDictionary<NSString *, NSString *> *)groupMapping {
+- (NSArray<NSArray<BRMenuOrderItem *> *> *)orderedGroups:(NSDictionary<NSString *, NSString *> *)groupMapping {
 	// order sections in same order as BRMenu groups
 	NSMutableDictionary *mapping = [NSMutableDictionary new];
 
@@ -251,7 +251,7 @@ static void * kOrderItemPriceContext = &kOrderItemPriceContext;
 		}
 	}
 	
-	NSMutableArray *sections = [NSMutableArray new];
+	NSMutableArray<NSArray<BRMenuOrderItem *> *> *sections = [NSMutableArray new];
 	for ( NSString *menuKey in mapping ) {
 		NSDictionary *menuMapping = mapping[menuKey];
 		BRMenu *menu = [self menuForKey:menuKey];
@@ -270,7 +270,7 @@ static void * kOrderItemPriceContext = &kOrderItemPriceContext;
 			return (idx1 < idx2 ? NSOrderedAscending : idx1 > idx2 ? NSOrderedDescending : NSOrderedSame);
 		}];
 		for ( NSString *groupKey in sortedGroupKeys ) {
-			NSMutableArray *section = menuMapping[groupKey];
+			NSArray *section = menuMapping[groupKey];
 			[sections addObject:section];
 		}
 	}
