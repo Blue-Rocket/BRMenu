@@ -21,6 +21,7 @@
 #import <MenuKit/BRMenuModelPropertyEditor.h>
 #import <MenuKit/BRMenuOrder+Encoding.h>
 #import <MenuKit/BRMenuOrderGroupsController.h>
+#import <MenuKit/BRMenuOrderMenuGroupingController.h>
 #import <MenuKit/BRMenuOrder.h>
 #import <MenuKit/BRMenuOrderingDelegate.h>
 #import <MenuKit/BRMenuOrderingFlowController.h>
