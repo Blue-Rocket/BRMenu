@@ -18,8 +18,8 @@
 NSString * const BRMenuOrderItemDefaultGroupKey = @"default";
 
 @implementation BRMenuOrderItem {
-	NSMutableArray *components;
-	NSMutableArray *attributes;
+	NSMutableArray<BRMenuOrderItemComponent *> *components;
+	NSMutableArray<BRMenuOrderItemAttributes *> *attributes;
 }
 
 @synthesize attributes, components;

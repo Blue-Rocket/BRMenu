@@ -30,8 +30,8 @@ extern NSString * const BRMenuOrderItemDefaultGroupKey;
 @property (nonatomic) uint8_t quantity;
 @property (nonatomic, getter = isTakeAway) BOOL takeAway; // YES == take away, NO == dine in; shortcut for first BRMenuOrderItemAttributes
 @property (nonatomic, strong) BRMenuItem *item;
-@property (nonatomic, readonly) NSArray *attributes; // BRMenuOrderItemAttributes
-@property (nonatomic, readonly) NSArray *components; // BRMenuOrderItemComponent
+@property (nonatomic, readonly) NSArray<BRMenuOrderItemAttributes *> *attributes;
+@property (nonatomic, readonly) NSArray<BRMenuOrderItemComponent *> *components;
 
 /** The calculated price, based on the @ref BRMenuItem @c price and the receiver's @c quantity. */
 @property (nonatomic, readonly) NSDecimalNumber *price;

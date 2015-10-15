@@ -18,8 +18,8 @@
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *desc;
 @property (nonatomic, getter = isMultiSelect) BOOL multiSelect;
-@property (nonatomic, copy) NSArray *components; // BRMenuItemComponent
-@property (nonatomic, copy) NSArray *componentGroups; // BRMenuItemComponentGroup
+@property (nonatomic, copy) NSArray<BRMenuItemComponent *> *components;
+@property (nonatomic, copy) NSArray<BRMenuItemComponentGroup *> *componentGroups;
 @property (nonatomic) unsigned int requiredCount;
 
 @property (nonatomic, copy) NSString *key; // unique key assigned by data
