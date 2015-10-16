@@ -88,10 +88,18 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 	}
 }
 
+- (void)setShowSaveToOrderCount:(BOOL)value {
+	if ( value != _showSaveToOrderCount ) {
+		_showSaveToOrderCount = value;
+		[self refreshSaveToOrderButton];
+	}
+}
+
 - (void)refreshSaveToOrderButton {
 	if ( self.showSaveToOrderCount && flowController.temporaryOrder ) {
 		NSUInteger orderCount = [flowController.temporaryOrder orderItemCount];
 		saveToOrderButton.badgeText = (orderCount < 1 ? nil : [NSString stringWithFormat:@"%lu", (unsigned long)orderCount]);
+		saveToOrderButton.enabled = (orderCount > 0);
 	}
 }
 
