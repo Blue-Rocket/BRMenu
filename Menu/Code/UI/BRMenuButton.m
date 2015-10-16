@@ -76,9 +76,13 @@ static const CGFloat kMinWidth = 48.0f;
 }
 
 - (void)uiStyleDidChange:(BRUIStyle *)style forState:(UIControlState)state {
-	[self invalidateIntrinsicContentSize];
-	[self sizeToFit];
-	[self setNeedsDisplay];
+	if ( state == self.state ) {
+		[self uiStyleDidChange:style];
+	} else {
+		[self invalidateIntrinsicContentSize];
+		[self sizeToFit];
+		[self setNeedsDisplay];
+	}
 }
 
 - (void)refreshTitleColor:(BRUIStyle *)style {
