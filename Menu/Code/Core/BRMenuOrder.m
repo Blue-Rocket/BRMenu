@@ -168,6 +168,7 @@ static void * kOrderItemPriceContext = &kOrderItemPriceContext;
 }
 
 - (void)replaceOrderItems:(NSArray<BRMenuOrderItem *> *)newOrderItems {
+	[menus removeAllObjects];
 	[self removeOrderItemsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, orderItems.count)]];
 	if ( newOrderItems != nil ) {
 		if ( orderItems == nil ) {
