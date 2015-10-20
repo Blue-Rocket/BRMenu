@@ -19,5 +19,6 @@
 "menu.ordering.item.details.title" = "Details";
 "menu.ordering.item.details.left.title" = "Left side";
 "menu.ordering.item.details.right.title" = "Right side";
+"menu.ordering.item.details.emptyComponent.title" = "(nothing selected)";
 
 "menu.order.review.quantity.title" = "x%u";
