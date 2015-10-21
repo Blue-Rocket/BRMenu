@@ -74,6 +74,14 @@ extern NSString * const BRMenuOrderReviewViewOrderItemDetailsSegue;
  */
 - (id<BRMenuOrderGroupingConrtroller>)createGroupingController;
 
+/**
+ Action message sent when an order item's quantity should be adjusted. The sender of the message will be some view configured in the table cell,
+ so interested code can look for the cell in the view hierarchy to determine which button was pressed (minus, plus, or delete).
+ 
+ @param sender The action sender.
+ */
+- (IBAction)adjustQuantity:(UIControl *)sender;
+
 @end
 
 NS_ASSUME_NONNULL_END
