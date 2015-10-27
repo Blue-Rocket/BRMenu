@@ -93,7 +93,7 @@
 	self.price.font = style.fonts.listSecondaryFont;
 	self.price.textColor = (disabled ? style.colors.placeholderColor : style.colors.primaryColor);
 	self.desc.font = style.fonts.listCaptionFont;
-	self.desc.textColor = (disabled ? style.colors.placeholderColor : style.colors.secondaryColor);
+	self.desc.textColor = (disabled ? style.colors.placeholderColor : style.colors.captionColor);
 	self.backgroundColor = style.colors.backgroundColor;
 	[self invalidateIntrinsicContentSize];
 	[self setNeedsLayout];
