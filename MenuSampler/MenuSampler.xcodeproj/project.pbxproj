@@ -23,7 +23,7 @@
 		C9C909531B60ACA800DDF191 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9C909511B60ACA800DDF191 /* LaunchScreen.xib */; };
 		C9C9095F1B60ACA800DDF191 /* MenuSamplerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C9095E1B60ACA800DDF191 /* MenuSamplerTests.m */; };
 		C9C909741B60AEED00DDF191 /* ButtonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C909691B60AEED00DDF191 /* ButtonsViewController.m */; };
-		C9E4072E1BC6DBBF0051E0FE /* styles.json in Resources */ = {isa = PBXBuildFile; fileRef = C9E4072D1BC6DBBF0051E0FE /* styles.json */; settings = {ASSET_TAGS = (); }; };
+		C9E4072E1BC6DBBF0051E0FE /* styles.json in Resources */ = {isa = PBXBuildFile; fileRef = C9E4072D1BC6DBBF0051E0FE /* styles.json */; };
 		EB56B03FDC1B34988D8AE8E7 /* libPods-MenuSampler-MenuSamplerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 13AF175B1790390430949838 /* libPods-MenuSampler-MenuSamplerTests.a */; };
 /* End PBXBuildFile section */
 
@@ -215,6 +215,7 @@
 				C9C9093C1B60ACA000DDF191 /* Frameworks */,
 				C9C9093D1B60ACA000DDF191 /* Resources */,
 				2C3D558D64188B3471BFB910 /* Copy Pods Resources */,
+				F747A8050A86C21D395B9AB6 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -234,6 +235,7 @@
 				C9C909551B60ACA800DDF191 /* Frameworks */,
 				C9C909561B60ACA800DDF191 /* Resources */,
 				6633C1B23E4D61BF5ED8C9F8 /* Copy Pods Resources */,
+				9271B8C5FFF27B3798734CC4 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -366,6 +368,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MenuSampler-MenuSamplerTests/Pods-MenuSampler-MenuSamplerTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9271B8C5FFF27B3798734CC4 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MenuSampler-MenuSamplerTests/Pods-MenuSampler-MenuSamplerTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F747A8050A86C21D395B9AB6 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MenuSampler/Pods-MenuSampler-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
