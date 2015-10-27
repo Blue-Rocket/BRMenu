@@ -12,7 +12,6 @@
 #import <MenuKit/Core.h>
 #import <MenuKit/RestKit.h>
 #import <MenuKit/UI.h>
-#import <RestKit/RestKit.h>
 #import "BRMenu+MenuSampler.h"
 
 static NSString * const kShowMenuSegue = @"ShowMenu";
