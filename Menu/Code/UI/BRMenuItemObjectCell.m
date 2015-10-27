@@ -117,7 +117,9 @@
 
 - (void)refreshForItem:(id<BRMenuItemObject>)theItem {
 	self.title.text = theItem.title;
-	self.desc.text = theItem.desc;
+	if ( !self.hideDescription ) {
+		self.desc.text = theItem.desc;
+	}
 	self.accessoryType = (theItem.hasComponents || [theItem conformsToProtocol:@protocol(BRMenuGroupObject)]
 						  ? UITableViewCellAccessoryDisclosureIndicator
 						  : UITableViewCellAccessoryNone);
