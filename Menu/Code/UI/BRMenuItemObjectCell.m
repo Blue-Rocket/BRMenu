@@ -22,11 +22,13 @@
 @implementation BRMenuItemObjectCell {
 	id<BRMenuItemObject> item;
 	BOOL disabled;
+	BOOL hideDescription;
 }
 
 @dynamic uiStyle;
 @synthesize item;
 @synthesize disabled;
+@synthesize hideDescription;
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
 	if ( (self = [super initWithCoder:aDecoder]) ) {
@@ -119,6 +121,8 @@
 	self.title.text = theItem.title;
 	if ( !self.hideDescription ) {
 		self.desc.text = theItem.desc;
+	} else {
+		self.desc.text = nil;
 	}
 	self.accessoryType = (theItem.hasComponents || [theItem conformsToProtocol:@protocol(BRMenuGroupObject)]
 						  ? UITableViewCellAccessoryDisclosureIndicator
@@ -131,6 +135,13 @@
 	self.price.text = price;
 	[self invalidateIntrinsicContentSize];
 	[self setNeedsLayout];
+}
+
+- (void)setHideDescription:(BOOL)value {
+	if ( value != hideDescription ) {
+		hideDescription = value;
+		[self refreshForItem:self.item];
+	}
 }
 
 @end
