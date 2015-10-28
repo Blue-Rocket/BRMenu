@@ -208,9 +208,6 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 	
 	cell.disabled = [self shouldExcludeMenuItemObject:item];
 
-	// calling this (often, but not always) fixes an apparent bug in iOS 8.4 where the first pass of
-	// drawing the cells results in an incorrectly calculated height
-	[cell layoutIfNeeded];
 	return cell;
 }
 

@@ -54,4 +54,10 @@
  */
 - (void)refreshForItem:(id<BRMenuItemObject>)item;
 
+- (CGFloat)contentWidthForLayoutSize:(CGSize)targetSize;
+
+- (CGFloat)preferredTitleLabelWidthForLayoutSize:(CGSize)targetSize;
+
+- (void)setupPreferredLabelWidthsForLayoutSize:(CGSize)targetSize;
+
 @end

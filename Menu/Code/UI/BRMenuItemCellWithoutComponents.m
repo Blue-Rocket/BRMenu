@@ -43,7 +43,6 @@ static const CGFloat kTagGridHorizontalMargin = 10;
 	// title: top left, left aligned, expands vertically and horizontally
 	UILabel *l = [[BRMenuFitToWidthLabel alloc] initWithFrame:CGRectZero];
 	l.textAlignment = NSTextAlignmentLeft;
-	//l.preferredMaxLayoutWidth = 180;
 	self.title = l;
 	[self.contentView addSubview:l];
 	
@@ -74,7 +73,6 @@ static const CGFloat kTagGridHorizontalMargin = 10;
 	// description: left, left aligned, expands vertically and horizontally
 	l = [[BRMenuFitToWidthLabel alloc] initWithFrame:CGRectZero];
 	l.textAlignment = NSTextAlignmentLeft;
-	//l.preferredMaxLayoutWidth = 180;
 	self.desc = l;
 	[self.contentView addSubview:l];
 	
@@ -162,6 +160,17 @@ static const CGFloat kTagGridHorizontalMargin = 10;
 		[titleBottom install];
 	}
 	[super updateConstraints];
+}
+
+- (CGFloat)preferredTitleLabelWidthForLayoutSize:(CGSize)targetSize {
+	CGFloat contentWidth = [self contentWidthForLayoutSize:targetSize];
+	
+	// subtract grid view and stepper widths
+	if ( tagGridView.tags.count > 0 ) {
+		contentWidth -= [tagGridView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].width + kTagGridHorizontalMargin;
+	}
+	contentWidth -= [self.stepper systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].width + BRMenuStepperPadding.width + kTagGridHorizontalMargin;
+	return contentWidth;
 }
 
 @end

@@ -39,11 +39,15 @@
 
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
 	if ( (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) ) {
+		//self.frame = CGRectMake(0, 0, 1024, 128);
+		//self.contentView.frame = self.frame;
 		[self setupSubviews];
 		[self refreshStyle:self.uiStyle];
 	}
 	return self;
 }
+
+static const UIEdgeInsets kCellPadding = {10, 10, 10, 10};
 
 - (void)setupSubviews {
 	// title: top left, left aligned, expands vertically and horizontally
@@ -65,13 +69,13 @@
 	
 	// description: left, left aligned, expands vertically and horizontally
 	l = [[BRMenuFitToWidthLabel alloc] initWithFrame:CGRectZero];
+	[l setContentCompressionResistancePriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisVertical]; // give title higher priority
 	l.textAlignment = NSTextAlignmentLeft;
 	self.desc = l;
 	[self.contentView addSubview:l];
 	
-	UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 10);
 	[self.title mas_makeConstraints:^(MASConstraintMaker *make) {
-		make.top.equalTo(@(padding.top));
+		make.top.equalTo(@(kCellPadding.top));
 		make.left.equalTo(self.contentView.mas_leftMargin);
 	}];
 	[self.price mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -83,7 +87,7 @@
 		make.top.equalTo(self.title.mas_bottom).with.offset(2);
 		make.left.equalTo(self.title);
 		make.right.equalTo(self.title);
-		make.bottom.equalTo(@(-padding.bottom));
+		make.bottom.equalTo(@(-kCellPadding.bottom));
 	}];
 }
 
@@ -142,6 +146,51 @@
 		hideDescription = value;
 		[self refreshForItem:self.item];
 	}
+}
+
+- (CGFloat)contentWidthForLayoutSize:(CGSize)targetSize {
+	CGFloat contentWidth = targetSize.width;
+	if ( targetSize.width == self.bounds.size.width ) {
+		contentWidth -= self.layoutMargins.left + self.layoutMargins.right;
+		switch ( self.accessoryType ) {
+			case UITableViewCellAccessoryCheckmark:
+				contentWidth -= 40;
+				break;
+				
+			case UITableViewCellAccessoryDisclosureIndicator:
+				contentWidth -= 34;
+				break;
+		}
+	} else {
+		contentWidth -= self.contentView.layoutMargins.left + self.contentView.layoutMargins.right;
+	}
+	return contentWidth;
+}
+
+- (CGFloat)preferredTitleLabelWidthForLayoutSize:(CGSize)targetSize {
+	CGFloat contentWidth = [self contentWidthForLayoutSize:targetSize];
+	
+	// subtract price width from available title width
+	CGFloat priceWidth = [self.price systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].width;
+	contentWidth -= (priceWidth + 10);
+	
+	return contentWidth;
+}
+
+- (void)setupPreferredLabelWidthsForLayoutSize:(CGSize)targetSize {
+	CGFloat contentWidth = [self preferredTitleLabelWidthForLayoutSize:targetSize];
+	self.title.preferredMaxLayoutWidth = contentWidth;
+	self.desc.preferredMaxLayoutWidth = contentWidth;
+}
+
+- (void)layoutMarginsDidChange {
+	[super layoutMarginsDidChange];
+	[self setupPreferredLabelWidthsForLayoutSize:self.contentView.bounds.size];
+}
+
+- (CGSize)systemLayoutSizeFittingSize:(CGSize)targetSize withHorizontalFittingPriority:(UILayoutPriority)horizontalFittingPriority verticalFittingPriority:(UILayoutPriority)verticalFittingPriority {
+	[self setupPreferredLabelWidthsForLayoutSize:targetSize];
+	return [super systemLayoutSizeFittingSize:targetSize withHorizontalFittingPriority:horizontalFittingPriority verticalFittingPriority:verticalFittingPriority];
 }
 
 @end

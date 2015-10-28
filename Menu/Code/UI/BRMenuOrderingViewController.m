@@ -39,7 +39,7 @@ NSString * const BRMenuOrderingShowItemGroupSegue = @"ShowItemGroup";
     [super viewDidLoad];
 	if ( !self.usePrototypeCells ) {
 		self.tableView.rowHeight = UITableViewAutomaticDimension;
-		self.tableView.estimatedRowHeight = 60.0;
+		self.tableView.estimatedRowHeight = 100.0;
 		[self.tableView registerClass:[BRMenuItemObjectCell class] forCellReuseIdentifier:BRMenuOrderingItemObjectCellIdentifier];
 	}
 	
