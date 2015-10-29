@@ -169,7 +169,20 @@ static void * kOrderItemPriceContext = &kOrderItemPriceContext;
 	BRMenuOrderItem *item = [self orderItemForMenuItem:menuItem];
 	if ( item != nil ) {
 		NSUInteger index = [orderItems indexOfObjectIdenticalTo:item];
+		BRMenu *removedItemMenu = menuItem.menu;
 		[self removeObjectFromOrderItemsAtIndex:index];
+		
+		// look to see if any other item still refers to this same menu; if NOT then we will remove this menu from the menus array
+		BOOL found = NO;
+		for ( BRMenuOrderItem *orderItem in orderItems ) {
+			if ( [orderItem.item.menu isEqual:removedItemMenu] ) {
+				found = YES;
+				break;
+			}
+		}
+		if ( !found ) {
+			[menus removeObject:removedItemMenu];
+		}
 	}
 }
 
