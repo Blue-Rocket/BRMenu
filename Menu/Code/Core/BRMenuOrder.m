@@ -14,7 +14,7 @@
 #import "BRMenuOrderItem.h"
 #import "BRMenuOrderItemAttributesProxy.h"
 
-static void * kOrderItemPriceContext = &kOrderItemPriceContext;
+static void * kOrderItemQuantityContext = &kOrderItemQuantityContext;
 
 @implementation BRMenuOrder {
 	NSMutableArray<BRMenuOrderItem *> *orderItems;
@@ -93,9 +93,11 @@ static void * kOrderItemPriceContext = &kOrderItemPriceContext;
 #pragma mark - Observing
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-	if ( context == kOrderItemPriceContext ) {
+	if ( context == kOrderItemQuantityContext ) {
 		[self willChangeValueForKey:NSStringFromSelector(@selector(totalPrice))];
 		[self didChangeValueForKey:NSStringFromSelector(@selector(totalPrice))];
+		[self willChangeValueForKey:NSStringFromSelector(@selector(orderItemCount))];
+		[self didChangeValueForKey:NSStringFromSelector(@selector(orderItemCount))];
 	} else {
 		return [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 	}
@@ -110,13 +112,13 @@ static void * kOrderItemPriceContext = &kOrderItemPriceContext;
 		// (i.e. when multiple menus are supported) all menu items will lose their ref to their menu
 		[menus addObject:item.item.menu];
 	}
-	[item addObserver:self forKeyPath:NSStringFromSelector(@selector(price)) options:NSKeyValueObservingOptionNew context:kOrderItemPriceContext];
+	[item addObserver:self forKeyPath:NSStringFromSelector(@selector(quantity)) options:NSKeyValueObservingOptionNew context:kOrderItemQuantityContext];
 }
 
 - (void)insertOrderItems:(NSArray *)array atIndexes:(NSIndexSet *)indexes {
 	[orderItems insertObjects:array atIndexes:indexes];
 	for ( BRMenuOrderItem *orderItem in array ) {
-		[orderItem addObserver:self forKeyPath:NSStringFromSelector(@selector(price)) options:NSKeyValueObservingOptionNew context:kOrderItemPriceContext];
+		[orderItem addObserver:self forKeyPath:NSStringFromSelector(@selector(quantity)) options:NSKeyValueObservingOptionNew context:kOrderItemQuantityContext];
 		if ( orderItem.item.menu && ![menus containsObject:orderItem.item.menu] ) {
 			[menus addObject:orderItem.item.menu];
 		}
@@ -124,13 +126,13 @@ static void * kOrderItemPriceContext = &kOrderItemPriceContext;
 }
 
 - (void)removeObjectFromOrderItemsAtIndex:(NSUInteger)index {
-	[orderItems[index] removeObserver:self forKeyPath:NSStringFromSelector(@selector(price)) context:kOrderItemPriceContext];
+	[orderItems[index] removeObserver:self forKeyPath:NSStringFromSelector(@selector(quantity)) context:kOrderItemQuantityContext];
 	[orderItems removeObjectAtIndex:index];
 }
 
 - (void)removeOrderItemsAtIndexes:(NSIndexSet *)indexes {
 	[orderItems enumerateObjectsAtIndexes:indexes options:0 usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-		[obj removeObserver:self forKeyPath:NSStringFromSelector(@selector(price)) context:kOrderItemPriceContext];
+		[obj removeObserver:self forKeyPath:NSStringFromSelector(@selector(quantity)) context:kOrderItemQuantityContext];
 	}];
 	[orderItems removeObjectsAtIndexes:indexes];
 }
