@@ -70,8 +70,14 @@ static void * kOrderItemPriceContext = &kOrderItemPriceContext;
 		self.menu = [aDecoder decodeObjectOfClass:[BRMenu class] forKey:NSStringFromSelector(@selector(menu))];
 		self.orderNumber = [aDecoder decodeIntegerForKey:NSStringFromSelector(@selector(orderNumber))];
 		self.name = [aDecoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(name))];
-		orderItems = [[aDecoder decodeObjectOfClasses:[NSSet setWithObjects:[NSArray class], [BRMenuOrderItem class], nil] forKey:NSStringFromSelector(@selector(orderItems))] mutableCopy];
 		menus = [[aDecoder decodeObjectOfClasses:[NSSet setWithObjects:[NSOrderedSet class], [BRMenu class], nil] forKey:NSStringFromSelector(@selector(menus))] mutableCopy];
+
+		// make sure KVO setup properly
+		NSArray<BRMenuOrderItem *> *oItems = [aDecoder decodeObjectOfClasses:[NSSet setWithObjects:[NSArray class], [BRMenuOrderItem class], nil] forKey:NSStringFromSelector(@selector(orderItems))];
+		if ( oItems.count > 0 ) {
+			orderItems = [[NSMutableArray alloc] initWithCapacity:oItems.count];
+			[self insertOrderItems:oItems atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, oItems.count)]];
+		}
 	}
 	return self;
 }
