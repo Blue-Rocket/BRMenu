@@ -62,6 +62,26 @@
 	[aCoder encodeObject:self.menu forKey:NSStringFromSelector(@selector(menu))];
 }
 
+#pragma mark - NSCopying
+
+- (id)copyWithZone:(NSZone *)zone {
+	BRMenuItem *copy = [[[self class] allocWithZone:zone] init];
+	copy.itemId	= self.itemId;
+	copy.key = self.key;
+	copy.extendsKey = self.key;
+	copy.title = self.title;
+	copy.desc = self.desc;
+	copy.tags = self.tags;
+	copy.askQuantity = self.askQuantity;
+	copy.askTakeaway = self.askTakeaway;
+	copy.needsReview = self.needsReview;
+	copy.price = self.price;
+	copy.componentGroups = self.componentGroups;
+	copy.group = self.group;
+	copy.menu = self.menu;
+	return copy;
+}
+
 #pragma mark -
 
 - (void)enumerateMenuItemComponentGroupsUsingBlock:(void (^)(BRMenuItemComponentGroup *, NSUInteger, BOOL *))block {
