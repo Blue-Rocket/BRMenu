@@ -124,15 +124,15 @@ NSString * const BRMenuOrderingShowItemGroupSegue = @"ShowItemGroup";
 	} else if ( [segue.identifier isEqualToString:BRMenuOrderingShowItemGroupSegue] ) {
 		BRMenuOrderingGroupViewController *dest = segue.destinationViewController;
 		dest.flowController = [flowController flowControllerForItemAtIndexPath:[self.tableView indexPathForSelectedRow]];
-		dest.flowController.order = (self.disableUndoSupport
+		dest.flowController.order = (!self.enableUndoSupport
 									 ? self.order
 									 : (self.allowRemoveFromOrder
 										? [self.order copy]
 										: [BRMenuOrder new]));
-		dest.showOrderCount = self.disableUndoSupport;
-		dest.showSaveToOrderCount = (!self.disableUndoSupport && !self.allowRemoveFromOrder);
+		dest.showOrderCount = !self.enableUndoSupport;
+		dest.showSaveToOrderCount = (self.enableUndoSupport && !self.allowRemoveFromOrder);
 		dest.orderingDelegate = self;
-		if ( self.orderCountButton && self.disableUndoSupport ) {
+		if ( self.orderCountButton && !self.enableUndoSupport ) {
 			BRMenuOrderCountButton *reviewOrderButton = [self.orderCountButton copy];
 			dest.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:reviewOrderButton];
 		}

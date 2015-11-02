@@ -39,14 +39,14 @@ extern NSString * const BRMenuOrderingShowItemGroupSegue;
 @property (nonatomic, assign, getter=isAllowRemoveFromOrder) IBInspectable BOOL allowRemoveFromOrder;
 
 /**
- If @c NO then if any menu item has components, a temporary order is created and changes are made to that until an explicit 
+ If @c YES then if any menu item has components, a temporary order is created and changes are made to that until an explicit
  @b Add action is performed; the @b Back button can be used to cancel any pending changes to the active order.
- If @c YES, then all changes are applied to the active order, which also implies @c allowRemoveFromOrder is @c YES.
+ If @c NO, then all changes are applied to the active order, which also implies @c allowRemoveFromOrder is @c YES.
  */
-@property (nonatomic, assign, getter=isDisableUndoSupport) IBInspectable BOOL disableUndoSupport;
+@property (nonatomic, assign, getter=isEnableUndoSupport) IBInspectable BOOL enableUndoSupport;
 
 /**
- If configured and @c disableUndoSupport is @c YES new count buttons will be created on view controllers pushed by this controller.
+ If configured and @c enableUndoSupport is @c YES new count buttons will be created on view controllers pushed by this controller.
  The targets of this button will be copied onto the newly created buttons.
  */
 @property (nonatomic, strong, nullable) IBOutlet BRMenuOrderCountButton *orderCountButton;
