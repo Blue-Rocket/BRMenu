@@ -111,6 +111,12 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 	[self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)goForward:(id)sender {
+	if ( self.showSaveToOrderCount ) {
+		[self saveToOrder:sender];
+	}
+}
+
 - (IBAction)saveToOrder:(id)sender {
 	[self.orderingDelegate updateOrderItemsInActiveOrder:flowController.order.orderItems];
 }

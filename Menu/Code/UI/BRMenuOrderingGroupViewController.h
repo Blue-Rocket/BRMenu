@@ -43,6 +43,13 @@ extern NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier;
 - (IBAction)goBack:(id)sender;
 
 /**
+ Action sent to go forwards in the navigation flow, if possible.
+ 
+ @param sender The action sender.
+ */
+- (IBAction)goForward:(id)sender;
+
+/**
  Action when changes are requested to be saved into the active order.
  
  @param sender The action sender.

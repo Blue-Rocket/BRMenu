@@ -41,6 +41,6 @@ extern NSString * const BRMenuOrderingReviewOrderItemSegue;
  
  @param sender The action sender.
  */
-- (IBAction)gotoNextFlowStep:(id)sender;
+- (IBAction)goForward:(id)sender;
 
 @end

@@ -142,6 +142,10 @@ NSString * const BRMenuOrderingReviewOrderItemSegue = @"ReviewOrderItem";
 	[self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)goForward:(id)sender {
+	[self gotoNextFlowStep:sender];
+}
+
 - (IBAction)gotoNextFlowStep:(id)sender {
 	if ( ![self canGotoNextStep] ) {
 		return;

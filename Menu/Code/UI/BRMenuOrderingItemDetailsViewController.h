@@ -39,4 +39,11 @@
  */
 - (IBAction)goBack:(id)sender;
 
+/**
+ Action sent to go forwards in the navigation flow, if possible.
+ 
+ @param sender The action sender.
+ */
+- (IBAction)goForward:(id)sender;
+
 @end
