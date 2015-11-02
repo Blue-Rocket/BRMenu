@@ -160,6 +160,10 @@ static const UIEdgeInsets kCellPadding = {10, 10, 10, 10};
 			case UITableViewCellAccessoryDisclosureIndicator:
 				contentWidth -= 34;
 				break;
+				
+			default:
+				// nothing
+				break;
 		}
 	} else {
 		contentWidth -= self.contentView.layoutMargins.left + self.contentView.layoutMargins.right;
