@@ -35,8 +35,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly, getter=isFinalStep) BOOL finalStep;
 @property (nonatomic, readonly) BRMenuItemGroup *itemGroup;
 
-/** A temporary order copy that can be used to collect order item changes. */
-@property (nonatomic, copy) BRMenuOrder *temporaryOrder;
+/** The order to apply order item changes. */
+@property (nonatomic, strong) BRMenuOrder *order;
 
 /**
  Init for the root of a menu.
@@ -56,7 +56,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (id)initWithMenu:(BRMenu *)menu item:(nullable BRMenuItem *)item;
 
 /**
- Init for a single menu item group. The @c temporaryOrder property can be used
+ Init for a single menu item group. The @c order property can be used
  to collect order item changes before committing them to a "real" order if needed.
  
  @param menu The menu.

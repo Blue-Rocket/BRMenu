@@ -12,6 +12,7 @@
 #import "BRMenuItemObject.h"
 #import "BRMenuItemObjectCell.h"
 #import "BRMenuOrder.h"
+#import "BRMenuOrderCountButton.h"
 #import "BRMenuOrderItem.h"
 #import "BRMenuOrderingComponentsViewController.h"
 #import "BRMenuOrderingFlowController.h"
@@ -123,9 +124,18 @@ NSString * const BRMenuOrderingShowItemGroupSegue = @"ShowItemGroup";
 	} else if ( [segue.identifier isEqualToString:BRMenuOrderingShowItemGroupSegue] ) {
 		BRMenuOrderingGroupViewController *dest = segue.destinationViewController;
 		dest.flowController = [flowController flowControllerForItemAtIndexPath:[self.tableView indexPathForSelectedRow]];
-		dest.flowController.temporaryOrder = (self.allowRemoveFromOrder ? self.order : [BRMenuOrder new]);
-		dest.showSaveToOrderCount = !self.allowRemoveFromOrder;
+		dest.flowController.order = (self.disableUndoSupport
+									 ? self.order
+									 : (self.allowRemoveFromOrder
+										? [self.order copy]
+										: [BRMenuOrder new]));
+		dest.showOrderCount = self.disableUndoSupport;
+		dest.showSaveToOrderCount = (!self.disableUndoSupport && !self.allowRemoveFromOrder);
 		dest.orderingDelegate = self;
+		if ( self.orderCountButton && self.disableUndoSupport ) {
+			BRMenuOrderCountButton *reviewOrderButton = [self.orderCountButton copy];
+			dest.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:reviewOrderButton];
+		}
 	}
 }
 

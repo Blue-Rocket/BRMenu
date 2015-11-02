@@ -26,7 +26,10 @@ extern NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier;
 /** Flag to indicate if prototype cells are to be assumed. */
 @property (nonatomic, assign, getter=isUsePrototypeCells) IBInspectable BOOL usePrototypeCells;
 
-/** Flag to indicate if the count of items from the flow's order should be shown in the "save to order" button when a temporary order is in use. */
+/** Flag to indicate if an "order" button should be shown. */
+@property (nonatomic, assign, getter=isShowOrderCount) IBInspectable BOOL showOrderCount;
+
+/** Flag to indicate if the count of items from the flow's order should be shown in the "save to order" button. */
 @property (nonatomic, assign, getter=isShowSaveToOrderCount) IBInspectable BOOL showSaveToOrderCount;
 
 @property (nonatomic, strong) BRMenuOrderingFlowController *flowController;

@@ -20,12 +20,17 @@ static const CGFloat kDescTopMargin = 4;
 static const CGFloat kTagGridHorizontalMargin = 10;
 
 @implementation BRMenuItemCellWithoutComponents {
+	BRMenuOrderItem *orderItem;
 	BRMenuTagGridView *tagGridView;
 	MASConstraint *tagGridLeftMargin; // to collapse if no tag grid
 	MASConstraint *titleBottom;
 	MASConstraint *descBottom;
 	MASConstraint *priceTopMargin;
 	MASConstraint *descTopMargin;
+}
+
+- (void)dealloc {
+	[self setOrderItem:nil]; // remove KVO
 }
 
 - (BRMenuItem *)menuItem {
@@ -91,9 +96,29 @@ static const CGFloat kTagGridHorizontalMargin = 10;
 	[self setNeedsUpdateConstraints];
 }
 
+static void * kQuantityContext = &kQuantityContext;
 
-- (void)configureForOrderItem:(BRMenuOrderItem *)orderItem {
-	self.stepper.value = orderItem.quantity;
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+	if ( context == kQuantityContext ) {
+		NSNumber *quantity = change[NSKeyValueChangeNewKey];
+		self.stepper.value = [quantity integerValue];
+	} else {
+		return [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+	}
+}
+
+- (void)setOrderItem:(BRMenuOrderItem *)theOrderItem {
+	if ( theOrderItem == orderItem ) {
+		return;
+	}
+	if ( orderItem ) {
+		[orderItem removeObserver:self forKeyPath:NSStringFromSelector(@selector(quantity))];
+	}
+	orderItem = theOrderItem;
+	if ( theOrderItem ) {
+		[theOrderItem addObserver:self forKeyPath:NSStringFromSelector(@selector(quantity)) options:NSKeyValueObservingOptionNew context:kQuantityContext];
+	}
+	self.stepper.value = theOrderItem.quantity;
 }
 
 - (void)refreshStyle:(BRUIStyle *)style {

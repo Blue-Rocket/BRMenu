@@ -131,7 +131,7 @@ static void * kOrderItemQuantityContext = &kOrderItemQuantityContext;
 }
 
 - (void)removeOrderItemsAtIndexes:(NSIndexSet *)indexes {
-	[orderItems enumerateObjectsAtIndexes:indexes options:0 usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+	[orderItems enumerateObjectsAtIndexes:indexes options:0 usingBlock:^(BRMenuOrderItem *obj, NSUInteger idx, BOOL *stop) {
 		[obj removeObserver:self forKeyPath:NSStringFromSelector(@selector(quantity)) context:kOrderItemQuantityContext];
 	}];
 	[orderItems removeObjectsAtIndexes:indexes];
@@ -172,6 +172,10 @@ static void * kOrderItemQuantityContext = &kOrderItemQuantityContext;
 	if ( item != nil ) {
 		NSUInteger index = [orderItems indexOfObjectIdenticalTo:item];
 		BRMenu *removedItemMenu = menuItem.menu;
+		
+		// in case anyone else listening on quantity, set that to 0 now before we remove it
+		orderItems[index].quantity = 0;
+		
 		[self removeObjectFromOrderItemsAtIndex:index];
 		
 		// look to see if any other item still refers to this same menu; if NOT then we will remove this menu from the menus array

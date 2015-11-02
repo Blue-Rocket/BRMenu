@@ -66,6 +66,7 @@ static NSString * const kReviewOrderSegue = @"ReviewOrder";
 			reviewOrderButton.inverse = YES;
 			[reviewOrderButton addTarget:self action:@selector(viewOrder:) forControlEvents:UIControlEventTouchUpInside];
 			[reviewOrderButton sizeToFit];
+			dest.orderCountButton = reviewOrderButton;
 			dest.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:reviewOrderButton];
 
 			[self.navigationController pushViewController:dest animated:YES];

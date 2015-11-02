@@ -61,4 +61,12 @@ static void * kOrderItemsContext = &kOrderItemsContext;
 	self.badgeText = [NSString stringWithFormat:@"%lu", (unsigned long)[theOrder orderItemCount]];
 }
 
+#pragma mark - NSCopying
+
+- (id)copyWithZone:(NSZone *)zone {
+	BRMenuOrderCountButton *buttonCopy = [super copyWithZone:zone];
+	buttonCopy.order = self.order;
+	return buttonCopy;
+}
+
 @end

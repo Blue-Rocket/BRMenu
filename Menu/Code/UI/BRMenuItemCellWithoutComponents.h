@@ -24,11 +24,7 @@
 /** The menu item to display. */
 @property (nonatomic, strong) BRMenuItem *menuItem;
 
-/**
- Configure the cell for a given order item.
- 
- @param orderItem The order item to configure the receiver with.
- */
-- (void)configureForOrderItem:(BRMenuOrderItem *)orderItem;
+/** The menu order item to associate quantity values with the stepper. */
+@property (nonatomic, strong) BRMenuOrderItem *orderItem;
 
 @end

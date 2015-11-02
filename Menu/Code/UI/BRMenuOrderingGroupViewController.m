@@ -62,6 +62,16 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 		NSArray *leftItems = @[[UIBarButtonItem standardBRMenuBackButtonItemWithTitle:nil target:self action:@selector(goBack:)]];
 		self.navigationItem.leftBarButtonItems = [UIBarButtonItem marginAdjustedBRMenuLeftNavigationBarButtonItems:leftItems];
 	}
+	
+	if ( !self.navigationItem.rightBarButtonItem && flowController.hasMenuItemWithoutComponents && !self.showOrderCount ) {
+		UIBarButtonItem *saveItem = [UIBarButtonItem standardBRMenuBarButtonItemWithTitle:[NSBundle localizedBRMenuString:@"menu.action.saveto.order"]
+																				   target:self
+																				   action:@selector(saveToOrder:)];
+		saveToOrderButton = saveItem.customView;
+		[self refreshSaveToOrderButton];
+		self.navigationItem.rightBarButtonItems = [UIBarButtonItem marginAdjustedBRMenuRightNavigationBarButtonItems:@[saveItem]];
+	}
+
 	[self refreshForStyle:self.uiStyle];
 }
 
@@ -78,14 +88,6 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 		return;
 	}
 	flowController = controller;
-	if ( !self.navigationItem.rightBarButtonItem && flowController.hasMenuItemWithoutComponents ) {
-		UIBarButtonItem *saveItem = [UIBarButtonItem standardBRMenuBarButtonItemWithTitle:[NSBundle localizedBRMenuString:@"menu.action.saveto.order"]
-																				   target:self
-																				   action:@selector(saveToOrder:)];
-		saveToOrderButton = saveItem.customView;
-		[self refreshSaveToOrderButton];
-		self.navigationItem.rightBarButtonItems = [UIBarButtonItem marginAdjustedBRMenuRightNavigationBarButtonItems:@[saveItem]];
-	}
 }
 
 - (void)setShowSaveToOrderCount:(BOOL)value {
@@ -96,8 +98,8 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 }
 
 - (void)refreshSaveToOrderButton {
-	if ( self.showSaveToOrderCount && flowController.temporaryOrder ) {
-		NSUInteger orderCount = [flowController.temporaryOrder orderItemCount];
+	if ( self.showSaveToOrderCount && flowController.order ) {
+		NSUInteger orderCount = [flowController.order orderItemCount];
 		saveToOrderButton.badgeText = (orderCount < 1 ? nil : [NSString stringWithFormat:@"%lu", (unsigned long)orderCount]);
 		saveToOrderButton.enabled = (orderCount > 0);
 	}
@@ -110,20 +112,23 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 }
 
 - (IBAction)saveToOrder:(id)sender {
-	[self.orderingDelegate updateOrderItemsInActiveOrder:flowController.temporaryOrder.orderItems];
+	[self.orderingDelegate updateOrderItemsInActiveOrder:flowController.order.orderItems];
 }
 
 - (IBAction)didAdjustQuantity:(BRMenuStepper *)sender {
-	BRMenuItemObjectCell *cell = [sender nearestAncestorViewOfType:[BRMenuItemObjectCell class]];
+	BRMenuItemCellWithoutComponents *cell = [sender nearestAncestorViewOfType:[BRMenuItemCellWithoutComponents class]];
 	if ( cell == nil ) {
 		return;
 	}
 	BRMenuItem *menuItem = (BRMenuItem *)cell.item;
+	BRMenuOrderItem *orderItem = nil;
 	if ( sender.value == 0 ) {
-		[flowController.temporaryOrder removeItemForMenuItem:menuItem];
+		[flowController.order removeItemForMenuItem:menuItem];
 	} else {
-		[flowController.temporaryOrder getOrAddItemForMenuItem:menuItem].quantity = sender.value;
+		orderItem = [flowController.order getOrAddItemForMenuItem:menuItem];
+		orderItem.quantity = sender.value;
 	}
+	cell.orderItem = orderItem;
 	[self refreshSaveToOrderButton];
 }
 
@@ -131,7 +136,7 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 
 - (void)addOrderItemToActiveOrder:(BRMenuOrderItem *)orderItem {
 	if ( flowController.hasMenuItemWithoutComponents ) {
-		[flowController.temporaryOrder addOrderItem:orderItem];
+		[flowController.order addOrderItem:orderItem];
 		[self refreshSaveToOrderButton];
 		[self.navigationController popToViewController:self animated:YES];
 	} else {
@@ -141,7 +146,7 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 
 - (void)updateOrderItemsInActiveOrder:(NSArray<BRMenuOrderItem *> *)orderItems {
 	if ( flowController.hasMenuItemWithoutComponents ) {
-		[flowController.temporaryOrder replaceOrderItems:orderItems];
+		[flowController.order replaceOrderItems:orderItems];
 		[self refreshSaveToOrderButton];
 		[self.navigationController popToViewController:self animated:YES];
 	} else {
@@ -198,9 +203,9 @@ NSString * const BRMenuOrderingItemGroupHeaderCellIdentifier = @"GroupHeaderCell
 	
 	if ( !item.hasComponents && [cell isKindOfClass:[BRMenuItemCellWithoutComponents class]] ) {
 		// configure order state
-		BRMenuOrderItem *orderItem = [flowController.temporaryOrder orderItemForMenuItem:item];
+		BRMenuOrderItem *orderItem = [flowController.order orderItemForMenuItem:item];
 		BRMenuItemCellWithoutComponents *directCell = (BRMenuItemCellWithoutComponents *)cell;
-		[directCell configureForOrderItem:orderItem];
+		directCell.orderItem = orderItem;
 		if ( [directCell.stepper actionsForTarget:self forControlEvent:UIControlEventValueChanged].count < 1 ) {
 			[directCell.stepper addTarget:self action:@selector(didAdjustQuantity:) forControlEvents:UIControlEventValueChanged];
 		}

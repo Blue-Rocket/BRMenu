@@ -34,17 +34,6 @@ static const CGFloat kMinWidth = 48.0f;
 @dynamic uiStyle;
 @synthesize badgeText, title, inverse;
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
-	if ( (self = [super initWithCoder:aDecoder]) ) {
-		self.opaque = NO;
-		self.title = @"";
-		self.backgroundColor = [UIColor clearColor];
-		self.adjustsImageWhenDisabled = NO;
-		self.adjustsImageWhenHighlighted = NO;
-	}
-	return self;
-}
-
 - (id)initWithFrame:(CGRect)frame {
 	return [self initWithTitle:@""];
 }
@@ -59,6 +48,55 @@ static const CGFloat kMinWidth = 48.0f;
 	}
 	return self;
 }
+
+#pragma mark - NSCopying
+
+- (id)copyWithZone:(NSZone *)zone {
+	NSData *archivedData = [NSKeyedArchiver archivedDataWithRootObject:self];
+	BRMenuButton *buttonCopy = [NSKeyedUnarchiver unarchiveObjectWithData:archivedData];
+	for ( id target in self.allTargets) {
+		NSArray<NSString *> *actions = [self actionsForTarget:target forControlEvent:UIControlEventTouchUpInside];
+		for ( NSString *action in actions ) {
+			[buttonCopy addTarget:target action:NSSelectorFromString(action) forControlEvents:UIControlEventTouchUpInside];
+		}
+	}
+	return buttonCopy;
+}
+
+#pragma mark - NSCoding
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+	if ( (self = [super initWithCoder:aDecoder]) ) {
+		self.opaque = NO;
+		self.backgroundColor = [UIColor clearColor];
+		self.adjustsImageWhenDisabled = NO;
+		self.adjustsImageWhenHighlighted = NO;
+		badgeLabel = [aDecoder decodeObjectOfClass:[UILabel class] forKey:@"badgeLabel"];
+		if ( badgeLabel ) {
+			// we want to re-make badgeWidthConstraint on this view, and easiest way is to remove the view and let setBadgeText: handle it
+			[badgeLabel removeFromSuperview];
+			badgeLabel = nil;
+		}
+		self.title = [aDecoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(title))];
+		self.badgeText = [aDecoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(badgeText))];
+		self.inverse = [aDecoder decodeBoolForKey:NSStringFromSelector(@selector(isInverse))];
+		self.dangerous = [aDecoder decodeBoolForKey:NSStringFromSelector(@selector(isDangerous))];
+		self.fillColor = [aDecoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(fillColor))];
+	}
+	return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+	[super encodeWithCoder:aCoder];
+	[aCoder encodeObject:badgeLabel forKey:@"badgeLabel"];
+	[aCoder encodeObject:self.title forKey:NSStringFromSelector(@selector(title))];
+	[aCoder encodeObject:self.badgeText forKey:NSStringFromSelector(@selector(badgeText))];
+	[aCoder encodeBool:self.inverse forKey:NSStringFromSelector(@selector(isInverse))];
+	[aCoder encodeBool:self.dangerous forKey:NSStringFromSelector(@selector(isDangerous))];
+	[aCoder encodeObject:self.fillColor forKey:NSStringFromSelector(@selector(fillColor))];
+}
+
+#pragma mark -
 
 - (void)localizeWithAppStrings:(NSDictionary *)strings {
 	self.title = [self.title localizedStringWithAppStrings:strings];
@@ -103,6 +141,9 @@ static const CGFloat kMinWidth = 48.0f;
 }
 
 - (void)setTitle:(NSString *)text {
+	if ( text == nil ) {
+		text = @"";
+	}
 	if ( title != text ) {
 		title = text;
 		[self setTitle:text forState:UIControlStateNormal];
@@ -158,11 +199,6 @@ static const CGFloat kMinWidth = 48.0f;
 			l.textAlignment = NSTextAlignmentCenter;
 			[l setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
 			[self addSubview:l];
-			[l mas_makeConstraints:^(MASConstraintMaker *make) {
-				make.right.equalTo(self);
-				make.centerY.equalTo(self);
-				badgeWidthConstraint = make.width.offset(0);
-			}];
 			badgeLabel = l;
 			[self uiStyleDidChange:self.uiStyle];
 		}
@@ -177,6 +213,13 @@ static const CGFloat kMinWidth = 48.0f;
 #pragma mark - Layout
 
 - (void)updateConstraints {
+	if ( badgeLabel && badgeLabel.constraints.count < 1 ) {
+		[badgeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+			make.right.equalTo(self);
+			make.centerY.equalTo(self);
+			badgeWidthConstraint = make.width.offset(0);
+		}];
+	}
 	if ( badgeWidthConstraint ) {
 		badgeWidthConstraint.offset([badgeText length] > 0 ? MAX(kBadgeMinWidth, [self badgeFrameWidthForMaxHeight:CGFLOAT_MAX]) : 0);
 	}
