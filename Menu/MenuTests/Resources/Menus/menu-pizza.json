@@ -452,6 +452,7 @@
                 },
                 {
                     "title": "Side Salad",
+					"key": "side-salad",
                     "description": "Arugula, Spinach, Quattro Formaggi Blend, Pecans, Your Choice of Vinaigrette",
                     "tags": 3,
                     "price": "3.18",
@@ -482,6 +483,7 @@
                 },
                 {
                     "title": "Dessert Pizza",
+					"key": "dessert-pizza",
                     "description": "Strawberry Purée, Nutella, Pecans, Sweet Ricotta, Powdered Sugar",
                     "price": "5.91",
                     "askTakeaway": true

@@ -24,13 +24,13 @@
 	BRMenuItem *item;
 	BRMenuOrderItem *orderItem;
 	BRMenuItemGroup *itemGroup;
-	BRMenuOrder *temporaryOrder;
+	BRMenuOrder *order;
 	NSArray *steps;
 	NSUInteger flowStep;
 }
 
 @synthesize menu, item, orderItem;
-@synthesize itemGroup, temporaryOrder;
+@synthesize itemGroup, order;
 
 - (id)initWithMenu:(BRMenu *)theMenu {
 	return [self initWithMenu:theMenu item:nil];
@@ -63,7 +63,7 @@
 		item = flow.item;
 		orderItem = flow->orderItem;
 		itemGroup = flow.itemGroup;
-		temporaryOrder = flow->temporaryOrder;
+		order = flow->order;
 		steps = flow->steps;
 		flowStep = step;
 	}

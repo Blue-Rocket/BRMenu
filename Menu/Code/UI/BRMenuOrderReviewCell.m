@@ -105,14 +105,8 @@ static void * kOrderItemQuantityContext = &kOrderItemQuantityContext;
 		make.right.equalTo(self.plusButton.mas_left).with.offset(editing ? -5 : -10);
 	}];
 	
-	if ( [self.title respondsToSelector:@selector(setDisableAutoAdjustMaxLayoutWidth:)] ) {
-		((BRMenuFitToWidthLabel *)self.title).disableAutoAdjustMaxLayoutWidth = editing;
-	}
 	self.title.lineBreakMode = (editing ? NSLineBreakByTruncatingTail : NSLineBreakByWordWrapping);
 
-	if ( [self.desc respondsToSelector:@selector(setDisableAutoAdjustMaxLayoutWidth:)] ) {
-		((BRMenuFitToWidthLabel *)self.desc).disableAutoAdjustMaxLayoutWidth = editing;
-	}
 	self.desc.lineBreakMode = (editing ? NSLineBreakByTruncatingTail : NSLineBreakByWordWrapping);
 	
 	[self setNeedsLayout];
@@ -298,6 +292,7 @@ static void * kOrderItemQuantityContext = &kOrderItemQuantityContext;
 	
 	// description: left, left aligned, expands vertically and horizontally
 	l = [[BRMenuFitToWidthLabel alloc] initWithFrame:CGRectZero];
+	[l setContentHuggingPriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisVertical]; // give title priority
 	l.textAlignment = NSTextAlignmentLeft;
 	self.desc = l;
 	[self.contentView addSubview:l];
@@ -369,5 +364,24 @@ static void * kOrderItemQuantityContext = &kOrderItemQuantityContext;
 	}
 	[super updateConstraints];
 }
+
+- (CGFloat)preferredTitleLabelWidthForLayoutSize:(CGSize)targetSize {
+	CGFloat contentWidth = [super preferredTitleLabelWidthForLayoutSize:targetSize];
+	
+	// super subtracts right margin, but we align directly to right edge so add that back in, minus fixed right margin
+	if ( targetSize.width == self.bounds.size.width ) {
+		contentWidth += self.layoutMargins.right - 10;
+	} else {
+		contentWidth += self.contentView.layoutMargins.right - 10;
+	}
+
+	if ( self.orderItem.item.askTakeaway ) {
+		contentWidth -= [self.takeAwayButton systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].width + 10;
+	} else {
+		contentWidth -= [self.quantity systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].width + 10;
+	}
+	return contentWidth;
+}
+
 
 @end

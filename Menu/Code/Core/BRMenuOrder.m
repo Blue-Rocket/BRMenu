@@ -14,7 +14,7 @@
 #import "BRMenuOrderItem.h"
 #import "BRMenuOrderItemAttributesProxy.h"
 
-static void * kOrderItemPriceContext = &kOrderItemPriceContext;
+static void * kOrderItemQuantityContext = &kOrderItemQuantityContext;
 
 @implementation BRMenuOrder {
 	NSMutableArray<BRMenuOrderItem *> *orderItems;
@@ -70,8 +70,14 @@ static void * kOrderItemPriceContext = &kOrderItemPriceContext;
 		self.menu = [aDecoder decodeObjectOfClass:[BRMenu class] forKey:NSStringFromSelector(@selector(menu))];
 		self.orderNumber = [aDecoder decodeIntegerForKey:NSStringFromSelector(@selector(orderNumber))];
 		self.name = [aDecoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(name))];
-		orderItems = [[aDecoder decodeObjectOfClasses:[NSSet setWithObjects:[NSArray class], [BRMenuOrderItem class], nil] forKey:NSStringFromSelector(@selector(orderItems))] mutableCopy];
 		menus = [[aDecoder decodeObjectOfClasses:[NSSet setWithObjects:[NSOrderedSet class], [BRMenu class], nil] forKey:NSStringFromSelector(@selector(menus))] mutableCopy];
+
+		// make sure KVO setup properly
+		NSArray<BRMenuOrderItem *> *oItems = [aDecoder decodeObjectOfClasses:[NSSet setWithObjects:[NSArray class], [BRMenuOrderItem class], nil] forKey:NSStringFromSelector(@selector(orderItems))];
+		if ( oItems.count > 0 ) {
+			orderItems = [[NSMutableArray alloc] initWithCapacity:oItems.count];
+			[self insertOrderItems:oItems atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, oItems.count)]];
+		}
 	}
 	return self;
 }
@@ -87,9 +93,11 @@ static void * kOrderItemPriceContext = &kOrderItemPriceContext;
 #pragma mark - Observing
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-	if ( context == kOrderItemPriceContext ) {
+	if ( context == kOrderItemQuantityContext ) {
 		[self willChangeValueForKey:NSStringFromSelector(@selector(totalPrice))];
 		[self didChangeValueForKey:NSStringFromSelector(@selector(totalPrice))];
+		[self willChangeValueForKey:NSStringFromSelector(@selector(orderItemCount))];
+		[self didChangeValueForKey:NSStringFromSelector(@selector(orderItemCount))];
 	} else {
 		return [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 	}
@@ -104,13 +112,13 @@ static void * kOrderItemPriceContext = &kOrderItemPriceContext;
 		// (i.e. when multiple menus are supported) all menu items will lose their ref to their menu
 		[menus addObject:item.item.menu];
 	}
-	[item addObserver:self forKeyPath:NSStringFromSelector(@selector(price)) options:NSKeyValueObservingOptionNew context:kOrderItemPriceContext];
+	[item addObserver:self forKeyPath:NSStringFromSelector(@selector(quantity)) options:NSKeyValueObservingOptionNew context:kOrderItemQuantityContext];
 }
 
 - (void)insertOrderItems:(NSArray *)array atIndexes:(NSIndexSet *)indexes {
 	[orderItems insertObjects:array atIndexes:indexes];
 	for ( BRMenuOrderItem *orderItem in array ) {
-		[orderItem addObserver:self forKeyPath:NSStringFromSelector(@selector(price)) options:NSKeyValueObservingOptionNew context:kOrderItemPriceContext];
+		[orderItem addObserver:self forKeyPath:NSStringFromSelector(@selector(quantity)) options:NSKeyValueObservingOptionNew context:kOrderItemQuantityContext];
 		if ( orderItem.item.menu && ![menus containsObject:orderItem.item.menu] ) {
 			[menus addObject:orderItem.item.menu];
 		}
@@ -118,13 +126,13 @@ static void * kOrderItemPriceContext = &kOrderItemPriceContext;
 }
 
 - (void)removeObjectFromOrderItemsAtIndex:(NSUInteger)index {
-	[orderItems[index] removeObserver:self forKeyPath:NSStringFromSelector(@selector(price)) context:kOrderItemPriceContext];
+	[orderItems[index] removeObserver:self forKeyPath:NSStringFromSelector(@selector(quantity)) context:kOrderItemQuantityContext];
 	[orderItems removeObjectAtIndex:index];
 }
 
 - (void)removeOrderItemsAtIndexes:(NSIndexSet *)indexes {
-	[orderItems enumerateObjectsAtIndexes:indexes options:0 usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-		[obj removeObserver:self forKeyPath:NSStringFromSelector(@selector(price)) context:kOrderItemPriceContext];
+	[orderItems enumerateObjectsAtIndexes:indexes options:0 usingBlock:^(BRMenuOrderItem *obj, NSUInteger idx, BOOL *stop) {
+		[obj removeObserver:self forKeyPath:NSStringFromSelector(@selector(quantity)) context:kOrderItemQuantityContext];
 	}];
 	[orderItems removeObjectsAtIndexes:indexes];
 }
@@ -163,11 +171,29 @@ static void * kOrderItemPriceContext = &kOrderItemPriceContext;
 	BRMenuOrderItem *item = [self orderItemForMenuItem:menuItem];
 	if ( item != nil ) {
 		NSUInteger index = [orderItems indexOfObjectIdenticalTo:item];
+		BRMenu *removedItemMenu = menuItem.menu;
+		
+		// in case anyone else listening on quantity, set that to 0 now before we remove it
+		orderItems[index].quantity = 0;
+		
 		[self removeObjectFromOrderItemsAtIndex:index];
+		
+		// look to see if any other item still refers to this same menu; if NOT then we will remove this menu from the menus array
+		BOOL found = NO;
+		for ( BRMenuOrderItem *orderItem in orderItems ) {
+			if ( [orderItem.item.menu isEqual:removedItemMenu] ) {
+				found = YES;
+				break;
+			}
+		}
+		if ( !found ) {
+			[menus removeObject:removedItemMenu];
+		}
 	}
 }
 
 - (void)replaceOrderItems:(NSArray<BRMenuOrderItem *> *)newOrderItems {
+	[menus removeAllObjects];
 	[self removeOrderItemsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, orderItems.count)]];
 	if ( newOrderItems != nil ) {
 		if ( orderItems == nil ) {
@@ -212,7 +238,7 @@ static void * kOrderItemPriceContext = &kOrderItemPriceContext;
 	return nil;
 }
 
-- (NSArray *)orderedGroups:(NSDictionary<NSString *, NSString *> *)groupMapping {
+- (NSArray<NSArray<BRMenuOrderItem *> *> *)orderedGroups:(NSDictionary<NSString *, NSString *> *)groupMapping {
 	// order sections in same order as BRMenu groups
 	NSMutableDictionary *mapping = [NSMutableDictionary new];
 
@@ -251,7 +277,7 @@ static void * kOrderItemPriceContext = &kOrderItemPriceContext;
 		}
 	}
 	
-	NSMutableArray *sections = [NSMutableArray new];
+	NSMutableArray<NSArray<BRMenuOrderItem *> *> *sections = [NSMutableArray new];
 	for ( NSString *menuKey in mapping ) {
 		NSDictionary *menuMapping = mapping[menuKey];
 		BRMenu *menu = [self menuForKey:menuKey];
@@ -270,7 +296,7 @@ static void * kOrderItemPriceContext = &kOrderItemPriceContext;
 			return (idx1 < idx2 ? NSOrderedAscending : idx1 > idx2 ? NSOrderedDescending : NSOrderedSame);
 		}];
 		for ( NSString *groupKey in sortedGroupKeys ) {
-			NSMutableArray *section = menuMapping[groupKey];
+			NSArray *section = menuMapping[groupKey];
 			[sections addObject:section];
 		}
 	}

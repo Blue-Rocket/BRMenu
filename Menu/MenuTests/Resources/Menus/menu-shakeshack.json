@@ -80,6 +80,7 @@
             "items": [
                 {
                     "title": "Fries",
+					"key" : "fries",
                     "askTakeaway": true,
                     "price": "2.85",
                     "description": "Dragged through the garden with Rick's Picks Shack relish, onion, cucumber, pickle, tomato, sport pepper, celery salt and mustard"

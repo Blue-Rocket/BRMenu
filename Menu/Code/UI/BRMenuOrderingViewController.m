@@ -12,6 +12,7 @@
 #import "BRMenuItemObject.h"
 #import "BRMenuItemObjectCell.h"
 #import "BRMenuOrder.h"
+#import "BRMenuOrderCountButton.h"
 #import "BRMenuOrderItem.h"
 #import "BRMenuOrderingComponentsViewController.h"
 #import "BRMenuOrderingFlowController.h"
@@ -39,7 +40,7 @@ NSString * const BRMenuOrderingShowItemGroupSegue = @"ShowItemGroup";
     [super viewDidLoad];
 	if ( !self.usePrototypeCells ) {
 		self.tableView.rowHeight = UITableViewAutomaticDimension;
-		self.tableView.estimatedRowHeight = 60.0;
+		self.tableView.estimatedRowHeight = 100.0;
 		[self.tableView registerClass:[BRMenuItemObjectCell class] forCellReuseIdentifier:BRMenuOrderingItemObjectCellIdentifier];
 	}
 	
@@ -123,9 +124,19 @@ NSString * const BRMenuOrderingShowItemGroupSegue = @"ShowItemGroup";
 	} else if ( [segue.identifier isEqualToString:BRMenuOrderingShowItemGroupSegue] ) {
 		BRMenuOrderingGroupViewController *dest = segue.destinationViewController;
 		dest.flowController = [flowController flowControllerForItemAtIndexPath:[self.tableView indexPathForSelectedRow]];
-		dest.flowController.temporaryOrder = (self.allowRemoveFromOrder ? self.order : [BRMenuOrder new]);
-		dest.showSaveToOrderCount = !self.allowRemoveFromOrder;
+		dest.flowController.order = (!self.enableUndoSupport
+									 ? self.order
+									 : (self.allowRemoveFromOrder
+										? [self.order copy]
+										: [BRMenuOrder new]));
+		dest.showOrderCount = !self.enableUndoSupport;
+		dest.showSaveToOrderCount = (self.enableUndoSupport && !self.allowRemoveFromOrder);
 		dest.orderingDelegate = self;
+		if ( self.orderCountButton && !self.enableUndoSupport ) {
+			BRMenuOrderCountButton *reviewOrderButton = [self.orderCountButton copy];
+			UIBarButtonItem *reviewOrderBarButton = [[UIBarButtonItem alloc] initWithCustomView:reviewOrderButton];
+			dest.navigationItem.rightBarButtonItems = [UIBarButtonItem marginAdjustedBRMenuRightNavigationBarButtonItems:@[reviewOrderBarButton]];
+		}
 	}
 }
 

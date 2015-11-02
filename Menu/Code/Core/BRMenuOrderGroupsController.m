@@ -17,22 +17,22 @@
 
 @implementation BRMenuOrderGroupsController {
 	BRMenuOrder *order;
-	NSDictionary *groupKeyMapping;
-	NSArray *sections;
+	NSDictionary<NSString *, NSString *> *groupKeyMapping;
+	NSArray<NSArray<BRMenuOrderItem *> *> *sections;
 }
 
 @synthesize order;
 @synthesize groupKeyMapping;
 
 - (id)init {
-	return [self initWithOrder:nil];
+	return [self initWithOrder:[BRMenuOrder new]];
 }
 
 - (id)initWithOrder:(BRMenuOrder *)theOrder {
 	return [self initWithOrder:theOrder groupKeyMapping:nil];
 }
 
-- (id)initWithOrder:(BRMenuOrder *)theOrder groupKeyMapping:(NSDictionary *)theGroupKeyMapping {
+- (id)initWithOrder:(BRMenuOrder *)theOrder groupKeyMapping:(NSDictionary<NSString *, NSString *> *)theGroupKeyMapping {
 	if ( (self = [super init]) ) {
 		order = theOrder;
 		groupKeyMapping = theGroupKeyMapping;

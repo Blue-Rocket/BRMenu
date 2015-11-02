@@ -101,4 +101,22 @@
 	self.desc.textColor = (self.disabled ? style.colors.placeholderColor : style.colors.captionColor);
 }
 
+- (CGFloat)preferredTitleLabelWidthForLayoutSize:(CGSize)targetSize {
+	CGFloat contentWidth = [self contentWidthForLayoutSize:targetSize];
+
+	// super subtracts right margin, but we align directly to right edge so add that back in
+	if ( targetSize.width == self.bounds.size.width ) {
+		contentWidth += self.layoutMargins.right;
+	} else {
+		contentWidth += self.contentView.layoutMargins.right;
+	}
+
+	// subtract larger of price and grid widths from available title width
+	CGFloat priceWidth = [self.price systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].width;
+	CGFloat tagGridWidth = (tagGridView.tags.count < 1 ? 0 : [tagGridView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].width);
+	
+	contentWidth -= MAX(priceWidth > 0 ? priceWidth + 10 : 0, tagGridWidth > 0 ? tagGridWidth + 5 : 0);
+	return contentWidth;
+}
+
 @end

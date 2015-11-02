@@ -25,6 +25,38 @@
 #import "BRMenuRestKitTestingSupport.h"
 #import "BRMenuTestingMenuProvider.h"
 
+static void * kObservationContext = &kObservationContext;
+
+
+@interface BRMenuOrderObservationHelper : NSObject
+
+@property (nonatomic, readonly) NSArray *changedValues;
+
+@end
+
+@implementation BRMenuOrderObservationHelper {
+	NSMutableArray *changedValues;
+}
+
+@synthesize changedValues;
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+	if ( context == kObservationContext ) {
+		id newValue = change[NSKeyValueChangeNewKey];
+		if ( newValue ) {
+			if ( !changedValues ) {
+				changedValues = [[NSMutableArray alloc] initWithCapacity:8];
+			}
+			[changedValues addObject:newValue];
+		}
+	} else {
+		return [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+	}
+}
+
+
+@end
+
 @interface BRMenuOrderTests : XCTestCase
 
 @end
@@ -419,6 +451,26 @@
 		}
 		i++;
 	}
+}
+
+- (void)testObserveItemCountChangeFromQuantityUpdate {
+	BRMenu *pizzaMenu = [self testMenu];
+	
+	BRMenuOrderObservationHelper *helper = [[BRMenuOrderObservationHelper alloc] init];
+	
+	BRMenuOrder *order = [BRMenuOrder new];
+	[order addObserver:helper forKeyPath:NSStringFromSelector(@selector(orderItemCount)) options:NSKeyValueObservingOptionNew context:kObservationContext];
+	
+	BRMenuItem *salad = [[pizzaMenu menuItemGroupForKey:@"salad"].items firstObject];
+	BRMenuOrderItem *saladOrderItem = [[BRMenuOrderItem alloc] initWithMenuItem:salad];
+	saladOrderItem.quantity = 1;
+	[order addOrderItem:saladOrderItem];
+	
+	saladOrderItem.quantity = 11;
+	
+	[order removeObserver:helper forKeyPath:NSStringFromSelector(@selector(orderItemCount)) context:kObservationContext];
+	
+	assertThat(helper.changedValues, contains(@0, @1, @11, nil));
 }
 
 @end

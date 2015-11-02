@@ -15,7 +15,7 @@
 /**
  A button that displays a title along with an optional @i badge. The badge can be used to display additional information, such as a count.
  */
-@interface BRMenuButton : UIButton <BRLocalizable, BRMenuUIControl, BRUIStylish>
+@interface BRMenuButton : UIButton <BRLocalizable, BRMenuUIControl, BRUIStylish, NSCopying>
 
 /** A title to display as the button text. */
 @property (nonatomic, copy) IBInspectable NSString *title;

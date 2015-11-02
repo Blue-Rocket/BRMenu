@@ -12,6 +12,7 @@
 #import "BRMenuFitToWidthLabel.h"
 #import "BRMenuLeftRightPlacementButton.h"
 #import "BRMenuItem.h"
+#import "BRMenuItemComponent.h"
 #import "BRMenuOrderItem.h"
 #import "BRMenuOrderItemComponentDetailsView.h"
 #import <BRStyle/BRUIStylishHost.h>
@@ -26,11 +27,13 @@
 	BRMenuOrderItem *orderItem;
 	BRMenuOrderItemComponentPlacement placementToDisplay;
 	NSArray *componentViews;
+	BOOL omitEmptyPlaceholderSet;
 }
 
 @dynamic uiStyle;
 @synthesize orderItem;
 @synthesize placementToDisplay;
+@synthesize omitEmptyPlaceholder;
 
 - (id)initWithFrame:(CGRect)frame {
 	if ( (self = [super initWithFrame:frame]) ) {
@@ -133,12 +136,32 @@
 	}
 }
 
+- (void)setOmitEmptyPlaceholder:(BOOL)value {
+	omitEmptyPlaceholderSet = YES;
+	omitEmptyPlaceholder = value;
+}
+
+- (BOOL)isOmitEmptyPlaceholder {
+	return (omitEmptyPlaceholderSet
+			? omitEmptyPlaceholder
+			: (placementToDisplay == BRMenuOrderItemComponentPlacementWhole
+			   ? NO
+			   : YES));
+}
+
 - (void)setOrderItem:(BRMenuOrderItem *)item {
 	if ( orderItem != item ) {
 		orderItem = item;
 		[componentViews makeObjectsPerformSelector:@selector(removeFromSuperview)];
 		NSMutableArray *views = [NSMutableArray arrayWithCapacity:5];
-		for ( BRMenuOrderItemComponent *orderComponent in orderItem.components ) {
+		NSArray<BRMenuOrderItemComponent *> *orderComponents = orderItem.components;
+		if ( orderComponents.count < 1 && !self.isOmitEmptyPlaceholder ) {
+			BRMenuItemComponent *placeholder = [[BRMenuItemComponent alloc] init];
+			placeholder.title = [NSBundle localizedBRMenuString:@"menu.ordering.item.details.emptyComponent.title"];
+			BRMenuOrderItemComponent *orderPlaceholder = [[BRMenuOrderItemComponent alloc] initWithComponent:placeholder];
+			orderComponents = @[orderPlaceholder];
+		}
+		for ( BRMenuOrderItemComponent *orderComponent in orderComponents ) {
 			if ( orderComponent.placement != placementToDisplay ) {
 				continue;
 			}

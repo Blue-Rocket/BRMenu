@@ -29,4 +29,18 @@ extern NSString * const BRMenuOrderingReviewOrderItemSegue;
 @property (nonatomic, strong) BRMenuOrderingFlowController *flowController;
 @property (nonatomic, weak) id<BRMenuOrderingDelegate> orderingDelegate;
 
+/**
+ Action sent to go backwards in the navigation flow.
+ 
+ @param sender The action sender.
+ */
+- (IBAction)goBack:(id)sender;
+
+/**
+ Action sent to go forwards in the navigation flow, if possible.
+ 
+ @param sender The action sender.
+ */
+- (IBAction)goForward:(id)sender;
+
 @end

@@ -118,6 +118,10 @@
 	[self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)goForward:(id)sender {
+	[self addOrderItemToActiveOrder:sender];
+}
+
 - (IBAction)addOrderItemToActiveOrder:(id)sender {
 	[self.orderingDelegate addOrderItemToActiveOrder:self.orderItem];
 }

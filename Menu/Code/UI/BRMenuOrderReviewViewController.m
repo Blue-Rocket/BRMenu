@@ -40,13 +40,14 @@ static void * kOrderTotalPriceContext = &kOrderTotalPriceContext;
 
 @implementation BRMenuOrderReviewViewController {
 	BRMenuOrder *order;
-	NSDictionary *groupKeyMapping;
-	BRMenuOrderGroupsController *groupsController;
+	NSDictionary<NSString *, NSString *> *groupKeyMapping;
+	id<BRMenuOrderGroupingConrtroller> groupsController;
 }
 
 @dynamic uiStyle;
 @synthesize order;
 @synthesize groupKeyMapping;
+@synthesize groupsController;
 
 - (void)dealloc {
 	[self setOrder:nil]; // release KVO
@@ -63,6 +64,13 @@ static void * kOrderTotalPriceContext = &kOrderTotalPriceContext;
 	[self.tableView registerClass:[BRMenuOrderReviewCell class] forCellReuseIdentifier:BRMenuOrderReviewOrderItemCellIdentifier];
 	[self.tableView registerClass:[BRMenuGroupTableHeaderView class] forHeaderFooterViewReuseIdentifier:BRMenuOrderReviewGroupHeaderCellIdentifier];
 
+	// make sure content inset bottom matches any configured scrollIndicator inset bottom
+	if ( self.tableView.scrollIndicatorInsets.bottom > 0 ) {
+		UIEdgeInsets insets = self.tableView.contentInset;
+		insets.bottom = self.tableView.scrollIndicatorInsets.bottom;
+		self.tableView.contentInset = insets;
+	}
+	
 	[self refreshForStyle:self.uiStyle];
 	
 	if ( !self.navigationItem.leftBarButtonItem ) {
@@ -97,12 +105,16 @@ static void * kOrderTotalPriceContext = &kOrderTotalPriceContext;
 
 - (void)refresh {
 	if ( self.order ) {
-		groupsController = [[BRMenuOrderGroupsController alloc] initWithOrder:self.order groupKeyMapping:self.groupKeyMapping];
+		groupsController = [self createGroupingController];
 	} else {
 		groupsController = nil;
 	}
 	[self.tableView reloadData];
 	[self refreshFromModel];
+}
+
+- (id<BRMenuOrderGroupingConrtroller>)createGroupingController {
+	return [[BRMenuOrderGroupsController alloc] initWithOrder:self.order groupKeyMapping:self.groupKeyMapping];
 }
 
 - (void)refreshFromModel {

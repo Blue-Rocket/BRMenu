@@ -19,7 +19,19 @@
 #import "BRMenuLightHeavyQuantityButton.h"
 
 
-@implementation BRMenuItemComponentCell
+@implementation BRMenuItemComponentCell {
+	MASConstraint *titleTrailing;
+	MASConstraint *titleBottom;
+	MASConstraint *descBottom;
+	MASConstraint *descTopMargin;
+}
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+	self.hideDescription = YES;
+	self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+	return self;
+}
+
 
 - (BRMenuItemComponent *)component {
 	return (BRMenuItemComponent *)self.item;
@@ -76,6 +88,11 @@
 	[self setNeedsLayout];
 }
 
+static const CGFloat kAccessoryMargin = 22;
+static const CGFloat kToggleButtonWidth = 44;
+static const CGFloat kToggleButtonMargin = 2;
+static const CGFloat kDescTopMargin = 4;
+
 - (void)setupSubviews {
 	self.selectionStyle = UITableViewCellSelectionStyleNone;
 	self.accessoryType = UITableViewCellAccessoryNone;
@@ -83,6 +100,8 @@
 	// title: top left, left aligned, expands vertically and horizontally
 	UILabel *l = [[BRMenuFitToWidthLabel alloc] initWithFrame:CGRectZero];
 	l.textAlignment = NSTextAlignmentLeft;
+	[l setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+	[l setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
 	self.title = l;
 	[self.contentView addSubview:l];
 	
@@ -98,10 +117,16 @@
 	self.quantityButton = q;
 	[self.contentView addSubview:q];
 
-	const CGFloat kAccessoryMargin = 22;
+	// description: left, left aligned, expands vertically and horizontally
+	l = [[BRMenuFitToWidthLabel alloc] initWithFrame:CGRectZero];
+	l.textAlignment = NSTextAlignmentLeft;
+	[l setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+	[l setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+	self.desc = l;
+	[self.contentView addSubview:l];
+	
 	[self.placementButton mas_makeConstraints:^(MASConstraintMaker *make) {
-		make.centerY.equalTo(self.contentView);
-		make.width.equalTo(@44);
+		make.width.equalTo(@(kToggleButtonWidth));
 		make.top.equalTo(self.contentView);
 		make.bottom.equalTo(self.contentView);
 		if ( !self.quantityButton ) {
@@ -109,30 +134,62 @@
 		}
 	}];
 	[self.quantityButton mas_makeConstraints:^(MASConstraintMaker *make) {
-		make.centerY.equalTo(self.contentView);
 		if ( self.placementButton ) {
-			make.leading.equalTo(self.placementButton.mas_trailing).with.offset(2);
+			make.leading.equalTo(self.placementButton.mas_trailing).with.offset(kToggleButtonMargin);
 		}
 		make.trailing.equalTo(self.mas_trailingMargin).with.offset(-kAccessoryMargin); // to cell, so we don't shift with checkmark
-		make.width.equalTo(@44);
+		make.width.equalTo(@(kToggleButtonWidth));
 		make.top.equalTo(self.contentView);
 		make.bottom.equalTo(self.contentView);
 	}];
 }
 
 - (void)updateConstraints {
-	UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 0);
 	BRMenuItemComponent *component = (BRMenuItemComponent *)self.item;
-	[self.title mas_remakeConstraints:^(MASConstraintMaker *make) {
-		make.top.equalTo(@(padding.top));
-		make.leading.equalTo(self.contentView.mas_leadingMargin);
-		make.trailing.equalTo(component.askPlacement
-							  ? self.placementButton.mas_leading
-							  : component.askQuantity
-							  ? self.quantityButton.mas_leading
-							  : self.contentView.mas_trailing).with.offset(-10);
-		make.bottom.equalTo(@(-padding.bottom));
-	}];
+	const BOOL hasDescription = (!self.hideDescription && [component.desc length] > 0);
+	if ( self.title.constraints.count < 1 ) {
+		[self.title mas_makeConstraints:^(MASConstraintMaker *make) {
+			make.top.equalTo(self.contentView.mas_topMargin);
+			make.leading.equalTo(self.contentView.mas_leadingMargin);
+			titleTrailing = make.trailing.equalTo(self.mas_trailingMargin).with.offset(-kAccessoryMargin); // to cell, so we don't shift with checkmark
+			titleBottom = make.bottom.equalTo(self.contentView.mas_bottomMargin);
+		}];
+	}
+	if ( self.desc.constraints.count < 1 ) {
+		[self.desc mas_makeConstraints:^(MASConstraintMaker *make) {
+			descTopMargin = make.top.equalTo(self.title.mas_bottom).with.offset(kDescTopMargin);
+			make.left.equalTo(self.title);
+			make.right.equalTo(self.title);
+			descBottom = make.bottom.equalTo(self.contentView.mas_bottomMargin).priorityHigh(); // have to do High here so we can uninstall, reset
+		}];
+		[descBottom uninstall];
+		descBottom.priority(MASLayoutPriorityRequired);
+	}
+
+	CGFloat titleOffset = -kAccessoryMargin;
+	if ( component.askPlacement ) {
+		titleOffset -= kToggleButtonWidth;
+	}
+	if ( component.askQuantity ) {
+		titleOffset -= kToggleButtonWidth;
+		if ( component.askPlacement ) {
+			titleOffset -= kToggleButtonMargin;
+		}
+	}
+	if ( component.askPlacement || component.askQuantity ) {
+		titleOffset -= 4;
+	}
+	titleTrailing.offset(titleOffset);
+	descTopMargin.offset(hasDescription ? kDescTopMargin : 0);
+	if ( hasDescription ) {
+		// let the desc bottom constrain the cell height
+		[titleBottom uninstall];
+		[descBottom install];
+	} else {
+		// no desc, so let the title constrain the cell height which makes the title centered vertically
+		[descBottom uninstall];
+		[titleBottom install];
+	}
 	[super updateConstraints];
 }
 

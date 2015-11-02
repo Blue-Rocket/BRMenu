@@ -38,7 +38,7 @@
 	orderItem = item;
 	
 	// set up 3 placement views: whole, left, right, assuming those placements used
-	__block BOOL haveWholePlacement = NO;
+	const BOOL haveWholePlacement = YES; // always include whole because that's the item title
 	__block BOOL haveLeftPlacement = NO;
 	__block BOOL haveRightPlacement = NO;
 	[item.components enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -52,11 +52,11 @@
 				haveRightPlacement = YES;
 				break;
 				
-			default:
-				haveWholePlacement = YES;
+			case BRMenuOrderItemComponentPlacementWhole:
+				// nothing
 				break;
 		}
-		if ( haveWholePlacement && haveLeftPlacement && haveRightPlacement ) {
+		if ( haveLeftPlacement && haveRightPlacement ) {
 			*stop = YES;
 		}
 	}];

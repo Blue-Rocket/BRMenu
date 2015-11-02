@@ -12,7 +12,6 @@
 #import <MenuKit/Core.h>
 #import <MenuKit/RestKit.h>
 #import <MenuKit/UI.h>
-#import <RestKit/RestKit.h>
 #import "BRMenu+MenuSampler.h"
 
 static NSString * const kShowMenuSegue = @"ShowMenu";
@@ -67,6 +66,7 @@ static NSString * const kReviewOrderSegue = @"ReviewOrder";
 			reviewOrderButton.inverse = YES;
 			[reviewOrderButton addTarget:self action:@selector(viewOrder:) forControlEvents:UIControlEventTouchUpInside];
 			[reviewOrderButton sizeToFit];
+			dest.orderCountButton = reviewOrderButton;
 			dest.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:reviewOrderButton];
 
 			[self.navigationController pushViewController:dest animated:YES];

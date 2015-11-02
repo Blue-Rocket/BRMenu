@@ -21,5 +21,6 @@
 
 @property (nonatomic, strong) BRMenuOrderItem *orderItem;
 @property (nonatomic, assign) BRMenuOrderItemComponentPlacement placementToDisplay;
+@property (nonatomic, assign, getter=isOmitEmptyPlaceholder) BOOL omitEmptyPlaceholder;
 
 @end

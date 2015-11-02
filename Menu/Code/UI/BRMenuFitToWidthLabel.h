@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ Convenience subclass of @c UILabel to configure common settings for a label that should wrap and expand its height to fit the text content.
+ */
 @interface BRMenuFitToWidthLabel : UILabel
-
-/** Flag to disable the automatic adjustment of @c preferredMaxLayoutWidth. */
-@property (nonatomic, assign, getter=isDisableAutoAdjustMaxLayoutWidth) BOOL disableAutoAdjustMaxLayoutWidth;
 
 @end

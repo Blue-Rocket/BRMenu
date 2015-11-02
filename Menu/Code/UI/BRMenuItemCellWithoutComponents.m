@@ -20,12 +20,17 @@ static const CGFloat kDescTopMargin = 4;
 static const CGFloat kTagGridHorizontalMargin = 10;
 
 @implementation BRMenuItemCellWithoutComponents {
+	BRMenuOrderItem *orderItem;
 	BRMenuTagGridView *tagGridView;
 	MASConstraint *tagGridLeftMargin; // to collapse if no tag grid
 	MASConstraint *titleBottom;
 	MASConstraint *descBottom;
 	MASConstraint *priceTopMargin;
 	MASConstraint *descTopMargin;
+}
+
+- (void)dealloc {
+	[self setOrderItem:nil]; // remove KVO
 }
 
 - (BRMenuItem *)menuItem {
@@ -43,7 +48,6 @@ static const CGFloat kTagGridHorizontalMargin = 10;
 	// title: top left, left aligned, expands vertically and horizontally
 	UILabel *l = [[BRMenuFitToWidthLabel alloc] initWithFrame:CGRectZero];
 	l.textAlignment = NSTextAlignmentLeft;
-	//l.preferredMaxLayoutWidth = 180;
 	self.title = l;
 	[self.contentView addSubview:l];
 	
@@ -74,7 +78,6 @@ static const CGFloat kTagGridHorizontalMargin = 10;
 	// description: left, left aligned, expands vertically and horizontally
 	l = [[BRMenuFitToWidthLabel alloc] initWithFrame:CGRectZero];
 	l.textAlignment = NSTextAlignmentLeft;
-	//l.preferredMaxLayoutWidth = 180;
 	self.desc = l;
 	[self.contentView addSubview:l];
 	
@@ -93,9 +96,29 @@ static const CGFloat kTagGridHorizontalMargin = 10;
 	[self setNeedsUpdateConstraints];
 }
 
+static void * kQuantityContext = &kQuantityContext;
 
-- (void)configureForOrderItem:(BRMenuOrderItem *)orderItem {
-	self.stepper.value = orderItem.quantity;
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+	if ( context == kQuantityContext ) {
+		NSNumber *quantity = change[NSKeyValueChangeNewKey];
+		self.stepper.value = [quantity integerValue];
+	} else {
+		return [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+	}
+}
+
+- (void)setOrderItem:(BRMenuOrderItem *)theOrderItem {
+	if ( theOrderItem == orderItem ) {
+		return;
+	}
+	if ( orderItem ) {
+		[orderItem removeObserver:self forKeyPath:NSStringFromSelector(@selector(quantity))];
+	}
+	orderItem = theOrderItem;
+	if ( theOrderItem ) {
+		[theOrderItem addObserver:self forKeyPath:NSStringFromSelector(@selector(quantity)) options:NSKeyValueObservingOptionNew context:kQuantityContext];
+	}
+	self.stepper.value = theOrderItem.quantity;
 }
 
 - (void)refreshStyle:(BRUIStyle *)style {
@@ -162,6 +185,17 @@ static const CGFloat kTagGridHorizontalMargin = 10;
 		[titleBottom install];
 	}
 	[super updateConstraints];
+}
+
+- (CGFloat)preferredTitleLabelWidthForLayoutSize:(CGSize)targetSize {
+	CGFloat contentWidth = [self contentWidthForLayoutSize:targetSize];
+	
+	// subtract grid view and stepper widths
+	if ( tagGridView.tags.count > 0 ) {
+		contentWidth -= [tagGridView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].width + kTagGridHorizontalMargin;
+	}
+	contentWidth -= [self.stepper systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].width + BRMenuStepperPadding.width + kTagGridHorizontalMargin;
+	return contentWidth;
 }
 
 @end

@@ -27,6 +27,9 @@
 /** Set the cell into a "disabled" state, to support things like "out of stock". */
 @property (nonatomic, assign, getter=isDisabled) BOOL disabled;
 
+/** Toggle the display of description information. */
+@property (nonatomic, assign, getter=isShowDescription) IBInspectable BOOL hideDescription;
+
 @end
 
 @interface BRMenuItemObjectCell (ImplementationSupport)
@@ -50,5 +53,11 @@
  @param item The item to refresh the UI with.
  */
 - (void)refreshForItem:(id<BRMenuItemObject>)item;
+
+- (CGFloat)contentWidthForLayoutSize:(CGSize)targetSize;
+
+- (CGFloat)preferredTitleLabelWidthForLayoutSize:(CGSize)targetSize;
+
+- (void)setupPreferredLabelWidthsForLayoutSize:(CGSize)targetSize;
 
 @end
