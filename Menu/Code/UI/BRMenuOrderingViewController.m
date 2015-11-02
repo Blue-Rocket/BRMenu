@@ -134,7 +134,8 @@ NSString * const BRMenuOrderingShowItemGroupSegue = @"ShowItemGroup";
 		dest.orderingDelegate = self;
 		if ( self.orderCountButton && !self.enableUndoSupport ) {
 			BRMenuOrderCountButton *reviewOrderButton = [self.orderCountButton copy];
-			dest.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:reviewOrderButton];
+			UIBarButtonItem *reviewOrderBarButton = [[UIBarButtonItem alloc] initWithCustomView:reviewOrderButton];
+			dest.navigationItem.rightBarButtonItems = [UIBarButtonItem marginAdjustedBRMenuRightNavigationBarButtonItems:@[reviewOrderBarButton]];
 		}
 	}
 }
