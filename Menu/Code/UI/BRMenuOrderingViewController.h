@@ -57,4 +57,11 @@ extern NSString * const BRMenuOrderingShowItemGroupSegue;
 /** The active order. If not specified, a new order will be created as needed. */
 @property (nonatomic, strong) BRMenuOrder *order;
 
+/**
+ Action sent to go backwards in the navigation flow.
+ 
+ @param sender The action sender.
+ */
+- (IBAction)goBack:(id)sender;
+
 @end

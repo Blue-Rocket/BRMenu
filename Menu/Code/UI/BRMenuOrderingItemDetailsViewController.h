@@ -32,4 +32,11 @@
 /** If @c YES then add a @c BRMenuStepper control to allow adjusting the quantity of the order item. */
 @property (nonatomic, getter = isShowQuantityStepper) IBInspectable BOOL showQuantityStepper;
 
+/**
+ Action sent to go backwards in the navigation flow.
+ 
+ @param sender The action sender.
+ */
+- (IBAction)goBack:(id)sender;
+
 @end

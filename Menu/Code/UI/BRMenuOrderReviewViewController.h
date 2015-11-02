@@ -75,6 +75,13 @@ extern NSString * const BRMenuOrderReviewViewOrderItemDetailsSegue;
 - (id<BRMenuOrderGroupingConrtroller>)createGroupingController;
 
 /**
+ Action sent to go backwards in the navigation flow.
+ 
+ @param sender The action sender.
+ */
+- (IBAction)goBack:(id)sender;
+
+/**
  Action message sent when an order item's quantity should be adjusted. The sender of the message will be some view configured in the table cell,
  so interested code can look for the cell in the view hierarchy to determine which button was pressed (minus, plus, or delete).
  
