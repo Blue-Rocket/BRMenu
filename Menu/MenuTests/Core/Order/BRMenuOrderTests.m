@@ -473,4 +473,62 @@ static void * kObservationContext = &kObservationContext;
 	assertThat(helper.changedValues, contains(@0, @1, @11, nil));
 }
 
+- (BRMenuOrderItem *)createTOrderItemWithComponent:(BRMenuItem *)pizza component:(NSUInteger)componentIndex {
+	BRMenuOrderItem *pizzaOrderItem = [BRMenuOrderItem new];
+	pizzaOrderItem.item = pizza;
+	pizzaOrderItem.quantity = 1;
+	
+	// add a component
+	BRMenuItemComponentGroup *componentGroup = [pizza.componentGroups firstObject];
+	[pizzaOrderItem addComponent:[[BRMenuOrderItemComponent alloc] initWithComponent:componentGroup.components[componentIndex]
+																		   placement:BRMenuOrderItemComponentPlacementLeft
+																			quantity:BRMenuOrderItemComponentQuantityNormal]];
+	return pizzaOrderItem;
+}
+
+- (void)testAddOrderItemMerged {
+	BRMenu *menu = [self testMenu];
+	BRMenuItem *pizza = [menu menuItemForKey:@"pizza"];
+	assertThat(pizza, notNilValue());
+	
+	BRMenuOrderItem *resultOrderItem;
+	BRMenuOrder *order = [BRMenuOrder new];
+	
+	BRMenuOrderItem *pizzaOrderItem = [self createTOrderItemWithComponent:pizza component:0];
+	resultOrderItem = [order addOrderItem:pizzaOrderItem];
+	assertThat(resultOrderItem, sameInstance(pizzaOrderItem));
+	assertThat(order.orderItems, hasCountOf(1));
+	
+	// now add another order item, with same components, but new object instances
+	BRMenuOrderItem *anotherPizzaOrderItem = [self createTOrderItemWithComponent:pizza component:0];
+	anotherPizzaOrderItem.quantity = 5;
+	resultOrderItem = [order addOrderItem:anotherPizzaOrderItem];
+	assertThat(resultOrderItem, sameInstance(pizzaOrderItem));
+	assertThat(order.orderItems, hasCountOf(1));
+	assertThatUnsignedInt(pizzaOrderItem.quantity, equalToUnsignedInt(6));
+}
+
+- (void)testAddOrderItemNotMerged {
+	BRMenu *menu = [self testMenu];
+	BRMenuItem *pizza = [menu menuItemForKey:@"pizza"];
+	assertThat(pizza, notNilValue());
+	
+	BRMenuOrderItem *resultOrderItem;
+	BRMenuOrder *order = [BRMenuOrder new];
+	
+	BRMenuOrderItem *pizzaOrderItem = [self createTOrderItemWithComponent:pizza component:0];
+	resultOrderItem = [order addOrderItem:pizzaOrderItem];
+	assertThat(resultOrderItem, sameInstance(pizzaOrderItem));
+	assertThat(order.orderItems, hasCountOf(1));
+	
+	// now add another order item, with same components, but new object instances
+	BRMenuOrderItem *anotherPizzaOrderItem = [self createTOrderItemWithComponent:pizza component:1];
+	resultOrderItem = [order addOrderItem:anotherPizzaOrderItem];
+	assertThat(resultOrderItem, sameInstance(anotherPizzaOrderItem));
+	assertThat(order.orderItems, hasCountOf(2));
+
+	assertThatUnsignedInt(pizzaOrderItem.quantity, equalToUnsignedInt(1));
+	assertThatUnsignedInt(anotherPizzaOrderItem.quantity, equalToUnsignedInt(1));
+}
+
 @end
