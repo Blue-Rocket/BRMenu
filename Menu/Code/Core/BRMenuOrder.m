@@ -179,35 +179,42 @@ static void * kOrderItemQuantityContext = &kOrderItemQuantityContext;
 	return item;
 }
 
+- (void)removeOrderItemAtIndex:(NSUInteger)index {
+	if ( index == NSNotFound || !(index < orderItems.count)) {
+		return;
+	}
+	BRMenuOrderItem *orderItem = orderItems[index];
+	
+	BRMenu *removedItemMenu = orderItem.item.menu;
+
+	// in case anyone else listening on quantity, set that to 0 now before we remove it
+	orderItems[index].quantity = 0;
+	
+	[self removeObjectFromOrderItemsAtIndex:index];
+
+	// look to see if any other item still refers to this same menu; if NOT then we will remove this menu from the menus array
+	BOOL found = NO;
+	for ( BRMenuOrderItem *orderItem in orderItems ) {
+		if ( [orderItem.item.menu isEqual:removedItemMenu] ) {
+			found = YES;
+			break;
+		}
+	}
+	if ( !found ) {
+		[menus removeObject:removedItemMenu];
+	}
+}
+
 - (void)removeOrderItem:(BRMenuOrderItem *)orderItem {
 	NSUInteger index = [orderItems indexOfObjectIdenticalTo:orderItem];
-	if ( index != NSNotFound ) {
-		[self removeObjectFromOrderItemsAtIndex:index];
-	}
+	[self removeOrderItemAtIndex:index];
 }
 
 - (void)removeItemForMenuItem:(BRMenuItem *)menuItem {
 	BRMenuOrderItem *item = [self orderItemForMenuItem:menuItem];
 	if ( item != nil ) {
 		NSUInteger index = [orderItems indexOfObjectIdenticalTo:item];
-		BRMenu *removedItemMenu = menuItem.menu;
-		
-		// in case anyone else listening on quantity, set that to 0 now before we remove it
-		orderItems[index].quantity = 0;
-		
-		[self removeObjectFromOrderItemsAtIndex:index];
-		
-		// look to see if any other item still refers to this same menu; if NOT then we will remove this menu from the menus array
-		BOOL found = NO;
-		for ( BRMenuOrderItem *orderItem in orderItems ) {
-			if ( [orderItem.item.menu isEqual:removedItemMenu] ) {
-				found = YES;
-				break;
-			}
-		}
-		if ( !found ) {
-			[menus removeObject:removedItemMenu];
-		}
+		[self removeOrderItemAtIndex:index];
 	}
 }
 
