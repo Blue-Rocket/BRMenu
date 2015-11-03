@@ -280,7 +280,7 @@ static void * kOrderTotalPriceContext = &kOrderTotalPriceContext;
 		[orderItem removeAttributesAtIndex:removeIndex];
 		orderItem.quantity--;
 	} else {
-		[order removeItemForMenuItem:orderItem.item];
+		[order removeOrderItem:orderItem];
 	}
 	
 	[groupsController refresh];

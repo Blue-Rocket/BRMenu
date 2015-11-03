@@ -77,6 +77,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeItemForMenuItem:(BRMenuItem *)menuItem;
 
 /**
+ Remove an order item.
+ 
+ @param orderItem The order item to remove.
+ */
+- (void)removeOrderItem:(BRMenuOrderItem *)orderItem;
+
+/**
  Remove any existing order items and then add the provided order items to the receiver. The 
  @c newOrderItems array can be @c nil or empty to simply remove all order items from the receiver.
  

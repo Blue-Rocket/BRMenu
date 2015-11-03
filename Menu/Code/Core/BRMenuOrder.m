@@ -179,6 +179,13 @@ static void * kOrderItemQuantityContext = &kOrderItemQuantityContext;
 	return item;
 }
 
+- (void)removeOrderItem:(BRMenuOrderItem *)orderItem {
+	NSUInteger index = [orderItems indexOfObjectIdenticalTo:orderItem];
+	if ( index != NSNotFound ) {
+		[self removeObjectFromOrderItemsAtIndex:index];
+	}
+}
+
 - (void)removeItemForMenuItem:(BRMenuItem *)menuItem {
 	BRMenuOrderItem *item = [self orderItemForMenuItem:menuItem];
 	if ( item != nil ) {
