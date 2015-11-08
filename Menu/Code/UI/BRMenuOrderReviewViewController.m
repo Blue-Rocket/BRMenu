@@ -8,6 +8,7 @@
 
 #import "BRMenuOrderReviewViewController.h"
 
+#import <BRStyle/BRUIStylishHost.h>
 #import "BRMenuButton.h"
 #import "BRMenuFlipToggleButton.h"
 #import "BRMenuGroupTableHeaderView.h"
@@ -15,12 +16,12 @@
 #import "BRMenuOrder.h"
 #import "BRMenuOrderingItemDetailsViewController.h"
 #import "BRMenuOrderItem.h"
-#import "BRmenuOrderItemAttributes.h"
+#import "BRMenuOrderItemAttributes.h"
 #import "BRMenuOrderItemAttributesProxy.h"
 #import "BRMenuOrderGroupsController.h"
 #import "BRMenuOrderReviewCell.h"
 #import "BRMenuPlusMinusButton.h"
-#import <BRStyle/BRUIStylishHost.h>
+#import "BRMenuStepper.h"
 #import "NSBundle+BRMenu.h"
 #import "NSNumberFormatter+BRMenu.h"
 #import "UIBarButtonItem+BRMenu.h"
@@ -223,7 +224,7 @@ static void * kOrderTotalPriceContext = &kOrderTotalPriceContext;
 		[self duplicateOrderItem:cell];
 	} else {
 		if ( sender == cell.plusButton ) {
-			if ( orderItem.quantity < 32 ) { // TODO: define constant or env prop for max
+			if ( orderItem.quantity < BRMenuStepperDefaultMaximumValue ) { // TODO: define constant or env prop for max
 				orderItem.quantity++;
 			}
 		} else if ( cell.deleteState ) {
