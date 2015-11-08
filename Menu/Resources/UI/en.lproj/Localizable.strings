@@ -20,5 +20,6 @@
 "menu.ordering.item.details.left.title" = "Left side";
 "menu.ordering.item.details.right.title" = "Right side";
 "menu.ordering.item.details.emptyComponent.title" = "(nothing selected)";
+"menu.ordering.item.details.addingSimilarItem.message" = "You’ve added this item to your order already. The -/+ button shows the total quantity in your order while the Add button will show how many more items you’d like to order.";
 
 "menu.order.review.quantity.title" = "x%u";
