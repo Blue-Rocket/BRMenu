@@ -24,16 +24,17 @@
 @interface BRMenuOrderingItemDetailsViewController () <BRUIStylishHost>
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet BRMenuOrderItemDetailsView *orderDetailsView;
-@property (strong, nonatomic) IBOutlet BRMenuStepper *stepper;
 @end
 
 @implementation BRMenuOrderingItemDetailsViewController {
 	BRMenuOrderItem *orderItem;
+	BRMenuStepper *stepper;
 	__weak BRMenuButton *addButton;
 }
 
 @dynamic uiStyle;
 @synthesize orderItem;
+@synthesize stepper;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -51,24 +52,30 @@
 		}];
 		self.orderDetailsView = detailsView;
 	}
-	if ( self.showQuantityStepper && !self.stepper ) {
-		BRMenuStepper *stepper = [[BRMenuStepper alloc] initWithFrame:CGRectZero];
-		stepper.minimumValue = 1;
-		stepper.value = orderItem.quantity;
-		[self refreshAddButton];
-		[stepper addTarget:self action:@selector(didAdjustQuantity:) forControlEvents:UIControlEventValueChanged];
-		[self.scrollView addSubview:stepper];
-		[stepper mas_makeConstraints:^(MASConstraintMaker *make) {
+	if ( self.showQuantityStepper && stepper.superview == nil ) {
+		BRMenuStepper *stepperControl = self.stepper;
+		[self.scrollView addSubview:stepperControl];
+		[stepperControl mas_makeConstraints:^(MASConstraintMaker *make) {
 			make.top.equalTo(self.orderDetailsView.mas_bottom).offset(20);
 			make.left.equalTo(self.orderDetailsView).offset(-BRMenuStepperPadding.width);
 			make.bottom.equalTo(self.scrollView).offset(-10).priorityMedium();
 		}];
-		self.stepper = stepper;
 	}
 	if ( !self.navigationItem.leftBarButtonItem ) {
 		NSArray *leftItems = @[[UIBarButtonItem standardBRMenuBackButtonItemWithTitle:nil target:self action:@selector(goBack:)]];
 		self.navigationItem.leftBarButtonItems = [UIBarButtonItem marginAdjustedBRMenuLeftNavigationBarButtonItems:leftItems];
 	}
+}
+
+- (BRMenuStepper *)stepper {
+	if ( !stepper ) {
+		BRMenuStepper *stepperControl = [[BRMenuStepper alloc] initWithFrame:CGRectZero];
+		stepperControl.value = orderItem.quantity;
+		[self refreshAddButton];
+		[stepperControl addTarget:self action:@selector(didAdjustQuantity:) forControlEvents:UIControlEventValueChanged];
+		stepper = stepperControl;
+	}
+	return stepper;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -92,11 +99,16 @@
 	if ( self.scrollView.scrollEnabled ) {
 		[self.scrollView flashScrollIndicators];
 	}
+	if ( stepper.minimumValue > 0 ) {
+		[[[UIAlertView alloc] initWithTitle:nil message:[NSBundle localizedBRMenuString:@"menu.ordering.item.details.addingSimilarItem.message"] delegate:nil
+						  cancelButtonTitle:[NSBundle localizedBRMenuString:@"menu.action.ok"] otherButtonTitles:nil] show];
+	}
 }
 
 - (void)viewDidLayoutSubviews {
 	[super viewDidLayoutSubviews];
-	self.scrollView.scrollEnabled = (CGRectGetHeight(self.orderDetailsView.bounds) > CGRectGetHeight(self.view.bounds));
+	self.scrollView.scrollEnabled = (CGRectGetHeight(self.orderDetailsView.bounds) >
+									 (CGRectGetHeight(self.scrollView.frame) - self.scrollView.contentInset.top - self.scrollView.contentInset.bottom));
 }
 
 - (void)setOrderItem:(BRMenuOrderItem *)item {
@@ -109,7 +121,9 @@
 }
 
 - (void)refreshAddButton {
-	addButton.badgeText = (orderItem.quantity < 2 ? nil : [NSString stringWithFormat:@"%d", orderItem.quantity]);
+	NSUInteger quantityChange = (stepper == nil ? 1 : (stepper.value - stepper.minimumValue)); // minimum value == no change to order
+	addButton.badgeText = (quantityChange < 2 ? nil : [NSString stringWithFormat:@"%d", quantityChange]);
+	addButton.enabled = (stepper == nil || stepper.value > stepper.minimumValue);
 }
 
 #pragma mark - Actions

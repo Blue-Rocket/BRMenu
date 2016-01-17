@@ -11,6 +11,7 @@
 #import <BRStyle/BRUIStylish.h>
 
 @class BRMenuOrderItem;
+@class BRMenuStepper;
 @protocol BRMenuOrderingDelegate;
 
 /**
@@ -22,6 +23,9 @@
  If @c showAddToOrder is @c NO, then no @c orderingDelegate is needed, and no "add to order" button is shown.
  */
 @interface BRMenuOrderingItemDetailsViewController : UIViewController <BRUIStylish>
+
+/** A stepper to use. Will be created if not configured. */
+@property (strong, nonatomic) IBOutlet BRMenuStepper *stepper;
 
 @property (nonatomic, strong) BRMenuOrderItem *orderItem;
 @property (nonatomic, weak) id<BRMenuOrderingDelegate> orderingDelegate;

@@ -412,6 +412,7 @@
 	} else if ( [itemObj isKindOfClass:[BRMenuItemGroup class]] ) {
 		result = [[[self class] alloc] initWithMenu:menu group:(BRMenuItemGroup *)itemObj];
 	}
+	result.order = order;
 	return result;
 }
 

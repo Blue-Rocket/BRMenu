@@ -35,23 +35,60 @@ NS_ASSUME_NONNULL_BEGIN
 /** The sum total of all items in the order, accounting for quantities. */
 @property (nonatomic, readonly) NSDecimalNumber *totalPrice;
 
-// add a single BRMenuOrderItem to the order
-- (void)addOrderItem:(BRMenuOrderItem *)item;
+/**
+ Add a single @c BRMenuOrderItem to the to the receiver.
+ 
+ @param item The item to add.
+ 
+ @return The resulting order item, which might be different from the @c item passed in.
+ */
+- (BRMenuOrderItem *)addOrderItem:(BRMenuOrderItem *)item;
 
-// count of items, accounting for multiples of items (e.g. 2x of 1 item results in a count of 2)
+/**
+ Get the count of items, accounting for multiples of items (e.g. 2x of 1 item results in a count of 2).
+ 
+ @return The quantity of items in the receiver.
+ */
 - (NSUInteger)orderItemCount;
 
-// get an BRMenuOrderItem for a given BRMenuItem, or nil if not available
+/**
+ Get an order item for a given menu item, or @c nil if not available.
+ 
+ @param menuItem The menu item to get the corresponding order item for.
+ 
+ @return The found menu order item, or @c nil if not found.
+ */
 - (nullable BRMenuOrderItem *)orderItemForMenuItem:(BRMenuItem *)menuItem;
 
-// get the existing BRMenuOrderItem for a given BRMenuItem, or create it and add
+/**
+ Get an existing order item for a given menu item, creating a new order item and adding it to the order if no match found.
+ 
+ @param menuItem The menu item to get or add an order item for.
+ 
+ @return The order item associated with the provided menu item.
+ */
 - (BRMenuOrderItem *)getOrAddItemForMenuItem:(BRMenuItem *)menuItem;
 
-// remove any existing BRMenuOrderItem matching a given BRMenuItem
+/**
+ Remove an order item for a given menu item.
+ 
+ @param menuItem The menu item to remove the associated order item for.
+ */
 - (void)removeItemForMenuItem:(BRMenuItem *)menuItem;
 
-// remove any existing BRMenuOrderItems and then add any provided BRMenuOrderItems; newOrderItems can be
-// nil or empty to simply remove all BRMenuOrderItems from the BRMenuOrder
+/**
+ Remove an order item.
+ 
+ @param orderItem The order item to remove.
+ */
+- (void)removeOrderItem:(BRMenuOrderItem *)orderItem;
+
+/**
+ Remove any existing order items and then add the provided order items to the receiver. The 
+ @c newOrderItems array can be @c nil or empty to simply remove all order items from the receiver.
+ 
+ @param newOrderItems The new order items to apply to the receiver.
+ */
 - (void)replaceOrderItems:(nullable NSArray<BRMenuOrderItem *> *)newOrderItems;
 
 /**

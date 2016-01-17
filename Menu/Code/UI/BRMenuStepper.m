@@ -14,6 +14,7 @@
 @end
 
 const CGSize BRMenuStepperPadding = {8.0, 4.0};
+const NSInteger BRMenuStepperDefaultMaximumValue = 32;
 
 static const CGFloat kNaturalWidth = 80.0;
 static const CGFloat kNaturalHeight = 28.0;
@@ -62,7 +63,7 @@ static const CGFloat kMinimumBadgeWidth = (kNaturalWidth - kMinimumPlusMinusButt
 	self.opaque = NO;
 	self.value = 0;
 	self.minimumValue = 0;
-	self.maximumValue = 32;
+	self.maximumValue = BRMenuStepperDefaultMaximumValue;
 	self.stepValue = 1;
 	
 	self.contentMode = UIViewContentModeRedraw;

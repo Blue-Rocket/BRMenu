@@ -13,6 +13,9 @@
 /** A padding applied to the internal drawing of the control, so can be aligned to content if desired. */
 extern const CGSize BRMenuStepperPadding;
 
+/** The default maximum value. */
+extern const NSInteger BRMenuStepperDefaultMaximumValue;
+
 /**
  A button control that renders minus and plus icons and allows stepping a value up or down, like UIStepper.
  */

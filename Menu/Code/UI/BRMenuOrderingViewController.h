@@ -15,6 +15,8 @@
 @class BRMenuOrderCountButton;
 @class BRMenuOrder;
 
+NS_ASSUME_NONNULL_BEGIN
+
 /** Cell identifier for top-level menu objects (items and groups). */
 extern NSString * const BRMenuOrderingItemObjectCellIdentifier;
 
@@ -65,3 +67,5 @@ extern NSString * const BRMenuOrderingShowItemGroupSegue;
 - (IBAction)goBack:(id)sender;
 
 @end
+
+NS_ASSUME_NONNULL_END

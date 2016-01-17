@@ -8,18 +8,20 @@
 
 #import "BRMenuOrderingComponentsViewController.h"
 
+#import <BRStyle/BRUIStylishHost.h>
 #import "BRMenuGroupTableHeaderView.h"
 #import "BRMenuItemComponent.h"
 #import "BRMenuItemComponentCell.h"
 #import "BRMenuItemComponentGroup.h"
 #import "BRMenuItem.h"
 #import "BRMenuModelPropertyEditor.h"
-#import "BRMenuOrderingFlowController.h"
+#import "BRMenuOrder.h"
 #import "BRMenuOrderItem.h"
 #import "BRMenuOrderItemComponent.h"
 #import "BRMenuOrderingDelegate.h"
+#import "BRMenuOrderingFlowController.h"
 #import "BRMenuOrderingItemDetailsViewController.h"
-#import <BRStyle/BRUIStylishHost.h>
+#import "BRMenuStepper.h"
 #import "NSBundle+BRMenu.h"
 #import "UIBarButtonItem+BRMenu.h"
 #import "UIView+BRUIStyle.h"
@@ -30,7 +32,7 @@ NSString * const BRMenuOrderingGroupHeaderCellIdentifier = @"GroupHeaderCell";
 
 NSString * const BRMenuOrderingReviewOrderItemSegue = @"ReviewOrderItem";
 
-@interface BRMenuOrderingComponentsViewController () <BRUIStylishHost>
+@interface BRMenuOrderingComponentsViewController () <BRUIStylishHost, BRMenuOrderingDelegate>
 @end
 
 @implementation BRMenuOrderingComponentsViewController {
@@ -69,7 +71,7 @@ NSString * const BRMenuOrderingReviewOrderItemSegue = @"ReviewOrderItem";
 		} else {
 			rightItem = [UIBarButtonItem standardBRMenuBarButtonItemWithTitle:[NSBundle localizedBRMenuString:@"menu.action.add"]
 																	   target:self
-																	   action:@selector(addOrderItemToActiveOrder:)];
+																	   action:@selector(addToActiveOrder:)];
 		}
 	} else {
 		rightItem = [UIBarButtonItem standardBRMenuBarButtonItemWithTitle:[NSBundle localizedBRMenuString:@"menu.action.next"]
@@ -106,6 +108,33 @@ NSString * const BRMenuOrderingReviewOrderItemSegue = @"ReviewOrderItem";
 	}
 }
 
+#pragma BRMenuOrderingDelegate
+
+- (void)addOrderItemToActiveOrder:(BRMenuOrderItem *)orderItem {
+	// if we have a similar item already in the order, then we are actually adding the *difference* quantity here,
+	// as we want to enforce the overall maximum amount allowed
+	if ( flowController.order.orderItems.count > 0 ) {
+		NSUInteger similarOrderItemIndex = [flowController.order.orderItems indexOfObject:flowController.orderItem];
+		if ( similarOrderItemIndex != NSNotFound ) {
+			BRMenuOrderItem *similarOrderItem = flowController.order.orderItems[similarOrderItemIndex];
+			if ( orderItem != similarOrderItem ) {
+				BRMenuOrderItem *copy = [orderItem copy];
+				copy.quantity = (orderItem.quantity - similarOrderItem.quantity);
+				orderItem = copy;
+			}
+		}
+	}
+	[self.orderingDelegate addOrderItemToActiveOrder:orderItem];
+}
+
+- (void)updateOrderItemsInActiveOrder:(NSArray<BRMenuOrderItem *> *)orderItems {
+	[self.orderingDelegate updateOrderItemsInActiveOrder:orderItems];
+}
+
+- (BOOL)shouldExcludeMenuItemObject:(id<BRMenuItemObject>)item {
+	return [self.orderingDelegate shouldExcludeMenuItemObject:item];
+}
+
 #pragma mark - Navigation
 
 - (BOOL)canGotoNextStep {
@@ -132,7 +161,21 @@ NSString * const BRMenuOrderingReviewOrderItemSegue = @"ReviewOrderItem";
 		dest.showAddToOrder = YES;
 		dest.showQuantityStepper = YES;
 		dest.orderItem = flowController.orderItem;
-		dest.orderingDelegate = self.orderingDelegate;
+		dest.orderingDelegate = self;
+		
+		// configure minimum/maximum stepper value by looking for similar order item already in order
+		if ( flowController.order.orderItems.count > 0 ) {
+			NSUInteger similarOrderItemIndex = [flowController.order.orderItems indexOfObject:flowController.orderItem];
+			if ( similarOrderItemIndex != NSNotFound ) {
+				BRMenuOrderItem *similarOrderItem = flowController.order.orderItems[similarOrderItemIndex];
+				if ( similarOrderItem != flowController.orderItem ) {
+					dest.stepper.minimumValue = similarOrderItem.quantity;
+					dest.stepper.value = similarOrderItem.quantity;
+				}
+			}
+		}
+	} else {
+		[super prepareForSegue:segue sender:sender];
 	}
 }
 
@@ -163,7 +206,7 @@ NSString * const BRMenuOrderingReviewOrderItemSegue = @"ReviewOrderItem";
 	[self performSegueWithIdentifier:BRMenuOrderingReviewOrderItemSegue sender:sender];
 }
 
-- (IBAction)addOrderItemToActiveOrder:(id)sender {
+- (IBAction)addToActiveOrder:(id)sender {
 	if ( [self canAddToOrder] == NO ) {
 		return;
 	}
